@@ -47,7 +47,7 @@ ruby:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 4
-  module: authlete
+  module: Authlete
   outputModelSuffix: output
-  packageName: authlete-ruby-test
+  packageName: authlete_ruby_test
   typingStrategy: sorbet
