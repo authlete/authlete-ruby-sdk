@@ -26,7 +26,7 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
 ruby:
-  version: 0.0.1-beta
+  version: 0.0.1.beta
   additionalDependencies:
     development: {}
     runtime: {}
