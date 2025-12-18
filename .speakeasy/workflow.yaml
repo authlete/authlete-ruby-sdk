@@ -11,6 +11,9 @@ targets:
     authlete:
         target: ruby
         source: authlete-OAS
+        publish:
+            rubygems:
+                token: $rubygems_auth_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-oas-ruby-code-samples
