@@ -1,0 +1,9 @@
+# DeviceVerificationApiRequest
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                      | *::String*                                                                                        | :heavy_check_mark:                                                                                | A service ID.                                                                                     |
+| `device_verification_request`                                                                     | [Models::Components::DeviceVerificationRequest](../../models/shared/deviceverificationrequest.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |

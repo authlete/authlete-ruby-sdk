@@ -1,0 +1,9 @@
+# FederationRegistrationApiRequest
+
+
+## Fields
+
+| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                              | *::String*                                                                                                | :heavy_check_mark:                                                                                        | A service ID.                                                                                             |
+| `federation_registration_request`                                                                         | [Models::Components::FederationRegistrationRequest](../../models/shared/federationregistrationrequest.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |

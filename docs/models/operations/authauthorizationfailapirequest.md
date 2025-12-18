@@ -1,0 +1,9 @@
+# AuthAuthorizationFailApiRequest
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                    | *::String*                                                                                      | :heavy_check_mark:                                                                              | A service ID.                                                                                   |
+| `authorization_fail_request`                                                                    | [Models::Components::AuthorizationFailRequest](../../models/shared/authorizationfailrequest.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |

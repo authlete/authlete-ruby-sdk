@@ -1,0 +1,9 @@
+# AuthIntrospectionStandardApiRequest
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                            | *::String*                                                                                              | :heavy_check_mark:                                                                                      | A service ID.                                                                                           |
+| `standard_introspection_request`                                                                        | [Models::Components::StandardIntrospectionRequest](../../models/shared/standardintrospectionrequest.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |

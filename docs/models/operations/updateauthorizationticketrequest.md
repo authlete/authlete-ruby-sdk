@@ -1,0 +1,9 @@
+# UpdateAuthorizationTicketRequest
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                    | *::String*                                                                                                      | :heavy_check_mark:                                                                                              | A service ID.                                                                                                   |
+| `authorization_ticket_update_request`                                                                           | [Models::Components::AuthorizationTicketUpdateRequest](../../models/shared/authorizationticketupdaterequest.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |

@@ -1,0 +1,9 @@
+# DeviceAuthorizationApiRequest
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                        | *::String*                                                                                          | :heavy_check_mark:                                                                                  | A service ID.                                                                                       |
+| `device_authorization_request`                                                                      | [Models::Components::DeviceAuthorizationRequest](../../models/shared/deviceauthorizationrequest.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |

@@ -1,0 +1,9 @@
+# PushedAuthReqApiRequest
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                        | *::String*                                                                                          | :heavy_check_mark:                                                                                  | A service ID.                                                                                       |
+| `pushed_authorization_request`                                                                      | [Models::Components::PushedAuthorizationRequest](../../models/shared/pushedauthorizationrequest.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |

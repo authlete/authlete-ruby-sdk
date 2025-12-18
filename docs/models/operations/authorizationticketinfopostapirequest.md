@@ -1,0 +1,9 @@
+# AuthorizationTicketInfoPostApiRequest
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                | *::String*                                                                                                  | :heavy_check_mark:                                                                                          | A service ID.                                                                                               |
+| `authorization_ticket_info_request`                                                                         | [Models::Components::AuthorizationTicketInfoRequest](../../models/shared/authorizationticketinforequest.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |

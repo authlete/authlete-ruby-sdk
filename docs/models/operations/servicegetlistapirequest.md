@@ -1,0 +1,9 @@
+# ServiceGetListApiRequest
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `start`                                                                                           | *T.nilable(::Integer)*                                                                            | :heavy_minus_sign:                                                                                | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number. |
+| `end_`                                                                                            | *T.nilable(::Integer)*                                                                            | :heavy_minus_sign:                                                                                | End index (exclusive) of the result set. The default value is 5. Must not be a negative number.   |

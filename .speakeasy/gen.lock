@@ -1,0 +1,2291 @@
+lockVersion: 2.0.0
+id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
+management:
+  docChecksum: cc79a96f8134d49db6ccec859db17375
+  docVersion: 3.0.16
+  speakeasyVersion: 1.603.2
+  generationVersion: 2.681.8
+  releaseVersion: 0.0.1
+  configChecksum: c5f5645c2149b834ec8fc0b41b386ff4
+features:
+  ruby:
+    core: 3.10.0
+    flattening: 2.81.1
+    globalSecurity: 2.81.8
+    globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.4
+    groups: 2.81.2
+    inputOutputModels: 2.83.0
+    nameOverrides: 2.81.2
+    nullables: 0.1.0
+    responseFormat: 0.1.0
+generatedFiles:
+  - .gitattributes
+  - .rubocop.yml
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - USAGE.md
+  - authlete.gemspec
+  - docs/models/components/accesstoken.md
+  - docs/models/components/applicationtype.md
+  - docs/models/components/attachmenttype.md
+  - docs/models/components/authorizationdetailselement.md
+  - docs/models/components/authorizationfailrequest.md
+  - docs/models/components/authorizationfailrequestreason.md
+  - docs/models/components/authorizationfailresponse.md
+  - docs/models/components/authorizationfailresponseaction.md
+  - docs/models/components/authorizationissuerequest.md
+  - docs/models/components/authorizationissueresponse.md
+  - docs/models/components/authorizationissueresponseaction.md
+  - docs/models/components/authorizationrequest.md
+  - docs/models/components/authorizationresponse.md
+  - docs/models/components/authorizationresponseaction.md
+  - docs/models/components/authorizationticketinfo.md
+  - docs/models/components/authorizationticketinforequest.md
+  - docs/models/components/authorizationticketinforesponse.md
+  - docs/models/components/authorizationticketinforesponseaction.md
+  - docs/models/components/authorizationticketupdaterequest.md
+  - docs/models/components/authorizationticketupdateresponse.md
+  - docs/models/components/authorizationticketupdateresponseaction.md
+  - docs/models/components/authzdetails.md
+  - docs/models/components/backchannelauthenticationcompleterequest.md
+  - docs/models/components/backchannelauthenticationcompleterequestresult.md
+  - docs/models/components/backchannelauthenticationcompleteresponse.md
+  - docs/models/components/backchannelauthenticationcompleteresponseaction.md
+  - docs/models/components/backchannelauthenticationfailrequest.md
+  - docs/models/components/backchannelauthenticationfailrequestreason.md
+  - docs/models/components/backchannelauthenticationfailresponse.md
+  - docs/models/components/backchannelauthenticationfailresponseaction.md
+  - docs/models/components/backchannelauthenticationissuerequest.md
+  - docs/models/components/backchannelauthenticationissueresponse.md
+  - docs/models/components/backchannelauthenticationissueresponseaction.md
+  - docs/models/components/backchannelauthenticationrequest.md
+  - docs/models/components/backchannelauthenticationresponse.md
+  - docs/models/components/backchannelauthenticationresponseaction.md
+  - docs/models/components/cimdoptions.md
+  - docs/models/components/claimtype.md
+  - docs/models/components/client.md
+  - docs/models/components/clientauthmethod.md
+  - docs/models/components/clientauthorizationdeleteresponse.md
+  - docs/models/components/clientauthorizationgetlistresponse.md
+  - docs/models/components/clientauthorizationupdaterequest.md
+  - docs/models/components/clientauthorizationupdateresponse.md
+  - docs/models/components/clientextension.md
+  - docs/models/components/clientextensionrequestablescopesgetresponse.md
+  - docs/models/components/clientextensionrequestablescopesupdaterequest.md
+  - docs/models/components/clientextensionrequestablescopesupdateresponse.md
+  - docs/models/components/clientflagupdaterequest.md
+  - docs/models/components/clientflagupdateresponse.md
+  - docs/models/components/clientgetlistresponse.md
+  - docs/models/components/clientgrantedscopesdeleteresponse.md
+  - docs/models/components/clientinput.md
+  - docs/models/components/clientlimited.md
+  - docs/models/components/clientlimitedauthorization.md
+  - docs/models/components/clientregistrationresponse.md
+  - docs/models/components/clientregistrationresponseaction.md
+  - docs/models/components/clientregistrationtype.md
+  - docs/models/components/clientsecretrefreshresponse.md
+  - docs/models/components/clientsecretupdaterequest.md
+  - docs/models/components/clientsecretupdateresponse.md
+  - docs/models/components/clientsource.md
+  - docs/models/components/clienttype.md
+  - docs/models/components/credentialissuanceorder.md
+  - docs/models/components/credentialissuermetadata.md
+  - docs/models/components/credentialofferinfo.md
+  - docs/models/components/credentialrequestinfo.md
+  - docs/models/components/deliverymode.md
+  - docs/models/components/deviceauthorizationrequest.md
+  - docs/models/components/deviceauthorizationresponse.md
+  - docs/models/components/deviceauthorizationresponseaction.md
+  - docs/models/components/devicecompleterequest.md
+  - docs/models/components/devicecompleterequestresult.md
+  - docs/models/components/devicecompleteresponse.md
+  - docs/models/components/devicecompleteresponseaction.md
+  - docs/models/components/deviceverificationrequest.md
+  - docs/models/components/deviceverificationresponse.md
+  - docs/models/components/deviceverificationresponseaction.md
+  - docs/models/components/display.md
+  - docs/models/components/dynamicscope.md
+  - docs/models/components/fapimode.md
+  - docs/models/components/federationconfigurationresponse.md
+  - docs/models/components/federationconfigurationresponseaction.md
+  - docs/models/components/federationregistrationrequest.md
+  - docs/models/components/federationregistrationresponse.md
+  - docs/models/components/federationregistrationresponseaction.md
+  - docs/models/components/gmrequest.md
+  - docs/models/components/gmresponse.md
+  - docs/models/components/gmresponseaction.md
+  - docs/models/components/grant.md
+  - docs/models/components/grantmanagementaction.md
+  - docs/models/components/grantscope.md
+  - docs/models/components/granttype.md
+  - docs/models/components/hsk.md
+  - docs/models/components/hskcreaterequest.md
+  - docs/models/components/hskcreateresponse.md
+  - docs/models/components/hskcreateresponseaction.md
+  - docs/models/components/hskdeleteresponse.md
+  - docs/models/components/hskdeleteresponseaction.md
+  - docs/models/components/hskgetlistresponse.md
+  - docs/models/components/hskgetlistresponseaction.md
+  - docs/models/components/hskgetresponse.md
+  - docs/models/components/hskgetresponseaction.md
+  - docs/models/components/idtokenreissuerequest.md
+  - docs/models/components/idtokenreissueresponse.md
+  - docs/models/components/idtokenreissueresponseaction.md
+  - docs/models/components/introspectionrequest.md
+  - docs/models/components/introspectionresponse.md
+  - docs/models/components/introspectionresponseaction.md
+  - docs/models/components/joseverifyrequest.md
+  - docs/models/components/joseverifyresponse.md
+  - docs/models/components/jwealg.md
+  - docs/models/components/jweenc.md
+  - docs/models/components/jwsalg.md
+  - docs/models/components/nameduri.md
+  - docs/models/components/nativessologoutrequest.md
+  - docs/models/components/nativessologoutresponse.md
+  - docs/models/components/nativessologoutresponseaction.md
+  - docs/models/components/nativessorequest.md
+  - docs/models/components/nativessoresponse.md
+  - docs/models/components/nativessoresponseaction.md
+  - docs/models/components/pair.md
+  - docs/models/components/prompt.md
+  - docs/models/components/property.md
+  - docs/models/components/pushedauthorizationrequest.md
+  - docs/models/components/pushedauthorizationresponse.md
+  - docs/models/components/pushedauthorizationresponseaction.md
+  - docs/models/components/pushedauthorizationresponseclientauthmethod.md
+  - docs/models/components/responsemode.md
+  - docs/models/components/responsetype.md
+  - docs/models/components/revocationrequest.md
+  - docs/models/components/revocationresponse.md
+  - docs/models/components/revocationresponseaction.md
+  - docs/models/components/scope.md
+  - docs/models/components/security.md
+  - docs/models/components/service.md
+  - docs/models/components/servicegetlistresponse.md
+  - docs/models/components/serviceinput.md
+  - docs/models/components/servicejwksgetresponse.md
+  - docs/models/components/serviceprofile.md
+  - docs/models/components/snscredentials.md
+  - docs/models/components/standardintrospectionrequest.md
+  - docs/models/components/standardintrospectionresponse.md
+  - docs/models/components/standardintrospectionresponseaction.md
+  - docs/models/components/subjecttype.md
+  - docs/models/components/supportedsnse.md
+  - docs/models/components/taggedvalue.md
+  - docs/models/components/tokencreaterequest.md
+  - docs/models/components/tokencreateresponse.md
+  - docs/models/components/tokencreateresponseaction.md
+  - docs/models/components/tokenfailrequest.md
+  - docs/models/components/tokenfailrequestreason.md
+  - docs/models/components/tokenfailresponse.md
+  - docs/models/components/tokenfailresponseaction.md
+  - docs/models/components/tokengetlistresponse.md
+  - docs/models/components/tokeninfo.md
+  - docs/models/components/tokenissuerequest.md
+  - docs/models/components/tokenissueresponse.md
+  - docs/models/components/tokenissueresponseaction.md
+  - docs/models/components/tokenrequest.md
+  - docs/models/components/tokenresponse.md
+  - docs/models/components/tokenresponseaction.md
+  - docs/models/components/tokenrevokerequest.md
+  - docs/models/components/tokenrevokeresponse.md
+  - docs/models/components/tokentype.md
+  - docs/models/components/tokenupdaterequest.md
+  - docs/models/components/tokenupdateresponse.md
+  - docs/models/components/tokenupdateresponseaction.md
+  - docs/models/components/trustanchor.md
+  - docs/models/components/usercodecharset.md
+  - docs/models/components/userinfoissuerequest.md
+  - docs/models/components/userinfoissueresponse.md
+  - docs/models/components/userinfoissueresponseaction.md
+  - docs/models/components/userinforequest.md
+  - docs/models/components/userinforesponse.md
+  - docs/models/components/userinforesponseaction.md
+  - docs/models/components/vcibatchissuerequest.md
+  - docs/models/components/vcibatchissueresponse.md
+  - docs/models/components/vcibatchissueresponseaction.md
+  - docs/models/components/vcibatchparserequest.md
+  - docs/models/components/vcibatchparseresponse.md
+  - docs/models/components/vcibatchparseresponseaction.md
+  - docs/models/components/vcideferredissuerequest.md
+  - docs/models/components/vcideferredissueresponse.md
+  - docs/models/components/vcideferredissueresponseaction.md
+  - docs/models/components/vcideferredparserequest.md
+  - docs/models/components/vcideferredparseresponse.md
+  - docs/models/components/vcideferredparseresponseaction.md
+  - docs/models/components/vcijwksrequest.md
+  - docs/models/components/vcijwksresponse.md
+  - docs/models/components/vcijwksresponseaction.md
+  - docs/models/components/vcijwtissuerrequest.md
+  - docs/models/components/vcijwtissuerresponse.md
+  - docs/models/components/vcijwtissuerresponseaction.md
+  - docs/models/components/vcimetadatarequest.md
+  - docs/models/components/vcimetadataresponse.md
+  - docs/models/components/vcimetadataresponseaction.md
+  - docs/models/components/vcioffercreaterequest.md
+  - docs/models/components/vcioffercreateresponse.md
+  - docs/models/components/vcioffercreateresponseaction.md
+  - docs/models/components/vciofferinforequest.md
+  - docs/models/components/vciofferinforesponse.md
+  - docs/models/components/vciofferinforesponseaction.md
+  - docs/models/components/vcisingleissuerequest.md
+  - docs/models/components/vcisingleissueresponse.md
+  - docs/models/components/vcisingleissueresponseaction.md
+  - docs/models/components/vcisingleparserequest.md
+  - docs/models/components/vcisingleparseresponse.md
+  - docs/models/components/vcisingleparseresponseaction.md
+  - docs/models/components/verifiedclaimsvalidationschema.md
+  - docs/models/errors/resulterror.md
+  - docs/models/operations/authauthorizationapirequest.md
+  - docs/models/operations/authauthorizationapiresponse.md
+  - docs/models/operations/authauthorizationfailapirequest.md
+  - docs/models/operations/authauthorizationfailapiresponse.md
+  - docs/models/operations/authauthorizationissueapirequest.md
+  - docs/models/operations/authauthorizationissueapiresponse.md
+  - docs/models/operations/authintrospectionapirequest.md
+  - docs/models/operations/authintrospectionapiresponse.md
+  - docs/models/operations/authintrospectionstandardapirequest.md
+  - docs/models/operations/authintrospectionstandardapiresponse.md
+  - docs/models/operations/authorizationticketinfopostapirequest.md
+  - docs/models/operations/authorizationticketinfopostapiresponse.md
+  - docs/models/operations/authrevocationapirequest.md
+  - docs/models/operations/authrevocationapiresponse.md
+  - docs/models/operations/authtokenapirequest.md
+  - docs/models/operations/authtokenapiresponse.md
+  - docs/models/operations/authtokencreateapirequest.md
+  - docs/models/operations/authtokencreateapiresponse.md
+  - docs/models/operations/authtokendeleteapirequest.md
+  - docs/models/operations/authtokendeleteapiresponse.md
+  - docs/models/operations/authtokenfailapirequest.md
+  - docs/models/operations/authtokenfailapiresponse.md
+  - docs/models/operations/authtokengetlistapirequest.md
+  - docs/models/operations/authtokengetlistapiresponse.md
+  - docs/models/operations/authtokenissueapirequest.md
+  - docs/models/operations/authtokenissueapiresponse.md
+  - docs/models/operations/authtokenrevokeapirequest.md
+  - docs/models/operations/authtokenrevokeapiresponse.md
+  - docs/models/operations/authtokenupdateapirequest.md
+  - docs/models/operations/authtokenupdateapiresponse.md
+  - docs/models/operations/authuserinfoapirequest.md
+  - docs/models/operations/authuserinfoapiresponse.md
+  - docs/models/operations/authuserinfoissueapirequest.md
+  - docs/models/operations/authuserinfoissueapiresponse.md
+  - docs/models/operations/backchannelauthenticationapirequest.md
+  - docs/models/operations/backchannelauthenticationapiresponse.md
+  - docs/models/operations/backchannelauthenticationcompleteapirequest.md
+  - docs/models/operations/backchannelauthenticationcompleteapiresponse.md
+  - docs/models/operations/backchannelauthenticationfailapirequest.md
+  - docs/models/operations/backchannelauthenticationfailapiresponse.md
+  - docs/models/operations/backchannelauthenticationissueapirequest.md
+  - docs/models/operations/backchannelauthenticationissueapiresponse.md
+  - docs/models/operations/clientauthorizationdeleteapirequest.md
+  - docs/models/operations/clientauthorizationdeleteapiresponse.md
+  - docs/models/operations/clientauthorizationgetlistapirequest.md
+  - docs/models/operations/clientauthorizationgetlistapiresponse.md
+  - docs/models/operations/clientauthorizationupdateapirequest.md
+  - docs/models/operations/clientauthorizationupdateapiresponse.md
+  - docs/models/operations/clientcreateapirequest.md
+  - docs/models/operations/clientcreateapiresponse.md
+  - docs/models/operations/clientdeleteapirequest.md
+  - docs/models/operations/clientdeleteapiresponse.md
+  - docs/models/operations/clientextensionrequestablesscopesdeleteapirequest.md
+  - docs/models/operations/clientextensionrequestablesscopesdeleteapiresponse.md
+  - docs/models/operations/clientextensionrequestablesscopesgetapirequest.md
+  - docs/models/operations/clientextensionrequestablesscopesgetapiresponse.md
+  - docs/models/operations/clientextensionrequestablesscopesupdateapirequest.md
+  - docs/models/operations/clientextensionrequestablesscopesupdateapiresponse.md
+  - docs/models/operations/clientflagupdateapirequest.md
+  - docs/models/operations/clientflagupdateapiresponse.md
+  - docs/models/operations/clientgetapirequest.md
+  - docs/models/operations/clientgetapiresponse.md
+  - docs/models/operations/clientgetlistapirequest.md
+  - docs/models/operations/clientgetlistapiresponse.md
+  - docs/models/operations/clientgrantedscopesdeleteapirequest.md
+  - docs/models/operations/clientgrantedscopesdeleteapiresponse.md
+  - docs/models/operations/clientgrantedscopesgetapirequest.md
+  - docs/models/operations/clientgrantedscopesgetapiresponse.md
+  - docs/models/operations/clientregistrationapirequest.md
+  - docs/models/operations/clientregistrationapirequestbody.md
+  - docs/models/operations/clientregistrationapiresponse.md
+  - docs/models/operations/clientregistrationdeleteapirequest.md
+  - docs/models/operations/clientregistrationdeleteapirequestbody.md
+  - docs/models/operations/clientregistrationdeleteapiresponse.md
+  - docs/models/operations/clientregistrationgetapirequest.md
+  - docs/models/operations/clientregistrationgetapirequestbody.md
+  - docs/models/operations/clientregistrationgetapiresponse.md
+  - docs/models/operations/clientregistrationupdateapirequest.md
+  - docs/models/operations/clientregistrationupdateapirequestbody.md
+  - docs/models/operations/clientregistrationupdateapiresponse.md
+  - docs/models/operations/clientsecretrefreshapirequest.md
+  - docs/models/operations/clientsecretrefreshapiresponse.md
+  - docs/models/operations/clientsecretupdateapirequest.md
+  - docs/models/operations/clientsecretupdateapiresponse.md
+  - docs/models/operations/clientupdateapirequest.md
+  - docs/models/operations/clientupdateapiresponse.md
+  - docs/models/operations/deviceauthorizationapirequest.md
+  - docs/models/operations/deviceauthorizationapiresponse.md
+  - docs/models/operations/devicecompleteapirequest.md
+  - docs/models/operations/devicecompleteapiresponse.md
+  - docs/models/operations/deviceverificationapirequest.md
+  - docs/models/operations/deviceverificationapiresponse.md
+  - docs/models/operations/federationconfigurationapirequest.md
+  - docs/models/operations/federationconfigurationapirequestbody.md
+  - docs/models/operations/federationconfigurationapiresponse.md
+  - docs/models/operations/federationregistrationapirequest.md
+  - docs/models/operations/federationregistrationapiresponse.md
+  - docs/models/operations/grantmapirequest.md
+  - docs/models/operations/grantmapiresponse.md
+  - docs/models/operations/hskcreateapirequest.md
+  - docs/models/operations/hskcreateapiresponse.md
+  - docs/models/operations/hskdeleteapirequest.md
+  - docs/models/operations/hskdeleteapiresponse.md
+  - docs/models/operations/hskgetapirequest.md
+  - docs/models/operations/hskgetapiresponse.md
+  - docs/models/operations/hskgetlistapirequest.md
+  - docs/models/operations/hskgetlistapiresponse.md
+  - docs/models/operations/idtokenreissueapirequest.md
+  - docs/models/operations/idtokenreissueapiresponse.md
+  - docs/models/operations/joseverifyapirequest.md
+  - docs/models/operations/joseverifyapiresponse.md
+  - docs/models/operations/nativessoapirequest.md
+  - docs/models/operations/nativessoapiresponse.md
+  - docs/models/operations/nativessologoutapirequest.md
+  - docs/models/operations/nativessologoutapiresponse.md
+  - docs/models/operations/pushedauthreqapirequest.md
+  - docs/models/operations/pushedauthreqapiresponse.md
+  - docs/models/operations/serviceconfigurationapirequest.md
+  - docs/models/operations/serviceconfigurationapiresponse.md
+  - docs/models/operations/serviceconfigurationapiresponsebody.md
+  - docs/models/operations/servicecreateapiresponse.md
+  - docs/models/operations/servicedeleteapirequest.md
+  - docs/models/operations/servicedeleteapiresponse.md
+  - docs/models/operations/servicegetapirequest.md
+  - docs/models/operations/servicegetapiresponse.md
+  - docs/models/operations/servicegetlistapirequest.md
+  - docs/models/operations/servicegetlistapiresponse.md
+  - docs/models/operations/servicejwksgetapirequest.md
+  - docs/models/operations/servicejwksgetapiresponse.md
+  - docs/models/operations/serviceupdateapirequest.md
+  - docs/models/operations/serviceupdateapiresponse.md
+  - docs/models/operations/updateauthorizationticketrequest.md
+  - docs/models/operations/updateauthorizationticketresponse.md
+  - docs/models/operations/vcibatchissueapirequest.md
+  - docs/models/operations/vcibatchissueapiresponse.md
+  - docs/models/operations/vcibatchparseapirequest.md
+  - docs/models/operations/vcibatchparseapiresponse.md
+  - docs/models/operations/vcideferredissueapirequest.md
+  - docs/models/operations/vcideferredissueapiresponse.md
+  - docs/models/operations/vcideferredparseapirequest.md
+  - docs/models/operations/vcideferredparseapiresponse.md
+  - docs/models/operations/vcijwksapirequest.md
+  - docs/models/operations/vcijwksapiresponse.md
+  - docs/models/operations/vcijwtissuerapirequest.md
+  - docs/models/operations/vcijwtissuerapiresponse.md
+  - docs/models/operations/vcimetadataapirequest.md
+  - docs/models/operations/vcimetadataapiresponse.md
+  - docs/models/operations/vcioffercreateapirequest.md
+  - docs/models/operations/vcioffercreateapiresponse.md
+  - docs/models/operations/vciofferinfoapirequest.md
+  - docs/models/operations/vciofferinfoapiresponse.md
+  - docs/models/operations/vcisingleissueapirequest.md
+  - docs/models/operations/vcisingleissueapiresponse.md
+  - docs/models/operations/vcisingleparseapirequest.md
+  - docs/models/operations/vcisingleparseapiresponse.md
+  - docs/sdks/authlete/README.md
+  - docs/sdks/authorization/README.md
+  - docs/sdks/authorizationmanagement/README.md
+  - docs/sdks/ciba/README.md
+  - docs/sdks/client/README.md
+  - docs/sdks/clientmanagement/README.md
+  - docs/sdks/deviceflow/README.md
+  - docs/sdks/dynamicclientregistration/README.md
+  - docs/sdks/federation/README.md
+  - docs/sdks/grantmanagement/README.md
+  - docs/sdks/hardwaresecuritykeys/README.md
+  - docs/sdks/introspection/README.md
+  - docs/sdks/joseobject/README.md
+  - docs/sdks/jwksetendpoint/README.md
+  - docs/sdks/nativesso/README.md
+  - docs/sdks/pushedauthorization/README.md
+  - docs/sdks/revocation/README.md
+  - docs/sdks/service/README.md
+  - docs/sdks/token/README.md
+  - docs/sdks/tokenmanagement/README.md
+  - docs/sdks/userinfo/README.md
+  - docs/sdks/verifiablecredentials/README.md
+  - extra.rbi
+  - lib/authlete.rb
+  - lib/authlete/authlete.rb
+  - lib/authlete/authorization.rb
+  - lib/authlete/authorization_management.rb
+  - lib/authlete/ciba.rb
+  - lib/authlete/client.rb
+  - lib/authlete/client_management.rb
+  - lib/authlete/deviceflow.rb
+  - lib/authlete/dynamicclientregistration.rb
+  - lib/authlete/federation.rb
+  - lib/authlete/grantmanagement.rb
+  - lib/authlete/hardwaresecuritykeys.rb
+  - lib/authlete/introspection.rb
+  - lib/authlete/jose_object.rb
+  - lib/authlete/jwk_set_endpoint.rb
+  - lib/authlete/models/callbacks.rb
+  - lib/authlete/models/components.rb
+  - lib/authlete/models/components/access_token.rb
+  - lib/authlete/models/components/access_token.rbi
+  - lib/authlete/models/components/application_type.rb
+  - lib/authlete/models/components/application_type.rbi
+  - lib/authlete/models/components/attachment_type.rb
+  - lib/authlete/models/components/attachment_type.rbi
+  - lib/authlete/models/components/authorization_details_element.rb
+  - lib/authlete/models/components/authorization_details_element.rbi
+  - lib/authlete/models/components/authorization_fail_request.rb
+  - lib/authlete/models/components/authorization_fail_request.rbi
+  - lib/authlete/models/components/authorization_fail_request_reason.rb
+  - lib/authlete/models/components/authorization_fail_request_reason.rbi
+  - lib/authlete/models/components/authorization_fail_response.rb
+  - lib/authlete/models/components/authorization_fail_response.rbi
+  - lib/authlete/models/components/authorization_fail_response_action.rb
+  - lib/authlete/models/components/authorization_fail_response_action.rbi
+  - lib/authlete/models/components/authorization_issue_request.rb
+  - lib/authlete/models/components/authorization_issue_request.rbi
+  - lib/authlete/models/components/authorization_issue_response.rb
+  - lib/authlete/models/components/authorization_issue_response.rbi
+  - lib/authlete/models/components/authorization_issue_response_action.rb
+  - lib/authlete/models/components/authorization_issue_response_action.rbi
+  - lib/authlete/models/components/authorization_request.rb
+  - lib/authlete/models/components/authorization_request.rbi
+  - lib/authlete/models/components/authorization_response.rb
+  - lib/authlete/models/components/authorization_response.rbi
+  - lib/authlete/models/components/authorization_response_action.rb
+  - lib/authlete/models/components/authorization_response_action.rbi
+  - lib/authlete/models/components/authorization_ticket_info.rb
+  - lib/authlete/models/components/authorization_ticket_info.rbi
+  - lib/authlete/models/components/authorization_ticket_info_request.rb
+  - lib/authlete/models/components/authorization_ticket_info_request.rbi
+  - lib/authlete/models/components/authorization_ticket_info_response.rb
+  - lib/authlete/models/components/authorization_ticket_info_response.rbi
+  - lib/authlete/models/components/authorization_ticket_info_response_action.rb
+  - lib/authlete/models/components/authorization_ticket_info_response_action.rbi
+  - lib/authlete/models/components/authorization_ticket_update_request.rb
+  - lib/authlete/models/components/authorization_ticket_update_request.rbi
+  - lib/authlete/models/components/authorization_ticket_update_response.rb
+  - lib/authlete/models/components/authorization_ticket_update_response.rbi
+  - lib/authlete/models/components/authorization_ticket_update_response_action.rb
+  - lib/authlete/models/components/authorization_ticket_update_response_action.rbi
+  - lib/authlete/models/components/authz_details.rb
+  - lib/authlete/models/components/authz_details.rbi
+  - lib/authlete/models/components/backchannel_authentication_complete_request.rb
+  - lib/authlete/models/components/backchannel_authentication_complete_request.rbi
+  - lib/authlete/models/components/backchannel_authentication_complete_request_result.rb
+  - lib/authlete/models/components/backchannel_authentication_complete_request_result.rbi
+  - lib/authlete/models/components/backchannel_authentication_complete_response.rb
+  - lib/authlete/models/components/backchannel_authentication_complete_response.rbi
+  - lib/authlete/models/components/backchannel_authentication_complete_response_action.rb
+  - lib/authlete/models/components/backchannel_authentication_complete_response_action.rbi
+  - lib/authlete/models/components/backchannel_authentication_fail_request.rb
+  - lib/authlete/models/components/backchannel_authentication_fail_request.rbi
+  - lib/authlete/models/components/backchannel_authentication_fail_request_reason.rb
+  - lib/authlete/models/components/backchannel_authentication_fail_request_reason.rbi
+  - lib/authlete/models/components/backchannel_authentication_fail_response.rb
+  - lib/authlete/models/components/backchannel_authentication_fail_response.rbi
+  - lib/authlete/models/components/backchannel_authentication_fail_response_action.rb
+  - lib/authlete/models/components/backchannel_authentication_fail_response_action.rbi
+  - lib/authlete/models/components/backchannel_authentication_issue_request.rb
+  - lib/authlete/models/components/backchannel_authentication_issue_request.rbi
+  - lib/authlete/models/components/backchannel_authentication_issue_response.rb
+  - lib/authlete/models/components/backchannel_authentication_issue_response.rbi
+  - lib/authlete/models/components/backchannel_authentication_issue_response_action.rb
+  - lib/authlete/models/components/backchannel_authentication_issue_response_action.rbi
+  - lib/authlete/models/components/backchannel_authentication_request.rb
+  - lib/authlete/models/components/backchannel_authentication_request.rbi
+  - lib/authlete/models/components/backchannel_authentication_response.rb
+  - lib/authlete/models/components/backchannel_authentication_response.rbi
+  - lib/authlete/models/components/backchannel_authentication_response_action.rb
+  - lib/authlete/models/components/backchannel_authentication_response_action.rbi
+  - lib/authlete/models/components/cimd_options.rb
+  - lib/authlete/models/components/cimd_options.rbi
+  - lib/authlete/models/components/claim_type.rb
+  - lib/authlete/models/components/claim_type.rbi
+  - lib/authlete/models/components/client.rb
+  - lib/authlete/models/components/client.rbi
+  - lib/authlete/models/components/client_auth_method.rb
+  - lib/authlete/models/components/client_auth_method.rbi
+  - lib/authlete/models/components/client_authorization_delete_response.rb
+  - lib/authlete/models/components/client_authorization_delete_response.rbi
+  - lib/authlete/models/components/client_authorization_get_list_response.rb
+  - lib/authlete/models/components/client_authorization_get_list_response.rbi
+  - lib/authlete/models/components/client_authorization_update_request.rb
+  - lib/authlete/models/components/client_authorization_update_request.rbi
+  - lib/authlete/models/components/client_authorization_update_response.rb
+  - lib/authlete/models/components/client_authorization_update_response.rbi
+  - lib/authlete/models/components/client_extension.rb
+  - lib/authlete/models/components/client_extension.rbi
+  - lib/authlete/models/components/client_extension_requestable_scopes_get_response.rb
+  - lib/authlete/models/components/client_extension_requestable_scopes_get_response.rbi
+  - lib/authlete/models/components/client_extension_requestable_scopes_update_request.rb
+  - lib/authlete/models/components/client_extension_requestable_scopes_update_request.rbi
+  - lib/authlete/models/components/client_extension_requestable_scopes_update_response.rb
+  - lib/authlete/models/components/client_extension_requestable_scopes_update_response.rbi
+  - lib/authlete/models/components/client_flag_update_request.rb
+  - lib/authlete/models/components/client_flag_update_request.rbi
+  - lib/authlete/models/components/client_flag_update_response.rb
+  - lib/authlete/models/components/client_flag_update_response.rbi
+  - lib/authlete/models/components/client_get_list_response.rb
+  - lib/authlete/models/components/client_get_list_response.rbi
+  - lib/authlete/models/components/client_granted_scopes_delete_response.rb
+  - lib/authlete/models/components/client_granted_scopes_delete_response.rbi
+  - lib/authlete/models/components/client_input.rb
+  - lib/authlete/models/components/client_input.rbi
+  - lib/authlete/models/components/client_limited.rb
+  - lib/authlete/models/components/client_limited.rbi
+  - lib/authlete/models/components/client_limited_authorization.rb
+  - lib/authlete/models/components/client_limited_authorization.rbi
+  - lib/authlete/models/components/client_registration_response.rb
+  - lib/authlete/models/components/client_registration_response.rbi
+  - lib/authlete/models/components/client_registration_response_action.rb
+  - lib/authlete/models/components/client_registration_response_action.rbi
+  - lib/authlete/models/components/client_registration_type.rb
+  - lib/authlete/models/components/client_registration_type.rbi
+  - lib/authlete/models/components/client_secret_refresh_response.rb
+  - lib/authlete/models/components/client_secret_refresh_response.rbi
+  - lib/authlete/models/components/client_secret_update_request.rb
+  - lib/authlete/models/components/client_secret_update_request.rbi
+  - lib/authlete/models/components/client_secret_update_response.rb
+  - lib/authlete/models/components/client_secret_update_response.rbi
+  - lib/authlete/models/components/client_type.rb
+  - lib/authlete/models/components/client_type.rbi
+  - lib/authlete/models/components/clientsource.rb
+  - lib/authlete/models/components/clientsource.rbi
+  - lib/authlete/models/components/credential_issuance_order.rb
+  - lib/authlete/models/components/credential_issuance_order.rbi
+  - lib/authlete/models/components/credential_issuer_metadata.rb
+  - lib/authlete/models/components/credential_issuer_metadata.rbi
+  - lib/authlete/models/components/credential_offer_info.rb
+  - lib/authlete/models/components/credential_offer_info.rbi
+  - lib/authlete/models/components/credential_request_info.rb
+  - lib/authlete/models/components/credential_request_info.rbi
+  - lib/authlete/models/components/delivery_mode.rb
+  - lib/authlete/models/components/delivery_mode.rbi
+  - lib/authlete/models/components/device_authorization_request.rb
+  - lib/authlete/models/components/device_authorization_request.rbi
+  - lib/authlete/models/components/device_authorization_response.rb
+  - lib/authlete/models/components/device_authorization_response.rbi
+  - lib/authlete/models/components/device_authorization_response_action.rb
+  - lib/authlete/models/components/device_authorization_response_action.rbi
+  - lib/authlete/models/components/device_complete_request.rb
+  - lib/authlete/models/components/device_complete_request.rbi
+  - lib/authlete/models/components/device_complete_request_result.rb
+  - lib/authlete/models/components/device_complete_request_result.rbi
+  - lib/authlete/models/components/device_complete_response.rb
+  - lib/authlete/models/components/device_complete_response.rbi
+  - lib/authlete/models/components/device_complete_response_action.rb
+  - lib/authlete/models/components/device_complete_response_action.rbi
+  - lib/authlete/models/components/device_verification_request.rb
+  - lib/authlete/models/components/device_verification_request.rbi
+  - lib/authlete/models/components/device_verification_response.rb
+  - lib/authlete/models/components/device_verification_response.rbi
+  - lib/authlete/models/components/device_verification_response_action.rb
+  - lib/authlete/models/components/device_verification_response_action.rbi
+  - lib/authlete/models/components/display.rb
+  - lib/authlete/models/components/display.rbi
+  - lib/authlete/models/components/dynamic_scope.rb
+  - lib/authlete/models/components/dynamic_scope.rbi
+  - lib/authlete/models/components/fapi_mode.rb
+  - lib/authlete/models/components/fapi_mode.rbi
+  - lib/authlete/models/components/federation_configuration_response.rb
+  - lib/authlete/models/components/federation_configuration_response.rbi
+  - lib/authlete/models/components/federation_configuration_response_action.rb
+  - lib/authlete/models/components/federation_configuration_response_action.rbi
+  - lib/authlete/models/components/federation_registration_request.rb
+  - lib/authlete/models/components/federation_registration_request.rbi
+  - lib/authlete/models/components/federation_registration_response.rb
+  - lib/authlete/models/components/federation_registration_response.rbi
+  - lib/authlete/models/components/federation_registration_response_action.rb
+  - lib/authlete/models/components/federation_registration_response_action.rbi
+  - lib/authlete/models/components/g_m_request.rb
+  - lib/authlete/models/components/g_m_request.rbi
+  - lib/authlete/models/components/g_m_response.rb
+  - lib/authlete/models/components/g_m_response.rbi
+  - lib/authlete/models/components/g_m_response_action.rb
+  - lib/authlete/models/components/g_m_response_action.rbi
+  - lib/authlete/models/components/grant.rb
+  - lib/authlete/models/components/grant.rbi
+  - lib/authlete/models/components/grant_management_action.rb
+  - lib/authlete/models/components/grant_management_action.rbi
+  - lib/authlete/models/components/grant_scope.rb
+  - lib/authlete/models/components/grant_scope.rbi
+  - lib/authlete/models/components/grant_type.rb
+  - lib/authlete/models/components/grant_type.rbi
+  - lib/authlete/models/components/hsk.rb
+  - lib/authlete/models/components/hsk.rbi
+  - lib/authlete/models/components/hsk_create_request.rb
+  - lib/authlete/models/components/hsk_create_request.rbi
+  - lib/authlete/models/components/hsk_create_response.rb
+  - lib/authlete/models/components/hsk_create_response.rbi
+  - lib/authlete/models/components/hsk_create_response_action.rb
+  - lib/authlete/models/components/hsk_create_response_action.rbi
+  - lib/authlete/models/components/hsk_delete_response.rb
+  - lib/authlete/models/components/hsk_delete_response.rbi
+  - lib/authlete/models/components/hsk_delete_response_action.rb
+  - lib/authlete/models/components/hsk_delete_response_action.rbi
+  - lib/authlete/models/components/hsk_get_list_response.rb
+  - lib/authlete/models/components/hsk_get_list_response.rbi
+  - lib/authlete/models/components/hsk_get_list_response_action.rb
+  - lib/authlete/models/components/hsk_get_list_response_action.rbi
+  - lib/authlete/models/components/hsk_get_response.rb
+  - lib/authlete/models/components/hsk_get_response.rbi
+  - lib/authlete/models/components/hsk_get_response_action.rb
+  - lib/authlete/models/components/hsk_get_response_action.rbi
+  - lib/authlete/models/components/idtoken_reissue_request.rb
+  - lib/authlete/models/components/idtoken_reissue_request.rbi
+  - lib/authlete/models/components/idtoken_reissue_response.rb
+  - lib/authlete/models/components/idtoken_reissue_response.rbi
+  - lib/authlete/models/components/idtoken_reissue_response_action.rb
+  - lib/authlete/models/components/idtoken_reissue_response_action.rbi
+  - lib/authlete/models/components/introspection_request.rb
+  - lib/authlete/models/components/introspection_request.rbi
+  - lib/authlete/models/components/introspection_response.rb
+  - lib/authlete/models/components/introspection_response.rbi
+  - lib/authlete/models/components/introspection_response_action.rb
+  - lib/authlete/models/components/introspection_response_action.rbi
+  - lib/authlete/models/components/jose_verify_request.rb
+  - lib/authlete/models/components/jose_verify_request.rbi
+  - lib/authlete/models/components/jose_verify_response.rb
+  - lib/authlete/models/components/jose_verify_response.rbi
+  - lib/authlete/models/components/jwe_alg.rb
+  - lib/authlete/models/components/jwe_alg.rbi
+  - lib/authlete/models/components/jwe_enc.rb
+  - lib/authlete/models/components/jwe_enc.rbi
+  - lib/authlete/models/components/jws_alg.rb
+  - lib/authlete/models/components/jws_alg.rbi
+  - lib/authlete/models/components/named_uri.rb
+  - lib/authlete/models/components/named_uri.rbi
+  - lib/authlete/models/components/native_sso_logout_request.rb
+  - lib/authlete/models/components/native_sso_logout_request.rbi
+  - lib/authlete/models/components/native_sso_logout_response.rb
+  - lib/authlete/models/components/native_sso_logout_response.rbi
+  - lib/authlete/models/components/native_sso_logout_response_action.rb
+  - lib/authlete/models/components/native_sso_logout_response_action.rbi
+  - lib/authlete/models/components/native_sso_request.rb
+  - lib/authlete/models/components/native_sso_request.rbi
+  - lib/authlete/models/components/native_sso_response.rb
+  - lib/authlete/models/components/native_sso_response.rbi
+  - lib/authlete/models/components/native_sso_response_action.rb
+  - lib/authlete/models/components/native_sso_response_action.rbi
+  - lib/authlete/models/components/pair.rb
+  - lib/authlete/models/components/pair.rbi
+  - lib/authlete/models/components/prompt.rb
+  - lib/authlete/models/components/prompt.rbi
+  - lib/authlete/models/components/property.rb
+  - lib/authlete/models/components/property.rbi
+  - lib/authlete/models/components/pushed_authorization_request.rb
+  - lib/authlete/models/components/pushed_authorization_request.rbi
+  - lib/authlete/models/components/pushed_authorization_response.rb
+  - lib/authlete/models/components/pushed_authorization_response.rbi
+  - lib/authlete/models/components/pushed_authorization_response_action.rb
+  - lib/authlete/models/components/pushed_authorization_response_action.rbi
+  - lib/authlete/models/components/pushed_authorization_response_clientauthmethod.rb
+  - lib/authlete/models/components/pushed_authorization_response_clientauthmethod.rbi
+  - lib/authlete/models/components/response_type.rb
+  - lib/authlete/models/components/response_type.rbi
+  - lib/authlete/models/components/responsemode.rb
+  - lib/authlete/models/components/responsemode.rbi
+  - lib/authlete/models/components/revocation_request.rb
+  - lib/authlete/models/components/revocation_request.rbi
+  - lib/authlete/models/components/revocation_response.rb
+  - lib/authlete/models/components/revocation_response.rbi
+  - lib/authlete/models/components/revocation_response_action.rb
+  - lib/authlete/models/components/revocation_response_action.rbi
+  - lib/authlete/models/components/scope.rb
+  - lib/authlete/models/components/scope.rbi
+  - lib/authlete/models/components/security.rb
+  - lib/authlete/models/components/security.rbi
+  - lib/authlete/models/components/service.rb
+  - lib/authlete/models/components/service.rbi
+  - lib/authlete/models/components/service_get_list_response.rb
+  - lib/authlete/models/components/service_get_list_response.rbi
+  - lib/authlete/models/components/service_input.rb
+  - lib/authlete/models/components/service_input.rbi
+  - lib/authlete/models/components/service_jwks_get_response.rb
+  - lib/authlete/models/components/service_jwks_get_response.rbi
+  - lib/authlete/models/components/service_profile.rb
+  - lib/authlete/models/components/service_profile.rbi
+  - lib/authlete/models/components/sns_credentials.rb
+  - lib/authlete/models/components/sns_credentials.rbi
+  - lib/authlete/models/components/standard_introspection_request.rb
+  - lib/authlete/models/components/standard_introspection_request.rbi
+  - lib/authlete/models/components/standard_introspection_response.rb
+  - lib/authlete/models/components/standard_introspection_response.rbi
+  - lib/authlete/models/components/standard_introspection_response_action.rb
+  - lib/authlete/models/components/standard_introspection_response_action.rbi
+  - lib/authlete/models/components/subject_type.rb
+  - lib/authlete/models/components/subject_type.rbi
+  - lib/authlete/models/components/supportedsnse.rb
+  - lib/authlete/models/components/supportedsnse.rbi
+  - lib/authlete/models/components/tagged_value.rb
+  - lib/authlete/models/components/tagged_value.rbi
+  - lib/authlete/models/components/token_create_request.rb
+  - lib/authlete/models/components/token_create_request.rbi
+  - lib/authlete/models/components/token_create_response.rb
+  - lib/authlete/models/components/token_create_response.rbi
+  - lib/authlete/models/components/token_create_response_action.rb
+  - lib/authlete/models/components/token_create_response_action.rbi
+  - lib/authlete/models/components/token_fail_request.rb
+  - lib/authlete/models/components/token_fail_request.rbi
+  - lib/authlete/models/components/token_fail_request_reason.rb
+  - lib/authlete/models/components/token_fail_request_reason.rbi
+  - lib/authlete/models/components/token_fail_response.rb
+  - lib/authlete/models/components/token_fail_response.rbi
+  - lib/authlete/models/components/token_fail_response_action.rb
+  - lib/authlete/models/components/token_fail_response_action.rbi
+  - lib/authlete/models/components/token_get_list_response.rb
+  - lib/authlete/models/components/token_get_list_response.rbi
+  - lib/authlete/models/components/token_info.rb
+  - lib/authlete/models/components/token_info.rbi
+  - lib/authlete/models/components/token_issue_request.rb
+  - lib/authlete/models/components/token_issue_request.rbi
+  - lib/authlete/models/components/token_issue_response.rb
+  - lib/authlete/models/components/token_issue_response.rbi
+  - lib/authlete/models/components/token_issue_response_action.rb
+  - lib/authlete/models/components/token_issue_response_action.rbi
+  - lib/authlete/models/components/token_request.rb
+  - lib/authlete/models/components/token_request.rbi
+  - lib/authlete/models/components/token_response.rb
+  - lib/authlete/models/components/token_response.rbi
+  - lib/authlete/models/components/token_response_action.rb
+  - lib/authlete/models/components/token_response_action.rbi
+  - lib/authlete/models/components/token_revoke_request.rb
+  - lib/authlete/models/components/token_revoke_request.rbi
+  - lib/authlete/models/components/token_revoke_response.rb
+  - lib/authlete/models/components/token_revoke_response.rbi
+  - lib/authlete/models/components/token_type.rb
+  - lib/authlete/models/components/token_type.rbi
+  - lib/authlete/models/components/token_update_request.rb
+  - lib/authlete/models/components/token_update_request.rbi
+  - lib/authlete/models/components/token_update_response.rb
+  - lib/authlete/models/components/token_update_response.rbi
+  - lib/authlete/models/components/token_update_response_action.rb
+  - lib/authlete/models/components/token_update_response_action.rbi
+  - lib/authlete/models/components/trust_anchor.rb
+  - lib/authlete/models/components/trust_anchor.rbi
+  - lib/authlete/models/components/user_code_charset.rb
+  - lib/authlete/models/components/user_code_charset.rbi
+  - lib/authlete/models/components/userinfo_issue_request.rb
+  - lib/authlete/models/components/userinfo_issue_request.rbi
+  - lib/authlete/models/components/userinfo_issue_response.rb
+  - lib/authlete/models/components/userinfo_issue_response.rbi
+  - lib/authlete/models/components/userinfo_issue_response_action.rb
+  - lib/authlete/models/components/userinfo_issue_response_action.rbi
+  - lib/authlete/models/components/userinfo_request.rb
+  - lib/authlete/models/components/userinfo_request.rbi
+  - lib/authlete/models/components/userinfo_response.rb
+  - lib/authlete/models/components/userinfo_response.rbi
+  - lib/authlete/models/components/userinfo_response_action.rb
+  - lib/authlete/models/components/userinfo_response_action.rbi
+  - lib/authlete/models/components/vci_batch_issue_request.rb
+  - lib/authlete/models/components/vci_batch_issue_request.rbi
+  - lib/authlete/models/components/vci_batch_issue_response.rb
+  - lib/authlete/models/components/vci_batch_issue_response.rbi
+  - lib/authlete/models/components/vci_batch_issue_response_action.rb
+  - lib/authlete/models/components/vci_batch_issue_response_action.rbi
+  - lib/authlete/models/components/vci_batch_parse_request.rb
+  - lib/authlete/models/components/vci_batch_parse_request.rbi
+  - lib/authlete/models/components/vci_batch_parse_response.rb
+  - lib/authlete/models/components/vci_batch_parse_response.rbi
+  - lib/authlete/models/components/vci_batch_parse_response_action.rb
+  - lib/authlete/models/components/vci_batch_parse_response_action.rbi
+  - lib/authlete/models/components/vci_deferred_issue_request.rb
+  - lib/authlete/models/components/vci_deferred_issue_request.rbi
+  - lib/authlete/models/components/vci_deferred_issue_response.rb
+  - lib/authlete/models/components/vci_deferred_issue_response.rbi
+  - lib/authlete/models/components/vci_deferred_issue_response_action.rb
+  - lib/authlete/models/components/vci_deferred_issue_response_action.rbi
+  - lib/authlete/models/components/vci_deferred_parse_request.rb
+  - lib/authlete/models/components/vci_deferred_parse_request.rbi
+  - lib/authlete/models/components/vci_deferred_parse_response.rb
+  - lib/authlete/models/components/vci_deferred_parse_response.rbi
+  - lib/authlete/models/components/vci_deferred_parse_response_action.rb
+  - lib/authlete/models/components/vci_deferred_parse_response_action.rbi
+  - lib/authlete/models/components/vci_jwks_request.rb
+  - lib/authlete/models/components/vci_jwks_request.rbi
+  - lib/authlete/models/components/vci_jwks_response.rb
+  - lib/authlete/models/components/vci_jwks_response.rbi
+  - lib/authlete/models/components/vci_jwks_response_action.rb
+  - lib/authlete/models/components/vci_jwks_response_action.rbi
+  - lib/authlete/models/components/vci_jwtissuer_request.rb
+  - lib/authlete/models/components/vci_jwtissuer_request.rbi
+  - lib/authlete/models/components/vci_jwtissuer_response.rb
+  - lib/authlete/models/components/vci_jwtissuer_response.rbi
+  - lib/authlete/models/components/vci_jwtissuer_response_action.rb
+  - lib/authlete/models/components/vci_jwtissuer_response_action.rbi
+  - lib/authlete/models/components/vci_metadata_request.rb
+  - lib/authlete/models/components/vci_metadata_request.rbi
+  - lib/authlete/models/components/vci_metadata_response.rb
+  - lib/authlete/models/components/vci_metadata_response.rbi
+  - lib/authlete/models/components/vci_metadata_response_action.rb
+  - lib/authlete/models/components/vci_metadata_response_action.rbi
+  - lib/authlete/models/components/vci_offer_create_request.rb
+  - lib/authlete/models/components/vci_offer_create_request.rbi
+  - lib/authlete/models/components/vci_offer_create_response.rb
+  - lib/authlete/models/components/vci_offer_create_response.rbi
+  - lib/authlete/models/components/vci_offer_create_response_action.rb
+  - lib/authlete/models/components/vci_offer_create_response_action.rbi
+  - lib/authlete/models/components/vci_offer_info_request.rb
+  - lib/authlete/models/components/vci_offer_info_request.rbi
+  - lib/authlete/models/components/vci_offer_info_response.rb
+  - lib/authlete/models/components/vci_offer_info_response.rbi
+  - lib/authlete/models/components/vci_offer_info_response_action.rb
+  - lib/authlete/models/components/vci_offer_info_response_action.rbi
+  - lib/authlete/models/components/vci_single_issue_request.rb
+  - lib/authlete/models/components/vci_single_issue_request.rbi
+  - lib/authlete/models/components/vci_single_issue_response.rb
+  - lib/authlete/models/components/vci_single_issue_response.rbi
+  - lib/authlete/models/components/vci_single_issue_response_action.rb
+  - lib/authlete/models/components/vci_single_issue_response_action.rbi
+  - lib/authlete/models/components/vci_single_parse_request.rb
+  - lib/authlete/models/components/vci_single_parse_request.rbi
+  - lib/authlete/models/components/vci_single_parse_response.rb
+  - lib/authlete/models/components/vci_single_parse_response.rbi
+  - lib/authlete/models/components/vci_single_parse_response_action.rb
+  - lib/authlete/models/components/vci_single_parse_response_action.rbi
+  - lib/authlete/models/components/verified_claims_validation_schema.rb
+  - lib/authlete/models/components/verified_claims_validation_schema.rbi
+  - lib/authlete/models/errors.rb
+  - lib/authlete/models/errors/apierror.rb
+  - lib/authlete/models/errors/apierror.rbi
+  - lib/authlete/models/errors/result_error.rb
+  - lib/authlete/models/errors/result_error.rbi
+  - lib/authlete/models/operations.rb
+  - lib/authlete/models/operations/auth_authorization_api_request.rb
+  - lib/authlete/models/operations/auth_authorization_api_request.rbi
+  - lib/authlete/models/operations/auth_authorization_api_response.rb
+  - lib/authlete/models/operations/auth_authorization_api_response.rbi
+  - lib/authlete/models/operations/auth_authorization_fail_api_request.rb
+  - lib/authlete/models/operations/auth_authorization_fail_api_request.rbi
+  - lib/authlete/models/operations/auth_authorization_fail_api_response.rb
+  - lib/authlete/models/operations/auth_authorization_fail_api_response.rbi
+  - lib/authlete/models/operations/auth_authorization_issue_api_request.rb
+  - lib/authlete/models/operations/auth_authorization_issue_api_request.rbi
+  - lib/authlete/models/operations/auth_authorization_issue_api_response.rb
+  - lib/authlete/models/operations/auth_authorization_issue_api_response.rbi
+  - lib/authlete/models/operations/auth_introspection_api_request.rb
+  - lib/authlete/models/operations/auth_introspection_api_request.rbi
+  - lib/authlete/models/operations/auth_introspection_api_response.rb
+  - lib/authlete/models/operations/auth_introspection_api_response.rbi
+  - lib/authlete/models/operations/auth_introspection_standard_api_request.rb
+  - lib/authlete/models/operations/auth_introspection_standard_api_request.rbi
+  - lib/authlete/models/operations/auth_introspection_standard_api_response.rb
+  - lib/authlete/models/operations/auth_introspection_standard_api_response.rbi
+  - lib/authlete/models/operations/auth_revocation_api_request.rb
+  - lib/authlete/models/operations/auth_revocation_api_request.rbi
+  - lib/authlete/models/operations/auth_revocation_api_response.rb
+  - lib/authlete/models/operations/auth_revocation_api_response.rbi
+  - lib/authlete/models/operations/auth_token_api_request.rb
+  - lib/authlete/models/operations/auth_token_api_request.rbi
+  - lib/authlete/models/operations/auth_token_api_response.rb
+  - lib/authlete/models/operations/auth_token_api_response.rbi
+  - lib/authlete/models/operations/auth_token_create_api_request.rb
+  - lib/authlete/models/operations/auth_token_create_api_request.rbi
+  - lib/authlete/models/operations/auth_token_create_api_response.rb
+  - lib/authlete/models/operations/auth_token_create_api_response.rbi
+  - lib/authlete/models/operations/auth_token_delete_api_request.rb
+  - lib/authlete/models/operations/auth_token_delete_api_request.rbi
+  - lib/authlete/models/operations/auth_token_delete_api_response.rb
+  - lib/authlete/models/operations/auth_token_delete_api_response.rbi
+  - lib/authlete/models/operations/auth_token_fail_api_request.rb
+  - lib/authlete/models/operations/auth_token_fail_api_request.rbi
+  - lib/authlete/models/operations/auth_token_fail_api_response.rb
+  - lib/authlete/models/operations/auth_token_fail_api_response.rbi
+  - lib/authlete/models/operations/auth_token_get_list_api_request.rb
+  - lib/authlete/models/operations/auth_token_get_list_api_request.rbi
+  - lib/authlete/models/operations/auth_token_get_list_api_response.rb
+  - lib/authlete/models/operations/auth_token_get_list_api_response.rbi
+  - lib/authlete/models/operations/auth_token_issue_api_request.rb
+  - lib/authlete/models/operations/auth_token_issue_api_request.rbi
+  - lib/authlete/models/operations/auth_token_issue_api_response.rb
+  - lib/authlete/models/operations/auth_token_issue_api_response.rbi
+  - lib/authlete/models/operations/auth_token_revoke_api_request.rb
+  - lib/authlete/models/operations/auth_token_revoke_api_request.rbi
+  - lib/authlete/models/operations/auth_token_revoke_api_response.rb
+  - lib/authlete/models/operations/auth_token_revoke_api_response.rbi
+  - lib/authlete/models/operations/auth_token_update_api_request.rb
+  - lib/authlete/models/operations/auth_token_update_api_request.rbi
+  - lib/authlete/models/operations/auth_token_update_api_response.rb
+  - lib/authlete/models/operations/auth_token_update_api_response.rbi
+  - lib/authlete/models/operations/auth_userinfo_api_request.rb
+  - lib/authlete/models/operations/auth_userinfo_api_request.rbi
+  - lib/authlete/models/operations/auth_userinfo_api_response.rb
+  - lib/authlete/models/operations/auth_userinfo_api_response.rbi
+  - lib/authlete/models/operations/auth_userinfo_issue_api_request.rb
+  - lib/authlete/models/operations/auth_userinfo_issue_api_request.rbi
+  - lib/authlete/models/operations/auth_userinfo_issue_api_response.rb
+  - lib/authlete/models/operations/auth_userinfo_issue_api_response.rbi
+  - lib/authlete/models/operations/authorization_ticket_info_post_api_request.rb
+  - lib/authlete/models/operations/authorization_ticket_info_post_api_request.rbi
+  - lib/authlete/models/operations/authorization_ticket_info_post_api_response.rb
+  - lib/authlete/models/operations/authorization_ticket_info_post_api_response.rbi
+  - lib/authlete/models/operations/backchannel_authentication_api_request.rb
+  - lib/authlete/models/operations/backchannel_authentication_api_request.rbi
+  - lib/authlete/models/operations/backchannel_authentication_api_response.rb
+  - lib/authlete/models/operations/backchannel_authentication_api_response.rbi
+  - lib/authlete/models/operations/backchannel_authentication_complete_api_request.rb
+  - lib/authlete/models/operations/backchannel_authentication_complete_api_request.rbi
+  - lib/authlete/models/operations/backchannel_authentication_complete_api_response.rb
+  - lib/authlete/models/operations/backchannel_authentication_complete_api_response.rbi
+  - lib/authlete/models/operations/backchannel_authentication_fail_api_request.rb
+  - lib/authlete/models/operations/backchannel_authentication_fail_api_request.rbi
+  - lib/authlete/models/operations/backchannel_authentication_fail_api_response.rb
+  - lib/authlete/models/operations/backchannel_authentication_fail_api_response.rbi
+  - lib/authlete/models/operations/backchannel_authentication_issue_api_request.rb
+  - lib/authlete/models/operations/backchannel_authentication_issue_api_request.rbi
+  - lib/authlete/models/operations/backchannel_authentication_issue_api_response.rb
+  - lib/authlete/models/operations/backchannel_authentication_issue_api_response.rbi
+  - lib/authlete/models/operations/client_authorization_delete_api_request.rb
+  - lib/authlete/models/operations/client_authorization_delete_api_request.rbi
+  - lib/authlete/models/operations/client_authorization_delete_api_response.rb
+  - lib/authlete/models/operations/client_authorization_delete_api_response.rbi
+  - lib/authlete/models/operations/client_authorization_get_list_api_request.rb
+  - lib/authlete/models/operations/client_authorization_get_list_api_request.rbi
+  - lib/authlete/models/operations/client_authorization_get_list_api_response.rb
+  - lib/authlete/models/operations/client_authorization_get_list_api_response.rbi
+  - lib/authlete/models/operations/client_authorization_update_api_request.rb
+  - lib/authlete/models/operations/client_authorization_update_api_request.rbi
+  - lib/authlete/models/operations/client_authorization_update_api_response.rb
+  - lib/authlete/models/operations/client_authorization_update_api_response.rbi
+  - lib/authlete/models/operations/client_create_api_request.rb
+  - lib/authlete/models/operations/client_create_api_request.rbi
+  - lib/authlete/models/operations/client_create_api_response.rb
+  - lib/authlete/models/operations/client_create_api_response.rbi
+  - lib/authlete/models/operations/client_delete_api_request.rb
+  - lib/authlete/models/operations/client_delete_api_request.rbi
+  - lib/authlete/models/operations/client_delete_api_response.rb
+  - lib/authlete/models/operations/client_delete_api_response.rbi
+  - lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_request.rb
+  - lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_request.rbi
+  - lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_response.rb
+  - lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_response.rbi
+  - lib/authlete/models/operations/client_extension_requestables_scopes_get_api_request.rb
+  - lib/authlete/models/operations/client_extension_requestables_scopes_get_api_request.rbi
+  - lib/authlete/models/operations/client_extension_requestables_scopes_get_api_response.rb
+  - lib/authlete/models/operations/client_extension_requestables_scopes_get_api_response.rbi
+  - lib/authlete/models/operations/client_extension_requestables_scopes_update_api_request.rb
+  - lib/authlete/models/operations/client_extension_requestables_scopes_update_api_request.rbi
+  - lib/authlete/models/operations/client_extension_requestables_scopes_update_api_response.rb
+  - lib/authlete/models/operations/client_extension_requestables_scopes_update_api_response.rbi
+  - lib/authlete/models/operations/client_flag_update_api_request.rb
+  - lib/authlete/models/operations/client_flag_update_api_request.rbi
+  - lib/authlete/models/operations/client_flag_update_api_response.rb
+  - lib/authlete/models/operations/client_flag_update_api_response.rbi
+  - lib/authlete/models/operations/client_get_api_request.rb
+  - lib/authlete/models/operations/client_get_api_request.rbi
+  - lib/authlete/models/operations/client_get_api_response.rb
+  - lib/authlete/models/operations/client_get_api_response.rbi
+  - lib/authlete/models/operations/client_get_list_api_request.rb
+  - lib/authlete/models/operations/client_get_list_api_request.rbi
+  - lib/authlete/models/operations/client_get_list_api_response.rb
+  - lib/authlete/models/operations/client_get_list_api_response.rbi
+  - lib/authlete/models/operations/client_granted_scopes_delete_api_request.rb
+  - lib/authlete/models/operations/client_granted_scopes_delete_api_request.rbi
+  - lib/authlete/models/operations/client_granted_scopes_delete_api_response.rb
+  - lib/authlete/models/operations/client_granted_scopes_delete_api_response.rbi
+  - lib/authlete/models/operations/client_granted_scopes_get_api_request.rb
+  - lib/authlete/models/operations/client_granted_scopes_get_api_request.rbi
+  - lib/authlete/models/operations/client_granted_scopes_get_api_response.rb
+  - lib/authlete/models/operations/client_granted_scopes_get_api_response.rbi
+  - lib/authlete/models/operations/client_registration_api_request.rb
+  - lib/authlete/models/operations/client_registration_api_request.rbi
+  - lib/authlete/models/operations/client_registration_api_requestbody.rb
+  - lib/authlete/models/operations/client_registration_api_requestbody.rbi
+  - lib/authlete/models/operations/client_registration_api_response.rb
+  - lib/authlete/models/operations/client_registration_api_response.rbi
+  - lib/authlete/models/operations/client_registration_delete_api_request.rb
+  - lib/authlete/models/operations/client_registration_delete_api_request.rbi
+  - lib/authlete/models/operations/client_registration_delete_api_requestbody.rb
+  - lib/authlete/models/operations/client_registration_delete_api_requestbody.rbi
+  - lib/authlete/models/operations/client_registration_delete_api_response.rb
+  - lib/authlete/models/operations/client_registration_delete_api_response.rbi
+  - lib/authlete/models/operations/client_registration_get_api_request.rb
+  - lib/authlete/models/operations/client_registration_get_api_request.rbi
+  - lib/authlete/models/operations/client_registration_get_api_requestbody.rb
+  - lib/authlete/models/operations/client_registration_get_api_requestbody.rbi
+  - lib/authlete/models/operations/client_registration_get_api_response.rb
+  - lib/authlete/models/operations/client_registration_get_api_response.rbi
+  - lib/authlete/models/operations/client_registration_update_api_request.rb
+  - lib/authlete/models/operations/client_registration_update_api_request.rbi
+  - lib/authlete/models/operations/client_registration_update_api_requestbody.rb
+  - lib/authlete/models/operations/client_registration_update_api_requestbody.rbi
+  - lib/authlete/models/operations/client_registration_update_api_response.rb
+  - lib/authlete/models/operations/client_registration_update_api_response.rbi
+  - lib/authlete/models/operations/client_secret_refresh_api_request.rb
+  - lib/authlete/models/operations/client_secret_refresh_api_request.rbi
+  - lib/authlete/models/operations/client_secret_refresh_api_response.rb
+  - lib/authlete/models/operations/client_secret_refresh_api_response.rbi
+  - lib/authlete/models/operations/client_secret_update_api_request.rb
+  - lib/authlete/models/operations/client_secret_update_api_request.rbi
+  - lib/authlete/models/operations/client_secret_update_api_response.rb
+  - lib/authlete/models/operations/client_secret_update_api_response.rbi
+  - lib/authlete/models/operations/client_update_api_request.rb
+  - lib/authlete/models/operations/client_update_api_request.rbi
+  - lib/authlete/models/operations/client_update_api_response.rb
+  - lib/authlete/models/operations/client_update_api_response.rbi
+  - lib/authlete/models/operations/device_authorization_api_request.rb
+  - lib/authlete/models/operations/device_authorization_api_request.rbi
+  - lib/authlete/models/operations/device_authorization_api_response.rb
+  - lib/authlete/models/operations/device_authorization_api_response.rbi
+  - lib/authlete/models/operations/device_complete_api_request.rb
+  - lib/authlete/models/operations/device_complete_api_request.rbi
+  - lib/authlete/models/operations/device_complete_api_response.rb
+  - lib/authlete/models/operations/device_complete_api_response.rbi
+  - lib/authlete/models/operations/device_verification_api_request.rb
+  - lib/authlete/models/operations/device_verification_api_request.rbi
+  - lib/authlete/models/operations/device_verification_api_response.rb
+  - lib/authlete/models/operations/device_verification_api_response.rbi
+  - lib/authlete/models/operations/federation_configuration_api_request.rb
+  - lib/authlete/models/operations/federation_configuration_api_request.rbi
+  - lib/authlete/models/operations/federation_configuration_api_requestbody.rb
+  - lib/authlete/models/operations/federation_configuration_api_requestbody.rbi
+  - lib/authlete/models/operations/federation_configuration_api_response.rb
+  - lib/authlete/models/operations/federation_configuration_api_response.rbi
+  - lib/authlete/models/operations/federation_registration_api_request.rb
+  - lib/authlete/models/operations/federation_registration_api_request.rbi
+  - lib/authlete/models/operations/federation_registration_api_response.rb
+  - lib/authlete/models/operations/federation_registration_api_response.rbi
+  - lib/authlete/models/operations/grant_m_api_request.rb
+  - lib/authlete/models/operations/grant_m_api_request.rbi
+  - lib/authlete/models/operations/grant_m_api_response.rb
+  - lib/authlete/models/operations/grant_m_api_response.rbi
+  - lib/authlete/models/operations/hsk_create_api_request.rb
+  - lib/authlete/models/operations/hsk_create_api_request.rbi
+  - lib/authlete/models/operations/hsk_create_api_response.rb
+  - lib/authlete/models/operations/hsk_create_api_response.rbi
+  - lib/authlete/models/operations/hsk_delete_api_request.rb
+  - lib/authlete/models/operations/hsk_delete_api_request.rbi
+  - lib/authlete/models/operations/hsk_delete_api_response.rb
+  - lib/authlete/models/operations/hsk_delete_api_response.rbi
+  - lib/authlete/models/operations/hsk_get_api_request.rb
+  - lib/authlete/models/operations/hsk_get_api_request.rbi
+  - lib/authlete/models/operations/hsk_get_api_response.rb
+  - lib/authlete/models/operations/hsk_get_api_response.rbi
+  - lib/authlete/models/operations/hsk_get_list_api_request.rb
+  - lib/authlete/models/operations/hsk_get_list_api_request.rbi
+  - lib/authlete/models/operations/hsk_get_list_api_response.rb
+  - lib/authlete/models/operations/hsk_get_list_api_response.rbi
+  - lib/authlete/models/operations/idtoken_reissue_api_request.rb
+  - lib/authlete/models/operations/idtoken_reissue_api_request.rbi
+  - lib/authlete/models/operations/idtoken_reissue_api_response.rb
+  - lib/authlete/models/operations/idtoken_reissue_api_response.rbi
+  - lib/authlete/models/operations/jose_verify_api_request.rb
+  - lib/authlete/models/operations/jose_verify_api_request.rbi
+  - lib/authlete/models/operations/jose_verify_api_response.rb
+  - lib/authlete/models/operations/jose_verify_api_response.rbi
+  - lib/authlete/models/operations/native_sso_api_request.rb
+  - lib/authlete/models/operations/native_sso_api_request.rbi
+  - lib/authlete/models/operations/native_sso_api_response.rb
+  - lib/authlete/models/operations/native_sso_api_response.rbi
+  - lib/authlete/models/operations/native_sso_logout_api_request.rb
+  - lib/authlete/models/operations/native_sso_logout_api_request.rbi
+  - lib/authlete/models/operations/native_sso_logout_api_response.rb
+  - lib/authlete/models/operations/native_sso_logout_api_response.rbi
+  - lib/authlete/models/operations/pushed_auth_req_api_request.rb
+  - lib/authlete/models/operations/pushed_auth_req_api_request.rbi
+  - lib/authlete/models/operations/pushed_auth_req_api_response.rb
+  - lib/authlete/models/operations/pushed_auth_req_api_response.rbi
+  - lib/authlete/models/operations/service_configuration_api_request.rb
+  - lib/authlete/models/operations/service_configuration_api_request.rbi
+  - lib/authlete/models/operations/service_configuration_api_response.rb
+  - lib/authlete/models/operations/service_configuration_api_response.rbi
+  - lib/authlete/models/operations/service_configuration_api_responsebody.rb
+  - lib/authlete/models/operations/service_configuration_api_responsebody.rbi
+  - lib/authlete/models/operations/service_create_api_response.rb
+  - lib/authlete/models/operations/service_create_api_response.rbi
+  - lib/authlete/models/operations/service_delete_api_request.rb
+  - lib/authlete/models/operations/service_delete_api_request.rbi
+  - lib/authlete/models/operations/service_delete_api_response.rb
+  - lib/authlete/models/operations/service_delete_api_response.rbi
+  - lib/authlete/models/operations/service_get_api_request.rb
+  - lib/authlete/models/operations/service_get_api_request.rbi
+  - lib/authlete/models/operations/service_get_api_response.rb
+  - lib/authlete/models/operations/service_get_api_response.rbi
+  - lib/authlete/models/operations/service_get_list_api_request.rb
+  - lib/authlete/models/operations/service_get_list_api_request.rbi
+  - lib/authlete/models/operations/service_get_list_api_response.rb
+  - lib/authlete/models/operations/service_get_list_api_response.rbi
+  - lib/authlete/models/operations/service_jwks_get_api_request.rb
+  - lib/authlete/models/operations/service_jwks_get_api_request.rbi
+  - lib/authlete/models/operations/service_jwks_get_api_response.rb
+  - lib/authlete/models/operations/service_jwks_get_api_response.rbi
+  - lib/authlete/models/operations/service_update_api_request.rb
+  - lib/authlete/models/operations/service_update_api_request.rbi
+  - lib/authlete/models/operations/service_update_api_response.rb
+  - lib/authlete/models/operations/service_update_api_response.rbi
+  - lib/authlete/models/operations/updateauthorizationticket_request.rb
+  - lib/authlete/models/operations/updateauthorizationticket_request.rbi
+  - lib/authlete/models/operations/updateauthorizationticket_response.rb
+  - lib/authlete/models/operations/updateauthorizationticket_response.rbi
+  - lib/authlete/models/operations/vci_batch_issue_api_request.rb
+  - lib/authlete/models/operations/vci_batch_issue_api_request.rbi
+  - lib/authlete/models/operations/vci_batch_issue_api_response.rb
+  - lib/authlete/models/operations/vci_batch_issue_api_response.rbi
+  - lib/authlete/models/operations/vci_batch_parse_api_request.rb
+  - lib/authlete/models/operations/vci_batch_parse_api_request.rbi
+  - lib/authlete/models/operations/vci_batch_parse_api_response.rb
+  - lib/authlete/models/operations/vci_batch_parse_api_response.rbi
+  - lib/authlete/models/operations/vci_deferred_issue_api_request.rb
+  - lib/authlete/models/operations/vci_deferred_issue_api_request.rbi
+  - lib/authlete/models/operations/vci_deferred_issue_api_response.rb
+  - lib/authlete/models/operations/vci_deferred_issue_api_response.rbi
+  - lib/authlete/models/operations/vci_deferred_parse_api_request.rb
+  - lib/authlete/models/operations/vci_deferred_parse_api_request.rbi
+  - lib/authlete/models/operations/vci_deferred_parse_api_response.rb
+  - lib/authlete/models/operations/vci_deferred_parse_api_response.rbi
+  - lib/authlete/models/operations/vci_jwks_api_request.rb
+  - lib/authlete/models/operations/vci_jwks_api_request.rbi
+  - lib/authlete/models/operations/vci_jwks_api_response.rb
+  - lib/authlete/models/operations/vci_jwks_api_response.rbi
+  - lib/authlete/models/operations/vci_jwtissuer_api_request.rb
+  - lib/authlete/models/operations/vci_jwtissuer_api_request.rbi
+  - lib/authlete/models/operations/vci_jwtissuer_api_response.rb
+  - lib/authlete/models/operations/vci_jwtissuer_api_response.rbi
+  - lib/authlete/models/operations/vci_metadata_api_request.rb
+  - lib/authlete/models/operations/vci_metadata_api_request.rbi
+  - lib/authlete/models/operations/vci_metadata_api_response.rb
+  - lib/authlete/models/operations/vci_metadata_api_response.rbi
+  - lib/authlete/models/operations/vci_offer_create_api_request.rb
+  - lib/authlete/models/operations/vci_offer_create_api_request.rbi
+  - lib/authlete/models/operations/vci_offer_create_api_response.rb
+  - lib/authlete/models/operations/vci_offer_create_api_response.rbi
+  - lib/authlete/models/operations/vci_offer_info_api_request.rb
+  - lib/authlete/models/operations/vci_offer_info_api_request.rbi
+  - lib/authlete/models/operations/vci_offer_info_api_response.rb
+  - lib/authlete/models/operations/vci_offer_info_api_response.rbi
+  - lib/authlete/models/operations/vci_single_issue_api_request.rb
+  - lib/authlete/models/operations/vci_single_issue_api_request.rbi
+  - lib/authlete/models/operations/vci_single_issue_api_response.rb
+  - lib/authlete/models/operations/vci_single_issue_api_response.rbi
+  - lib/authlete/models/operations/vci_single_parse_api_request.rb
+  - lib/authlete/models/operations/vci_single_parse_api_request.rbi
+  - lib/authlete/models/operations/vci_single_parse_api_response.rb
+  - lib/authlete/models/operations/vci_single_parse_api_response.rbi
+  - lib/authlete/nativesso.rb
+  - lib/authlete/pushedauthorization.rb
+  - lib/authlete/revocation.rb
+  - lib/authlete/sdk_hooks/hooks.rb
+  - lib/authlete/sdk_hooks/types.rb
+  - lib/authlete/sdkconfiguration.rb
+  - lib/authlete/sdkconfiguration.rbi
+  - lib/authlete/service.rb
+  - lib/authlete/token.rb
+  - lib/authlete/token_management.rb
+  - lib/authlete/userinfo.rb
+  - lib/authlete/utils/forms.rb
+  - lib/authlete/utils/headers.rb
+  - lib/authlete/utils/query_params.rb
+  - lib/authlete/utils/request_bodies.rb
+  - lib/authlete/utils/retries.rb
+  - lib/authlete/utils/security.rb
+  - lib/authlete/utils/url.rb
+  - lib/authlete/utils/utils.rb
+  - lib/authlete/verifiablecredentials.rb
+  - lib/crystalline.rb
+  - lib/crystalline/metadata_fields.rb
+  - lib/crystalline/module.rb
+  - lib/crystalline/types.rb
+  - lib/crystalline/utils.rb
+  - sorbet/config
+  - sorbet/rbi/annotations/.gitattributes
+  - sorbet/rbi/gems/.gitattributes
+  - sorbet/tapioca/config.yml
+  - sorbet/tapioca/require.rb
+examples:
+  service_get_api:
+    full:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "serviceOwnerNumber": 2, "clientsPerDeveloper": 0, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://my-service.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}
+    limited:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 5041, "serviceName": "My service", "description": "This Service.", "apiKey": 21653835348762}
+    speakeasy-default-service-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_get_list_api:
+    full:
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "apiSecret": "uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls", "serviceOwnerNumber": 2, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://as.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}]}
+    limited:
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "apiKey": 21653835348762, "clientIdAliasEnabled": true}]}
+    speakeasy-default-service-get-list-api:
+      responses:
+        "200":
+          application/json: {"services": [{"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_create_api:
+    speakeasy-default-service-create-api:
+      requestBody:
+        application/json: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        application/x-www-form-urlencoded: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+      responses:
+        "200":
+          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_update_api:
+    speakeasy-default-service-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        application/x-www-form-urlencoded: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+      responses:
+        "200":
+          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_delete_api:
+    speakeasy-default-service-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_configuration_api:
+    speakeasy-default-service-configuration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_get_api:
+    speakeasy-default-client-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_get_list_api:
+    full:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "serviceNumber": 5041, "clientName": "My client", "clientId": 26478243745571, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL", "applicationType": "WEB", "tlsClientCertificateBoundAccessTokens": false, "dynamicallyRegistered": false, "createdAt": 1639468356000, "modifiedAt": 1639468356000, "grantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "responseTypes": ["CODE", "TOKEN"], "redirectUris": ["https://my-client.example.com/cb1", "https://my-client.example.com/cb2"], "tokenAuthMethod": "CLIENT_SECRET_BASIC", "parRequired": false, "requestObjectRequired": false, "defaultMaxAge": 0, "idTokenSignAlg": "RS256", "authTimeRequired": false, "subjectType": "PUBLIC", "derivedSectorIdentifier": "my-client.example.com", "bcUserCodeRequired": false, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false}]}
+    limited:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "clientName": "My client", "clientId": 26478243745571, "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL"}]}
+    speakeasy-default-client-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"clients": [{"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_create_api:
+    speakeasy-default-client-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+      responses:
+        "200":
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_update_api:
+    speakeasy-default-client-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      requestBody:
+        application/json: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+        application/x-www-form-urlencoded: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+      responses:
+        "200":
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_delete_api:
+    speakeasy-default-client-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_flag_update_api:
+    speakeasy-default-client-flag-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      responses:
+        "200":
+          application/json: {"resultCode": "<value>", "resultMessage": "<value>"}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_secret_refresh_api:
+    speakeasy-default-client-secret-refresh-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_secret_update_api:
+    speakeasy-default-client-secret-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      requestBody:
+        application/json: {"clientSecret": "<value>"}
+        application/x-www-form-urlencoded: {"clientSecret": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_get_list_api:
+    speakeasy-default-client-authorization-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_update_api:
+    speakeasy-default-client-authorization-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_delete_api:
+    speakeasy-default-client-authorization-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_get_api:
+    speakeasy-default-client-granted-scopes-get-api:
+      parameters:
+        path:
+          serviceId: "715948317"
+          clientId: "1140735077"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_delete_api:
+    speakeasy-default-client-granted-scopes-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_get_api:
+    speakeasy-default-client-extension-requestables-scopes-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_update_api:
+    speakeasy-default-client-extension-requestables-scopes-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_delete_api:
+    speakeasy-default-client-extension-requestables-scopes-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_authorization_api:
+    speakeasy-default-auth-authorization-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {"service": {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_authorization_fail_api:
+    speakeasy-default-auth-authorization-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "NOT_AUTHENTICATED"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "NOT_AUTHENTICATED"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_authorization_issue_api:
+    speakeasy-default-auth-authorization-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  authorization_ticket_info_post_api:
+    speakeasy-default-authorization-ticket-info-post-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  updateAuthorizationTicket:
+    speakeasy-default-update-authorization-ticket:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "info": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "info": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  pushed_auth_req_api:
+    speakeasy-default-pushed-auth-req-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_api:
+    speakeasy-default-auth-token-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_fail_api:
+    speakeasy-default-auth-token-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "UNKNOWN"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "UNKNOWN"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_issue_api:
+    speakeasy-default-auth-token-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  idtoken_reissue_api:
+    speakeasy-default-idtoken-reissue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_get_list_api:
+    speakeasy-default-auth-token-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_create_api:
+    speakeasy-default-auth-token-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"grantType": "CIBA", "clientId": 987169}
+        application/x-www-form-urlencoded: {"grantType": "CIBA", "clientId": 987169}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_update_api:
+    speakeasy-default-auth-token-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"accessToken": "<value>"}
+        application/x-www-form-urlencoded: {"accessToken": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_delete_api:
+    speakeasy-default-auth-token-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          accessTokenIdentifier: "<value>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_revoke_api:
+    speakeasy-default-auth-token-revoke-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_introspection_api:
+    speakeasy-default-auth-introspection-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>"}
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_introspection_standard_api:
+    speakeasy-default-auth-introspection-standard-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_revocation_api:
+    speakeasy-default-auth-revocation-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_userinfo_api:
+    speakeasy-default-auth-userinfo-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>"}
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_userinfo_issue_api:
+    speakeasy-default-auth-userinfo-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>"}
+        application/x-www-form-urlencoded: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  grant_m_api:
+    speakeasy-default-grant-m-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_jwks_get_api:
+    speakeasy-default-service-jwks-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_api:
+    speakeasy-default-client-registration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"json": "{key: 6995014930124193, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_get_api:
+    speakeasy-default-client-registration-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>", "clientId": "<id>"}
+      responses:
+        "200":
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_update_api:
+    speakeasy-default-client-registration-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"json": "{key: 7278695057340839, key1: null, key2: \"<value>\"}", "token": "<value>", "clientId": "<id>"}
+      responses:
+        "200":
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_delete_api:
+    speakeasy-default-client-registration-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>", "clientId": "<id>"}
+      responses:
+        "200":
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_api:
+    speakeasy-default-backchannel-authentication-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_issue_api:
+    speakeasy-default-backchannel-authentication-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_fail_api:
+    speakeasy-default-backchannel-authentication-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_complete_api:
+    speakeasy-default-backchannel-authentication-complete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  device_authorization_api:
+    speakeasy-default-device-authorization-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  device_verification_api:
+    speakeasy-default-device-verification-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"userCode": "<value>"}
+        application/x-www-form-urlencoded: {"userCode": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  device_complete_api:
+    speakeasy-default-device-complete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"userCode": "<value>", "result": "AUTHORIZED", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"userCode": "<value>", "result": "AUTHORIZED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  jose_verify_api:
+    speakeasy-default-jose-verify-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  federation_configuration_api:
+    speakeasy-default-federation-configuration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  federation_registration_api:
+    speakeasy-default-federation-registration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_create_api:
+    speakeasy-default-hsk-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_delete_api:
+    speakeasy-default-hsk-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          handle: "<value>"
+      responses:
+        "204":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_get_api:
+    speakeasy-default-hsk-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          handle: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  hsk_get_list_api:
+    speakeasy-default-hsk-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_metadata_api:
+    speakeasy-default-vci-metadata-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": true}
+        application/x-www-form-urlencoded: {"pretty": true}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_jwtissuer_api:
+    speakeasy-default-vci-jwtissuer-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": true}
+        application/x-www-form-urlencoded: {"pretty": true}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_jwks_api:
+    speakeasy-default-vci-jwks-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": false}
+        application/x-www-form-urlencoded: {"pretty": false}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_offer_create_api:
+    speakeasy-default-vci-offer-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_offer_info_api:
+    speakeasy-default-vci-offer-info-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_single_parse_api:
+    speakeasy-default-vci-single-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_single_issue_api:
+    speakeasy-default-vci-single-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_batch_parse_api:
+    speakeasy-default-vci-batch-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_batch_issue_api:
+    speakeasy-default-vci-batch-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_deferred_parse_api:
+    speakeasy-default-vci-deferred-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_deferred_issue_api:
+    speakeasy-default-vci-deferred-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  native_sso_api:
+    speakeasy-default-native-sso-api:
+      parameters:
+        path:
+          serviceId: "715948317"
+      requestBody:
+        application/json: {"accessToken": "<value>", "deviceSecret": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  native_sso_logout_api:
+    speakeasy-default-native-sso-logout-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"sessionId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+examplesVersion: 1.0.2

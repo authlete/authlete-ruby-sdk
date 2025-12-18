@@ -1,0 +1,9 @@
+# BackchannelAuthenticationApiRequest
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                    | *::String*                                                                                                      | :heavy_check_mark:                                                                                              | A service ID.                                                                                                   |
+| `backchannel_authentication_request`                                                                            | [Models::Components::BackchannelAuthenticationRequest](../../models/shared/backchannelauthenticationrequest.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |

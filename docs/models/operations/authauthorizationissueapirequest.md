@@ -1,0 +1,9 @@
+# AuthAuthorizationIssueApiRequest
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                      | *::String*                                                                                        | :heavy_check_mark:                                                                                | A service ID.                                                                                     |
+| `authorization_issue_request`                                                                     | [Models::Components::AuthorizationIssueRequest](../../models/shared/authorizationissuerequest.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |

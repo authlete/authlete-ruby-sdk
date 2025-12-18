@@ -1,0 +1,9 @@
+# VciBatchIssueRequest
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `access_token`                                                                                          | *T.nilable(::String)*                                                                                   | :heavy_minus_sign:                                                                                      | The access token that came along with the credential request.                                           |
+| `orders`                                                                                                | T::Array<[Models::Components::CredentialIssuanceOrder](../../models/shared/credentialissuanceorder.md)> | :heavy_minus_sign:                                                                                      | The instructions for issuance of credentials and/or transaction IDs.                                    |

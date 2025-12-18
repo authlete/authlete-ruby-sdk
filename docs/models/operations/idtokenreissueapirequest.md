@@ -1,0 +1,9 @@
+# IdtokenReissueApiRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                         | *::String*                                                                                           | :heavy_check_mark:                                                                                   | A service ID.                                                                                        |
+| `idtoken_reissue_request`                                                                            | [T.nilable(Models::Components::IdtokenReissueRequest)](../../models/shared/idtokenreissuerequest.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

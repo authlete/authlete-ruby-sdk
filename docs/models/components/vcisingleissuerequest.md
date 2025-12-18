@@ -1,0 +1,9 @@
+# VciSingleIssueRequest
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `access_token`                                                                                           | *T.nilable(::String)*                                                                                    | :heavy_minus_sign:                                                                                       | The access token that came along with the credential request.                                            |
+| `order`                                                                                                  | [T.nilable(Models::Components::CredentialIssuanceOrder)](../../models/shared/credentialissuanceorder.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |
