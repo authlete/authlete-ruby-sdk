@@ -21,8 +21,12 @@ generation:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
+  persistentEdits: {}
+  requestBodyFieldName: ""
+  schemas:
+    allOfMergeStrategy: shallowMerge
 ruby:
-  version: 0.0.1
+  version: 0.0.1-beta
   additionalDependencies:
     development: {}
     runtime: {}

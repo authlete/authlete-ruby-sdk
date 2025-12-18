@@ -123,7 +123,7 @@ The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
 gem install specific_install
-gem specific_install  
+gem specific_install https://github.com/authlete/authlete-ruby-sdk 
 ```
 <!-- End SDK Installation [installation] -->
 
