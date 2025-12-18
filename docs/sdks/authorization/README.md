@@ -6,8 +6,8 @@
 ### Available Operations
 
 * [process_request](#process_request) - Process Authorization Request
-* [fail](#fail) - Fail Authorization Request
-* [issue](#issue) - Issue Authorization Response
+* [fail_request](#fail_request) - Fail Authorization Request
+* [issue_response](#issue_response) - Issue Authorization Response
 
 ## process_request
 
@@ -417,10 +417,10 @@ above in the description for the case of `action=NO\_INTERACTION`.
 
 <!-- UsageSnippet language="ruby" operationID="auth_authorization_api" method="post" path="/api/{serviceId}/auth/authorization" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -453,7 +453,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## fail
+## fail_request
 
 This API generates a content of an error authorization response that the authorization server implementation
 returns to the client application.
@@ -537,14 +537,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_authorization_fail_api" method="post" path="/api/{serviceId}/auth/authorization/fail" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.authorization.fail(service_id: '<id>', authorization_fail_request: Models::Components::AuthorizationFailRequest.new(
+res = s.authorization.fail_request(service_id: '<id>', authorization_fail_request: Models::Components::AuthorizationFailRequest.new(
   ticket: 'qA7wGybwArICpbUSutrf5Xc9-i1fHE0ySOHxR1eBoBQ',
   reason: Models::Components::AuthorizationFailRequestReason::NOT_AUTHENTICATED,
 ))
@@ -574,7 +574,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## issue
+## issue_response
 
 This API parses request parameters of an authorization request and returns necessary data for the
 authorization server implementation to process the authorization request further.
@@ -662,14 +662,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_authorization_issue_api" method="post" path="/api/{serviceId}/auth/authorization/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.authorization.issue(service_id: '<id>', authorization_issue_request: Models::Components::AuthorizationIssueRequest.new(
+res = s.authorization.issue_response(service_id: '<id>', authorization_issue_request: Models::Components::AuthorizationIssueRequest.new(
   ticket: 'FFgB9gwb_WXh6g1u-UQ8ZI-d_k4B-o-cm7RkVzI8Vnc',
   subject: 'john',
 ))

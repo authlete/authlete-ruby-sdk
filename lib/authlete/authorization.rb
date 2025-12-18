@@ -14,17 +14,13 @@ module Authlete
   extend T::Sig
   class Authorization
     extend T::Sig
-    attr_accessor :management
+    
 
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
       @sdk_configuration = sdk_config
-      init_sdks
-    end
-    sig { void }
-    def init_sdks
-      @management = ::Authlete::AuthorizationManagement.new(@sdk_configuration)
+      
     end
 
     sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
@@ -599,8 +595,8 @@ module Authlete
 
 
     sig { params(authorization_fail_request: Models::Components::AuthorizationFailRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthAuthorizationFailApiResponse) }
-    def fail(authorization_fail_request:, service_id:, timeout_ms: nil)
-      # fail - Fail Authorization Request
+    def fail_request(authorization_fail_request:, service_id:, timeout_ms: nil)
+      # fail_request - Fail Authorization Request
       # This API generates a content of an error authorization response that the authorization server implementation
       # returns to the client application.
       # ### Description
@@ -830,8 +826,8 @@ module Authlete
 
 
     sig { params(authorization_issue_request: Models::Components::AuthorizationIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthAuthorizationIssueApiResponse) }
-    def issue(authorization_issue_request:, service_id:, timeout_ms: nil)
-      # issue - Issue Authorization Response
+    def issue_response(authorization_issue_request:, service_id:, timeout_ms: nil)
+      # issue_response - Issue Authorization Response
       # This API parses request parameters of an authorization request and returns necessary data for the
       # authorization server implementation to process the authorization request further.
       # ### Description

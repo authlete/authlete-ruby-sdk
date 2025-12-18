@@ -1,14 +1,15 @@
 lockVersion: 2.0.0
 id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
-  docChecksum: cc79a96f8134d49db6ccec859db17375
+  docChecksum: 584884e27951d47c44546924f5550e6c
   docVersion: 3.0.16
   speakeasyVersion: 1.603.2
   generationVersion: 2.681.8
-  releaseVersion: 0.0.1-beta
-  configChecksum: 9c9cd519a4414c19c0fe97131b4e300a
+  releaseVersion: 0.0.1.beta
+  configChecksum: 5e15783e4f575fd84fbc129172dc425c
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
+  published: true
 features:
   ruby:
     core: 3.10.0
@@ -28,7 +29,7 @@ generatedFiles:
   - Gemfile.lock
   - Rakefile
   - USAGE.md
-  - authlete.gemspec
+  - authlete_ruby_test.gemspec
   - docs/models/components/accesstoken.md
   - docs/models/components/applicationtype.md
   - docs/models/components/attachmenttype.md
@@ -395,12 +396,12 @@ generatedFiles:
   - docs/models/operations/vcisingleissueapiresponse.md
   - docs/models/operations/vcisingleparseapirequest.md
   - docs/models/operations/vcisingleparseapiresponse.md
-  - docs/sdks/authlete/README.md
   - docs/sdks/authorization/README.md
   - docs/sdks/authorizationmanagement/README.md
   - docs/sdks/ciba/README.md
   - docs/sdks/client/README.md
   - docs/sdks/clientmanagement/README.md
+  - docs/sdks/clients/README.md
   - docs/sdks/deviceflow/README.md
   - docs/sdks/dynamicclientregistration/README.md
   - docs/sdks/federation/README.md
@@ -412,24 +413,23 @@ generatedFiles:
   - docs/sdks/nativesso/README.md
   - docs/sdks/pushedauthorization/README.md
   - docs/sdks/revocation/README.md
-  - docs/sdks/service/README.md
-  - docs/sdks/token/README.md
+  - docs/sdks/services/README.md
   - docs/sdks/tokenmanagement/README.md
+  - docs/sdks/tokens/README.md
   - docs/sdks/userinfo/README.md
   - docs/sdks/verifiablecredentials/README.md
   - extra.rbi
-  - lib/authlete.rb
-  - lib/authlete/authlete.rb
   - lib/authlete/authorization.rb
   - lib/authlete/authorization_management.rb
   - lib/authlete/ciba.rb
   - lib/authlete/client.rb
   - lib/authlete/client_management.rb
-  - lib/authlete/deviceflow.rb
-  - lib/authlete/dynamicclientregistration.rb
+  - lib/authlete/clients.rb
+  - lib/authlete/device_flow.rb
+  - lib/authlete/dynamic_client_registration.rb
   - lib/authlete/federation.rb
-  - lib/authlete/grantmanagement.rb
-  - lib/authlete/hardwaresecuritykeys.rb
+  - lib/authlete/grant_management.rb
+  - lib/authlete/hardware_security_keys.rb
   - lib/authlete/introspection.rb
   - lib/authlete/jose_object.rb
   - lib/authlete/jwk_set_endpoint.rb
@@ -1171,16 +1171,16 @@ generatedFiles:
   - lib/authlete/models/operations/vci_single_parse_api_request.rbi
   - lib/authlete/models/operations/vci_single_parse_api_response.rb
   - lib/authlete/models/operations/vci_single_parse_api_response.rbi
-  - lib/authlete/nativesso.rb
-  - lib/authlete/pushedauthorization.rb
+  - lib/authlete/native_sso.rb
+  - lib/authlete/pushed_authorization.rb
   - lib/authlete/revocation.rb
   - lib/authlete/sdk_hooks/hooks.rb
   - lib/authlete/sdk_hooks/types.rb
   - lib/authlete/sdkconfiguration.rb
   - lib/authlete/sdkconfiguration.rbi
-  - lib/authlete/service.rb
-  - lib/authlete/token.rb
+  - lib/authlete/services.rb
   - lib/authlete/token_management.rb
+  - lib/authlete/tokens.rb
   - lib/authlete/userinfo.rb
   - lib/authlete/utils/forms.rb
   - lib/authlete/utils/headers.rb
@@ -1190,7 +1190,8 @@ generatedFiles:
   - lib/authlete/utils/security.rb
   - lib/authlete/utils/url.rb
   - lib/authlete/utils/utils.rb
-  - lib/authlete/verifiablecredentials.rb
+  - lib/authlete/verifiable_credentials.rb
+  - lib/authlete_ruby_test.rb
   - lib/crystalline.rb
   - lib/crystalline/metadata_fields.rb
   - lib/crystalline/module.rb
@@ -2291,3 +2292,2360 @@ examples:
         "500":
           application/json: {}
 examplesVersion: 1.0.2
+trackedFiles:
+  .gitattributes:
+    last_write_checksum: sha1:ddc1beb0214aecada04e60ef2e038729bd8d20e6
+  .rubocop.yml:
+    last_write_checksum: sha1:fbe03b9092419d2d3983aee4b8380667faefed83
+  Gemfile:
+    last_write_checksum: sha1:8c1b6fa9505f61abd0fb6741f8094e9655a55495
+  Gemfile.lock:
+    last_write_checksum: sha1:c3e923939199b2b8e9ef74a6784b112c8670e113
+  Rakefile:
+    last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
+  USAGE.md:
+    last_write_checksum: sha1:c1a102bb7a4e4e6cd729c898efe73676af30bf9d
+  authlete_ruby_test.gemspec:
+    last_write_checksum: sha1:9528e5ea3d6787fc34119c25b5926f41bb05c160
+  docs/models/components/accesstoken.md:
+    last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
+  docs/models/components/applicationtype.md:
+    last_write_checksum: sha1:2f82964cb3434253ae404d6c379b9dcef8850835
+  docs/models/components/attachmenttype.md:
+    last_write_checksum: sha1:d6fdb23c032afafc449050210ff6e357faf11e7a
+  docs/models/components/authorizationdetailselement.md:
+    last_write_checksum: sha1:cec831d3e011ddd2527e2303eb1cc2ea4e4614a9
+  docs/models/components/authorizationfailrequest.md:
+    last_write_checksum: sha1:c1c9103ba660cb65bbc475a819a1abf071c8c5ae
+  docs/models/components/authorizationfailrequestreason.md:
+    last_write_checksum: sha1:21cf9b2612a1269b0fe6c9bba60b1c1fa4e876a1
+  docs/models/components/authorizationfailresponse.md:
+    last_write_checksum: sha1:464e2c4ef2c8a52e49123661c805f461e1e4ee7a
+  docs/models/components/authorizationfailresponseaction.md:
+    last_write_checksum: sha1:582eb1943b1681bee5a59b0fd0179a59846520bd
+  docs/models/components/authorizationissuerequest.md:
+    last_write_checksum: sha1:313029e831ce4b720620e5cbd17732563fe68e4b
+  docs/models/components/authorizationissueresponse.md:
+    last_write_checksum: sha1:37475f40d9aa6b8c68695336ad92b76a0909c44c
+  docs/models/components/authorizationissueresponseaction.md:
+    last_write_checksum: sha1:e45a05d300fbfdcef218a0160b7eea77f53e6f97
+  docs/models/components/authorizationrequest.md:
+    last_write_checksum: sha1:bd0bec5832d2e909f37e6ed98c3fec61f3220727
+  docs/models/components/authorizationresponse.md:
+    last_write_checksum: sha1:2bddc7d9ddd25efea7d34fec2674e1e80df1909d
+  docs/models/components/authorizationresponseaction.md:
+    last_write_checksum: sha1:1e8fc690164f1243081c14bcc0a6b8c3dbe78ee0
+  docs/models/components/authorizationticketinfo.md:
+    last_write_checksum: sha1:367d5b26138bce3a7521369383164ba1c25214e8
+  docs/models/components/authorizationticketinforequest.md:
+    last_write_checksum: sha1:ad13455238ff13e91648a3b493b946805c0cddd9
+  docs/models/components/authorizationticketinforesponse.md:
+    last_write_checksum: sha1:694e07f25acccbc703959026894615cfbd5e474e
+  docs/models/components/authorizationticketinforesponseaction.md:
+    last_write_checksum: sha1:ac5914627990ed5a5d5e4da87e6f12a785373403
+  docs/models/components/authorizationticketupdaterequest.md:
+    last_write_checksum: sha1:596e17137a92824b2fb76f6a605312c08c370839
+  docs/models/components/authorizationticketupdateresponse.md:
+    last_write_checksum: sha1:25725deb31ec7568e68f50e4f2986c194d70cf20
+  docs/models/components/authorizationticketupdateresponseaction.md:
+    last_write_checksum: sha1:6944a87aa740f2c79cd9cd634c2524d7897427ba
+  docs/models/components/authzdetails.md:
+    last_write_checksum: sha1:03221bd6595df09ed229be6205646669f737aba2
+  docs/models/components/backchannelauthenticationcompleterequest.md:
+    last_write_checksum: sha1:231760e7138b1694735ce610795612ae1cdea0f8
+  docs/models/components/backchannelauthenticationcompleterequestresult.md:
+    last_write_checksum: sha1:1ca7ffc4352e035af25d1d1663977ddb77355142
+  docs/models/components/backchannelauthenticationcompleteresponse.md:
+    last_write_checksum: sha1:81fc4ef12dbd789ad6db8857e746872d1087bae5
+  docs/models/components/backchannelauthenticationcompleteresponseaction.md:
+    last_write_checksum: sha1:fd9da94f571b6167833e9583fe17a5d482cad356
+  docs/models/components/backchannelauthenticationfailrequest.md:
+    last_write_checksum: sha1:140e53e3bb0f32c7632542dd786baacba307d1a8
+  docs/models/components/backchannelauthenticationfailrequestreason.md:
+    last_write_checksum: sha1:7dc78a16af2f909abc0b20f9908dc836fd91464d
+  docs/models/components/backchannelauthenticationfailresponse.md:
+    last_write_checksum: sha1:24f1e048fd5733e37f8b7586476e1a3a8b079c96
+  docs/models/components/backchannelauthenticationfailresponseaction.md:
+    last_write_checksum: sha1:66cf074590afa6ca53ec5c4f51f48eace32094ff
+  docs/models/components/backchannelauthenticationissuerequest.md:
+    last_write_checksum: sha1:bf279721ee9e95f188dcdfae0ded4f0bd580b57b
+  docs/models/components/backchannelauthenticationissueresponse.md:
+    last_write_checksum: sha1:5cd6324ddfba7d778ec011fae3b51431d306e94b
+  docs/models/components/backchannelauthenticationissueresponseaction.md:
+    last_write_checksum: sha1:f650442643aee85966120e05d60d4c9f433ed62c
+  docs/models/components/backchannelauthenticationrequest.md:
+    last_write_checksum: sha1:befa61dfa1c5276aa2f6e7033bf4ae99aa84edb1
+  docs/models/components/backchannelauthenticationresponse.md:
+    last_write_checksum: sha1:d42a5475a45ec29a9d47ab452d30ae2b5d1d69fe
+  docs/models/components/backchannelauthenticationresponseaction.md:
+    last_write_checksum: sha1:c94a9a11cb6e595e38c9a643a23af182eebc01de
+  docs/models/components/cimdoptions.md:
+    last_write_checksum: sha1:411a2b363c8d5d8e2a916d02e01e9ffe88aefc03
+  docs/models/components/claimtype.md:
+    last_write_checksum: sha1:d3173f62ab3e4ea411c78780079c751b4eed2ec7
+  docs/models/components/client.md:
+    last_write_checksum: sha1:59f453955d3305029604c884f066419b02603c30
+  docs/models/components/clientauthmethod.md:
+    last_write_checksum: sha1:9670e1fc5919501e4c806a5923eb9e2f22eef765
+  docs/models/components/clientauthorizationdeleteresponse.md:
+    last_write_checksum: sha1:abc9e0546b3233a4a5089f53af6388e2e3d377eb
+  docs/models/components/clientauthorizationgetlistresponse.md:
+    last_write_checksum: sha1:c2a02a94da91129a690752fafded8e08ad216316
+  docs/models/components/clientauthorizationupdaterequest.md:
+    last_write_checksum: sha1:5ed67fd37bbb0f0b1db84880f231dfe3e2ec1881
+  docs/models/components/clientauthorizationupdateresponse.md:
+    last_write_checksum: sha1:ce81273a5b2c462b8f476b39583076e806f93270
+  docs/models/components/clientextension.md:
+    last_write_checksum: sha1:749ecdf8cd6c6b45e692a77813ceab73214e8005
+  docs/models/components/clientextensionrequestablescopesgetresponse.md:
+    last_write_checksum: sha1:8e3c7dfba6f25385b4f684fccdcc7743ec76ed4c
+  docs/models/components/clientextensionrequestablescopesupdaterequest.md:
+    last_write_checksum: sha1:8802b8ade684e846379f6621d78b49dbc0f36283
+  docs/models/components/clientextensionrequestablescopesupdateresponse.md:
+    last_write_checksum: sha1:d39f82e15e6e04cf86543fb9b8e16ed66067b9a6
+  docs/models/components/clientflagupdaterequest.md:
+    last_write_checksum: sha1:dd2bb81e15eedf031725fd9e616b06dfae323fa8
+  docs/models/components/clientflagupdateresponse.md:
+    last_write_checksum: sha1:0604746c9455c07b356eb4638cd954c7d073143f
+  docs/models/components/clientgetlistresponse.md:
+    last_write_checksum: sha1:7f4f4172eaef327c124a31c622147ea97930fb21
+  docs/models/components/clientgrantedscopesdeleteresponse.md:
+    last_write_checksum: sha1:f537564922196bfa97a4e3c381449dc0707fae9d
+  docs/models/components/clientinput.md:
+    last_write_checksum: sha1:4141af2943d6648f5323172a74e5665d0379a362
+  docs/models/components/clientlimited.md:
+    last_write_checksum: sha1:935590f813083476928ad7420d5e4772b578f6da
+  docs/models/components/clientlimitedauthorization.md:
+    last_write_checksum: sha1:eeed5556c59e92c671203bad4b03d155753fe9f4
+  docs/models/components/clientregistrationresponse.md:
+    last_write_checksum: sha1:365f5af9d5436a14fdbeb1d7a12e9621e6f8fab8
+  docs/models/components/clientregistrationresponseaction.md:
+    last_write_checksum: sha1:cf0197c6890581c7912fff3a0d2de58e598ae00c
+  docs/models/components/clientregistrationtype.md:
+    last_write_checksum: sha1:9c2188be427242839820d52f48a9b4f49c717d85
+  docs/models/components/clientsecretrefreshresponse.md:
+    last_write_checksum: sha1:68c0e9cdbdc65d7bda2570ccc5808af7dd3c0281
+  docs/models/components/clientsecretupdaterequest.md:
+    last_write_checksum: sha1:75bb7e4138cbdd96608f111cfdb0eccf65aeec57
+  docs/models/components/clientsecretupdateresponse.md:
+    last_write_checksum: sha1:52b715fabc23f576adfbe5c1b71d3dbcf26cca1f
+  docs/models/components/clientsource.md:
+    last_write_checksum: sha1:9180e08041a5b8dbee6108a16cd715d848e3dd46
+  docs/models/components/clienttype.md:
+    last_write_checksum: sha1:e793e067a5285c8ffc151e69706422f5ee955e28
+  docs/models/components/credentialissuanceorder.md:
+    last_write_checksum: sha1:2b37ee081a0e0670b34136a4c45e4d049fcdae9d
+  docs/models/components/credentialissuermetadata.md:
+    last_write_checksum: sha1:c578590376c74f27c869490e205ea10bea2cbc17
+  docs/models/components/credentialofferinfo.md:
+    last_write_checksum: sha1:0b3d9b90f3d394220f5c5f37e055e09f4e870842
+  docs/models/components/credentialrequestinfo.md:
+    last_write_checksum: sha1:879a6336478cd4f5f803c77d491cbe157c7a9632
+  docs/models/components/deliverymode.md:
+    last_write_checksum: sha1:e189aa0d75c831b4322cc5eac605dd0b739aacba
+  docs/models/components/deviceauthorizationrequest.md:
+    last_write_checksum: sha1:36387ecf0666e8f5da770cc654e6905a6ea659fe
+  docs/models/components/deviceauthorizationresponse.md:
+    last_write_checksum: sha1:17a996768fc193bd6304ab45b67e90e35b0c7978
+  docs/models/components/deviceauthorizationresponseaction.md:
+    last_write_checksum: sha1:e194ab64cd2eee3930a0f70ad739dac9274fa36e
+  docs/models/components/devicecompleterequest.md:
+    last_write_checksum: sha1:f4739c78a46fcfbe181b9b153b1b20eac4e0b37b
+  docs/models/components/devicecompleterequestresult.md:
+    last_write_checksum: sha1:ba4e944fb08ce7d0a23e70c556c49442dc239472
+  docs/models/components/devicecompleteresponse.md:
+    last_write_checksum: sha1:7f8f893bb5a23d836e5e81b607226c21ef55b26e
+  docs/models/components/devicecompleteresponseaction.md:
+    last_write_checksum: sha1:6f44c46f38016899c1e727482578e856cef427b2
+  docs/models/components/deviceverificationrequest.md:
+    last_write_checksum: sha1:cd92bc5e1cf965e470f9e7609ce4845fe468ed7d
+  docs/models/components/deviceverificationresponse.md:
+    last_write_checksum: sha1:ea011c81fc0101ad4a446de3b37d5270712d95d5
+  docs/models/components/deviceverificationresponseaction.md:
+    last_write_checksum: sha1:da17bfa647bc1b8ca4453b99285e9488bba31c09
+  docs/models/components/display.md:
+    last_write_checksum: sha1:ffa6363f58e1b5a78232d2ed96f79421302c1402
+  docs/models/components/dynamicscope.md:
+    last_write_checksum: sha1:4314195fb5abb117ada0eec912504b75977d142b
+  docs/models/components/fapimode.md:
+    last_write_checksum: sha1:5738c6f307f23dd7000b7e1c49a2b12704d25895
+  docs/models/components/federationconfigurationresponse.md:
+    last_write_checksum: sha1:a1b453180be77cc54f0607c224a0d056407addab
+  docs/models/components/federationconfigurationresponseaction.md:
+    last_write_checksum: sha1:827c80767dff05270dea8c3ab43f8de0e427120f
+  docs/models/components/federationregistrationrequest.md:
+    last_write_checksum: sha1:9a9a3aa38a08be279c4ce4b1ee9e1f351de247b7
+  docs/models/components/federationregistrationresponse.md:
+    last_write_checksum: sha1:dd555c1ad7ca46687756a6d61d12da6602f69cf1
+  docs/models/components/federationregistrationresponseaction.md:
+    last_write_checksum: sha1:7a64552a1adafa91adac9f6d5af7afa4e0015c19
+  docs/models/components/gmrequest.md:
+    last_write_checksum: sha1:28f48ae417e81a95b0805018077b0e57421d9905
+  docs/models/components/gmresponse.md:
+    last_write_checksum: sha1:a5562d45b22cc1d07417a6758baa7dbe5f7afd20
+  docs/models/components/gmresponseaction.md:
+    last_write_checksum: sha1:3e388eec70169fc62e926e355d08a98f8e3501ca
+  docs/models/components/grant.md:
+    last_write_checksum: sha1:8bf76c0e39c76f3cfb6d93685d540dfa8a0c30fd
+  docs/models/components/grantmanagementaction.md:
+    last_write_checksum: sha1:fc2bd0c4e4398c44e469af4043c4c1e1db3859d3
+  docs/models/components/grantscope.md:
+    last_write_checksum: sha1:2fe79ea4f46e4de5323c2ffa87adba4c1da9b39a
+  docs/models/components/granttype.md:
+    last_write_checksum: sha1:b920dbca76b79271f148f75eb7abb98b1e668b17
+  docs/models/components/hsk.md:
+    last_write_checksum: sha1:e2c781da1bc677918cc5f56753f0e3f9329f16c2
+  docs/models/components/hskcreaterequest.md:
+    last_write_checksum: sha1:66b31951bc0ffbf6a8657b2c434925ac71681ff8
+  docs/models/components/hskcreateresponse.md:
+    last_write_checksum: sha1:e12a4ae03b211c1490dbfb97055613c182a9354a
+  docs/models/components/hskcreateresponseaction.md:
+    last_write_checksum: sha1:065aa19d74dbb6de36803069f1a2896750423845
+  docs/models/components/hskdeleteresponse.md:
+    last_write_checksum: sha1:4a31928a1cddfac4777d3547b12bb982e2564779
+  docs/models/components/hskdeleteresponseaction.md:
+    last_write_checksum: sha1:5d17cc03d54ff8e087e7c5d531e99148b926c334
+  docs/models/components/hskgetlistresponse.md:
+    last_write_checksum: sha1:5066fc92dfc3be88b1881e24b3a9f3536a7d7395
+  docs/models/components/hskgetlistresponseaction.md:
+    last_write_checksum: sha1:bdbf8442df182b99dcabcddf171455f88bd09fff
+  docs/models/components/hskgetresponse.md:
+    last_write_checksum: sha1:6f8761f25255cac811eecb22eebb71375662354b
+  docs/models/components/hskgetresponseaction.md:
+    last_write_checksum: sha1:805292215d99acceab09bae782331404a29df979
+  docs/models/components/idtokenreissuerequest.md:
+    last_write_checksum: sha1:977338c882b90ce34954831a65332eb0db690825
+  docs/models/components/idtokenreissueresponse.md:
+    last_write_checksum: sha1:146b896b3cbfdb2d05382abfefa3b1b2a7d3d5a9
+  docs/models/components/idtokenreissueresponseaction.md:
+    last_write_checksum: sha1:3dd603b8addbe703469918cfbe55748539a316bd
+  docs/models/components/introspectionrequest.md:
+    last_write_checksum: sha1:682c3e828f8e2fe9bb8dff846a0da07ce5ab38b1
+  docs/models/components/introspectionresponse.md:
+    last_write_checksum: sha1:0a101423caf79022b51c93a23694a8155280f56f
+  docs/models/components/introspectionresponseaction.md:
+    last_write_checksum: sha1:a5310cab1832c4297b6bab41750445cf0d8959b5
+  docs/models/components/joseverifyrequest.md:
+    last_write_checksum: sha1:555fdd2d6f6571b9d0b56ced40c5ccdd265f2a19
+  docs/models/components/joseverifyresponse.md:
+    last_write_checksum: sha1:8945463e2f12bcb7cf7fb19974a9d4e2071e892b
+  docs/models/components/jwealg.md:
+    last_write_checksum: sha1:7c3ad8c67bb9b1aac1f2830a5b2d23a61bf0b4a2
+  docs/models/components/jweenc.md:
+    last_write_checksum: sha1:a8606cae55bbfd1b1bf0c48ff4168a1934e6be84
+  docs/models/components/jwsalg.md:
+    last_write_checksum: sha1:69086617feb092a28795c51bc13a4223e424b79d
+  docs/models/components/nameduri.md:
+    last_write_checksum: sha1:a668023a2eb25fd488298cbe872af37f949662d5
+  docs/models/components/nativessologoutrequest.md:
+    last_write_checksum: sha1:5f08d6a2e063560bc99beb51ac9899cdb5deae84
+  docs/models/components/nativessologoutresponse.md:
+    last_write_checksum: sha1:f04255ced6c1bcf0b779b84abd84449099edd3af
+  docs/models/components/nativessologoutresponseaction.md:
+    last_write_checksum: sha1:19f82b4685edee7d836ce6bce705e8b91a4a5711
+  docs/models/components/nativessorequest.md:
+    last_write_checksum: sha1:b6a2a0726a5797bb57a7ea6da70c05373c41de0c
+  docs/models/components/nativessoresponse.md:
+    last_write_checksum: sha1:6ae8fd20f79f0e8fa28d3e28b0f8e7493bb8ef5c
+  docs/models/components/nativessoresponseaction.md:
+    last_write_checksum: sha1:5a7bac86864e6ccdaaadc52c9a5846114b681992
+  docs/models/components/pair.md:
+    last_write_checksum: sha1:b3984ec5ff3bb7eb065fd2d945596da1f9bdd7c5
+  docs/models/components/prompt.md:
+    last_write_checksum: sha1:71dde3e48b092e92d8fa430afc78d31aa783a653
+  docs/models/components/property.md:
+    last_write_checksum: sha1:dea18989f1b1ecc8fe39dd3d45b6a85a40466140
+  docs/models/components/pushedauthorizationrequest.md:
+    last_write_checksum: sha1:2c38e41a023047d19219d2eb1b1f3f394932b4b9
+  docs/models/components/pushedauthorizationresponse.md:
+    last_write_checksum: sha1:02a6da82b46d3536bcba1059787f2b7b8930a5fd
+  docs/models/components/pushedauthorizationresponseaction.md:
+    last_write_checksum: sha1:3ffda956d458872995522411fa31cb8ed7cb997a
+  docs/models/components/pushedauthorizationresponseclientauthmethod.md:
+    last_write_checksum: sha1:6053a4dafeae68f6ef7f3cd28c60486cda7d56c6
+  docs/models/components/responsemode.md:
+    last_write_checksum: sha1:b9ab0a1dec70231cff8321cb57490dbcbef57376
+  docs/models/components/responsetype.md:
+    last_write_checksum: sha1:f283af8ea06788ad2bcf95b465309f60af6cb3a2
+  docs/models/components/revocationrequest.md:
+    last_write_checksum: sha1:afb2779749c569cfcf1606e531b6ff2de69bd124
+  docs/models/components/revocationresponse.md:
+    last_write_checksum: sha1:71e502e1786b4d1397fd3dc6667ffa2381b668db
+  docs/models/components/revocationresponseaction.md:
+    last_write_checksum: sha1:259183c4965a86a596046c307e2f24984f19c087
+  docs/models/components/scope.md:
+    last_write_checksum: sha1:be0e9a03d454be463df8d0a2e2eb8ba6fb48322f
+  docs/models/components/security.md:
+    last_write_checksum: sha1:af6a07371cc646677b5be2ec14c62671605512eb
+  docs/models/components/service.md:
+    last_write_checksum: sha1:af92106e056b14f68cad5ff4a6ceffa358a8111c
+  docs/models/components/servicegetlistresponse.md:
+    last_write_checksum: sha1:d938ee1af873c8ee66690acf5b9261e3ac55a96a
+  docs/models/components/serviceinput.md:
+    last_write_checksum: sha1:0c2f259e151523f5afb6766b721f62266bcaeeb7
+  docs/models/components/servicejwksgetresponse.md:
+    last_write_checksum: sha1:f929ee455b78c84549edfbe2524c5fd68a82a406
+  docs/models/components/serviceprofile.md:
+    last_write_checksum: sha1:083e566a75e302fd22fd0178415ba24405ccbb1a
+  docs/models/components/snscredentials.md:
+    last_write_checksum: sha1:956a619e6ea5c23c729a323b7a002947203fa59d
+  docs/models/components/standardintrospectionrequest.md:
+    last_write_checksum: sha1:4ed969807f703467a83f7cb5ab3ac2eb7a75afd0
+  docs/models/components/standardintrospectionresponse.md:
+    last_write_checksum: sha1:d46619b514272a683359361e7e4475c2aa50f1cb
+  docs/models/components/standardintrospectionresponseaction.md:
+    last_write_checksum: sha1:d3db4b5945bd3b7b1bde8e349a9a9809200011d8
+  docs/models/components/subjecttype.md:
+    last_write_checksum: sha1:136edfacaf0aa5343491e67b9fdec1bfd0591e91
+  docs/models/components/supportedsnse.md:
+    last_write_checksum: sha1:ee73646a760c4c4651efbbeb43ae033e537b74dc
+  docs/models/components/taggedvalue.md:
+    last_write_checksum: sha1:525032d54184d23c3b1bb328b05f288e9a44b417
+  docs/models/components/tokencreaterequest.md:
+    last_write_checksum: sha1:4d0596f0886d14e5b5356755016c43ce3db82c7a
+  docs/models/components/tokencreateresponse.md:
+    last_write_checksum: sha1:052b92e9c4362ccf60f229da2fba738b9d500f63
+  docs/models/components/tokencreateresponseaction.md:
+    last_write_checksum: sha1:eba564ba3e964a42033b28aa0e90ea0c2118a73c
+  docs/models/components/tokenfailrequest.md:
+    last_write_checksum: sha1:d496062e32836ab31fc506f1899466f9751f4044
+  docs/models/components/tokenfailrequestreason.md:
+    last_write_checksum: sha1:bf5b869d879c62855f899fb08bdf789663ea6a46
+  docs/models/components/tokenfailresponse.md:
+    last_write_checksum: sha1:593c5d436b0d76b32d3dca4f5d31f7a8f4618107
+  docs/models/components/tokenfailresponseaction.md:
+    last_write_checksum: sha1:f4db39519a31358c598d405301cdab740d473b66
+  docs/models/components/tokengetlistresponse.md:
+    last_write_checksum: sha1:082819dc32a603e07a3d242eb1c279782990b21c
+  docs/models/components/tokeninfo.md:
+    last_write_checksum: sha1:fc2a07ca4cf044b4a99b109f8d731bcfd664bbc1
+  docs/models/components/tokenissuerequest.md:
+    last_write_checksum: sha1:62333f33fd767ed8788703f08e9f5e50fffd9e15
+  docs/models/components/tokenissueresponse.md:
+    last_write_checksum: sha1:2ed1193a6740bed8ee56f63c9849054c9700bba5
+  docs/models/components/tokenissueresponseaction.md:
+    last_write_checksum: sha1:bf775e1079d63fe764e3581bf54b275ebaa04c03
+  docs/models/components/tokenrequest.md:
+    last_write_checksum: sha1:9d3920edfb14fbf430b89b53ad28be4276f04844
+  docs/models/components/tokenresponse.md:
+    last_write_checksum: sha1:b1a101ea89038f14cbe6806a990eac30026c7dcf
+  docs/models/components/tokenresponseaction.md:
+    last_write_checksum: sha1:b4d9f433ffe70c4c7b104d20939e3a335c69291f
+  docs/models/components/tokenrevokerequest.md:
+    last_write_checksum: sha1:28acf3a4f6b5fa5c67fd606b7a8ef1307ddd0617
+  docs/models/components/tokenrevokeresponse.md:
+    last_write_checksum: sha1:5763e9c9dd3f11b56392887633525b849ca785f2
+  docs/models/components/tokentype.md:
+    last_write_checksum: sha1:a9e84fd25123e6f8d93a607283ebbc43e13c6b58
+  docs/models/components/tokenupdaterequest.md:
+    last_write_checksum: sha1:1b53a78a159ec16aefc008e48d9204e2724fcc99
+  docs/models/components/tokenupdateresponse.md:
+    last_write_checksum: sha1:833cb1c4fd87e2dcb9593871961436a11f648e06
+  docs/models/components/tokenupdateresponseaction.md:
+    last_write_checksum: sha1:3054591ba14fb5472f78f5764ddf934c928b46c7
+  docs/models/components/trustanchor.md:
+    last_write_checksum: sha1:d52970e6df7b2bc767bf294be414eef71d2d45c3
+  docs/models/components/usercodecharset.md:
+    last_write_checksum: sha1:5090bd792af8e54ecd05da7f56a4cc90e4026163
+  docs/models/components/userinfoissuerequest.md:
+    last_write_checksum: sha1:89d6bae13deaeef8897284adab8ec104f0a1a263
+  docs/models/components/userinfoissueresponse.md:
+    last_write_checksum: sha1:d90ec42c13e23385afbe3b4e1c8520c24a4749c4
+  docs/models/components/userinfoissueresponseaction.md:
+    last_write_checksum: sha1:41bc2c41bcf93b1777de5944eaa69c9936bc60e6
+  docs/models/components/userinforequest.md:
+    last_write_checksum: sha1:0a74997f54833e0ce6c3fb569de320eb04e729c5
+  docs/models/components/userinforesponse.md:
+    last_write_checksum: sha1:a7a55b09e9d7a8b189e2bf1388d796241dffb652
+  docs/models/components/userinforesponseaction.md:
+    last_write_checksum: sha1:8b026c8db02756b1ea7bb926d61796416f1eaf0c
+  docs/models/components/vcibatchissuerequest.md:
+    last_write_checksum: sha1:cc062661ce06696f9a647610160c8702658e2af3
+  docs/models/components/vcibatchissueresponse.md:
+    last_write_checksum: sha1:442ec57ee262dd744fbd1ed41e1e8e14422857a0
+  docs/models/components/vcibatchissueresponseaction.md:
+    last_write_checksum: sha1:0ae1d242a3b18fa362baa2868066811856144b0a
+  docs/models/components/vcibatchparserequest.md:
+    last_write_checksum: sha1:50902b7dd5e7589038c765e58987676689f0eec6
+  docs/models/components/vcibatchparseresponse.md:
+    last_write_checksum: sha1:8bd93e3dc101183a4c5aa04ac92e25978648c986
+  docs/models/components/vcibatchparseresponseaction.md:
+    last_write_checksum: sha1:87c22457759068545f4e3628f6bf0df5c5cbbe45
+  docs/models/components/vcideferredissuerequest.md:
+    last_write_checksum: sha1:db74781713ca8a320fcf1a17d5ac4f6d596efe47
+  docs/models/components/vcideferredissueresponse.md:
+    last_write_checksum: sha1:7f01489809f30595e79bc7bc9531f51f72fd69c7
+  docs/models/components/vcideferredissueresponseaction.md:
+    last_write_checksum: sha1:044ce4500bb855ee1974cbabb1a8da3f2da5a362
+  docs/models/components/vcideferredparserequest.md:
+    last_write_checksum: sha1:7a9f0fcd8137912bbfe14add46a26852ddfdd473
+  docs/models/components/vcideferredparseresponse.md:
+    last_write_checksum: sha1:e02a2b1d7dcd186af9a932b3ffd056c5f923bc74
+  docs/models/components/vcideferredparseresponseaction.md:
+    last_write_checksum: sha1:e9038063e79ef451d37ad824d4bb47d579cf8ed0
+  docs/models/components/vcijwksrequest.md:
+    last_write_checksum: sha1:28d8fb72791c7e7f70408678b60079dfa768d902
+  docs/models/components/vcijwksresponse.md:
+    last_write_checksum: sha1:98e78333db0c396765d16c9ce82be52601ce73cc
+  docs/models/components/vcijwksresponseaction.md:
+    last_write_checksum: sha1:4d3cae0ad7b85799420c9ec803ea3cf5eafefd70
+  docs/models/components/vcijwtissuerrequest.md:
+    last_write_checksum: sha1:c1c4bd49a000487d51d268191bc321f4066ffe24
+  docs/models/components/vcijwtissuerresponse.md:
+    last_write_checksum: sha1:a8cdda3060c951c102ad3d6a94b197a33b6f0bfa
+  docs/models/components/vcijwtissuerresponseaction.md:
+    last_write_checksum: sha1:bdd60f046262771f7ac6a46e2c89a8eae780aa2d
+  docs/models/components/vcimetadatarequest.md:
+    last_write_checksum: sha1:0e589989b9160dd35605800cec5e4b7c4f62e33a
+  docs/models/components/vcimetadataresponse.md:
+    last_write_checksum: sha1:c61aec765f6b29c98d3f3e096c3fcd3c0c93222b
+  docs/models/components/vcimetadataresponseaction.md:
+    last_write_checksum: sha1:1d3999483c18c7944774defbbca348e0050eac8d
+  docs/models/components/vcioffercreaterequest.md:
+    last_write_checksum: sha1:0f5a4c5707671cf96a77e8e30db343c978d45ed8
+  docs/models/components/vcioffercreateresponse.md:
+    last_write_checksum: sha1:a5f23e4829eb36e415a6bdd21f97a97b36de8928
+  docs/models/components/vcioffercreateresponseaction.md:
+    last_write_checksum: sha1:cea367375324bd14114a394d3ace239ad82dc887
+  docs/models/components/vciofferinforequest.md:
+    last_write_checksum: sha1:39ce693175f9334582dd7d871890834caefe9d1d
+  docs/models/components/vciofferinforesponse.md:
+    last_write_checksum: sha1:3711c993255976171cd77b0f824959fa439fb4de
+  docs/models/components/vciofferinforesponseaction.md:
+    last_write_checksum: sha1:9b4c69e49a6b9157069ee4a9ba8766168d901850
+  docs/models/components/vcisingleissuerequest.md:
+    last_write_checksum: sha1:037039c6673773538252cc7826318b9ee07b8b1b
+  docs/models/components/vcisingleissueresponse.md:
+    last_write_checksum: sha1:7cf2f67da3491706b9c888c8108cdf191960b7c6
+  docs/models/components/vcisingleissueresponseaction.md:
+    last_write_checksum: sha1:8e6674f52c312ceeb998d71fab34f13f67d39a7a
+  docs/models/components/vcisingleparserequest.md:
+    last_write_checksum: sha1:44fd5f843d4169664172fb31059f12c1ceb1cd76
+  docs/models/components/vcisingleparseresponse.md:
+    last_write_checksum: sha1:bf5289084c26545c699f630ddd5b5263cc85b3b9
+  docs/models/components/vcisingleparseresponseaction.md:
+    last_write_checksum: sha1:40ace3ce1db8813c29e258e04f8dad9229ed811f
+  docs/models/components/verifiedclaimsvalidationschema.md:
+    last_write_checksum: sha1:a475ebaa003fd827da7dcf990e88ffb2941f0b13
+  docs/models/errors/resulterror.md:
+    last_write_checksum: sha1:9ad295421e62c6062a86fa6a2f6e240d10b86e9c
+  docs/models/operations/authauthorizationapirequest.md:
+    last_write_checksum: sha1:104b20c084f70c967e9f0aced79ddc0c129f8671
+  docs/models/operations/authauthorizationapiresponse.md:
+    last_write_checksum: sha1:a3c69f8f7a062d0076d2cec4adc52a879f50d593
+  docs/models/operations/authauthorizationfailapirequest.md:
+    last_write_checksum: sha1:f3748db74f3a5608fd55dff6e4695e4b01923c81
+  docs/models/operations/authauthorizationfailapiresponse.md:
+    last_write_checksum: sha1:faa19ee6cf9e727aee438effe89993729aa91fc1
+  docs/models/operations/authauthorizationissueapirequest.md:
+    last_write_checksum: sha1:c16b9567dec2b327e39996fdfc5a94ca166e0dc7
+  docs/models/operations/authauthorizationissueapiresponse.md:
+    last_write_checksum: sha1:f3fb9b798f4a4b39f904c9dc381c0a77bdc9bd62
+  docs/models/operations/authintrospectionapirequest.md:
+    last_write_checksum: sha1:95aff692b20aa67986f27e208779f85d9e8662ae
+  docs/models/operations/authintrospectionapiresponse.md:
+    last_write_checksum: sha1:bb8c34effbcd10793a6e2204450458a91f15d15e
+  docs/models/operations/authintrospectionstandardapirequest.md:
+    last_write_checksum: sha1:d5ab9fc37aa94c13085c080e3de7145b7cb47219
+  docs/models/operations/authintrospectionstandardapiresponse.md:
+    last_write_checksum: sha1:d5c27a8867e68f217f09b6a119d8bfc56776311a
+  docs/models/operations/authorizationticketinfopostapirequest.md:
+    last_write_checksum: sha1:199c7ac55c0c8244d52c376aa46b3818469893c5
+  docs/models/operations/authorizationticketinfopostapiresponse.md:
+    last_write_checksum: sha1:8bf00e0423bd6ea5db5f78b4d79799ac082fe1bd
+  docs/models/operations/authrevocationapirequest.md:
+    last_write_checksum: sha1:a0234586ea1aa5c0e1a20cb1472399d338ff5bfd
+  docs/models/operations/authrevocationapiresponse.md:
+    last_write_checksum: sha1:504f230d5baaac5102ae6c164cb45606f18c25d4
+  docs/models/operations/authtokenapirequest.md:
+    last_write_checksum: sha1:075528e157ff58d396b320f09e72ffa46fe63220
+  docs/models/operations/authtokenapiresponse.md:
+    last_write_checksum: sha1:d2c5487c049a2d8dc7e1b2465eb7c083d8168d50
+  docs/models/operations/authtokencreateapirequest.md:
+    last_write_checksum: sha1:83a6d4dc5ea1c74219680ec203c3dc9d0e0f87aa
+  docs/models/operations/authtokencreateapiresponse.md:
+    last_write_checksum: sha1:88be7d2f48b9622e05bacc8ddc81f8966fb53431
+  docs/models/operations/authtokendeleteapirequest.md:
+    last_write_checksum: sha1:c98b04fa88fb989e2a64b0c737da18354613a2e1
+  docs/models/operations/authtokendeleteapiresponse.md:
+    last_write_checksum: sha1:aaa169569265192859fd5867bd3d6153c5ea9b8c
+  docs/models/operations/authtokenfailapirequest.md:
+    last_write_checksum: sha1:60c730c9f9efcd3142f7ae257e72e7fbcb764a7a
+  docs/models/operations/authtokenfailapiresponse.md:
+    last_write_checksum: sha1:e068e317d5a587d61be1256eaff3e084418c5081
+  docs/models/operations/authtokengetlistapirequest.md:
+    last_write_checksum: sha1:8d87c61fb71789060b792bf31dc7c098306b6596
+  docs/models/operations/authtokengetlistapiresponse.md:
+    last_write_checksum: sha1:8798a00414ecb8093389799997a9e24802dfee7d
+  docs/models/operations/authtokenissueapirequest.md:
+    last_write_checksum: sha1:b5c80bbce6de91a765a971c9b3f572ab6b43f98f
+  docs/models/operations/authtokenissueapiresponse.md:
+    last_write_checksum: sha1:3991e7a950317955ab19b21ac1099a3086e2688e
+  docs/models/operations/authtokenrevokeapirequest.md:
+    last_write_checksum: sha1:f7311206c1bad8c7b920686993b0bf1586c7f8f4
+  docs/models/operations/authtokenrevokeapiresponse.md:
+    last_write_checksum: sha1:2575e293cd8148d4db3e3b8240ea77da5774f4be
+  docs/models/operations/authtokenupdateapirequest.md:
+    last_write_checksum: sha1:94e611e72bac218b42642b037636ed28dabb0334
+  docs/models/operations/authtokenupdateapiresponse.md:
+    last_write_checksum: sha1:33c25062e375a8830093f70826efcf4b58745aa4
+  docs/models/operations/authuserinfoapirequest.md:
+    last_write_checksum: sha1:e7e9ba33a73c0faa91a1e7d96032eb5de2e3e411
+  docs/models/operations/authuserinfoapiresponse.md:
+    last_write_checksum: sha1:4d4b7bcb053e529ede05ccade25328e85439ca47
+  docs/models/operations/authuserinfoissueapirequest.md:
+    last_write_checksum: sha1:1274ea0392a2e07e093db8f8c14cc756ec48b8fb
+  docs/models/operations/authuserinfoissueapiresponse.md:
+    last_write_checksum: sha1:b2cd77009f2898facf641d48fd78605a12ce69b4
+  docs/models/operations/backchannelauthenticationapirequest.md:
+    last_write_checksum: sha1:e1b0f2cfa5d0c393bbe646584e779c4476ce2aa7
+  docs/models/operations/backchannelauthenticationapiresponse.md:
+    last_write_checksum: sha1:f3e23da947a6b973c1b23bb04dc87b9a2353f591
+  docs/models/operations/backchannelauthenticationcompleteapirequest.md:
+    last_write_checksum: sha1:f381e17da2fc2798edb667927966b6cbc5a87225
+  docs/models/operations/backchannelauthenticationcompleteapiresponse.md:
+    last_write_checksum: sha1:4919fadec32e6df94ad3519816572a0252bbbad6
+  docs/models/operations/backchannelauthenticationfailapirequest.md:
+    last_write_checksum: sha1:70fb464929dde87af44e91f2a0355bb5696da646
+  docs/models/operations/backchannelauthenticationfailapiresponse.md:
+    last_write_checksum: sha1:d4995f4707c34f703c0519e9e83203553371004c
+  docs/models/operations/backchannelauthenticationissueapirequest.md:
+    last_write_checksum: sha1:7d9d7ef1ab21bf4eddfe7ac5d1c27e290769a3c6
+  docs/models/operations/backchannelauthenticationissueapiresponse.md:
+    last_write_checksum: sha1:e177b605fb2a9c2305ee4d489ddc08f93b39d9e5
+  docs/models/operations/clientauthorizationdeleteapirequest.md:
+    last_write_checksum: sha1:39a73561893f5012d5140805e5a15c55111584d0
+  docs/models/operations/clientauthorizationdeleteapiresponse.md:
+    last_write_checksum: sha1:ff3906157ff164d2e3d864e96f70fcba44ee6c1b
+  docs/models/operations/clientauthorizationgetlistapirequest.md:
+    last_write_checksum: sha1:95a2810cbfe6727eb605edad9c6ba16f433523f9
+  docs/models/operations/clientauthorizationgetlistapiresponse.md:
+    last_write_checksum: sha1:3fb35b89aa2a632beb3863a021e7c04a9ac3853a
+  docs/models/operations/clientauthorizationupdateapirequest.md:
+    last_write_checksum: sha1:b4263a76de4e5ee284285115cf33f67357eae14d
+  docs/models/operations/clientauthorizationupdateapiresponse.md:
+    last_write_checksum: sha1:4b1b853ba9c1fd7d19253c4b8817b1eaa3eb423c
+  docs/models/operations/clientcreateapirequest.md:
+    last_write_checksum: sha1:98f4ca32fb637b010e5281f4a78ec3796b0d4f21
+  docs/models/operations/clientcreateapiresponse.md:
+    last_write_checksum: sha1:6666a655ab95c0a8c58e17646dc9d93f1feb90e5
+  docs/models/operations/clientdeleteapirequest.md:
+    last_write_checksum: sha1:31685b7ca93eb5306e5c008422a102e77aeb8d3d
+  docs/models/operations/clientdeleteapiresponse.md:
+    last_write_checksum: sha1:26f78e0fa0b705ab3c340875ddb040ef3f2f7f79
+  docs/models/operations/clientextensionrequestablesscopesdeleteapirequest.md:
+    last_write_checksum: sha1:349121310c75e4ac65e3c4e5da2c15e4f55744f1
+  docs/models/operations/clientextensionrequestablesscopesdeleteapiresponse.md:
+    last_write_checksum: sha1:5e411abe2c7abf07c9fd94fad741d9c92c0ce409
+  docs/models/operations/clientextensionrequestablesscopesgetapirequest.md:
+    last_write_checksum: sha1:2150e98791a1f9e707d771e371bf7f9f7882f676
+  docs/models/operations/clientextensionrequestablesscopesgetapiresponse.md:
+    last_write_checksum: sha1:1919298d683c86a551715d0a1003a324b1dd706c
+  docs/models/operations/clientextensionrequestablesscopesupdateapirequest.md:
+    last_write_checksum: sha1:d3e3347594c91142bbab7c10b71cc4e9da48b25c
+  docs/models/operations/clientextensionrequestablesscopesupdateapiresponse.md:
+    last_write_checksum: sha1:58288f100acc1971ff92983dbb138c5666986d0b
+  docs/models/operations/clientflagupdateapirequest.md:
+    last_write_checksum: sha1:e87744bf9fe6d38862e029828f9b0fe9f2d89700
+  docs/models/operations/clientflagupdateapiresponse.md:
+    last_write_checksum: sha1:f290e593e9dd6b372c7bcdb2a359e5982a704c62
+  docs/models/operations/clientgetapirequest.md:
+    last_write_checksum: sha1:7861956abc7d8436fc0d7a3660dbc9f43338c3d2
+  docs/models/operations/clientgetapiresponse.md:
+    last_write_checksum: sha1:a522d17f22885408d195e2da2a860bcb500b0ad8
+  docs/models/operations/clientgetlistapirequest.md:
+    last_write_checksum: sha1:5e23c422fc2e350ebf6c98aba63f7c7eb565b656
+  docs/models/operations/clientgetlistapiresponse.md:
+    last_write_checksum: sha1:6868169697e07d8104026ea0871d105f699a096d
+  docs/models/operations/clientgrantedscopesdeleteapirequest.md:
+    last_write_checksum: sha1:a5f7f91239867f033711854f18e17c78b938ebb7
+  docs/models/operations/clientgrantedscopesdeleteapiresponse.md:
+    last_write_checksum: sha1:ef60846ed9d1bad217a616d5d51ef8cdfb9bad60
+  docs/models/operations/clientgrantedscopesgetapirequest.md:
+    last_write_checksum: sha1:d27468b70058f3035404d65c2fcdd9fea8c5eddd
+  docs/models/operations/clientgrantedscopesgetapiresponse.md:
+    last_write_checksum: sha1:fd155ec22da6344348798ca85a9af2ab2b7a4661
+  docs/models/operations/clientregistrationapirequest.md:
+    last_write_checksum: sha1:a46afdac192b58ca11f5adfd1f9204319a967cfb
+  docs/models/operations/clientregistrationapirequestbody.md:
+    last_write_checksum: sha1:4a3b7525b182fd3e06ce19d01580fcb56ba804b0
+  docs/models/operations/clientregistrationapiresponse.md:
+    last_write_checksum: sha1:17626d016bf1740094ffbf2587d26a3d67f52dfc
+  docs/models/operations/clientregistrationdeleteapirequest.md:
+    last_write_checksum: sha1:c6ce67d547158c2ff020e02ae46042c966f4dc25
+  docs/models/operations/clientregistrationdeleteapirequestbody.md:
+    last_write_checksum: sha1:4b4e30838a264b6b216935ec51b91618cb02804e
+  docs/models/operations/clientregistrationdeleteapiresponse.md:
+    last_write_checksum: sha1:9b1a85d78b85446f8dba6542ab412f693e7b05ff
+  docs/models/operations/clientregistrationgetapirequest.md:
+    last_write_checksum: sha1:1a5b146c992f3f03ce7bc4fdd9877235c81df226
+  docs/models/operations/clientregistrationgetapirequestbody.md:
+    last_write_checksum: sha1:c35348a067c6fd001c23f254a34ea03f938bdfcb
+  docs/models/operations/clientregistrationgetapiresponse.md:
+    last_write_checksum: sha1:7997139e34344a2813d4a12ca82cbc9405ba0e94
+  docs/models/operations/clientregistrationupdateapirequest.md:
+    last_write_checksum: sha1:0fddefde33f5aa204019854eb0df1f288c8ff832
+  docs/models/operations/clientregistrationupdateapirequestbody.md:
+    last_write_checksum: sha1:18ca4ae1712b0a52848e858c0253451787c68160
+  docs/models/operations/clientregistrationupdateapiresponse.md:
+    last_write_checksum: sha1:234d65aadd28aa2a52e06fb1b687e42116510283
+  docs/models/operations/clientsecretrefreshapirequest.md:
+    last_write_checksum: sha1:6f13e6faa53c32fb7676034ec779f5af4880d210
+  docs/models/operations/clientsecretrefreshapiresponse.md:
+    last_write_checksum: sha1:d63ef602a431f7c473ce1b20af17810a42f37f0f
+  docs/models/operations/clientsecretupdateapirequest.md:
+    last_write_checksum: sha1:06773bc1825fe723cbb91d2fdf623ccf3223a06b
+  docs/models/operations/clientsecretupdateapiresponse.md:
+    last_write_checksum: sha1:6191c33e8e0dad792359bfe7743a010ac6bddcc4
+  docs/models/operations/clientupdateapirequest.md:
+    last_write_checksum: sha1:74d25967560fa5a2fcc4ff4b4faa9e8090faf587
+  docs/models/operations/clientupdateapiresponse.md:
+    last_write_checksum: sha1:48525587371e710bea7677cebcf72f32a79e5152
+  docs/models/operations/deviceauthorizationapirequest.md:
+    last_write_checksum: sha1:22ef453eb19ddfb1bd2924c08bef8a321946f493
+  docs/models/operations/deviceauthorizationapiresponse.md:
+    last_write_checksum: sha1:c29a22bf4174e53b46398f1a025204a69e5a353a
+  docs/models/operations/devicecompleteapirequest.md:
+    last_write_checksum: sha1:0cc03e5f9dd00b89139f55cd7374d0a20df3ffc9
+  docs/models/operations/devicecompleteapiresponse.md:
+    last_write_checksum: sha1:6cea0e17772b339ef62fbc50edcee29af03c6ea2
+  docs/models/operations/deviceverificationapirequest.md:
+    last_write_checksum: sha1:c8fe04c691d57306c4156cd90fcd3c5ad557b202
+  docs/models/operations/deviceverificationapiresponse.md:
+    last_write_checksum: sha1:5e7a6818505d153c9705267151e553a4070dd99c
+  docs/models/operations/federationconfigurationapirequest.md:
+    last_write_checksum: sha1:92ed1f74ac0c238482aab7b427e913aee08f5e8c
+  docs/models/operations/federationconfigurationapirequestbody.md:
+    last_write_checksum: sha1:216e422710a37a615e837b8dcb9805f83a076871
+  docs/models/operations/federationconfigurationapiresponse.md:
+    last_write_checksum: sha1:4b620af910b148660f47f43d1dc2d91a3b199a72
+  docs/models/operations/federationregistrationapirequest.md:
+    last_write_checksum: sha1:7924d6a10ca8a82e3d402ad5c0467f3a07a49e1a
+  docs/models/operations/federationregistrationapiresponse.md:
+    last_write_checksum: sha1:66c407e1804574b9cdd759d266efa026400a3c7d
+  docs/models/operations/grantmapirequest.md:
+    last_write_checksum: sha1:49234d3933557cdf616b4d609563adf786e78a77
+  docs/models/operations/grantmapiresponse.md:
+    last_write_checksum: sha1:0fe3b4d4565441d8110afbe9531f21533cedb2d1
+  docs/models/operations/hskcreateapirequest.md:
+    last_write_checksum: sha1:97f49ffbd37d8970034550bfd7a17e49c16405d0
+  docs/models/operations/hskcreateapiresponse.md:
+    last_write_checksum: sha1:d2d33774f951060136932523eedf146cad278a05
+  docs/models/operations/hskdeleteapirequest.md:
+    last_write_checksum: sha1:8c08df9fbded72e3c6ddb5a3e630f259476274d9
+  docs/models/operations/hskdeleteapiresponse.md:
+    last_write_checksum: sha1:40d0bda9acfb7e50da9b5db6b11d0f911f2cdc06
+  docs/models/operations/hskgetapirequest.md:
+    last_write_checksum: sha1:0fe8dd98f339b67492e46496650bb368842c5caf
+  docs/models/operations/hskgetapiresponse.md:
+    last_write_checksum: sha1:1a66df96ed9ad92c7b987110255e765a1d82df88
+  docs/models/operations/hskgetlistapirequest.md:
+    last_write_checksum: sha1:2405d948ad3ffd4eb1ecd63854982f4812afc172
+  docs/models/operations/hskgetlistapiresponse.md:
+    last_write_checksum: sha1:c2a08d3bd78521570a066448da4b6bb1e882902d
+  docs/models/operations/idtokenreissueapirequest.md:
+    last_write_checksum: sha1:2dc8a06683fe0b024545059d69645c1935b13c9d
+  docs/models/operations/idtokenreissueapiresponse.md:
+    last_write_checksum: sha1:2c147c1950929e9f4954135664277923f9610874
+  docs/models/operations/joseverifyapirequest.md:
+    last_write_checksum: sha1:9991945c48ec3a9caf34b5369d7874cbcb782be5
+  docs/models/operations/joseverifyapiresponse.md:
+    last_write_checksum: sha1:c59dc7a79868afa7631be0f437481e8b063a169d
+  docs/models/operations/nativessoapirequest.md:
+    last_write_checksum: sha1:5219c490757ce700c94261ee65e8d5eea53cd190
+  docs/models/operations/nativessoapiresponse.md:
+    last_write_checksum: sha1:8f2f5cb65c409daf65b894dc596c971b8099d2c3
+  docs/models/operations/nativessologoutapirequest.md:
+    last_write_checksum: sha1:65e69b78b9d4e31d7d7545c1e124a51cd14d7cf9
+  docs/models/operations/nativessologoutapiresponse.md:
+    last_write_checksum: sha1:72a7070361d0bdcb70c6b1595c55bed55b2cb083
+  docs/models/operations/pushedauthreqapirequest.md:
+    last_write_checksum: sha1:cfd7570beb865787d1355dc82f2a9b499dbd7a95
+  docs/models/operations/pushedauthreqapiresponse.md:
+    last_write_checksum: sha1:66f8e5c255486e305f94796ddb1d72c6718f5a2e
+  docs/models/operations/serviceconfigurationapirequest.md:
+    last_write_checksum: sha1:2a69d21332bbf25ef789881b06b968c31cfe8554
+  docs/models/operations/serviceconfigurationapiresponse.md:
+    last_write_checksum: sha1:7910abec7e5e3bc458f3df2685123644719e3a1d
+  docs/models/operations/serviceconfigurationapiresponsebody.md:
+    last_write_checksum: sha1:3331c484414ae0e82a314326be93565d7f0c1d35
+  docs/models/operations/servicecreateapiresponse.md:
+    last_write_checksum: sha1:feb34a3da074d036e704016b7576d9da3e5805fa
+  docs/models/operations/servicedeleteapirequest.md:
+    last_write_checksum: sha1:33ba2f6c101fcb5227f829c8ea78d0e98036bba3
+  docs/models/operations/servicedeleteapiresponse.md:
+    last_write_checksum: sha1:c61ca3a835596086a88fb83b66560e2095a82efb
+  docs/models/operations/servicegetapirequest.md:
+    last_write_checksum: sha1:7e744f83521d80352cc4b6fcd062b7c22fccb3d8
+  docs/models/operations/servicegetapiresponse.md:
+    last_write_checksum: sha1:033a39aa4add048313616d974e15644b14c7cd30
+  docs/models/operations/servicegetlistapirequest.md:
+    last_write_checksum: sha1:60fd472166e78970bc40bf61098439b1b3b059d4
+  docs/models/operations/servicegetlistapiresponse.md:
+    last_write_checksum: sha1:7ff9f3b89f20f2ad820b8dc140e22b9391b8e4e7
+  docs/models/operations/servicejwksgetapirequest.md:
+    last_write_checksum: sha1:bcc5e388682b80675b1400b39d07ce893e929120
+  docs/models/operations/servicejwksgetapiresponse.md:
+    last_write_checksum: sha1:dfa94f2b60bcfaa8e931adb0f90c6ce5b9ab9604
+  docs/models/operations/serviceupdateapirequest.md:
+    last_write_checksum: sha1:c14143fc8c67c3149feb9e13105873e10b34f4b9
+  docs/models/operations/serviceupdateapiresponse.md:
+    last_write_checksum: sha1:ac9db9ac450ebf6fb1203b08a02d9bcbf7b750c5
+  docs/models/operations/updateauthorizationticketrequest.md:
+    last_write_checksum: sha1:fccc46a871d0c140850c285bf66932221e460805
+  docs/models/operations/updateauthorizationticketresponse.md:
+    last_write_checksum: sha1:b6f2d8d43de685554cc23c96dbf10641cd913cf9
+  docs/models/operations/vcibatchissueapirequest.md:
+    last_write_checksum: sha1:d73c2d9e6e2e7a8294734c5513e4983284bc6bb7
+  docs/models/operations/vcibatchissueapiresponse.md:
+    last_write_checksum: sha1:bca69446eecc5f3a1ac65a2e8b0ad78ef30eebcd
+  docs/models/operations/vcibatchparseapirequest.md:
+    last_write_checksum: sha1:e305c3a022e1cd03fc97dfc3546e5cdb3a69d8c5
+  docs/models/operations/vcibatchparseapiresponse.md:
+    last_write_checksum: sha1:73583a251cb62379e71aa3b60787f77800d91bfd
+  docs/models/operations/vcideferredissueapirequest.md:
+    last_write_checksum: sha1:e36ba7e116a211e130acc3dd6c6faa34fbcaf8b3
+  docs/models/operations/vcideferredissueapiresponse.md:
+    last_write_checksum: sha1:ff39a276d6a413ff0ea170fd5b7cbef470f4c052
+  docs/models/operations/vcideferredparseapirequest.md:
+    last_write_checksum: sha1:9c8b364e1ba7c23dc4444f2660ffb0c22c784b36
+  docs/models/operations/vcideferredparseapiresponse.md:
+    last_write_checksum: sha1:d352797561300fe402d5481f7d0b31e93c0894e1
+  docs/models/operations/vcijwksapirequest.md:
+    last_write_checksum: sha1:8f906c5b91914602053000b089072f762f402c52
+  docs/models/operations/vcijwksapiresponse.md:
+    last_write_checksum: sha1:91706f438bb60dcc06b823e9c53b09766edf1097
+  docs/models/operations/vcijwtissuerapirequest.md:
+    last_write_checksum: sha1:a3734f71fbc90436179579d70bcfb17881b900cf
+  docs/models/operations/vcijwtissuerapiresponse.md:
+    last_write_checksum: sha1:cb6998c310e21f835c0123f12e1d1c0f35008554
+  docs/models/operations/vcimetadataapirequest.md:
+    last_write_checksum: sha1:25bc78c1eae5797ee09b7b634fb97a01af94217a
+  docs/models/operations/vcimetadataapiresponse.md:
+    last_write_checksum: sha1:3dca14559dcf2917095c395f31b0f7b67d66c26b
+  docs/models/operations/vcioffercreateapirequest.md:
+    last_write_checksum: sha1:001ce997700a34a87a1da31e49da905e43bbb5ab
+  docs/models/operations/vcioffercreateapiresponse.md:
+    last_write_checksum: sha1:b76a7b3a3d65e1be64d98983c02b0e0f69b3cd01
+  docs/models/operations/vciofferinfoapirequest.md:
+    last_write_checksum: sha1:d9f0dffc5ca8967c7a33f7d3a0c069d15a4e32c1
+  docs/models/operations/vciofferinfoapiresponse.md:
+    last_write_checksum: sha1:02515fbd699ae3fff43d26ae48dee1f82c7c93bf
+  docs/models/operations/vcisingleissueapirequest.md:
+    last_write_checksum: sha1:1ef9b97908700cec20e47979409d6374244b353e
+  docs/models/operations/vcisingleissueapiresponse.md:
+    last_write_checksum: sha1:e07601075915157e749267ce396297f494638c71
+  docs/models/operations/vcisingleparseapirequest.md:
+    last_write_checksum: sha1:2a7d1f515f4e4fc0344f448831f6148b39c7390a
+  docs/models/operations/vcisingleparseapiresponse.md:
+    last_write_checksum: sha1:da37f0f3fdf807b5fa7a3237e8a51185745e7e23
+  docs/sdks/authorization/README.md:
+    last_write_checksum: sha1:ad96ac754b2d759e1161eb40a433b460337a3496
+  docs/sdks/authorizationmanagement/README.md:
+    last_write_checksum: sha1:a838122f22318cb406ddfc2d52d5380addf150e4
+  docs/sdks/ciba/README.md:
+    last_write_checksum: sha1:d02ef18a74a5099106d454d0fd84446640b450fe
+  docs/sdks/clientmanagement/README.md:
+    last_write_checksum: sha1:e169a8dc58674ec8f156d1277af45315db23e0fb
+  docs/sdks/clients/README.md:
+    last_write_checksum: sha1:a586f5fb5ab1410f0bbfef8f480d621942537a94
+  docs/sdks/deviceflow/README.md:
+    last_write_checksum: sha1:26c5020138ed4058217eafb55db5172f6cd653c6
+  docs/sdks/dynamicclientregistration/README.md:
+    last_write_checksum: sha1:0f264845fccea581d8dbdf73acc3933140014220
+  docs/sdks/federation/README.md:
+    last_write_checksum: sha1:b2adbc57d948b7ad40ca151d84aae62e33b0998e
+  docs/sdks/grantmanagement/README.md:
+    last_write_checksum: sha1:e1c052f30d98802cc41b263715af7948ea8245c1
+  docs/sdks/hardwaresecuritykeys/README.md:
+    last_write_checksum: sha1:e82b9530413f7b5129e5c2f89b1d29de3ca8b8ed
+  docs/sdks/introspection/README.md:
+    last_write_checksum: sha1:aa3d544669158351d173a7d17ce20e2a65502f5a
+  docs/sdks/joseobject/README.md:
+    last_write_checksum: sha1:9500a91a6541c731f0ae6e29b57385ce52c09044
+  docs/sdks/jwksetendpoint/README.md:
+    last_write_checksum: sha1:dc3a83c2cc68a0877c49ad4a56c5e49778809893
+  docs/sdks/nativesso/README.md:
+    last_write_checksum: sha1:3b22a5f22046c6171c4b02755b853eb11061657f
+  docs/sdks/pushedauthorization/README.md:
+    last_write_checksum: sha1:fe65289320161a85764b5afffc32a247fc47e85b
+  docs/sdks/revocation/README.md:
+    last_write_checksum: sha1:d370fce2322760764a5ea3f57f17b99a64211ad3
+  docs/sdks/services/README.md:
+    last_write_checksum: sha1:2e2c4ebf9d12d21aece1ada1d08f28c078c52ce6
+  docs/sdks/tokenmanagement/README.md:
+    last_write_checksum: sha1:e1b00845a630395049c3d92f58cd7e3385f4c3b3
+  docs/sdks/tokens/README.md:
+    last_write_checksum: sha1:6d2c38bf03021f2fd64a2fd6f9be8ac275f6960b
+  docs/sdks/userinfo/README.md:
+    last_write_checksum: sha1:1fe158d1f8d4d2b111fa657db21b7570dd94607d
+  docs/sdks/verifiablecredentials/README.md:
+    last_write_checksum: sha1:a78245cd600c4167c9773f740556a78feae49895
+  extra.rbi:
+    last_write_checksum: sha1:b4d764c7b4eb0b56246a260e2a6644523dc78b04
+  lib/authlete/authorization.rb:
+    last_write_checksum: sha1:c1377efc9755c3a063a7b6903f1c5c99e890645d
+  lib/authlete/authorization_management.rb:
+    last_write_checksum: sha1:8ff469193611549c8bdb3b9f144a15e2b06e7fe5
+  lib/authlete/ciba.rb:
+    last_write_checksum: sha1:e294300d00267b3fddf778a8f75e96da0c8539e0
+  lib/authlete/client.rb:
+    last_write_checksum: sha1:bd83413cc304854c1cff535eafd79fa6e7d6aff5
+  lib/authlete/client_management.rb:
+    last_write_checksum: sha1:93ca31ed87108acc12e4ea3c12b4d1bfe6d1ecd8
+  lib/authlete/clients.rb:
+    last_write_checksum: sha1:1e4c99f2bdbe3ef987ea6a7a1a0810993277605a
+  lib/authlete/device_flow.rb:
+    last_write_checksum: sha1:04bb86516a2f63d91b2abb1810abe4923b7ca307
+  lib/authlete/dynamic_client_registration.rb:
+    last_write_checksum: sha1:46524c185313a331c7eff9f4cbf820df12826c56
+  lib/authlete/federation.rb:
+    last_write_checksum: sha1:5c4ec0e6055d7f4d4cd859bd76e6f1fef99e4817
+  lib/authlete/grant_management.rb:
+    last_write_checksum: sha1:3be585c379c649098978f08973c91cb3fb728a85
+  lib/authlete/hardware_security_keys.rb:
+    last_write_checksum: sha1:384cd925edfa40843d218253eb2fcaa759c28baf
+  lib/authlete/introspection.rb:
+    last_write_checksum: sha1:b04b6f6a0c18c81b18fb7e006d02424b6b9b2565
+  lib/authlete/jose_object.rb:
+    last_write_checksum: sha1:a0164925fe4d938e4914d3f7dac2563edba2008e
+  lib/authlete/jwk_set_endpoint.rb:
+    last_write_checksum: sha1:66f97cf4fef7b4475b74fd177063d88ba91702a3
+  lib/authlete/models/callbacks.rb:
+    last_write_checksum: sha1:19cdc1c08b73749b208eb7df28f4bbd9aa9a6ebb
+  lib/authlete/models/components.rb:
+    last_write_checksum: sha1:dc9568c95bc64d975c0abb2cf35e504a4bf9f070
+  lib/authlete/models/components/access_token.rb:
+    last_write_checksum: sha1:d8a0f7ad5cd21435d549042b4118940c010e3d1e
+  lib/authlete/models/components/access_token.rbi:
+    last_write_checksum: sha1:08e0f83b19e6a47c430fdba185bc7af99c501889
+  lib/authlete/models/components/application_type.rb:
+    last_write_checksum: sha1:8c892757c6c4a16cf9c684f6b300449558a42266
+  lib/authlete/models/components/application_type.rbi:
+    last_write_checksum: sha1:048c4dba2a14fd36fe12d8b3f1b861a29d84061e
+  lib/authlete/models/components/attachment_type.rb:
+    last_write_checksum: sha1:f656c22ad35943fddf5ea1d69a2b21896378df79
+  lib/authlete/models/components/attachment_type.rbi:
+    last_write_checksum: sha1:7a22e9b92f35935b903faaba2dc39e7600b0a38f
+  lib/authlete/models/components/authorization_details_element.rb:
+    last_write_checksum: sha1:c664cc44130e284ac5fafdd2d29223a71f998d1a
+  lib/authlete/models/components/authorization_details_element.rbi:
+    last_write_checksum: sha1:96c87c6b721ee8930981e23d29fcad1ec9a124f4
+  lib/authlete/models/components/authorization_fail_request.rb:
+    last_write_checksum: sha1:00b9485428cafbb25503372a191dbd62c32e0e47
+  lib/authlete/models/components/authorization_fail_request.rbi:
+    last_write_checksum: sha1:18b1763380377593fa352d47427d9b41975bb6ff
+  lib/authlete/models/components/authorization_fail_request_reason.rb:
+    last_write_checksum: sha1:e3df4637fa9721979bc4195129d9da8f3db1c1c1
+  lib/authlete/models/components/authorization_fail_request_reason.rbi:
+    last_write_checksum: sha1:cb0b2c9321d40bc4fe3871b2e97a95375fb702c6
+  lib/authlete/models/components/authorization_fail_response.rb:
+    last_write_checksum: sha1:bb51ca1bfdadc54a70a8bba9bf229d34a5491ffe
+  lib/authlete/models/components/authorization_fail_response.rbi:
+    last_write_checksum: sha1:680a84807d8cbd982af52f9444efe3955620ce9f
+  lib/authlete/models/components/authorization_fail_response_action.rb:
+    last_write_checksum: sha1:6d45d63c04f1bf77f59c96ced61996e113a6ad1e
+  lib/authlete/models/components/authorization_fail_response_action.rbi:
+    last_write_checksum: sha1:dac40d11b68ba14cd729a14c11febfca6ca94b70
+  lib/authlete/models/components/authorization_issue_request.rb:
+    last_write_checksum: sha1:1c741950aa67f8e8212700690399846066705369
+  lib/authlete/models/components/authorization_issue_request.rbi:
+    last_write_checksum: sha1:70d662d13c93476a61a62184f9e3bc5226a3928e
+  lib/authlete/models/components/authorization_issue_response.rb:
+    last_write_checksum: sha1:5e8f43565a43c68dcb625c04e37c68fa244b0b1d
+  lib/authlete/models/components/authorization_issue_response.rbi:
+    last_write_checksum: sha1:141f172be82ff671f6b6302f56bb32910f5fd9f8
+  lib/authlete/models/components/authorization_issue_response_action.rb:
+    last_write_checksum: sha1:4f16a5f2f7ec431c72bfdc8cfa3cc09cc25247f4
+  lib/authlete/models/components/authorization_issue_response_action.rbi:
+    last_write_checksum: sha1:fdf08fd0601ed24d8d2f87dc0a9f1f2c7ab6aa12
+  lib/authlete/models/components/authorization_request.rb:
+    last_write_checksum: sha1:d8fabb3d3a92714983003851182e01ade30363b8
+  lib/authlete/models/components/authorization_request.rbi:
+    last_write_checksum: sha1:494748135ab7224a34bed6d2890bf3dca07d1396
+  lib/authlete/models/components/authorization_response.rb:
+    last_write_checksum: sha1:d5b2f9a90539a7437ad39aa56f8786e93f8de547
+  lib/authlete/models/components/authorization_response.rbi:
+    last_write_checksum: sha1:23b9b6da3c606155304337fe5ba894fe663da598
+  lib/authlete/models/components/authorization_response_action.rb:
+    last_write_checksum: sha1:abdfdf96af9be0d75060f4aaaa135928eccb9c7c
+  lib/authlete/models/components/authorization_response_action.rbi:
+    last_write_checksum: sha1:d3ba115fa3b98da8e22aba0e0d4287f1ae3b01f6
+  lib/authlete/models/components/authorization_ticket_info.rb:
+    last_write_checksum: sha1:140c716a11467beb9b3d0962b4ad3b58a5a17124
+  lib/authlete/models/components/authorization_ticket_info.rbi:
+    last_write_checksum: sha1:180bfc782c0a867ab4c0023b133b109fb9407338
+  lib/authlete/models/components/authorization_ticket_info_request.rb:
+    last_write_checksum: sha1:1ccbce8b9b6d101185d9a510da6e3bce7aa8660d
+  lib/authlete/models/components/authorization_ticket_info_request.rbi:
+    last_write_checksum: sha1:e65b45ec0bf0d0b3816ac438010c50bd32aa5a76
+  lib/authlete/models/components/authorization_ticket_info_response.rb:
+    last_write_checksum: sha1:b09ff9dbee95c7668e7b2a276602d16e82364205
+  lib/authlete/models/components/authorization_ticket_info_response.rbi:
+    last_write_checksum: sha1:4aec07a63060b11d5c26f61279c0569de0c7584d
+  lib/authlete/models/components/authorization_ticket_info_response_action.rb:
+    last_write_checksum: sha1:b33fba723dd2162d49f67e394b98fa0cacaf3b49
+  lib/authlete/models/components/authorization_ticket_info_response_action.rbi:
+    last_write_checksum: sha1:a040d0b23f8092b5e6d1540fce456fc8dc10bc27
+  lib/authlete/models/components/authorization_ticket_update_request.rb:
+    last_write_checksum: sha1:1f7624dbbf2cbc76c28f56b50f89aa1f02824858
+  lib/authlete/models/components/authorization_ticket_update_request.rbi:
+    last_write_checksum: sha1:e916068152c23eaa1dd1945eb8a226316f4263dd
+  lib/authlete/models/components/authorization_ticket_update_response.rb:
+    last_write_checksum: sha1:b5db69c7c765b5b1a27cbbfbb55979a09d44ef5f
+  lib/authlete/models/components/authorization_ticket_update_response.rbi:
+    last_write_checksum: sha1:ef381f0da2d5dee629c9724e379ff4b4ec568eca
+  lib/authlete/models/components/authorization_ticket_update_response_action.rb:
+    last_write_checksum: sha1:bd0a2447d974f659e82546dc1ee4291cc5a63887
+  lib/authlete/models/components/authorization_ticket_update_response_action.rbi:
+    last_write_checksum: sha1:2822a6b3a7b7a3b5cb63e6e00d87e73543a6d9ab
+  lib/authlete/models/components/authz_details.rb:
+    last_write_checksum: sha1:59c4faecb2293472ed77bde8eb64b721d0ede914
+  lib/authlete/models/components/authz_details.rbi:
+    last_write_checksum: sha1:266ea4d4997080dd59698c38dd93319fa0d5ebc1
+  lib/authlete/models/components/backchannel_authentication_complete_request.rb:
+    last_write_checksum: sha1:ffd295db48cf2098c73fad36da2740e6c98f7e58
+  lib/authlete/models/components/backchannel_authentication_complete_request.rbi:
+    last_write_checksum: sha1:357810dfab55e2d35ec5827c44ac3dec052a6479
+  lib/authlete/models/components/backchannel_authentication_complete_request_result.rb:
+    last_write_checksum: sha1:fab7deee436a621e36f2057c30ab4493f5e51e31
+  lib/authlete/models/components/backchannel_authentication_complete_request_result.rbi:
+    last_write_checksum: sha1:52e5f2f315674eb2ee98d3b32fec3c261e539ee8
+  lib/authlete/models/components/backchannel_authentication_complete_response.rb:
+    last_write_checksum: sha1:2a1840e41f2344473bfc5d55a0ee3cb188b1d995
+  lib/authlete/models/components/backchannel_authentication_complete_response.rbi:
+    last_write_checksum: sha1:46a1427a7ce0954375fd9451fc6855cf2c2b8bd4
+  lib/authlete/models/components/backchannel_authentication_complete_response_action.rb:
+    last_write_checksum: sha1:7cd5660a0f3373642628dc8e8e1d31cb0cd41cb6
+  lib/authlete/models/components/backchannel_authentication_complete_response_action.rbi:
+    last_write_checksum: sha1:5a44ad5dc88736459d48fd0127e5823db055874b
+  lib/authlete/models/components/backchannel_authentication_fail_request.rb:
+    last_write_checksum: sha1:102293170dd1bf31162749cc8805c0dc4e33400f
+  lib/authlete/models/components/backchannel_authentication_fail_request.rbi:
+    last_write_checksum: sha1:318a1074fad42af46da81dee427862fe7009a6b3
+  lib/authlete/models/components/backchannel_authentication_fail_request_reason.rb:
+    last_write_checksum: sha1:0b9c95ad286dad6360a38a41ca8761d846b3c418
+  lib/authlete/models/components/backchannel_authentication_fail_request_reason.rbi:
+    last_write_checksum: sha1:a056ac1dba1e411e65d0107c335557b9523045db
+  lib/authlete/models/components/backchannel_authentication_fail_response.rb:
+    last_write_checksum: sha1:c47e6bf5dd8622bb716ab70c23a7aeb840bad76c
+  lib/authlete/models/components/backchannel_authentication_fail_response.rbi:
+    last_write_checksum: sha1:c930298e0db8eed050814ef9d3ed919c3bf8e22d
+  lib/authlete/models/components/backchannel_authentication_fail_response_action.rb:
+    last_write_checksum: sha1:7cb100178bb810c2b7304fe9b0e6ae649b696b03
+  lib/authlete/models/components/backchannel_authentication_fail_response_action.rbi:
+    last_write_checksum: sha1:ce22582b9b666cd3dd426cc2b7dc8f8ded48f224
+  lib/authlete/models/components/backchannel_authentication_issue_request.rb:
+    last_write_checksum: sha1:02a5dc84d2b6cd06f87675559089319cff4a3c3f
+  lib/authlete/models/components/backchannel_authentication_issue_request.rbi:
+    last_write_checksum: sha1:ee0eb758d3e06bbbd6a8691689f2ccf60b1ec427
+  lib/authlete/models/components/backchannel_authentication_issue_response.rb:
+    last_write_checksum: sha1:c2cb261aac1e2c92f43617ff349957e32be56498
+  lib/authlete/models/components/backchannel_authentication_issue_response.rbi:
+    last_write_checksum: sha1:53017396053b7e55698170f9d2e038533104663f
+  lib/authlete/models/components/backchannel_authentication_issue_response_action.rb:
+    last_write_checksum: sha1:0e801967a5f41db7f838cb165d8a44f9467b3d4d
+  lib/authlete/models/components/backchannel_authentication_issue_response_action.rbi:
+    last_write_checksum: sha1:225aace720e4db86115635f25f12e1251790cd3b
+  lib/authlete/models/components/backchannel_authentication_request.rb:
+    last_write_checksum: sha1:b161df3d04558e0a647c6fc656fec07dbed14538
+  lib/authlete/models/components/backchannel_authentication_request.rbi:
+    last_write_checksum: sha1:b0766883de226719c07f5232b5be1f899c571158
+  lib/authlete/models/components/backchannel_authentication_response.rb:
+    last_write_checksum: sha1:e0dd3862c974b9494808b586f727bf402a59d95a
+  lib/authlete/models/components/backchannel_authentication_response.rbi:
+    last_write_checksum: sha1:30c9408972a26dedb038d05d456c970c6bfdd7d4
+  lib/authlete/models/components/backchannel_authentication_response_action.rb:
+    last_write_checksum: sha1:d2564b8f28154c83f24ab58780674719e22d2360
+  lib/authlete/models/components/backchannel_authentication_response_action.rbi:
+    last_write_checksum: sha1:dbbf65dbe512d6d0f62d998b9b4b832adbd61177
+  lib/authlete/models/components/cimd_options.rb:
+    last_write_checksum: sha1:b25c70289097768c58afc77b5bd8761e08798aad
+  lib/authlete/models/components/cimd_options.rbi:
+    last_write_checksum: sha1:0f86b22e10fc376a6ef3b025d435497fe5895590
+  lib/authlete/models/components/claim_type.rb:
+    last_write_checksum: sha1:450d8bb6d5eaae00d75e474acbbfd182854893db
+  lib/authlete/models/components/claim_type.rbi:
+    last_write_checksum: sha1:875fa6d0b843197ee4851e108c134a6f95f073cb
+  lib/authlete/models/components/client.rb:
+    last_write_checksum: sha1:a49f94ad4f8b855c5f72e8364c2ad809d1d975ae
+  lib/authlete/models/components/client.rbi:
+    last_write_checksum: sha1:e67a3898468bf111bef12cefe9d04df39932d2e9
+  lib/authlete/models/components/client_auth_method.rb:
+    last_write_checksum: sha1:5679df8b555e9078dc8b86e64af8cacfe019d63d
+  lib/authlete/models/components/client_auth_method.rbi:
+    last_write_checksum: sha1:9c8764b6ec99a5ee42bd87d91ced370ddf5cad59
+  lib/authlete/models/components/client_authorization_delete_response.rb:
+    last_write_checksum: sha1:7f7ac44429eecb19dbaebbba1da8e76fc44b51da
+  lib/authlete/models/components/client_authorization_delete_response.rbi:
+    last_write_checksum: sha1:12751bf8154e36b953ff346a86d7b9bf6fe5ffb4
+  lib/authlete/models/components/client_authorization_get_list_response.rb:
+    last_write_checksum: sha1:876f2ddc01653d8d3a1db67a357baded5772172b
+  lib/authlete/models/components/client_authorization_get_list_response.rbi:
+    last_write_checksum: sha1:55ab61d33d2727021728d1aa8ad428e1eb5f6d73
+  lib/authlete/models/components/client_authorization_update_request.rb:
+    last_write_checksum: sha1:73335399519401880d66c8a991057c7d37d5a01f
+  lib/authlete/models/components/client_authorization_update_request.rbi:
+    last_write_checksum: sha1:164b3d5d81494a0405c882427755d3a1e1957876
+  lib/authlete/models/components/client_authorization_update_response.rb:
+    last_write_checksum: sha1:32ed520a652b41ae9ad9af33d505f3c7b8a70ef9
+  lib/authlete/models/components/client_authorization_update_response.rbi:
+    last_write_checksum: sha1:7e66b7b8a74a62181f2025cfc731d5fd2d94ec94
+  lib/authlete/models/components/client_extension.rb:
+    last_write_checksum: sha1:0e436952c1d7238e03815192aeb4c8df6be61c6b
+  lib/authlete/models/components/client_extension.rbi:
+    last_write_checksum: sha1:17cc1cebf81117bef374a63bd207ed0f1247a146
+  lib/authlete/models/components/client_extension_requestable_scopes_get_response.rb:
+    last_write_checksum: sha1:b616226fd08a0001d8a6e2051ce23309023a07eb
+  lib/authlete/models/components/client_extension_requestable_scopes_get_response.rbi:
+    last_write_checksum: sha1:4c6bab38e76995c0bdfc062608dcc8bdda96d538
+  lib/authlete/models/components/client_extension_requestable_scopes_update_request.rb:
+    last_write_checksum: sha1:f4327b04df05f7078079b363ba3cadbef9899168
+  lib/authlete/models/components/client_extension_requestable_scopes_update_request.rbi:
+    last_write_checksum: sha1:d932a44a1027bedce578337579ab914aa766059b
+  lib/authlete/models/components/client_extension_requestable_scopes_update_response.rb:
+    last_write_checksum: sha1:0fba91fac0110492651c522eaef952610f62e39c
+  lib/authlete/models/components/client_extension_requestable_scopes_update_response.rbi:
+    last_write_checksum: sha1:35f5209b0b011fdf040d7bef4fa48e264b08843d
+  lib/authlete/models/components/client_flag_update_request.rb:
+    last_write_checksum: sha1:11fd79a9f2a3323f215da8b11818307b776da4e5
+  lib/authlete/models/components/client_flag_update_request.rbi:
+    last_write_checksum: sha1:62ef32be47fde972fbb885c5fd500de6f18722cb
+  lib/authlete/models/components/client_flag_update_response.rb:
+    last_write_checksum: sha1:194726966ef318dd4d34366b98c2323f8f933da4
+  lib/authlete/models/components/client_flag_update_response.rbi:
+    last_write_checksum: sha1:2ce1c71ca3606b7baab16713b74986ac9c9f1139
+  lib/authlete/models/components/client_get_list_response.rb:
+    last_write_checksum: sha1:63a16ddeeffdfc1a4030281177d521351e2fb7c6
+  lib/authlete/models/components/client_get_list_response.rbi:
+    last_write_checksum: sha1:d31ca24327449c3e54304863a105e2560cf26447
+  lib/authlete/models/components/client_granted_scopes_delete_response.rb:
+    last_write_checksum: sha1:916483cc443976be46f5c57666b6a17f2d168133
+  lib/authlete/models/components/client_granted_scopes_delete_response.rbi:
+    last_write_checksum: sha1:da36814ef3810632cb630e8cdbf59a168128adfd
+  lib/authlete/models/components/client_input.rb:
+    last_write_checksum: sha1:b6ee6ad930ab2edf951c5763aaf0bf7353b7380d
+  lib/authlete/models/components/client_input.rbi:
+    last_write_checksum: sha1:abfce18f4d41b79e96f63624595dd6991ee48af0
+  lib/authlete/models/components/client_limited.rb:
+    last_write_checksum: sha1:68da8c80134d208fc52eb673eb0c2336916cfc16
+  lib/authlete/models/components/client_limited.rbi:
+    last_write_checksum: sha1:f0c9da6fd57642ae9c7f0124990524d8480f4df0
+  lib/authlete/models/components/client_limited_authorization.rb:
+    last_write_checksum: sha1:9686743f788f03c1d685d7ec68879ae16e130cd0
+  lib/authlete/models/components/client_limited_authorization.rbi:
+    last_write_checksum: sha1:db73cd06e3e452b62b75d44c00987a98761a3dd9
+  lib/authlete/models/components/client_registration_response.rb:
+    last_write_checksum: sha1:d4cf5998c79b885e14af391852d2c273ba612f7c
+  lib/authlete/models/components/client_registration_response.rbi:
+    last_write_checksum: sha1:529e41ef09c6bd28e907800c06cad35680275a08
+  lib/authlete/models/components/client_registration_response_action.rb:
+    last_write_checksum: sha1:b7bd2655f4deca86c783e5c4ab22e0a68a153d17
+  lib/authlete/models/components/client_registration_response_action.rbi:
+    last_write_checksum: sha1:8656ee867f07f743f206a172c7d303ee5cb45938
+  lib/authlete/models/components/client_registration_type.rb:
+    last_write_checksum: sha1:5ad595ef52f484f2e76e890489f97719515615af
+  lib/authlete/models/components/client_registration_type.rbi:
+    last_write_checksum: sha1:f6fc637cdbe2d5a8338a6c7c2bfdb23042c20e76
+  lib/authlete/models/components/client_secret_refresh_response.rb:
+    last_write_checksum: sha1:18d22c9d4fc48478c7f0942b0524ef72fdc917d9
+  lib/authlete/models/components/client_secret_refresh_response.rbi:
+    last_write_checksum: sha1:09edee7724606e6dfc6aec5956f2031259951ac0
+  lib/authlete/models/components/client_secret_update_request.rb:
+    last_write_checksum: sha1:8212441f7bc35de5afa8a65f0b6fd28590fdc070
+  lib/authlete/models/components/client_secret_update_request.rbi:
+    last_write_checksum: sha1:5998a9e2460951b049bfa5c03dec779a2ce5f2b2
+  lib/authlete/models/components/client_secret_update_response.rb:
+    last_write_checksum: sha1:dc5a703f39a2dc54437f473efa8cbaeb33db0049
+  lib/authlete/models/components/client_secret_update_response.rbi:
+    last_write_checksum: sha1:f097eafda0b8384b2ee28e288fb6dce6405d9c8b
+  lib/authlete/models/components/client_type.rb:
+    last_write_checksum: sha1:5dea430271e9aadb82664694b3defde770420ae7
+  lib/authlete/models/components/client_type.rbi:
+    last_write_checksum: sha1:703372c32ce0d15f731342a8653f3157ca9fe813
+  lib/authlete/models/components/clientsource.rb:
+    last_write_checksum: sha1:dd00ec5da4062b78039fbb7899d0cff06ae89911
+  lib/authlete/models/components/clientsource.rbi:
+    last_write_checksum: sha1:2530548cc6d3bbc23548a87af33923c5ea5b77a2
+  lib/authlete/models/components/credential_issuance_order.rb:
+    last_write_checksum: sha1:45bcbbaca4f6243ee44b6bc53c1924a853a12205
+  lib/authlete/models/components/credential_issuance_order.rbi:
+    last_write_checksum: sha1:afafdc06146b29460726046c13034e01bbc1d795
+  lib/authlete/models/components/credential_issuer_metadata.rb:
+    last_write_checksum: sha1:1f5c6db544ce91e57ee508b51d836b1d810f9c06
+  lib/authlete/models/components/credential_issuer_metadata.rbi:
+    last_write_checksum: sha1:0f70a02e89400b4b29b033aeea7c1f7f02ae96e7
+  lib/authlete/models/components/credential_offer_info.rb:
+    last_write_checksum: sha1:86b06d9af5d409394b4b0f9bd010ab1a692df749
+  lib/authlete/models/components/credential_offer_info.rbi:
+    last_write_checksum: sha1:7a3d26c6defd5f1986e9528ab94ace7535aab6ac
+  lib/authlete/models/components/credential_request_info.rb:
+    last_write_checksum: sha1:6ab2ca070a4ebd4c6f1601a7631fbc04d6dbdf7d
+  lib/authlete/models/components/credential_request_info.rbi:
+    last_write_checksum: sha1:5d1dbdf6fa5cff57d2978144915c7652f7c056eb
+  lib/authlete/models/components/delivery_mode.rb:
+    last_write_checksum: sha1:2463b4dee2daa7f44c76e4c7c5ad99b652bfe74f
+  lib/authlete/models/components/delivery_mode.rbi:
+    last_write_checksum: sha1:cbbfedb6b647d153e46a1ef451f97db8db880819
+  lib/authlete/models/components/device_authorization_request.rb:
+    last_write_checksum: sha1:94b5d840b43354da3a73bf16951bc25edd7a9da9
+  lib/authlete/models/components/device_authorization_request.rbi:
+    last_write_checksum: sha1:c91a0e9b2de07ced9f94e9fdc73b1bb82e23d6d0
+  lib/authlete/models/components/device_authorization_response.rb:
+    last_write_checksum: sha1:eea19670e84dca257c870df51d27aa61623650a4
+  lib/authlete/models/components/device_authorization_response.rbi:
+    last_write_checksum: sha1:d03ba8c1d320c3a90c5247f4a21f722fa6dd8d8f
+  lib/authlete/models/components/device_authorization_response_action.rb:
+    last_write_checksum: sha1:7756d8662cc47f161e58cf4e80aa9bcf8fad0fd2
+  lib/authlete/models/components/device_authorization_response_action.rbi:
+    last_write_checksum: sha1:22a39f848c034a64cd2141b56fcf4b148dba6f19
+  lib/authlete/models/components/device_complete_request.rb:
+    last_write_checksum: sha1:f2337526c6774ddec2bfec6c1f6f8bc4d5bfcff8
+  lib/authlete/models/components/device_complete_request.rbi:
+    last_write_checksum: sha1:6e22fbfca2f77614591186af3a6f92b2f9e0fa5d
+  lib/authlete/models/components/device_complete_request_result.rb:
+    last_write_checksum: sha1:0becaefda651291c39aeed5ab08836d5ca1f7d2f
+  lib/authlete/models/components/device_complete_request_result.rbi:
+    last_write_checksum: sha1:f082dd76f5e998c1da68fb6a15936f46303fd431
+  lib/authlete/models/components/device_complete_response.rb:
+    last_write_checksum: sha1:e691c0e7270ac3de8f0adf941a29076ea0f92944
+  lib/authlete/models/components/device_complete_response.rbi:
+    last_write_checksum: sha1:f0be55a81901acd4c4594fe3450500f9397a3d72
+  lib/authlete/models/components/device_complete_response_action.rb:
+    last_write_checksum: sha1:513a216b0bf660b30fbec3d137eed7449dcf5a2f
+  lib/authlete/models/components/device_complete_response_action.rbi:
+    last_write_checksum: sha1:a6a0b4214979b727a8c19077bbd27bc281da06a6
+  lib/authlete/models/components/device_verification_request.rb:
+    last_write_checksum: sha1:7ec15988e4ad1811c77dc54409a4b4fdf730867b
+  lib/authlete/models/components/device_verification_request.rbi:
+    last_write_checksum: sha1:74baf32a6e83e9ee644c6dcdb97bae4eae61173c
+  lib/authlete/models/components/device_verification_response.rb:
+    last_write_checksum: sha1:87e12a0bccb7c09de229f5c21108ea71655e8a21
+  lib/authlete/models/components/device_verification_response.rbi:
+    last_write_checksum: sha1:e69c04619b0c085ae205481fed1ab9816a5b21d5
+  lib/authlete/models/components/device_verification_response_action.rb:
+    last_write_checksum: sha1:912bf854fa1a29ccd61530e52eecda582946b7b3
+  lib/authlete/models/components/device_verification_response_action.rbi:
+    last_write_checksum: sha1:3b93d59d57e54538f206849f4b91f1c84ac6c0bb
+  lib/authlete/models/components/display.rb:
+    last_write_checksum: sha1:6d560d9c3057ef0a21fa1470c2e302d4661024c8
+  lib/authlete/models/components/display.rbi:
+    last_write_checksum: sha1:1882d08f230d369ab212527dd2e9cfbd760a6e08
+  lib/authlete/models/components/dynamic_scope.rb:
+    last_write_checksum: sha1:4a1a209a703b8e34d346a4b7105675d1f6dcc788
+  lib/authlete/models/components/dynamic_scope.rbi:
+    last_write_checksum: sha1:1b2bb2790b07fac1979b05cc0d2f3969f97f7519
+  lib/authlete/models/components/fapi_mode.rb:
+    last_write_checksum: sha1:320a8bf5735c8c9a6c839e1bab04487d2a0ff72c
+  lib/authlete/models/components/fapi_mode.rbi:
+    last_write_checksum: sha1:32a93d2d8b431ac73c20d662223732e195078b94
+  lib/authlete/models/components/federation_configuration_response.rb:
+    last_write_checksum: sha1:947f7fcc124846b1a2506c82a7784baa93e7ce16
+  lib/authlete/models/components/federation_configuration_response.rbi:
+    last_write_checksum: sha1:1bf2dd2df0ada9a8ae1e1cf34ca38489ea98ce8c
+  lib/authlete/models/components/federation_configuration_response_action.rb:
+    last_write_checksum: sha1:464b21f77fd42d8062f7643068cb9f79fae92fc8
+  lib/authlete/models/components/federation_configuration_response_action.rbi:
+    last_write_checksum: sha1:7fa5d0ba3b6a2a0c6577190ddff336a5fea3935a
+  lib/authlete/models/components/federation_registration_request.rb:
+    last_write_checksum: sha1:0f6b8524d59a5f3f045ca949e55f953494bb2a7c
+  lib/authlete/models/components/federation_registration_request.rbi:
+    last_write_checksum: sha1:908983b8e4791c5924541fc83869f4793249df1a
+  lib/authlete/models/components/federation_registration_response.rb:
+    last_write_checksum: sha1:d393dd515234c59eb20a0b5f12645072e9bef8b8
+  lib/authlete/models/components/federation_registration_response.rbi:
+    last_write_checksum: sha1:ddba6dd406dcc17e969127ad03d8340a3041719c
+  lib/authlete/models/components/federation_registration_response_action.rb:
+    last_write_checksum: sha1:1a3206d55a1681718b5d28eda8801cd315cf87d2
+  lib/authlete/models/components/federation_registration_response_action.rbi:
+    last_write_checksum: sha1:244859226f212ecbec5b6148c3504926c549c4b4
+  lib/authlete/models/components/g_m_request.rb:
+    last_write_checksum: sha1:c9f81f4f5c072e7f5522380d93c37e02dcc134a4
+  lib/authlete/models/components/g_m_request.rbi:
+    last_write_checksum: sha1:fe6055a63273ce600c90d5758be5180faa75c687
+  lib/authlete/models/components/g_m_response.rb:
+    last_write_checksum: sha1:c12066cc5e84f18a61338c8e3ee14ce2a3cdbb35
+  lib/authlete/models/components/g_m_response.rbi:
+    last_write_checksum: sha1:71b56910c5de41124a4c6ad4c222727543ad80fd
+  lib/authlete/models/components/g_m_response_action.rb:
+    last_write_checksum: sha1:5909d67b1e3d1e85af8071b6744b536a2b297e39
+  lib/authlete/models/components/g_m_response_action.rbi:
+    last_write_checksum: sha1:f611d4a42eae59564f0cbc1e5428ccc88c800d85
+  lib/authlete/models/components/grant.rb:
+    last_write_checksum: sha1:30c80d894a1746d065864a5f00dc31d2ab4058fb
+  lib/authlete/models/components/grant.rbi:
+    last_write_checksum: sha1:503af0049c44db58f200c4829ccb258ad9b1af66
+  lib/authlete/models/components/grant_management_action.rb:
+    last_write_checksum: sha1:e31e13fa04b1a9fdf7c668fb4cd7fc27b3e11fd3
+  lib/authlete/models/components/grant_management_action.rbi:
+    last_write_checksum: sha1:f5a01b5c6f21b14ce1ab3f1dd1acda9ac7669c3f
+  lib/authlete/models/components/grant_scope.rb:
+    last_write_checksum: sha1:e92f6acca063c68266bf2e3be3d068f3602b8c20
+  lib/authlete/models/components/grant_scope.rbi:
+    last_write_checksum: sha1:ae9ddbf99b4e42c8e501e2e7df9f60cab8cd4ade
+  lib/authlete/models/components/grant_type.rb:
+    last_write_checksum: sha1:f878f7ef72aa8684380711bc913db1e39ad2996a
+  lib/authlete/models/components/grant_type.rbi:
+    last_write_checksum: sha1:1812ee0c26a329a615e543cc766b960aa94c42d7
+  lib/authlete/models/components/hsk.rb:
+    last_write_checksum: sha1:dc3fc5cd0b9f9963fcbc107f21d5506d4a7cc4d3
+  lib/authlete/models/components/hsk.rbi:
+    last_write_checksum: sha1:7a87f014da8fb49fe1ed969e0434f06fb3f5424f
+  lib/authlete/models/components/hsk_create_request.rb:
+    last_write_checksum: sha1:2d262ccad536e09ec8bdb2a075b5c2f6d543a5d8
+  lib/authlete/models/components/hsk_create_request.rbi:
+    last_write_checksum: sha1:19e742cbf23179f907d251e75dfea714b05b9b68
+  lib/authlete/models/components/hsk_create_response.rb:
+    last_write_checksum: sha1:148542d6c4948992f23d28d38294656cf9799e2a
+  lib/authlete/models/components/hsk_create_response.rbi:
+    last_write_checksum: sha1:21a632eb9315f93437f1deffebc37d4d9b1d133b
+  lib/authlete/models/components/hsk_create_response_action.rb:
+    last_write_checksum: sha1:bb7f646d49ab0ab4c7f6ea5cbc3b522a10b4a045
+  lib/authlete/models/components/hsk_create_response_action.rbi:
+    last_write_checksum: sha1:630ae467f0d0b5dd889690df7f6f6f9bff463051
+  lib/authlete/models/components/hsk_delete_response.rb:
+    last_write_checksum: sha1:4cde137b9b25f9e0b7a8f1be50cb91f1632998c7
+  lib/authlete/models/components/hsk_delete_response.rbi:
+    last_write_checksum: sha1:8140e1a7c738f8b6d66a8f2b8a7adf2c1d0ae241
+  lib/authlete/models/components/hsk_delete_response_action.rb:
+    last_write_checksum: sha1:82b82183e4833ef37cf2f69b30dca7c8c9238d20
+  lib/authlete/models/components/hsk_delete_response_action.rbi:
+    last_write_checksum: sha1:a1ba919d0d5ec9b9473bf03a2e59881fe94e780b
+  lib/authlete/models/components/hsk_get_list_response.rb:
+    last_write_checksum: sha1:ee7e4144f56e3b4875b7f2b24dc61292e0288e55
+  lib/authlete/models/components/hsk_get_list_response.rbi:
+    last_write_checksum: sha1:7fdeb1d5fab8d9f39607af059c690bd342789b69
+  lib/authlete/models/components/hsk_get_list_response_action.rb:
+    last_write_checksum: sha1:9939fe466dd9db1c35a8c0534358c7e16d197c7d
+  lib/authlete/models/components/hsk_get_list_response_action.rbi:
+    last_write_checksum: sha1:fe92d452c1ada1302bf7b6b51da2b4780a2d1eec
+  lib/authlete/models/components/hsk_get_response.rb:
+    last_write_checksum: sha1:5c1d13070b8b3945b7c160a5fd98fb67befa9ded
+  lib/authlete/models/components/hsk_get_response.rbi:
+    last_write_checksum: sha1:526e1c5707cad04fc648faf747d2bed538ab9a93
+  lib/authlete/models/components/hsk_get_response_action.rb:
+    last_write_checksum: sha1:6baab32a11ffc7d8e50bf487edb823b8e5ea2832
+  lib/authlete/models/components/hsk_get_response_action.rbi:
+    last_write_checksum: sha1:e56deb6426225ec449608249f9aea914e39fbdde
+  lib/authlete/models/components/idtoken_reissue_request.rb:
+    last_write_checksum: sha1:968dc783e9fba7d59e69c72a50cabd492c7e40a8
+  lib/authlete/models/components/idtoken_reissue_request.rbi:
+    last_write_checksum: sha1:ff08d83032d7345ccff6f93c50c4393f380db124
+  lib/authlete/models/components/idtoken_reissue_response.rb:
+    last_write_checksum: sha1:dddc8dd5d2a446fef4ae57a54aaaaeea7e7998d1
+  lib/authlete/models/components/idtoken_reissue_response.rbi:
+    last_write_checksum: sha1:c5641d5a47454b891948ef75afb7963219dd233e
+  lib/authlete/models/components/idtoken_reissue_response_action.rb:
+    last_write_checksum: sha1:5a58f9ba05ed6659d3dbf0d6c5bd4578cd0d30ad
+  lib/authlete/models/components/idtoken_reissue_response_action.rbi:
+    last_write_checksum: sha1:a597f54ee8de3df3efeceeeb995fb6f8f9a53767
+  lib/authlete/models/components/introspection_request.rb:
+    last_write_checksum: sha1:b8be08a9ef07890c014db33524f6c5a3a4a748e7
+  lib/authlete/models/components/introspection_request.rbi:
+    last_write_checksum: sha1:55b23c1efa879353f1711b22d9926a44c9c29bed
+  lib/authlete/models/components/introspection_response.rb:
+    last_write_checksum: sha1:468f289051e5cc2bbb52d6c991badb57bfac2088
+  lib/authlete/models/components/introspection_response.rbi:
+    last_write_checksum: sha1:36520ef15855a2cde08030c86a9277e060c05ff0
+  lib/authlete/models/components/introspection_response_action.rb:
+    last_write_checksum: sha1:4274f0285c044a0d5ef1b615a55cf15399aa5b5c
+  lib/authlete/models/components/introspection_response_action.rbi:
+    last_write_checksum: sha1:8249ccbfdf3c1bf034c7eb52d61b47f21550fb6a
+  lib/authlete/models/components/jose_verify_request.rb:
+    last_write_checksum: sha1:53dfa91efba89cdb6afbfc29a8636fca89f031cb
+  lib/authlete/models/components/jose_verify_request.rbi:
+    last_write_checksum: sha1:94409ac77451ee550b11e3803051a089d534fccc
+  lib/authlete/models/components/jose_verify_response.rb:
+    last_write_checksum: sha1:fa195855023f98e80a6956dc4457391825bf8b69
+  lib/authlete/models/components/jose_verify_response.rbi:
+    last_write_checksum: sha1:f057b910cfb3ac25b89cd8383b6cdb314daf8e65
+  lib/authlete/models/components/jwe_alg.rb:
+    last_write_checksum: sha1:86da0eb89e797366067583c1bd2341fc3df758e7
+  lib/authlete/models/components/jwe_alg.rbi:
+    last_write_checksum: sha1:d771fdcbc02074577d6a8ef322f8de241fd4d6ff
+  lib/authlete/models/components/jwe_enc.rb:
+    last_write_checksum: sha1:60ccf3019c0156387f3b20a17b86edfb52323102
+  lib/authlete/models/components/jwe_enc.rbi:
+    last_write_checksum: sha1:bca9ee05093caf96e815266d0f13e121cf405377
+  lib/authlete/models/components/jws_alg.rb:
+    last_write_checksum: sha1:83013131293a6aa7c8adaf63be93517084996df1
+  lib/authlete/models/components/jws_alg.rbi:
+    last_write_checksum: sha1:e8c11b95f14f7e3b8a603f33d5268697350a9165
+  lib/authlete/models/components/named_uri.rb:
+    last_write_checksum: sha1:6350453c6f4293cb92e1a4c9c46cd72863c352a9
+  lib/authlete/models/components/named_uri.rbi:
+    last_write_checksum: sha1:221d28cc1f7659c1e5e32566534db72a52172226
+  lib/authlete/models/components/native_sso_logout_request.rb:
+    last_write_checksum: sha1:fd89ad6c58c1accc96130a4dc0fcc93f279e38e8
+  lib/authlete/models/components/native_sso_logout_request.rbi:
+    last_write_checksum: sha1:e60f17a9055308a9fe396170be60424e0d6c70ee
+  lib/authlete/models/components/native_sso_logout_response.rb:
+    last_write_checksum: sha1:df65ee615ee5642984d53aeacf4338843c41b8d8
+  lib/authlete/models/components/native_sso_logout_response.rbi:
+    last_write_checksum: sha1:74a5c4948ea786956943a3f77e2bb4f88fb4ca71
+  lib/authlete/models/components/native_sso_logout_response_action.rb:
+    last_write_checksum: sha1:5794e0fb6ee72e8954e8d5c4e872a38bee9d7909
+  lib/authlete/models/components/native_sso_logout_response_action.rbi:
+    last_write_checksum: sha1:1e204dfa92bb6626e14c7718f656c32989d0d37c
+  lib/authlete/models/components/native_sso_request.rb:
+    last_write_checksum: sha1:5d2aca6cadc2df7b11c81f6fe16613fc54d87879
+  lib/authlete/models/components/native_sso_request.rbi:
+    last_write_checksum: sha1:fa657c7aa6454303797f7a7bf9c22dd87a90bfba
+  lib/authlete/models/components/native_sso_response.rb:
+    last_write_checksum: sha1:c0c0c67b18a8a2ff7bd05bfed0c1094db717b3e3
+  lib/authlete/models/components/native_sso_response.rbi:
+    last_write_checksum: sha1:206f1abbfc3a79cd932f79453ab881f2b9ca20f9
+  lib/authlete/models/components/native_sso_response_action.rb:
+    last_write_checksum: sha1:85b40b769e8e6d956d762b26b74570b1ae7b7d79
+  lib/authlete/models/components/native_sso_response_action.rbi:
+    last_write_checksum: sha1:0e926c643ec9e1d5d9990a61f319015949d9592d
+  lib/authlete/models/components/pair.rb:
+    last_write_checksum: sha1:fa99cd7e157280df26d546f9729b76ce535e601f
+  lib/authlete/models/components/pair.rbi:
+    last_write_checksum: sha1:84366357dfc49a42a49d3bc09276724b9ef2fe6b
+  lib/authlete/models/components/prompt.rb:
+    last_write_checksum: sha1:83b6790a13254159f6abb6e1e8921828c215a6dc
+  lib/authlete/models/components/prompt.rbi:
+    last_write_checksum: sha1:f97c62e5f526411a77a4490c45b5d8baea5b2207
+  lib/authlete/models/components/property.rb:
+    last_write_checksum: sha1:c18b26fb8aba42259b83c25d18d6ef4414c22aea
+  lib/authlete/models/components/property.rbi:
+    last_write_checksum: sha1:1014d5ea02f7f07ddd99e0bccc9b8d62a75fecd1
+  lib/authlete/models/components/pushed_authorization_request.rb:
+    last_write_checksum: sha1:19c49b9c6eab8436ae4479a43e5dad156422ae7e
+  lib/authlete/models/components/pushed_authorization_request.rbi:
+    last_write_checksum: sha1:c47921dd9712e8650492d11e4bb3d152ffb85f9b
+  lib/authlete/models/components/pushed_authorization_response.rb:
+    last_write_checksum: sha1:cb24ef5a94cb40161ae88caba7533cf25df6d7da
+  lib/authlete/models/components/pushed_authorization_response.rbi:
+    last_write_checksum: sha1:36611906c79c253c8dd407c6f9e946b9b451a71e
+  lib/authlete/models/components/pushed_authorization_response_action.rb:
+    last_write_checksum: sha1:ad8cd3e96667830880da0ab8b374271a409c8ea1
+  lib/authlete/models/components/pushed_authorization_response_action.rbi:
+    last_write_checksum: sha1:598fcbda3f2ddce7792366c682ac90c919d00be6
+  lib/authlete/models/components/pushed_authorization_response_clientauthmethod.rb:
+    last_write_checksum: sha1:186c841483f6c7a2f95eb7f34ec8fdc3ddbd405a
+  lib/authlete/models/components/pushed_authorization_response_clientauthmethod.rbi:
+    last_write_checksum: sha1:adaca830de3e52a8c23adf007325c483cee854f8
+  lib/authlete/models/components/response_type.rb:
+    last_write_checksum: sha1:3c2f168dcb367ae19b7b7ae79a70588e0be57ee0
+  lib/authlete/models/components/response_type.rbi:
+    last_write_checksum: sha1:a453916dda90df49fd7db66d7f65b514316519be
+  lib/authlete/models/components/responsemode.rb:
+    last_write_checksum: sha1:375fbd1a8116b1b23a51e328ebac1ab0f9ad5168
+  lib/authlete/models/components/responsemode.rbi:
+    last_write_checksum: sha1:7815e8a2581651c4f227fa89393a442607dc4066
+  lib/authlete/models/components/revocation_request.rb:
+    last_write_checksum: sha1:24b4ded9638cd25c932b0dd647d3f107a91d6e75
+  lib/authlete/models/components/revocation_request.rbi:
+    last_write_checksum: sha1:e7f7bb66651305b17c37b9f64e0fc37b42464d1b
+  lib/authlete/models/components/revocation_response.rb:
+    last_write_checksum: sha1:bd3f9845fe5cb35a967a76d54a1db06646497392
+  lib/authlete/models/components/revocation_response.rbi:
+    last_write_checksum: sha1:c45b5ef9dd9de7d4e1ddea47a0a5fe4ae5b01be7
+  lib/authlete/models/components/revocation_response_action.rb:
+    last_write_checksum: sha1:03c284c8f0d880cc1ad2798a04e7f59d0786167d
+  lib/authlete/models/components/revocation_response_action.rbi:
+    last_write_checksum: sha1:32e11e092a27b2410fc7c44e19129d3da12053ca
+  lib/authlete/models/components/scope.rb:
+    last_write_checksum: sha1:61c5abe27af4d7910f13673d9a41cb356d1c2b4e
+  lib/authlete/models/components/scope.rbi:
+    last_write_checksum: sha1:2e489c6278370644c6d96ffa41aa6e91cfbb08e0
+  lib/authlete/models/components/security.rb:
+    last_write_checksum: sha1:80f36c276294a5c7736ef6b2b0b5fed005e98ea4
+  lib/authlete/models/components/security.rbi:
+    last_write_checksum: sha1:5b3e704302a9c06837e008bdd0a74fe566e105b1
+  lib/authlete/models/components/service.rb:
+    last_write_checksum: sha1:ec6b52b984e000cc36b50a2e2a39bb30616f688c
+  lib/authlete/models/components/service.rbi:
+    last_write_checksum: sha1:e5bb107303c14e7673d30122c390983c4f3a6b6a
+  lib/authlete/models/components/service_get_list_response.rb:
+    last_write_checksum: sha1:fbb02114acd15b575b53fc36c32cb78df1308efc
+  lib/authlete/models/components/service_get_list_response.rbi:
+    last_write_checksum: sha1:cdccea9630f84891cfa7c0fda587f657cde07f38
+  lib/authlete/models/components/service_input.rb:
+    last_write_checksum: sha1:75227efabaced0782c039c3d51be0faa1f9fc18b
+  lib/authlete/models/components/service_input.rbi:
+    last_write_checksum: sha1:046fc667ed2e4da3b2f893293f87ebbf970fc316
+  lib/authlete/models/components/service_jwks_get_response.rb:
+    last_write_checksum: sha1:a829d40388e34ff967b46c23ecb0686f6582746e
+  lib/authlete/models/components/service_jwks_get_response.rbi:
+    last_write_checksum: sha1:db7eee126517309e39cf798df5f39236443e3034
+  lib/authlete/models/components/service_profile.rb:
+    last_write_checksum: sha1:532f658e0a132e59a5871fe80cbf06e69541e698
+  lib/authlete/models/components/service_profile.rbi:
+    last_write_checksum: sha1:3ab05a5e168478ad4169af68ac5147590665a813
+  lib/authlete/models/components/sns_credentials.rb:
+    last_write_checksum: sha1:7c14c20eaba6a5f76aedada03ebe57f29c8fa6eb
+  lib/authlete/models/components/sns_credentials.rbi:
+    last_write_checksum: sha1:0fa5d629b1ff7bab9d559b13af1bacdbd3485f6c
+  lib/authlete/models/components/standard_introspection_request.rb:
+    last_write_checksum: sha1:ed3adc185b88fd4bc729fc5bcce42bb02b1102a8
+  lib/authlete/models/components/standard_introspection_request.rbi:
+    last_write_checksum: sha1:781ef8548bde630ba831d78e0e74b978aec2f32d
+  lib/authlete/models/components/standard_introspection_response.rb:
+    last_write_checksum: sha1:887a24077724261dd99140831d576a03e7ba65b3
+  lib/authlete/models/components/standard_introspection_response.rbi:
+    last_write_checksum: sha1:4eacb2534309a99e8dff4c9054fbf650c57f729a
+  lib/authlete/models/components/standard_introspection_response_action.rb:
+    last_write_checksum: sha1:222f35d9ad39a5297c0437e08ec612f192adedcc
+  lib/authlete/models/components/standard_introspection_response_action.rbi:
+    last_write_checksum: sha1:c5d1848307efea55135d8205e3149a574465f498
+  lib/authlete/models/components/subject_type.rb:
+    last_write_checksum: sha1:816af96d85da534a07dba19f27bdab76c0318594
+  lib/authlete/models/components/subject_type.rbi:
+    last_write_checksum: sha1:b083cdbdc5475fa1762c14303b54e97ad553a0c4
+  lib/authlete/models/components/supportedsnse.rb:
+    last_write_checksum: sha1:c01001daa380683e3b493c1f0fc459f7e02c775d
+  lib/authlete/models/components/supportedsnse.rbi:
+    last_write_checksum: sha1:4a5e69b6535b7225aef50e7cc54f424aec27c620
+  lib/authlete/models/components/tagged_value.rb:
+    last_write_checksum: sha1:74f0a49d4376700706aa3e086ca5cafd50c224c1
+  lib/authlete/models/components/tagged_value.rbi:
+    last_write_checksum: sha1:ffeef256bbddfc415b17eca61e95bd9dd83bb229
+  lib/authlete/models/components/token_create_request.rb:
+    last_write_checksum: sha1:d679296b658d96487e2ad1660bf3ec58900a71f2
+  lib/authlete/models/components/token_create_request.rbi:
+    last_write_checksum: sha1:fd5e6de00e28b08bccf56b32dc5cef7aa10982c5
+  lib/authlete/models/components/token_create_response.rb:
+    last_write_checksum: sha1:418c71fd32acfa87b457cbcf18d35f2c5c7f702f
+  lib/authlete/models/components/token_create_response.rbi:
+    last_write_checksum: sha1:5c8be3e9de24874955fd2f4c7516ca8247e8a9c6
+  lib/authlete/models/components/token_create_response_action.rb:
+    last_write_checksum: sha1:12b815947e9b20c27c2c56012150a81b57310f13
+  lib/authlete/models/components/token_create_response_action.rbi:
+    last_write_checksum: sha1:179fbdf79dca231e45253e033820ec6116bb5745
+  lib/authlete/models/components/token_fail_request.rb:
+    last_write_checksum: sha1:d96dae341713fbfd46364ba0b24316885f935e0c
+  lib/authlete/models/components/token_fail_request.rbi:
+    last_write_checksum: sha1:f350f5e2a2cb53cadfaec888a2faa05c04f314fc
+  lib/authlete/models/components/token_fail_request_reason.rb:
+    last_write_checksum: sha1:c9808edba8f2a6dd1c7c54bb16b9af09141fe375
+  lib/authlete/models/components/token_fail_request_reason.rbi:
+    last_write_checksum: sha1:9412ff9e59b2bd8dcfea151e87b8d450c0b7a60a
+  lib/authlete/models/components/token_fail_response.rb:
+    last_write_checksum: sha1:90860b3342d8cd82fc157de7362f640a1a63e6f5
+  lib/authlete/models/components/token_fail_response.rbi:
+    last_write_checksum: sha1:927cb73b60140492e41c37a22f412fd155038642
+  lib/authlete/models/components/token_fail_response_action.rb:
+    last_write_checksum: sha1:c0dc7668456e17e919efb3efd1381359c5708ba8
+  lib/authlete/models/components/token_fail_response_action.rbi:
+    last_write_checksum: sha1:b97e06973db655570f2e2dad74c7ca80ceb72846
+  lib/authlete/models/components/token_get_list_response.rb:
+    last_write_checksum: sha1:4a0016f5395dba53ff3ad88cf934ba5f802fc3b4
+  lib/authlete/models/components/token_get_list_response.rbi:
+    last_write_checksum: sha1:4aac898c5d9b11f9fbab4c6a683aaaa9ae3a07de
+  lib/authlete/models/components/token_info.rb:
+    last_write_checksum: sha1:b77295fbd3a41491306082f159ab759fd4982952
+  lib/authlete/models/components/token_info.rbi:
+    last_write_checksum: sha1:d16f15189c7ec7c331f60c0fe3cff7da490ee12c
+  lib/authlete/models/components/token_issue_request.rb:
+    last_write_checksum: sha1:f6fb188997f912ed8a9b72f50685bc98d1309462
+  lib/authlete/models/components/token_issue_request.rbi:
+    last_write_checksum: sha1:f7d0a9b72852665dbc4c635fc069a7d647de243e
+  lib/authlete/models/components/token_issue_response.rb:
+    last_write_checksum: sha1:4eaa6df2d26bf49c97d13421869595727fbb9f29
+  lib/authlete/models/components/token_issue_response.rbi:
+    last_write_checksum: sha1:628e1da173747373eb256c9b11859af263ad849f
+  lib/authlete/models/components/token_issue_response_action.rb:
+    last_write_checksum: sha1:e2f73e8a207fe755a3039a437cfd1c8b9fefc314
+  lib/authlete/models/components/token_issue_response_action.rbi:
+    last_write_checksum: sha1:8064f9ac0bda24787febd3981d71b2169ba60c28
+  lib/authlete/models/components/token_request.rb:
+    last_write_checksum: sha1:861083034b9c25f9d8a8c03344f4b69e729abe6e
+  lib/authlete/models/components/token_request.rbi:
+    last_write_checksum: sha1:f3e90070edd2b5c6d2763e474909fb2b15bdcb6b
+  lib/authlete/models/components/token_response.rb:
+    last_write_checksum: sha1:53ba109c610ca115eb10104efa8702fac8b7b261
+  lib/authlete/models/components/token_response.rbi:
+    last_write_checksum: sha1:30005fb6a1850d505745ec265552276af1f671f7
+  lib/authlete/models/components/token_response_action.rb:
+    last_write_checksum: sha1:d8d2c89d0a26e033064206f4479cf77accf31cb7
+  lib/authlete/models/components/token_response_action.rbi:
+    last_write_checksum: sha1:a9681d5bf36b785bb36f9b58fe94e40f0192fb24
+  lib/authlete/models/components/token_revoke_request.rb:
+    last_write_checksum: sha1:262d16c456f780d0a245f9ec011658cd57b250e3
+  lib/authlete/models/components/token_revoke_request.rbi:
+    last_write_checksum: sha1:91b73ae2fae005ab3fac494beb0103ecef4faecd
+  lib/authlete/models/components/token_revoke_response.rb:
+    last_write_checksum: sha1:c79c15eafd8401a6594c671e9991015905106156
+  lib/authlete/models/components/token_revoke_response.rbi:
+    last_write_checksum: sha1:9247fa5cd399c850c5dd3444ab056cee85d2e04a
+  lib/authlete/models/components/token_type.rb:
+    last_write_checksum: sha1:233690bdd8fec35c302406829ec96b1207125bac
+  lib/authlete/models/components/token_type.rbi:
+    last_write_checksum: sha1:95ec9730548ea59dced820c3de6594a950e934ec
+  lib/authlete/models/components/token_update_request.rb:
+    last_write_checksum: sha1:05eb51274ffd3e023830ec5fa2e94e2db0509f0d
+  lib/authlete/models/components/token_update_request.rbi:
+    last_write_checksum: sha1:1afec35f82b7f18b624199d4ca4fd7c03cc7a96a
+  lib/authlete/models/components/token_update_response.rb:
+    last_write_checksum: sha1:6cdf7a7aec09c3ad2107f737922596dacae70257
+  lib/authlete/models/components/token_update_response.rbi:
+    last_write_checksum: sha1:25eac2eaf7387ebde96c0cba43d97008c4963c8f
+  lib/authlete/models/components/token_update_response_action.rb:
+    last_write_checksum: sha1:f387e370d62658f5a2810524bb738e6b18e25b3f
+  lib/authlete/models/components/token_update_response_action.rbi:
+    last_write_checksum: sha1:9082a02b6b1d4ed2f255dcbd4ab7cdc37887e08a
+  lib/authlete/models/components/trust_anchor.rb:
+    last_write_checksum: sha1:44fa93e16f88b5ac5b2e9964e04119589d9ce8bb
+  lib/authlete/models/components/trust_anchor.rbi:
+    last_write_checksum: sha1:4201733782e1b7804d60d38c5fee69ecd0d37f94
+  lib/authlete/models/components/user_code_charset.rb:
+    last_write_checksum: sha1:30f02cafe0aff6e4812e0a5245bb6be8ef769270
+  lib/authlete/models/components/user_code_charset.rbi:
+    last_write_checksum: sha1:2a93a7093b9e17535a32e0b3e1187c5e1f13d23e
+  lib/authlete/models/components/userinfo_issue_request.rb:
+    last_write_checksum: sha1:5c0b35020967eb751f25a3eeafdda5b04b5151c2
+  lib/authlete/models/components/userinfo_issue_request.rbi:
+    last_write_checksum: sha1:d72251ef0e285b68bc778137294ca7b1758e949a
+  lib/authlete/models/components/userinfo_issue_response.rb:
+    last_write_checksum: sha1:73180614f64961f6f21a5688f87ca7dd7681f743
+  lib/authlete/models/components/userinfo_issue_response.rbi:
+    last_write_checksum: sha1:b204c65ac473a6f5c1f474d5f29e8a66f7b72e98
+  lib/authlete/models/components/userinfo_issue_response_action.rb:
+    last_write_checksum: sha1:42ccb6af4c0a187f9a2b5c575492e15b81422973
+  lib/authlete/models/components/userinfo_issue_response_action.rbi:
+    last_write_checksum: sha1:bf09e75e68f93377350ce5b75640c950af6ded53
+  lib/authlete/models/components/userinfo_request.rb:
+    last_write_checksum: sha1:78864c3660adb05ee72e6a0a276636cc974fa6f3
+  lib/authlete/models/components/userinfo_request.rbi:
+    last_write_checksum: sha1:b87c25438087479ae35d1774755604726e7e129e
+  lib/authlete/models/components/userinfo_response.rb:
+    last_write_checksum: sha1:c9f0d4d921e571695b9ecb8474f99bb348be6468
+  lib/authlete/models/components/userinfo_response.rbi:
+    last_write_checksum: sha1:bb177c942a0dd096c0b550a5b59d7ba58869e62e
+  lib/authlete/models/components/userinfo_response_action.rb:
+    last_write_checksum: sha1:4ef2f37db83e10327804cd7887307ee65a40705e
+  lib/authlete/models/components/userinfo_response_action.rbi:
+    last_write_checksum: sha1:107f9d0e128abdfaa3e95f7e01082a40c55ac5b9
+  lib/authlete/models/components/vci_batch_issue_request.rb:
+    last_write_checksum: sha1:c38566fdd757cf2cbb32007242ae1d7f7fa0bd75
+  lib/authlete/models/components/vci_batch_issue_request.rbi:
+    last_write_checksum: sha1:c197c0b618f0ed8c234f58e7afdfdc41ecdb8a5f
+  lib/authlete/models/components/vci_batch_issue_response.rb:
+    last_write_checksum: sha1:57db92c0ad3ba09020d3c5efd3be040e9252d9cb
+  lib/authlete/models/components/vci_batch_issue_response.rbi:
+    last_write_checksum: sha1:4499fff5ac570c718f4df18227fb28abe7b95235
+  lib/authlete/models/components/vci_batch_issue_response_action.rb:
+    last_write_checksum: sha1:a3e052e47973a65cdab9eb26e70cf72ab271169f
+  lib/authlete/models/components/vci_batch_issue_response_action.rbi:
+    last_write_checksum: sha1:013454d94601a8a049025a4cf1d830822a6d7d9c
+  lib/authlete/models/components/vci_batch_parse_request.rb:
+    last_write_checksum: sha1:5115721ee8f8e728155560a161c209b72eebfaf1
+  lib/authlete/models/components/vci_batch_parse_request.rbi:
+    last_write_checksum: sha1:40c1d5cd2a8177e887c4ba409ab37a29a7e02476
+  lib/authlete/models/components/vci_batch_parse_response.rb:
+    last_write_checksum: sha1:6a52b69bc2400031190cdb4fc975496396443e01
+  lib/authlete/models/components/vci_batch_parse_response.rbi:
+    last_write_checksum: sha1:5f23977c60c892a95c90ac2cd13d207ac71723d6
+  lib/authlete/models/components/vci_batch_parse_response_action.rb:
+    last_write_checksum: sha1:370a2731d4103b832e288fc0858af451d478c1af
+  lib/authlete/models/components/vci_batch_parse_response_action.rbi:
+    last_write_checksum: sha1:0199e7ee6545b41c56152b46566b5972199bc059
+  lib/authlete/models/components/vci_deferred_issue_request.rb:
+    last_write_checksum: sha1:4a756cb284b9077955a344d03e2b6c5ba3c6ccf0
+  lib/authlete/models/components/vci_deferred_issue_request.rbi:
+    last_write_checksum: sha1:82508ca5f6a2644bd09f93835168bc755ae10c3f
+  lib/authlete/models/components/vci_deferred_issue_response.rb:
+    last_write_checksum: sha1:687595b7d46baead7a459628f75fa5e314aded10
+  lib/authlete/models/components/vci_deferred_issue_response.rbi:
+    last_write_checksum: sha1:0a93cc3119e362d7d55f1c89ddf672eb601be5de
+  lib/authlete/models/components/vci_deferred_issue_response_action.rb:
+    last_write_checksum: sha1:388effdba36050ac9d148d209edb99b3731f5339
+  lib/authlete/models/components/vci_deferred_issue_response_action.rbi:
+    last_write_checksum: sha1:009b0021a2e9c2f8a1c0ba11037e97dcc11836a4
+  lib/authlete/models/components/vci_deferred_parse_request.rb:
+    last_write_checksum: sha1:73444f8b288e255440511a465cbacda494bc3140
+  lib/authlete/models/components/vci_deferred_parse_request.rbi:
+    last_write_checksum: sha1:4bd4b0b8ebc58a2e187234b817da68bdde0c88f7
+  lib/authlete/models/components/vci_deferred_parse_response.rb:
+    last_write_checksum: sha1:1e3031ed3eb7bfbf0917c84958172bad14edc053
+  lib/authlete/models/components/vci_deferred_parse_response.rbi:
+    last_write_checksum: sha1:75e998e397daac28f83e15522c03284f730cb0fc
+  lib/authlete/models/components/vci_deferred_parse_response_action.rb:
+    last_write_checksum: sha1:e301f5d53755e08d0ce434de594bab60e251f677
+  lib/authlete/models/components/vci_deferred_parse_response_action.rbi:
+    last_write_checksum: sha1:96a67509ff47d3e79e2dc7b577992895966b326f
+  lib/authlete/models/components/vci_jwks_request.rb:
+    last_write_checksum: sha1:ff2b3d81f27b4e79586aeb0f01af81670a22ac5a
+  lib/authlete/models/components/vci_jwks_request.rbi:
+    last_write_checksum: sha1:6b37b20ea43f20567d4ba8fbeb8bd8529303b74a
+  lib/authlete/models/components/vci_jwks_response.rb:
+    last_write_checksum: sha1:11fe0f2c73ed42daecc0dfde33e072be4d0d86f4
+  lib/authlete/models/components/vci_jwks_response.rbi:
+    last_write_checksum: sha1:899e2152543402eca88b4af5de93315db3bd5198
+  lib/authlete/models/components/vci_jwks_response_action.rb:
+    last_write_checksum: sha1:451adf25b6855eb7a44a1ee367ab1ddadf664df4
+  lib/authlete/models/components/vci_jwks_response_action.rbi:
+    last_write_checksum: sha1:fd25a31cd2d0a02d2b74f8cfb8e8a36cc8727e25
+  lib/authlete/models/components/vci_jwtissuer_request.rb:
+    last_write_checksum: sha1:7616b63977753dd53b80b77ff231e43f2415bf03
+  lib/authlete/models/components/vci_jwtissuer_request.rbi:
+    last_write_checksum: sha1:d4534ba47d99d3d047665a295f5f8a2156759d01
+  lib/authlete/models/components/vci_jwtissuer_response.rb:
+    last_write_checksum: sha1:61ec12d5fe6d06eda1c39a6b9899590c269013d9
+  lib/authlete/models/components/vci_jwtissuer_response.rbi:
+    last_write_checksum: sha1:ac4d82232209ae99c87c8fb889c612eb3b987a7c
+  lib/authlete/models/components/vci_jwtissuer_response_action.rb:
+    last_write_checksum: sha1:b52c5f57ebe5d9a8ca541f12922560769cddae90
+  lib/authlete/models/components/vci_jwtissuer_response_action.rbi:
+    last_write_checksum: sha1:dbdf1218f8d70af008e441117c3ad5cd859f4895
+  lib/authlete/models/components/vci_metadata_request.rb:
+    last_write_checksum: sha1:c19f9a3b47b5c71c8eb32a45368b223fd0d08d7c
+  lib/authlete/models/components/vci_metadata_request.rbi:
+    last_write_checksum: sha1:471237a8c2672a28e22e4c7081ac72c1eb8b81c5
+  lib/authlete/models/components/vci_metadata_response.rb:
+    last_write_checksum: sha1:522b8fe45e31432ba426049ebd1d67587b9eb51d
+  lib/authlete/models/components/vci_metadata_response.rbi:
+    last_write_checksum: sha1:f2bd44dd6f8c8adae1d85d6686268378bc36c441
+  lib/authlete/models/components/vci_metadata_response_action.rb:
+    last_write_checksum: sha1:b8a74a080d36b2849a46784ccfd9b0f7917396a7
+  lib/authlete/models/components/vci_metadata_response_action.rbi:
+    last_write_checksum: sha1:14f7813636b82dd50c773f3a6aabcb16db4fabe7
+  lib/authlete/models/components/vci_offer_create_request.rb:
+    last_write_checksum: sha1:8813058a2b0cc2897a98944e32f4fa3e93bb0839
+  lib/authlete/models/components/vci_offer_create_request.rbi:
+    last_write_checksum: sha1:6ac5e9b4c2c09d194dfe7d983ebe18fdf4599a50
+  lib/authlete/models/components/vci_offer_create_response.rb:
+    last_write_checksum: sha1:3ceda6a5706a2dd8fd65c369f86834852e0b76db
+  lib/authlete/models/components/vci_offer_create_response.rbi:
+    last_write_checksum: sha1:ab353927aa844b543cf47515bbb24620945a21fb
+  lib/authlete/models/components/vci_offer_create_response_action.rb:
+    last_write_checksum: sha1:755cc42c9c49089e8f153164dc75a32f4abeeda3
+  lib/authlete/models/components/vci_offer_create_response_action.rbi:
+    last_write_checksum: sha1:d56ffd12fac8c7c4370d48c05283f3a48d818cac
+  lib/authlete/models/components/vci_offer_info_request.rb:
+    last_write_checksum: sha1:5f36a195a4cfe055cd7baa6706847d48c7462a07
+  lib/authlete/models/components/vci_offer_info_request.rbi:
+    last_write_checksum: sha1:1006a41a305b937f06b9ea11315289f1ec41b8b7
+  lib/authlete/models/components/vci_offer_info_response.rb:
+    last_write_checksum: sha1:ff7c326612e22d333ffece00e83200950d873d5a
+  lib/authlete/models/components/vci_offer_info_response.rbi:
+    last_write_checksum: sha1:f36d03776b9a46b25eb62a16792b20927d097e36
+  lib/authlete/models/components/vci_offer_info_response_action.rb:
+    last_write_checksum: sha1:b800b494a4380a65f9e60ea06aca35246a97f663
+  lib/authlete/models/components/vci_offer_info_response_action.rbi:
+    last_write_checksum: sha1:5af3f555dd82a80aa7b30b598c8bb26aa264539f
+  lib/authlete/models/components/vci_single_issue_request.rb:
+    last_write_checksum: sha1:4899d6e4a1d800eec3eba922cca10f70d38125d4
+  lib/authlete/models/components/vci_single_issue_request.rbi:
+    last_write_checksum: sha1:390311cfc9da7fa15bff9032948e44a03785ec1f
+  lib/authlete/models/components/vci_single_issue_response.rb:
+    last_write_checksum: sha1:2a33e51002c45acbd02b669dd63b187db4074c41
+  lib/authlete/models/components/vci_single_issue_response.rbi:
+    last_write_checksum: sha1:b710c1704e92b6c1ad98c3ebfb05fda6c8135b74
+  lib/authlete/models/components/vci_single_issue_response_action.rb:
+    last_write_checksum: sha1:c544d76a9e135668a6a1692b694918ec08cf2a04
+  lib/authlete/models/components/vci_single_issue_response_action.rbi:
+    last_write_checksum: sha1:8202c153e8172b51f3194f02d5c2b24f9b9ba729
+  lib/authlete/models/components/vci_single_parse_request.rb:
+    last_write_checksum: sha1:0d40ad36f696cfce37e7710d0ffd94109fe6a375
+  lib/authlete/models/components/vci_single_parse_request.rbi:
+    last_write_checksum: sha1:03b33a459a93acfbd9174b527a2684d0e15c7785
+  lib/authlete/models/components/vci_single_parse_response.rb:
+    last_write_checksum: sha1:9ec7fe80bec93fed04325f376b7cd2720bd08dd2
+  lib/authlete/models/components/vci_single_parse_response.rbi:
+    last_write_checksum: sha1:0d78ab6bc0d4fa8dbb6d7f488b43768b9dd48d87
+  lib/authlete/models/components/vci_single_parse_response_action.rb:
+    last_write_checksum: sha1:237bfb36b963f459e920b65f9706837f8e50bd12
+  lib/authlete/models/components/vci_single_parse_response_action.rbi:
+    last_write_checksum: sha1:cfc074d6a511b1162d9726d32a4072a98c0d0887
+  lib/authlete/models/components/verified_claims_validation_schema.rb:
+    last_write_checksum: sha1:f48fd1502914eb0c0258ae25aaad5037d3fdcfe8
+  lib/authlete/models/components/verified_claims_validation_schema.rbi:
+    last_write_checksum: sha1:878ee53dd3f65183228b414e04a1b78a6bf9429c
+  lib/authlete/models/errors.rb:
+    last_write_checksum: sha1:d09821e4717c1e6d3b31ccf9a7851c7f1e7ac870
+  lib/authlete/models/errors/apierror.rb:
+    last_write_checksum: sha1:ff7cf29c4d1971a827bcd6aab0f7cacf2f5fc7d7
+  lib/authlete/models/errors/apierror.rbi:
+    last_write_checksum: sha1:90debce95c016236c1bf69bc6e6109a599f6d3d7
+  lib/authlete/models/errors/result_error.rb:
+    last_write_checksum: sha1:867df11813032596e7846de5a7e7277c807da49c
+  lib/authlete/models/errors/result_error.rbi:
+    last_write_checksum: sha1:9052724812577ee129664ea562b5f572e73cf621
+  lib/authlete/models/operations.rb:
+    last_write_checksum: sha1:7cc231ea220c5c7bd1548952493fc149d58b6e9a
+  lib/authlete/models/operations/auth_authorization_api_request.rb:
+    last_write_checksum: sha1:8b22d551274d1704a61304471af9edd3801c4375
+  lib/authlete/models/operations/auth_authorization_api_request.rbi:
+    last_write_checksum: sha1:27f704b404a3e5732945a9aec06758371a61308c
+  lib/authlete/models/operations/auth_authorization_api_response.rb:
+    last_write_checksum: sha1:8f80583187ca161a8d09dda743092fd85f6ec41d
+  lib/authlete/models/operations/auth_authorization_api_response.rbi:
+    last_write_checksum: sha1:8f34e894d28c3e47279e8379106bf107b6143a19
+  lib/authlete/models/operations/auth_authorization_fail_api_request.rb:
+    last_write_checksum: sha1:00bf0b4653740be4b94c46f18cb88e578c1e09ef
+  lib/authlete/models/operations/auth_authorization_fail_api_request.rbi:
+    last_write_checksum: sha1:2cc7518a5c97b0c040b73e32d40349a2b672fcda
+  lib/authlete/models/operations/auth_authorization_fail_api_response.rb:
+    last_write_checksum: sha1:0134c0c091e1808646fdbd9610028223f310f524
+  lib/authlete/models/operations/auth_authorization_fail_api_response.rbi:
+    last_write_checksum: sha1:de6238b45691d4bfc85d3699fa0542e1ee3b575f
+  lib/authlete/models/operations/auth_authorization_issue_api_request.rb:
+    last_write_checksum: sha1:6d10fb944c5e02a7ffba387af6391f7513620b34
+  lib/authlete/models/operations/auth_authorization_issue_api_request.rbi:
+    last_write_checksum: sha1:b15c3aa527057ba79a9daa9f86a34ad0040f9f44
+  lib/authlete/models/operations/auth_authorization_issue_api_response.rb:
+    last_write_checksum: sha1:f5c24c9aed5c15593aa525cc1b16b7767f72b962
+  lib/authlete/models/operations/auth_authorization_issue_api_response.rbi:
+    last_write_checksum: sha1:90c9ee346b54066e67b90aaf715b3fb8b0657784
+  lib/authlete/models/operations/auth_introspection_api_request.rb:
+    last_write_checksum: sha1:5aa8604367b6c1ca077e8d9f01e052418b2b77e9
+  lib/authlete/models/operations/auth_introspection_api_request.rbi:
+    last_write_checksum: sha1:4b7ca8787b6c83d7bd7bd8ce4801476f26880969
+  lib/authlete/models/operations/auth_introspection_api_response.rb:
+    last_write_checksum: sha1:6fa7ba94df2a31eb550fb45ab7fbad79ff67f783
+  lib/authlete/models/operations/auth_introspection_api_response.rbi:
+    last_write_checksum: sha1:556541139cf89572f119049a76be5915111ac31b
+  lib/authlete/models/operations/auth_introspection_standard_api_request.rb:
+    last_write_checksum: sha1:230807ae39480f90972a57db8188133672bb1125
+  lib/authlete/models/operations/auth_introspection_standard_api_request.rbi:
+    last_write_checksum: sha1:ebab8f97c2ff3561ca1f1a03ca854c5bf65d8a09
+  lib/authlete/models/operations/auth_introspection_standard_api_response.rb:
+    last_write_checksum: sha1:25051f0268c4f841153d4aca011eee3a43ae54e1
+  lib/authlete/models/operations/auth_introspection_standard_api_response.rbi:
+    last_write_checksum: sha1:fe540f28f340c04a435b8b6539e2ba942aa19298
+  lib/authlete/models/operations/auth_revocation_api_request.rb:
+    last_write_checksum: sha1:51b72b5d2c63dfbcab83e1b080d25d22813d498f
+  lib/authlete/models/operations/auth_revocation_api_request.rbi:
+    last_write_checksum: sha1:a31a5783d1d9573d10200787805b0771319e5039
+  lib/authlete/models/operations/auth_revocation_api_response.rb:
+    last_write_checksum: sha1:17e0da61de7b3c193550b52947125f9d75315124
+  lib/authlete/models/operations/auth_revocation_api_response.rbi:
+    last_write_checksum: sha1:a1be5e3db96c6d1e7741c433cd4c1932c83e1c31
+  lib/authlete/models/operations/auth_token_api_request.rb:
+    last_write_checksum: sha1:161583e94b3d0f6e8c693c8aedb40272e94c1b67
+  lib/authlete/models/operations/auth_token_api_request.rbi:
+    last_write_checksum: sha1:4709187e00d6f1f74ff3afa8edcbc93b7146963a
+  lib/authlete/models/operations/auth_token_api_response.rb:
+    last_write_checksum: sha1:a1b0e3fb980bc1b1aaa3d4727a7780f36a412ddd
+  lib/authlete/models/operations/auth_token_api_response.rbi:
+    last_write_checksum: sha1:c4122869752ce99b68c9f8ae6ec0000994c9667d
+  lib/authlete/models/operations/auth_token_create_api_request.rb:
+    last_write_checksum: sha1:f0fd3939fb50603853ac75ff93fefe86a00ba8d9
+  lib/authlete/models/operations/auth_token_create_api_request.rbi:
+    last_write_checksum: sha1:918a23e9daf3c0f7525887b95cd211c936dfac2e
+  lib/authlete/models/operations/auth_token_create_api_response.rb:
+    last_write_checksum: sha1:6299c755846e292495d38116127ec9618723510a
+  lib/authlete/models/operations/auth_token_create_api_response.rbi:
+    last_write_checksum: sha1:ae2c7eb6e239dae450bce45d1957bfb1a4c1327f
+  lib/authlete/models/operations/auth_token_delete_api_request.rb:
+    last_write_checksum: sha1:083a2bf34fab499424484910f5522b24719b3e73
+  lib/authlete/models/operations/auth_token_delete_api_request.rbi:
+    last_write_checksum: sha1:df87bb94e707dd9690197dde09e582b70bbd5ac0
+  lib/authlete/models/operations/auth_token_delete_api_response.rb:
+    last_write_checksum: sha1:cce7df0d93921201034892760b5d414545bc1616
+  lib/authlete/models/operations/auth_token_delete_api_response.rbi:
+    last_write_checksum: sha1:976b6082259a4044218376d4eab5cc99788fcb07
+  lib/authlete/models/operations/auth_token_fail_api_request.rb:
+    last_write_checksum: sha1:1a600dbcbc77a65c9f3e5d444c9c6c40bee20f6d
+  lib/authlete/models/operations/auth_token_fail_api_request.rbi:
+    last_write_checksum: sha1:e01047fe364c145aa150340959790babc9c577f2
+  lib/authlete/models/operations/auth_token_fail_api_response.rb:
+    last_write_checksum: sha1:2a26a0ed7b935c8b52f3a902c2edefecd62a835d
+  lib/authlete/models/operations/auth_token_fail_api_response.rbi:
+    last_write_checksum: sha1:a342907139e41c0e534cbfad0bd87064c3da45c1
+  lib/authlete/models/operations/auth_token_get_list_api_request.rb:
+    last_write_checksum: sha1:338458e2389ef6a9bdd3fd5e5228c82b3b783d4c
+  lib/authlete/models/operations/auth_token_get_list_api_request.rbi:
+    last_write_checksum: sha1:5a8876928493ce4fd57be6ebb7cd5b43236393be
+  lib/authlete/models/operations/auth_token_get_list_api_response.rb:
+    last_write_checksum: sha1:0f3f4883dc441e58df5da27b3cb7e892ddc61ff2
+  lib/authlete/models/operations/auth_token_get_list_api_response.rbi:
+    last_write_checksum: sha1:23c0e390654031439628ff0024a1d6103c63c8df
+  lib/authlete/models/operations/auth_token_issue_api_request.rb:
+    last_write_checksum: sha1:3ab82060e9b7828b7522236c8eed5eef33129f9c
+  lib/authlete/models/operations/auth_token_issue_api_request.rbi:
+    last_write_checksum: sha1:90a4b6ca3dc636b82e5f3dcb55dbf89584fff189
+  lib/authlete/models/operations/auth_token_issue_api_response.rb:
+    last_write_checksum: sha1:dccf09c9284262d571999ca5ce693723593d9c51
+  lib/authlete/models/operations/auth_token_issue_api_response.rbi:
+    last_write_checksum: sha1:a24b43df654c33258121b5f12c58692129eedfb5
+  lib/authlete/models/operations/auth_token_revoke_api_request.rb:
+    last_write_checksum: sha1:65654948e9060ac51c0421990431ea3629c54409
+  lib/authlete/models/operations/auth_token_revoke_api_request.rbi:
+    last_write_checksum: sha1:8b50348097e8c3d6bc67642027aecde72c0f9643
+  lib/authlete/models/operations/auth_token_revoke_api_response.rb:
+    last_write_checksum: sha1:0c30a437ada17a707aad82a9e82bb9d6b9871f80
+  lib/authlete/models/operations/auth_token_revoke_api_response.rbi:
+    last_write_checksum: sha1:ea8f772caf0bdd3f077fd380eba739d259855cd0
+  lib/authlete/models/operations/auth_token_update_api_request.rb:
+    last_write_checksum: sha1:84d5178c3d87be34ef9cddc236044867c8305f2d
+  lib/authlete/models/operations/auth_token_update_api_request.rbi:
+    last_write_checksum: sha1:eee2bbcee36c182a1693b0647060445ad80e6c97
+  lib/authlete/models/operations/auth_token_update_api_response.rb:
+    last_write_checksum: sha1:d9f112a1ad196d836f37625b99d86f159ec90568
+  lib/authlete/models/operations/auth_token_update_api_response.rbi:
+    last_write_checksum: sha1:982afa58c3effa9608d1c971f2350a4c4d4de8f0
+  lib/authlete/models/operations/auth_userinfo_api_request.rb:
+    last_write_checksum: sha1:45e792788dedd0a8ddc7ca6b8a6c3d6b0ab3a907
+  lib/authlete/models/operations/auth_userinfo_api_request.rbi:
+    last_write_checksum: sha1:d85714d01f08b59946d761fc0bfdce6a4016e606
+  lib/authlete/models/operations/auth_userinfo_api_response.rb:
+    last_write_checksum: sha1:47a199752067db4cd5d42bf896e78f12b43c9ea8
+  lib/authlete/models/operations/auth_userinfo_api_response.rbi:
+    last_write_checksum: sha1:389ee231631c45b1634f7575e72c5a1ce3540e5c
+  lib/authlete/models/operations/auth_userinfo_issue_api_request.rb:
+    last_write_checksum: sha1:9d39f08ebed3b7f90c03c6a1ad2bca93a620e6fd
+  lib/authlete/models/operations/auth_userinfo_issue_api_request.rbi:
+    last_write_checksum: sha1:fef791b26e174fcd0dade705ea63eb4458c6c3b5
+  lib/authlete/models/operations/auth_userinfo_issue_api_response.rb:
+    last_write_checksum: sha1:783aa977607e4093b423eea5a2c1f050b61d064e
+  lib/authlete/models/operations/auth_userinfo_issue_api_response.rbi:
+    last_write_checksum: sha1:47500efb8bf7181017c9ea365f148ffbafd18957
+  lib/authlete/models/operations/authorization_ticket_info_post_api_request.rb:
+    last_write_checksum: sha1:5b1d29aa47dcfabdad5cca1ca2963f6be849f3af
+  lib/authlete/models/operations/authorization_ticket_info_post_api_request.rbi:
+    last_write_checksum: sha1:df609a4e81c84e0bd015ca9bfbcab8ca472f6e13
+  lib/authlete/models/operations/authorization_ticket_info_post_api_response.rb:
+    last_write_checksum: sha1:1d5fa44571acf4d2551b239ec8db5b44895808ae
+  lib/authlete/models/operations/authorization_ticket_info_post_api_response.rbi:
+    last_write_checksum: sha1:194bef581889fc33b92b2d1e79d6167f70c7c6d6
+  lib/authlete/models/operations/backchannel_authentication_api_request.rb:
+    last_write_checksum: sha1:7ee1c1b3c237db702ae7297ba76047808d4758fd
+  lib/authlete/models/operations/backchannel_authentication_api_request.rbi:
+    last_write_checksum: sha1:7b05c8278f7f628337ad880f4f0f91b4050f3c98
+  lib/authlete/models/operations/backchannel_authentication_api_response.rb:
+    last_write_checksum: sha1:c472f04bc48882ef5efb5bbefe300e8fc09f90bd
+  lib/authlete/models/operations/backchannel_authentication_api_response.rbi:
+    last_write_checksum: sha1:83619d178cbb0092749495bcc2a70ec1194bf4eb
+  lib/authlete/models/operations/backchannel_authentication_complete_api_request.rb:
+    last_write_checksum: sha1:f88af1f2a7cfed4ca7de74c761f7eddbf3cb8c8a
+  lib/authlete/models/operations/backchannel_authentication_complete_api_request.rbi:
+    last_write_checksum: sha1:425a65c86d52610974074325390da4f15ca0b4d9
+  lib/authlete/models/operations/backchannel_authentication_complete_api_response.rb:
+    last_write_checksum: sha1:3f3392ddc5fdd5711a20c5ad5778b31981ff73f4
+  lib/authlete/models/operations/backchannel_authentication_complete_api_response.rbi:
+    last_write_checksum: sha1:8aab7af29e0456abf17daff27e9a334af87caf1d
+  lib/authlete/models/operations/backchannel_authentication_fail_api_request.rb:
+    last_write_checksum: sha1:78edb6fc3e404fe89ee0eb646bb5bbdf5c802165
+  lib/authlete/models/operations/backchannel_authentication_fail_api_request.rbi:
+    last_write_checksum: sha1:a73864c1cd122880837089cc051a6c6eac0e1272
+  lib/authlete/models/operations/backchannel_authentication_fail_api_response.rb:
+    last_write_checksum: sha1:dd33c33af3f0f509bd9a691b1fe58627c4b8b39e
+  lib/authlete/models/operations/backchannel_authentication_fail_api_response.rbi:
+    last_write_checksum: sha1:f731a521f5c745469da31e273525f25f3bcc96e0
+  lib/authlete/models/operations/backchannel_authentication_issue_api_request.rb:
+    last_write_checksum: sha1:1b792e3c65da99f735cf0bbeb73f39f4fb4f0f43
+  lib/authlete/models/operations/backchannel_authentication_issue_api_request.rbi:
+    last_write_checksum: sha1:776fc2f9ee77f46eb4d941c3455cae63a62011ba
+  lib/authlete/models/operations/backchannel_authentication_issue_api_response.rb:
+    last_write_checksum: sha1:47b62ff0e6a305dfd81dcd368e18ae5eb9e87160
+  lib/authlete/models/operations/backchannel_authentication_issue_api_response.rbi:
+    last_write_checksum: sha1:f8662439d7671301ef70bab6a9838cbcfd64f218
+  lib/authlete/models/operations/client_authorization_delete_api_request.rb:
+    last_write_checksum: sha1:08ced0fdfc072436d81a6549301b6f6a08075839
+  lib/authlete/models/operations/client_authorization_delete_api_request.rbi:
+    last_write_checksum: sha1:328ca42a5a63aa0b3fbb3ab76d5a82f8e610946f
+  lib/authlete/models/operations/client_authorization_delete_api_response.rb:
+    last_write_checksum: sha1:d01806a601090171511c8eeae47752323e2e18c1
+  lib/authlete/models/operations/client_authorization_delete_api_response.rbi:
+    last_write_checksum: sha1:427c95d9123145efde4fd2893472ba35b7e93754
+  lib/authlete/models/operations/client_authorization_get_list_api_request.rb:
+    last_write_checksum: sha1:1355be94f0a09cda82bb2d61cddabb121398aa83
+  lib/authlete/models/operations/client_authorization_get_list_api_request.rbi:
+    last_write_checksum: sha1:f63208cd06d6848f9b5de615fd61de1ab8a24f94
+  lib/authlete/models/operations/client_authorization_get_list_api_response.rb:
+    last_write_checksum: sha1:c90a1e39c1ebf0b80fa2eedb03bb2127d9b03113
+  lib/authlete/models/operations/client_authorization_get_list_api_response.rbi:
+    last_write_checksum: sha1:d95b016142baa8f4c9bae7ea87e28a501943f6a4
+  lib/authlete/models/operations/client_authorization_update_api_request.rb:
+    last_write_checksum: sha1:5d9133abe6c399f4f28180e1e606c13dd3adb54c
+  lib/authlete/models/operations/client_authorization_update_api_request.rbi:
+    last_write_checksum: sha1:07dca95aa03882c8a985815ea8ed9c33bf98becd
+  lib/authlete/models/operations/client_authorization_update_api_response.rb:
+    last_write_checksum: sha1:26f9080f3d2bc1c2a2ba77641b995b1850cf6bea
+  lib/authlete/models/operations/client_authorization_update_api_response.rbi:
+    last_write_checksum: sha1:565716c7bd24647e3d462949046997b0df979ab9
+  lib/authlete/models/operations/client_create_api_request.rb:
+    last_write_checksum: sha1:8305f4c1376f4f4372de6a0ac71f90ed76f5457d
+  lib/authlete/models/operations/client_create_api_request.rbi:
+    last_write_checksum: sha1:0d0843bcd95f288df457210cdc876d176222bef2
+  lib/authlete/models/operations/client_create_api_response.rb:
+    last_write_checksum: sha1:6ba33f13df6f9d95e5c160b99146348487e2b50b
+  lib/authlete/models/operations/client_create_api_response.rbi:
+    last_write_checksum: sha1:4b14af789508d0c0178178285b18de5545a92077
+  lib/authlete/models/operations/client_delete_api_request.rb:
+    last_write_checksum: sha1:37af038be688d9180f208207ce63036186170969
+  lib/authlete/models/operations/client_delete_api_request.rbi:
+    last_write_checksum: sha1:b08939aae8e52f7d51b4b61b6b95b7b161560649
+  lib/authlete/models/operations/client_delete_api_response.rb:
+    last_write_checksum: sha1:c32b80dbad8a782701a9e380612fb5280d3c7a99
+  lib/authlete/models/operations/client_delete_api_response.rbi:
+    last_write_checksum: sha1:72f6624434621c31c5df15e1d08269b4475b211f
+  lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_request.rb:
+    last_write_checksum: sha1:bac87cd20148b314315241ad033ed9dcb9e3acf4
+  lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_request.rbi:
+    last_write_checksum: sha1:f59d9ce55a916bb220b568252d853dfbb4cdcf61
+  lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_response.rb:
+    last_write_checksum: sha1:3ae9845cfb1340891e34c2e9a089e827a04b42f1
+  lib/authlete/models/operations/client_extension_requestables_scopes_delete_api_response.rbi:
+    last_write_checksum: sha1:3832d2e6332900b6d0bf446ddd139d462f6c8382
+  lib/authlete/models/operations/client_extension_requestables_scopes_get_api_request.rb:
+    last_write_checksum: sha1:0bb19a5d2af9bb9ba313ae538c455a0dca4ce184
+  lib/authlete/models/operations/client_extension_requestables_scopes_get_api_request.rbi:
+    last_write_checksum: sha1:2844556c423d6508fe5e52ab6d6bbdeadb80ece4
+  lib/authlete/models/operations/client_extension_requestables_scopes_get_api_response.rb:
+    last_write_checksum: sha1:51bfdfe714e1c0db617fe14efc0e58203e808553
+  lib/authlete/models/operations/client_extension_requestables_scopes_get_api_response.rbi:
+    last_write_checksum: sha1:212597bfeb94d0a015685814b10dfc4db5aa752f
+  lib/authlete/models/operations/client_extension_requestables_scopes_update_api_request.rb:
+    last_write_checksum: sha1:c74e935a929f585757958fd1c8ecf464352774f4
+  lib/authlete/models/operations/client_extension_requestables_scopes_update_api_request.rbi:
+    last_write_checksum: sha1:9db822cba2951d5d0219d31e29cf90c8dee94e91
+  lib/authlete/models/operations/client_extension_requestables_scopes_update_api_response.rb:
+    last_write_checksum: sha1:df790c95cde60db89a7b8ea8c81cc921d5037511
+  lib/authlete/models/operations/client_extension_requestables_scopes_update_api_response.rbi:
+    last_write_checksum: sha1:3b0f5e5c2ff524359cc90b05b3303f447ca7686c
+  lib/authlete/models/operations/client_flag_update_api_request.rb:
+    last_write_checksum: sha1:7d9abdc69fbfc0d238239baef3a4e0ebac9f5f14
+  lib/authlete/models/operations/client_flag_update_api_request.rbi:
+    last_write_checksum: sha1:bebd9ff5b3761a5daf5f0088250f80bd674304ae
+  lib/authlete/models/operations/client_flag_update_api_response.rb:
+    last_write_checksum: sha1:e3af487d91e83d8425ab5e06d90747650185b85c
+  lib/authlete/models/operations/client_flag_update_api_response.rbi:
+    last_write_checksum: sha1:280aadb557a2a4696cac9958fd7f7f0fdef37de2
+  lib/authlete/models/operations/client_get_api_request.rb:
+    last_write_checksum: sha1:507e5b3245c7b972859376ce1e37b121ad0a5e64
+  lib/authlete/models/operations/client_get_api_request.rbi:
+    last_write_checksum: sha1:4bb0d25d149d9fa9fb86d4930585bae21e6bc4da
+  lib/authlete/models/operations/client_get_api_response.rb:
+    last_write_checksum: sha1:57d4b304670a9a424e60199b055a9517f8262187
+  lib/authlete/models/operations/client_get_api_response.rbi:
+    last_write_checksum: sha1:3caf671f3be4a972f1192b2df187fdf9d68c0fe6
+  lib/authlete/models/operations/client_get_list_api_request.rb:
+    last_write_checksum: sha1:1be96c63d0e4a456f7f8729fd6ad8f9c907feb9e
+  lib/authlete/models/operations/client_get_list_api_request.rbi:
+    last_write_checksum: sha1:d336f5b03618adbfcaa867e72b6e4f83bac056b5
+  lib/authlete/models/operations/client_get_list_api_response.rb:
+    last_write_checksum: sha1:00baa6883a2dcf9b0ebe7ed6876eb77229bd8c0c
+  lib/authlete/models/operations/client_get_list_api_response.rbi:
+    last_write_checksum: sha1:9e5c9461548203a1876288eef11b89ad153f9bb4
+  lib/authlete/models/operations/client_granted_scopes_delete_api_request.rb:
+    last_write_checksum: sha1:088658351d84b8e024a5bf0dc62e562ed19fa00f
+  lib/authlete/models/operations/client_granted_scopes_delete_api_request.rbi:
+    last_write_checksum: sha1:a94e4373361d96facd3d12f19afe62f1512f25dc
+  lib/authlete/models/operations/client_granted_scopes_delete_api_response.rb:
+    last_write_checksum: sha1:ad18eb72013607a857e86729713673d6c777ac92
+  lib/authlete/models/operations/client_granted_scopes_delete_api_response.rbi:
+    last_write_checksum: sha1:e873683ed57437b6015392a811bcf4c15840ced8
+  lib/authlete/models/operations/client_granted_scopes_get_api_request.rb:
+    last_write_checksum: sha1:9f34d2d9c72e741df9ace8364b03839644c8679d
+  lib/authlete/models/operations/client_granted_scopes_get_api_request.rbi:
+    last_write_checksum: sha1:d0032897eac29e523ca8c6de42db93257968b77f
+  lib/authlete/models/operations/client_granted_scopes_get_api_response.rb:
+    last_write_checksum: sha1:6ffd3b8986a4574c968409aa791bf5aa81f6a139
+  lib/authlete/models/operations/client_granted_scopes_get_api_response.rbi:
+    last_write_checksum: sha1:9e2f0dbaae7ea33e7bba718358850325dba33899
+  lib/authlete/models/operations/client_registration_api_request.rb:
+    last_write_checksum: sha1:985fe36936418268a4bbeae97341c60329eef050
+  lib/authlete/models/operations/client_registration_api_request.rbi:
+    last_write_checksum: sha1:c9745fc5b07941b6221d8dd169e9c189601a21aa
+  lib/authlete/models/operations/client_registration_api_requestbody.rb:
+    last_write_checksum: sha1:3bc5cfda438bc21969207cf6c25ac950f2c6fb01
+  lib/authlete/models/operations/client_registration_api_requestbody.rbi:
+    last_write_checksum: sha1:435cca75d53a683c45b7698c3313c53e20becd7d
+  lib/authlete/models/operations/client_registration_api_response.rb:
+    last_write_checksum: sha1:793384edce931eb8a8d7ac67fe226cda0549b50f
+  lib/authlete/models/operations/client_registration_api_response.rbi:
+    last_write_checksum: sha1:a74d3414c53f195a73240865121560f64c487b23
+  lib/authlete/models/operations/client_registration_delete_api_request.rb:
+    last_write_checksum: sha1:0bfe5a6618f09c77b003cc3e764e37df1ddd10ef
+  lib/authlete/models/operations/client_registration_delete_api_request.rbi:
+    last_write_checksum: sha1:7493c6b35aeeb31b381fe0d6ccdad5d07c0e6b1e
+  lib/authlete/models/operations/client_registration_delete_api_requestbody.rb:
+    last_write_checksum: sha1:0c89426223f4198def1d28c95991612325afb206
+  lib/authlete/models/operations/client_registration_delete_api_requestbody.rbi:
+    last_write_checksum: sha1:f15a17437c5ac5222e449db994ec7eee2b83eeb0
+  lib/authlete/models/operations/client_registration_delete_api_response.rb:
+    last_write_checksum: sha1:83eb62ed5fcea12dac13665b0a40ff98cb497029
+  lib/authlete/models/operations/client_registration_delete_api_response.rbi:
+    last_write_checksum: sha1:1a68e4752da125ea7ede5ef023590dd41c59d709
+  lib/authlete/models/operations/client_registration_get_api_request.rb:
+    last_write_checksum: sha1:429aab5a0fd8cacc54b128814bb6a402842e9350
+  lib/authlete/models/operations/client_registration_get_api_request.rbi:
+    last_write_checksum: sha1:dc14f1585fc967b9895c24edb29aa44e781c1769
+  lib/authlete/models/operations/client_registration_get_api_requestbody.rb:
+    last_write_checksum: sha1:aa61ca3079d7c89f0db3d940d99595d848e3255c
+  lib/authlete/models/operations/client_registration_get_api_requestbody.rbi:
+    last_write_checksum: sha1:4f9bc6ca10d7e24cd1b1425f2fb96f872ff979c9
+  lib/authlete/models/operations/client_registration_get_api_response.rb:
+    last_write_checksum: sha1:41a60dcb0cb3b2d32db7ddb864665dfdbfe9c4d7
+  lib/authlete/models/operations/client_registration_get_api_response.rbi:
+    last_write_checksum: sha1:9838b8aebe03cd3002c36d8b997e555fd6290e84
+  lib/authlete/models/operations/client_registration_update_api_request.rb:
+    last_write_checksum: sha1:538a4c23a2e180fff36c04328003797a7fd81c74
+  lib/authlete/models/operations/client_registration_update_api_request.rbi:
+    last_write_checksum: sha1:4a910755f48c06073c14e265d15049b7c2d5271e
+  lib/authlete/models/operations/client_registration_update_api_requestbody.rb:
+    last_write_checksum: sha1:391650ec12574635b7f22d7d9454a8ea75a86a1e
+  lib/authlete/models/operations/client_registration_update_api_requestbody.rbi:
+    last_write_checksum: sha1:a6ad46a01b4a0dd7222ca38e8f0239afb12634b6
+  lib/authlete/models/operations/client_registration_update_api_response.rb:
+    last_write_checksum: sha1:b8b7631f09f24c92fd011a3778d78ef04db6ab4b
+  lib/authlete/models/operations/client_registration_update_api_response.rbi:
+    last_write_checksum: sha1:c1b5bc758f4757b7b800939c446161c80f49cf53
+  lib/authlete/models/operations/client_secret_refresh_api_request.rb:
+    last_write_checksum: sha1:2161cea3b516ad891ef525f43e0a9808df13e73c
+  lib/authlete/models/operations/client_secret_refresh_api_request.rbi:
+    last_write_checksum: sha1:b12d091ec8de87cc5dc1386d91571e2e473cd55c
+  lib/authlete/models/operations/client_secret_refresh_api_response.rb:
+    last_write_checksum: sha1:8a037eea825977826479e1a1a6fda0e10de4a4e4
+  lib/authlete/models/operations/client_secret_refresh_api_response.rbi:
+    last_write_checksum: sha1:d31d8f1afc41e1ef0e428e976647ec762a0774f0
+  lib/authlete/models/operations/client_secret_update_api_request.rb:
+    last_write_checksum: sha1:575e4a170029087dcabc52a6cf89f2febee0d8dc
+  lib/authlete/models/operations/client_secret_update_api_request.rbi:
+    last_write_checksum: sha1:29ad746e011468a35ade066f7c406968120588ea
+  lib/authlete/models/operations/client_secret_update_api_response.rb:
+    last_write_checksum: sha1:731bc660bfccf7d7251b8d5a7e288603ca6906e6
+  lib/authlete/models/operations/client_secret_update_api_response.rbi:
+    last_write_checksum: sha1:019a75a52176d73fc0075e0cfa1f0f96e93f9738
+  lib/authlete/models/operations/client_update_api_request.rb:
+    last_write_checksum: sha1:1cd22d10a39b7611dbb3ea58a54076c902d995c7
+  lib/authlete/models/operations/client_update_api_request.rbi:
+    last_write_checksum: sha1:8461af098dc495991c25259a639df8aa70b81ee6
+  lib/authlete/models/operations/client_update_api_response.rb:
+    last_write_checksum: sha1:77e6c0bf5209ba73b51231a9e8b03ffed67a6572
+  lib/authlete/models/operations/client_update_api_response.rbi:
+    last_write_checksum: sha1:bc4a5ebb38af6ffa41cee985c1555fdbe9020bf3
+  lib/authlete/models/operations/device_authorization_api_request.rb:
+    last_write_checksum: sha1:763d3f2827994755a316a2bc22e1f32e7320d0dc
+  lib/authlete/models/operations/device_authorization_api_request.rbi:
+    last_write_checksum: sha1:1f616d5c6bae20cb277ecee3abeab4fbe416d925
+  lib/authlete/models/operations/device_authorization_api_response.rb:
+    last_write_checksum: sha1:f6b04ea1c2f7854602d7211ac3f93c16ec160828
+  lib/authlete/models/operations/device_authorization_api_response.rbi:
+    last_write_checksum: sha1:99cf8430e06cc42e5da675235b73aa39bbc13cb7
+  lib/authlete/models/operations/device_complete_api_request.rb:
+    last_write_checksum: sha1:23c7883c8ba73784699cf0349c42182ba8f42a2f
+  lib/authlete/models/operations/device_complete_api_request.rbi:
+    last_write_checksum: sha1:d8275f89920e0811e0179d9a64060867d84b0e74
+  lib/authlete/models/operations/device_complete_api_response.rb:
+    last_write_checksum: sha1:4d07ffafa82c7c3a431d44b4bd9c6ef6c18aa016
+  lib/authlete/models/operations/device_complete_api_response.rbi:
+    last_write_checksum: sha1:7eca3c269733e9ca5f4d414a209e2865cb5d84e8
+  lib/authlete/models/operations/device_verification_api_request.rb:
+    last_write_checksum: sha1:890036dec0b00ddd2da5f61c91f2ba1207f0039f
+  lib/authlete/models/operations/device_verification_api_request.rbi:
+    last_write_checksum: sha1:d83f2b15a6039d7484ef47031ce01fa0a4a6bc45
+  lib/authlete/models/operations/device_verification_api_response.rb:
+    last_write_checksum: sha1:58f1a39caad8280b7e6bfb627791d8c76507f92e
+  lib/authlete/models/operations/device_verification_api_response.rbi:
+    last_write_checksum: sha1:ea4b96cea49958d6280aeb5460c80ef046c92e0a
+  lib/authlete/models/operations/federation_configuration_api_request.rb:
+    last_write_checksum: sha1:9a5873da693dbea2da777c878a855345e37a4169
+  lib/authlete/models/operations/federation_configuration_api_request.rbi:
+    last_write_checksum: sha1:2aeffe0f67ce27c75e958ff10f1f3bd6a48e2929
+  lib/authlete/models/operations/federation_configuration_api_requestbody.rb:
+    last_write_checksum: sha1:80d0f8f90d5b6a387584035fb1227ce6e47f3b92
+  lib/authlete/models/operations/federation_configuration_api_requestbody.rbi:
+    last_write_checksum: sha1:8754c4a2157a78632c943a67f18d8367c1e4f3f0
+  lib/authlete/models/operations/federation_configuration_api_response.rb:
+    last_write_checksum: sha1:9e2866fade07dfb08c04c3ca3b2ac6b7c77908f8
+  lib/authlete/models/operations/federation_configuration_api_response.rbi:
+    last_write_checksum: sha1:d458a3386c3fba1166f5929e4c5ec227db7d8919
+  lib/authlete/models/operations/federation_registration_api_request.rb:
+    last_write_checksum: sha1:8e78f4d1837232feff7e26ac640f9d2d8b2adc0c
+  lib/authlete/models/operations/federation_registration_api_request.rbi:
+    last_write_checksum: sha1:4ce2fb9e876e0782b6b89cd023eb643c5da520d7
+  lib/authlete/models/operations/federation_registration_api_response.rb:
+    last_write_checksum: sha1:95224621681c6a8345e1021306358913f0244f01
+  lib/authlete/models/operations/federation_registration_api_response.rbi:
+    last_write_checksum: sha1:2084fb7d8b0107b0297e6cc3a5eb8364ca24edf0
+  lib/authlete/models/operations/grant_m_api_request.rb:
+    last_write_checksum: sha1:ad624436c7e7d404ba7875711b6eb5e28d753f79
+  lib/authlete/models/operations/grant_m_api_request.rbi:
+    last_write_checksum: sha1:5a7e0b4d85e1b6c4d20d595e78b6b347fa5a7787
+  lib/authlete/models/operations/grant_m_api_response.rb:
+    last_write_checksum: sha1:4fc54ea70847442d8da873b059a4ebc2f6ccbcad
+  lib/authlete/models/operations/grant_m_api_response.rbi:
+    last_write_checksum: sha1:5a64a7c697bfc0da3f4738dccc0479e43f500288
+  lib/authlete/models/operations/hsk_create_api_request.rb:
+    last_write_checksum: sha1:1d7532fce0688764522f1cc1eb39b0d8c792de45
+  lib/authlete/models/operations/hsk_create_api_request.rbi:
+    last_write_checksum: sha1:d849ec3e227a24af6f833c039b45a78c033ebd48
+  lib/authlete/models/operations/hsk_create_api_response.rb:
+    last_write_checksum: sha1:c2a8582bfced0a259ab9375d135db3b07985f312
+  lib/authlete/models/operations/hsk_create_api_response.rbi:
+    last_write_checksum: sha1:a29a30aee634f327032b006954059ce41c2ad2c6
+  lib/authlete/models/operations/hsk_delete_api_request.rb:
+    last_write_checksum: sha1:132f3880c9e4dadfd8643620da8d659144b3a0f7
+  lib/authlete/models/operations/hsk_delete_api_request.rbi:
+    last_write_checksum: sha1:6f43e56d5bf8f9c0e84833c0fcfc06cefd144278
+  lib/authlete/models/operations/hsk_delete_api_response.rb:
+    last_write_checksum: sha1:61bd64e174c6febb8ae924a56a35625b05467f78
+  lib/authlete/models/operations/hsk_delete_api_response.rbi:
+    last_write_checksum: sha1:be065b11371ee030d83850a42eae30f1afa92165
+  lib/authlete/models/operations/hsk_get_api_request.rb:
+    last_write_checksum: sha1:47474a757fd595505736ad95475e606ca1f21f46
+  lib/authlete/models/operations/hsk_get_api_request.rbi:
+    last_write_checksum: sha1:a978af65f7b012d921a97fdac7d7a8ef6c1a2c67
+  lib/authlete/models/operations/hsk_get_api_response.rb:
+    last_write_checksum: sha1:a00545f9b7ad2a215b65f2be740649f0c659fcd2
+  lib/authlete/models/operations/hsk_get_api_response.rbi:
+    last_write_checksum: sha1:70b4c95b5ecddea66fb005e4c87db3362398c09b
+  lib/authlete/models/operations/hsk_get_list_api_request.rb:
+    last_write_checksum: sha1:62fb0eedac85e3f692ad0b7b7643d433060962de
+  lib/authlete/models/operations/hsk_get_list_api_request.rbi:
+    last_write_checksum: sha1:0101eb4002b002a70588bf455eb26611c24f79ae
+  lib/authlete/models/operations/hsk_get_list_api_response.rb:
+    last_write_checksum: sha1:fb40d55c6063fb9f914dc4b20477e465eb88582b
+  lib/authlete/models/operations/hsk_get_list_api_response.rbi:
+    last_write_checksum: sha1:172809d1ec95bb6d10cbd27fd34c0d43a59ffd8e
+  lib/authlete/models/operations/idtoken_reissue_api_request.rb:
+    last_write_checksum: sha1:8f3ae1d4e3a2412fe923f3ff20114dd9e5d6c28e
+  lib/authlete/models/operations/idtoken_reissue_api_request.rbi:
+    last_write_checksum: sha1:dc6a39393f588af7ef1f2cc1b0464b4a3f26c59f
+  lib/authlete/models/operations/idtoken_reissue_api_response.rb:
+    last_write_checksum: sha1:a37e3d15bc2c68bb63bf2aceeff44bdab213effe
+  lib/authlete/models/operations/idtoken_reissue_api_response.rbi:
+    last_write_checksum: sha1:9d0b0aa44396c23a76a9260f93e57bd5242ff74c
+  lib/authlete/models/operations/jose_verify_api_request.rb:
+    last_write_checksum: sha1:264aefe9bf40ccca79a8eb66feb78c9e64108813
+  lib/authlete/models/operations/jose_verify_api_request.rbi:
+    last_write_checksum: sha1:b9b149f66dbdefc0b08c7e5107a1122652131728
+  lib/authlete/models/operations/jose_verify_api_response.rb:
+    last_write_checksum: sha1:83e6c19f31a765264f283c2e7a74c91efb3228a3
+  lib/authlete/models/operations/jose_verify_api_response.rbi:
+    last_write_checksum: sha1:ded1f6a48efb5572493b5c495cf18d02706a1668
+  lib/authlete/models/operations/native_sso_api_request.rb:
+    last_write_checksum: sha1:75b8be29871967a693213106ce6433c67c9b0524
+  lib/authlete/models/operations/native_sso_api_request.rbi:
+    last_write_checksum: sha1:cbdcdc6bccb6285e1d6755b0b57c02948730be08
+  lib/authlete/models/operations/native_sso_api_response.rb:
+    last_write_checksum: sha1:3441bd0a2d6196471dde809c93869fb98b328ecf
+  lib/authlete/models/operations/native_sso_api_response.rbi:
+    last_write_checksum: sha1:2d7e0e4c91a3a5b0be0ef2a5dfb872c6b7b2c5a2
+  lib/authlete/models/operations/native_sso_logout_api_request.rb:
+    last_write_checksum: sha1:6e24b726244c3e00b8b7f85e946b519caf05dc11
+  lib/authlete/models/operations/native_sso_logout_api_request.rbi:
+    last_write_checksum: sha1:0251f0f5fc5c99504b134002e2c3bf739fd88a7a
+  lib/authlete/models/operations/native_sso_logout_api_response.rb:
+    last_write_checksum: sha1:aae17967610c884cc75ec9b7ae4f0ec7def92f02
+  lib/authlete/models/operations/native_sso_logout_api_response.rbi:
+    last_write_checksum: sha1:9ac0afe807957222e12d7ef415906ab0b0bcb66f
+  lib/authlete/models/operations/pushed_auth_req_api_request.rb:
+    last_write_checksum: sha1:a2d8781424433e455af1eae0bfb72fcf347ee88a
+  lib/authlete/models/operations/pushed_auth_req_api_request.rbi:
+    last_write_checksum: sha1:023784fe6d1a70ba3f72b35d4080a3367d067d5f
+  lib/authlete/models/operations/pushed_auth_req_api_response.rb:
+    last_write_checksum: sha1:3060ffceb2d03914518a8741f62574bfa6f07ccd
+  lib/authlete/models/operations/pushed_auth_req_api_response.rbi:
+    last_write_checksum: sha1:01731e202af3b639c05aa56080a17786c1bf45f4
+  lib/authlete/models/operations/service_configuration_api_request.rb:
+    last_write_checksum: sha1:97dea8d4acd3a4e01b41d6ffb4fa559fe3b25e07
+  lib/authlete/models/operations/service_configuration_api_request.rbi:
+    last_write_checksum: sha1:fbbb44a21b114eaf2721e171a6239075c8ba5a90
+  lib/authlete/models/operations/service_configuration_api_response.rb:
+    last_write_checksum: sha1:1dfeae867a80214f954b24c284f59e2659b36ac3
+  lib/authlete/models/operations/service_configuration_api_response.rbi:
+    last_write_checksum: sha1:a7126568b4bcca5cd2575edcaf31f9216984e46c
+  lib/authlete/models/operations/service_configuration_api_responsebody.rb:
+    last_write_checksum: sha1:dda35db12252410e710ef48cc3ce702fdf961915
+  lib/authlete/models/operations/service_configuration_api_responsebody.rbi:
+    last_write_checksum: sha1:34bbc4894abc78bb644c3c0f970c922be94798ac
+  lib/authlete/models/operations/service_create_api_response.rb:
+    last_write_checksum: sha1:b8de52769d5c8acf83c12cc01786f4a1ac7044db
+  lib/authlete/models/operations/service_create_api_response.rbi:
+    last_write_checksum: sha1:f82829f0981aec289a019d7f5288febb8a747f16
+  lib/authlete/models/operations/service_delete_api_request.rb:
+    last_write_checksum: sha1:cfd9e98e940d8f9d4a80d88666b3cc17716f0ccc
+  lib/authlete/models/operations/service_delete_api_request.rbi:
+    last_write_checksum: sha1:ade67fda1f06677a9153880b7784b8327f71b294
+  lib/authlete/models/operations/service_delete_api_response.rb:
+    last_write_checksum: sha1:f3e83462fb71264e26d4aae67918707ff9190de4
+  lib/authlete/models/operations/service_delete_api_response.rbi:
+    last_write_checksum: sha1:1ce011f0720feaf7d669d87f722880ee005cc37d
+  lib/authlete/models/operations/service_get_api_request.rb:
+    last_write_checksum: sha1:45c4de941108a0839628777fb0247ad271300c46
+  lib/authlete/models/operations/service_get_api_request.rbi:
+    last_write_checksum: sha1:a25334964f471b1e56b0de9450c4c7981fb9dd71
+  lib/authlete/models/operations/service_get_api_response.rb:
+    last_write_checksum: sha1:88a3b05559c9c782dc505f7ad87f03ae73c23c2a
+  lib/authlete/models/operations/service_get_api_response.rbi:
+    last_write_checksum: sha1:bfe92cafcf05686a8f738234d7747e492a989820
+  lib/authlete/models/operations/service_get_list_api_request.rb:
+    last_write_checksum: sha1:0b824c52d38c8605b843e335a0944ee0fe8cf784
+  lib/authlete/models/operations/service_get_list_api_request.rbi:
+    last_write_checksum: sha1:bbcb03647395bcb78ef407b79962259bf3ab385f
+  lib/authlete/models/operations/service_get_list_api_response.rb:
+    last_write_checksum: sha1:2789fedda088e1732d95e409d71157a7859159dc
+  lib/authlete/models/operations/service_get_list_api_response.rbi:
+    last_write_checksum: sha1:984e46d4c153b73ea957d1c4f6f53f5d1cf1f771
+  lib/authlete/models/operations/service_jwks_get_api_request.rb:
+    last_write_checksum: sha1:8c7f84470681126f0d92c2dc0ccffe59b656c251
+  lib/authlete/models/operations/service_jwks_get_api_request.rbi:
+    last_write_checksum: sha1:5f5479cdbdfac075da51f144d2bc0444c2b1f603
+  lib/authlete/models/operations/service_jwks_get_api_response.rb:
+    last_write_checksum: sha1:c1c339fefa7ffb4ac280ab76c955334a5ec776c7
+  lib/authlete/models/operations/service_jwks_get_api_response.rbi:
+    last_write_checksum: sha1:9460fa7ee5885e716330b68c9204cd61b04cdf05
+  lib/authlete/models/operations/service_update_api_request.rb:
+    last_write_checksum: sha1:c750a55974dd21152e1e4228dcf38b55605ca130
+  lib/authlete/models/operations/service_update_api_request.rbi:
+    last_write_checksum: sha1:083eef691786897b66eb3cea47dfdfcf1e315d64
+  lib/authlete/models/operations/service_update_api_response.rb:
+    last_write_checksum: sha1:6687ec6a303f3e4a1647ab932a5037eb6061d71d
+  lib/authlete/models/operations/service_update_api_response.rbi:
+    last_write_checksum: sha1:146c2d999723ca88387509cde24ee17bf73b0cca
+  lib/authlete/models/operations/updateauthorizationticket_request.rb:
+    last_write_checksum: sha1:8e11a44ffc73b02c2299502c8e7e70092c008e69
+  lib/authlete/models/operations/updateauthorizationticket_request.rbi:
+    last_write_checksum: sha1:c6cf17bb1dc658a1c5fa49b0be7e23b4c731e712
+  lib/authlete/models/operations/updateauthorizationticket_response.rb:
+    last_write_checksum: sha1:9c6301f7c68652d244001f7d67e179b9cd49808a
+  lib/authlete/models/operations/updateauthorizationticket_response.rbi:
+    last_write_checksum: sha1:8195fd02c63c0aca62d14be7b2ea12c423c28523
+  lib/authlete/models/operations/vci_batch_issue_api_request.rb:
+    last_write_checksum: sha1:0199061039a17ab2006762d7269029a32a05a046
+  lib/authlete/models/operations/vci_batch_issue_api_request.rbi:
+    last_write_checksum: sha1:945fb51fc5e3e5fc5a5ed136804985d14ad54426
+  lib/authlete/models/operations/vci_batch_issue_api_response.rb:
+    last_write_checksum: sha1:757120e40ac6b8f178a696c6ac5586b4865493b7
+  lib/authlete/models/operations/vci_batch_issue_api_response.rbi:
+    last_write_checksum: sha1:9ece57c139828a2e09a9379171804a820e0e3d32
+  lib/authlete/models/operations/vci_batch_parse_api_request.rb:
+    last_write_checksum: sha1:3ad65eb3a6ecacd84bd62a345131888502a8e0be
+  lib/authlete/models/operations/vci_batch_parse_api_request.rbi:
+    last_write_checksum: sha1:66ed59d2409f239d1ea00ae1ee4ee74ce6b8b34e
+  lib/authlete/models/operations/vci_batch_parse_api_response.rb:
+    last_write_checksum: sha1:feb1b7389d8baed5a30d64c2832897436a490c71
+  lib/authlete/models/operations/vci_batch_parse_api_response.rbi:
+    last_write_checksum: sha1:ac4a55ed30b65004595af533b7837b3d165f2f36
+  lib/authlete/models/operations/vci_deferred_issue_api_request.rb:
+    last_write_checksum: sha1:653fdc65a610a4184ab4ceb316edc4547023284c
+  lib/authlete/models/operations/vci_deferred_issue_api_request.rbi:
+    last_write_checksum: sha1:b43220c7abde1a50877dc0137c043872a3a85716
+  lib/authlete/models/operations/vci_deferred_issue_api_response.rb:
+    last_write_checksum: sha1:fa3eb623fae51c97f32cffe77f51f96427efdfa3
+  lib/authlete/models/operations/vci_deferred_issue_api_response.rbi:
+    last_write_checksum: sha1:a02109acbc9f8007005b57ebf63225889ec07f58
+  lib/authlete/models/operations/vci_deferred_parse_api_request.rb:
+    last_write_checksum: sha1:cbef8de4a00ded9c13106bf9a15f5eca0bcac12c
+  lib/authlete/models/operations/vci_deferred_parse_api_request.rbi:
+    last_write_checksum: sha1:fee667828fe4ad0e88ef24a3c9035d4b259ff36b
+  lib/authlete/models/operations/vci_deferred_parse_api_response.rb:
+    last_write_checksum: sha1:1590fe6ec8ce51890424d6567aab271720bfba0d
+  lib/authlete/models/operations/vci_deferred_parse_api_response.rbi:
+    last_write_checksum: sha1:d38a0a88d3fef7c4b286155daa915a15090dcf89
+  lib/authlete/models/operations/vci_jwks_api_request.rb:
+    last_write_checksum: sha1:3c7e3ea10d7d4371cfaa4e517b4bba947ba98673
+  lib/authlete/models/operations/vci_jwks_api_request.rbi:
+    last_write_checksum: sha1:3ea3236c65ad00a639685b7f2d8596e675f77e1d
+  lib/authlete/models/operations/vci_jwks_api_response.rb:
+    last_write_checksum: sha1:bb45ec3335841c7341c7744e7184957e922fd664
+  lib/authlete/models/operations/vci_jwks_api_response.rbi:
+    last_write_checksum: sha1:df1069886b928a6e7dbde882527cfd829fb67b8c
+  lib/authlete/models/operations/vci_jwtissuer_api_request.rb:
+    last_write_checksum: sha1:7684f35f89e5fda5497e9639abb8be082258c74d
+  lib/authlete/models/operations/vci_jwtissuer_api_request.rbi:
+    last_write_checksum: sha1:72065eecd7928d93c4336ec666ab0484e510d50d
+  lib/authlete/models/operations/vci_jwtissuer_api_response.rb:
+    last_write_checksum: sha1:d01f629c35cbae4502d6f2f228c1ce693783dbe8
+  lib/authlete/models/operations/vci_jwtissuer_api_response.rbi:
+    last_write_checksum: sha1:4c2fb109f29357dde48d866b9857cf6b0b48bb1b
+  lib/authlete/models/operations/vci_metadata_api_request.rb:
+    last_write_checksum: sha1:c96abab4dff9ad2c6a85a514ee54e63e66a06351
+  lib/authlete/models/operations/vci_metadata_api_request.rbi:
+    last_write_checksum: sha1:3ec5b3225b869d3dfb68083eafbeab711a0afed1
+  lib/authlete/models/operations/vci_metadata_api_response.rb:
+    last_write_checksum: sha1:0894eeebe32f4811b555d1ba85e71c44fc491265
+  lib/authlete/models/operations/vci_metadata_api_response.rbi:
+    last_write_checksum: sha1:ee67118608aa8220d1801aeeb210b4a47ed4039e
+  lib/authlete/models/operations/vci_offer_create_api_request.rb:
+    last_write_checksum: sha1:baab0026aadd706faf7b5ccc22d42c98962d46fa
+  lib/authlete/models/operations/vci_offer_create_api_request.rbi:
+    last_write_checksum: sha1:a10bdd80d64ae63f605206c4a3336df5a1b85048
+  lib/authlete/models/operations/vci_offer_create_api_response.rb:
+    last_write_checksum: sha1:a7f5c54d98f277e788a9c5178d63bce226bebc7e
+  lib/authlete/models/operations/vci_offer_create_api_response.rbi:
+    last_write_checksum: sha1:5bde397a07943328f84f52e3158831d08fff1eb6
+  lib/authlete/models/operations/vci_offer_info_api_request.rb:
+    last_write_checksum: sha1:fc4282285f1450cc66a89ffb33cb92d5dbaf9bdf
+  lib/authlete/models/operations/vci_offer_info_api_request.rbi:
+    last_write_checksum: sha1:6cda4d56d890548ac001bdc2e09e938219e6513d
+  lib/authlete/models/operations/vci_offer_info_api_response.rb:
+    last_write_checksum: sha1:c5796c57368ef104bdc10a8dd1831edc3e347c39
+  lib/authlete/models/operations/vci_offer_info_api_response.rbi:
+    last_write_checksum: sha1:221b15ccd5ddef6b06941f8c2cca0d221541b957
+  lib/authlete/models/operations/vci_single_issue_api_request.rb:
+    last_write_checksum: sha1:08a29f5290c62ecbe4fa7e5f4f6c94e880da924c
+  lib/authlete/models/operations/vci_single_issue_api_request.rbi:
+    last_write_checksum: sha1:8af2b60321a6cb2471d2f17627a4bf53cdb7a390
+  lib/authlete/models/operations/vci_single_issue_api_response.rb:
+    last_write_checksum: sha1:85c37ba2f630134e8dc0ec3abd4bce80265170e2
+  lib/authlete/models/operations/vci_single_issue_api_response.rbi:
+    last_write_checksum: sha1:a85a876b52f29c2f64ab5b789a7cd7a2fd245526
+  lib/authlete/models/operations/vci_single_parse_api_request.rb:
+    last_write_checksum: sha1:75f296ccc17cfd4332a2f8cca127f1dbd6db26ed
+  lib/authlete/models/operations/vci_single_parse_api_request.rbi:
+    last_write_checksum: sha1:362b2d3f74fe7c53b39d7565ad3840b2481f539d
+  lib/authlete/models/operations/vci_single_parse_api_response.rb:
+    last_write_checksum: sha1:ff765e959f149873f1c6153c1d8b72279195ebb5
+  lib/authlete/models/operations/vci_single_parse_api_response.rbi:
+    last_write_checksum: sha1:774a9ca74528420ef5f6ac5684523aa5057d707f
+  lib/authlete/native_sso.rb:
+    last_write_checksum: sha1:3996ab98bd4e71e731789410ff85526e5f5f8239
+  lib/authlete/pushed_authorization.rb:
+    last_write_checksum: sha1:3b5669c599423ae6e229c47455f530e139346375
+  lib/authlete/revocation.rb:
+    last_write_checksum: sha1:fe325739209496c366263157323dc040900168a4
+  lib/authlete/sdk_hooks/hooks.rb:
+    last_write_checksum: sha1:fdcb69377943a12cbc756dbe35df378b7e6ba134
+  lib/authlete/sdk_hooks/types.rb:
+    last_write_checksum: sha1:f369e066a866c5906b3e9afbce36e21aff890da4
+  lib/authlete/sdkconfiguration.rb:
+    last_write_checksum: sha1:23b1f1aff5db1fa38961bc68f6b5fd2cbb325390
+  lib/authlete/sdkconfiguration.rbi:
+    last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
+  lib/authlete/services.rb:
+    last_write_checksum: sha1:7ae1a9080d1231a62b152e4bbbdf653b261f7b49
+  lib/authlete/token_management.rb:
+    last_write_checksum: sha1:927c41bf5ed06c6536edb0d3cff1bea38d96a698
+  lib/authlete/tokens.rb:
+    last_write_checksum: sha1:add9cf8af7aa8b3271534f4e4c0b5cca90e6f2ba
+  lib/authlete/userinfo.rb:
+    last_write_checksum: sha1:d2d8567e7e21597f7e2f266f6efdec700e4913ce
+  lib/authlete/utils/forms.rb:
+    last_write_checksum: sha1:5145ac4dce3ebba47ec7cbc3e6a99a9c716fff03
+  lib/authlete/utils/headers.rb:
+    last_write_checksum: sha1:e1cbeb7c86900c7e63173413f7184f9017838217
+  lib/authlete/utils/query_params.rb:
+    last_write_checksum: sha1:2659c3e10ead13f332e89c01cbcff82cc7662cc1
+  lib/authlete/utils/request_bodies.rb:
+    last_write_checksum: sha1:cdf271c8ece51a1f13cc8b22de1a04e787ec20a5
+  lib/authlete/utils/retries.rb:
+    last_write_checksum: sha1:b89fc988112b52650ad9e90ee248f0d8b4747ea4
+  lib/authlete/utils/security.rb:
+    last_write_checksum: sha1:70d2f7a249d5c305d882907d4d9706f335920fe6
+  lib/authlete/utils/url.rb:
+    last_write_checksum: sha1:5a295cb9d54e058926a51565742c0ddb3e55e066
+  lib/authlete/utils/utils.rb:
+    last_write_checksum: sha1:2ad1bba415b2db0ccb9b4f95a4f33875b670d01b
+  lib/authlete/verifiable_credentials.rb:
+    last_write_checksum: sha1:d30005e3890608448e1f2cf1b24b2bb1a6c013a1
+  lib/authlete_ruby_test.rb:
+    last_write_checksum: sha1:ab18fe9b1a922a178bf555a4a056c62dce49d844
+  lib/crystalline.rb:
+    last_write_checksum: sha1:b6ec0a2833f58ba9a6f07c9637fdca05e59006d3
+  lib/crystalline/metadata_fields.rb:
+    last_write_checksum: sha1:926ad3bb8d7297622da022a9dfe54fa0e1f13fe9
+  lib/crystalline/module.rb:
+    last_write_checksum: sha1:ce256037ad84adec9c12b579eeadab6cff05f2c8
+  lib/crystalline/types.rb:
+    last_write_checksum: sha1:107fdf436cca7bccdf9fe2c83f4d723352c96684
+  lib/crystalline/utils.rb:
+    last_write_checksum: sha1:b32469851da6f9f729e484ade6a23b38639a652a
+  sorbet/config:
+    last_write_checksum: sha1:16e6180c757fb5c6db2d3aabadc4fd83aab8a74e
+  sorbet/rbi/annotations/.gitattributes:
+    last_write_checksum: sha1:c683580f06441d46622a00a7aac20eeefdae4087
+  sorbet/rbi/gems/.gitattributes:
+    last_write_checksum: sha1:737a5b4c7736cfd651133334bf4cdfabbe78ac69
+  sorbet/tapioca/config.yml:
+    last_write_checksum: sha1:d6b5164d0cd7527d4cb7255ef1c9844d5e8f4d39
+  sorbet/tapioca/require.rb:
+    last_write_checksum: sha1:8f62e8b32ff28e507575b297b506f78eb37782b2

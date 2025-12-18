@@ -6,9 +6,9 @@
 ### Available Operations
 
 * [register](#register) - Register Client
-* [get](#get) - Get Client
+* [retrieve](#retrieve) - Get Client
 * [update](#update) - Update Client
-* [delete](#delete) - Delete Client
+* [destroy](#destroy) - Delete Client
 
 ## register
 
@@ -74,10 +74,10 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_api" method="post" path="/api/{serviceId}/client/registration" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -110,7 +110,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get
+## retrieve
 
 Get a dynamically registered client. This API is supposed to be used to implement a client registration
 management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -193,14 +193,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_get_api" method="post" path="/api/{serviceId}/client/registration/get" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.dynamic_client_registration.get(service_id: '<id>', request_body: Models::Operations::ClientRegistrationGetApiRequestBody.new(
+res = s.dynamic_client_registration.retrieve(service_id: '<id>', request_body: Models::Operations::ClientRegistrationGetApiRequestBody.new(
   token: 'qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA',
   client_id: '26837717140341',
 ))
@@ -313,10 +313,10 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_update_api" method="post" path="/api/{serviceId}/client/registration/update" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -351,7 +351,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete
+## destroy
 
 Delete a dynamically registered client. This API is supposed to be used to implement a client
 registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
@@ -431,14 +431,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_delete_api" method="post" path="/api/{serviceId}/client/registration/delete" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.dynamic_client_registration.delete(service_id: '<id>', request_body: Models::Operations::ClientRegistrationDeleteApiRequestBody.new(
+res = s.dynamic_client_registration.destroy(service_id: '<id>', request_body: Models::Operations::ClientRegistrationDeleteApiRequestBody.new(
   token: 'qs4Tu5TV7qqDYT93bFs6ISyhTByMF9o-54GY4JU5vTA',
   client_id: '26837717140341',
 ))

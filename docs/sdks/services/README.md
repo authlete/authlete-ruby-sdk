@@ -1,18 +1,18 @@
-# Service
-(*service*)
+# Services
+(*services*)
 
 ## Overview
 
 ### Available Operations
 
-* [get](#get) - Get Service
+* [retrieve](#retrieve) - Get Service
 * [list](#list) - List Services
 * [create](#create) - Create Service
 * [update](#update) - Update Service
-* [delete](#delete) - Delete Service ⚡
-* [get_configuration](#get_configuration) - Get Service Configuration
+* [destroy](#destroy) - Delete Service ⚡
+* [configuration](#configuration) - Get Service Configuration
 
-## get
+## retrieve
 
 Get a service.
 
@@ -24,14 +24,14 @@ have access to view this service directly, a limited view of the service will be
 
 <!-- UsageSnippet language="ruby" operationID="service_get_api" method="get" path="/api/{serviceId}/service/get" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.service.get(service_id: '<id>')
+res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?
   # handle response
@@ -73,14 +73,14 @@ Otherwise, all services that the access token can view, even in a limited fashio
 
 <!-- UsageSnippet language="ruby" operationID="service_get_list_api" method="get" path="/api/service/get/list" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.service.list()
+res = s.services.list()
 
 unless res.service_get_list_response.nil?
   # handle response
@@ -116,10 +116,10 @@ Create a new service.
 
 <!-- UsageSnippet language="ruby" operationID="service_create_api" method="post" path="/api/service/create" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -175,7 +175,7 @@ req = Models::Components::ServiceInput.new(
   ],
 )
 
-res = s.service.create(request: req)
+res = s.services.create(request: req)
 
 unless res.service.nil?
   # handle response
@@ -210,14 +210,14 @@ Update a service.
 
 <!-- UsageSnippet language="ruby" operationID="service_update_api" method="post" path="/api/{serviceId}/service/update" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.service.update(service_id: '<id>', service: Models::Components::ServiceInput.new(
+res = s.services.update(service_id: '<id>', service: Models::Components::ServiceInput.new(
   service_name: 'My updated service',
   issuer: 'https://my-service.example.com',
   clients_per_developer: 0,
@@ -344,7 +344,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete
+## destroy
 
 Delete a service.
 
@@ -353,14 +353,14 @@ Delete a service.
 
 <!-- UsageSnippet language="ruby" operationID="service_delete_api" method="delete" path="/api/{serviceId}/service/delete" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.service.delete(service_id: '<id>')
+res = s.services.destroy(service_id: '<id>')
 
 if res.status_code == 200
   # handle response
@@ -386,7 +386,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get_configuration
+## configuration
 
 This API gathers configuration information about a service.
 ### Description
@@ -401,14 +401,14 @@ in OpenID Connect Discovery 1.0.
 
 <!-- UsageSnippet language="ruby" operationID="service_configuration_api" method="get" path="/api/{serviceId}/service/configuration" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.service.get_configuration(service_id: '<id>')
+res = s.services.configuration(service_id: '<id>')
 
 unless res.object.nil?
   # handle response

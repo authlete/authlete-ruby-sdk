@@ -12,19 +12,92 @@ require_relative 'utils/retries'
 
 module Authlete
   extend T::Sig
+
   class Client
     extend T::Sig
-    attr_accessor :management
 
+    attr_accessor :services, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :device_flow, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :authorization_management, :native_sso
 
-    sig { params(sdk_config: SDKConfiguration).void }
-    def initialize(sdk_config)
-      @sdk_configuration = sdk_config
+    sig do
+      params(
+        client: T.nilable(Faraday::Connection),
+        retry_config: T.nilable(::Authlete::Utils::RetryConfig),
+        timeout_ms: T.nilable(Integer),
+        bearer: T.nilable(::String),
+        security_source: T.nilable(T.proc.returns(Models::Components::Security)),
+        server_idx: T.nilable(Integer),
+        server_url: T.nilable(String),
+        url_params: T.nilable(T::Hash[Symbol, String])
+      ).void
+    end
+    def initialize(client: nil, retry_config: nil, timeout_ms: nil, bearer: nil, security_source: nil, server_idx: nil, server_url: nil, url_params: nil)
+      ## Instantiates the SDK configuring it with the provided parameters.
+      # @param [T.nilable(Faraday::Connection)] client The faraday HTTP client to use for all operations
+      # @param [T.nilable(::Authlete::Utils::RetryConfig)] retry_config The retry configuration to use for all operations
+      # @param [T.nilable(Integer)] timeout_ms Request timeout in milliseconds for all operations
+      # @param [T.nilable(Models::Components::Security)] security: The security details required for authentication
+      # @param [T.proc.returns(T.nilable(Models::Components::Security))] security_source: A function that returns security details required for authentication
+      # @param [T.nilable(::Integer)] server_idx The index of the server to use for all operations
+      # @param [T.nilable(::String)] server_url The server URL to use for all operations
+      # @param [T.nilable(::Hash<::Symbol, ::String>)] url_params Parameters to optionally template the server URL with
+
+      connection_options = {
+        request: {
+          params_encoder: Faraday::FlatParamsEncoder
+        }
+      }
+      connection_options[:request][:timeout] = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+
+      client ||= Faraday.new(**connection_options) do |f|
+        f.request :multipart, {}
+        # f.response :logger, nil, { headers: true, bodies: true, errors: true }
+      end
+      
+      if !server_url.nil?
+        if !url_params.nil?
+          server_url = Utils.template_url(server_url, url_params)
+        end
+      end
+
+      server_idx = 0 if server_idx.nil?
+      hooks = SDKHooks::Hooks.new
+      @sdk_configuration = SDKConfiguration.new(
+        client,
+        hooks,
+        retry_config,
+        timeout_ms,
+        bearer,
+        security_source,
+        server_url,
+        server_idx
+      )
+      @sdk_configuration = hooks.sdk_init(config: @sdk_configuration)
       init_sdks
     end
+
     sig { void }
     def init_sdks
-      @management = ::Authlete::ClientManagement.new(@sdk_configuration)
+      @services = Services.new(@sdk_configuration)
+      @clients = Clients.new(@sdk_configuration)
+      @client_management = ClientManagement.new(@sdk_configuration)
+      @authorization = Authorization.new(@sdk_configuration)
+      @pushed_authorization = PushedAuthorization.new(@sdk_configuration)
+      @tokens = Tokens.new(@sdk_configuration)
+      @introspection = Introspection.new(@sdk_configuration)
+      @revocation = Revocation.new(@sdk_configuration)
+      @userinfo = Userinfo.new(@sdk_configuration)
+      @token_management = TokenManagement.new(@sdk_configuration)
+      @grant_management = GrantManagement.new(@sdk_configuration)
+      @jwk_set_endpoint = JWKSetEndpoint.new(@sdk_configuration)
+      @dynamic_client_registration = DynamicClientRegistration.new(@sdk_configuration)
+      @ciba = Ciba.new(@sdk_configuration)
+      @device_flow = DeviceFlow.new(@sdk_configuration)
+      @jose_object = JoseObject.new(@sdk_configuration)
+      @federation = Federation.new(@sdk_configuration)
+      @hardware_security_keys = HardwareSecurityKeys.new(@sdk_configuration)
+      @verifiable_credentials = VerifiableCredentials.new(@sdk_configuration)
+      @authorization_management = AuthorizationManagement.new(@sdk_configuration)
+      @native_sso = NativeSso.new(@sdk_configuration)
     end
 
     sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
@@ -40,749 +113,6 @@ module Authlete
       end
 
       return Utils.template_url base_url, url_variables
-    end
-
-
-    sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientGetApiResponse) }
-    def get(service_id:, client_id:, timeout_ms: nil)
-      # get - Get Client
-      # Get a client.
-      # 
-      request = Models::Operations::ClientGetApiRequest.new(
-        service_id: service_id,
-        client_id: client_id
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientGetApiRequest,
-        base_url,
-        '/api/{serviceId}/client/get/{clientId}',
-        request
-      )
-      headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      security = @sdk_configuration.security_source&.call
-
-      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
-
-      connection = @sdk_configuration.client
-
-      hook_ctx = SDKHooks::HookContext.new(
-        config: @sdk_configuration,
-        base_url: base_url,
-        oauth2_scopes: [],
-        operation_id: 'client_get_api',
-        security_source: @sdk_configuration.security_source
-      )
-
-      error = T.let(nil, T.nilable(StandardError))
-      http_response = T.let(nil, T.nilable(Faraday::Response))
-      
-      
-      begin
-        http_response = T.must(connection).get(url) do |req|
-          req.headers.merge!(headers)
-          req.options.timeout = timeout unless timeout.nil?
-          Utils.configure_request_security(req, security)
-
-          @sdk_configuration.hooks.before_request(
-            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            request: req
-          )
-        end
-      rescue StandardError => e
-        error = e
-      ensure
-        if http_response.nil? || Utils.error_status?(http_response.status)
-          http_response = @sdk_configuration.hooks.after_error(
-            error: error,
-            hook_ctx: SDKHooks::AfterErrorHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        else
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        end
-        
-        if http_response.nil?
-          raise error if !error.nil?
-          raise 'no response'
-        end
-      end
-      
-      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
-      if Utils.match_status_code(http_response.status, ['200'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Client)
-          response = Models::Operations::ClientGetApiResponse.new(
-            status_code: http_response.status,
-            content_type: content_type,
-            raw_response: http_response,
-            client: T.unsafe(obj)
-          )
-
-          return response
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['500'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['4XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      elsif Utils.match_status_code(http_response.status, ['5XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      else
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
-
-      end
-    end
-
-
-    sig { params(service_id: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientGetListApiResponse) }
-    def list(service_id:, developer: nil, start: nil, end_: nil, timeout_ms: nil)
-      # list - List Clients
-      # Get a list of clients on a service.
-      # 
-      # If the access token can view a full service (including an admin), all clients within the
-      # service are returned. Otherwise, only clients that the access token can view within the
-      # service are returned.
-      # - ViewClient: []
-      # 
-      request = Models::Operations::ClientGetListApiRequest.new(
-        service_id: service_id,
-        developer: developer,
-        start: start,
-        end_: end_
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientGetListApiRequest,
-        base_url,
-        '/api/{serviceId}/client/get/list',
-        request
-      )
-      headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
-      query_params = Utils.get_query_params(Models::Operations::ClientGetListApiRequest, request, nil)
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      security = @sdk_configuration.security_source&.call
-
-      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
-
-      connection = @sdk_configuration.client
-
-      hook_ctx = SDKHooks::HookContext.new(
-        config: @sdk_configuration,
-        base_url: base_url,
-        oauth2_scopes: [],
-        operation_id: 'client_get_list_api',
-        security_source: @sdk_configuration.security_source
-      )
-
-      error = T.let(nil, T.nilable(StandardError))
-      http_response = T.let(nil, T.nilable(Faraday::Response))
-      
-      
-      begin
-        http_response = T.must(connection).get(url) do |req|
-          req.headers.merge!(headers)
-          req.options.timeout = timeout unless timeout.nil?
-          req.params = query_params
-          Utils.configure_request_security(req, security)
-
-          @sdk_configuration.hooks.before_request(
-            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            request: req
-          )
-        end
-      rescue StandardError => e
-        error = e
-      ensure
-        if http_response.nil? || Utils.error_status?(http_response.status)
-          http_response = @sdk_configuration.hooks.after_error(
-            error: error,
-            hook_ctx: SDKHooks::AfterErrorHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        else
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        end
-        
-        if http_response.nil?
-          raise error if !error.nil?
-          raise 'no response'
-        end
-      end
-      
-      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
-      if Utils.match_status_code(http_response.status, ['200'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientGetListResponse)
-          response = Models::Operations::ClientGetListApiResponse.new(
-            status_code: http_response.status,
-            content_type: content_type,
-            raw_response: http_response,
-            client_get_list_response: T.unsafe(obj)
-          )
-
-          return response
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['500'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['4XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      elsif Utils.match_status_code(http_response.status, ['5XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      else
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
-
-      end
-    end
-
-
-    sig { params(service_id: ::String, client: T.nilable(Models::Components::ClientInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientCreateApiResponse) }
-    def create(service_id:, client: nil, timeout_ms: nil)
-      # create - Create Client
-      # Create a new client.
-      # 
-      request = Models::Operations::ClientCreateApiRequest.new(
-        service_id: service_id,
-        client: client
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientCreateApiRequest,
-        base_url,
-        '/api/{serviceId}/client/create',
-        request
-      )
-      headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client, :json)
-      headers['content-type'] = req_content_type
-
-      if form
-        body = Utils.encode_form(form)
-      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
-      else
-        body = data
-      end
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      security = @sdk_configuration.security_source&.call
-
-      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
-
-      connection = @sdk_configuration.client
-
-      hook_ctx = SDKHooks::HookContext.new(
-        config: @sdk_configuration,
-        base_url: base_url,
-        oauth2_scopes: [],
-        operation_id: 'client_create_api',
-        security_source: @sdk_configuration.security_source
-      )
-
-      error = T.let(nil, T.nilable(StandardError))
-      http_response = T.let(nil, T.nilable(Faraday::Response))
-      
-      
-      begin
-        http_response = T.must(connection).post(url) do |req|
-          req.body = body
-          req.headers.merge!(headers)
-          req.options.timeout = timeout unless timeout.nil?
-          Utils.configure_request_security(req, security)
-
-          @sdk_configuration.hooks.before_request(
-            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            request: req
-          )
-        end
-      rescue StandardError => e
-        error = e
-      ensure
-        if http_response.nil? || Utils.error_status?(http_response.status)
-          http_response = @sdk_configuration.hooks.after_error(
-            error: error,
-            hook_ctx: SDKHooks::AfterErrorHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        else
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        end
-        
-        if http_response.nil?
-          raise error if !error.nil?
-          raise 'no response'
-        end
-      end
-      
-      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
-      if Utils.match_status_code(http_response.status, ['200'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Client)
-          response = Models::Operations::ClientCreateApiResponse.new(
-            status_code: http_response.status,
-            content_type: content_type,
-            raw_response: http_response,
-            client: T.unsafe(obj)
-          )
-
-          return response
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['500'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['4XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      elsif Utils.match_status_code(http_response.status, ['5XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      else
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
-
-      end
-    end
-
-
-    sig { params(service_id: ::String, client_id: ::String, client: T.nilable(Models::Components::ClientInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientUpdateApiResponse) }
-    def update(service_id:, client_id:, client: nil, timeout_ms: nil)
-      # update - Update Client
-      # Update a client.
-      # 
-      request = Models::Operations::ClientUpdateApiRequest.new(
-        service_id: service_id,
-        client_id: client_id,
-        client: client
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientUpdateApiRequest,
-        base_url,
-        '/api/{serviceId}/client/update/{clientId}',
-        request
-      )
-      headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client, :json)
-      headers['content-type'] = req_content_type
-
-      if form
-        body = Utils.encode_form(form)
-      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
-      else
-        body = data
-      end
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      security = @sdk_configuration.security_source&.call
-
-      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
-
-      connection = @sdk_configuration.client
-
-      hook_ctx = SDKHooks::HookContext.new(
-        config: @sdk_configuration,
-        base_url: base_url,
-        oauth2_scopes: [],
-        operation_id: 'client_update_api',
-        security_source: @sdk_configuration.security_source
-      )
-
-      error = T.let(nil, T.nilable(StandardError))
-      http_response = T.let(nil, T.nilable(Faraday::Response))
-      
-      
-      begin
-        http_response = T.must(connection).post(url) do |req|
-          req.body = body
-          req.headers.merge!(headers)
-          req.options.timeout = timeout unless timeout.nil?
-          Utils.configure_request_security(req, security)
-
-          @sdk_configuration.hooks.before_request(
-            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            request: req
-          )
-        end
-      rescue StandardError => e
-        error = e
-      ensure
-        if http_response.nil? || Utils.error_status?(http_response.status)
-          http_response = @sdk_configuration.hooks.after_error(
-            error: error,
-            hook_ctx: SDKHooks::AfterErrorHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        else
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        end
-        
-        if http_response.nil?
-          raise error if !error.nil?
-          raise 'no response'
-        end
-      end
-      
-      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
-      if Utils.match_status_code(http_response.status, ['200'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Client)
-          response = Models::Operations::ClientUpdateApiResponse.new(
-            status_code: http_response.status,
-            content_type: content_type,
-            raw_response: http_response,
-            client: T.unsafe(obj)
-          )
-
-          return response
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['500'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['4XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      elsif Utils.match_status_code(http_response.status, ['5XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      else
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
-
-      end
-    end
-
-
-    sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientDeleteApiResponse) }
-    def delete(service_id:, client_id:, timeout_ms: nil)
-      # delete - Delete Client ⚡
-      # Delete a client.
-      # 
-      request = Models::Operations::ClientDeleteApiRequest.new(
-        service_id: service_id,
-        client_id: client_id
-      )
-      url, params = @sdk_configuration.get_server_details
-      base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientDeleteApiRequest,
-        base_url,
-        '/api/{serviceId}/client/delete/{clientId}',
-        request
-      )
-      headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
-      headers['Accept'] = 'application/json'
-      headers['user-agent'] = @sdk_configuration.user_agent
-
-      security = @sdk_configuration.security_source&.call
-
-      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
-
-      connection = @sdk_configuration.client
-
-      hook_ctx = SDKHooks::HookContext.new(
-        config: @sdk_configuration,
-        base_url: base_url,
-        oauth2_scopes: [],
-        operation_id: 'client_delete_api',
-        security_source: @sdk_configuration.security_source
-      )
-
-      error = T.let(nil, T.nilable(StandardError))
-      http_response = T.let(nil, T.nilable(Faraday::Response))
-      
-      
-      begin
-        http_response = T.must(connection).delete(url) do |req|
-          req.headers.merge!(headers)
-          req.options.timeout = timeout unless timeout.nil?
-          Utils.configure_request_security(req, security)
-
-          @sdk_configuration.hooks.before_request(
-            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            request: req
-          )
-        end
-      rescue StandardError => e
-        error = e
-      ensure
-        if http_response.nil? || Utils.error_status?(http_response.status)
-          http_response = @sdk_configuration.hooks.after_error(
-            error: error,
-            hook_ctx: SDKHooks::AfterErrorHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        else
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-        end
-        
-        if http_response.nil?
-          raise error if !error.nil?
-          raise 'no response'
-        end
-      end
-      
-      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
-      if Utils.match_status_code(http_response.status, ['204'])
-        http_response = @sdk_configuration.hooks.after_success(
-          hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-            hook_ctx: hook_ctx
-          ),
-          response: http_response
-        )
-        return Models::Operations::ClientDeleteApiResponse.new(
-          status_code: http_response.status,
-          content_type: content_type,
-          raw_response: http_response
-        )
-      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['500'])
-        if Utils.match_content_type(content_type, 'application/json')
-          http_response = @sdk_configuration.hooks.after_success(
-            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
-              hook_ctx: hook_ctx
-            ),
-            response: http_response
-          )
-          response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
-          obj.raw_response = http_response
-          throw obj
-        else
-          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
-        end
-      elsif Utils.match_status_code(http_response.status, ['4XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      elsif Utils.match_status_code(http_response.status, ['5XX'])
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
-      else
-        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
-
-      end
     end
   end
 end

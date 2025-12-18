@@ -7,7 +7,7 @@
 
 * [authorization](#authorization) - Process Device Authorization Request
 * [verification](#verification) - Process Device Verification Request
-* [complete](#complete) - Complete Device Authorization
+* [complete_request](#complete_request) - Complete Device Authorization
 
 ## authorization
 
@@ -82,10 +82,10 @@ and return to the client application.
 
 <!-- UsageSnippet language="ruby" operationID="device_authorization_api" method="post" path="/api/{serviceId}/device/authorization" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -155,10 +155,10 @@ to ask whether she approves or rejects the authorization request from the device
 
 <!-- UsageSnippet language="ruby" operationID="device_verification_api" method="post" path="/api/{serviceId}/device/verification" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -191,7 +191,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## complete
+## complete_request
 
 This API returns information about what action the authorization server should take after it receives
 the result of end-user's decision about whether the end-user has approved or rejected a client
@@ -248,14 +248,14 @@ using.
 
 <!-- UsageSnippet language="ruby" operationID="device_complete_api" method="post" path="/api/{serviceId}/device/complete" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.device_flow.complete(service_id: '<id>', device_complete_request: Models::Components::DeviceCompleteRequest.new(
+res = s.device_flow.complete_request(service_id: '<id>', device_complete_request: Models::Components::DeviceCompleteRequest.new(
   user_code: 'XWWKPBWVXQ',
   result: Models::Components::DeviceCompleteRequestResult::AUTHORIZED,
   subject: 'john',

@@ -18,10 +18,10 @@ This API verifies a JOSE object.
 
 <!-- UsageSnippet language="ruby" operationID="jose_verify_api" method="post" path="/api/{serviceId}/jose/verify" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 

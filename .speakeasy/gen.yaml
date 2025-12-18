@@ -45,9 +45,11 @@ ruby:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   maxMethodParams: 4
   module: Authlete
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: authlete_ruby_test
   typingStrategy: sorbet

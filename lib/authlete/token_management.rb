@@ -653,8 +653,8 @@ module Authlete
 
 
     sig { params(service_id: ::String, access_token_identifier: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenDeleteApiResponse) }
-    def delete(service_id:, access_token_identifier:, timeout_ms: nil)
-      # delete - Delete Access Token
+    def destroy(service_id:, access_token_identifier:, timeout_ms: nil)
+      # destroy - Delete Access Token
       # Delete an access token.
       # 
       request = Models::Operations::AuthTokenDeleteApiRequest.new(

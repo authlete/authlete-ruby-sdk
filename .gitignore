@@ -1,3 +1,5 @@
+.env
+.env.local
 *.gem
 .rbenv-gemsets
 .DS_Store

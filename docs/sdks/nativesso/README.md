@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [process](#process) - Native SSO Processing
+* [process_request](#process_request) - Native SSO Processing
 * [logout](#logout) - Native SSO Logout Processing
 
-## process
+## process_request
 
 This API should be called by the implementation of a token endpoint to generate the ID token and
 token response that comply with [OpenID Connect Native SSO for Mobile Apps 1.0](https://openid.net/specs/openid-connect-native-sso-1_0.html)
@@ -66,14 +66,14 @@ If `CALLER_ERROR` is returned, please review the implementation of your OpenID P
 
 <!-- UsageSnippet language="ruby" operationID="native_sso_api" method="post" path="/api/{serviceId}/nativesso" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.native_sso.process(service_id: '715948317', native_sso_request: Models::Components::NativeSsoRequest.new(
+res = s.native_sso.process_request(service_id: '715948317', native_sso_request: Models::Components::NativeSsoRequest.new(
   access_token: '_kh1aygxZ5NKLYKCJRM8M_AYvDg2wCWoprQDjfO87ZWq',
   refresh_token: 'kHUGSt_d3LSgiCQzH7wa5TpwIHWgjAZGw14zZV7hRqw',
   claims: '{"given_name":"John","family_name":"Brown","email":"test@example.com"}',
@@ -134,10 +134,10 @@ problem. For example, the call may have been missing the required request parame
 
 <!-- UsageSnippet language="ruby" operationID="native_sso_logout_api" method="post" path="/api/{serviceId}/nativesso/logout" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 

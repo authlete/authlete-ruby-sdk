@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [process](#process) - Process Introspection Request
+* [process_request](#process_request) - Process Introspection Request
 * [standard_process](#standard_process) - Process OAuth 2.0 Introspection Request
 
-## process
+## process_request
 
 This API gathers information about an access token.
 ### Description
@@ -140,14 +140,14 @@ may be different.
 
 <!-- UsageSnippet language="ruby" operationID="auth_introspection_api" method="post" path="/api/{serviceId}/auth/introspection" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.introspection.process(service_id: '<id>', introspection_request: Models::Components::IntrospectionRequest.new(
+res = s.introspection.process_request(service_id: '<id>', introspection_request: Models::Components::IntrospectionRequest.new(
   token: 'VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI',
   scopes: [
     'history.read',
@@ -254,10 +254,10 @@ request does not satisfy authorization requirements imposed by your introspectio
 
 <!-- UsageSnippet language="ruby" operationID="auth_introspection_standard_api" method="post" path="/api/{serviceId}/auth/introspection/standard" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 

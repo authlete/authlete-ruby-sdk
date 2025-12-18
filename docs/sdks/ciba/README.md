@@ -6,9 +6,9 @@
 ### Available Operations
 
 * [process_authentication](#process_authentication) - Process Backchannel Authentication Request
-* [issue](#issue) - Issue Backchannel Authentication Response
-* [fail](#fail) - Fail Backchannel Authentication Request
-* [complete](#complete) - Complete Backchannel Authentication
+* [issue_response](#issue_response) - Issue Backchannel Authentication Response
+* [fail_request](#fail_request) - Fail Backchannel Authentication Request
+* [complete_request](#complete_request) - Complete Backchannel Authentication
 
 ## process_authentication
 
@@ -252,10 +252,10 @@ not have to be changed to support CIBA.
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_api" method="post" path="/api/{serviceId}/backchannel/authentication" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -290,7 +290,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## issue
+## issue_response
 
 This API prepares JSON that contains an `auth\_req\_id`. The JSON should be used as the response body
 of the response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1\_0.html#auth\_backchannel\_endpoint)
@@ -362,14 +362,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_issue_api" method="post" path="/api/{serviceId}/backchannel/authentication/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.ciba.issue(service_id: '<id>', backchannel_authentication_issue_request: Models::Components::BackchannelAuthenticationIssueRequest.new(
+res = s.ciba.issue_response(service_id: '<id>', backchannel_authentication_issue_request: Models::Components::BackchannelAuthenticationIssueRequest.new(
   ticket: 'NFIHGx_btVrWmtAD093D-87JxvT4DAtuijEkLVHbS4Q',
 ))
 
@@ -398,7 +398,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## fail
+## fail_request
 
 The API prepares JSON that contains an error. The JSON should be used as the response body of the
 response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1\_0.html#auth\_backchannel\_endpoint).
@@ -429,14 +429,14 @@ server implementation should return a "403 Forbidden" response to the client app
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_fail_api" method="post" path="/api/{serviceId}/backchannel/authentication/fail" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.ciba.fail(service_id: '<id>', backchannel_authentication_fail_request: Models::Components::BackchannelAuthenticationFailRequest.new(
+res = s.ciba.fail_request(service_id: '<id>', backchannel_authentication_fail_request: Models::Components::BackchannelAuthenticationFailRequest.new(
   ticket: '<value>',
   reason: Models::Components::BackchannelAuthenticationFailRequestReason::MISSING_USER_CODE,
 ))
@@ -466,7 +466,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## complete
+## complete_request
 
 This API returns information about what action the authorization server should take after it receives
 the result of end-user's decision about whether the end-user has approved or rejected a client application's
@@ -556,14 +556,14 @@ Content-Type: application/json
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_complete_api" method="post" path="/api/{serviceId}/backchannel/authentication/complete" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.ciba.complete(service_id: '<id>', backchannel_authentication_complete_request: Models::Components::BackchannelAuthenticationCompleteRequest.new(
+res = s.ciba.complete_request(service_id: '<id>', backchannel_authentication_complete_request: Models::Components::BackchannelAuthenticationCompleteRequest.new(
   ticket: 'NFIHGx_btVrWmtAD093D-87JxvT4DAtuijEkLVHbS4Q',
   result: Models::Components::BackchannelAuthenticationCompleteRequestResult::AUTHORIZED,
   subject: 'john',

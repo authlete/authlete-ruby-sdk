@@ -1,14 +1,14 @@
 # AuthorizationManagement
-(*authorization.management*)
+(*authorization_management*)
 
 ## Overview
 
 ### Available Operations
 
-* [get_ticket_info](#get_ticket_info) - Get Ticket Information
+* [ticket_info](#ticket_info) - Get Ticket Information
 * [update_ticket](#update_ticket) - Update Ticket Information
 
-## get_ticket_info
+## ticket_info
 
 Get Ticket Information
 
@@ -16,14 +16,14 @@ Get Ticket Information
 
 <!-- UsageSnippet language="ruby" operationID="authorization_ticket_info_post_api" method="post" path="/api/{serviceId}/auth/authorization/ticket/info" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.authorization.management.get_ticket_info(service_id: '<id>', authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest.new(
+res = s.authorization_management.ticket_info(service_id: '<id>', authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest.new(
   ticket: '<value>',
 ))
 
@@ -60,14 +60,14 @@ Update Ticket Information
 
 <!-- UsageSnippet language="ruby" operationID="updateAuthorizationTicket" method="post" path="/api/{serviceId}/auth/authorization/ticket/update" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.authorization.management.update_ticket(service_id: '<id>', authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest.new(
+res = s.authorization_management.update_ticket(service_id: '<id>', authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest.new(
   ticket: '<value>',
   info: '<value>',
 ))

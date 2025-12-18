@@ -429,8 +429,8 @@ module Authlete
 
 
     sig { params(backchannel_authentication_issue_request: Models::Components::BackchannelAuthenticationIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::BackchannelAuthenticationIssueApiResponse) }
-    def issue(backchannel_authentication_issue_request:, service_id:, timeout_ms: nil)
-      # issue - Issue Backchannel Authentication Response
+    def issue_response(backchannel_authentication_issue_request:, service_id:, timeout_ms: nil)
+      # issue_response - Issue Backchannel Authentication Response
       # This API prepares JSON that contains an `auth\_req\_id`. The JSON should be used as the response body
       # of the response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1\_0.html#auth\_backchannel\_endpoint)
       # ### Description
@@ -648,8 +648,8 @@ module Authlete
 
 
     sig { params(backchannel_authentication_fail_request: Models::Components::BackchannelAuthenticationFailRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::BackchannelAuthenticationFailApiResponse) }
-    def fail(backchannel_authentication_fail_request:, service_id:, timeout_ms: nil)
-      # fail - Fail Backchannel Authentication Request
+    def fail_request(backchannel_authentication_fail_request:, service_id:, timeout_ms: nil)
+      # fail_request - Fail Backchannel Authentication Request
       # The API prepares JSON that contains an error. The JSON should be used as the response body of the
       # response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1\_0.html#auth\_backchannel\_endpoint).
       # ### Description
@@ -826,8 +826,8 @@ module Authlete
 
 
     sig { params(backchannel_authentication_complete_request: Models::Components::BackchannelAuthenticationCompleteRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::BackchannelAuthenticationCompleteApiResponse) }
-    def complete(backchannel_authentication_complete_request:, service_id:, timeout_ms: nil)
-      # complete - Complete Backchannel Authentication
+    def complete_request(backchannel_authentication_complete_request:, service_id:, timeout_ms: nil)
+      # complete_request - Complete Backchannel Authentication
       # This API returns information about what action the authorization server should take after it receives
       # the result of end-user's decision about whether the end-user has approved or rejected a client application's
       # request on the authentication device.

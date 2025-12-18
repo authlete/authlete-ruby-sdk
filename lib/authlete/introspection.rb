@@ -40,8 +40,8 @@ module Authlete
 
 
     sig { params(introspection_request: Models::Components::IntrospectionRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthIntrospectionApiResponse) }
-    def process(introspection_request:, service_id:, timeout_ms: nil)
-      # process - Process Introspection Request
+    def process_request(introspection_request:, service_id:, timeout_ms: nil)
+      # process_request - Process Introspection Request
       # This API gathers information about an access token.
       # ### Description
       # This API is supposed to be called from within the implementations of protected resource endpoints

@@ -25,10 +25,10 @@ if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/
 
 <!-- UsageSnippet language="ruby" operationID="service_jwks_get_api" method="get" path="/api/{serviceId}/service/jwks/get" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
