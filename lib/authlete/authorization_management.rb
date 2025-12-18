@@ -40,8 +40,8 @@ module Authlete
 
 
     sig { params(authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthorizationTicketInfoPostApiResponse) }
-    def get_ticket_info(authorization_ticket_info_request:, service_id:, timeout_ms: nil)
-      # get_ticket_info - Get Ticket Information
+    def ticket_info(authorization_ticket_info_request:, service_id:, timeout_ms: nil)
+      # ticket_info - Get Ticket Information
       request = Models::Operations::AuthorizationTicketInfoPostApiRequest.new(
         service_id: service_id,
         authorization_ticket_info_request: authorization_ticket_info_request

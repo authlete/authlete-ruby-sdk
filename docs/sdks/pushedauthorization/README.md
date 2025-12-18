@@ -16,10 +16,10 @@ This API creates a pushed request authorization. It authenticates the client and
 
 <!-- UsageSnippet language="ruby" operationID="pushed_auth_req_api" method="post" path="/api/{serviceId}/pushed_auth_req" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 

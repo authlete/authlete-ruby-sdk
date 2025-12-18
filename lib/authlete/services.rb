@@ -12,7 +12,7 @@ require_relative 'utils/retries'
 
 module Authlete
   extend T::Sig
-  class DynamicClientRegistration
+  class Services
     extend T::Sig
     
 
@@ -39,91 +39,27 @@ module Authlete
     end
 
 
-    sig { params(request_body: Models::Operations::ClientRegistrationApiRequestBody, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientRegistrationApiResponse) }
-    def register(request_body:, service_id:, timeout_ms: nil)
-      # register - Register Client
-      # Register a client. This API is supposed to be used to implement a client registration endpoint that
-      # complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client
-      # Registration Protocol).
-      # ### Description
-      # This API is supposed to be called from the within the implementation of the client registration
-      # endpoint of the authorization server. The authorization server implementation should retrieve
-      # the value of `action` from the response and take the following steps according to the value.
-      # **INTERNAL\_SERVER\_ERROR**
-      # When the value of `action` is `INTERNAL\_SERVER\_ERROR`, it means that the API call from the authorization
-      # server implementation was wrong or that an error occurred in Authlete.
-      # In either case, from a viewpoint of the client or developer, it is an error on the server side.
-      # Therefore, the authorization server implementation should generate a response with "500 Internal
-      # Server Error"s and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 500 Internal Server Error
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # The endpoint implementation may return another different response to the client or developer since
-      # "500 Internal Server Error" is not required by the specification.
-      # **BAD\_REQUEST**
-      # When the value of `action` is `BAD\_REQUEST`, it means that the request from the client or developer
-      # was wrong.
-      # The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used
-      # as the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 400 Bad Request
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # **CREATED**
-      # When the value of `action` is `CREATED`, it means that the request from the client or developer is
-      # valid.
-      # The authorization server implementation should generate a response to the client or developer with
-      # "201 CREATED" and `application/json`.
-      # The `responseContent` a JSON string which can be used as the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 201 CREATED
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
+    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceGetApiResponse) }
+    def retrieve(service_id:, timeout_ms: nil)
+      # retrieve - Get Service
+      # Get a service.
       # 
-      request = Models::Operations::ClientRegistrationApiRequest.new(
-        service_id: service_id,
-        request_body: request_body
+      # If the access token can only view or modify clients underneath this service, but does not
+      # have access to view this service directly, a limited view of the service will be returned.
+      # 
+      request = Models::Operations::ServiceGetApiRequest.new(
+        service_id: service_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        Models::Operations::ClientRegistrationApiRequest,
+        Models::Operations::ServiceGetApiRequest,
         base_url,
-        '/api/{serviceId}/client/registration',
+        '/api/{serviceId}/service/get',
         request
       )
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
-      headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
-
-      if form
-        body = Utils.encode_form(form)
-      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
-      else
-        body = data
-      end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -139,7 +75,7 @@ module Authlete
         config: @sdk_configuration,
         base_url: base_url,
         oauth2_scopes: [],
-        operation_id: 'client_registration_api',
+        operation_id: 'service_get_api',
         security_source: @sdk_configuration.security_source
       )
 
@@ -148,8 +84,7 @@ module Authlete
       
       
       begin
-        http_response = T.must(connection).post(url) do |req|
-          req.body = body
+        http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
@@ -197,12 +132,12 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientRegistrationResponse)
-          response = Models::Operations::ClientRegistrationApiResponse.new(
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Service)
+          response = Models::Operations::ServiceGetApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
-            client_registration_response: T.unsafe(obj)
+            service: T.unsafe(obj)
           )
 
           return response
@@ -250,110 +185,28 @@ module Authlete
     end
 
 
-    sig { params(request_body: Models::Operations::ClientRegistrationGetApiRequestBody, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientRegistrationGetApiResponse) }
-    def get(request_body:, service_id:, timeout_ms: nil)
-      # get - Get Client
-      # Get a dynamically registered client. This API is supposed to be used to implement a client registration
-      # management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
-      # (OAuth 2.0 Dynamic Registration Management).
-      # ### Description
-      # This API is supposed to be called from the within the implementation of the client registration
-      # management endpoint of the authorization server. The authorization server implementation should
-      # retrieve the value of `action` from the response and take the following steps according to the value.
-      # **INTERNAL\_SERVER\_ERROR**
-      # When the value of `action` is `INTERNAL\_SERVER\_ERROR`, it means that the API call from the authorization
-      # server implementation was wrong or that an error occurred in Authlete.
-      # In either case, from a viewpoint of the client or developer, it is an error on the server side.
-      # Therefore, the authorization server implementation should generate a response to the client or developer
-      # with "500 Internal Server Error"s and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 500 Internal Server Error
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # The endpoint implementation may return another different response to the client or developer since
-      # "500 Internal Server Error" is not required by the specification.
-      # **BAD\_REQUEST**
-      # When the value of `action` is `BAD\_REQUEST`, it means that the request from the client or developer
-      # was wrong.
-      # The authorization server implementation should generate a response to the client or developer with
-      # "400 Bad Request" and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 400 Bad Request
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # **UNAUTHORIZED**
-      # When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
-      # the client configuration request (RFC 7592) is invalid, or the client application which the token
-      # is tied to does not exist any longer or is invalid.
-      # The HTTP status of the response returned to the client application must be "401 Unauthorized" and
-      # the content type must be `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the endpoint implementation should generate and return
-      # to the client application.
-      # ```
-      # HTTP/1.1 401 Unauthorized
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
-      # `Service.unauthorizedOnClientConfigSupported` for details.
-      # **OK**
-      # When the value of `action` is `OK`, it means that the request from the client or developer is valid.
-      # The authorization server implementation should generate a response to the client or developer with
-      # "200 OK" and `application/json`.
-      # The `responseContent` a JSON string which can be used as the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 200 OK
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
+    sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceGetListApiResponse) }
+    def list(start: nil, end_: nil, timeout_ms: nil)
+      # list - List Services
+      # Get a list of services.
       # 
-      request = Models::Operations::ClientRegistrationGetApiRequest.new(
-        service_id: service_id,
-        request_body: request_body
+      # If the access token can only view or modify clients underneath a service, but does not
+      # have access to view that service directly, a limited view of the service will be returned.
+      # Otherwise, all properties of the service are returned.
+      # 
+      # If the access token is an administrative token, this returns a list of all services on the Authlete instance.
+      # Otherwise, all services that the access token can view, even in a limited fashion, are returned.
+      # 
+      request = Models::Operations::ServiceGetListApiRequest.new(
+        start: start,
+        end_: end_
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientRegistrationGetApiRequest,
-        base_url,
-        '/api/{serviceId}/client/registration/get',
-        request
-      )
+      url = "#{base_url}/api/service/get/list"
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
-      headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
-
-      if form
-        body = Utils.encode_form(form)
-      elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
-      else
-        body = data
-      end
+      query_params = Utils.get_query_params(Models::Operations::ServiceGetListApiRequest, request, nil)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
 
@@ -369,7 +222,7 @@ module Authlete
         config: @sdk_configuration,
         base_url: base_url,
         oauth2_scopes: [],
-        operation_id: 'client_registration_get_api',
+        operation_id: 'service_get_list_api',
         security_source: @sdk_configuration.security_source
       )
 
@@ -378,10 +231,10 @@ module Authlete
       
       
       begin
-        http_response = T.must(connection).post(url) do |req|
-          req.body = body
+        http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
           Utils.configure_request_security(req, security)
 
           @sdk_configuration.hooks.before_request(
@@ -427,12 +280,12 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientRegistrationResponse)
-          response = Models::Operations::ClientRegistrationGetApiResponse.new(
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ServiceGetListResponse)
+          response = Models::Operations::ServiceGetListApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
-            client_registration_response: T.unsafe(obj)
+            service_get_list_response: T.unsafe(obj)
           )
 
           return response
@@ -480,102 +333,18 @@ module Authlete
     end
 
 
-    sig { params(request_body: Models::Operations::ClientRegistrationUpdateApiRequestBody, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientRegistrationUpdateApiResponse) }
-    def update(request_body:, service_id:, timeout_ms: nil)
-      # update - Update Client
-      # Update a dynamically registered client. This API is supposed to be used to implement a client
-      # registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
-      # (OAuth 2.0 Dynamic Registration Management).
-      # ### Description
-      # This API is supposed to be called from the within the implementation of the client registration
-      # management endpoint of the authorization server. The authorization server implementation should
-      # retrieve the value of `action` from the response and take the following steps according to the value.
-      # **INTERNAL\_SERVER\_ERROR**
-      # When the value of `action` is `INTERNAL\_SERVER\_ERROR`, it means that the API call from the authorization
-      # server implementation was wrong or that an error occurred in Authlete.
-      # In either case, from a viewpoint of the client or developer, it is an error on the server side.
-      # Therefore, the authorization server implementation should generate a response with "500 Internal
-      # Server Error"s and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 500 Internal Server Error
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # The endpoint implementation may return another different response to the client or developer since
-      # "500 Internal Server Error" is not required by the specification.
-      # **BAD\_REQUEST**
-      # When the value of `action` is `BAD\_REQUEST`, it means that the request from the client or developer
-      # was wrong.
-      # The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 400 Bad Request
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # **UNAUTHORIZED**
-      # When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
-      # the client configuration request (RFC 7592) is invalid, or the client application which the token
-      # is tied to does not exist any longer or is invalid.
-      # The HTTP status of the response returned to the client application must be "401 Unauthorized" and
-      # the content type must be `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the endpoint implementation should generate and return
-      # to the client application.
-      # ```
-      # HTTP/1.1 401 Unauthorized
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
-      # `Service.unauthorizedOnClientConfigSupported` for details.
-      # **UPDATED**
-      # When the value of `action` is `UPDATED`, it means that the request from the client or developer is
-      # valid.
-      # The authorization server implementation should generate a response to the client or developer with
-      # "200 OK" and `application/json`.
-      # The `responseContent` a JSON string which can be used as the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 200 OK
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
+    sig { params(request: T.nilable(Models::Components::ServiceInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceCreateApiResponse) }
+    def create(request: nil, timeout_ms: nil)
+      # create - Create Service
+      # Create a new service.
       # 
-      request = Models::Operations::ClientRegistrationUpdateApiRequest.new(
-        service_id: service_id,
-        request_body: request_body
-      )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = Utils.generate_url(
-        Models::Operations::ClientRegistrationUpdateApiRequest,
-        base_url,
-        '/api/{serviceId}/client/registration/update',
-        request
-      )
+      url = "#{base_url}/api/service/create"
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, true, :request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form
         body = Utils.encode_form(form)
@@ -599,7 +368,7 @@ module Authlete
         config: @sdk_configuration,
         base_url: base_url,
         oauth2_scopes: [],
-        operation_id: 'client_registration_update_api',
+        operation_id: 'service_create_api',
         security_source: @sdk_configuration.security_source
       )
 
@@ -657,12 +426,12 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientRegistrationResponse)
-          response = Models::Operations::ClientRegistrationUpdateApiResponse.new(
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Service)
+          response = Models::Operations::ServiceCreateApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
-            client_registration_response: T.unsafe(obj)
+            service: T.unsafe(obj)
           )
 
           return response
@@ -710,99 +479,27 @@ module Authlete
     end
 
 
-    sig { params(request_body: Models::Operations::ClientRegistrationDeleteApiRequestBody, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientRegistrationDeleteApiResponse) }
-    def delete(request_body:, service_id:, timeout_ms: nil)
-      # delete - Delete Client
-      # Delete a dynamically registered client. This API is supposed to be used to implement a client
-      # registration management endpoint that complies with [RFC 7592](https://datatracker.ietf.org/doc/html/rfc7592)
-      # (OAuth 2.0 Dynamic Registration Management).
-      # ### Description
-      # This API is supposed to be called from the within the implementation of the client registration
-      # management endpoint of the authorization server. The authorization server implementation should
-      # retrieve the value of `action` from the response and take the following steps according to the value.
-      # **INTERNAL\_SERVER\_ERROR**
-      # When the value of `action` is `INTERNAL\_SERVER\_ERROR`, it means that the API call from the authorization
-      # server implementation was wrong or that an error occurred in Authlete.
-      # In either case, from a viewpoint of the client or developer, it is an error on the server side.
-      # Therefore, the authorization server implementation should generate a response with "500 Internal
-      # Server Error"s and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 500 Internal Server Error
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # The endpoint implementation may return another different response to the client or developer since
-      # "500 Internal Server Error" is not required by the specification.
-      # **BAD\_REQUEST**
-      # When the value of `action` is `BAD\_REQUEST`, it means that the request from the client or developer
-      # was wrong.
-      # The authorization server implementation should generate a response with "400 Bad Request" and `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 400 Bad Request
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # **UNAUTHORIZED**
-      # When the value of `action` is `UNAUTHORIZED`, it means that the registration access token used by
-      # the client configuration request (RFC 7592) is invalid, or the client application which the token
-      # is tied to does not exist any longer or is invalid.
-      # The HTTP status of the response returned to the client application must be "401 Unauthorized" and
-      # the content type must be `application/json`.
-      # The value of `responseContent` is a JSON string which describes the error, so it can be used as
-      # the entity body of the response.
-      # The following illustrates the response which the endpoint implementation should generate and return
-      # to the client application.
-      # ```
-      # HTTP/1.1 401 Unauthorized
-      # Content-Type: application/json
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # {responseContent}
-      # ```
-      # NOTE: The `UNAUTHORIZED` value was added in October, 2021. See the description of
-      # `Service.unauthorizedOnClientConfigSupported` for details.
-      # **DELETED**
-      # When the value of `action` is `DELETED`, it means that the request from the client or developer is
-      # valid.
-      # The authorization server implementation should generate a response to the client or developer with
-      # "204 No Content".
-      # The following illustrates the response which the authorization server implementation should generate
-      # and return to the client or developer.
-      # ```
-      # HTTP/1.1 204 No Content
-      # Cache-Control: no-store
-      # Pragma: no-cache
-      # ```
+    sig { params(service_id: ::String, service: T.nilable(Models::Components::ServiceInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceUpdateApiResponse) }
+    def update(service_id:, service: nil, timeout_ms: nil)
+      # update - Update Service
+      # Update a service.
       # 
-      request = Models::Operations::ClientRegistrationDeleteApiRequest.new(
+      request = Models::Operations::ServiceUpdateApiRequest.new(
         service_id: service_id,
-        request_body: request_body
+        service: service
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
-        Models::Operations::ClientRegistrationDeleteApiRequest,
+        Models::Operations::ServiceUpdateApiRequest,
         base_url,
-        '/api/{serviceId}/client/registration/delete',
+        '/api/{serviceId}/service/update',
         request
       )
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
-      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
+      req_content_type, data, form = Utils.serialize_request_body(request, false, false, :service, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form
         body = Utils.encode_form(form)
@@ -826,7 +523,7 @@ module Authlete
         config: @sdk_configuration,
         base_url: base_url,
         oauth2_scopes: [],
-        operation_id: 'client_registration_delete_api',
+        operation_id: 'service_update_api',
         security_source: @sdk_configuration.security_source
       )
 
@@ -884,12 +581,299 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientRegistrationResponse)
-          response = Models::Operations::ClientRegistrationDeleteApiResponse.new(
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::Service)
+          response = Models::Operations::ServiceUpdateApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
-            client_registration_response: T.unsafe(obj)
+            service: T.unsafe(obj)
+          )
+
+          return response
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          throw obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['500'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          throw obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
+    end
+
+
+    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceDeleteApiResponse) }
+    def destroy(service_id:, timeout_ms: nil)
+      # destroy - Delete Service ⚡
+      # Delete a service.
+      # 
+      request = Models::Operations::ServiceDeleteApiRequest.new(
+        service_id: service_id
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Models::Operations::ServiceDeleteApiRequest,
+        base_url,
+        '/api/{serviceId}/service/delete',
+        request
+      )
+      headers = {}
+      headers = T.cast(headers, T::Hash[String, String])
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'service_delete_api',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).delete(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
+        end
+      end
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['204'])
+        http_response = @sdk_configuration.hooks.after_success(
+          hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+            hook_ctx: hook_ctx
+          ),
+          response: http_response
+        )
+        return Models::Operations::ServiceDeleteApiResponse.new(
+          status_code: http_response.status,
+          content_type: content_type,
+          raw_response: http_response
+        )
+      elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          throw obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['500'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          throw obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['4XX'])
+        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      elsif Utils.match_status_code(http_response.status, ['5XX'])
+        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'API error occurred'
+      else
+        raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown status code received'
+
+      end
+    end
+
+
+    sig { params(service_id: ::String, pretty: T.nilable(T::Boolean), patch: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceConfigurationApiResponse) }
+    def configuration(service_id:, pretty: nil, patch: nil, timeout_ms: nil)
+      # configuration - Get Service Configuration
+      # This API gathers configuration information about a service.
+      # ### Description
+      # This API is supposed to be called from within the implementation of the configuration endpoint of
+      # the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1\_0.html)
+      # must expose its configuration information in a JSON format. Details about the format are described
+      # in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1\_0.html#ProviderMetadata)"
+      # in OpenID Connect Discovery 1.0.
+      # 
+      request = Models::Operations::ServiceConfigurationApiRequest.new(
+        service_id: service_id,
+        pretty: pretty,
+        patch: patch
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Models::Operations::ServiceConfigurationApiRequest,
+        base_url,
+        '/api/{serviceId}/service/configuration',
+        request
+      )
+      headers = {}
+      headers = T.cast(headers, T::Hash[String, String])
+      query_params = Utils.get_query_params(Models::Operations::ServiceConfigurationApiRequest, request, nil)
+      headers['Accept'] = 'application/json'
+      headers['user-agent'] = @sdk_configuration.user_agent
+
+      security = @sdk_configuration.security_source&.call
+
+      timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
+      timeout ||= @sdk_configuration.timeout
+      
+
+      connection = @sdk_configuration.client
+
+      hook_ctx = SDKHooks::HookContext.new(
+        config: @sdk_configuration,
+        base_url: base_url,
+        oauth2_scopes: [],
+        operation_id: 'service_configuration_api',
+        security_source: @sdk_configuration.security_source
+      )
+
+      error = T.let(nil, T.nilable(StandardError))
+      http_response = T.let(nil, T.nilable(Faraday::Response))
+      
+      
+      begin
+        http_response = T.must(connection).get(url) do |req|
+          req.headers.merge!(headers)
+          req.options.timeout = timeout unless timeout.nil?
+          req.params = query_params
+          Utils.configure_request_security(req, security)
+
+          @sdk_configuration.hooks.before_request(
+            hook_ctx: SDKHooks::BeforeRequestHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            request: req
+          )
+        end
+      rescue StandardError => e
+        error = e
+      ensure
+        if http_response.nil? || Utils.error_status?(http_response.status)
+          http_response = @sdk_configuration.hooks.after_error(
+            error: error,
+            hook_ctx: SDKHooks::AfterErrorHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        else
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+        end
+        
+        if http_response.nil?
+          raise error if !error.nil?
+          raise 'no response'
+        end
+      end
+      
+      content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
+      if Utils.match_status_code(http_response.status, ['200'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Operations::ServiceConfigurationApiResponseBody)
+          response = Models::Operations::ServiceConfigurationApiResponse.new(
+            status_code: http_response.status,
+            content_type: content_type,
+            raw_response: http_response,
+            object: T.unsafe(obj)
           )
 
           return response

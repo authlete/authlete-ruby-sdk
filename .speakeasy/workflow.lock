@@ -1,20 +1,21 @@
 speakeasyVersion: 1.603.2
 sources:
     authlete-OAS:
-        sourceNamespace: authlete-api-explorer
-        sourceRevisionDigest: sha256:d89fefd434831ddc5c5ff314d65f75563412ef11fca7441a29a00153801301c5
-        sourceBlobDigest: sha256:ea137847806e0556c6ca63c88b89234a434f0a888502810a3139392f025f438e
+        sourceNamespace: authlete-oas
+        sourceRevisionDigest: sha256:28c1a2eb450c9ea160a4ec51fc927228e8b9c8d1bcee7325b2d725377338828c
+        sourceBlobDigest: sha256:e2d1e4a8d2ca8c50365a1acf706c3696bcd2d224b494c0457999286372eb0185
         tags:
             - latest
-            - speakeasy-sdk-regen-1766041453
+            - speakeasy-sdk-regen-1766054744
+            - 3.0.16
 targets:
     authlete:
         source: authlete-OAS
-        sourceNamespace: authlete-api-explorer
-        sourceRevisionDigest: sha256:d89fefd434831ddc5c5ff314d65f75563412ef11fca7441a29a00153801301c5
-        sourceBlobDigest: sha256:ea137847806e0556c6ca63c88b89234a434f0a888502810a3139392f025f438e
+        sourceNamespace: authlete-oas
+        sourceRevisionDigest: sha256:28c1a2eb450c9ea160a4ec51fc927228e8b9c8d1bcee7325b2d725377338828c
+        sourceBlobDigest: sha256:e2d1e4a8d2ca8c50365a1acf706c3696bcd2d224b494c0457999286372eb0185
         codeSamplesNamespace: authlete-oas-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:9c4b4720c8eb23e76b14b3a4cd28fc84b36b720b3aedffcc5804ed777b077211
+        codeSamplesRevisionDigest: sha256:cd4d9638c8d7a7774ca10f7194355b6280e1c0267ec0388c5fe485c2bf3e007c
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -22,6 +23,8 @@ workflow:
         authlete-OAS:
             inputs:
                 - location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-api-explorer:main
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
             output: .speakeasy/out.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-oas
@@ -29,6 +32,9 @@ workflow:
         authlete:
             target: ruby
             source: authlete-OAS
+            publish:
+                rubygems:
+                    token: $rubygems_auth_token
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-oas-ruby-code-samples

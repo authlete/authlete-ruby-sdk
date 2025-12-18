@@ -1,5 +1,5 @@
 # TokenManagement
-(*token.management*)
+(*token_management*)
 
 ## Overview
 
@@ -9,7 +9,7 @@
 * [list](#list) - List Issued Tokens
 * [create](#create) - Create Access Token
 * [update](#update) - Update Access Token
-* [delete](#delete) - Delete Access Token
+* [destroy](#destroy) - Delete Access Token
 * [revoke](#revoke) - Revoke Access Token
 
 ## reissue_id_token
@@ -25,14 +25,14 @@ token.
 
 <!-- UsageSnippet language="ruby" operationID="idtoken_reissue_api" method="post" path="/api/{serviceId}/idtoken/reissue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.management.reissue_id_token(service_id: '<id>')
+res = s.token_management.reissue_id_token(service_id: '<id>')
 
 unless res.idtoken_reissue_response.nil?
   # handle response
@@ -68,10 +68,10 @@ Get the list of access tokens that are associated with the service.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_get_list_api" method="get" path="/api/{serviceId}/auth/token/get/list" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -79,7 +79,7 @@ req = Models::Operations::AuthTokenGetListApiRequest.new(
   service_id: '<id>',
 )
 
-res = s.token.management.list(request: req)
+res = s.token_management.list(request: req)
 
 unless res.token_get_list_response.nil?
   # handle response
@@ -114,14 +114,14 @@ Create an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_create_api" method="post" path="/api/{serviceId}/auth/token/create" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.management.create(service_id: '<id>', token_create_request: Models::Components::TokenCreateRequest.new(
+res = s.token_management.create(service_id: '<id>', token_create_request: Models::Components::TokenCreateRequest.new(
   grant_type: Models::Components::GrantType::AUTHORIZATION_CODE,
   client_id: 26_888_344_961_664,
   subject: 'john',
@@ -165,14 +165,14 @@ Update an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_update_api" method="post" path="/api/{serviceId}/auth/token/update" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.management.update(service_id: '<id>', token_update_request: Models::Components::TokenUpdateRequest.new(
+res = s.token_management.update(service_id: '<id>', token_update_request: Models::Components::TokenUpdateRequest.new(
   access_token: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
   scopes: [
     'history.read',
@@ -204,7 +204,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete
+## destroy
 
 Delete an access token.
 
@@ -213,14 +213,14 @@ Delete an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_delete_api" method="delete" path="/api/{serviceId}/auth/token/delete/{accessTokenIdentifier}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.management.delete(service_id: '<id>', access_token_identifier: '<value>')
+res = s.token_management.destroy(service_id: '<id>', access_token_identifier: '<value>')
 
 if res.status_code == 200
   # handle response
@@ -256,14 +256,14 @@ Revoke an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_revoke_api" method="post" path="/api/{serviceId}/auth/token/revoke" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.management.revoke(service_id: '<id>', token_revoke_request: Models::Components::TokenRevokeRequest.new(
+res = s.token_management.revoke(service_id: '<id>', token_revoke_request: Models::Components::TokenRevokeRequest.new(
   access_token_identifier: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
 ))
 

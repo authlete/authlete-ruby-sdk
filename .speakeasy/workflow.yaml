@@ -22,4 +22,3 @@ targets:
             labelOverride:
                 fixedValue: Ruby (SDK)
             blocking: false
-

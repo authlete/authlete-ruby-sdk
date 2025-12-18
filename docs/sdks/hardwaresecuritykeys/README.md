@@ -6,8 +6,8 @@
 ### Available Operations
 
 * [create](#create) - Create Security Key
-* [delete](#delete) - Delete Security Key
-* [get](#get) - Get Security Key
+* [destroy](#destroy) - Delete Security Key
+* [retrieve](#retrieve) - Get Security Key
 * [list](#list) - List Security Keys
 
 ## create
@@ -18,10 +18,10 @@ Create Security Key
 
 <!-- UsageSnippet language="ruby" operationID="hsk_create_api" method="post" path="/api/{serviceId}/hsk/create" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -52,7 +52,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete
+## destroy
 
 Delete Security Key
 
@@ -60,14 +60,14 @@ Delete Security Key
 
 <!-- UsageSnippet language="ruby" operationID="hsk_delete_api" method="delete" path="/api/{serviceId}/hsk/delete/{handle}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.hardware_security_keys.delete(service_id: '<id>', handle: '<value>')
+res = s.hardware_security_keys.destroy(service_id: '<id>', handle: '<value>')
 
 unless res.hsk_delete_response.nil?
   # handle response
@@ -94,7 +94,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get
+## retrieve
 
 Get Security Key
 
@@ -102,14 +102,14 @@ Get Security Key
 
 <!-- UsageSnippet language="ruby" operationID="hsk_get_api" method="get" path="/api/{serviceId}/hsk/get/{handle}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.hardware_security_keys.get(service_id: '<id>', handle: '<value>')
+res = s.hardware_security_keys.retrieve(service_id: '<id>', handle: '<value>')
 
 unless res.hsk_get_response.nil?
   # handle response
@@ -144,10 +144,10 @@ List Security Keys
 
 <!-- UsageSnippet language="ruby" operationID="hsk_get_list_api" method="get" path="/api/{serviceId}/hsk/get/list" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 

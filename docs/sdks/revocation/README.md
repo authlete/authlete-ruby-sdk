@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [process](#process) - Process Revocation Request
+* [process_request](#process_request) - Process Revocation Request
 
-## process
+## process_request
 
 This API revokes access tokens and refresh tokens.
 ### Description
@@ -109,14 +109,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_revocation_api" method="post" path="/api/{serviceId}/auth/revocation" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.revocation.process(service_id: '<id>', revocation_request: Models::Components::RevocationRequest.new(
+res = s.revocation.process_request(service_id: '<id>', revocation_request: Models::Components::RevocationRequest.new(
   parameters: 'VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI&token_type_hint=access_token',
   client_id: '26478243745571',
   client_secret: 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ',

@@ -5,19 +5,19 @@
 
 ### Available Operations
 
-* [get_metadata](#get_metadata) - Get Verifiable Credential Issuer Metadata
-* [get_jwt_issuer](#get_jwt_issuer) - Get JWT Issuer Information
-* [get_jwks](#get_jwks) - Get JSON Web Key Set
+* [metadata](#metadata) - Get Verifiable Credential Issuer Metadata
+* [jwt_issuer](#jwt_issuer) - Get JWT Issuer Information
+* [jwks](#jwks) - Get JSON Web Key Set
 * [create_offer](#create_offer) - Create Credential Offer
-* [get_offer_info](#get_offer_info) - Get Credential Offer Information
+* [offer_info](#offer_info) - Get Credential Offer Information
 * [parse](#parse) - Parse Single Credential
-* [issue](#issue) - Issue Single Credential
+* [issue_response](#issue_response) - Issue Single Credential
 * [batch_parse](#batch_parse) - Parse Batch Credentials
 * [batch_issue](#batch_issue) - Issue Batch Credentials
 * [deferred_parse](#deferred_parse) - Parse Deferred Credential
 * [deferred_issue](#deferred_issue) - Issue Deferred Credential
 
-## get_metadata
+## metadata
 
 Get verifiable credential issuer metadata
 
@@ -25,14 +25,14 @@ Get verifiable credential issuer metadata
 
 <!-- UsageSnippet language="ruby" operationID="vci_metadata_api" method="post" path="/api/{serviceId}/vci/metadata" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.verifiable_credentials.get_metadata(service_id: '<id>', vci_metadata_request: Models::Components::VciMetadataRequest.new(
+res = s.verifiable_credentials.metadata(service_id: '<id>', vci_metadata_request: Models::Components::VciMetadataRequest.new(
   pretty: true,
 ))
 
@@ -61,7 +61,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get_jwt_issuer
+## jwt_issuer
 
 Get JWT issuer information for VCI
 
@@ -69,14 +69,14 @@ Get JWT issuer information for VCI
 
 <!-- UsageSnippet language="ruby" operationID="vci_jwtissuer_api" method="post" path="/api/{serviceId}/vci/jwtissuer" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.verifiable_credentials.get_jwt_issuer(service_id: '<id>', vci_jwtissuer_request: Models::Components::VciJwtissuerRequest.new(
+res = s.verifiable_credentials.jwt_issuer(service_id: '<id>', vci_jwtissuer_request: Models::Components::VciJwtissuerRequest.new(
   pretty: true,
 ))
 
@@ -105,7 +105,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get_jwks
+## jwks
 
 Get JSON Web Key Set for VCI
 
@@ -113,14 +113,14 @@ Get JSON Web Key Set for VCI
 
 <!-- UsageSnippet language="ruby" operationID="vci_jwks_api" method="post" path="/api/{serviceId}/vci/jwks" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.verifiable_credentials.get_jwks(service_id: '<id>', vci_jwks_request: Models::Components::VciJwksRequest.new(
+res = s.verifiable_credentials.jwks(service_id: '<id>', vci_jwks_request: Models::Components::VciJwksRequest.new(
   pretty: false,
 ))
 
@@ -157,10 +157,10 @@ Create a verifiable credential offer
 
 <!-- UsageSnippet language="ruby" operationID="vci_offer_create_api" method="post" path="/api/{serviceId}/vci/offer/create" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -191,7 +191,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get_offer_info
+## offer_info
 
 Get information about a verifiable credential offer
 
@@ -199,14 +199,14 @@ Get information about a verifiable credential offer
 
 <!-- UsageSnippet language="ruby" operationID="vci_offer_info_api" method="post" path="/api/{serviceId}/vci/offer/info" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.verifiable_credentials.get_offer_info(service_id: '<id>', vci_offer_info_request: Models::Components::VciOfferInfoRequest.new())
+res = s.verifiable_credentials.offer_info(service_id: '<id>', vci_offer_info_request: Models::Components::VciOfferInfoRequest.new())
 
 unless res.vci_offer_info_response.nil?
   # handle response
@@ -241,10 +241,10 @@ Parse a single verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_single_parse_api" method="post" path="/api/{serviceId}/vci/single/parse" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -275,7 +275,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## issue
+## issue_response
 
 Issue a single verifiable credential
 
@@ -283,14 +283,14 @@ Issue a single verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_single_issue_api" method="post" path="/api/{serviceId}/vci/single/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.verifiable_credentials.issue(service_id: '<id>', vci_single_issue_request: Models::Components::VciSingleIssueRequest.new())
+res = s.verifiable_credentials.issue_response(service_id: '<id>', vci_single_issue_request: Models::Components::VciSingleIssueRequest.new())
 
 unless res.vci_single_issue_response.nil?
   # handle response
@@ -325,10 +325,10 @@ Parse multiple verifiable credentials in batch
 
 <!-- UsageSnippet language="ruby" operationID="vci_batch_parse_api" method="post" path="/api/{serviceId}/vci/batch/parse" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -367,10 +367,10 @@ Issue multiple verifiable credentials in batch
 
 <!-- UsageSnippet language="ruby" operationID="vci_batch_issue_api" method="post" path="/api/{serviceId}/vci/batch/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -409,10 +409,10 @@ Parse a deferred verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_deferred_parse_api" method="post" path="/api/{serviceId}/vci/deferred/parse" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -451,10 +451,10 @@ Issue a deferred verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_deferred_issue_api" method="post" path="/api/{serviceId}/vci/deferred/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 

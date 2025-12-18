@@ -12,19 +12,15 @@ require_relative 'utils/retries'
 
 module Authlete
   extend T::Sig
-  class Token
+  class Tokens
     extend T::Sig
-    attr_accessor :management
+    
 
 
     sig { params(sdk_config: SDKConfiguration).void }
     def initialize(sdk_config)
       @sdk_configuration = sdk_config
-      init_sdks
-    end
-    sig { void }
-    def init_sdks
-      @management = ::Authlete::TokenManagement.new(@sdk_configuration)
+      
     end
 
     sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
@@ -44,8 +40,8 @@ module Authlete
 
 
     sig { params(token_request: Models::Components::TokenRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenApiResponse) }
-    def process(token_request:, service_id:, timeout_ms: nil)
-      # process - Process Token Request
+    def process_request(token_request:, service_id:, timeout_ms: nil)
+      # process_request - Process Token Request
       # This API parses request parameters of an authorization request and returns necessary data for the
       # authorization server implementation to process the authorization request further.
       # ### Description
@@ -554,8 +550,8 @@ module Authlete
 
 
     sig { params(token_fail_request: Models::Components::TokenFailRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenFailApiResponse) }
-    def fail(token_fail_request:, service_id:, timeout_ms: nil)
-      # fail - Fail Token Request
+    def fail_request(token_fail_request:, service_id:, timeout_ms: nil)
+      # fail_request - Fail Token Request
       # This API generates a content of an error token response that the authorization server implementation
       # returns to the client application.
       # ### Description
@@ -755,8 +751,8 @@ module Authlete
 
 
     sig { params(token_issue_request: Models::Components::TokenIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenIssueApiResponse) }
-    def issue(token_issue_request:, service_id:, timeout_ms: nil)
-      # issue - Issue Token Response
+    def issue_response(token_issue_request:, service_id:, timeout_ms: nil)
+      # issue_response - Issue Token Response
       # This API generates a content of a successful token response that the authorization server implementation
       # returns to the client application.
       # ### Description

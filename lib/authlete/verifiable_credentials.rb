@@ -40,8 +40,8 @@ module Authlete
 
 
     sig { params(vci_metadata_request: Models::Components::VciMetadataRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciMetadataApiResponse) }
-    def get_metadata(vci_metadata_request:, service_id:, timeout_ms: nil)
-      # get_metadata - Get Verifiable Credential Issuer Metadata
+    def metadata(vci_metadata_request:, service_id:, timeout_ms: nil)
+      # metadata - Get Verifiable Credential Issuer Metadata
       # Get verifiable credential issuer metadata
       request = Models::Operations::VciMetadataApiRequest.new(
         service_id: service_id,
@@ -195,8 +195,8 @@ module Authlete
 
 
     sig { params(vci_jwtissuer_request: Models::Components::VciJwtissuerRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciJwtissuerApiResponse) }
-    def get_jwt_issuer(vci_jwtissuer_request:, service_id:, timeout_ms: nil)
-      # get_jwt_issuer - Get JWT Issuer Information
+    def jwt_issuer(vci_jwtissuer_request:, service_id:, timeout_ms: nil)
+      # jwt_issuer - Get JWT Issuer Information
       # Get JWT issuer information for VCI
       request = Models::Operations::VciJwtissuerApiRequest.new(
         service_id: service_id,
@@ -350,8 +350,8 @@ module Authlete
 
 
     sig { params(vci_jwks_request: Models::Components::VciJwksRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciJwksApiResponse) }
-    def get_jwks(vci_jwks_request:, service_id:, timeout_ms: nil)
-      # get_jwks - Get JSON Web Key Set
+    def jwks(vci_jwks_request:, service_id:, timeout_ms: nil)
+      # jwks - Get JSON Web Key Set
       # Get JSON Web Key Set for VCI
       request = Models::Operations::VciJwksApiRequest.new(
         service_id: service_id,
@@ -660,8 +660,8 @@ module Authlete
 
 
     sig { params(vci_offer_info_request: Models::Components::VciOfferInfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciOfferInfoApiResponse) }
-    def get_offer_info(vci_offer_info_request:, service_id:, timeout_ms: nil)
-      # get_offer_info - Get Credential Offer Information
+    def offer_info(vci_offer_info_request:, service_id:, timeout_ms: nil)
+      # offer_info - Get Credential Offer Information
       # Get information about a verifiable credential offer
       request = Models::Operations::VciOfferInfoApiRequest.new(
         service_id: service_id,
@@ -970,8 +970,8 @@ module Authlete
 
 
     sig { params(vci_single_issue_request: Models::Components::VciSingleIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciSingleIssueApiResponse) }
-    def issue(vci_single_issue_request:, service_id:, timeout_ms: nil)
-      # issue - Issue Single Credential
+    def issue_response(vci_single_issue_request:, service_id:, timeout_ms: nil)
+      # issue_response - Issue Single Credential
       # Issue a single verifiable credential
       request = Models::Operations::VciSingleIssueApiRequest.new(
         service_id: service_id,

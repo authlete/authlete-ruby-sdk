@@ -40,8 +40,8 @@ module Authlete
 
 
     sig { params(userinfo_request: Models::Components::UserinfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthUserinfoApiResponse) }
-    def process(userinfo_request:, service_id:, timeout_ms: nil)
-      # process - Process UserInfo Request
+    def process_request(userinfo_request:, service_id:, timeout_ms: nil)
+      # process_request - Process UserInfo Request
       # This API gathers information about a user.
       # ### Description
       # This API is supposed to be called from within the implementation of the [userinfo endpoint](https://openid.net/specs/openid-connect-core-1\_0.html#UserInfo)
@@ -302,8 +302,8 @@ module Authlete
 
 
     sig { params(userinfo_issue_request: Models::Components::UserinfoIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthUserinfoIssueApiResponse) }
-    def issue(userinfo_issue_request:, service_id:, timeout_ms: nil)
-      # issue - Issue UserInfo Response
+    def issue_response(userinfo_issue_request:, service_id:, timeout_ms: nil)
+      # issue_response - Issue UserInfo Response
       # This API generates an ID token.
       # ### Description
       # This API is supposed to be called from within the implementation of the [userinfo endpoint](https://openid.net/specs/openid-connect-core-1\_0.html#UserInfo)

@@ -1,15 +1,15 @@
-# Token
-(*token*)
+# Tokens
+(*tokens*)
 
 ## Overview
 
 ### Available Operations
 
-* [process](#process) - Process Token Request
-* [fail](#fail) - Fail Token Request
-* [issue](#issue) - Issue Token Response
+* [process_request](#process_request) - Process Token Request
+* [fail_request](#fail_request) - Fail Token Request
+* [issue_response](#issue_response) - Issue Token Response
 
-## process
+## process_request
 
 This API parses request parameters of an authorization request and returns necessary data for the
 authorization server implementation to process the authorization request further.
@@ -372,14 +372,14 @@ signature by yourself.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_api" method="post" path="/api/{serviceId}/auth/token" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.process(service_id: '<id>', token_request: Models::Components::TokenRequest.new(
+res = s.tokens.process_request(service_id: '<id>', token_request: Models::Components::TokenRequest.new(
   parameters: 'grant_type=authorization_code&code=Xv_su944auuBgc5mfUnxXayiiQU9Z4-T_Yae_UfExmo&redirect_uri=https%3A%2F%2Fmy-client.example.com%2Fcb1&code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk',
   client_id: '26478243745571',
   client_secret: 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ',
@@ -410,7 +410,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## fail
+## fail_request
 
 This API generates a content of an error token response that the authorization server implementation
 returns to the client application.
@@ -464,14 +464,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_fail_api" method="post" path="/api/{serviceId}/auth/token/fail" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.fail(service_id: '<id>', token_fail_request: Models::Components::TokenFailRequest.new(
+res = s.tokens.fail_request(service_id: '<id>', token_fail_request: Models::Components::TokenFailRequest.new(
   ticket: '83BNqKIhGMyrkvop_7jQjv2Z1612LNdGSQKkvkrf47c',
   reason: Models::Components::TokenFailRequestReason::INVALID_RESOURCE_OWNER_CREDENTIALS,
 ))
@@ -501,7 +501,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## issue
+## issue_response
 
 This API generates a content of a successful token response that the authorization server implementation
 returns to the client application.
@@ -555,14 +555,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_issue_api" method="post" path="/api/{serviceId}/auth/token/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.token.issue(service_id: '<id>', token_issue_request: Models::Components::TokenIssueRequest.new(
+res = s.tokens.issue_response(service_id: '<id>', token_issue_request: Models::Components::TokenIssueRequest.new(
   ticket: 'p7SXQ9JFjng7KFOZdCMBKcoR3ift7B54l1LGIgQXqEM',
   subject: 'john',
 ))

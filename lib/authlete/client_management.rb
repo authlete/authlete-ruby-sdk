@@ -503,8 +503,8 @@ module Authlete
 
 
     sig { params(request: Models::Operations::ClientAuthorizationGetListApiRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientAuthorizationGetListApiResponse) }
-    def list_authorizations(request:, timeout_ms: nil)
-      # list_authorizations - Get Authorized Applications
+    def authorizations(request:, timeout_ms: nil)
+      # authorizations - Get Authorized Applications
       # Get a list of client applications that an end-user has authorized.
       # 
       # The subject parameter is required and can be provided either in the path or as a query parameter.
@@ -803,8 +803,8 @@ module Authlete
 
 
     sig { params(service_id: ::String, client_id: ::String, subject_path_parameter: ::String, subject_query_parameter: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientAuthorizationDeleteApiResponse) }
-    def delete_authorizations(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:, timeout_ms: nil)
-      # delete_authorizations - Delete Client Tokens
+    def destroy_authorizations(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:, timeout_ms: nil)
+      # destroy_authorizations - Delete Client Tokens
       # Delete all existing access tokens issued to a client application by an end-user.
       # 
       # The subject parameter is required and can be provided either in the path or as a query parameter.
@@ -953,8 +953,8 @@ module Authlete
 
 
     sig { params(service_id: ::String, client_id: ::String, subject_path_parameter: ::String, subject_query_parameter: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientGrantedScopesGetApiResponse) }
-    def get_granted_scopes(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:, timeout_ms: nil)
-      # get_granted_scopes - Get Granted Scopes
+    def granted_scopes(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:, timeout_ms: nil)
+      # granted_scopes - Get Granted Scopes
       # Get the set of scopes that a user has granted to a client application.
       # ### Description
       # Possible values for `requestableScopes` parameter in the response from this API are as follows.
@@ -1114,8 +1114,8 @@ module Authlete
 
 
     sig { params(service_id: ::String, client_id: ::String, subject_path_parameter: ::String, subject_query_parameter: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientGrantedScopesDeleteApiResponse) }
-    def delete_granted_scopes(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:, timeout_ms: nil)
-      # delete_granted_scopes - Delete Granted Scopes
+    def destroy_granted_scopes(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:, timeout_ms: nil)
+      # destroy_granted_scopes - Delete Granted Scopes
       # Delete the set of scopes that an end-user has granted to a client application.
       # ### Description
       # Even if records about granted scopes are deleted by calling this API, existing access tokens are
@@ -1266,8 +1266,8 @@ module Authlete
 
 
     sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientExtensionRequestablesScopesGetApiResponse) }
-    def get_requestable_scopes(service_id:, client_id:, timeout_ms: nil)
-      # get_requestable_scopes - Get Requestable Scopes
+    def requestable_scopes(service_id:, client_id:, timeout_ms: nil)
+      # requestable_scopes - Get Requestable Scopes
       # Get the requestable scopes per client
       # 
       request = Models::Operations::ClientExtensionRequestablesScopesGetApiRequest.new(
@@ -1567,8 +1567,8 @@ module Authlete
 
 
     sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientExtensionRequestablesScopesDeleteApiResponse) }
-    def delete_requestable_scopes(service_id:, client_id:, timeout_ms: nil)
-      # delete_requestable_scopes - Delete Requestable Scopes
+    def destroy_requestable_scopes(service_id:, client_id:, timeout_ms: nil)
+      # destroy_requestable_scopes - Delete Requestable Scopes
       # Delete requestable scopes of a client
       # 
       request = Models::Operations::ClientExtensionRequestablesScopesDeleteApiRequest.new(

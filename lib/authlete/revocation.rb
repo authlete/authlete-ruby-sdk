@@ -40,8 +40,8 @@ module Authlete
 
 
     sig { params(revocation_request: Models::Components::RevocationRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthRevocationApiResponse) }
-    def process(revocation_request:, service_id:, timeout_ms: nil)
-      # process - Process Revocation Request
+    def process_request(revocation_request:, service_id:, timeout_ms: nil)
+      # process_request - Process Revocation Request
       # This API revokes access tokens and refresh tokens.
       # ### Description
       # This API is supposed to be called from within the implementation of the revocation endpoint ([RFC

@@ -1,5 +1,5 @@
 # ClientManagement
-(*client.management*)
+(*client_management*)
 
 ## Overview
 
@@ -8,14 +8,14 @@
 * [update_lock_flag](#update_lock_flag) - Update Client Lock
 * [refresh_secret](#refresh_secret) - Rotate Client Secret
 * [update_secret](#update_secret) - Update Client Secret
-* [list_authorizations](#list_authorizations) - Get Authorized Applications
+* [authorizations](#authorizations) - Get Authorized Applications
 * [update_authorizations](#update_authorizations) - Update Client Tokens
-* [delete_authorizations](#delete_authorizations) - Delete Client Tokens
-* [get_granted_scopes](#get_granted_scopes) - Get Granted Scopes
-* [delete_granted_scopes](#delete_granted_scopes) - Delete Granted Scopes
-* [get_requestable_scopes](#get_requestable_scopes) - Get Requestable Scopes
+* [destroy_authorizations](#destroy_authorizations) - Delete Client Tokens
+* [granted_scopes](#granted_scopes) - Get Granted Scopes
+* [destroy_granted_scopes](#destroy_granted_scopes) - Delete Granted Scopes
+* [requestable_scopes](#requestable_scopes) - Get Requestable Scopes
 * [update_requestable_scopes](#update_requestable_scopes) - Update Requestable Scopes
-* [delete_requestable_scopes](#delete_requestable_scopes) - Delete Requestable Scopes
+* [destroy_requestable_scopes](#destroy_requestable_scopes) - Delete Requestable Scopes
 
 ## update_lock_flag
 
@@ -26,14 +26,14 @@ Lock and unlock a client
 
 <!-- UsageSnippet language="ruby" operationID="client_flag_update_api" method="post" path="/api/{serviceId}/client/lock_flag/update/{clientIdentifier}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.update_lock_flag(service_id: '<id>', client_identifier: '<value>', client_flag_update_request: Models::Components::ClientFlagUpdateRequest.new(
+res = s.client_management.update_lock_flag(service_id: '<id>', client_identifier: '<value>', client_flag_update_request: Models::Components::ClientFlagUpdateRequest.new(
   client_locked: true,
 ))
 
@@ -75,14 +75,14 @@ If you want to specify a new value, use `/api/client/secret/update` API.
 
 <!-- UsageSnippet language="ruby" operationID="client_secret_refresh_api" method="get" path="/api/{serviceId}/client/secret/refresh/{clientIdentifier}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.refresh_secret(service_id: '<id>', client_identifier: '<value>')
+res = s.client_management.refresh_secret(service_id: '<id>', client_identifier: '<value>')
 
 unless res.client_secret_refresh_response.nil?
   # handle response
@@ -121,14 +121,14 @@ API.
 
 <!-- UsageSnippet language="ruby" operationID="client_secret_update_api" method="post" path="/api/{serviceId}/client/secret/update/{clientIdentifier}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.update_secret(service_id: '<id>', client_identifier: '<value>', client_secret_update_request: Models::Components::ClientSecretUpdateRequest.new(
+res = s.client_management.update_secret(service_id: '<id>', client_identifier: '<value>', client_secret_update_request: Models::Components::ClientSecretUpdateRequest.new(
   client_secret: 'my_updated_client_secret',
 ))
 
@@ -158,7 +158,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## list_authorizations
+## authorizations
 
 Get a list of client applications that an end-user has authorized.
 
@@ -169,10 +169,10 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_authorization_get_list_api" method="get" path="/api/{serviceId}/client/authorization/get/list/{subject}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
@@ -182,7 +182,7 @@ req = Models::Operations::ClientAuthorizationGetListApiRequest.new(
   subject_query_parameter: '<value>',
 )
 
-res = s.client.management.list_authorizations(request: req)
+res = s.client_management.authorizations(request: req)
 
 unless res.client_authorization_get_list_response.nil?
   # handle response
@@ -217,14 +217,14 @@ Update attributes of all existing access tokens given to a client application.
 
 <!-- UsageSnippet language="ruby" operationID="client_authorization_update_api" method="post" path="/api/{serviceId}/client/authorization/update/{clientId}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.update_authorizations(service_id: '<id>', client_id: '<id>', client_authorization_update_request: Models::Components::ClientAuthorizationUpdateRequest.new(
+res = s.client_management.update_authorizations(service_id: '<id>', client_id: '<id>', client_authorization_update_request: Models::Components::ClientAuthorizationUpdateRequest.new(
   subject: 'john',
   scopes: [
     'history.read',
@@ -257,7 +257,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete_authorizations
+## destroy_authorizations
 
 Delete all existing access tokens issued to a client application by an end-user.
 
@@ -268,14 +268,14 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_authorization_delete_api" method="delete" path="/api/{serviceId}/client/authorization/delete/{clientId}/{subject}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.delete_authorizations(service_id: '<id>', client_id: '<id>', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
+res = s.client_management.destroy_authorizations(service_id: '<id>', client_id: '<id>', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
 
 unless res.client_authorization_delete_response.nil?
   # handle response
@@ -304,7 +304,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get_granted_scopes
+## granted_scopes
 
 Get the set of scopes that a user has granted to a client application.
 ### Description
@@ -326,14 +326,14 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_granted_scopes_get_api" method="get" path="/api/{serviceId}/client/granted_scopes/get/{clientId}/{subject}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.get_granted_scopes(service_id: '715948317', client_id: '1140735077', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
+res = s.client_management.granted_scopes(service_id: '715948317', client_id: '1140735077', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
 
 unless res.client_authorization_delete_response.nil?
   # handle response
@@ -362,7 +362,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete_granted_scopes
+## destroy_granted_scopes
 
 Delete the set of scopes that an end-user has granted to a client application.
 ### Description
@@ -375,14 +375,14 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_granted_scopes_delete_api" method="delete" path="/api/{serviceId}/client/granted_scopes/delete/{clientId}/{subject}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.delete_granted_scopes(service_id: '<id>', client_id: '<id>', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
+res = s.client_management.destroy_granted_scopes(service_id: '<id>', client_id: '<id>', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
 
 unless res.client_granted_scopes_delete_response.nil?
   # handle response
@@ -411,7 +411,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## get_requestable_scopes
+## requestable_scopes
 
 Get the requestable scopes per client
 
@@ -420,14 +420,14 @@ Get the requestable scopes per client
 
 <!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_get_api" method="get" path="/api/{serviceId}/client/extension/requestable_scopes/get/{clientId}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.get_requestable_scopes(service_id: '<id>', client_id: '<id>')
+res = s.client_management.requestable_scopes(service_id: '<id>', client_id: '<id>')
 
 unless res.client_extension_requestable_scopes_get_response.nil?
   # handle response
@@ -463,14 +463,14 @@ Update requestable scopes of a client
 
 <!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_update_api" method="put" path="/api/{serviceId}/client/extension/requestable_scopes/update/{clientId}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.update_requestable_scopes(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new())
+res = s.client_management.update_requestable_scopes(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new())
 
 unless res.client_extension_requestable_scopes_update_response.nil?
   # handle response
@@ -498,7 +498,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## delete_requestable_scopes
+## destroy_requestable_scopes
 
 Delete requestable scopes of a client
 
@@ -507,14 +507,14 @@ Delete requestable scopes of a client
 
 <!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_delete_api" method="delete" path="/api/{serviceId}/client/extension/requestable_scopes/delete/{clientId}" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client.management.delete_requestable_scopes(service_id: '<id>', client_id: '<id>')
+res = s.client_management.destroy_requestable_scopes(service_id: '<id>', client_id: '<id>')
 
 if res.status_code == 200
   # handle response

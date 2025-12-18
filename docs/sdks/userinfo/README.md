@@ -5,10 +5,10 @@
 
 ### Available Operations
 
-* [process](#process) - Process UserInfo Request
-* [issue](#issue) - Issue UserInfo Response
+* [process_request](#process_request) - Process UserInfo Request
+* [issue_response](#issue_response) - Issue UserInfo Response
 
-## process
+## process_request
 
 This API gathers information about a user.
 ### Description
@@ -123,14 +123,14 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_userinfo_api" method="post" path="/api/{serviceId}/auth/userinfo" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.userinfo.process(service_id: '<id>', userinfo_request: Models::Components::UserinfoRequest.new(
+res = s.userinfo.process_request(service_id: '<id>', userinfo_request: Models::Components::UserinfoRequest.new(
   token: 'Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI',
 ))
 
@@ -159,7 +159,7 @@ end
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## issue
+## issue_response
 
 This API generates an ID token.
 ### Description
@@ -277,14 +277,14 @@ Content-Type: application/jwt
 
 <!-- UsageSnippet language="ruby" operationID="auth_userinfo_issue_api" method="post" path="/api/{serviceId}/auth/userinfo/issue" -->
 ```ruby
-require 'authlete'
+require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Authlete.new(
+s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.userinfo.issue(service_id: '<id>', userinfo_issue_request: Models::Components::UserinfoIssueRequest.new(
+res = s.userinfo.issue_response(service_id: '<id>', userinfo_issue_request: Models::Components::UserinfoIssueRequest.new(
   token: 'Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI',
 ))
 

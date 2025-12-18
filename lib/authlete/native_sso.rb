@@ -40,8 +40,8 @@ module Authlete
 
 
     sig { params(native_sso_request: Models::Components::NativeSsoRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::NativeSsoApiResponse) }
-    def process(native_sso_request:, service_id:, timeout_ms: nil)
-      # process - Native SSO Processing
+    def process_request(native_sso_request:, service_id:, timeout_ms: nil)
+      # process_request - Native SSO Processing
       # This API should be called by the implementation of a token endpoint to generate the ID token and
       # token response that comply with [OpenID Connect Native SSO for Mobile Apps 1.0](https://openid.net/specs/openid-connect-native-sso-1_0.html)
       # (Native SSO) when Authlete’s `/auth/token` response indicates `action = NATIVE_SSO` (after you validate
