@@ -21,7 +21,10 @@ generation:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
-  persistentEdits: {}
+  persistentEdits:
+    README.md:
+      after: "<!-- End SDK Installation [installation] -->"
+      before: "<!-- Start SDK Example Usage [usage] -->"
   requestBodyFieldName: ""
   schemas:
     allOfMergeStrategy: shallowMerge

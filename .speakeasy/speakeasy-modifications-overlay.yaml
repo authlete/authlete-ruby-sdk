@@ -8,6 +8,10 @@ info:
         before: ""
         type: speakeasy-modifications
 actions:
+    # Remove verbose API description from README summary
+    - target: $["info"]["description"]
+      update:
+        description: ""
     - target: $["paths"]["/api/{serviceId}/auth/authorization"]["post"]
       update:
         x-speakeasy-group: authorization
