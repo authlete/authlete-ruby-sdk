@@ -18,6 +18,16 @@ module Authlete
 
     attr_accessor :services, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :device_flow, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :authorization_management, :native_sso
 
+    # Instantiates the SDK, configuring it with the provided parameters.
+    #
+    # @param client [Faraday::Connection, nil] The faraday HTTP client to use for all operations
+    # @param retry_config [::Authlete::Utils::RetryConfig, nil] The retry configuration to use for all operations
+    # @param timeout_ms [Integer, nil] Request timeout in milliseconds for all operations
+    # @param security [Models::Components::Security, nil] The security details required for authentication
+    # @param security_source [Proc{|| Models::Components::Security, nil}] A function that returns security details required for authentication
+    # @param server_idx [Integer, nil] The index of the server to use for all operations
+    # @param server_url [String, nil] The server URL to use for all operations
+    # @param url_params [Hash{Symbol => String}, nil] Parameters to optionally template the server URL with
     sig do
       params(
         client: T.nilable(Faraday::Connection),
@@ -31,15 +41,6 @@ module Authlete
       ).void
     end
     def initialize(client: nil, retry_config: nil, timeout_ms: nil, bearer: nil, security_source: nil, server_idx: nil, server_url: nil, url_params: nil)
-      ## Instantiates the SDK configuring it with the provided parameters.
-      # @param [T.nilable(Faraday::Connection)] client The faraday HTTP client to use for all operations
-      # @param [T.nilable(::Authlete::Utils::RetryConfig)] retry_config The retry configuration to use for all operations
-      # @param [T.nilable(Integer)] timeout_ms Request timeout in milliseconds for all operations
-      # @param [T.nilable(Models::Components::Security)] security: The security details required for authentication
-      # @param [T.proc.returns(T.nilable(Models::Components::Security))] security_source: A function that returns security details required for authentication
-      # @param [T.nilable(::Integer)] server_idx The index of the server to use for all operations
-      # @param [T.nilable(::String)] server_url The server URL to use for all operations
-      # @param [T.nilable(::Hash<::Symbol, ::String>)] url_params Parameters to optionally template the server URL with
 
       connection_options = {
         request: {

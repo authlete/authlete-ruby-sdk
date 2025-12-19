@@ -16,20 +16,21 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
   sdkHooksConfigAccess: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  persistentEdits:
+    README.md:
+      after: <!-- End SDK Installation [installation] -->
+      before: <!-- Start SDK Example Usage [usage] -->
   tests:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
-  persistentEdits:
-    README.md:
-      after: "<!-- End SDK Installation [installation] -->"
-      before: "<!-- Start SDK Example Usage [usage] -->"
-  requestBodyFieldName: ""
-  schemas:
-    allOfMergeStrategy: shallowMerge
 ruby:
-  version: 0.0.1.beta
+  version: 0.0.2-beta
   additionalDependencies:
     development: {}
     runtime: {}

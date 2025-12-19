@@ -72,7 +72,7 @@ module Authlete
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'client_get_api',
         security_source: @sdk_configuration.security_source
       )
@@ -153,7 +153,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -168,7 +168,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -224,7 +224,7 @@ module Authlete
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'client_get_list_api',
         security_source: @sdk_configuration.security_source
       )
@@ -306,7 +306,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -321,7 +321,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -379,7 +379,7 @@ module Authlete
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'client_create_api',
         security_source: @sdk_configuration.security_source
       )
@@ -461,7 +461,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -476,7 +476,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -535,7 +535,7 @@ module Authlete
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'client_update_api',
         security_source: @sdk_configuration.security_source
       )
@@ -617,7 +617,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -632,7 +632,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -680,7 +680,7 @@ module Authlete
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
         base_url: base_url,
-        oauth2_scopes: [],
+        oauth2_scopes: nil,
         operation_id: 'client_delete_api',
         security_source: @sdk_configuration.security_source
       )
@@ -752,7 +752,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
@@ -767,7 +767,7 @@ module Authlete
           response_data = http_response.env.response_body
           obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
-          throw obj
+          raise obj
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end

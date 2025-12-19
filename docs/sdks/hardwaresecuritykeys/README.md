@@ -1,5 +1,4 @@
 # HardwareSecurityKeys
-(*hardware_security_keys*)
 
 ## Overview
 

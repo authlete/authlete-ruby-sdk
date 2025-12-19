@@ -1,5 +1,4 @@
 # NativeSso
-(*native_sso*)
 
 ## Overview
 

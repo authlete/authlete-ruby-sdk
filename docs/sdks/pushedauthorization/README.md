@@ -1,5 +1,4 @@
 # PushedAuthorization
-(*pushed_authorization*)
 
 ## Overview
 
