@@ -63,7 +63,7 @@ rescue Authlete::Models::Errors::ResultError => e
   # Handle Authlete-specific errors
   puts "Authlete error: #{e.message}"
   raise
-rescue Authlete::Errors::APIError => e
+rescue Authlete::Models::Errors::APIError => e
   # Handle general API errors
   puts "API error: #{e.message}"
   raise
@@ -319,7 +319,7 @@ begin
 rescue Authlete::Models::Errors::ResultError => e
   # Handle Authlete-specific errors
   raise e
-rescue Authlete::ApiError => e
+rescue Authlete::Models::Errors::APIError => e
   # Handle general API errors
   raise e
 end
