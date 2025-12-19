@@ -44,7 +44,7 @@ ruby:
     option: openapi
     paths:
       callbacks: models/callbacks
-      errors: errors
+      errors: models/errors
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
