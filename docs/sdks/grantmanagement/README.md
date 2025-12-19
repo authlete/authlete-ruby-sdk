@@ -1,5 +1,4 @@
 # GrantManagement
-(*grant_management*)
 
 ## Overview
 

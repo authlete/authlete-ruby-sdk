@@ -1,5 +1,4 @@
 # VerifiableCredentials
-(*verifiable_credentials*)
 
 ## Overview
 

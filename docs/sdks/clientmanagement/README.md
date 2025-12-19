@@ -1,5 +1,4 @@
 # ClientManagement
-(*client_management*)
 
 ## Overview
 

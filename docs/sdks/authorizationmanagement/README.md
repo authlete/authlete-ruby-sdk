@@ -1,5 +1,4 @@
 # AuthorizationManagement
-(*authorization_management*)
 
 ## Overview
 

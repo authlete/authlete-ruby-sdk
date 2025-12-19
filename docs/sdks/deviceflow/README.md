@@ -1,5 +1,4 @@
 # DeviceFlow
-(*device_flow*)
 
 ## Overview
 

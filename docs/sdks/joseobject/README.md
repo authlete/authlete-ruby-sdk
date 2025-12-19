@@ -1,5 +1,4 @@
 # JoseObject
-(*jose_object*)
 
 ## Overview
 

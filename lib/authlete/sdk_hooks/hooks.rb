@@ -5,7 +5,6 @@
 
 require_relative './types'
 
-
 module Authlete
   module SDKHooks
     class Hooks
