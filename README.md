@@ -1,4 +1,4 @@
-# authlete
+# Authlete Ruby SDK
 
 Developer-friendly & type-safe Ruby SDK specifically catered to leverage *authlete* API.
 
