@@ -52,14 +52,14 @@ gem install authlete_ruby_test
 ```ruby
 require "authlete_ruby_test"
 
-# Initialize the client
-client = Authlete::Client.new(bearer: "<YOUR_BEARER_TOKEN>")
+# Initialize the Authlete API client
+authlete_api = Authlete::Client.new(bearer: "<YOUR_BEARER_TOKEN>")
 
 # Retrieve a service
 begin
-  response = client.services.retrieve(service_id: "<service_id>")
+  response = authlete_api.services.retrieve(service_id: "<service_id>")
   puts response.service
-rescue Authlete::Errors::ResultError => e
+rescue Authlete::Models::Errors::ResultError => e
   # Handle Authlete-specific errors
   puts "Authlete error: #{e.message}"
   raise
@@ -69,12 +69,12 @@ rescue Authlete::Errors::APIError => e
   raise
 end
 
-# List clients
-response = client.clients.list(service_id: "<service_id>")
-response.clients.each { |c| puts c.client_name }
+# List OAuth clients
+response = authlete_api.clients.list(service_id: "<service_id>")
+response.clients.each { |oauth_client| puts oauth_client.client_name }
 
 # Process an authorization request
-response = client.authorization.process_request(
+response = authlete_api.authorization.process_request(
   service_id: "<service_id>",
   parameters: "response_type=code&client_id=..."
 )
