@@ -8,13 +8,6 @@ info:
         before: ""
         type: speakeasy-modifications
 actions:
-    - target: $["info"]
-      update:
-        description: "Official Ruby SDK for Authlete API v3+"
-      x-speakeasy-metadata:
-        after: ""
-        before: ""
-        type: speakeasy-modifications
     - target: $["paths"]["/api/{serviceId}/auth/authorization"]["post"]
       update:
         x-speakeasy-group: authorization
@@ -832,10 +825,6 @@ actions:
       x-speakeasy-metadata:
         after: marked internal
         before: public
-        created_at: 1761811000000
-        reviewed_at: 1761811000000
-        type: internalize
-
         created_at: 1761811000000
         reviewed_at: 1761811000000
         type: internalize
