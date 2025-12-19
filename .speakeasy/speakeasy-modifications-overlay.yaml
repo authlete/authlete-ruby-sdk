@@ -8,10 +8,13 @@ info:
         before: ""
         type: speakeasy-modifications
 actions:
-    # Remove verbose API description from README summary
     - target: $["info"]
       update:
         description: "Official Ruby SDK for Authlete API v3+"
+      x-speakeasy-metadata:
+        after: ""
+        before: ""
+        type: speakeasy-modifications
     - target: $["paths"]["/api/{serviceId}/auth/authorization"]["post"]
       update:
         x-speakeasy-group: authorization
