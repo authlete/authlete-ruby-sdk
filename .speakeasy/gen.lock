@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
-  docChecksum: 6e584e7594de41d3295df6fcd4fe05e6
+  docChecksum: 584884e27951d47c44546924f5550e6c
   docVersion: 3.0.16
-  speakeasyVersion: 1.680.1
+  speakeasyVersion: 1.680.3
   generationVersion: 2.788.5
-  releaseVersion: 0.0.2-beta
-  configChecksum: 6702311f0aabcc1622d77aababe4b4b0
+  releaseVersion: 0.0.2-beta.1
+  configChecksum: 9a8db6fada9f483033102b98fffdb702
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: fdc39490-c662-46fb-90a3-08a78f1fdc99
-  pristine_commit_hash: e050d84a88142d5576cd8cfb7ce33efc71323c62
-  pristine_tree_hash: 1867f809ca0b9f30c148620d37d5e5da4ca4ead9
+  generation_id: 72ba1eb3-58d1-4957-a414-bdec0c1dafa3
+  pristine_commit_hash: 1f99532928cc0e29d884838992cbfc97a45a5c09
+  pristine_tree_hash: 85c5eb4b15481238f1d45816abb22960bcbd84b9
 features:
   ruby:
     core: 3.11.7
@@ -41,8 +41,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:eaf454e929677c8c386b517da5e28e060677b5ef
-    pristine_git_object: 4bc21f6380725dee5b12fee987a4e3e2d0bd8f3e
+    last_write_checksum: sha1:551ddf5d3c58c7c432b6749e5eb77d7e93ef51ac
+    pristine_git_object: dd58ba26f4867a386400e725167a86480b06e6c2
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -53,8 +53,8 @@ trackedFiles:
     pristine_git_object: dddca85b94f4450de02eb37241fb9d4ff187f4aa
   authlete_ruby_test.gemspec:
     id: 2466cacca632
-    last_write_checksum: sha1:bcb0bef5a97c1242ffe90eced1d48a9c74b9c01c
-    pristine_git_object: 53bad725424df5b0df3aa4c5701ea5ce7efcae8a
+    last_write_checksum: sha1:d76139e1c979eca7741fd2327c9ecefdb4ba7f4c
+    pristine_git_object: 45d22bd7a62cc385d832ad0694bc03fd76c019db
   docs/models/components/accesstoken.md:
     id: 94ff2e4425e9
     last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
@@ -4637,8 +4637,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:03448713a733cf593d972c19d937fcd408e89467
-    pristine_git_object: 1b6d891fec6f42c597e2db3ff0ab66831ec32ee0
+    last_write_checksum: sha1:db842d5eaa6268724b569d296e96a8c048832928
+    pristine_git_object: ce2d58e3d3451fcfe794e5942aa6a3b5f15b5421
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
