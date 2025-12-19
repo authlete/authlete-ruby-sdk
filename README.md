@@ -316,14 +316,11 @@ begin
     unless res.service.nil?
       # handle response
     end
-rescue Models::Errors::ResultError => e
-  # handle e.container data
+rescue Authlete::Models::Errors::ResultError => e
+  # Handle Authlete-specific errors
   raise e
-rescue Models::Errors::ResultError => e
-  # handle e.container data
-  raise e
-rescue Errors::APIError => e
-  # handle default exception
+rescue Authlete::ApiError => e
+  # Handle general API errors
   raise e
 end
 
@@ -349,11 +346,10 @@ You can override the default server globally by passing a server index to the `s
 ```ruby
 require 'authlete_ruby_test'
 
-Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-      server_idx: 0,
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
+# Initialize the Authlete API client
+client = Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 
 res = s.services.retrieve(service_id: '<id>')
 
