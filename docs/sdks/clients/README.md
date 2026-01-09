@@ -8,6 +8,7 @@
 * [list](#list) - List Clients
 * [create](#create) - Create Client
 * [update](#update) - Update Client
+* [update_form](#update_form) - Update Client
 * [destroy](#destroy) - Delete Client ⚡
 
 ## retrieve
@@ -233,6 +234,10 @@ res = s.clients.update(service_id: '<id>', client_id: '<id>', client: Models::Co
   front_channel_request_object_encryption_required: false,
   request_object_encryption_alg_match_required: false,
   request_object_encryption_enc_match_required: false,
+  additional_properties: {
+    "derivedSectorIdentifier": 'my-client.example.com',
+    "dynamicallyRegistered": false,
+  },
 ))
 
 unless res.client.nil?
@@ -252,6 +257,66 @@ end
 ### Response
 
 **[T.nilable(Models::Operations::ClientUpdateApiResponse)](../../models/operations/clientupdateapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## update_form
+
+Update a client.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_update_api_form" method="post" path="/api/{serviceId}/client/update/{clientId}" -->
+```ruby
+require 'authlete_ruby_test'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.clients.update_form(service_id: '<id>', client_id: '<id>', request_body: {
+  "clientName": 'My Test Client',
+  "clientType": 'PUBLIC',
+  "grantTypes": [
+    'AUTHORIZATION_CODE',
+  ],
+  "responseTypes": [
+    'CODE',
+  ],
+  "redirectUris": [
+    'https://example.com/callback',
+  ],
+  "number": 1_140_735_077,
+  "serviceNumber": 715_948_317,
+  "clientId": '1140735077',
+  "clientSecret": 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ',
+})
+
+unless res.client.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
+| `client_id`                                                                                                                                                                                                                                                                                                                                                               | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A client ID.                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                           |
+| `request_body`                                                                                                                                                                                                                                                                                                                                                            | T::Hash[Symbol, *::Object*]                                                                                                                                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                                                                                                                                       | {<br/>"number": 1140735077,<br/>"serviceNumber": 715948317,<br/>"clientName": "My Test Client",<br/>"clientId": "1140735077",<br/>"clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ",<br/>"clientType": "PUBLIC",<br/>"redirectUris": [<br/>"https://example.com/callback"<br/>],<br/>"responseTypes": [<br/>"CODE"<br/>],<br/>"grantTypes": [<br/>"AUTHORIZATION_CODE"<br/>]<br/>} |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientUpdateApiFormResponse)](../../models/operations/clientupdateapiformresponse.md)**
 
 ### Errors
 
