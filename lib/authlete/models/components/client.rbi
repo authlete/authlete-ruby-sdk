@@ -188,6 +188,8 @@ class Authlete::Models::Components::Client
   def discovered_by_metadata_document=(str_); end
   def client_source(); end
   def client_source=(str_); end
+  def additional_properties(); end
+  def additional_properties=(str_); end
   def authorization_sign_alg(); end
   def authorization_sign_alg=(str_); end
   def authorization_encryption_alg(); end

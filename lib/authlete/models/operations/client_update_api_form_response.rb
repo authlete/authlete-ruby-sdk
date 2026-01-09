@@ -9,7 +9,7 @@ module Authlete
     module Operations
     
 
-      class ServiceConfigurationApiResponse
+      class ClientUpdateApiFormResponse
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -19,15 +19,15 @@ module Authlete
         field :status_code, ::Integer
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
-        # Service configuration retrieved successfully
-        field :object, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::Object))
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, object: T.nilable(T::Hash[Symbol, ::Object])).void }
-        def initialize(content_type:, status_code:, raw_response:, object: nil)
+        field :client, Crystalline::Nilable.new(Models::Components::Client)
+
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, client: T.nilable(Models::Components::Client)).void }
+        def initialize(content_type:, status_code:, raw_response:, client: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
-          @object = object
+          @client = client
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -36,7 +36,7 @@ module Authlete
           return false unless @content_type == other.content_type
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
-          return false unless @object == other.object
+          return false unless @client == other.client
           true
         end
       end

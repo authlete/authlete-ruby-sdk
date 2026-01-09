@@ -868,7 +868,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Operations::ServiceConfigurationApiResponseBody)
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Hash.new(Symbol, ::Object))
           response = Models::Operations::ServiceConfigurationApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
