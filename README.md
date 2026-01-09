@@ -99,7 +99,7 @@ If you have any questions or need assistance, our team is here to help:
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [authlete](#authlete)
+* [Authlete Ruby SDK](#authlete-ruby-sdk)
   * [🌐 API Servers](#api-servers)
   * [🔑 Authentication](#authentication)
   * [🎓 Tutorials](#tutorials)
@@ -255,6 +255,7 @@ end
 * [list](docs/sdks/clients/README.md#list) - List Clients
 * [create](docs/sdks/clients/README.md#create) - Create Client
 * [update](docs/sdks/clients/README.md#update) - Update Client
+* [update_form](docs/sdks/clients/README.md#update_form) - Update Client
 * [destroy](docs/sdks/clients/README.md#destroy) - Delete Client ⚡
 
 ### [DeviceFlow](docs/sdks/deviceflow/README.md)
