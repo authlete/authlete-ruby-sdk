@@ -90,9 +90,37 @@ rescue Authlete::Models::Errors::APIError => e
 end
 ```
 
+## Usage Pattern
+
+The example follows Ruby best practices for SDK usage:
+
+```ruby
+require 'authlete_ruby_test'
+
+# Alias Models for cleaner code
+Models = ::Authlete::Models
+
+# Initialize client
+s = ::Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>',
+  server_url: 'https://us.authlete.com'
+)
+
+# Make API call
+res = s.services.retrieve(service_id: '<id>')
+
+# Handle response
+unless res.service.nil?
+  # Process service data
+  puts "Service: #{res.service.service_name}"
+end
+```
+
 ## Notes
 
 - Uses the `authlete_ruby_test` gem (beta version)
 - Auto-installs the gem if not available
 - Includes colored output for better readability
 - Loads environment variables from `.env` file
+- Uses `Models` alias for cleaner code
+- Follows Ruby naming conventions (`s` for SDK client instance)
