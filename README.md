@@ -123,14 +123,14 @@ If you have any questions or need assistance, our team is here to help:
 The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
-gem install authlete_ruby_test
+gem install authlete_ruby_sdk
 ```
 <!-- End SDK Installation [installation] -->
 
 ## Quick Start
 
 ```ruby
-require "authlete_ruby_test"
+require "authlete_ruby_sdk"
 
 # Initialize the Authlete client (following Stripe's pattern)
 authlete_client = Authlete::Client.new(bearer: "<YOUR_BEARER_TOKEN>")
@@ -166,7 +166,7 @@ response = authlete_client.authorization.process_request(
 ### Example
 
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 authlete_client = ::Authlete::Client.new(
@@ -195,7 +195,7 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 authlete_client = ::Authlete::Client.new(
@@ -384,7 +384,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 ### Example
 
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 authlete_client = ::Authlete::Client.new(
@@ -428,7 +428,7 @@ You can override the default server globally by passing a server index to the `s
 #### Example
 
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 authlete_client = ::Authlete::Client.new(
@@ -448,7 +448,7 @@ end
 
 The default server can also be overridden globally by passing a URL to the `server_url (String)` optional parameter when initializing the SDK client instance. For example:
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 authlete_client = ::Authlete::Client.new(

@@ -1,6 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

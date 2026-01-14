@@ -30,7 +30,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 0.0.2-beta.2
+  version: 0.0.1-beta
   additionalDependencies:
     development: {}
     runtime: {}
@@ -55,6 +55,6 @@ ruby:
   module: Authlete
   multipartArrayFormat: legacy
   outputModelSuffix: output
-  packageName: authlete_ruby_test
+  packageName: authlete_ruby_sdk
   generateExamples: true
   typingStrategy: sorbet

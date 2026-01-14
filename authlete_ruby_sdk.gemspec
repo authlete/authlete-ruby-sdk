@@ -3,8 +3,8 @@
 $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 Gem::Specification.new do |s|
-  s.name        = 'authlete_ruby_test'
-  s.version     = '0.0.2-beta.2'
+  s.name        = 'authlete_ruby_sdk'
+  s.version     = '0.0.1-beta'
   s.platform    = Gem::Platform::RUBY
   s.licenses    = ['Apache-2.0']
   s.summary     = ''

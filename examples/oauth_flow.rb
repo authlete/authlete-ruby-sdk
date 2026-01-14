@@ -15,11 +15,11 @@ require 'uri'
 
 # Auto-install gem if not available
 begin
-  require 'authlete_ruby_test'
+  require 'authlete_ruby_sdk'
 rescue LoadError
-  puts "\033[33mInstalling authlete_ruby_test gem...\033[0m"
-  system('gem', 'install', 'authlete_ruby_test', '--pre') || abort("\033[31mFailed to install gem\033[0m")
-  require 'authlete_ruby_test'
+  puts "\033[33mInstalling authlete_ruby_sdk gem...\033[0m"
+  system('gem', 'install', 'authlete_ruby_sdk', '--pre') || abort("\033[31mFailed to install gem\033[0m")
+  require 'authlete_ruby_sdk'
 end
 
 # Load .env file

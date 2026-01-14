@@ -20,7 +20,7 @@ Get a client.
 
 <!-- UsageSnippet language="ruby" operationID="client_get_api" method="get" path="/api/{serviceId}/client/get/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -68,7 +68,7 @@ service are returned.
 
 <!-- UsageSnippet language="ruby" operationID="client_get_list_api" method="get" path="/api/{serviceId}/client/get/list" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -113,7 +113,7 @@ Create a new client.
 
 <!-- UsageSnippet language="ruby" operationID="client_create_api" method="post" path="/api/{serviceId}/client/create" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -186,7 +186,7 @@ Update a client.
 
 <!-- UsageSnippet language="ruby" operationID="client_update_api" method="post" path="/api/{serviceId}/client/update/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -275,7 +275,7 @@ Update a client.
 
 <!-- UsageSnippet language="ruby" operationID="client_update_api_form" method="post" path="/api/{serviceId}/client/update/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -335,7 +335,7 @@ Delete a client.
 
 <!-- UsageSnippet language="ruby" operationID="client_delete_api" method="delete" path="/api/{serviceId}/client/delete/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

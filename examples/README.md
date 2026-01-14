@@ -69,7 +69,7 @@ Action: OK
 Here's a recommended pattern for using the SDK with better object naming:
 
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 # Create an alias for cleaner code
 Models = ::Authlete::Models
@@ -115,7 +115,7 @@ end
 The example demonstrates proper error handling:
 
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 authlete_client = ::Authlete::Client.new(
@@ -135,7 +135,7 @@ end
 
 ## Notes
 
-- Uses the `authlete_ruby_test` gem (beta version)
+- Uses the `authlete_ruby_sdk` gem (beta version)
 - Auto-installs the gem if not available
 - Includes colored output for better readability
 - Loads environment variables from `.env` file
