@@ -2,60 +2,10 @@
 
 This directory contains example code demonstrating how to use the Authlete Ruby SDK.
 
-## Examples
+## Example
 
-### Service Management
+### OAuth 2.0 Authorization Code Flow with PKCE
 
-#### Get Service
-**File:** `get_service.rb`
-
-Retrieves a service by ID.
-
-```bash
-ruby examples/get_service.rb
-```
-
-#### Get Service Configuration
-**File:** `get_service_configuration.rb`
-
-Retrieves OpenID Connect Discovery configuration for a service.
-
-```bash
-ruby examples/get_service_configuration.rb
-```
-
-#### Create Service
-**File:** `create_service.rb`
-
-Creates a new service. Requires organization-level access token.
-
-```bash
-ruby examples/create_service.rb
-```
-
-### Client Management
-
-#### Create Client
-**File:** `create_client.rb`
-
-Creates a new OAuth client.
-
-```bash
-ruby examples/create_client.rb
-```
-
-#### List Clients
-**File:** `list_clients.rb`
-
-Lists all OAuth clients for a service.
-
-```bash
-ruby examples/list_clients.rb
-```
-
-### OAuth 2.0 Flows
-
-#### OAuth 2.0 Authorization Code Flow with PKCE
 **File:** `oauth_flow.rb`
 
 A complete end-to-end example of the OAuth 2.0 Authorization Code Flow with PKCE (Proof Key for Code Exchange).
@@ -66,9 +16,29 @@ A complete end-to-end example of the OAuth 2.0 Authorization Code Flow with PKCE
 - ✅ Token exchange
 - ✅ Token introspection
 
-```bash
-ruby examples/oauth_flow.rb
-```
+**Usage:**
+
+1. Create a `.env` file in the `examples` directory:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Fill in your credentials in `.env`:
+   ```env
+   API_URL=https://us.authlete.com
+   SERVICE_ID=your_service_id
+   ACCESS_TOKEN=your_access_token
+   CLIENT_ID=your_client_id
+   CLIENT_SECRET=your_client_secret
+   REDIRECT_URI=https://your-app.com/callback
+   SCOPE=openid profile
+   SUBJECT=testuser
+   ```
+
+3. Run the example:
+   ```bash
+   ruby examples/oauth_flow.rb
+   ```
 
 **Expected Output:**
 ```
@@ -94,39 +64,23 @@ Action: OK
 === SUCCESS: OAuth flow completed ===
 ```
 
-## Setup
-
-1. Create a `.env` file in the `examples` directory:
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Fill in your credentials in `.env`
-
 ## Environment Variables
 
-All examples use environment variables for configuration:
-
-**Required for all examples:**
+**Required:**
 - `API_URL` - Authlete API base URL (e.g., `https://us.authlete.com`)
-- `ACCESS_TOKEN` - Your Authlete access token (service bearer token)
-
-**Required for service/client examples:**
 - `SERVICE_ID` - Your Authlete service ID
-
-**Required for OAuth flow examples:**
+- `ACCESS_TOKEN` - Your Authlete access token (service bearer token)
 - `CLIENT_ID` - OAuth client ID
 - `CLIENT_SECRET` - OAuth client secret
 - `REDIRECT_URI` - OAuth redirect URI
+
+**Optional:**
 - `SCOPE` - OAuth scopes (default: `openid profile`)
 - `SUBJECT` - User subject identifier (default: `testuser`)
 
-**Required for service creation:**
-- `ORG_TOKEN` - Organization-level access token (or use `ACCESS_TOKEN`)
-
 ## Error Handling
 
-Examples demonstrate proper error handling:
+The example demonstrates proper error handling:
 
 ```ruby
 rescue Authlete::Models::Errors::ResultError => e
@@ -138,7 +92,7 @@ end
 
 ## Notes
 
-- Examples use the `authlete_ruby_test` gem (beta version)
-- For production, use the stable `authlete_ruby_sdk` gem (when available)
-- All examples are executable Ruby scripts
-- Examples include colored output for better readability
+- Uses the `authlete_ruby_test` gem (beta version)
+- Auto-installs the gem if not available
+- Includes colored output for better readability
+- Loads environment variables from `.env` file
