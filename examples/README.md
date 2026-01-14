@@ -64,6 +64,38 @@ Action: OK
 === SUCCESS: OAuth flow completed ===
 ```
 
+## Basic Usage Pattern
+
+Here's a recommended pattern for using the SDK with better object naming:
+
+```ruby
+require 'authlete_ruby_test'
+
+# Create an alias for cleaner code
+Models = ::Authlete::Models
+
+# Initialize the client with a descriptive name
+client = ::Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>',
+  server_url: 'https://us.authlete.com'
+)
+
+# Example: Retrieve a service
+response = client.services.retrieve(service_id: '<service_id>')
+
+unless response.service.nil?
+  service = response.service
+  puts "Service Name: #{service.service_name}"
+  puts "Service ID: #{service.api_key}"
+end
+```
+
+**Benefits of this pattern:**
+- `client` is more descriptive than `s`
+- `Models` alias reduces verbosity when working with model classes
+- `response` clearly indicates the API response object
+- `service` clearly indicates the service data
+
 ## Environment Variables
 
 **Required:**
@@ -83,36 +115,21 @@ Action: OK
 The example demonstrates proper error handling:
 
 ```ruby
-rescue Authlete::Models::Errors::ResultError => e
-  puts "Authlete error: #{e.result_code} - #{e.result_message}"
-rescue Authlete::Models::Errors::APIError => e
-  puts "HTTP error: #{e.status_code}"
-end
-```
-
-## Usage Pattern
-
-The example follows Ruby best practices for SDK usage:
-
-```ruby
 require 'authlete_ruby_test'
 
-# Alias Models for cleaner code
 Models = ::Authlete::Models
-
-# Initialize client
-s = ::Authlete::Client.new(
+client = ::Authlete::Client.new(
   bearer: '<YOUR_BEARER_TOKEN_HERE>',
   server_url: 'https://us.authlete.com'
 )
 
-# Make API call
-res = s.services.retrieve(service_id: '<id>')
-
-# Handle response
-unless res.service.nil?
-  # Process service data
-  puts "Service: #{res.service.service_name}"
+begin
+  response = client.services.retrieve(service_id: '<service_id>')
+  # Handle success
+rescue Models::Errors::ResultError => e
+  puts "Authlete error: #{e.result_code} - #{e.result_message}"
+rescue Models::Errors::APIError => e
+  puts "HTTP error: #{e.status_code}"
 end
 ```
 
@@ -122,5 +139,4 @@ end
 - Auto-installs the gem if not available
 - Includes colored output for better readability
 - Loads environment variables from `.env` file
-- Uses `Models` alias for cleaner code
-- Follows Ruby naming conventions (`s` for SDK client instance)
+- Recommended to use descriptive variable names (`client`, `response`, `service`) instead of short names (`s`, `res`, `svc`)
