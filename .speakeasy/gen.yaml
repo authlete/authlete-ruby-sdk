@@ -56,4 +56,5 @@ ruby:
   multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: authlete_ruby_test
+  generateExamples: true
   typingStrategy: sorbet
