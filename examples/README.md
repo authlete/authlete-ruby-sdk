@@ -74,14 +74,14 @@ require 'authlete_ruby_test'
 # Create an alias for cleaner code
 Models = ::Authlete::Models
 
-# Initialize the client with a descriptive name
-client = ::Authlete::Client.new(
+# Initialize the Authlete client (following Stripe's pattern: stripe_client = Stripe::StripeClient.new)
+authlete_client = ::Authlete::Client.new(
   bearer: '<YOUR_BEARER_TOKEN_HERE>',
   server_url: 'https://us.authlete.com'
 )
 
 # Example: Retrieve a service
-response = client.services.retrieve(service_id: '<service_id>')
+response = authlete_client.services.retrieve(service_id: '<service_id>')
 
 unless response.service.nil?
   service = response.service
@@ -91,7 +91,7 @@ end
 ```
 
 **Benefits of this pattern:**
-- `client` is more descriptive than `s`
+- `authlete_client` follows Stripe's naming convention (`stripe_client`) and avoids confusion with OAuth clients
 - `Models` alias reduces verbosity when working with model classes
 - `response` clearly indicates the API response object
 - `service` clearly indicates the service data
@@ -118,13 +118,13 @@ The example demonstrates proper error handling:
 require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-client = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
   bearer: '<YOUR_BEARER_TOKEN_HERE>',
   server_url: 'https://us.authlete.com'
 )
 
 begin
-  response = client.services.retrieve(service_id: '<service_id>')
+  response = authlete_client.services.retrieve(service_id: '<service_id>')
   # Handle success
 rescue Models::Errors::ResultError => e
   puts "Authlete error: #{e.result_code} - #{e.result_message}"
@@ -139,4 +139,4 @@ end
 - Auto-installs the gem if not available
 - Includes colored output for better readability
 - Loads environment variables from `.env` file
-- Recommended to use descriptive variable names (`client`, `response`, `service`) instead of short names (`s`, `res`, `svc`)
+- Recommended to use descriptive variable names (`authlete_client`, `response`, `service`) instead of short names (`s`, `res`, `svc`) to avoid confusion with OAuth client entities
