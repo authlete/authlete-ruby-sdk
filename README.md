@@ -132,12 +132,12 @@ gem install authlete_ruby_test
 ```ruby
 require "authlete_ruby_test"
 
-# Initialize the Authlete API client
-authlete_api = Authlete::Client.new(bearer: "<YOUR_BEARER_TOKEN>")
+# Initialize the Authlete client (following Stripe's pattern)
+authlete_client = Authlete::Client.new(bearer: "<YOUR_BEARER_TOKEN>")
 
 # Retrieve a service
 begin
-  response = authlete_api.services.retrieve(service_id: "<service_id>")
+  response = authlete_client.services.retrieve(service_id: "<service_id>")
   puts response.service
 rescue Authlete::Models::Errors::ResultError => e
   # Handle Authlete-specific errors
@@ -150,11 +150,11 @@ rescue Authlete::Models::Errors::APIError => e
 end
 
 # List OAuth clients
-response = authlete_api.clients.list(service_id: "<service_id>")
+response = authlete_client.clients.list(service_id: "<service_id>")
 response.clients.each { |oauth_client| puts oauth_client.client_name }
 
 # Process an authorization request
-response = authlete_api.authorization.process_request(
+response = authlete_client.authorization.process_request(
   service_id: "<service_id>",
   parameters: "response_type=code&client_id=..."
 )
@@ -169,13 +169,13 @@ response = authlete_api.authorization.process_request(
 require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -198,13 +198,13 @@ To authenticate with the API the `bearer` parameter must be set when initializin
 require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -387,14 +387,14 @@ When custom error responses are specified for an operation, the SDK may also thr
 require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
 begin
-    res = s.services.retrieve(service_id: '<id>')
+    response = authlete_client.services.retrieve(service_id: '<id>')
 
-    unless res.service.nil?
+    unless response.service.nil?
       # handle response
     end
 rescue Models::Errors::ResultError => e
@@ -431,14 +431,14 @@ You can override the default server globally by passing a server index to the `s
 require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       server_idx: 0,
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -451,14 +451,14 @@ The default server can also be overridden globally by passing a URL to the `serv
 require 'authlete_ruby_test'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       server_url: 'https://br.authlete.com',
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
