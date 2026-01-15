@@ -52,7 +52,7 @@ trackedFiles:
     id: 3aed33ce6e6f
     last_write_checksum: sha1:c1a102bb7a4e4e6cd729c898efe73676af30bf9d
     pristine_git_object: dddca85b94f4450de02eb37241fb9d4ff187f4aa
-  authlete_ruby_test.gemspec:
+  authlete_ruby_sdk.gemspec:
     id: 2466cacca632
     last_write_checksum: sha1:4fa7f535a55f9fdfc9366a84c91f161223131219
     pristine_git_object: ec5661904b068c2d1cae9173d844880ba91500f1
@@ -4708,7 +4708,7 @@ trackedFiles:
     id: 7bad5395829a
     last_write_checksum: sha1:d30005e3890608448e1f2cf1b24b2bb1a6c013a1
     pristine_git_object: e86466767c889c846127f692c2efd647ce1ffb8e
-  lib/authlete_ruby_test.rb:
+  lib/authlete_ruby_sdk.rb:
     id: 83be33dd6132
     last_write_checksum: sha1:ab18fe9b1a922a178bf555a4a056c62dce49d844
     pristine_git_object: b338e4b624a1573ec0dc1978031d8bffce7fa5ea
@@ -5864,7 +5864,7 @@ generatedFiles:
   - Gemfile.lock
   - Rakefile
   - USAGE.md
-  - authlete_ruby_test.gemspec
+  - authlete_ruby_sdk.gemspec
   - docs/models/components/accesstoken.md
   - docs/models/components/applicationtype.md
   - docs/models/components/attachmenttype.md
@@ -7026,7 +7026,7 @@ generatedFiles:
   - lib/authlete/utils/url.rb
   - lib/authlete/utils/utils.rb
   - lib/authlete/verifiable_credentials.rb
-  - lib/authlete_ruby_test.rb
+  - lib/authlete_ruby_sdk.rb
   - lib/crystalline.rb
   - lib/crystalline/metadata_fields.rb
   - lib/crystalline/module.rb
