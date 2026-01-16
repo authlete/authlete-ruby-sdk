@@ -33,12 +33,12 @@ if File.exist?(env_file)
 end
 
 # Configuration
-API_URL = ENV['API_URL'] || abort("ERROR: API_URL not set")
-SERVICE_ID = ENV['SERVICE_ID'] || abort("ERROR: SERVICE_ID not set")
-ACCESS_TOKEN = ENV['ACCESS_TOKEN'] || abort("ERROR: ACCESS_TOKEN not set")
-CLIENT_ID = ENV['CLIENT_ID'] || abort("ERROR: CLIENT_ID not set")
-CLIENT_SECRET = ENV['CLIENT_SECRET'] || abort("ERROR: CLIENT_SECRET not set")
-REDIRECT_URI = ENV['REDIRECT_URI'] || abort("ERROR: REDIRECT_URI not set")
+API_URL = ENV['API_URL'] || abort('ERROR: API_URL not set')
+SERVICE_ID = ENV['SERVICE_ID'] || abort('ERROR: SERVICE_ID not set')
+ACCESS_TOKEN = ENV['ACCESS_TOKEN'] || abort('ERROR: ACCESS_TOKEN not set')
+CLIENT_ID = ENV['CLIENT_ID'] || abort('ERROR: CLIENT_ID not set')
+CLIENT_SECRET = ENV['CLIENT_SECRET'] || abort('ERROR: CLIENT_SECRET not set')
+REDIRECT_URI = ENV['REDIRECT_URI'] || abort('ERROR: REDIRECT_URI not set')
 SCOPE = ENV['SCOPE'] || 'openid profile'
 SUBJECT = ENV['SUBJECT'] || 'testuser'
 
@@ -116,7 +116,6 @@ begin
   puts "\033[32m✓ Token is valid\033[0m"
 
   puts "\n\033[32m=== SUCCESS: OAuth flow completed ===\033[0m"
-
 rescue Authlete::Models::Errors::ResultError => e
   puts "\n\033[31mERROR: #{e.result_code} - #{e.result_message}\033[0m"
   exit 1

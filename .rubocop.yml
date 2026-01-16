@@ -5,7 +5,9 @@ AllCops:
   Exclude:
     - Rakefile
     - bin/**/*
+    - examples/**/*
   TargetRubyVersion: "3.2"
+  NewCops: enable
 Metrics:
   Enabled: false
 Style/IfInsideElse:
@@ -78,4 +80,6 @@ Style/RedundantAssignment:
 Lint/LiteralAsCondition:
   Enabled: false
 Naming/VariableNumber:
+  Enabled: false
+Gemspec/AddRuntimeDependency:
   Enabled: false
