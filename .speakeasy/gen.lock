@@ -5,15 +5,15 @@ management:
   docVersion: 3.0.16
   speakeasyVersion: 1.680.3
   generationVersion: 2.788.5
-  releaseVersion: 0.0.1-beta
-  configChecksum: a40debaefc1cc5d00fe649f5ed7a1a29
+  releaseVersion: 0.0.1.beta
+  configChecksum: 6b1a1e79dc9978cacb9ef385d0610347
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: 6c898f96-2b99-4324-85cf-40ad5bf8e2db
-  pristine_commit_hash: f1aa377beb59c071a0d3594bf3b89f84ac9393c1
-  pristine_tree_hash: a068ef9348d8a7ddb4e2c07b68c2cc13d4924e58
+  generation_id: c047f1b8-5e85-46ad-99b4-6dd2c391cff9
+  pristine_commit_hash: db8533f324ff392e1bbb5103ba912a49c8ea49d1
+  pristine_tree_hash: d42599e6d1970ea53d0446e0b8c5034fc626c149
 features:
   ruby:
     additionalProperties: 0.1.0
@@ -42,8 +42,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:eef98f6cc65a8ebdc8066953609134235ccddda2
-    pristine_git_object: 740c156b71c7cd5665266afc3ff03e6106918847
+    last_write_checksum: sha1:d9f5af64a3dbc706a5a11373153abb8d4bdbc4d9
+    pristine_git_object: 04a94d39b77dd2075683811b5a424c526da3bb92
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -54,8 +54,8 @@ trackedFiles:
     pristine_git_object: 7be410b1c70cf20a7b27193dbcbb2caa80104202
   authlete_ruby_sdk.gemspec:
     id: 2466cacca632
-    last_write_checksum: sha1:b494b11183a7f35a8b818c5d0f228c4a695f4d22
-    pristine_git_object: 4eab41381bfc1f5838821627823146a3edf95bd7
+    last_write_checksum: sha1:97547817707c311dbdbc0ced890e12db9829f4da
+    pristine_git_object: 567ec1d90b88df4a53e813d0c34830894e041ab8
   docs/models/components/accesstoken.md:
     id: 94ff2e4425e9
     last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
@@ -4650,8 +4650,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:e5539310ae01889b28d6d98f1ae882abec7a3dd5
-    pristine_git_object: fb75eccbb9a1ba212963020d2be0475877934557
+    last_write_checksum: sha1:ce9385a1879878ee94a892a37de8615a89a48587
+    pristine_git_object: d2676357d3892bc20d7c293a0ad2720f68aeb4a3
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
