@@ -15,7 +15,7 @@ This API creates a pushed request authorization. It authenticates the client and
 
 <!-- UsageSnippet language="ruby" operationID="pushed_auth_req_api" method="post" path="/api/{serviceId}/pushed_auth_req" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

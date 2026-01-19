@@ -5,15 +5,15 @@ management:
   docVersion: 3.0.16
   speakeasyVersion: 1.680.3
   generationVersion: 2.788.5
-  releaseVersion: 0.0.2-beta.2
-  configChecksum: 97b3ab3a9dea1dc4469f8693210a5ebe
+  releaseVersion: 0.0.1-beta
+  configChecksum: a40debaefc1cc5d00fe649f5ed7a1a29
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: 5025a4da-9bd9-45ef-b46c-354bd0c69a07
-  pristine_commit_hash: d6df2bc9fdf8dc8a4b1ad01915da1cd3b18756cd
-  pristine_tree_hash: a002f38ae5c512cd0b10742b7ae1b8355eeb5cdf
+  generation_id: 6c898f96-2b99-4324-85cf-40ad5bf8e2db
+  pristine_commit_hash: f1aa377beb59c071a0d3594bf3b89f84ac9393c1
+  pristine_tree_hash: a068ef9348d8a7ddb4e2c07b68c2cc13d4924e58
 features:
   ruby:
     additionalProperties: 0.1.0
@@ -42,20 +42,20 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:21b65c2cac7a2b2efc1eed2217945a628ba862d7
-    pristine_git_object: a13b0d8cebaad6eb464a327fa52ab1a342cea80d
+    last_write_checksum: sha1:eef98f6cc65a8ebdc8066953609134235ccddda2
+    pristine_git_object: 740c156b71c7cd5665266afc3ff03e6106918847
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
     pristine_git_object: f73a3e45acd051497caded5dff43d75691e5236b
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:c1a102bb7a4e4e6cd729c898efe73676af30bf9d
-    pristine_git_object: dddca85b94f4450de02eb37241fb9d4ff187f4aa
+    last_write_checksum: sha1:3f4330ea896709577d7397ad27318be9ccfa9966
+    pristine_git_object: 7be410b1c70cf20a7b27193dbcbb2caa80104202
   authlete_ruby_sdk.gemspec:
     id: 2466cacca632
-    last_write_checksum: sha1:64bd938d39e5dd0ef40e4d0608d8ca633add07bc
-    pristine_git_object: ec5661904b068c2d1cae9173d844880ba91500f1
+    last_write_checksum: sha1:b494b11183a7f35a8b818c5d0f228c4a695f4d22
+    pristine_git_object: 4eab41381bfc1f5838821627823146a3edf95bd7
   docs/models/components/accesstoken.md:
     id: 94ff2e4425e9
     last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
@@ -1526,88 +1526,88 @@ trackedFiles:
     pristine_git_object: e9cc08712b194a69e9ccb59825a9adaa56508299
   docs/sdks/authorization/README.md:
     id: 441b100db528
-    last_write_checksum: sha1:ad96ac754b2d759e1161eb40a433b460337a3496
-    pristine_git_object: 484ae076fd2d85ee3e241e614a4b3bd34ce67f67
+    last_write_checksum: sha1:e2312d2a54d54fb10ab9c80172c64ad2582b620d
+    pristine_git_object: 9aad1e0bd7381548b846e54f30c3a251162a996c
   docs/sdks/authorizationmanagement/README.md:
     id: 6cd62ea74e54
-    last_write_checksum: sha1:a838122f22318cb406ddfc2d52d5380addf150e4
-    pristine_git_object: 6efbeeab84b1f04d1f75a6d12b7ade391039b7aa
+    last_write_checksum: sha1:cdc6ea944ccfde70eb91aa9a2f994d0d4b23f6d1
+    pristine_git_object: b8d5bed3026231cb0557b43d056c82cf2eb0fb1b
   docs/sdks/ciba/README.md:
     id: f9236b9b5d30
-    last_write_checksum: sha1:d02ef18a74a5099106d454d0fd84446640b450fe
-    pristine_git_object: e6b2847f7411a21f8123751e92130d65f18bda0e
+    last_write_checksum: sha1:96b6c1ebceb7cd125adbd86aeeacf2a929c4ffbc
+    pristine_git_object: d8a0b3925cf3c3e149a8383e03f0209b8b7c81d7
   docs/sdks/clientmanagement/README.md:
     id: 588dad77197a
-    last_write_checksum: sha1:e169a8dc58674ec8f156d1277af45315db23e0fb
-    pristine_git_object: bf23ff13dc3ec466523bd2d0989ce8cd5c854bf5
+    last_write_checksum: sha1:b32a5c568410da26c0c9ff9cb47ee3c74c78e20e
+    pristine_git_object: 9f08b20e3dadcbb362142f1b76ae7512822fd429
   docs/sdks/clients/README.md:
     id: ba883fd0c1cf
-    last_write_checksum: sha1:07fc62b93428c4876f780fec0b0175b6a4f4f22a
-    pristine_git_object: 163f2b0d5eb2824b556563a1936e8d2bbf119772
+    last_write_checksum: sha1:ea67a0160d1eff5e38ea2b94690a23b547888159
+    pristine_git_object: 363c5228d15088a6941c3fd2b65a0a15c483f6e1
   docs/sdks/deviceflow/README.md:
     id: edb9b3efc42f
-    last_write_checksum: sha1:26c5020138ed4058217eafb55db5172f6cd653c6
-    pristine_git_object: 420b0a023c395a49947f69ce99578e84656a6f7a
+    last_write_checksum: sha1:57f1c207c1156f6d81b11ec2b802eb4325c0db6a
+    pristine_git_object: e015c69913cd09016d41cbdbb7443e7488979a19
   docs/sdks/dynamicclientregistration/README.md:
     id: 0c2a7f3e53c3
-    last_write_checksum: sha1:0f264845fccea581d8dbdf73acc3933140014220
-    pristine_git_object: 4e906d1ec34c5e61975058d5d2fc33418dfb88e7
+    last_write_checksum: sha1:4001415a5b12955528085c6b3d111ee7a5cda1ab
+    pristine_git_object: 8607e501b6e4ba32da405cbf7c67f543aa4f1d47
   docs/sdks/federation/README.md:
     id: 725e6af6c75a
-    last_write_checksum: sha1:b2adbc57d948b7ad40ca151d84aae62e33b0998e
-    pristine_git_object: 58581e7013c16e32a554d6ffba94ca190ce516e0
+    last_write_checksum: sha1:2281ce0458ca9a2af06b315654b11b73a454985e
+    pristine_git_object: 7b8089b81ae4d1fa1ad2bed9cea2495ecc9b9dd7
   docs/sdks/grantmanagement/README.md:
     id: ea93c3d7f5b2
-    last_write_checksum: sha1:e1c052f30d98802cc41b263715af7948ea8245c1
-    pristine_git_object: 18643cb936a4cbd393d7f42afb5e686547b45b99
+    last_write_checksum: sha1:7d64c8ec0de3a0e15f44c0df3a376a2a3f0c6f61
+    pristine_git_object: 3f1a8e3755e96733b736735d24a94db0db6efbc5
   docs/sdks/hardwaresecuritykeys/README.md:
     id: d84ff65cf164
-    last_write_checksum: sha1:e82b9530413f7b5129e5c2f89b1d29de3ca8b8ed
-    pristine_git_object: 0d534574381bead9c0f12b121843d315d38686bc
+    last_write_checksum: sha1:fe4c1be31fd40e0b092e720ccaf0db4d0fbc686b
+    pristine_git_object: f57248faf5c85f61871b890b7b642f96d0e10833
   docs/sdks/introspection/README.md:
     id: 9f867af7c1f3
-    last_write_checksum: sha1:aa3d544669158351d173a7d17ce20e2a65502f5a
-    pristine_git_object: eed10148e40a79d1bb1a7a66011ffb2ce3f99b6c
+    last_write_checksum: sha1:bf874aac2fc7f33844eb072832ff6da72b3a5694
+    pristine_git_object: 6ab866caac9a11ac74d51dfe4b2a710586183522
   docs/sdks/joseobject/README.md:
     id: 204c6612db19
-    last_write_checksum: sha1:9500a91a6541c731f0ae6e29b57385ce52c09044
-    pristine_git_object: f1ea28a50da7321d9e31d654a3eb5ba194bfe471
+    last_write_checksum: sha1:635c63c8378b53dbb35719bfccd93ad5fa398f1e
+    pristine_git_object: 105a9fbcc9959c3d574982d7fc323c76ec3b2bd7
   docs/sdks/jwksetendpoint/README.md:
     id: 6fad40b052b6
-    last_write_checksum: sha1:dc3a83c2cc68a0877c49ad4a56c5e49778809893
-    pristine_git_object: ddef6cfc93b7b2f463a6805aa5ba0eb2647c1266
+    last_write_checksum: sha1:ba2347596dc38376e2dc4163ca622ba84d8c3d60
+    pristine_git_object: 5ed20646a5c81a61350159d8e9d5416aa33b959c
   docs/sdks/nativesso/README.md:
     id: 2685131c5041
-    last_write_checksum: sha1:3b22a5f22046c6171c4b02755b853eb11061657f
-    pristine_git_object: 8756d5345cfde599767f97a1e396906cd42d05ae
+    last_write_checksum: sha1:0b1d1d79ff56ae07165e35c6d0ead88edd2611f1
+    pristine_git_object: d76059cda2bc45ba5553a0d2a97e338e19afb35e
   docs/sdks/pushedauthorization/README.md:
     id: 635710aea8cf
-    last_write_checksum: sha1:fe65289320161a85764b5afffc32a247fc47e85b
-    pristine_git_object: f436e21d32de0932506b790efb7c0679bc1606ef
+    last_write_checksum: sha1:5a64dc6e3d6f5af775e9b82112ce9eb672d207d0
+    pristine_git_object: 7b8a6a5ea4269d28f1764f913d8f07260ba6e2f1
   docs/sdks/revocation/README.md:
     id: 8e97fa015033
-    last_write_checksum: sha1:d370fce2322760764a5ea3f57f17b99a64211ad3
-    pristine_git_object: 5309710f960b19c0be735039f4b20239b36a5047
+    last_write_checksum: sha1:f3ab13ba21fa4c4cba0a634771353c340d01e0c5
+    pristine_git_object: 3f39a8d0dfdeca5c7d9e907f7ec58b8ae17c0ce1
   docs/sdks/services/README.md:
     id: bfab970adeb1
-    last_write_checksum: sha1:2e2c4ebf9d12d21aece1ada1d08f28c078c52ce6
-    pristine_git_object: 2897f78a9762f4ae1628ad3c76963354f2d17d98
+    last_write_checksum: sha1:6662ae44d9880fec647bc4f8a46c6f9bc14351d4
+    pristine_git_object: 0b66ee5419b01dfc05615751dd1f9bb12fc150b4
   docs/sdks/tokenmanagement/README.md:
     id: 134765d94546
-    last_write_checksum: sha1:e1b00845a630395049c3d92f58cd7e3385f4c3b3
-    pristine_git_object: a5cbe0e14fc5bd3a4e4cb1d554be0c7bc1027322
+    last_write_checksum: sha1:650436355bdef9d39ddbe6d21ef1f803846b1f36
+    pristine_git_object: 7368963d362c13eb16a1b97bbf6460fa444b37d1
   docs/sdks/tokens/README.md:
     id: ca61030eb3e5
-    last_write_checksum: sha1:6d2c38bf03021f2fd64a2fd6f9be8ac275f6960b
-    pristine_git_object: 89724f28eb765f38b968dc8fce2338f4cb88ea87
+    last_write_checksum: sha1:449ea2feeae7dc0c711415a65106ba957891b789
+    pristine_git_object: 5e44eb80558069813b03983baae35fe541f81e26
   docs/sdks/userinfo/README.md:
     id: d30e8ce3aa74
-    last_write_checksum: sha1:1fe158d1f8d4d2b111fa657db21b7570dd94607d
-    pristine_git_object: 01372298eaae1188982d12bff74f513262e26dd6
+    last_write_checksum: sha1:960e825c49661b88b222448db3593dcc9ff8bdb8
+    pristine_git_object: 3fb94643e8cd692956428e246dd098fd20ef33c2
   docs/sdks/verifiablecredentials/README.md:
     id: d610ef458fd6
-    last_write_checksum: sha1:a78245cd600c4167c9773f740556a78feae49895
-    pristine_git_object: 61f5a685e99fcdf3ce1b8baf11e18032f10a9c93
+    last_write_checksum: sha1:d4d713013561a0db5044fc7d2b671c43136efb43
+    pristine_git_object: f24f7c6aaba0c87b040acfb311e29c9449d94cc2
   extra.rbi:
     id: e2fdbbd314d3
     last_write_checksum: sha1:b4d764c7b4eb0b56246a260e2a6644523dc78b04
@@ -4650,8 +4650,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:85fc4f3390d4b73018bd06672a33d1166b79cad4
-    pristine_git_object: 117f3dd603cec1f798223a0ce6ec523e3420b408
+    last_write_checksum: sha1:e5539310ae01889b28d6d98f1ae882abec7a3dd5
+    pristine_git_object: fb75eccbb9a1ba212963020d2be0475877934557
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
@@ -4710,7 +4710,7 @@ trackedFiles:
     pristine_git_object: e86466767c889c846127f692c2efd647ce1ffb8e
   lib/authlete_ruby_sdk.rb:
     id: 83be33dd6132
-    last_write_checksum: sha1:f9d440f94a1a4b7d6183bfa294de1b70ad057645
+    last_write_checksum: sha1:ab18fe9b1a922a178bf555a4a056c62dce49d844
     pristine_git_object: b338e4b624a1573ec0dc1978031d8bffce7fa5ea
   lib/crystalline.rb:
     id: eca767cf937a
@@ -5856,7 +5856,6 @@ examples:
         "500":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.services.configuration()`:  `response` **Changed** **Breaking** :warning:\n* `client.clients.update_form()`: **Added**\n* `client.clients.retrieve()`:  `response.additional_properties` **Added**\n* `client.clients.list()`:  `response.clients.[].additional_properties` **Added**\n* `client.clients.create()`: \n  *  `request.client` **Changed**\n  *  `response.additional_properties` **Added**\n* `client.clients.update()`: \n  *  `request.client` **Changed**\n  *  `response.additional_properties` **Added**\n* `client.dynamic_client_registration.register()`:  `response.client.additional_properties` **Added**\n* `client.dynamic_client_registration.retrieve()`:  `response.client.additional_properties` **Added**\n* `client.dynamic_client_registration.update()`:  `response.client.additional_properties` **Added**\n* `client.dynamic_client_registration.destroy()`:  `response.client.additional_properties` **Added**\n* `client.federation.registration()`:  `response.client.additional_properties` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

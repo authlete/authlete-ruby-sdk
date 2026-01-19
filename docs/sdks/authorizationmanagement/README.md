@@ -15,7 +15,7 @@ Get Ticket Information
 
 <!-- UsageSnippet language="ruby" operationID="authorization_ticket_info_post_api" method="post" path="/api/{serviceId}/auth/authorization/ticket/info" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -59,7 +59,7 @@ Update Ticket Information
 
 <!-- UsageSnippet language="ruby" operationID="updateAuthorizationTicket" method="post" path="/api/{serviceId}/auth/authorization/ticket/update" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

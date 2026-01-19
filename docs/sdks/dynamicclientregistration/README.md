@@ -73,7 +73,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_api" method="post" path="/api/{serviceId}/client/registration" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -192,7 +192,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_get_api" method="post" path="/api/{serviceId}/client/registration/get" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -312,7 +312,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_update_api" method="post" path="/api/{serviceId}/client/registration/update" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -430,7 +430,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="client_registration_delete_api" method="post" path="/api/{serviceId}/client/registration/delete" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

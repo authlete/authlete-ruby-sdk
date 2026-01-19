@@ -77,7 +77,7 @@ Content-Type: application/entity-statement+jwt
 
 <!-- UsageSnippet language="ruby" operationID="federation_configuration_api" method="post" path="/api/{serviceId}/federation/configuration" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -140,7 +140,7 @@ federation registration endpoint should call Authlete's
 
 <!-- UsageSnippet language="ruby" operationID="federation_registration_api" method="post" path="/api/{serviceId}/federation/registration" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

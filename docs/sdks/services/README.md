@@ -23,7 +23,7 @@ have access to view this service directly, a limited view of the service will be
 
 <!-- UsageSnippet language="ruby" operationID="service_get_api" method="get" path="/api/{serviceId}/service/get" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -72,7 +72,7 @@ Otherwise, all services that the access token can view, even in a limited fashio
 
 <!-- UsageSnippet language="ruby" operationID="service_get_list_api" method="get" path="/api/service/get/list" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -115,7 +115,7 @@ Create a new service.
 
 <!-- UsageSnippet language="ruby" operationID="service_create_api" method="post" path="/api/service/create" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -209,7 +209,7 @@ Update a service.
 
 <!-- UsageSnippet language="ruby" operationID="service_update_api" method="post" path="/api/{serviceId}/service/update" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -352,7 +352,7 @@ Delete a service.
 
 <!-- UsageSnippet language="ruby" operationID="service_delete_api" method="delete" path="/api/{serviceId}/service/delete" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -400,7 +400,7 @@ in OpenID Connect Discovery 1.0.
 
 <!-- UsageSnippet language="ruby" operationID="service_configuration_api" method="get" path="/api/{serviceId}/service/configuration" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

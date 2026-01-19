@@ -17,7 +17,7 @@ Create Security Key
 
 <!-- UsageSnippet language="ruby" operationID="hsk_create_api" method="post" path="/api/{serviceId}/hsk/create" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -59,7 +59,7 @@ Delete Security Key
 
 <!-- UsageSnippet language="ruby" operationID="hsk_delete_api" method="delete" path="/api/{serviceId}/hsk/delete/{handle}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -101,7 +101,7 @@ Get Security Key
 
 <!-- UsageSnippet language="ruby" operationID="hsk_get_api" method="get" path="/api/{serviceId}/hsk/get/{handle}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -143,7 +143,7 @@ List Security Keys
 
 <!-- UsageSnippet language="ruby" operationID="hsk_get_list_api" method="get" path="/api/{serviceId}/hsk/get/list" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

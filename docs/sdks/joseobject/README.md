@@ -17,7 +17,7 @@ This API verifies a JOSE object.
 
 <!-- UsageSnippet language="ruby" operationID="jose_verify_api" method="post" path="/api/{serviceId}/jose/verify" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

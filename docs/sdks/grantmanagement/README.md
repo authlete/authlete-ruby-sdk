@@ -16,7 +16,7 @@ defined in "[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant
 
 <!-- UsageSnippet language="ruby" operationID="grant_m_api" method="post" path="/api/{serviceId}/gm" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

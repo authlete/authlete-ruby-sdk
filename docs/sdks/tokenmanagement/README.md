@@ -24,7 +24,7 @@ token.
 
 <!-- UsageSnippet language="ruby" operationID="idtoken_reissue_api" method="post" path="/api/{serviceId}/idtoken/reissue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -67,7 +67,7 @@ Get the list of access tokens that are associated with the service.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_get_list_api" method="get" path="/api/{serviceId}/auth/token/get/list" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -113,7 +113,7 @@ Create an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_create_api" method="post" path="/api/{serviceId}/auth/token/create" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -164,7 +164,7 @@ Update an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_update_api" method="post" path="/api/{serviceId}/auth/token/update" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -212,7 +212,7 @@ Delete an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_delete_api" method="delete" path="/api/{serviceId}/auth/token/delete/{accessTokenIdentifier}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -255,7 +255,7 @@ Revoke an access token.
 
 <!-- UsageSnippet language="ruby" operationID="auth_token_revoke_api" method="post" path="/api/{serviceId}/auth/token/revoke" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
