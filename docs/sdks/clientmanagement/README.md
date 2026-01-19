@@ -25,7 +25,7 @@ Lock and unlock a client
 
 <!-- UsageSnippet language="ruby" operationID="client_flag_update_api" method="post" path="/api/{serviceId}/client/lock_flag/update/{clientIdentifier}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -74,7 +74,7 @@ If you want to specify a new value, use `/api/client/secret/update` API.
 
 <!-- UsageSnippet language="ruby" operationID="client_secret_refresh_api" method="get" path="/api/{serviceId}/client/secret/refresh/{clientIdentifier}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -120,7 +120,7 @@ API.
 
 <!-- UsageSnippet language="ruby" operationID="client_secret_update_api" method="post" path="/api/{serviceId}/client/secret/update/{clientIdentifier}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -168,7 +168,7 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_authorization_get_list_api" method="get" path="/api/{serviceId}/client/authorization/get/list/{subject}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -216,7 +216,7 @@ Update attributes of all existing access tokens given to a client application.
 
 <!-- UsageSnippet language="ruby" operationID="client_authorization_update_api" method="post" path="/api/{serviceId}/client/authorization/update/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -267,7 +267,7 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_authorization_delete_api" method="delete" path="/api/{serviceId}/client/authorization/delete/{clientId}/{subject}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -325,7 +325,7 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_granted_scopes_get_api" method="get" path="/api/{serviceId}/client/granted_scopes/get/{clientId}/{subject}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -374,7 +374,7 @@ The subject parameter is required and can be provided either in the path or as a
 
 <!-- UsageSnippet language="ruby" operationID="client_granted_scopes_delete_api" method="delete" path="/api/{serviceId}/client/granted_scopes/delete/{clientId}/{subject}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -419,7 +419,7 @@ Get the requestable scopes per client
 
 <!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_get_api" method="get" path="/api/{serviceId}/client/extension/requestable_scopes/get/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -462,7 +462,7 @@ Update requestable scopes of a client
 
 <!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_update_api" method="put" path="/api/{serviceId}/client/extension/requestable_scopes/update/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -506,7 +506,7 @@ Delete requestable scopes of a client
 
 <!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_delete_api" method="delete" path="/api/{serviceId}/client/extension/requestable_scopes/delete/{clientId}" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

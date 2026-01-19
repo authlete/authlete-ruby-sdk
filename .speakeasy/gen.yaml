@@ -13,6 +13,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
     sharedErrorComponentsApr2025: true
+    sharedNestedComponentsJan2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -41,6 +42,7 @@ ruby:
   defaultErrorName: APIError
   description: Official Ruby SDK for Authlete API v3+
   flattenGlobalSecurity: true
+  generateExamples: true
   imports:
     option: openapi
     paths:
@@ -56,5 +58,4 @@ ruby:
   multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: authlete_ruby_sdk
-  generateExamples: true
   typingStrategy: sorbet

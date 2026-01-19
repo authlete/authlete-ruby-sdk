@@ -416,7 +416,7 @@ above in the description for the case of `action=NO\_INTERACTION`.
 
 <!-- UsageSnippet language="ruby" operationID="auth_authorization_api" method="post" path="/api/{serviceId}/auth/authorization" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -536,7 +536,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_authorization_fail_api" method="post" path="/api/{serviceId}/auth/authorization/fail" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -661,7 +661,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_authorization_issue_api" method="post" path="/api/{serviceId}/auth/authorization/issue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

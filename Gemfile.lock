@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    authlete_ruby_test (0.0.2.pre.beta.2)
+    authlete_ruby_sdk (0.0.1.pre.beta)
       base64 (>= 0.2.0, < 1.0)
       faraday
       faraday-multipart
@@ -113,7 +113,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  authlete_ruby_test!
+  authlete_ruby_sdk!
   minitest
   minitest-focus
   rake

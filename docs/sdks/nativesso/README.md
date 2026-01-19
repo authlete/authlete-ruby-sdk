@@ -65,7 +65,7 @@ If `CALLER_ERROR` is returned, please review the implementation of your OpenID P
 
 <!-- UsageSnippet language="ruby" operationID="native_sso_api" method="post" path="/api/{serviceId}/nativesso" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -133,7 +133,7 @@ problem. For example, the call may have been missing the required request parame
 
 <!-- UsageSnippet language="ruby" operationID="native_sso_logout_api" method="post" path="/api/{serviceId}/nativesso/logout" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

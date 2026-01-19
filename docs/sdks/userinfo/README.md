@@ -122,7 +122,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_userinfo_api" method="post" path="/api/{serviceId}/auth/userinfo" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -276,7 +276,7 @@ Content-Type: application/jwt
 
 <!-- UsageSnippet language="ruby" operationID="auth_userinfo_issue_api" method="post" path="/api/{serviceId}/auth/userinfo/issue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

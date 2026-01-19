@@ -139,7 +139,7 @@ may be different.
 
 <!-- UsageSnippet language="ruby" operationID="auth_introspection_api" method="post" path="/api/{serviceId}/auth/introspection" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -253,7 +253,7 @@ request does not satisfy authorization requirements imposed by your introspectio
 
 <!-- UsageSnippet language="ruby" operationID="auth_introspection_standard_api" method="post" path="/api/{serviceId}/auth/introspection/standard" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

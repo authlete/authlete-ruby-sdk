@@ -251,7 +251,7 @@ not have to be changed to support CIBA.
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_api" method="post" path="/api/{serviceId}/backchannel/authentication" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -361,7 +361,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_issue_api" method="post" path="/api/{serviceId}/backchannel/authentication/issue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -428,7 +428,7 @@ server implementation should return a "403 Forbidden" response to the client app
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_fail_api" method="post" path="/api/{serviceId}/backchannel/authentication/fail" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -555,7 +555,7 @@ Content-Type: application/json
 
 <!-- UsageSnippet language="ruby" operationID="backchannel_authentication_complete_api" method="post" path="/api/{serviceId}/backchannel/authentication/complete" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

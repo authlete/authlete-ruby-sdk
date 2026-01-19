@@ -24,7 +24,7 @@ Get verifiable credential issuer metadata
 
 <!-- UsageSnippet language="ruby" operationID="vci_metadata_api" method="post" path="/api/{serviceId}/vci/metadata" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -68,7 +68,7 @@ Get JWT issuer information for VCI
 
 <!-- UsageSnippet language="ruby" operationID="vci_jwtissuer_api" method="post" path="/api/{serviceId}/vci/jwtissuer" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -112,7 +112,7 @@ Get JSON Web Key Set for VCI
 
 <!-- UsageSnippet language="ruby" operationID="vci_jwks_api" method="post" path="/api/{serviceId}/vci/jwks" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -156,7 +156,7 @@ Create a verifiable credential offer
 
 <!-- UsageSnippet language="ruby" operationID="vci_offer_create_api" method="post" path="/api/{serviceId}/vci/offer/create" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -198,7 +198,7 @@ Get information about a verifiable credential offer
 
 <!-- UsageSnippet language="ruby" operationID="vci_offer_info_api" method="post" path="/api/{serviceId}/vci/offer/info" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -240,7 +240,7 @@ Parse a single verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_single_parse_api" method="post" path="/api/{serviceId}/vci/single/parse" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -282,7 +282,7 @@ Issue a single verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_single_issue_api" method="post" path="/api/{serviceId}/vci/single/issue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -324,7 +324,7 @@ Parse multiple verifiable credentials in batch
 
 <!-- UsageSnippet language="ruby" operationID="vci_batch_parse_api" method="post" path="/api/{serviceId}/vci/batch/parse" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -366,7 +366,7 @@ Issue multiple verifiable credentials in batch
 
 <!-- UsageSnippet language="ruby" operationID="vci_batch_issue_api" method="post" path="/api/{serviceId}/vci/batch/issue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -408,7 +408,7 @@ Parse a deferred verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_deferred_parse_api" method="post" path="/api/{serviceId}/vci/deferred/parse" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -450,7 +450,7 @@ Issue a deferred verifiable credential
 
 <!-- UsageSnippet language="ruby" operationID="vci_deferred_issue_api" method="post" path="/api/{serviceId}/vci/deferred/issue" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

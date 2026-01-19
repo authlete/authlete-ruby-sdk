@@ -108,7 +108,7 @@ Pragma: no-cache
 
 <!-- UsageSnippet language="ruby" operationID="auth_revocation_api" method="post" path="/api/{serviceId}/auth/revocation" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(

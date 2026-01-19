@@ -81,7 +81,7 @@ and return to the client application.
 
 <!-- UsageSnippet language="ruby" operationID="device_authorization_api" method="post" path="/api/{serviceId}/device/authorization" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -154,7 +154,7 @@ to ask whether she approves or rejects the authorization request from the device
 
 <!-- UsageSnippet language="ruby" operationID="device_verification_api" method="post" path="/api/{serviceId}/device/verification" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
@@ -247,7 +247,7 @@ using.
 
 <!-- UsageSnippet language="ruby" operationID="device_complete_api" method="post" path="/api/{serviceId}/device/complete" -->
 ```ruby
-require 'authlete_ruby_test'
+require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
