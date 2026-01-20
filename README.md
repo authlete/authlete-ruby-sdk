@@ -12,7 +12,7 @@ Developer-friendly & type-safe Ruby SDK specifically catered to leverage *authle
 
 <br /><br />
 > [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/authlete/sdk-workspace). Delete this section before > publishing to a package manager.
+> This is a beta SDK.
 
 <!-- Start Summary [summary] -->
 ## Summary
