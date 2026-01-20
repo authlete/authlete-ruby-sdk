@@ -96,13 +96,13 @@ response = authlete_client.authorization.process_request(
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -125,13 +125,13 @@ To authenticate with the API the `bearer` parameter must be set when initializin
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -314,14 +314,14 @@ When custom error responses are specified for an operation, the SDK may also thr
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
 begin
-    res = s.services.retrieve(service_id: '<id>')
+    response = authlete_client.services.retrieve(service_id: '<id>')
 
-    unless res.service.nil?
+    unless response.service.nil?
       # handle response
     end
 rescue Models::Errors::ResultError => e
@@ -358,14 +358,14 @@ You can override the default server globally by passing a server index to the `s
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-      server_idx: 0,
+authlete_client = ::Authlete::Client.new(
+      server_idx: 3,
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -378,14 +378,14 @@ The default server can also be overridden globally by passing a URL to the `serv
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       server_url: 'https://br.authlete.com',
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
