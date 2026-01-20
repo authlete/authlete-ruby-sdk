@@ -32,6 +32,7 @@ If you have any questions or need assistance, our team is here to help:
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
   * [SDK Installation](#sdk-installation)
+  * [Access Tokens](#access-tokens)
   * [Quick Start](#quick-start)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
@@ -53,6 +54,21 @@ The SDK can be installed using [RubyGems](https://rubygems.org/):
 gem install authlete_ruby_sdk
 ```
 <!-- End SDK Installation [installation] -->
+
+## Access Tokens
+
+You need to pass a valid access token to be able to use any resource or operation. Refer to [Creating an Access Token](https://www.authlete.com/developers/tutorial/signup/) to learn how to create one.
+
+Authlete supports two types of access tokens:
+
+- **Service Access Token** - Scoped to a single service (authorization server instance). Create from **Service Settings** → **Access Tokens** in the [Authlete Console](https://console.authlete.com).
+- **Organization Token** - Scoped to your entire organization, allowing access to all services. Create from **[Organization Settings](https://www.authlete.com/developers/terraform/starting/#setting-your-environment)** → **Access Tokens**.
+
+Make sure that you create a token with the correct scope. If you face permission (403) errors when already sending a token, it can be one of the following problems:
+
+- The token you are using has expired. Check the expiry date in the Authlete Console.
+- The token does not have access to the correct scope, either not the right service or it does not have account level access.
+- The resource or operation you are trying to use is not available for that service tier. For example, some features are Enterprise-only and you may be using a token for a service on a different plan.
 
 ## Quick Start
 
