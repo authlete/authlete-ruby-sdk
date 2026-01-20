@@ -1,6 +1,6 @@
 # Authlete Ruby SDK
 
-Developer-friendly & type-safe Ruby SDK specifically catered to leverage *Authlete* API.
+Developer-friendly & type-safe Ruby SDK specifically catered to leverage *Authlete* API v3.0 and forward.
 
 <div align="left">
     <a href="https://www.speakeasy.com/?utm_source=authlete&utm_campaign=ruby"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
