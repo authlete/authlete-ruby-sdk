@@ -3,21 +3,20 @@ id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
   docChecksum: 9712bcc88dfa9fb64b6bcbe05cc09f83
   docVersion: 3.0.16
-  speakeasyVersion: 1.680.3
-  generationVersion: 2.788.5
-  releaseVersion: 0.0.1.beta
-  configChecksum: 6b1a1e79dc9978cacb9ef385d0610347
+  speakeasyVersion: 1.689.0
+  generationVersion: 2.796.4
+  configChecksum: 69ba2156b12cca2450448921eb68bf16
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: c047f1b8-5e85-46ad-99b4-6dd2c391cff9
-  pristine_commit_hash: db8533f324ff392e1bbb5103ba912a49c8ea49d1
-  pristine_tree_hash: d42599e6d1970ea53d0446e0b8c5034fc626c149
+  generation_id: 65a6afbd-85a0-4b27-9c79-b4e965ae930c
+  pristine_commit_hash: 97a622fc3aa051527eeb61d90de8c7edcc4ffeff
+  pristine_tree_hash: 91b2968ae92a4b4493256d5abd300ee7e52b8bc7
 features:
   ruby:
     additionalProperties: 0.1.0
-    core: 3.11.7
+    core: 3.11.11
     flattening: 2.81.1
     globalSecurity: 2.81.9
     globalSecurityFlattening: 0.1.0
@@ -42,8 +41,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:d9f5af64a3dbc706a5a11373153abb8d4bdbc4d9
-    pristine_git_object: 04a94d39b77dd2075683811b5a424c526da3bb92
+    last_write_checksum: sha1:700265247e9b5799e78d298927b092e4b37d329a
+    pristine_git_object: 7086d289ed02e1d6dd5574fd4087c079f81c1718
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:bb15946e7c34d00098a6ee8fef994bbd57960092
@@ -54,8 +53,8 @@ trackedFiles:
     pristine_git_object: 7be410b1c70cf20a7b27193dbcbb2caa80104202
   authlete_ruby_sdk.gemspec:
     id: 2466cacca632
-    last_write_checksum: sha1:97547817707c311dbdbc0ced890e12db9829f4da
-    pristine_git_object: 567ec1d90b88df4a53e813d0c34830894e041ab8
+    last_write_checksum: sha1:fb487e08535faf2b0379166e425990b242895985
+    pristine_git_object: 6d131ab04fc34db58f74551ce56dcd45f062e28a
   docs/models/components/accesstoken.md:
     id: 94ff2e4425e9
     last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
@@ -4650,8 +4649,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:ce9385a1879878ee94a892a37de8615a89a48587
-    pristine_git_object: d2676357d3892bc20d7c293a0ad2720f68aeb4a3
+    last_write_checksum: sha1:9f62722e52913eddffd46073ad22e98297a630ab
+    pristine_git_object: 72ed8a7f5bb54ce38419fec3a8811081cf4ea5d4
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
@@ -4682,12 +4681,12 @@ trackedFiles:
     pristine_git_object: d1afa807f69abccecfbfcb6d76d22a39a1caa537
   lib/authlete/utils/query_params.rb:
     id: 00a889d70d24
-    last_write_checksum: sha1:2659c3e10ead13f332e89c01cbcff82cc7662cc1
-    pristine_git_object: 18d85a624a85e5a88b89394ced88a796e5178b31
+    last_write_checksum: sha1:44f8df8ac333abeb3932a4ad9ea1c4823d3dded8
+    pristine_git_object: 2a13bc3e1b5ba2aba420179925a8c427735b82d4
   lib/authlete/utils/request_bodies.rb:
     id: cbd85b165832
-    last_write_checksum: sha1:cdf271c8ece51a1f13cc8b22de1a04e787ec20a5
-    pristine_git_object: b568aba268516e90684a70d6ed66de243123dc90
+    last_write_checksum: sha1:1ccd5b5cdfd35e4b561e70ad5839fa7c5bdcbce8
+    pristine_git_object: 7c4b4db868279de278bcddb3c4ff7bff7050d1d9
   lib/authlete/utils/retries.rb:
     id: 5f102dfeebc7
     last_write_checksum: sha1:b89fc988112b52650ad9e90ee248f0d8b4747ea4
@@ -4734,8 +4733,8 @@ trackedFiles:
     pristine_git_object: 2ed83f4352774e4d02e73402216b71cde5f86639
   sorbet/config:
     id: 59392da43f94
-    last_write_checksum: sha1:16e6180c757fb5c6db2d3aabadc4fd83aab8a74e
-    pristine_git_object: 983d2f1782192580a34a90c25a54a5e13f5667a3
+    last_write_checksum: sha1:d02b32628dad70edc5929a9b9801d5e2dca15d40
+    pristine_git_object: cd566e2b8bfbfdb0335cb0ade65d5604cd915cf2
   sorbet/rbi/annotations/.gitattributes:
     id: 01b693592708
     last_write_checksum: sha1:c683580f06441d46622a00a7aac20eeefdae4087

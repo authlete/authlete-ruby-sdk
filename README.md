@@ -123,11 +123,8 @@ If you have any questions or need assistance, our team is here to help:
 The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
-gem install authlete_ruby_sdk --pre
+gem install authlete_ruby_sdk
 ```
-
-**Ruby Version Requirements:** This SDK requires **Ruby 3.2 or later** and is compatible with Ruby versions up to **3.3.x**. Ruby 4.0 support is planned for a future release.
-
 <!-- End SDK Installation [installation] -->
 
 ## Quick Start
@@ -220,26 +217,25 @@ end
 <details open>
 <summary>Available methods</summary>
 
-### [authorization](docs/sdks/authorization/README.md)
+### [Authorization](docs/sdks/authorization/README.md)
 
 * [process_request](docs/sdks/authorization/README.md#process_request) - Process Authorization Request
 * [fail_request](docs/sdks/authorization/README.md#fail_request) - Fail Authorization Request
 * [issue_response](docs/sdks/authorization/README.md#issue_response) - Issue Authorization Response
 
-### [authorization_management](docs/sdks/authorizationmanagement/README.md)
+### [AuthorizationManagement](docs/sdks/authorizationmanagement/README.md)
 
 * [ticket_info](docs/sdks/authorizationmanagement/README.md#ticket_info) - Get Ticket Information
 * [update_ticket](docs/sdks/authorizationmanagement/README.md#update_ticket) - Update Ticket Information
 
-### [ciba](docs/sdks/ciba/README.md)
+### [Ciba](docs/sdks/ciba/README.md)
 
 * [process_authentication](docs/sdks/ciba/README.md#process_authentication) - Process Backchannel Authentication Request
 * [issue_response](docs/sdks/ciba/README.md#issue_response) - Issue Backchannel Authentication Response
 * [fail_request](docs/sdks/ciba/README.md#fail_request) - Fail Backchannel Authentication Request
 * [complete_request](docs/sdks/ciba/README.md#complete_request) - Complete Backchannel Authentication
 
-
-### [client_management](docs/sdks/clientmanagement/README.md)
+### [ClientManagement](docs/sdks/clientmanagement/README.md)
 
 * [update_lock_flag](docs/sdks/clientmanagement/README.md#update_lock_flag) - Update Client Lock
 * [refresh_secret](docs/sdks/clientmanagement/README.md#refresh_secret) - Rotate Client Secret
@@ -253,7 +249,7 @@ end
 * [update_requestable_scopes](docs/sdks/clientmanagement/README.md#update_requestable_scopes) - Update Requestable Scopes
 * [destroy_requestable_scopes](docs/sdks/clientmanagement/README.md#destroy_requestable_scopes) - Delete Requestable Scopes
 
-### [clients](docs/sdks/clients/README.md)
+### [Clients](docs/sdks/clients/README.md)
 
 * [retrieve](docs/sdks/clients/README.md#retrieve) - Get Client
 * [list](docs/sdks/clients/README.md#list) - List Clients
@@ -262,62 +258,62 @@ end
 * [update_form](docs/sdks/clients/README.md#update_form) - Update Client
 * [destroy](docs/sdks/clients/README.md#destroy) - Delete Client ⚡
 
-### [device_flow](docs/sdks/deviceflow/README.md)
+### [DeviceFlow](docs/sdks/deviceflow/README.md)
 
 * [authorization](docs/sdks/deviceflow/README.md#authorization) - Process Device Authorization Request
 * [verification](docs/sdks/deviceflow/README.md#verification) - Process Device Verification Request
 * [complete_request](docs/sdks/deviceflow/README.md#complete_request) - Complete Device Authorization
 
-### [dynamic_client_registration](docs/sdks/dynamicclientregistration/README.md)
+### [DynamicClientRegistration](docs/sdks/dynamicclientregistration/README.md)
 
 * [register](docs/sdks/dynamicclientregistration/README.md#register) - Register Client
 * [retrieve](docs/sdks/dynamicclientregistration/README.md#retrieve) - Get Client
 * [update](docs/sdks/dynamicclientregistration/README.md#update) - Update Client
 * [destroy](docs/sdks/dynamicclientregistration/README.md#destroy) - Delete Client
 
-### [federation](docs/sdks/federation/README.md)
+### [Federation](docs/sdks/federation/README.md)
 
 * [configuration](docs/sdks/federation/README.md#configuration) - Process Entity Configuration Request
 * [registration](docs/sdks/federation/README.md#registration) - Process Federation Registration Request
 
-### [grant_management](docs/sdks/grantmanagement/README.md)
+### [GrantManagement](docs/sdks/grantmanagement/README.md)
 
 * [process_request](docs/sdks/grantmanagement/README.md#process_request) - Process Grant Management Request
 
-### [hardware_security_keys](docs/sdks/hardwaresecuritykeys/README.md)
+### [HardwareSecurityKeys](docs/sdks/hardwaresecuritykeys/README.md)
 
 * [create](docs/sdks/hardwaresecuritykeys/README.md#create) - Create Security Key
 * [destroy](docs/sdks/hardwaresecuritykeys/README.md#destroy) - Delete Security Key
 * [retrieve](docs/sdks/hardwaresecuritykeys/README.md#retrieve) - Get Security Key
 * [list](docs/sdks/hardwaresecuritykeys/README.md#list) - List Security Keys
 
-### [introspection](docs/sdks/introspection/README.md)
+### [Introspection](docs/sdks/introspection/README.md)
 
 * [process_request](docs/sdks/introspection/README.md#process_request) - Process Introspection Request
 * [standard_process](docs/sdks/introspection/README.md#standard_process) - Process OAuth 2.0 Introspection Request
 
-### [jose_object](docs/sdks/joseobject/README.md)
+### [JoseObject](docs/sdks/joseobject/README.md)
 
 * [jose_verify_api](docs/sdks/joseobject/README.md#jose_verify_api) - Verify JOSE
 
-### [jwk_set_endpoint](docs/sdks/jwksetendpoint/README.md)
+### [JWKSetEndpoint](docs/sdks/jwksetendpoint/README.md)
 
 * [service_jwks_get_api](docs/sdks/jwksetendpoint/README.md#service_jwks_get_api) - Get JWK Set
 
-### [native_sso](docs/sdks/nativesso/README.md)
+### [NativeSso](docs/sdks/nativesso/README.md)
 
 * [process_request](docs/sdks/nativesso/README.md#process_request) - Native SSO Processing
 * [logout](docs/sdks/nativesso/README.md#logout) - Native SSO Logout Processing
 
-### [pushed_authorization](docs/sdks/pushedauthorization/README.md)
+### [PushedAuthorization](docs/sdks/pushedauthorization/README.md)
 
 * [create](docs/sdks/pushedauthorization/README.md#create) - Process Pushed Authorization Request
 
-### [revocation](docs/sdks/revocation/README.md)
+### [Revocation](docs/sdks/revocation/README.md)
 
 * [process_request](docs/sdks/revocation/README.md#process_request) - Process Revocation Request
 
-### [services](docs/sdks/services/README.md)
+### [Services](docs/sdks/services/README.md)
 
 * [retrieve](docs/sdks/services/README.md#retrieve) - Get Service
 * [list](docs/sdks/services/README.md#list) - List Services
@@ -326,7 +322,7 @@ end
 * [destroy](docs/sdks/services/README.md#destroy) - Delete Service ⚡
 * [configuration](docs/sdks/services/README.md#configuration) - Get Service Configuration
 
-### [token_management](docs/sdks/tokenmanagement/README.md)
+### [TokenManagement](docs/sdks/tokenmanagement/README.md)
 
 * [reissue_id_token](docs/sdks/tokenmanagement/README.md#reissue_id_token) - Reissue ID Token
 * [list](docs/sdks/tokenmanagement/README.md#list) - List Issued Tokens
@@ -335,18 +331,18 @@ end
 * [destroy](docs/sdks/tokenmanagement/README.md#destroy) - Delete Access Token
 * [revoke](docs/sdks/tokenmanagement/README.md#revoke) - Revoke Access Token
 
-### [tokens](docs/sdks/tokens/README.md)
+### [Tokens](docs/sdks/tokens/README.md)
 
 * [process_request](docs/sdks/tokens/README.md#process_request) - Process Token Request
 * [fail_request](docs/sdks/tokens/README.md#fail_request) - Fail Token Request
 * [issue_response](docs/sdks/tokens/README.md#issue_response) - Issue Token Response
 
-### [userinfo](docs/sdks/userinfo/README.md)
+### [Userinfo](docs/sdks/userinfo/README.md)
 
 * [process_request](docs/sdks/userinfo/README.md#process_request) - Process UserInfo Request
 * [issue_response](docs/sdks/userinfo/README.md#issue_response) - Issue UserInfo Response
 
-### [verifiable_credentials](docs/sdks/verifiablecredentials/README.md)
+### [VerifiableCredentials](docs/sdks/verifiablecredentials/README.md)
 
 * [metadata](docs/sdks/verifiablecredentials/README.md#metadata) - Get Verifiable Credential Issuer Metadata
 * [jwt_issuer](docs/sdks/verifiablecredentials/README.md#jwt_issuer) - Get JWT Issuer Information
@@ -402,11 +398,11 @@ begin
       # handle response
     end
 rescue Models::Errors::ResultError => e
-  # handle $e->$container data
-  throw $e;
+  # handle e.container data
+  raise e
 rescue Models::Errors::ResultError => e
-  # handle $e->$container data
-  throw $e;
+  # handle e.container data
+  raise e
 rescue Errors::APIError => e
   # handle default exception
   raise e
@@ -436,7 +432,7 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      server_idx: 3,
+      server_idx: 0,
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
