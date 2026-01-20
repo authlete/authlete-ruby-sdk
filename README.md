@@ -9,8 +9,6 @@ Developer-friendly & type-safe Ruby SDK specifically catered to leverage *authle
     </a>
 </div>
 
-
-<br /><br />
 > [!IMPORTANT]
 > This is a beta SDK.
 
