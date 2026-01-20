@@ -7,6 +7,7 @@ Developer-friendly & type-safe Ruby SDK specifically catered to leverage *authle
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
+    <br> </br>
 </div>
 
 > [!IMPORTANT]
