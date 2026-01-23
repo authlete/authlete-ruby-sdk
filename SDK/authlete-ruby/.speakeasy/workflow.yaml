@@ -1,0 +1,24 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    authlete-OAS:
+        inputs:
+            - location: https://raw.githubusercontent.com/authlete/openapi/refs/heads/main/spec_next.yaml
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-oas
+targets:
+    authlete:
+        target: ruby
+        source: authlete-OAS
+        publish:
+            rubygems:
+                token: $rubygems_auth_token
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-oas-ruby-code-samples
+            labelOverride:
+                fixedValue: Ruby (SDK)
+            blocking: false
