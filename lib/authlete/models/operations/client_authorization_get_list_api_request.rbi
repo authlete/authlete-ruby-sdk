@@ -10,10 +10,8 @@ end
 class Authlete::Models::Operations::ClientAuthorizationGetListApiRequest
   def service_id(); end
   def service_id=(str_); end
-  def subject_path_parameter(); end
-  def subject_path_parameter=(str_); end
-  def subject_query_parameter(); end
-  def subject_query_parameter=(str_); end
+  def subject(); end
+  def subject=(str_); end
   def developer(); end
   def developer=(str_); end
   def start(); end

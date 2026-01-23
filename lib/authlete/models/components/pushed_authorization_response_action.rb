@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # PushedAuthorizationResponseAction - The next action that the authorization server implementation should take. Any other value other than "CREATED" should be handled as unsuccessful result.
       class PushedAuthorizationResponseAction < T::Enum
 

@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # AuthorizationFailRequestReason - The reason of the failure of the authorization request.
       # For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
       # 

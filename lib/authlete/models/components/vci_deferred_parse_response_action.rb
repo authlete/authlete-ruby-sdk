@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciDeferredParseResponseAction - The next action that the deferred credential endpoint should take.
       class VciDeferredParseResponseAction < T::Enum
 

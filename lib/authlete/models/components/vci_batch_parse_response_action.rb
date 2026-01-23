@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciBatchParseResponseAction - The next action that the batch credential endpoint should take.
       class VciBatchParseResponseAction < T::Enum
 

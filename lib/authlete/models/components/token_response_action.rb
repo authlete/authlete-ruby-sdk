@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # TokenResponseAction - The next action that the authorization server implementation should take.
       class TokenResponseAction < T::Enum
 
@@ -20,6 +19,8 @@ module Authlete
           OK = new('OK')
           TOKEN_EXCHANGE = new('TOKEN_EXCHANGE')
           JWT_BEARER = new('JWT_BEARER')
+          NATIVE_SSO = new('NATIVE_SSO')
+          ID_TOKEN_REISSUABLE = new('ID_TOKEN_REISSUABLE')
         end
       end
     end

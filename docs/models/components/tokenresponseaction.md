@@ -14,3 +14,5 @@ The next action that the authorization server implementation should take.
 | `OK`                    | OK                      |
 | `TOKEN_EXCHANGE`        | TOKEN_EXCHANGE          |
 | `JWT_BEARER`            | JWT_BEARER              |
+| `NATIVE_SSO`            | NATIVE_SSO              |
+| `ID_TOKEN_REISSUABLE`   | ID_TOKEN_REISSUABLE     |

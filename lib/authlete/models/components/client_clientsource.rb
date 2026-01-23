@@ -7,10 +7,9 @@
 module Authlete
   module Models
     module Components
-    
-      # ClientSource - Source of this client record.
+      # ClientClientSource - Source of this client record.
       # 
-      class ClientSource < T::Enum
+      class ClientClientSource < T::Enum
 
 
         enums do

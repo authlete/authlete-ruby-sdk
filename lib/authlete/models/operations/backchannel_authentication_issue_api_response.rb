@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class BackchannelAuthenticationIssueApiResponse
         extend T::Sig

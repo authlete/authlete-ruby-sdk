@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # JweEnc - This is the encryption algorithm to be used when encrypting a JWT on client or server side.
       # Depending upon the context, this refers to encryption done by the client or by the server. For instance:
       #   - as `authorizationEncryptionEnc` value, it refers to the encryption algorithm used by server when creating a JARM response

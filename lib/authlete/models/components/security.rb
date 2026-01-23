@@ -7,17 +7,16 @@
 module Authlete
   module Models
     module Components
-    
 
       class Security
         extend T::Sig
         include Crystalline::MetadataFields
 
 
-        field :bearer, ::String, { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' } }
+        field :bearer, Crystalline::Nilable.new(::String), { 'security': { 'scheme': true, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' } }
 
-        sig { params(bearer: ::String).void }
-        def initialize(bearer:)
+        sig { params(bearer: T.nilable(::String)).void }
+        def initialize(bearer: nil)
           @bearer = bearer
         end
 

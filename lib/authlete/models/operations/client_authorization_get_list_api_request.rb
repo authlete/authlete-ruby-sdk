@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ClientAuthorizationGetListApiRequest
         extend T::Sig
@@ -17,10 +16,7 @@ module Authlete
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # Unique user ID of an end-user.
         # 
-        field :subject_path_parameter, ::String, { 'path_param': { 'field_name': 'subject', 'style': 'simple', 'explode': false } }
-        # Unique user ID of an end-user.
-        # 
-        field :subject_query_parameter, ::String, { 'query_param': { 'field_name': 'subject', 'style': 'form', 'explode': true } }
+        field :subject, ::String, { 'query_param': { 'field_name': 'subject', 'style': 'form', 'explode': true } }
         # Unique ID of a client developer.
         # 
         field :developer, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'developer', 'style': 'form', 'explode': true } }
@@ -30,11 +26,10 @@ module Authlete
         # 
         field :end_, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'end', 'style': 'form', 'explode': true } }
 
-        sig { params(service_id: ::String, subject_path_parameter: ::String, subject_query_parameter: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
-        def initialize(service_id:, subject_path_parameter:, subject_query_parameter:, developer: nil, start: nil, end_: nil)
+        sig { params(service_id: ::String, subject: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
+        def initialize(service_id:, subject:, developer: nil, start: nil, end_: nil)
           @service_id = service_id
-          @subject_path_parameter = subject_path_parameter
-          @subject_query_parameter = subject_query_parameter
+          @subject = subject
           @developer = developer
           @start = start
           @end_ = end_
@@ -44,8 +39,7 @@ module Authlete
         def ==(other)
           return false unless other.is_a? self.class
           return false unless @service_id == other.service_id
-          return false unless @subject_path_parameter == other.subject_path_parameter
-          return false unless @subject_query_parameter == other.subject_query_parameter
+          return false unless @subject == other.subject
           return false unless @developer == other.developer
           return false unless @start == other.start
           return false unless @end_ == other.end_

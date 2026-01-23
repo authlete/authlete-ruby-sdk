@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # SubjectType - The subject type that the client application requests. Details about the subject type are described in
       # [OpenID Connect Core 1.0, 8. Subjct Identifier Types](https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes).
       # 

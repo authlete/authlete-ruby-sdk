@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciOfferInfoResponseAction - The result of the `/vci/offer/info` API call.
       class VciOfferInfoResponseAction < T::Enum
 

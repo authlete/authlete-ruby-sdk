@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Errors
-    
 
       class ResultError < StandardError
         extend T::Sig

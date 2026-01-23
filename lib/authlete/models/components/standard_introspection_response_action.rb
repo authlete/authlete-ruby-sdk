@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # StandardIntrospectionResponseAction - The next action that the authorization server implementation should take.
       class StandardIntrospectionResponseAction < T::Enum
 
@@ -16,6 +15,7 @@ module Authlete
           INTERNAL_SERVER_ERROR = new('INTERNAL_SERVER_ERROR')
           BAD_REQUEST = new('BAD_REQUEST')
           OK = new('OK')
+          JWT = new('JWT')
         end
       end
     end

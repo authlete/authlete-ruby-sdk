@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
 
       class NativeSsoLogoutResponse
         extend T::Sig

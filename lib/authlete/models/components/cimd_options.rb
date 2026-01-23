@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # Options for [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD).
       # 
       # These options allow per-request control over CIMD behavior, taking precedence over service-level configuration when provided.

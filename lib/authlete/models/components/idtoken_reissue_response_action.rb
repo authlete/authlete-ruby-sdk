@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # IdtokenReissueResponseAction - The next action that the implementation of the token endpoint should take.
       class IdtokenReissueResponseAction < T::Enum
 

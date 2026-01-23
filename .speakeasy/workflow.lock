@@ -1,28 +1,28 @@
-speakeasyVersion: 1.689.0
+speakeasyVersion: 1.696.0
 sources:
     authlete-OAS:
         sourceNamespace: authlete-oas
-        sourceRevisionDigest: sha256:15bedc5ab10eae054d741ab4de588bc6ebe5cc3f9288a141bd2c104901956810
-        sourceBlobDigest: sha256:2c2445b51ac26b45e29dc66e1ba88971ba02272037acd3d93817c2ef0809a389
+        sourceRevisionDigest: sha256:56ef720e895dc9c10d0c525922856a1db9e4bc0216eb7af3709b40508ab3f0d9
+        sourceBlobDigest: sha256:9ba3b3d1faa46c4d4f0675f19bd9a3d65fc75e146e5b4ef616d7ac5c365f3bb5
         tags:
             - latest
-            - speakeasy-sdk-regen-1768885476
+            - speakeasy-sdk-regen-1769151494
             - 3.0.16
 targets:
     authlete:
         source: authlete-OAS
         sourceNamespace: authlete-oas
-        sourceRevisionDigest: sha256:15bedc5ab10eae054d741ab4de588bc6ebe5cc3f9288a141bd2c104901956810
-        sourceBlobDigest: sha256:2c2445b51ac26b45e29dc66e1ba88971ba02272037acd3d93817c2ef0809a389
+        sourceRevisionDigest: sha256:56ef720e895dc9c10d0c525922856a1db9e4bc0216eb7af3709b40508ab3f0d9
+        sourceBlobDigest: sha256:9ba3b3d1faa46c4d4f0675f19bd9a3d65fc75e146e5b4ef616d7ac5c365f3bb5
         codeSamplesNamespace: authlete-oas-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:419b3ab31c1e83a1dffd7a43386cbfc4ebcf25fb696e7eab3ea5c4327b9e9a04
+        codeSamplesRevisionDigest: sha256:1da47021c232e8cf195d24ad6536051bb06e2fa137458a975abbb323062f99c1
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         authlete-OAS:
             inputs:
-                - location: registry.speakeasyapi.dev/authlete/sdk-workspace/authlete-api-explorer:main
+                - location: https://raw.githubusercontent.com/authlete/openapi/refs/heads/main/spec_next.yaml
             overlays:
                 - location: .speakeasy/speakeasy-modifications-overlay.yaml
             output: .speakeasy/out.openapi.yaml

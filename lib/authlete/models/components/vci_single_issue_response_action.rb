@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciSingleIssueResponseAction - The next action that the implementation of the credential endpoint
       # should take.
       # 

@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ClientCreateApiResponse
         extend T::Sig
@@ -19,7 +18,7 @@ module Authlete
         field :status_code, ::Integer
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
-
+        # Client created successfully (legacy compatibility)
         field :client, Crystalline::Nilable.new(Models::Components::Client)
 
         sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, client: T.nilable(Models::Components::Client)).void }

@@ -20,10 +20,12 @@ module Authlete
   autoload :DynamicClientRegistration, 'authlete/dynamic_client_registration'
   autoload :Ciba, 'authlete/ciba'
   autoload :DeviceFlow, 'authlete/device_flow'
+  autoload :TokenOperations, 'authlete/token_operations'
   autoload :JoseObject, 'authlete/jose_object'
   autoload :Federation, 'authlete/federation'
   autoload :HardwareSecurityKeys, 'authlete/hardware_security_keys'
   autoload :VerifiableCredentials, 'authlete/verifiable_credentials'
+  autoload :Lifecycle, 'authlete/lifecycle'
   autoload :AuthorizationManagement, 'authlete/authorization_management'
   autoload :NativeSso, 'authlete/native_sso'
   module Models

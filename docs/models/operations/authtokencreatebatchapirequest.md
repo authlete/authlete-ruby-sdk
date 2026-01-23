@@ -1,0 +1,10 @@
+# AuthTokenCreateBatchApiRequest
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                  | *::String*                                                                                    | :heavy_check_mark:                                                                            | A service ID.                                                                                 |
+| `dry_run`                                                                                     | *T.nilable(T::Boolean)*                                                                       | :heavy_minus_sign:                                                                            | If `true`, the request is processed but access tokens are not actually created.<br/>          |
+| `request_body`                                                                                | T::Array<[Models::Components::TokenCreateRequest](../../models/shared/tokencreaterequest.md)> | :heavy_check_mark:                                                                            | N/A                                                                                           |

@@ -17,3 +17,4 @@ Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-con
 | `PRIVATE_KEY_JWT`             | PRIVATE_KEY_JWT               |
 | `TLS_CLIENT_AUTH`             | TLS_CLIENT_AUTH               |
 | `SELF_SIGNED_TLS_CLIENT_AUTH` | SELF_SIGNED_TLS_CLIENT_AUTH   |
+| `ATTEST_JWT_CLIENT_AUTH`      | ATTEST_JWT_CLIENT_AUTH        |
