@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ClientFlagUpdateApiResponse
         extend T::Sig

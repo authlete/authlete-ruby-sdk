@@ -2,19 +2,29 @@
 
 ## Overview
 
+API endpoints for managing OAuth clients, including creation, update, and deletion of clients.
+
 ### Available Operations
 
 * [update_lock_flag](#update_lock_flag) - Update Client Lock
 * [refresh_secret](#refresh_secret) - Rotate Client Secret
 * [update_secret](#update_secret) - Update Client Secret
-* [authorizations](#authorizations) - Get Authorized Applications
+* [authorizations](#authorizations) - Get Authorized Applications (by Subject)
 * [update_authorizations](#update_authorizations) - Update Client Tokens
-* [destroy_authorizations](#destroy_authorizations) - Delete Client Tokens
-* [granted_scopes](#granted_scopes) - Get Granted Scopes
-* [destroy_granted_scopes](#destroy_granted_scopes) - Delete Granted Scopes
+* [destroy_authorizations](#destroy_authorizations) - Delete Client Tokens (by Subject)
+* [granted_scopes](#granted_scopes) - Get Granted Scopes (by Subject)
+* [destroy_granted_scopes](#destroy_granted_scopes) - Delete Granted Scopes (by Subject)
 * [requestable_scopes](#requestable_scopes) - Get Requestable Scopes
 * [update_requestable_scopes](#update_requestable_scopes) - Update Requestable Scopes
 * [destroy_requestable_scopes](#destroy_requestable_scopes) - Delete Requestable Scopes
+* [client_authorization_get_list_api](#client_authorization_get_list_api) - Get Authorized Applications
+* [client_authorization_get_list_api_post](#client_authorization_get_list_api_post) - Get Authorized Applications
+* [client_authorization_delete_api](#client_authorization_delete_api) - Delete Client Tokens
+* [client_authorization_delete_api_post](#client_authorization_delete_api_post) - Delete Client Tokens
+* [client_granted_scopes_get_api](#client_granted_scopes_get_api) - Get Granted Scopes
+* [client_granted_scopes_get_api_post](#client_granted_scopes_get_api_post) - Get Granted Scopes
+* [client_granted_scopes_delete_api](#client_granted_scopes_delete_api) - Delete Granted Scopes
+* [client_extension_requestables_scopes_update_api_post](#client_extension_requestables_scopes_update_api_post) - Update Requestable Scopes
 
 ## update_lock_flag
 
@@ -160,13 +170,12 @@ end
 ## authorizations
 
 Get a list of client applications that an end-user has authorized.
-
-The subject parameter is required and can be provided either in the path or as a query parameter.
+In this variant, the subject is provided in the path.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="client_authorization_get_list_api" method="get" path="/api/{serviceId}/client/authorization/get/list/{subject}" -->
+<!-- UsageSnippet language="ruby" operationID="client_authorization_get_list_by_subject_api" method="get" path="/api/{serviceId}/client/authorization/get/list/{subject}" -->
 ```ruby
 require 'authlete_ruby_sdk'
 
@@ -175,10 +184,9 @@ s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-req = Models::Operations::ClientAuthorizationGetListApiRequest.new(
+req = Models::Operations::ClientAuthorizationGetListBySubjectApiRequest.new(
   service_id: '<id>',
-  subject_path_parameter: '<value>',
-  subject_query_parameter: '<value>',
+  subject: '<value>',
 )
 
 res = s.client_management.authorizations(request: req)
@@ -191,13 +199,13 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                   | [Models::Operations::ClientAuthorizationGetListApiRequest](../../models/operations/clientauthorizationgetlistapirequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
+| Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                     | [Models::Operations::ClientAuthorizationGetListBySubjectApiRequest](../../models/operations/clientauthorizationgetlistbysubjectapirequest.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 ### Response
 
-**[T.nilable(Models::Operations::ClientAuthorizationGetListApiResponse)](../../models/operations/clientauthorizationgetlistapiresponse.md)**
+**[T.nilable(Models::Operations::ClientAuthorizationGetListBySubjectApiResponse)](../../models/operations/clientauthorizationgetlistbysubjectapiresponse.md)**
 
 ### Errors
 
@@ -259,13 +267,12 @@ end
 ## destroy_authorizations
 
 Delete all existing access tokens issued to a client application by an end-user.
-
-The subject parameter is required and can be provided either in the path or as a query parameter.
+In this variant, the subject is provided in the path.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="client_authorization_delete_api" method="delete" path="/api/{serviceId}/client/authorization/delete/{clientId}/{subject}" -->
+<!-- UsageSnippet language="ruby" operationID="client_authorization_delete_by_subject_api" method="delete" path="/api/{serviceId}/client/authorization/delete/{clientId}/{subject}" -->
 ```ruby
 require 'authlete_ruby_sdk'
 
@@ -274,7 +281,7 @@ s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client_management.destroy_authorizations(service_id: '<id>', client_id: '<id>', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
+res = s.client_management.destroy_authorizations(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_authorization_delete_response.nil?
   # handle response
@@ -288,12 +295,11 @@ end
 | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
 | `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   |
 | `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               |
-| `subject_path_parameter`        | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
-| `subject_query_parameter`       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
+| `subject`                       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
 
 ### Response
 
-**[T.nilable(Models::Operations::ClientAuthorizationDeleteApiResponse)](../../models/operations/clientauthorizationdeleteapiresponse.md)**
+**[T.nilable(Models::Operations::ClientAuthorizationDeleteBySubjectApiResponse)](../../models/operations/clientauthorizationdeletebysubjectapiresponse.md)**
 
 ### Errors
 
@@ -306,24 +312,12 @@ end
 ## granted_scopes
 
 Get the set of scopes that a user has granted to a client application.
-### Description
-Possible values for `requestableScopes` parameter in the response from this API are as follows.
-**null**
-The user has not granted authorization to the client application in the past, or records about the
-combination of the user and the client application have been deleted from Authlete's DB.
-**An empty set**
-The user has granted authorization to the client application in the past, but no scopes are associated
-with the authorization.
-**A set with at least one element**
-The user has granted authorization to the client application in the past and some scopes are associated
-with the authorization. These scopes are returned.
-Example: `[ "profile", "email" ]`
-The subject parameter is required and can be provided either in the path or as a query parameter.
+In this variant, the subject is provided in the path.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_get_api" method="get" path="/api/{serviceId}/client/granted_scopes/get/{clientId}/{subject}" -->
+<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_get_by_subject_api" method="get" path="/api/{serviceId}/client/granted_scopes/get/{clientId}/{subject}" -->
 ```ruby
 require 'authlete_ruby_sdk'
 
@@ -332,7 +326,7 @@ s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client_management.granted_scopes(service_id: '715948317', client_id: '1140735077', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
+res = s.client_management.granted_scopes(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_authorization_delete_response.nil?
   # handle response
@@ -342,16 +336,15 @@ end
 
 ### Parameters
 
-| Parameter                       | Type                            | Required                        | Description                     | Example                         |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   | 715948317                       |
-| `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               | 1140735077                      |
-| `subject_path_parameter`        | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |                                 |
-| `subject_query_parameter`       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |                                 |
+| Parameter                       | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   |
+| `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               |
+| `subject`                       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
 
 ### Response
 
-**[T.nilable(Models::Operations::ClientGrantedScopesGetApiResponse)](../../models/operations/clientgrantedscopesgetapiresponse.md)**
+**[T.nilable(Models::Operations::ClientGrantedScopesGetBySubjectApiResponse)](../../models/operations/clientgrantedscopesgetbysubjectapiresponse.md)**
 
 ### Errors
 
@@ -364,15 +357,12 @@ end
 ## destroy_granted_scopes
 
 Delete the set of scopes that an end-user has granted to a client application.
-### Description
-Even if records about granted scopes are deleted by calling this API, existing access tokens are
-not deleted and scopes of existing access tokens are not changed.
-The subject parameter is required and can be provided either in the path or as a query parameter.
+In this variant, the subject is provided in the path.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_delete_api" method="delete" path="/api/{serviceId}/client/granted_scopes/delete/{clientId}/{subject}" -->
+<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_delete_by_subject_api" method="delete" path="/api/{serviceId}/client/granted_scopes/delete/{clientId}/{subject}" -->
 ```ruby
 require 'authlete_ruby_sdk'
 
@@ -381,7 +371,7 @@ s = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.client_management.destroy_granted_scopes(service_id: '<id>', client_id: '<id>', subject_path_parameter: '<value>', subject_query_parameter: '<value>')
+res = s.client_management.destroy_granted_scopes(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_granted_scopes_delete_response.nil?
   # handle response
@@ -395,12 +385,11 @@ end
 | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
 | `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   |
 | `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               |
-| `subject_path_parameter`        | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
-| `subject_query_parameter`       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
+| `subject`                       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
 
 ### Response
 
-**[T.nilable(Models::Operations::ClientGrantedScopesDeleteApiResponse)](../../models/operations/clientgrantedscopesdeleteapiresponse.md)**
+**[T.nilable(Models::Operations::ClientGrantedScopesDeleteBySubjectApiResponse)](../../models/operations/clientgrantedscopesdeletebysubjectapiresponse.md)**
 
 ### Errors
 
@@ -531,6 +520,389 @@ end
 ### Response
 
 **[T.nilable(Models::Operations::ClientExtensionRequestablesScopesDeleteApiResponse)](../../models/operations/clientextensionrequestablesscopesdeleteapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## client_authorization_get_list_api
+
+Get a list of client applications that an end-user has authorized.
+
+The subject parameter is required and can be provided as a query parameter.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_authorization_get_list_api" method="get" path="/api/{serviceId}/client/authorization/get/list" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+req = Models::Operations::ClientAuthorizationGetListApiRequest.new(
+  service_id: '<id>',
+  subject: '<value>',
+)
+
+res = s.client_management.client_authorization_get_list_api(request: req)
+
+unless res.client_authorization_get_list_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                   | [Models::Operations::ClientAuthorizationGetListApiRequest](../../models/operations/clientauthorizationgetlistapirequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientAuthorizationGetListApiResponse)](../../models/operations/clientauthorizationgetlistapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## client_authorization_get_list_api_post
+
+Get a list of client applications that an end-user has authorized.
+
+The subject parameter is required.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_authorization_get_list_api_post" method="post" path="/api/{serviceId}/client/authorization/get/list" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_authorization_get_list_api_post(service_id: '<id>', client_authorization_get_list_request: Models::Components::ClientAuthorizationGetListRequest.new(
+  subject: '<value>',
+))
+
+unless res.client_authorization_get_list_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                      | *::String*                                                                                                        | :heavy_check_mark:                                                                                                | A service ID.                                                                                                     |
+| `client_authorization_get_list_request`                                                                           | [Models::Components::ClientAuthorizationGetListRequest](../../models/shared/clientauthorizationgetlistrequest.md) | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientAuthorizationGetListApiPostResponse)](../../models/operations/clientauthorizationgetlistapipostresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## client_authorization_delete_api
+
+Delete all existing access tokens issued to a client application by an end-user.
+
+The subject parameter is required and must be provided as a query parameter.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_authorization_delete_api" method="delete" path="/api/{serviceId}/client/authorization/delete/{clientId}" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_authorization_delete_api(service_id: '<id>', client_id: '<id>', subject: '<value>')
+
+unless res.client_authorization_delete_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                       | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   |
+| `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               |
+| `subject`                       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientAuthorizationDeleteApiResponse)](../../models/operations/clientauthorizationdeleteapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## client_authorization_delete_api_post
+
+Delete all existing access tokens issued to a client application by an end-user.
+
+The subject parameter is required.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_authorization_delete_api_post" method="post" path="/api/{serviceId}/client/authorization/delete/{clientId}" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_authorization_delete_api_post(service_id: '<id>', client_id: '<id>', request_body: Models::Operations::ClientAuthorizationDeleteApiPostRequestBody.new(
+  subject: '<value>',
+))
+
+unless res.client_authorization_delete_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                                              | *::String*                                                                                                                                | :heavy_check_mark:                                                                                                                        | A service ID.                                                                                                                             |
+| `client_id`                                                                                                                               | *::String*                                                                                                                                | :heavy_check_mark:                                                                                                                        | A client ID.<br/>                                                                                                                         |
+| `request_body`                                                                                                                            | [Models::Operations::ClientAuthorizationDeleteApiPostRequestBody](../../models/operations/clientauthorizationdeleteapipostrequestbody.md) | :heavy_check_mark:                                                                                                                        | N/A                                                                                                                                       |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientAuthorizationDeleteApiPostResponse)](../../models/operations/clientauthorizationdeleteapipostresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## client_granted_scopes_get_api
+
+Get the set of scopes that a user has granted to a client application.
+### Description
+Possible values for `requestableScopes` parameter in the response from this API are as follows.
+**null**
+The user has not granted authorization to the client application in the past, or records about the
+combination of the user and the client application have been deleted from Authlete's DB.
+**An empty set**
+The user has granted authorization to the client application in the past, but no scopes are associated
+with the authorization.
+**A set with at least one element**
+The user has granted authorization to the client application in the past and some scopes are associated
+with the authorization. These scopes are returned.
+Example: `[ "profile", "email" ]`
+The subject parameter is required and must be provided as a query parameter.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_get_api" method="get" path="/api/{serviceId}/client/granted_scopes/get/{clientId}" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_granted_scopes_get_api(service_id: '715948317', client_id: '1140735077', subject: '<value>')
+
+unless res.client_authorization_delete_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                       | Type                            | Required                        | Description                     | Example                         |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   | 715948317                       |
+| `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               | 1140735077                      |
+| `subject`                       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |                                 |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientGrantedScopesGetApiResponse)](../../models/operations/clientgrantedscopesgetapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## client_granted_scopes_get_api_post
+
+Get the set of scopes that a user has granted to a client application.
+
+The subject parameter is required.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_get_api_post" method="post" path="/api/{serviceId}/client/granted_scopes/get/{clientId}" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_granted_scopes_get_api_post(service_id: '<id>', client_id: '<id>', request_body: Models::Operations::ClientGrantedScopesGetApiPostRequestBody.new(
+  subject: '<value>',
+))
+
+unless res.client_authorization_delete_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                           | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                                        | *::String*                                                                                                                          | :heavy_check_mark:                                                                                                                  | A service ID.                                                                                                                       |
+| `client_id`                                                                                                                         | *::String*                                                                                                                          | :heavy_check_mark:                                                                                                                  | A client ID.<br/>                                                                                                                   |
+| `request_body`                                                                                                                      | [Models::Operations::ClientGrantedScopesGetApiPostRequestBody](../../models/operations/clientgrantedscopesgetapipostrequestbody.md) | :heavy_check_mark:                                                                                                                  | N/A                                                                                                                                 |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientGrantedScopesGetApiPostResponse)](../../models/operations/clientgrantedscopesgetapipostresponse.md)**
+
+### Errors
+
+| Error Type       | Status Code      | Content Type     |
+| ---------------- | ---------------- | ---------------- |
+| Errors::APIError | 4XX, 5XX         | \*/\*            |
+
+## client_granted_scopes_delete_api
+
+Delete the set of scopes that an end-user has granted to a client application.
+### Description
+Even if records about granted scopes are deleted by calling this API, existing access tokens are
+not deleted and scopes of existing access tokens are not changed.
+The subject parameter is required and must be provided as a query parameter.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_granted_scopes_delete_api" method="delete" path="/api/{serviceId}/client/granted_scopes/delete/{clientId}" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_granted_scopes_delete_api(service_id: '<id>', client_id: '<id>', subject: '<value>')
+
+unless res.client_granted_scopes_delete_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                       | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `service_id`                    | *::String*                      | :heavy_check_mark:              | A service ID.                   |
+| `client_id`                     | *::String*                      | :heavy_check_mark:              | A client ID.<br/>               |
+| `subject`                       | *::String*                      | :heavy_check_mark:              | Unique user ID of an end-user.<br/> |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientGrantedScopesDeleteApiResponse)](../../models/operations/clientgrantedscopesdeleteapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## client_extension_requestables_scopes_update_api_post
+
+Update requestable scopes of a client
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_extension_requestables_scopes_update_api_post" method="post" path="/api/{serviceId}/client/extension/requestable_scopes/update/{clientId}" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.client_management.client_extension_requestables_scopes_update_api_post(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new())
+
+unless res.client_extension_requestable_scopes_update_response.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                                              | *::String*                                                                                                                                | :heavy_check_mark:                                                                                                                        | A service ID.                                                                                                                             |
+| `client_id`                                                                                                                               | *::String*                                                                                                                                | :heavy_check_mark:                                                                                                                        | A client ID.<br/>                                                                                                                         |
+| `client_extension_requestable_scopes_update_request`                                                                                      | [Models::Components::ClientExtensionRequestableScopesUpdateRequest](../../models/shared/clientextensionrequestablescopesupdaterequest.md) | :heavy_check_mark:                                                                                                                        | N/A                                                                                                                                       |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientExtensionRequestablesScopesUpdateApiPostResponse)](../../models/operations/clientextensionrequestablesscopesupdateapipostresponse.md)**
 
 ### Errors
 

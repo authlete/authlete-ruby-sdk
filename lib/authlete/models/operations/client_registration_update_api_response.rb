@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ClientRegistrationUpdateApiResponse
         extend T::Sig

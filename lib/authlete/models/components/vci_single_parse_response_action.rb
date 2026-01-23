@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciSingleParseResponseAction - The next action that the credential endpoint should take.
       class VciSingleParseResponseAction < T::Enum
 

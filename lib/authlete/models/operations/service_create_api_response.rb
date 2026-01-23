@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ServiceCreateApiResponse
         extend T::Sig
@@ -19,7 +18,7 @@ module Authlete
         field :status_code, ::Integer
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
-
+        # Service created successfully (legacy compatibility)
         field :service, Crystalline::Nilable.new(Models::Components::Service)
 
         sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, service: T.nilable(Models::Components::Service)).void }

@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # Prompt - The prompt that the UI displayed to the end-user must satisfy as the minimum level. This value comes from `prompt` request parameter.
       # 
       # When the authorization request does not contain `prompt` request parameter, `CONSENT` is used as the default value.

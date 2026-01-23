@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
 
       class AuthorizationResponse
         extend T::Sig
@@ -377,19 +376,14 @@ module Authlete
         # to the `/auth/authorization/issue` API.
         # 
         field :native_sso_requested, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('nativeSsoRequested') } }
-        # The location of the client's metadata document that was used to resolve client metadata.
-        # 
-        # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
-        field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
         # 
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
         # 
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
-        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationResponseAction), client: T.nilable(Models::Components::ClientLimitedAuthorization), display: T.nilable(Models::Components::Display), max_age: T.nilable(::Integer), service: T.nilable(Models::Components::Service), scopes: T.nilable(T::Array[Models::Components::Scope]), ui_locales: T.nilable(T::Array[::String]), claims_locales: T.nilable(T::Array[::String]), claims: T.nilable(T::Array[::String]), acr_essential: T.nilable(T::Boolean), client_id_alias_used: T.nilable(T::Boolean), acrs: T.nilable(T::Array[::String]), subject: T.nilable(::String), login_hint: T.nilable(::String), prompts: T.nilable(T::Array[Models::Components::Prompt]), lowest_prompt: T.nilable(Models::Components::Prompt), request_object_payload: T.nilable(::String), id_token_claims: T.nilable(::String), user_info_claims: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), purpose: T.nilable(::String), response_content: T.nilable(::String), ticket: T.nilable(::String), dynamic_scopes: T.nilable(T::Array[Models::Components::DynamicScope]), gm_action: T.nilable(Models::Components::GrantManagementAction), grant_id: T.nilable(::String), grant: T.nilable(Models::Components::Grant), grant_subject: T.nilable(::String), requested_claims_for_tx: T.nilable(T::Array[::String]), requested_verified_claims_for_tx: T.nilable(T::Array[T::Array[::String]]), transformed_claims: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), claims_at_user_info: T.nilable(T::Array[::String]), credential_offer_info: T.nilable(Models::Components::CredentialOfferInfo), issuable_credentials: T.nilable(::String), native_sso_requested: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }
-        def initialize(result_code: nil, result_message: nil, action: nil, client: nil, display: nil, max_age: nil, service: nil, scopes: nil, ui_locales: nil, claims_locales: nil, claims: nil, acr_essential: nil, client_id_alias_used: nil, acrs: nil, subject: nil, login_hint: nil, prompts: nil, lowest_prompt: nil, request_object_payload: nil, id_token_claims: nil, user_info_claims: nil, resources: nil, authorization_details: nil, purpose: nil, response_content: nil, ticket: nil, dynamic_scopes: nil, gm_action: nil, grant_id: nil, grant: nil, grant_subject: nil, requested_claims_for_tx: nil, requested_verified_claims_for_tx: nil, transformed_claims: nil, client_entity_id_used: nil, claims_at_user_info: nil, credential_offer_info: nil, issuable_credentials: nil, native_sso_requested: nil, metadata_document_location: nil, metadata_document_used: nil)
+        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationResponseAction), client: T.nilable(Models::Components::ClientLimitedAuthorization), display: T.nilable(Models::Components::Display), max_age: T.nilable(::Integer), service: T.nilable(Models::Components::Service), scopes: T.nilable(T::Array[Models::Components::Scope]), ui_locales: T.nilable(T::Array[::String]), claims_locales: T.nilable(T::Array[::String]), claims: T.nilable(T::Array[::String]), acr_essential: T.nilable(T::Boolean), client_id_alias_used: T.nilable(T::Boolean), acrs: T.nilable(T::Array[::String]), subject: T.nilable(::String), login_hint: T.nilable(::String), prompts: T.nilable(T::Array[Models::Components::Prompt]), lowest_prompt: T.nilable(Models::Components::Prompt), request_object_payload: T.nilable(::String), id_token_claims: T.nilable(::String), user_info_claims: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), purpose: T.nilable(::String), response_content: T.nilable(::String), ticket: T.nilable(::String), dynamic_scopes: T.nilable(T::Array[Models::Components::DynamicScope]), gm_action: T.nilable(Models::Components::GrantManagementAction), grant_id: T.nilable(::String), grant: T.nilable(Models::Components::Grant), grant_subject: T.nilable(::String), requested_claims_for_tx: T.nilable(T::Array[::String]), requested_verified_claims_for_tx: T.nilable(T::Array[T::Array[::String]]), transformed_claims: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), claims_at_user_info: T.nilable(T::Array[::String]), credential_offer_info: T.nilable(Models::Components::CredentialOfferInfo), issuable_credentials: T.nilable(::String), native_sso_requested: T.nilable(T::Boolean), metadata_document_used: T.nilable(T::Boolean)).void }
+        def initialize(result_code: nil, result_message: nil, action: nil, client: nil, display: nil, max_age: nil, service: nil, scopes: nil, ui_locales: nil, claims_locales: nil, claims: nil, acr_essential: nil, client_id_alias_used: nil, acrs: nil, subject: nil, login_hint: nil, prompts: nil, lowest_prompt: nil, request_object_payload: nil, id_token_claims: nil, user_info_claims: nil, resources: nil, authorization_details: nil, purpose: nil, response_content: nil, ticket: nil, dynamic_scopes: nil, gm_action: nil, grant_id: nil, grant: nil, grant_subject: nil, requested_claims_for_tx: nil, requested_verified_claims_for_tx: nil, transformed_claims: nil, client_entity_id_used: nil, claims_at_user_info: nil, credential_offer_info: nil, issuable_credentials: nil, native_sso_requested: nil, metadata_document_used: nil)
           @result_code = result_code
           @result_message = result_message
           @action = action
@@ -429,7 +423,6 @@ module Authlete
           @credential_offer_info = credential_offer_info
           @issuable_credentials = issuable_credentials
           @native_sso_requested = native_sso_requested
-          @metadata_document_location = metadata_document_location
           @metadata_document_used = metadata_document_used
         end
 
@@ -475,7 +468,6 @@ module Authlete
           return false unless @credential_offer_info == other.credential_offer_info
           return false unless @issuable_credentials == other.issuable_credentials
           return false unless @native_sso_requested == other.native_sso_requested
-          return false unless @metadata_document_location == other.metadata_document_location
           return false unless @metadata_document_used == other.metadata_document_used
           true
         end

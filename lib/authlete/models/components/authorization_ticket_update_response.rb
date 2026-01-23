@@ -7,14 +7,13 @@
 module Authlete
   module Models
     module Components
-    
 
       class AuthorizationTicketUpdateResponse
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Information about the ticket.
-        field :info, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info') } }
+
+        field :info, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info') } }
         # The result of the /auth/authorization/ticket/info API call.
         field :action, Crystalline::Nilable.new(Models::Components::AuthorizationTicketUpdateResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::AuthorizationTicketUpdateResponseAction, true) } }
         # The code which represents the result of the API call.
@@ -22,7 +21,7 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
 
-        sig { params(info: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationTicketUpdateResponseAction), result_code: T.nilable(::String), result_message: T.nilable(::String)).void }
+        sig { params(info: T.nilable(Models::Components::AuthorizationTicketInfo), action: T.nilable(Models::Components::AuthorizationTicketUpdateResponseAction), result_code: T.nilable(::String), result_message: T.nilable(::String)).void }
         def initialize(info: nil, action: nil, result_code: nil, result_message: nil)
           @info = info
           @action = action

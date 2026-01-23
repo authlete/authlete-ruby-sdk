@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciDeferredIssueResponseAction - The next action that the implementation of the deferred credential
       # endpoint should take.
       # 

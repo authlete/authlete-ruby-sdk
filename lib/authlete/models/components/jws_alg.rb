@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # JwsAlg - The signature algorithm for JWT. This value is represented on 'alg' attribute
       # of the header of JWT.
       # 

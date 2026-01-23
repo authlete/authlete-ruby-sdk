@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # TokenFailRequestReason - The reason of the failure of the token request.
       # 
       class TokenFailRequestReason < T::Enum

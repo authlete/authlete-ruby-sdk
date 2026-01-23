@@ -86,8 +86,6 @@ class Authlete::Models::Components::AuthorizationResponse
   def issuable_credentials=(str_); end
   def native_sso_requested(); end
   def native_sso_requested=(str_); end
-  def metadata_document_location(); end
-  def metadata_document_location=(str_); end
   def metadata_document_used(); end
   def metadata_document_used=(str_); end
 end

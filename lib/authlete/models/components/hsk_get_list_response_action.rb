@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # HskGetListResponseAction - Result of the API call
       class HskGetListResponseAction < T::Enum
 

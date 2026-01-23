@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # Holds information about a key managed in an HSM (Hardware Security Module)
       # 
       class Hsk

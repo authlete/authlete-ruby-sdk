@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # BackchannelAuthenticationFailRequestReason - The reason of the failure of the backchannel authentication request. This request parameter is
       # not mandatory but optional. However, giving this parameter is recommended. If omitted, `SERVER_ERROR`
       # is used as a reason.

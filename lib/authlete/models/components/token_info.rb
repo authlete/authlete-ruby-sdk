@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
 
       class TokenInfo
         extend T::Sig
@@ -22,7 +21,7 @@ module Authlete
         # the resource owner unique id
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The scopes granted on the token
-        field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
+        field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Scope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # time which the token expires.
         field :expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('expiresAt') } }
         # Extra properties associated with the token
@@ -48,7 +47,7 @@ module Authlete
         # 
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
-        sig { params(client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), subject: T.nilable(::String), scopes: T.nilable(T::Array[::String]), expires_at: T.nilable(::Integer), properties: T.nilable(T::Array[Models::Components::Property]), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthorizationDetailsElement), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }
+        sig { params(client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), subject: T.nilable(::String), scopes: T.nilable(T::Array[Models::Components::Scope]), expires_at: T.nilable(::Integer), properties: T.nilable(T::Array[Models::Components::Property]), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthorizationDetailsElement), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }
         def initialize(client_id: nil, client_id_alias: nil, client_id_alias_used: nil, subject: nil, scopes: nil, expires_at: nil, properties: nil, resources: nil, authorization_details: nil, client_entity_id: nil, client_entity_id_used: nil, metadata_document_location: nil, metadata_document_used: nil)
           @client_id = client_id
           @client_id_alias = client_id_alias
