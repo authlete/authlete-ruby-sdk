@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # AuthorizationTicketInfoResponseAction - The result of the `/auth/authorization/ticket/info` API call.
       class AuthorizationTicketInfoResponseAction < T::Enum
 

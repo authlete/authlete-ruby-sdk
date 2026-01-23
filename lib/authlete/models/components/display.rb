@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # Display - The display mode which the client application requests by `display` request parameter.
       # When the authorization request does not have `display` request parameter, `PAGE` is set as the default value.
       # 

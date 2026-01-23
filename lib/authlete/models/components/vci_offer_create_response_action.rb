@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VciOfferCreateResponseAction - The result of the `/vci/offer/create` API call.
       class VciOfferCreateResponseAction < T::Enum
 

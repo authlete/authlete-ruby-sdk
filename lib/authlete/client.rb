@@ -16,7 +16,7 @@ module Authlete
   class Client
     extend T::Sig
 
-    attr_accessor :services, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :device_flow, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :authorization_management, :native_sso
+    attr_accessor :services, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :device_flow, :token_operations, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :lifecycle, :authorization_management, :native_sso
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -93,10 +93,12 @@ module Authlete
       @dynamic_client_registration = DynamicClientRegistration.new(@sdk_configuration)
       @ciba = Ciba.new(@sdk_configuration)
       @device_flow = DeviceFlow.new(@sdk_configuration)
+      @token_operations = TokenOperations.new(@sdk_configuration)
       @jose_object = JoseObject.new(@sdk_configuration)
       @federation = Federation.new(@sdk_configuration)
       @hardware_security_keys = HardwareSecurityKeys.new(@sdk_configuration)
       @verifiable_credentials = VerifiableCredentials.new(@sdk_configuration)
+      @lifecycle = Lifecycle.new(@sdk_configuration)
       @authorization_management = AuthorizationManagement.new(@sdk_configuration)
       @native_sso = NativeSso.new(@sdk_configuration)
     end

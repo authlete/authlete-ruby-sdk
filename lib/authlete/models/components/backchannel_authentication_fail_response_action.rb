@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # BackchannelAuthenticationFailResponseAction - The next action that the authorization server implementation should take.
       class BackchannelAuthenticationFailResponseAction < T::Enum
 

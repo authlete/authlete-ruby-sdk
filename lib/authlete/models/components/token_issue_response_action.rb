@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # TokenIssueResponseAction - The next action that the authorization server implementation should take.
       class TokenIssueResponseAction < T::Enum
 

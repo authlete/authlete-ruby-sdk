@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # HskDeleteResponseAction - Result of the API call
       class HskDeleteResponseAction < T::Enum
 

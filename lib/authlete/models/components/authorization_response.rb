@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
 
       class AuthorizationResponse
         extend T::Sig

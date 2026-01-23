@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # GrantType - The grant type of the access token when the access token was created.
       # 
       class GrantType < T::Enum

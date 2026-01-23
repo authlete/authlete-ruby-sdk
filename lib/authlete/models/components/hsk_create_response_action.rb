@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # HskCreateResponseAction - Result of the API call.
       class HskCreateResponseAction < T::Enum
 

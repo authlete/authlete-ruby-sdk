@@ -1,0 +1,9 @@
+# ClientAuthorizationGetListApiPostRequest
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                      | *::String*                                                                                                        | :heavy_check_mark:                                                                                                | A service ID.                                                                                                     |
+| `client_authorization_get_list_request`                                                                           | [Models::Components::ClientAuthorizationGetListRequest](../../models/shared/clientauthorizationgetlistrequest.md) | :heavy_check_mark:                                                                                                | N/A                                                                                                               |

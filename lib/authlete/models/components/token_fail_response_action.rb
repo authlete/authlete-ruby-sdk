@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # TokenFailResponseAction - The next action that the authorization server implementation should take.
       class TokenFailResponseAction < T::Enum
 

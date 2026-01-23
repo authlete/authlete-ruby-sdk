@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # GrantManagementAction - The grant management action of the device authorization request.
       # 
       # The `grant_management_action` request parameter is defined in

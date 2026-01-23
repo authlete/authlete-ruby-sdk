@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ClientSecretUpdateApiRequest
         extend T::Sig

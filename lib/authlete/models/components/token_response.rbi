@@ -58,6 +58,8 @@ class Authlete::Models::Components::TokenResponse
   def access_token_resources=(str_); end
   def authorization_details(); end
   def authorization_details=(str_); end
+  def additional_claims(); end
+  def additional_claims=(str_); end
   def service_attributes(); end
   def service_attributes=(str_); end
   def client_attributes(); end

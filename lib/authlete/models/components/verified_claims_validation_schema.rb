@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # VerifiedClaimsValidationSchema - The verified claims validation schema set.
       # 
       class VerifiedClaimsValidationSchema < T::Enum

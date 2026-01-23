@@ -87,3 +87,13 @@ Based on:
 - [ruby v0.0.2.beta] .
 ### Releases
 - [Ruby Gems v0.0.2.beta] https://rubygems.org/gems/authlete_ruby_sdk/versions/0.0.2.beta - .
+
+## 2026-01-23 01:21:47
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.696.0 (2.799.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [ruby v] .
+### Releases
+- [Ruby Gems v] https://rubygems.org/gems/authlete_ruby_sdk/versions/ - .

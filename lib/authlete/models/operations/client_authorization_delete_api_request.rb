@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Operations
-    
 
       class ClientAuthorizationDeleteApiRequest
         extend T::Sig
@@ -20,17 +19,13 @@ module Authlete
         field :client_id, ::String, { 'path_param': { 'field_name': 'clientId', 'style': 'simple', 'explode': false } }
         # Unique user ID of an end-user.
         # 
-        field :subject_path_parameter, ::String, { 'path_param': { 'field_name': 'subject', 'style': 'simple', 'explode': false } }
-        # Unique user ID of an end-user.
-        # 
-        field :subject_query_parameter, ::String, { 'query_param': { 'field_name': 'subject', 'style': 'form', 'explode': true } }
+        field :subject, ::String, { 'query_param': { 'field_name': 'subject', 'style': 'form', 'explode': true } }
 
-        sig { params(service_id: ::String, client_id: ::String, subject_path_parameter: ::String, subject_query_parameter: ::String).void }
-        def initialize(service_id:, client_id:, subject_path_parameter:, subject_query_parameter:)
+        sig { params(service_id: ::String, client_id: ::String, subject: ::String).void }
+        def initialize(service_id:, client_id:, subject:)
           @service_id = service_id
           @client_id = client_id
-          @subject_path_parameter = subject_path_parameter
-          @subject_query_parameter = subject_query_parameter
+          @subject = subject
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -38,8 +33,7 @@ module Authlete
           return false unless other.is_a? self.class
           return false unless @service_id == other.service_id
           return false unless @client_id == other.client_id
-          return false unless @subject_path_parameter == other.subject_path_parameter
-          return false unless @subject_query_parameter == other.subject_query_parameter
+          return false unless @subject == other.subject
           true
         end
       end

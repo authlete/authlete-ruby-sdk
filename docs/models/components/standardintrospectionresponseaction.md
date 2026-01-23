@@ -10,3 +10,4 @@ The next action that the authorization server implementation should take.
 | `INTERNAL_SERVER_ERROR` | INTERNAL_SERVER_ERROR   |
 | `BAD_REQUEST`           | BAD_REQUEST             |
 | `OK`                    | OK                      |
+| `JWT`                   | JWT                     |

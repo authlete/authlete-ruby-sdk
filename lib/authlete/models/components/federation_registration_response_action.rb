@@ -7,7 +7,6 @@
 module Authlete
   module Models
     module Components
-    
       # FederationRegistrationResponseAction - The next action that the authorization server implementation should take.
       class FederationRegistrationResponseAction < T::Enum
 

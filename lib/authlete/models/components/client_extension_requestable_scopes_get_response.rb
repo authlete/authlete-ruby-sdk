@@ -7,13 +7,13 @@
 module Authlete
   module Models
     module Components
-    
 
       class ClientExtensionRequestableScopesGetResponse
         extend T::Sig
         include Crystalline::MetadataFields
 
-
+        # The requestable scopes for this client. This is null if the Requestable Scopes per Client feature is not enabled for this client.
+        # 
         field :requestable_scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestableScopes') } }
 
         sig { params(requestable_scopes: T.nilable(T::Array[::String])).void }
