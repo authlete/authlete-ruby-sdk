@@ -27,106 +27,28 @@ If you have any questions or need assistance, our team is here to help:
 - [Contact Page](https://www.authlete.com/contact/)
 <!-- End Summary [summary] -->
 
-<!-- Start Summary [summary] -->
-## Summary
-
-Authlete API: Welcome to the **Authlete API documentation**. Authlete is an **API-first service** where every aspect of the 
-platform is configurable via API. This documentation will help you authenticate and integrate with Authlete to 
-build powerful OAuth 2.0 and OpenID Connect servers.
-
-At a high level, the Authlete API is grouped into two categories:
-
-- **Management APIs**: Enable you to manage services and clients.
-- **Runtime APIs**: Allow you to build your own Authorization Servers or Verifiable Credential (VC) issuers.
-
-## 🌐 API Servers
-
-Authlete is a global service with clusters available in multiple regions across the world:
-
-- 🇺🇸 **US**: `https://us.authlete.com`
-- 🇯🇵 **Japan**: `https://jp.authlete.com`
-- 🇪🇺 **Europe**: `https://eu.authlete.com`
-- 🇧🇷 **Brazil**: `https://br.authlete.com`
-
-Our customers can host their data in the region that best meets their requirements.
-
-## 🔑 Authentication
-
-All API endpoints are secured using **Bearer token authentication**. You must include an access token in every request:
-
-```
-Authorization: Bearer YOUR_ACCESS_TOKEN
-```
-
-### Getting Your Access Token
-
-Authlete supports two types of access tokens:
-
-**Service Access Token** - Scoped to a single service (authorization server instance)
-
-1. Log in to [Authlete Console](https://console.authlete.com)
-2. Navigate to your service → **Settings** → **Access Tokens**
-3. Click **Create Token** and select permissions (e.g., `service.read`, `client.write`)
-4. Copy the generated token
-
-**Organization Token** - Scoped to your entire organization
-
-1. Log in to [Authlete Console](https://console.authlete.com)
-2. Navigate to **Organization Settings** → **Access Tokens**
-3. Click **Create Token** and select org-level permissions
-4. Copy the generated token
-
-> ⚠️ **Important Note**: Tokens inherit the permissions of the account that creates them. Service tokens can only 
-> access their specific service, while organization tokens can access all services within your org.
-
-### Token Security Best Practices
-
-- **Never commit tokens to version control** - Store in environment variables or secure secret managers
-- **Rotate regularly** - Generate new tokens periodically and revoke old ones
-- **Scope appropriately** - Request only the permissions your application needs
-- **Revoke unused tokens** - Delete tokens you're no longer using from the console
-
-### Quick Test
-
-Verify your token works with a simple API call:
-
-```bash
-curl -X GET https://us.authlete.com/api/service/get/list \
-  -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
-```
-
-## 🎓 Tutorials
-
-If you're new to Authlete or want to see sample implementations, these resources will help you get started:
-
-- [Getting Started with Authlete](https://www.authlete.com/developers/getting_started/)
-- [From Sign-Up to the First API Request](https://www.authlete.com/developers/tutorial/signup/)
-
-## 🛠 Contact Us
-
-If you have any questions or need assistance, our team is here to help:
-
-- [Contact Page](https://www.authlete.com/contact/)
-<!-- End Summary [summary] -->
-
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
 * [Authlete Ruby SDK](#authlete-ruby-sdk)
-  * [🎓 Tutorials](#tutorials)
-  * [🛠 Contact Us](#contact-us)
-  * [🌐 API Servers](#api-servers)
-  * [🔑 Authentication](#authentication)
-  * [🎓 Tutorials](#tutorials-1)
-  * [🛠 Contact Us](#contact-us-1)
   * [SDK Installation](#sdk-installation)
+    * [Prerequisites](#prerequisites)
+    * [Install the SDK](#install-the-sdk)
   * [Access Tokens](#access-tokens)
+    * [Troubleshooting Token Issues](#troubleshooting-token-issues)
   * [Quick Start](#quick-start)
   * [SDK Example Usage](#sdk-example-usage)
-  * [Authentication](#authentication-1)
+  * [Authentication](#authentication)
+    * [Per-Client Security Schemes](#per-client-security-schemes)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Error Handling](#error-handling)
+    * [Example](#example-1)
+  * [Troubleshooting](#troubleshooting)
+    * [Common Issues](#common-issues)
+    * [Service ID vs API Key](#service-id-vs-api-key)
   * [Server Selection](#server-selection)
+    * [Configure Server URL (Recommended)](#configure-server-url-recommended)
+    * [Alternative: Select Server by Index](#alternative-select-server-by-index)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -136,81 +58,125 @@ If you have any questions or need assistance, our team is here to help:
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+### Prerequisites
+
+- **Ruby Version**: Ruby >= 3.2.0 is required
+  ```bash
+  ruby --version  # Check your Ruby version
+  ```
+
+### Install the SDK
+
 The SDK can be installed using [RubyGems](https://rubygems.org/):
 
 ```bash
 gem install authlete_ruby_sdk
 ```
+
+Or add it to your `Gemfile`:
+
+```ruby
+gem 'authlete_ruby_sdk', '~> 0.0.2.beta'
+```
+
+Then run:
+```bash
+bundle install
+```
 <!-- End SDK Installation [installation] -->
 
 ## Access Tokens
 
-You need to pass a valid access token to be able to use any resource or operation. Refer to [Creating an Access Token](https://www.authlete.com/developers/tutorial/signup/) to learn how to create one.
+You need to pass a valid access token to be able to use any resource or operation. The `bearer` parameter required when initializing the SDK client must be one of the following two token types:
 
-Authlete supports two types of access tokens:
+- **Service Access Token** - Scoped to a single service (authorization server instance). Use when you need to access a specific service only. Create from **Service Settings** → **Access Tokens** in the [Authlete Console](https://console.authlete.com).
+- **Organization Token** - Scoped to your entire organization, allowing access to all services. Use when you need to access multiple services or perform organization-level operations. Create from **[Organization Settings](https://www.authlete.com/developers/terraform/starting/#setting-your-environment)** → **Access Tokens**.
 
-- **Service Access Token** - Scoped to a single service (authorization server instance). Create from **Service Settings** → **Access Tokens** in the [Authlete Console](https://console.authlete.com).
-- **Organization Token** - Scoped to your entire organization, allowing access to all services. Create from **[Organization Settings](https://www.authlete.com/developers/terraform/starting/#setting-your-environment)** → **Access Tokens**.
+Refer to [Creating an Access Token](https://www.authlete.com/developers/tutorial/signup/) to learn how to create one.
 
-Make sure that you create a token with the correct scope. If you face permission (403) errors when already sending a token, it can be one of the following problems:
+### Troubleshooting Token Issues
+
+If you face permission (403) errors when already sending a token, it can be one of the following problems:
 
 - The token you are using has expired. Check the expiry date in the Authlete Console.
-- The token does not have access to the correct scope, either not the right service or it does not have account level access.
+- You're using the wrong token type (e.g., using a Service Token to access a different service, or using a Service Token when you need organization-level access).
 - The resource or operation you are trying to use is not available for that service tier. For example, some features are Enterprise-only and you may be using a token for a service on a different plan.
 
 ## Quick Start
 
+**Important:** You must specify which Authlete server to use when initializing the client. If omitted, it defaults to the US server (`server_idx: 0`).
+
 ```ruby
 require "authlete_ruby_sdk"
 
-# Initialize the Authlete client (following Stripe's pattern)
-authlete_client = Authlete::Client.new(bearer: "<YOUR_BEARER_TOKEN>")
+# Create an alias for cleaner code (optional but recommended)
+Models = ::Authlete::Models
 
-# Retrieve a service
+# Initialize the Authlete client
+# Available servers: https://us.authlete.com, https://jp.authlete.com, 
+#                    https://eu.authlete.com, https://br.authlete.com
+authlete_client = ::Authlete::Client.new(
+  bearer: "<YOUR_BEARER_TOKEN>",  # Service Access Token or Organization Token (see Access Tokens section)
+  server_url: "https://us.authlete.com"  # Required: Specify your server
+)
+
+# Example 1: Retrieve a service
 begin
   response = authlete_client.services.retrieve(service_id: "<service_id>")
-  puts response.service
-rescue Authlete::Models::Errors::ResultError => e
+  
+  unless response.service.nil?
+    service = response.service
+    puts "Service Name: #{service.service_name}"
+    puts "Service ID (api_key): #{service.api_key}"
+    puts "Issuer: #{service.issuer}"
+  end
+rescue Models::Errors::ResultError => e
   # Handle Authlete-specific errors
-  puts "Authlete error: #{e.message}"
-  raise
-rescue Authlete::Models::Errors::APIError => e
-  # Handle general API errors
-  puts "API error: #{e.message}"
-  raise
+  puts "Authlete error: #{e.result_code} - #{e.result_message}"
+rescue Models::Errors::APIError => e
+  # Handle HTTP errors
+  puts "API error: HTTP #{e.status_code} - #{e.message}"
 end
 
-# List OAuth clients
-response = authlete_client.clients.list(service_id: "<service_id>")
-response.clients.each { |oauth_client| puts oauth_client.client_name }
+# Example 2: List OAuth clients
+begin
+  response = authlete_client.clients.list(service_id: "<service_id>")
+  
+  if response.client_get_list_response && response.client_get_list_response.clients
+    response.client_get_list_response.clients.each do |oauth_client|
+      puts "Client: #{oauth_client.client_name} (ID: #{oauth_client.client_id})"
+    end
+  end
+rescue Models::Errors::ResultError => e
+  puts "Error: #{e.result_message}"
+end
 
-# Process an authorization request
-response = authlete_client.authorization.process_request(
-  service_id: "<service_id>",
-  parameters: "response_type=code&client_id=..."
-)
+# Example 3: Process an authorization request
+begin
+  response = authlete_client.authorization.process_request(
+    service_id: "<service_id>",
+    authorization_request: Models::Components::AuthorizationRequest.new(
+      parameters: "response_type=code&client_id=<client_id>&redirect_uri=<redirect_uri>"
+    )
+  )
+  
+  if response.authorization_response
+    puts "Action: #{response.authorization_response.action}"
+    puts "Ticket: #{response.authorization_response.ticket}" if response.authorization_response.ticket
+  end
+rescue Models::Errors::ResultError => e
+  puts "Error: #{e.result_message}"
+end
 ```
+
+> **Note:** Do not include `/api` in the `server_url` - the SDK appends it automatically. The `service_id` parameter uses the service's `api_key` value.
 
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
-### Example
+See the [Quick Start](#quick-start) section above for comprehensive examples showing how to initialize the client and make API calls with proper error handling.
 
-```ruby
-require 'authlete_ruby_sdk'
-
-Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.services.retrieve(service_id: '<id>')
-
-unless res.service.nil?
-  # handle response
-end
-
-```
+For additional examples and detailed API documentation, see the [Available Resources and Operations](#available-resources-and-operations) section below.
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Authentication [security] -->
@@ -224,18 +190,19 @@ This SDK supports the following security scheme globally:
 | -------- | ---- | ----------- |
 | `bearer` | http | HTTP Bearer |
 
-To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API, both the `bearer` parameter and `server_url` should be set when initializing the SDK client instance. For example:
 ```ruby
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+authlete_client = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',  # Service Access Token or Organization Token (see Access Tokens section)
+      server_url: 'https://us.authlete.com'  # Required: Specify your server
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
@@ -271,22 +238,14 @@ end
 * [update_lock_flag](docs/sdks/clientmanagement/README.md#update_lock_flag) - Update Client Lock
 * [refresh_secret](docs/sdks/clientmanagement/README.md#refresh_secret) - Rotate Client Secret
 * [update_secret](docs/sdks/clientmanagement/README.md#update_secret) - Update Client Secret
-* [authorizations](docs/sdks/clientmanagement/README.md#authorizations) - Get Authorized Applications (by Subject)
+* [authorizations](docs/sdks/clientmanagement/README.md#authorizations) - Get Authorized Applications
 * [update_authorizations](docs/sdks/clientmanagement/README.md#update_authorizations) - Update Client Tokens
-* [destroy_authorizations](docs/sdks/clientmanagement/README.md#destroy_authorizations) - Delete Client Tokens (by Subject)
-* [granted_scopes](docs/sdks/clientmanagement/README.md#granted_scopes) - Get Granted Scopes (by Subject)
-* [destroy_granted_scopes](docs/sdks/clientmanagement/README.md#destroy_granted_scopes) - Delete Granted Scopes (by Subject)
+* [destroy_authorizations](docs/sdks/clientmanagement/README.md#destroy_authorizations) - Delete Client Tokens
+* [granted_scopes](docs/sdks/clientmanagement/README.md#granted_scopes) - Get Granted Scopes
+* [destroy_granted_scopes](docs/sdks/clientmanagement/README.md#destroy_granted_scopes) - Delete Granted Scopes
 * [requestable_scopes](docs/sdks/clientmanagement/README.md#requestable_scopes) - Get Requestable Scopes
 * [update_requestable_scopes](docs/sdks/clientmanagement/README.md#update_requestable_scopes) - Update Requestable Scopes
 * [destroy_requestable_scopes](docs/sdks/clientmanagement/README.md#destroy_requestable_scopes) - Delete Requestable Scopes
-* [client_authorization_get_list_api](docs/sdks/clientmanagement/README.md#client_authorization_get_list_api) - Get Authorized Applications
-* [client_authorization_get_list_api_post](docs/sdks/clientmanagement/README.md#client_authorization_get_list_api_post) - Get Authorized Applications
-* [client_authorization_delete_api](docs/sdks/clientmanagement/README.md#client_authorization_delete_api) - Delete Client Tokens
-* [client_authorization_delete_api_post](docs/sdks/clientmanagement/README.md#client_authorization_delete_api_post) - Delete Client Tokens
-* [client_granted_scopes_get_api](docs/sdks/clientmanagement/README.md#client_granted_scopes_get_api) - Get Granted Scopes
-* [client_granted_scopes_get_api_post](docs/sdks/clientmanagement/README.md#client_granted_scopes_get_api_post) - Get Granted Scopes
-* [client_granted_scopes_delete_api](docs/sdks/clientmanagement/README.md#client_granted_scopes_delete_api) - Delete Granted Scopes
-* [client_extension_requestables_scopes_update_api_post](docs/sdks/clientmanagement/README.md#client_extension_requestables_scopes_update_api_post) - Update Requestable Scopes
 
 ### [Clients](docs/sdks/clients/README.md)
 
@@ -339,10 +298,6 @@ end
 
 * [service_jwks_get_api](docs/sdks/jwksetendpoint/README.md#service_jwks_get_api) - Get JWK Set
 
-### [Lifecycle](docs/sdks/lifecycle/README.md)
-
-* [get_api_lifecycle_healthcheck](docs/sdks/lifecycle/README.md#get_api_lifecycle_healthcheck) - Health Check
-
 ### [NativeSso](docs/sdks/nativesso/README.md)
 
 * [process_request](docs/sdks/nativesso/README.md#process_request) - Native SSO Processing
@@ -364,11 +319,6 @@ end
 * [update](docs/sdks/services/README.md#update) - Update Service
 * [destroy](docs/sdks/services/README.md#destroy) - Delete Service ⚡
 * [configuration](docs/sdks/services/README.md#configuration) - Get Service Configuration
-
-### [TokenOperations](docs/sdks/tokenoperations/README.md)
-
-* [auth_token_create_batch_api](docs/sdks/tokenoperations/README.md#auth_token_create_batch_api) - Create Access Tokens in Batch
-* [auth_token_create_batch_status_api](docs/sdks/tokenoperations/README.md#auth_token_create_batch_status_api) - Get Batch Token Creation Status
 
 ### [TokenManagement](docs/sdks/tokenmanagement/README.md)
 
@@ -435,36 +385,128 @@ When custom error responses are specified for an operation, the SDK may also thr
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
+authlete_client = ::Authlete::Client.new(
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
+      server_url: 'https://us.authlete.com'  # Specify your server
     )
 
 begin
-    res = s.services.retrieve(service_id: '<id>')
+    response = authlete_client.services.retrieve(service_id: '<id>')
 
-    unless res.service.nil?
+    unless response.service.nil?
       # handle response
     end
 rescue Models::Errors::ResultError => e
-  # handle e.container data
-  raise e
-rescue Models::Errors::ResultError => e
-  # handle e.container data
+  # handle Authlete-specific errors
+  puts "Result Code: #{e.result_code}"
+  puts "Result Message: #{e.result_message}"
   raise e
 rescue Errors::APIError => e
-  # handle default exception
+  # handle HTTP errors
+  puts "Status Code: #{e.status_code}"
+  puts "Body: #{e.body}"
   raise e
 end
 
 ```
 <!-- End Error Handling [errors] -->
 
+## Troubleshooting
+
+### Common Issues
+
+#### "cannot load such file -- sorbet-runtime"
+**Problem:** Ruby version is too old or dependencies not installed.
+
+**Solution:**
+- Ensure Ruby >= 3.2.0 is installed: `ruby --version`
+- Install dependencies: `gem install sorbet-runtime faraday faraday-multipart faraday-retry base64`
+
+#### "The access token presented is not valid" (A458101)
+**Problem:** Bearer token is invalid, expired, or lacks permissions.
+
+**Solution:**
+- Verify your bearer token is correct and matches the token type you need (see [Access Tokens](#access-tokens) section)
+- Check if token has expired in the Authlete Console
+- Ensure you're using the correct token type (Service Token vs Organization Token)
+- Verify you're using the correct server (token may be valid for a different region)
+
+#### "Service not found" (A458203)
+**Problem:** Service ID doesn't exist on the specified server.
+
+**Solution:**
+- Verify the service ID (`api_key`) is correct
+- Check if you're using the correct server (service may be on a different region)
+- List services to find available service IDs:
+  ```ruby
+  response = client.services.list()
+  response.service_get_list_response.services.each do |s|
+    puts "Service ID: #{s.api_key}, Name: #{s.service_name}"
+  end
+  ```
+
+#### "404 Not Found"
+**Problem:** Base URL includes `/api` suffix or incorrect endpoint.
+
+**Solution:**
+- Remove `/api` from `server_url` - use `https://us.authlete.com` not `https://us.authlete.com/api`
+- Verify the endpoint path is correct
+
+#### "already initialized constant Authlete::SERVERS" (Warning)
+**Problem:** SDK is being loaded multiple times.
+
+**Solution:** This is just a warning and can be ignored. It doesn't affect functionality.
+
+### Service ID vs API Key
+
+When calling `services.retrieve(service_id: ...)`, use the service's `api_key` value as the `service_id` parameter:
+
+```ruby
+# The service_id parameter uses the api_key value
+response = client.services.retrieve(service_id: '715948317')  # api_key value
+service = response.service
+puts service.api_key  # Returns: 715948317
+```
+
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
+**Important:** You must configure the server URL when initializing the SDK client. If omitted, it defaults to the US server (`server_idx: 0`), which may not be the correct server for your services.
 
-You can override the default server globally by passing a server index to the `server_idx (Integer)` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+### Configure Server URL (Recommended)
+
+Specify the server URL directly when creating the client instance. All operations performed through that client will use the specified server.
+
+**Available Servers:**
+- 🇺🇸 **US**: `https://us.authlete.com`
+- 🇯🇵 **Japan**: `https://jp.authlete.com`
+- 🇪🇺 **Europe**: `https://eu.authlete.com`
+- 🇧🇷 **Brazil**: `https://br.authlete.com`
+
+#### Example
+
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+authlete_client = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+      server_url: 'https://us.authlete.com'  # Specify your server
+    )
+
+response = authlete_client.services.retrieve(service_id: '<id>')
+
+unless response.service.nil?
+  # handle response
+end
+
+```
+
+> **Note:** Do not include `/api` in the `server_url` - the SDK appends it automatically.
+
+### Alternative: Select Server by Index
+
+You can also specify the server using a numeric index instead of the full URL:
 
 | #   | Server                    | Description         |
 | --- | ------------------------- | ------------------- |
@@ -479,38 +521,20 @@ You can override the default server globally by passing a server index to the `s
 require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-      server_idx: 0,
+authlete_client = ::Authlete::Client.new(
+      server_idx: 0,  # 0 = US, 1 = Japan, 2 = Europe, 3 = Brazil
       bearer: '<YOUR_BEARER_TOKEN_HERE>',
     )
 
-res = s.services.retrieve(service_id: '<id>')
+response = authlete_client.services.retrieve(service_id: '<id>')
 
-unless res.service.nil?
+unless response.service.nil?
   # handle response
 end
 
 ```
 
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url (String)` optional parameter when initializing the SDK client instance. For example:
-```ruby
-require 'authlete_ruby_sdk'
-
-Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-      server_url: 'https://br.authlete.com',
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.services.retrieve(service_id: '<id>')
-
-unless res.service.nil?
-  # handle response
-end
-
-```
+**Recommendation:** Use `server_url` instead of `server_idx` for better clarity and to avoid confusion about which server you're using.
 <!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
