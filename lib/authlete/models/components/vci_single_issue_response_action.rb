@@ -11,8 +11,6 @@ module Authlete
       # should take.
       # 
       class VciSingleIssueResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           ACCEPTED = new('ACCEPTED')

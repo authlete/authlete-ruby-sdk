@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class ClaimType < T::Enum
-
-
         enums do
           NORMAL = new('NORMAL')
           AGGREGATED = new('AGGREGATED')

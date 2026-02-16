@@ -11,8 +11,6 @@ module Authlete
       # for details.
       # 
       class ClientType < T::Enum
-
-
         enums do
           PUBLIC = new('PUBLIC')
           CONFIDENTIAL = new('CONFIDENTIAL')

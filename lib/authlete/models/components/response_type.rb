@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class ResponseType < T::Enum
-
-
         enums do
           NONE = new('NONE')
           CODE = new('CODE')

@@ -102,6 +102,18 @@ module Authlete
       end
     end
 
+    sig do
+      params(enum_type: Module, optional: T::Boolean)
+        .returns(T.proc.params(s: String).returns(T.untyped))
+    end
+    def self.open_enum_from_string(enum_type, optional)
+      Kernel.lambda do |s|
+        return nil if optional && s.nil?
+
+        return T.unsafe(enum_type).deserialize(s)
+      end
+    end
+
     sig { params(name: String).returns(T.proc.returns(String)) }
     def self.field_name(name)
       T.let(proc { name }, T.proc.returns(String))

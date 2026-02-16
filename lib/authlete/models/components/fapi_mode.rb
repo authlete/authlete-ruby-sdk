@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class FapiMode < T::Enum
-
-
         enums do
           FAPI1_ADVANCED = new('FAPI1_ADVANCED')
           FAPI1_BASELINE = new('FAPI1_BASELINE')

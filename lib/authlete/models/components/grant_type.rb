@@ -10,8 +10,6 @@ module Authlete
       # GrantType - The grant type of the access token when the access token was created.
       # 
       class GrantType < T::Enum
-
-
         enums do
           AUTHORIZATION_CODE = new('AUTHORIZATION_CODE')
           IMPLICIT = new('IMPLICIT')

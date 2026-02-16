@@ -12,8 +12,6 @@ module Authlete
       #  for Identity Assurance 1.0.
       # 
       class AttachmentType < T::Enum
-
-
         enums do
           EMBEDDED = new('EMBEDDED')
           EXTERNAL = new('EXTERNAL')

@@ -9,8 +9,6 @@ module Authlete
     module Components
       # VciDeferredParseResponseAction - The next action that the deferred credential endpoint should take.
       class VciDeferredParseResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           BAD_REQUEST = new('BAD_REQUEST')

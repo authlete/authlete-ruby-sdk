@@ -12,8 +12,6 @@ module Authlete
       # is used as a reason.
       # 
       class BackchannelAuthenticationFailRequestReason < T::Enum
-
-
         enums do
           ACCESS_DENIED = new('ACCESS_DENIED')
           EXPIRED_LOGIN_HINT_TOKEN = new('EXPIRED_LOGIN_HINT_TOKEN')

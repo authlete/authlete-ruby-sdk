@@ -16,8 +16,6 @@ module Authlete
       #   - or as client requestSignAlg value, it specifies which is the expected signature used by [client on a Request Object](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/request-objects).
       # 
       class JwsAlg < T::Enum
-
-
         enums do
           NONE = new('NONE')
           HS256 = new('HS256')

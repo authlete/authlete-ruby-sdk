@@ -10,8 +10,6 @@ module Authlete
       # VerifiedClaimsValidationSchema - The verified claims validation schema set.
       # 
       class VerifiedClaimsValidationSchema < T::Enum
-
-
         enums do
           STANDARD = new('standard')
           STANDARD_PLUS_ID_DOCUMENT = new('standard+id_document')

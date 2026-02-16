@@ -10,8 +10,6 @@ module Authlete
       # NativeSsoLogoutResponseAction - The next action that the API caller should take.
       # 
       class NativeSsoLogoutResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           SERVER_ERROR = new('SERVER_ERROR')

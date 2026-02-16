@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class SupportedSnse < T::Enum
-
-
         enums do
           FACEBOOK = new('FACEBOOK')
         end

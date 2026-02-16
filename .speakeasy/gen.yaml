@@ -22,6 +22,7 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits:
     README.md:
       after: <!-- End SDK Installation [installation] -->
@@ -31,7 +32,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: ""
+  version: 0.0.3-beta
   additionalDependencies:
     development: {}
     runtime: {}
@@ -42,6 +43,8 @@ ruby:
   defaultErrorName: APIError
   description: Official Ruby SDK for Authlete API v3+
   flattenGlobalSecurity: true
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   generateExamples: true
   imports:
     option: openapi
@@ -59,3 +62,4 @@ ruby:
   outputModelSuffix: output
   packageName: authlete_ruby_sdk
   typingStrategy: sorbet
+  unionStrategy: left-to-right

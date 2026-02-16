@@ -11,8 +11,6 @@ module Authlete
       # endpoint should take.
       # 
       class VciDeferredIssueResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           FORBIDDEN = new('FORBIDDEN')

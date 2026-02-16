@@ -12,8 +12,6 @@ module Authlete
       # Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
       # 
       class ClientAuthMethod < T::Enum
-
-
         enums do
           NONE = new('NONE')
           CLIENT_SECRET_BASIC = new('CLIENT_SECRET_BASIC')

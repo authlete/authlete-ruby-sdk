@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class ResponseMode < T::Enum
-
-
         enums do
           QUERY = new('QUERY')
           FRAGMENT = new('FRAGMENT')

@@ -9,8 +9,6 @@ module Authlete
     module Components
       # VciOfferInfoResponseAction - The result of the `/vci/offer/info` API call.
       class VciOfferInfoResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           FORBIDDEN = new('FORBIDDEN')

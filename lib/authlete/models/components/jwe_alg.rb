@@ -16,8 +16,6 @@ module Authlete
       # **Please note that some of the algorithms are more secure than others, some are not supported very well cross platforms and some (like RSA1_5) is known to be weak**.
       # 
       class JweAlg < T::Enum
-
-
         enums do
           RSA1_5 = new('RSA1_5')
           RSA_OAEP = new('RSA_OAEP')

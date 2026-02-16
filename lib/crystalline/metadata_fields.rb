@@ -84,7 +84,9 @@ module Crystalline
           # If field is nilable, and the value is not in the dict, just move to the next field
           next if value.nil?
 
-          if Crystalline::Utils.arr? field_type
+          if field_type.is_a?(Crystalline::DiscriminatedUnion)
+            to_build[key] = field_type.parse(value)
+          elsif Crystalline::Utils.arr? field_type
             inner_type = Crystalline::Utils.arr_of(field_type)
             unmarshalled_array = value.map { |f| unmarshal_single(inner_type, f, format_metadata) }
             to_build[key] = unmarshalled_array
@@ -112,17 +114,21 @@ module Crystalline
               union_types = Crystalline::Utils.get_union_types(field_type)
               union_types = union_types.sort_by { |klass| Crystalline.non_nilable_attr_count(klass) }
 
-              union_types.each do |union_type|
-                begin
-                  to_build[key] = Crystalline.unmarshal_json(value, union_type)
-                rescue TypeError
-                  next
-                rescue NoMethodError
-                  next
-                rescue KeyError
-                  next
+              if Crystalline.union_strategy == :populated_fields
+                to_build[key] = Crystalline.unmarshal_union_populated_fields(value, union_types)
+              else
+                union_types.each do |union_type|
+                  begin
+                    to_build[key] = Crystalline.unmarshal_json(value, union_type)
+                  rescue TypeError
+                    next
+                  rescue NoMethodError
+                    next
+                  rescue KeyError
+                    next
+                  end
+                  break
                 end
-                break
               end
             end
           elsif field_type.instance_of?(Class) && field_type.include?(::Crystalline::MetadataFields)
@@ -182,10 +188,10 @@ module Crystalline
         next if f.nil? && !required
         result[key] = nil if f.nil? && required
 
-        if f.is_a? Array
+        if f.is_a? ::Array
           result[key] = f.map { |o| marshal_single(o) }
-        elsif f.is_a? Hash
-          result[key] = f.map { |k, v| [k, marshal_single(v)] }
+        elsif f.is_a? ::Hash
+          result[key] = f.transform_values { |v| marshal_single(v) }
         else
           result[key] = marshal_single(f)
         end

@@ -18,8 +18,6 @@ module Authlete
       # "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display".
       # 
       class Display < T::Enum
-
-
         enums do
           PAGE = new('PAGE')
           POPUP = new('POPUP')

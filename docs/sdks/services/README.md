@@ -19,9 +19,27 @@ If the access token can only view or modify clients underneath this service, but
 have access to view this service directly, a limited view of the service will be returned.
 
 
-### Example Usage
+### Example Usage: full
 
-<!-- UsageSnippet language="ruby" operationID="service_get_api" method="get" path="/api/{serviceId}/service/get" -->
+<!-- UsageSnippet language="ruby" operationID="service_get_api" method="get" path="/api/{serviceId}/service/get" example="full" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.services.retrieve(service_id: '<id>')
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+### Example Usage: limited
+
+<!-- UsageSnippet language="ruby" operationID="service_get_api" method="get" path="/api/{serviceId}/service/get" example="limited" -->
 ```ruby
 require 'authlete_ruby_sdk'
 
@@ -68,9 +86,27 @@ If the access token is an administrative token, this returns a list of all servi
 Otherwise, all services that the access token can view, even in a limited fashion, are returned.
 
 
-### Example Usage
+### Example Usage: full
 
-<!-- UsageSnippet language="ruby" operationID="service_get_list_api" method="get" path="/api/service/get/list" -->
+<!-- UsageSnippet language="ruby" operationID="service_get_list_api" method="get" path="/api/service/get/list" example="full" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.services.list()
+
+unless res.service_get_list_response.nil?
+  # handle response
+end
+
+```
+### Example Usage: limited
+
+<!-- UsageSnippet language="ruby" operationID="service_get_list_api" method="get" path="/api/service/get/list" example="limited" -->
 ```ruby
 require 'authlete_ruby_sdk'
 

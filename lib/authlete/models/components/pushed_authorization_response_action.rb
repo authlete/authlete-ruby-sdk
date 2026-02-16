@@ -9,8 +9,6 @@ module Authlete
     module Components
       # PushedAuthorizationResponseAction - The next action that the authorization server implementation should take. Any other value other than "CREATED" should be handled as unsuccessful result.
       class PushedAuthorizationResponseAction < T::Enum
-
-
         enums do
           CREATED = new('CREATED')
           BAD_REQUEST = new('BAD_REQUEST')
