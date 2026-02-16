@@ -9,8 +9,6 @@ module Authlete
     module Components
       # TokenBatchStatusResult - The result of the batch operation.
       class TokenBatchStatusResult < T::Enum
-
-
         enums do
           SUCCEEDED = new('SUCCEEDED')
           FAILED = new('FAILED')

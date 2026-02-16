@@ -9,8 +9,6 @@ module Authlete
     module Components
       # FederationConfigurationResponseAction - The next action that the authorization server implementation should take.
       class FederationConfigurationResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           NOT_FOUND = new('NOT_FOUND')

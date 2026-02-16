@@ -14,8 +14,6 @@ module Authlete
       # See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for `prompt` request parameter.
       # 
       class Prompt < T::Enum
-
-
         enums do
           NONE = new('NONE')
           LOGIN = new('LOGIN')

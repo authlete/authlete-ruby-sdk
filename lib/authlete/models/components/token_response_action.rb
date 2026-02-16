@@ -9,8 +9,6 @@ module Authlete
     module Components
       # TokenResponseAction - The next action that the authorization server implementation should take.
       class TokenResponseAction < T::Enum
-
-
         enums do
           INTERNAL_SERVER_ERROR = new('INTERNAL_SERVER_ERROR')
           INVALID_CLIENT = new('INVALID_CLIENT')

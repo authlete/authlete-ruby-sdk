@@ -9,8 +9,6 @@ module Authlete
     module Components
       # BatchKind - The kind of batch operation.
       class BatchKind < T::Enum
-
-
         enums do
           CREATE = new('CREATE')
         end

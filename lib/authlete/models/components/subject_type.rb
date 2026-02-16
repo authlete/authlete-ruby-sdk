@@ -14,8 +14,6 @@ module Authlete
       # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
       # 
       class SubjectType < T::Enum
-
-
         enums do
           PUBLIC = new('PUBLIC')
           PAIRWISE = new('PAIRWISE')

@@ -10,8 +10,6 @@ module Authlete
       # DeviceCompleteResponseAction - The next action that the authorization server implementation should take.
       # 
       class DeviceCompleteResponseAction < T::Enum
-
-
         enums do
           SERVER_ERROR = new('SERVER_ERROR')
           USER_CODE_NOT_EXIST = new('USER_CODE_NOT_EXIST')

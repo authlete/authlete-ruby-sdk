@@ -14,7 +14,7 @@ module Authlete
 
         # An access token.
         # 
-        field :access_token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken'), required: true }, 'form': { 'field_name': 'accessToken' } }
+        field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') }, 'form': { 'field_name': 'accessToken' } }
         # A new date at which the access token will expire in milliseconds since the Unix epoch (1970-01-01).
         # If the `accessTokenExpiresAt` request parameter is not included in a request or its value is 0
         # (or negative), the expiration date of the access token is not changed.
@@ -87,8 +87,8 @@ module Authlete
         # 
         field :token_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenId') }, 'form': { 'field_name': 'tokenId' } }
 
-        sig { params(access_token: ::String, access_token_expires_at: T.nilable(::Integer), scopes: T.nilable(T::Array[::String]), properties: T.nilable(T::Array[Models::Components::Property]), access_token_expires_at_updated_on_scope_update: T.nilable(T::Boolean), access_token_hash: T.nilable(::String), access_token_value_updated: T.nilable(T::Boolean), access_token_persistent: T.nilable(T::Boolean), certificate_thumbprint: T.nilable(::String), dpop_key_thumbprint: T.nilable(::String), authorization_details: T.nilable(Models::Components::AuthzDetails), for_external_attachment: T.nilable(T::Boolean), refresh_token_expires_at: T.nilable(::Integer), refresh_token_expires_at_updated_on_scope_update: T.nilable(T::Boolean), token_id: T.nilable(::String)).void }
-        def initialize(access_token:, access_token_expires_at: nil, scopes: nil, properties: nil, access_token_expires_at_updated_on_scope_update: nil, access_token_hash: nil, access_token_value_updated: nil, access_token_persistent: nil, certificate_thumbprint: nil, dpop_key_thumbprint: nil, authorization_details: nil, for_external_attachment: nil, refresh_token_expires_at: nil, refresh_token_expires_at_updated_on_scope_update: nil, token_id: nil)
+        sig { params(access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), scopes: T.nilable(T::Array[::String]), properties: T.nilable(T::Array[Models::Components::Property]), access_token_expires_at_updated_on_scope_update: T.nilable(T::Boolean), access_token_hash: T.nilable(::String), access_token_value_updated: T.nilable(T::Boolean), access_token_persistent: T.nilable(T::Boolean), certificate_thumbprint: T.nilable(::String), dpop_key_thumbprint: T.nilable(::String), authorization_details: T.nilable(Models::Components::AuthzDetails), for_external_attachment: T.nilable(T::Boolean), refresh_token_expires_at: T.nilable(::Integer), refresh_token_expires_at_updated_on_scope_update: T.nilable(T::Boolean), token_id: T.nilable(::String)).void }
+        def initialize(access_token: nil, access_token_expires_at: nil, scopes: nil, properties: nil, access_token_expires_at_updated_on_scope_update: nil, access_token_hash: nil, access_token_value_updated: nil, access_token_persistent: nil, certificate_thumbprint: nil, dpop_key_thumbprint: nil, authorization_details: nil, for_external_attachment: nil, refresh_token_expires_at: nil, refresh_token_expires_at_updated_on_scope_update: nil, token_id: nil)
           @access_token = access_token
           @access_token_expires_at = access_token_expires_at
           @scopes = scopes

@@ -11,8 +11,6 @@ module Authlete
       # described in the description.
       # 
       class DeviceCompleteRequestResult < T::Enum
-
-
         enums do
           TRANSACTION_FAILED = new('TRANSACTION_FAILED')
           ACCESS_DENIED = new('ACCESS_DENIED')

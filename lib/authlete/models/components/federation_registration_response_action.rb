@@ -9,8 +9,6 @@ module Authlete
     module Components
       # FederationRegistrationResponseAction - The next action that the authorization server implementation should take.
       class FederationRegistrationResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           BAD_REQUEST = new('BAD_REQUEST')

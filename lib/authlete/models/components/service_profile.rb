@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class ServiceProfile < T::Enum
-
-
         enums do
           FAPI = new('FAPI')
           OPEN_BANKING = new('OPEN_BANKING')

@@ -9,8 +9,6 @@ module Authlete
     module Components
       # HskGetResponseAction - Result of the API call
       class HskGetResponseAction < T::Enum
-
-
         enums do
           SUCCESS = new('SUCCESS')
           INVALID_REQUEST = new('INVALID_REQUEST')

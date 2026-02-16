@@ -10,8 +10,6 @@ module Authlete
       # UserCodeCharset - The character set for end-user verification codes (`user_code`) for Device Flow.
       # 
       class UserCodeCharset < T::Enum
-
-
         enums do
           BASE20 = new('BASE20')
           NUMERIC = new('NUMERIC')

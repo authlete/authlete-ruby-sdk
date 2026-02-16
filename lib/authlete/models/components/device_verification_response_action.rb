@@ -9,8 +9,6 @@ module Authlete
     module Components
       # DeviceVerificationResponseAction - The next action that the authorization server implementation should take.
       class DeviceVerificationResponseAction < T::Enum
-
-
         enums do
           INTERNAL_SERVER_ERROR = new('INTERNAL_SERVER_ERROR')
           NOT_EXIST = new('NOT_EXIST')

@@ -11,8 +11,6 @@ module Authlete
       # See the description about `redirectUris` property for more details.
       # 
       class ApplicationType < T::Enum
-
-
         enums do
           WEB = new('WEB')
           NATIVE = new('NATIVE')

@@ -12,8 +12,6 @@ module Authlete
       # a response from Authlete's `/vci/jwtissuer` API.
       # 
       class VciJwtissuerResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           NOT_FOUND = new('NOT_FOUND')

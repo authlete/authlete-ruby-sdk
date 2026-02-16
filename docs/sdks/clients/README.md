@@ -64,9 +64,27 @@ service are returned.
 - ViewClient: []
 
 
-### Example Usage
+### Example Usage: full
 
-<!-- UsageSnippet language="ruby" operationID="client_get_list_api" method="get" path="/api/{serviceId}/client/get/list" -->
+<!-- UsageSnippet language="ruby" operationID="client_get_list_api" method="get" path="/api/{serviceId}/client/get/list" example="full" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+      bearer: '<YOUR_BEARER_TOKEN_HERE>',
+    )
+
+res = s.clients.list(service_id: '<id>')
+
+unless res.client_get_list_response.nil?
+  # handle response
+end
+
+```
+### Example Usage: limited
+
+<!-- UsageSnippet language="ruby" operationID="client_get_list_api" method="get" path="/api/{serviceId}/client/get/list" example="limited" -->
 ```ruby
 require 'authlete_ruby_sdk'
 

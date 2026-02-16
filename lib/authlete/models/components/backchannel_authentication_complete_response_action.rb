@@ -10,8 +10,6 @@ module Authlete
       # BackchannelAuthenticationCompleteResponseAction - The next action that the authorization server implementation should take.
       # 
       class BackchannelAuthenticationCompleteResponseAction < T::Enum
-
-
         enums do
           SERVER_ERROR = new('SERVER_ERROR')
           NO_ACTION = new('NO_ACTION')

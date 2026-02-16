@@ -9,8 +9,6 @@ module Authlete
     module Components
 
       class DeliveryMode < T::Enum
-
-
         enums do
           PING = new('PING')
           POLL = new('POLL')

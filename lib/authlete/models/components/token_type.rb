@@ -11,8 +11,6 @@ module Authlete
       # The API returns short codes (enum constant names) in response fields.
       # 
       class TokenType < T::Enum
-
-
         enums do
           JWT = new('JWT')
           ACCESS_TOKEN = new('ACCESS_TOKEN')

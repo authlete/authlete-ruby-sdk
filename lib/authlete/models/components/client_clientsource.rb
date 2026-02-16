@@ -10,8 +10,6 @@ module Authlete
       # ClientClientSource - Source of this client record.
       # 
       class ClientClientSource < T::Enum
-
-
         enums do
           DYNAMIC_REGISTRATION = new('DYNAMIC_REGISTRATION')
           AUTOMATIC_REGISTRATION = new('AUTOMATIC_REGISTRATION')

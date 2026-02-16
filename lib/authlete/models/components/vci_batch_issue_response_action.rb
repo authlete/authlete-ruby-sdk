@@ -11,8 +11,6 @@ module Authlete
       # endpoint should take.
       # 
       class VciBatchIssueResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           UNAUTHORIZED = new('UNAUTHORIZED')

@@ -9,8 +9,6 @@ module Authlete
     module Components
       # GMResponseAction - The next action that the authorization server implementation should take.
       class GMResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           NO_CONTENT = new('NO_CONTENT')

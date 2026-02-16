@@ -11,8 +11,6 @@ module Authlete
       # For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
       # 
       class AuthorizationFailRequestReason < T::Enum
-
-
         enums do
           UNKNOWN = new('UNKNOWN')
           NOT_LOGGED_IN = new('NOT_LOGGED_IN')

@@ -13,8 +13,6 @@ module Authlete
       # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
       # 
       class GrantManagementAction < T::Enum
-
-
         enums do
           CREATE = new('CREATE')
           QUERY = new('QUERY')

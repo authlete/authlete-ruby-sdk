@@ -9,8 +9,6 @@ module Authlete
     module Components
       # VciOfferCreateResponseAction - The result of the `/vci/offer/create` API call.
       class VciOfferCreateResponseAction < T::Enum
-
-
         enums do
           CREATED = new('CREATED')
           FORBIDDEN = new('FORBIDDEN')

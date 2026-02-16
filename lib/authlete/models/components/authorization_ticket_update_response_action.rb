@@ -9,8 +9,6 @@ module Authlete
     module Components
       # AuthorizationTicketUpdateResponseAction - The result of the /auth/authorization/ticket/info API call.
       class AuthorizationTicketUpdateResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           NOT_FOUND = new('NOT_FOUND')

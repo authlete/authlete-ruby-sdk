@@ -9,8 +9,6 @@ module Authlete
     module Components
       # VciSingleParseResponseAction - The next action that the credential endpoint should take.
       class VciSingleParseResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           BAD_REQUEST = new('BAD_REQUEST')

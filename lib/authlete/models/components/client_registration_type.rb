@@ -12,8 +12,6 @@ module Authlete
       #  [OpenID Connect Federation 1.0](https://openid.net/specs/openid-connect-federation-1_0.html).
       # 
       class ClientRegistrationType < T::Enum
-
-
         enums do
           AUTOMATIC = new('AUTOMATIC')
           EXPLICIT = new('EXPLICIT')

@@ -14,8 +14,6 @@ module Authlete
       #   - as `idTokenEncryptionEnc` value, it refers to the algorithm used by the server to encrypt id_tokens
       # 
       class JweEnc < T::Enum
-
-
         enums do
           A128_CBC_HS256 = new('A128CBC_HS256')
           A192_CBC_HS384 = new('A192CBC_HS384')

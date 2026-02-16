@@ -9,8 +9,6 @@ module Authlete
     module Components
       # VciBatchParseResponseAction - The next action that the batch credential endpoint should take.
       class VciBatchParseResponseAction < T::Enum
-
-
         enums do
           OK = new('OK')
           BAD_REQUEST = new('BAD_REQUEST')

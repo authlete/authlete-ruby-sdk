@@ -9,8 +9,6 @@ module Authlete
     module Components
       # BackchannelAuthenticationIssueResponseAction - The next action that the authorization server implementation should take.
       class BackchannelAuthenticationIssueResponseAction < T::Enum
-
-
         enums do
           INTERNAL_SERVER_ERROR = new('INTERNAL_SERVER_ERROR')
           INVALID_TICKET = new('INVALID_TICKET')
