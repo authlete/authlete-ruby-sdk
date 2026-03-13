@@ -15,7 +15,9 @@ module PkceHelper
 end
 
 # =============================================================================
-# Standard service — no PKCE enforcement
+# Standard service — PKCE is optional (clients may use it or skip it).
+# These tests verify that PKCE works correctly when a client voluntarily uses it,
+# and that a mismatched code_verifier is rejected at the token endpoint.
 # =============================================================================
 
 class PkceFlowTest < Minitest::Test
