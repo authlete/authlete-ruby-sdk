@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'digest'
-require_relative '../test_helper'
+require_relative 'test_helper'
 
 module PkceHelper
   def generate_code_verifier

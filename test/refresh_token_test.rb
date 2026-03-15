@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../test_helper'
+require_relative 'test_helper'
 
 # Shared helper for running the authorization code flow through to a token response.
 module AuthCodeFlowHelper

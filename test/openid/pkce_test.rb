@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'digest'
-require_relative '../../test_helper'
+require_relative '../test_helper'
 require_relative 'openid_helper'
 
 # =============================================================================

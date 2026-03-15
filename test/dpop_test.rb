@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../test_helper'
+require_relative 'test_helper'
 
 # =============================================================================
 # Standard service — DPoP is optional (clients may use it or skip it).

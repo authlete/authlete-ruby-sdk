@@ -16,7 +16,7 @@ task :default => :test
 
 Minitest::TestTask.create(:integration) do |t|
   t.warning = false
-  t.test_globs = ['test/integration/**/*_test.rb']
+  t.test_globs = ['test/**/*_test.rb']
 end
 
 # Developers can run all tests with:
