@@ -11,26 +11,21 @@ require_relative 'openid_helper'
 # =============================================================================
 
 class OidcDpopFlowTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
   include OidcHelper
   include DpopHelper
 
   def setup
-    service = idp_create_oidc_service(
-      'tokenEndpoint' => DpopHelper::TOKEN_ENDPOINT
-    )
-
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    setup_oidc_service(@sdk, @service_id, token_endpoint: TOKEN_ENDPOINT)
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   def test_dpop_oidc_flow

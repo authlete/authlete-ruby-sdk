@@ -8,6 +8,12 @@ class AuthGrantFlowTest < Minitest::Test
   def setup
     @service_id    = SERVICE_ID
     @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(
+        access_token_duration: TOKEN_DURATION_SECONDS
+      )
+    )
     @client        = create_test_client(@sdk, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret

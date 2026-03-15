@@ -13,6 +13,12 @@ class ParFlowTest < Minitest::Test
   def setup
     @service_id    = SERVICE_ID
     @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(
+        access_token_duration: TOKEN_DURATION_SECONDS
+      )
+    )
     @client        = create_test_client(@sdk, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
@@ -129,7 +135,9 @@ class ParRequiredTest < Minitest::Test
     @sdk           = create_sdk_client(SERVICE_TOKEN)
     @sdk.services.update(
       service_id: @service_id,
-      service: Authlete::Models::Components::ServiceInput.new(par_required: true)
+      service: Authlete::Models::Components::ServiceInput.new(
+        par_required: true, access_token_duration: TOKEN_DURATION_SECONDS
+      )
     )
     @client        = create_test_client(@sdk, @service_id)
     @client_id     = @client.client_id.to_s
@@ -140,7 +148,9 @@ class ParRequiredTest < Minitest::Test
     @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
     @sdk.services.update(
       service_id: @service_id,
-      service: Authlete::Models::Components::ServiceInput.new(par_required: false)
+      service: Authlete::Models::Components::ServiceInput.new(
+        par_required: false, access_token_duration: TOKEN_DURATION_SECONDS
+      )
     )
   end
 

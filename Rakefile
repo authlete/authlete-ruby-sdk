@@ -10,30 +10,20 @@ RuboCop::RakeTask.new
 Minitest::TestTask.create do |t|
   # workaround to avoid throwing warnings from Janeway library circular require...
   t.warning = false
+  t.test_globs = ['test/**/*_test.rb']
 end
 
 task :default => :test
 
-Minitest::TestTask.create(:integration) do |t|
-  t.warning = false
-  t.test_globs = ['test/**/*_test.rb']
-end
-
-# Developers can run all tests with:
+# Run all tests:
 #
-# $ rake test
+# $ API_BASE_URL="https://api.authlete.local" \
+#   SERVICE_ID="<service-id>" \
+#   SERVICE_TOKEN="<service-access-token>" \
+#   rake test
 #
-# Developers can run individual test files with:
+# Local dev only — prepend SSL_CERT_FILE="$(mkcert -CAROOT)/rootCA.pem"
 #
-# $ rake test test/parameter_test
+# Run a single file:
 #
-# and run individual tests by adding `focus` to the line before the test definition.
-#
-# Run integration tests (requires running local-dev environment):
-#
-# $ SSL_CERT_FILE="$(mkcert -CAROOT)/rootCA.pem" \
-#   IDP_BASE_URL="https://idp.authlete.local" \
-#   API_BASE_URL="https://api.authlete.local" \
-#   AUTHLETE_ORG_TOKEN="<org-token>" \
-#   ORG_ID="1" API_SERVER_ID="1" \
-#   rake integration
+# $ bundle exec ruby -Itest test/auth_grant_test.rb

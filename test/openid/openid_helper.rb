@@ -17,31 +17,32 @@ module OidcHelper
     { jwks: JSON.generate({ 'keys' => [jwk] }), kid: kid }
   end
 
+  # Updates the service with OIDC settings (issuer, JWKS, id_token signing key).
+  # Optionally sets token_endpoint for DPoP tests.
+  def setup_oidc_service(sdk, service_id, token_endpoint: nil)
+    jwks_info = generate_rsa_jwks
+    @oidc_jwks_info = jwks_info
+
+    sdk.services.update(
+      service_id: service_id,
+      service: Authlete::Models::Components::ServiceInput.new(
+        issuer:                    'https://as.example.com',
+        jwks:                      jwks_info[:jwks],
+        id_token_signature_key_id: jwks_info[:kid],
+        token_endpoint:            token_endpoint,
+        access_token_duration:     TOKEN_DURATION_SECONDS,
+        supported_scopes: [
+          Authlete::Models::Components::Scope.new(name: 'openid', default_entry: false)
+        ]
+      )
+    )
+  end
+
   # Decodes the payload segment of a JWT without verifying the signature.
   def decode_jwt_payload(jwt)
     segment = jwt.split('.')[1]
     padded  = segment + '=' * ((4 - segment.length % 4) % 4)
     JSON.parse(Base64.urlsafe_decode64(padded))
-  end
-
-  # Creates a service via IDP pre-configured for OIDC (issuer + JWKS).
-  def idp_create_oidc_service(extra_params = {})
-    jwks_info = generate_rsa_jwks
-    @oidc_jwks_info = jwks_info
-
-    idp_create_service({
-      'issuer'                 => 'https://as.example.com',
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'supportedScopes'        => [
-        { 'name' => 'openid',  'defaultEntry' => false },
-        { 'name' => 'profile', 'defaultEntry' => false }
-      ],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600,
-      'jwks'                   => jwks_info[:jwks],
-      'idTokenSignatureKeyId'  => jwks_info[:kid]
-    }.merge(extra_params))
   end
 
   # Asserts the standard OIDC claims on a decoded id_token payload.

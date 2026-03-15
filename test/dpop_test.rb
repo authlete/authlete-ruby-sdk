@@ -18,7 +18,8 @@ class DpopFlowTest < Minitest::Test
     @sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
-        token_endpoint: TOKEN_ENDPOINT
+        token_endpoint:        TOKEN_ENDPOINT,
+        access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
     @client        = create_test_client(@sdk, @service_id)
@@ -220,7 +221,8 @@ class DpopRequiredTest < Minitest::Test
     @sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
-        token_endpoint: TOKEN_ENDPOINT
+        token_endpoint:        TOKEN_ENDPOINT,
+        access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
 

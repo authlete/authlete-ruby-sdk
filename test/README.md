@@ -1,38 +1,52 @@
 # Integration Tests
 
-Requires a running local-dev environment (`authlete-dev`).
+Requires a running local-dev environment (`authlete-dev`) and a pre-existing
+Authlete service with a service access token. Tests run sequentially and share
+a single service — each test creates and deletes its own OAuth client, and
+updates the service settings it needs in `setup`/`teardown`.
 
-## Setup
+## Prerequisites
+
+1. Local-dev environment is running (`authlete-dev`)
+2. A service has been created in the Authlete console
+3. A service access token has been generated for that service in the console
 
 ```bash
 bundle install
 ```
 
-## Run
+## Run all tests
 
 ```bash
-SSL_CERT_FILE="$(mkcert -CAROOT)/rootCA.pem" \
-IDP_BASE_URL="https://login.authlete.local" \
 API_BASE_URL="https://api.authlete.local" \
-AUTHLETE_ORG_TOKEN="<org-token>" \
-ORG_ID="<org-id>" \
-API_SERVER_ID="<api-server-id>" \
-bundle exec rake integration
+  SERVICE_ID="<service-id>" \
+  SERVICE_TOKEN="<service-access-token>" \
+  bundle exec rake test
+```
+
+## Run a single file
+
+```bash
+API_BASE_URL="https://api.authlete.local" \
+  SERVICE_ID="<service-id>" \
+  SERVICE_TOKEN="<service-access-token>" \
+  bundle exec ruby -Itest test/auth_grant_test.rb
 ```
 
 Add `-v` for verbose per-test output:
 
 ```bash
-bundle exec ruby -Ilib:test test/integration/auth_grant_flow_test.rb -v
+bundle exec ruby -Itest test/auth_grant_test.rb -v
 ```
 
-## Environment Variables
+## Environment variables
 
-| Variable | Description |
-|---|---|
-| `SSL_CERT_FILE` | Path to mkcert root CA (`$(mkcert -CAROOT)/rootCA.pem`) |
-| `IDP_BASE_URL` | IDP base URL (e.g. `https://login.authlete.local`) |
-| `API_BASE_URL` | Authlete API server URL (e.g. `https://api.authlete.local`) |
-| `AUTHLETE_ORG_TOKEN` | Organization bearer token |
-| `ORG_ID` | Organization ID |
-| `API_SERVER_ID` | API server ID |
+| Variable | Required | Description |
+|---|---|---|
+| `API_BASE_URL` | Yes | Authlete API server URL — e.g. `https://api.authlete.local` |
+| `SERVICE_ID` | Yes | Numeric ID of the pre-existing service |
+| `SERVICE_TOKEN` | Yes | Service access token issued for that service |
+
+> **Local dev only:** if running against the local-dev environment (mkcert TLS),
+> prepend `SSL_CERT_FILE="$(mkcert -CAROOT)/rootCA.pem"` to the command.
+

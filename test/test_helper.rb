@@ -22,9 +22,10 @@ ORG_ID        = ENV.fetch('ORG_ID',  '0').to_i
 API_SERVER_ID = ENV.fetch('API_SERVER_ID', '0').to_i
 
 # OAuth flow constants
-REDIRECT_URI = 'https://client.example.com/callback'
-STATE        = 'testState'
-SUBJECT      = 'testuser'
+REDIRECT_URI           = 'https://client.example.com/callback'
+STATE                  = 'testState'
+SUBJECT                = 'testuser'
+TOKEN_DURATION_SECONDS = 600 # 10 minutes — long enough for any test to complete
 
 module DpopHelper
   TOKEN_ENDPOINT = 'https://as.example.com/token'
