@@ -2,9 +2,6 @@
 
 require_relative 'test_helper'
 
-SERVICE_ID    = ENV.fetch('SERVICE_ID')
-SERVICE_TOKEN = ENV.fetch('SERVICE_TOKEN')
-
 class AuthGrantFlowTest < Minitest::Test
   include SdkHelper
 

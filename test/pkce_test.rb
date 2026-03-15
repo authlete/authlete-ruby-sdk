@@ -21,28 +21,19 @@ end
 # =============================================================================
 
 class PkceFlowTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
   include PkceHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'   => %w[AUTHORIZATION_CODE REFRESH_TOKEN],
-      'supportedResponseTypes' => %w[CODE],
-      'supportedScopes'       => [{ 'name' => 'profile', 'defaultEntry' => false }],
-      'accessTokenDuration'   => 600,
-      'refreshTokenDuration'  => 600
-    )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # S256 happy path: code_verifier verified at token endpoint
@@ -54,7 +45,7 @@ class PkceFlowTest < Minitest::Test
     # Step 1: Authorization request with code_challenge + S256
     parameters = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}" \
-                 "&state=#{STATE}&scope=profile" \
+                 "&state=#{STATE}" \
                  "&code_challenge=#{code_challenge}&code_challenge_method=S256"
 
     auth_resp = @sdk.authorization.process_request(
@@ -103,7 +94,7 @@ class PkceFlowTest < Minitest::Test
 
     parameters = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}" \
-                 "&state=#{STATE}&scope=profile" \
+                 "&state=#{STATE}" \
                  "&code_challenge=#{code_verifier}&code_challenge_method=plain"
 
     auth_resp = @sdk.authorization.process_request(
@@ -191,28 +182,27 @@ end
 # =============================================================================
 
 class PkceRequiredTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
   include PkceHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600,
-      'pkceRequired'           => true
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(pkce_required: true)
     )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(pkce_required: false)
+    )
   end
 
   # Auth request without code_challenge must be rejected
@@ -281,28 +271,27 @@ end
 # =============================================================================
 
 class PkceS256RequiredTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
   include PkceHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600,
-      'pkceS256Required'       => true
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(pkce_s256_required: true)
     )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(pkce_s256_required: false)
+    )
   end
 
   # plain method must be rejected when S256 is required

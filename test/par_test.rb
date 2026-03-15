@@ -8,26 +8,18 @@ require_relative 'test_helper'
 # =============================================================================
 
 class ParFlowTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600
-    )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Core SDK integration test: PAR success path
@@ -130,27 +122,26 @@ end
 # =============================================================================
 
 class ParRequiredTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600,
-      'parRequired'            => true
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(par_required: true)
     )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(par_required: false)
+    )
   end
 
   # A direct authorization request (without PAR) must be rejected when parRequired=true
