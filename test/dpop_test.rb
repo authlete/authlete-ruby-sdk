@@ -9,28 +9,25 @@ require_relative 'test_helper'
 # =============================================================================
 
 class DpopFlowTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
   include DpopHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600,
-      'tokenEndpoint'          => DpopHelper::TOKEN_ENDPOINT
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(
+        token_endpoint: TOKEN_ENDPOINT
+      )
     )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
-    @client          = create_test_client(@sdk, @service_id)
-    @client_id       = @client.client_id.to_s
-    @client_secret   = @client.client_secret
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
+    @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Core DPoP success path: token endpoint accepts DPoP proof and issues a
@@ -214,39 +211,43 @@ end
 # =============================================================================
 
 class DpopRequiredTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
   include DpopHelper
 
   def setup
-    service = idp_create_service(
-      'supportedGrantTypes'    => %w[AUTHORIZATION_CODE],
-      'supportedResponseTypes' => %w[CODE],
-      'accessTokenDuration'    => 600,
-      'refreshTokenDuration'   => 600,
-      'tokenEndpoint'          => DpopHelper::TOKEN_ENDPOINT
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @sdk.services.update(
+      service_id: @service_id,
+      service: Authlete::Models::Components::ServiceInput.new(
+        token_endpoint: TOKEN_ENDPOINT
+      )
     )
-    @service_api_key = service['apiKey']
-    @service_id      = @service_api_key.to_s
-    @sdk             = create_sdk_client(ORG_TOKEN)
 
     # Create a client with dpop_required: true
-    client_input = Authlete::Models::Components::ClientInput.new(
-      client_name:    "ruby-sdk-test-dpop-required-#{Time.now.to_i}",
-      client_type:    Authlete::Models::Components::ClientType::CONFIDENTIAL,
-      grant_types:    [Authlete::Models::Components::GrantType::AUTHORIZATION_CODE],
-      response_types: [Authlete::Models::Components::ResponseType::CODE],
-      redirect_uris:  [REDIRECT_URI],
-      dpop_required:  true
-    )
-    resp = @sdk.clients.create(service_id: @service_id, client: client_input)
+    begin
+      resp = @sdk.clients.create(
+        service_id: @service_id,
+        client: Authlete::Models::Components::ClientInput.new(
+          client_name:    "ruby-sdk-test-dpop-required-#{Time.now.to_i}",
+          client_type:    Authlete::Models::Components::ClientType::CONFIDENTIAL,
+          grant_types:    [Authlete::Models::Components::GrantType::AUTHORIZATION_CODE],
+          response_types: [Authlete::Models::Components::ResponseType::CODE],
+          redirect_uris:  [REDIRECT_URI],
+          dpop_required:  true
+        )
+      )
+    rescue Authlete::Models::Errors::ResultError => e
+      raise "Client creation failed [#{e.result_code}]: #{e.result_message}"
+    end
+
     @client        = resp.client
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Token request without a DPoP proof must be rejected when dpopRequired=true.
