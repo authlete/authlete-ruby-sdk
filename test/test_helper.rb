@@ -10,12 +10,14 @@ require 'securerandom'
 require 'digest'
 require 'authlete_ruby_sdk'
 
-# IDP and environment configuration
-IDP_BASE_URL   = ENV.fetch('IDP_BASE_URL')
-API_BASE_URL   = ENV.fetch('API_BASE_URL')
-ORG_TOKEN      = ENV.fetch('AUTHLETE_ORG_TOKEN')
-ORG_ID         = ENV.fetch('ORG_ID').to_i
-API_SERVER_ID  = ENV.fetch('API_SERVER_ID').to_i
+# Environment configuration
+API_BASE_URL  = ENV.fetch('API_BASE_URL')
+
+# IDP-related — only required for tests that manage service lifecycle via the IDP
+IDP_BASE_URL  = ENV.fetch('IDP_BASE_URL',        nil)
+ORG_TOKEN     = ENV.fetch('AUTHLETE_ORG_TOKEN',  nil)
+ORG_ID        = ENV.fetch('ORG_ID',  '0').to_i
+API_SERVER_ID = ENV.fetch('API_SERVER_ID', '0').to_i
 
 # OAuth flow constants
 REDIRECT_URI = 'https://client.example.com/callback'
@@ -168,10 +170,14 @@ module SdkHelper
       redirect_uris: [REDIRECT_URI]
     )
 
-    resp = sdk_client.clients.create(
-      service_id: service_id.to_s,
-      client: client_input
-    )
+    begin
+      resp = sdk_client.clients.create(
+        service_id: service_id.to_s,
+        client: client_input
+      )
+    rescue Authlete::Models::Errors::ResultError => e
+      raise "Client creation failed [#{e.result_code}]: #{e.result_message}"
+    end
 
     resp.client
   end

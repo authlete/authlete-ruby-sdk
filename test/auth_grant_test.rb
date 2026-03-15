@@ -2,36 +2,22 @@
 
 require_relative 'test_helper'
 
+SERVICE_ID    = ENV.fetch('SERVICE_ID')
+SERVICE_TOKEN = ENV.fetch('SERVICE_TOKEN')
+
 class AuthGrantFlowTest < Minitest::Test
-  include IdpHelper
   include SdkHelper
 
   def setup
-    # 1. Create a service via the IDP with auth code + refresh token support
-    service = idp_create_service(
-      'supportedGrantTypes' => %w[AUTHORIZATION_CODE REFRESH_TOKEN],
-      'supportedResponseTypes' => %w[CODE],
-      'supportedScopes' => [{ 'name' => 'profile', 'defaultEntry' => false }],
-      'accessTokenDuration' => 600,
-      'refreshTokenDuration' => 600
-    )
-
-    @service_api_key = service['apiKey']
-    @service_id = @service_api_key.to_s
-
-    # 2. Initialize the Ruby SDK client with the org token.
-    #    The org token's authorization details are updated server-side
-    #    when a service is created, so it has USE_SERVICE access.
-    @sdk = create_sdk_client(ORG_TOKEN)
-
-    # 3. Create an OAuth client via the SDK
-    @client = create_test_client(@sdk, @service_id)
-    @client_id = @client.client_id.to_s
+    @service_id    = SERVICE_ID
+    @sdk           = create_sdk_client(SERVICE_TOKEN)
+    @client        = create_test_client(@sdk, @service_id)
+    @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    idp_delete_service(@service_api_key) if @service_api_key
+    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   def test_authorization_code_flow
@@ -39,7 +25,7 @@ class AuthGrantFlowTest < Minitest::Test
     encoded_redirect = URI.encode_www_form_component(REDIRECT_URI)
     parameters = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}" \
-                 "&state=#{STATE}&scope=profile"
+                 "&state=#{STATE}"
 
     auth_request = Authlete::Models::Components::AuthorizationRequest.new(
       parameters: parameters
@@ -73,20 +59,17 @@ class AuthGrantFlowTest < Minitest::Test
     auth_code = issue_resp.authorization_code
     refute_nil auth_code, 'Authorization code must not be nil'
 
-    # Verify the redirect contains code and state
     assert_includes issue_resp.response_content, 'code=',
       'Response content must contain code='
     assert_includes issue_resp.response_content, "state=#{STATE}",
       'Response content must contain state='
 
     # --- Step 3: Token Request ---
-    token_parameters = "grant_type=authorization_code" \
-                       "&code=#{auth_code}" \
-                       "&redirect_uri=#{encoded_redirect}"
-
     token_request = Authlete::Models::Components::TokenRequest.new(
-      parameters: token_parameters,
-      client_id: @client_id,
+      parameters:    "grant_type=authorization_code" \
+                     "&code=#{auth_code}" \
+                     "&redirect_uri=#{encoded_redirect}",
+      client_id:     @client_id,
       client_secret: @client_secret
     )
     response = @sdk.tokens.process_request(
@@ -116,8 +99,8 @@ class AuthGrantFlowTest < Minitest::Test
 
     # --- Step 5: Revocation ---
     revocation_request = Authlete::Models::Components::RevocationRequest.new(
-      parameters: "token=#{access_token}",
-      client_id: @client_id,
+      parameters:    "token=#{access_token}",
+      client_id:     @client_id,
       client_secret: @client_secret
     )
     response = @sdk.revocation.process_request(
