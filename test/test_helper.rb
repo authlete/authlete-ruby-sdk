@@ -157,6 +157,18 @@ module SdkHelper
     )
   end
 
+  # Introspects an access token and asserts it is valid (action == OK).
+  def assert_token_valid(sdk, service_id, access_token)
+    intro_resp = sdk.introspection.process_request(
+      service_id: service_id,
+      introspection_request: Authlete::Models::Components::IntrospectionRequest.new(
+        token: access_token
+      )
+    ).introspection_response
+    assert_equal 'OK', intro_resp.action.serialize,
+      "Expected OK for introspection, got #{intro_resp.action}: #{intro_resp.result_message}"
+  end
+
   # Create a confidential OAuth client on the given service via the SDK.
   # Returns the Client object from the SDK response.
   def create_test_client(sdk_client, service_id)

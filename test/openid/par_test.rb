@@ -98,5 +98,8 @@ class OidcParFlowTest < Minitest::Test
       expected_nonce:     nonce,
       expected_client_id: @client_id
     )
+
+    # Step 6: Introspect the access token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 end

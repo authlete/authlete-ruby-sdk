@@ -99,6 +99,7 @@ class ParFlowTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 
   # SDK error-handling test: omitting client_secret for a confidential client
@@ -229,5 +230,6 @@ class ParRequiredTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 end

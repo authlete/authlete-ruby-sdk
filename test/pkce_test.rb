@@ -91,6 +91,7 @@ class PkceFlowTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 
   # plain happy path: code_challenge == code_verifier
@@ -136,6 +137,7 @@ class PkceFlowTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 
   # A mismatched code_verifier must be rejected at the token endpoint
@@ -273,6 +275,7 @@ class PkceRequiredTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 end
 
@@ -370,5 +373,6 @@ class PkceS256RequiredTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
+    assert_token_valid(@sdk, @service_id, token_resp.access_token)
   end
 end
