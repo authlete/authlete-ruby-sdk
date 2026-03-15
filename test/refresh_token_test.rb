@@ -104,9 +104,16 @@ class RefreshTokenFlowTest < Minitest::Test
       "Expected OK for refresh token exchange, got #{refresh_resp.action}: #{refresh_resp.result_message}"
     refute_nil refresh_resp.access_token, 'New access token must be issued on refresh'
 
-    # NOTE: Introspecting the refreshed access token is skipped due to BUG-001.
-    # The Crystalline deserializer crashes on null array elements in the introspection
-    # response for tokens issued via refresh token exchange. See test/bugs.md.
+    # Introspect the new access token.
+    intro_resp = @sdk.introspection.process_request(
+      service_id: @service_id,
+      introspection_request: Authlete::Models::Components::IntrospectionRequest.new(
+        token: refresh_resp.access_token
+      )
+    ).introspection_response
+
+    assert_equal 'OK', intro_resp.action.serialize,
+      "Expected OK for introspection of refreshed access token, got #{intro_resp.action}"
   end
 
   # Revoking a refresh token must succeed
