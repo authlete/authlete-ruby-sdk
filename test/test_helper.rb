@@ -15,6 +15,10 @@ API_BASE_URL  = ENV.fetch('API_BASE_URL')
 SERVICE_ID    = ENV.fetch('SERVICE_ID',    nil)
 SERVICE_TOKEN = ENV.fetch('SERVICE_TOKEN', nil)
 
+# Management token — used for services.update, clients.create, clients.destroy.
+# Falls back to SERVICE_TOKEN if ORG_TOKEN is not set.
+MGMT_TOKEN = ENV.fetch('ORG_TOKEN', SERVICE_TOKEN)
+
 # IDP-related — only required for tests that manage service lifecycle via the IDP
 IDP_BASE_URL  = ENV.fetch('IDP_BASE_URL',        nil)
 ORG_TOKEN     = ENV.fetch('AUTHLETE_ORG_TOKEN',  nil)

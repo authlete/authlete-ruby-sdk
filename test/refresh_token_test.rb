@@ -57,8 +57,9 @@ class RefreshTokenFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
+    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
     @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @sdk.services.update(
+    @mgmt_sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         supported_grant_types: [
@@ -69,13 +70,13 @@ class RefreshTokenFlowTest < Minitest::Test
         refresh_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@sdk, @service_id)
+    @client        = create_test_client(@mgmt_sdk, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # A refresh token must be issued alongside the access token
@@ -147,8 +148,9 @@ class RefreshTokenNotSupportedTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
+    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
     @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @sdk.services.update(
+    @mgmt_sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         supported_grant_types: [
@@ -158,14 +160,14 @@ class RefreshTokenNotSupportedTest < Minitest::Test
         refresh_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@sdk, @service_id)
+    @client        = create_test_client(@mgmt_sdk, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
-    @sdk.services.update(
+    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         supported_grant_types: [

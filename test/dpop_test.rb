@@ -14,21 +14,22 @@ class DpopFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
+    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
     @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @sdk.services.update(
+    @mgmt_sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         token_endpoint:        TOKEN_ENDPOINT,
         access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@sdk, @service_id)
+    @client        = create_test_client(@mgmt_sdk, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Core DPoP success path: token endpoint accepts DPoP proof and issues a
@@ -217,8 +218,9 @@ class DpopRequiredTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
+    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
     @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @sdk.services.update(
+    @mgmt_sdk.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         token_endpoint:        TOKEN_ENDPOINT,
@@ -228,7 +230,7 @@ class DpopRequiredTest < Minitest::Test
 
     # Create a client with dpop_required: true
     begin
-      resp = @sdk.clients.create(
+      resp = @mgmt_sdk.clients.create(
         service_id: @service_id,
         client: Authlete::Models::Components::ClientInput.new(
           client_name:    "ruby-sdk-test-dpop-required-#{Time.now.to_i}",
@@ -249,7 +251,7 @@ class DpopRequiredTest < Minitest::Test
   end
 
   def teardown
-    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Token request without a DPoP proof must be rejected when dpopRequired=true.

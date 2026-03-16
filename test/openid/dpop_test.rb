@@ -17,15 +17,16 @@ class OidcDpopFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
+    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
     @sdk           = create_sdk_client(SERVICE_TOKEN)
-    setup_oidc_service(@sdk, @service_id, token_endpoint: TOKEN_ENDPOINT)
-    @client        = create_test_client(@sdk, @service_id)
+    setup_oidc_service(@mgmt_sdk, @service_id, token_endpoint: TOKEN_ENDPOINT)
+    @client        = create_test_client(@mgmt_sdk, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   def test_dpop_oidc_flow
