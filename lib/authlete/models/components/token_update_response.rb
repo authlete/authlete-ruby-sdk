@@ -17,36 +17,36 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::TokenUpdateResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::TokenUpdateResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::TokenUpdateResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenUpdateResponseAction, true) } }
         # The access token which has been specified by the request.
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
         # The date at which the access token will expire.
-        # 
+        #
         field :access_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAt') } }
         # The extra properties associated with the access token.
-        # 
+        #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
         # The scopes associated with the access token.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The token type associated with the access token.
-        # 
+        #
         field :token_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenType') } }
         # the flag which indicates whether the access token is for an external
         # attachment.
-        # 
+        #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') } }
         # Set the unique token identifier.
-        # 
+        #
         field :token_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenId') } }
         # The datetime at which the newly issued refresh token will expire.
         # The value is represented in milliseconds since the Unix epoch (1970-01-01).
-        # 
+        #
         field :refresh_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAt') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::TokenUpdateResponseAction), access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), properties: T.nilable(T::Array[Models::Components::Property]), scopes: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), token_type: T.nilable(::String), for_external_attachment: T.nilable(T::Boolean), token_id: T.nilable(::String), refresh_token_expires_at: T.nilable(::Integer)).void }

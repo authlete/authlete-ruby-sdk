@@ -19,11 +19,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.authorization_management.ticket_info(service_id: '<id>', authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest.new(
-  ticket: '<value>',
+  ticket: '<value>'
 ))
 
 unless res.authorization_ticket_info_response.nil?
@@ -63,12 +62,11 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.authorization_management.update_ticket(service_id: '<id>', authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest.new(
   ticket: '<value>',
-  info: '<value>',
+  info: '<value>'
 ))
 
 unless res.authorization_ticket_update_response.nil?

@@ -17,12 +17,12 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the batch credential endpoint should take.
-        field :action, Crystalline::Nilable.new(Models::Components::VciBatchParseResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::VciBatchParseResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::VciBatchParseResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciBatchParseResponseAction, true) } }
         # The content of the response to the request sender.
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # Information about the credential requests in the batch credential
         # request.
-        # 
+        #
         field :info, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CredentialRequestInfo)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::VciBatchParseResponseAction), response_content: T.nilable(::String), info: T.nilable(T::Array[Models::Components::CredentialRequestInfo])).void }

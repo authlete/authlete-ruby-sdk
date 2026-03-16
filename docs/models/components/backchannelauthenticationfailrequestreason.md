@@ -5,6 +5,14 @@ not mandatory but optional. However, giving this parameter is recommended. If om
 is used as a reason.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = BackchannelAuthenticationFailRequestReason::ACCESS_DENIED
+```
+
 
 ## Values
 

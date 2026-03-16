@@ -9,7 +9,7 @@ module Authlete
     module Components
       # DeviceCompleteRequestResult - The result of the end-user authentication and authorization. One of the following. Details are
       # described in the description.
-      # 
+      #
       class DeviceCompleteRequestResult < T::Enum
         enums do
           TRANSACTION_FAILED = new('TRANSACTION_FAILED')

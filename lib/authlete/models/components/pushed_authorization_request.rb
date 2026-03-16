@@ -13,44 +13,44 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The pushed authorization request body received from the client application.
-        # 
+        #
         # The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from
         # the client application.
-        # 
+        #
         field :parameters, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('parameters'), required: true }, 'form': { 'field_name': 'parameters' } }
         # The client ID extracted from `Authorization` header of the pushed request from the client application.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') }, 'form': { 'field_name': 'clientId' } }
         # The client secret extracted from `Authorization` header of the pushed authorization request from the client application.
-        # 
+        #
         field :client_secret, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientSecret') }, 'form': { 'field_name': 'clientSecret' } }
         # The client certificate from the MTLS connection to pushed authorization endpoint from the client application.
         field :client_certificate, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientCertificate') }, 'form': { 'field_name': 'clientCertificate' } }
         # The certificate path presented by the client during client authentication. These certificates are strings in PEM format.
-        # 
+        #
         field :client_certificate_path, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientCertificatePath') }, 'form': { 'field_name': 'clientCertificatePath' } }
         # DPoP Header
-        # 
+        #
         field :dpop, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpop') }, 'form': { 'field_name': 'dpop' } }
         # HTTP Method (for DPoP validation).
-        # 
+        #
         field :htm, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htm') }, 'form': { 'field_name': 'htm' } }
         # HTTP URL base (for DPoP validation).
-        # 
+        #
         field :htu, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htu') }, 'form': { 'field_name': 'htu' } }
         # The value of the `OAuth-Client-Attestation` HTTP header, which is defined in the specification
         # of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).
-        # 
+        #
         field :oauth_client_attestation, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('oauthClientAttestation') }, 'form': { 'field_name': 'oauthClientAttestation' } }
         # The value of the `OAuth-Client-Attestation-PoP` HTTP header, which is defined in the specification
         # of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).
-        # 
+        #
         field :oauth_client_attestation_pop, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('oauthClientAttestationPop') }, 'form': { 'field_name': 'oauthClientAttestationPop' } }
         # The flag indicating whether to require the DPoP proof JWT to include the `nonce` claim. Even if
         # the service's `dpopNonceRequired` property is `false`, calling the `/pushed_auth_req` API with
         # this `dpopNonceRequired` parameter `true` will force the Authlete API to check whether the DPoP
         # proof JWT includes the expected `nonce` value.
-        # 
+        #
         field :dpop_nonce_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonceRequired') }, 'form': { 'field_name': 'dpopNonceRequired' } }
 
         sig { params(parameters: ::String, client_id: T.nilable(::String), client_secret: T.nilable(::String), client_certificate: T.nilable(::String), client_certificate_path: T.nilable(T::Array[::String]), dpop: T.nilable(::String), htm: T.nilable(::String), htu: T.nilable(::String), oauth_client_attestation: T.nilable(::String), oauth_client_attestation_pop: T.nilable(::String), dpop_nonce_required: T.nilable(T::Boolean)).void }

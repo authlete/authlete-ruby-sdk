@@ -17,7 +17,7 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # Result of the API call
-        field :action, Crystalline::Nilable.new(Models::Components::HskGetListResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::HskGetListResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::HskGetListResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::HskGetListResponseAction, true) } }
         # List of HSK
         field :hsks, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Hsk)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('hsks') } }
 

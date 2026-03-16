@@ -4,6 +4,14 @@ The reason of the failure of the authorization request.
 For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = AuthorizationFailRequestReason::UNKNOWN
+```
+
 
 ## Values
 

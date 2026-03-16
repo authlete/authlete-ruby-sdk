@@ -21,28 +21,28 @@ module Authlete
         # The timestamp at which the refresh token will expire.
         field :refresh_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAt') } }
         # The timestamp at which the access token was first created.
-        # 
+        #
         field :created_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('createdAt') } }
         # The timestamp at which the access token was last refreshed using the refresh token.
-        # 
+        #
         field :last_refreshed_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('lastRefreshedAt') } }
         # The ID of the client associated with the access token.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The subject (= unique user ID) associated with the access token.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The grant type of the access token when the access token was created.
-        # 
-        field :grant_type, Crystalline::Nilable.new(Models::Components::GrantType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantType'), 'decoder': Utils.enum_from_string(Models::Components::GrantType, true) } }
+        #
+        field :grant_type, Crystalline::Nilable.new(Models::Components::GrantType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GrantType, true) } }
         # The scopes associated with the access token.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The properties associated with the access token.
-        # 
+        #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
         # The scopes associated with the refresh token.
-        # 
+        #
         field :refresh_token_scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenScopes') } }
 
         sig { params(access_token_hash: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), refresh_token_hash: T.nilable(::String), refresh_token_expires_at: T.nilable(::Integer), created_at: T.nilable(::Integer), last_refreshed_at: T.nilable(::Integer), client_id: T.nilable(::Integer), subject: T.nilable(::String), grant_type: T.nilable(Models::Components::GrantType), scopes: T.nilable(T::Array[::String]), properties: T.nilable(T::Array[Models::Components::Property]), refresh_token_scopes: T.nilable(T::Array[::String])).void }

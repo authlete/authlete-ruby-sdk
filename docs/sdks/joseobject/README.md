@@ -21,14 +21,13 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.jose_object.jose_verify_api(service_id: '<id>', jose_verify_request: Models::Components::JoseVerifyRequest.new(
   jose: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE1NTk4MTE3NTAsImlzcyI6IjU3Mjk3NDA4ODY3In0K.csmdholMVcmjqHe59YWgLGNvm7I5Whp4phQCoGxyrlRGMnTgsfxtwyxBgMXQqEPD5q5k9FaEWNk37K8uAtSwrA',
   clock_skew: 100,
   client_identifier: '57297408867',
-  signed_by_client: true,
+  signed_by_client: true
 ))
 
 unless res.jose_verify_response.nil?

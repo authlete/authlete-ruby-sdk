@@ -2,6 +2,14 @@
 
 The next action that the credential endpoint should take.
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciSingleParseResponseAction::OK
+```
+
 
 ## Values
 

@@ -17,9 +17,9 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # Result of the API call
-        field :action, Crystalline::Nilable.new(Models::Components::HskGetResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::HskGetResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::HskGetResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::HskGetResponseAction, true) } }
         # Holds information about a key managed in an HSM (Hardware Security Module)
-        # 
+        #
         field :hsk, Crystalline::Nilable.new(Models::Components::Hsk), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('hsk') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::HskGetResponseAction), hsk: T.nilable(Models::Components::Hsk)).void }

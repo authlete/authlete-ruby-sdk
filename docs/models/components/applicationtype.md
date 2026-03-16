@@ -4,6 +4,14 @@ The application type. The value of this property affects the validation steps fo
 See the description about `redirectUris` property for more details.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = ApplicationType::WEB
+```
+
 
 ## Values
 

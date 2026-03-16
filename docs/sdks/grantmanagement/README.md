@@ -20,13 +20,12 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.grant_management.process_request(service_id: '<id>', g_m_request: Models::Components::GMRequest.new(
   access_token: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE1NTk4MTE3NTAsImlzcyI6IjU3Mjk3NDA4ODY3In0K.csmdholMVcmjqHe59YWgLGNvm7I5Whp4phQCoGxyrlRGMnTgsfxtwyxBgMXQqEPD5q5k9FaEWNk37K8uAtSwrA',
   gm_action: Models::Components::GrantManagementAction::REVOKE,
-  grant_id: '57297408867',
+  grant_id: '57297408867'
 ))
 
 unless res.g_m_response.nil?

@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The flag value to be set
-        # 
+        #
         field :client_locked, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientLocked'), required: true }, 'form': { 'field_name': 'clientLocked' } }
 
         sig { params(client_locked: T::Boolean).void }

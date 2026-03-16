@@ -39,8 +39,10 @@ module Authlete
     end
 
 
-    sig { params(authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthorizationTicketInfoPostApiResponse) }
-    def ticket_info(authorization_ticket_info_request:, service_id:, timeout_ms: nil)
+
+
+    sig { params(authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuthorizationTicketInfoPostApiResponse) }
+    def ticket_info(authorization_ticket_info_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # ticket_info - Get Ticket Information
       request = Models::Operations::AuthorizationTicketInfoPostApiRequest.new(
         service_id: service_id,
@@ -60,7 +62,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -96,6 +98,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -193,8 +198,8 @@ module Authlete
     end
 
 
-    sig { params(authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::UpdateAuthorizationTicketResponse) }
-    def update_ticket(authorization_ticket_update_request:, service_id:, timeout_ms: nil)
+    sig { params(authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::UpdateAuthorizationTicketResponse) }
+    def update_ticket(authorization_ticket_update_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # update_ticket - Update Ticket Information
       request = Models::Operations::UpdateAuthorizationTicketRequest.new(
         service_id: service_id,
@@ -214,7 +219,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -250,6 +255,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -345,5 +353,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

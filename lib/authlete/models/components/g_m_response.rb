@@ -17,14 +17,14 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::GMResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::GMResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::GMResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GMResponseAction, true) } }
         # The content that the authorization server implementation is to return to the client application.
         # Its format varies depending on the value of `action` parameter.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # Get the expected nonce value for DPoP proof JWT, which should be used
         # as the value of the `DPoP-Nonce` HTTP header.
-        # 
+        #
         field :dpop_nonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonce') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::GMResponseAction), response_content: T.nilable(::String), dpop_nonce: T.nilable(::String)).void }

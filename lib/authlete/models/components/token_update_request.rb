@@ -13,12 +13,12 @@ module Authlete
         include Crystalline::MetadataFields
 
         # An access token.
-        # 
+        #
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') }, 'form': { 'field_name': 'accessToken' } }
         # A new date at which the access token will expire in milliseconds since the Unix epoch (1970-01-01).
         # If the `accessTokenExpiresAt` request parameter is not included in a request or its value is 0
         # (or negative), the expiration date of the access token is not changed.
-        # 
+        #
         field :access_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAt') }, 'form': { 'field_name': 'accessTokenExpiresAt' } }
         # A new set of scopes assigned to the access token. Scopes that are not supported by the service
         # and those that the client application associated with the access token is not allowed to request
@@ -26,65 +26,65 @@ module Authlete
         # its value is `null`, the scopes of the access token are not changed. Note that `properties` parameter
         # is accepted only when `Content-Type` of the request is `application/json`, so don't use `application/x-www-form-urlencoded`
         # if you want to specify `properties`.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') }, 'form': { 'field_name': 'scopes' } }
         # A new set of properties assigned to the access token. If the `properties` request parameter is
         # not included in a request or its value is null, the properties of the access token are not changed.
-        # 
+        #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') }, 'form': { 'field_name': 'properties', 'json': true } }
         # A boolean request parameter which indicates whether the API attempts to update the expiration
         # date of the access token when the scopes linked to the access token are changed by this request.
-        # 
+        #
         field :access_token_expires_at_updated_on_scope_update, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAtUpdatedOnScopeUpdate') }, 'form': { 'field_name': 'accessTokenExpiresAtUpdatedOnScopeUpdate' } }
         # The hash of the access token value. Used when the hash of the token is known (perhaps from lookup)
         # but the value of the token itself is not. The value of the `accessToken` parameter takes precedence.
-        # 
+        #
         field :access_token_hash, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenHash') }, 'form': { 'field_name': 'accessTokenHash' } }
         # A boolean request parameter which indicates whether to update the value of the access token in
         # the data store. If this parameter is set to `true` then a new access token value is generated
         # by the server and returned in the response.
-        # 
+        #
         field :access_token_value_updated, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenValueUpdated') }, 'form': { 'field_name': 'accessTokenValueUpdated' } }
         # The flag which indicates whether the access token expires or not. By default, all access tokens
         # expire after a period of time determined by their service. If this request parameter is `true`
         # then the access token will not automatically expire and must be revoked or deleted manually at
         # the service.
-        # 
+        #
         # If this request parameter is `true`, the `accessTokenExpiresAt` request parameter is ignored.
         # If this request parameter is `false`, the `accessTokenExpiresAt` request parameter is processed
         # normally.
-        # 
+        #
         field :access_token_persistent, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenPersistent') }, 'form': { 'field_name': 'accessTokenPersistent' } }
         # The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate
         # with the corresponding value MUST be presented with the access token when it is used by a client.
         # The value of this property must be a SHA256 certificate thumbprint, base64url encoded.
-        # 
+        #
         field :certificate_thumbprint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('certificateThumbprint') }, 'form': { 'field_name': 'certificateThumbprint' } }
         # The thumbprint of the public key used for DPoP presentation of this token. If this property is
         # set, a DPoP proof signed with the corresponding private key MUST be presented with the access
         # token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
-        # 
+        #
         field :dpop_key_thumbprint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopKeyThumbprint') }, 'form': { 'field_name': 'dpopKeyThumbprint' } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') }, 'form': { 'field_name': 'authorizationDetails', 'json': true } }
         # the flag which indicates whether the access token is for an external
         # attachment.
-        # 
+        #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') }, 'form': { 'field_name': 'forExternalAttachment' } }
         # A new date at which the access token will expire in milliseconds since the Unix epoch (1970-01-01).
         # If the `refreshTokenExpiresAt` request parameter is not included in a request or its value is 0
         # (or negative), the expiration date of the refresh token is not changed.
-        # 
+        #
         field :refresh_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAt') }, 'form': { 'field_name': 'refreshTokenExpiresAt' } }
         # A boolean request parameter which indicates whether the API attempts to update the expiration
         # date of the refresh token when the scopes linked to the refresh token are changed by this request.
-        # 
+        #
         field :refresh_token_expires_at_updated_on_scope_update, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAtUpdatedOnScopeUpdate') }, 'form': { 'field_name': 'refreshTokenExpiresAtUpdatedOnScopeUpdate' } }
         # The token identifier.
-        # 
+        #
         field :token_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenId') }, 'form': { 'field_name': 'tokenId' } }
 
         sig { params(access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), scopes: T.nilable(T::Array[::String]), properties: T.nilable(T::Array[Models::Components::Property]), access_token_expires_at_updated_on_scope_update: T.nilable(T::Boolean), access_token_hash: T.nilable(::String), access_token_value_updated: T.nilable(T::Boolean), access_token_persistent: T.nilable(T::Boolean), certificate_thumbprint: T.nilable(::String), dpop_key_thumbprint: T.nilable(::String), authorization_details: T.nilable(Models::Components::AuthzDetails), for_external_attachment: T.nilable(T::Boolean), refresh_token_expires_at: T.nilable(::Integer), refresh_token_expires_at_updated_on_scope_update: T.nilable(T::Boolean), token_id: T.nilable(::String)).void }

@@ -4,6 +4,14 @@ The result of the end-user authentication and authorization. One of the followin
 described in the description.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = BackchannelAuthenticationCompleteRequestResult::TRANSACTION_FAILED
+```
+
 
 ## Values
 

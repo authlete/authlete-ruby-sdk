@@ -13,10 +13,10 @@ module Authlete
         include Crystalline::MetadataFields
 
         # Space-delimited scopes.
-        # 
+        #
         field :scope, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scope') } }
         # List of resource indicators.
-        # 
+        #
         field :resource, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resource') } }
 
         sig { params(scope: T.nilable(::String), resource: T.nilable(T::Array[::String])).void }

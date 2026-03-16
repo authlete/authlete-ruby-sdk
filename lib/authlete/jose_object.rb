@@ -39,11 +39,13 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, jose_verify_request: T.nilable(Models::Components::JoseVerifyRequest), timeout_ms: T.nilable(Integer)).returns(Models::Operations::JoseVerifyApiResponse) }
-    def jose_verify_api(service_id:, jose_verify_request: nil, timeout_ms: nil)
+
+
+    sig { params(service_id: ::String, jose_verify_request: T.nilable(Models::Components::JoseVerifyRequest), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::JoseVerifyApiResponse) }
+    def jose_verify_api(service_id:, jose_verify_request: nil, timeout_ms: nil, http_headers: nil)
       # jose_verify_api - Verify JOSE
       # This API verifies a JOSE object.
-      # 
+      #
       request = Models::Operations::JoseVerifyApiRequest.new(
         service_id: service_id,
         jose_verify_request: jose_verify_request
@@ -61,7 +63,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :jose_verify_request, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -97,6 +99,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -192,5 +197,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

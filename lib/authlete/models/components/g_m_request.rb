@@ -16,46 +16,46 @@ module Authlete
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
         # Client certificate in PEM format, used to validate binding against access tokens using the TLS
         # client certificate confirmation method.
-        # 
+        #
         field :client_certificate, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientCertificate') } }
         # `DPoP` header presented by the client during the request to the resource server.
-        # 
+        #
         # The header contains a signed JWT which includes the public key that is paired with the private
         # key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application
         # Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
-        # 
+        #
         field :dpop, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpop') } }
         # HTTP method of the request from the client to the protected resource endpoint. This field is
         # used to validate the `DPoP` header.
-        # 
+        #
         # See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop)
         # for details.
-        # 
+        #
         field :htm, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htm') } }
         # URL of the protected resource endpoint. This field is used to validate the `DPoP` header.
-        # 
+        #
         # See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop)
         # for details.
-        # 
+        #
         field :htu, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htu') } }
         # The grant management action of the device authorization request.
-        # 
+        #
         # The `grant_management_action` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
-        # 
-        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
+        #
+        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
         # The value of the `grant_id` request parameter of the device authorization request.
-        # 
+        #
         # The `grant_id` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
         # , which is supported by Authlete 2.3 and newer versions.
-        # 
+        #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
         # The flag indicating whether to require the DPoP proof JWT to include the `nonce` claim. Even if
         # the service's `dpopNonceRequired` property is `false`, calling the `/auth/gm` API with this
         # `dpopNonceRequired` parameter `true` will force the Authlete API to check whether the DPoP proof
         # JWT includes the expected `nonce` value.
-        # 
+        #
         field :dpop_nonce_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonceRequired') } }
 
         sig { params(access_token: T.nilable(::String), client_certificate: T.nilable(::String), dpop: T.nilable(::String), htm: T.nilable(::String), htu: T.nilable(::String), gm_action: T.nilable(Models::Components::GrantManagementAction), grant_id: T.nilable(::String), dpop_nonce_required: T.nilable(T::Boolean)).void }

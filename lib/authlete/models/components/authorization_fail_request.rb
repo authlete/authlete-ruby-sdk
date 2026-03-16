@@ -13,14 +13,14 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The ticket issued from Authlete `/auth/authorization` API.
-        # 
+        #
         field :ticket, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket'), required: true }, 'form': { 'field_name': 'ticket' } }
         # The reason of the failure of the authorization request.
         # For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
-        # 
-        field :reason, Models::Components::AuthorizationFailRequestReason, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('reason'), required: true, 'decoder': Utils.enum_from_string(Models::Components::AuthorizationFailRequestReason, false) }, 'form': { 'field_name': 'reason' } }
+        #
+        field :reason, Models::Components::AuthorizationFailRequestReason, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('reason'), required: true, 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::AuthorizationFailRequestReason, false) }, 'form': { 'field_name': 'reason' } }
         # The custom description about the authorization failure.
-        # 
+        #
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('description') }, 'form': { 'field_name': 'description' } }
 
         sig { params(ticket: ::String, reason: Models::Components::AuthorizationFailRequestReason, description: T.nilable(::String)).void }

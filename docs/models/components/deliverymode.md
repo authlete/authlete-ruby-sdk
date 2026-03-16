@@ -1,5 +1,13 @@
 # DeliveryMode
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = DeliveryMode::PING
+```
+
 
 ## Values
 

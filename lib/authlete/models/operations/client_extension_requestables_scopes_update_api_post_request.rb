@@ -15,7 +15,7 @@ module Authlete
         # A service ID.
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # A client ID.
-        # 
+        #
         field :client_id, ::String, { 'path_param': { 'field_name': 'clientId', 'style': 'simple', 'explode': false } }
 
         field :client_extension_requestable_scopes_update_request, Models::Components::ClientExtensionRequestableScopesUpdateRequest, { 'request': { 'media_type': 'application/json' } }

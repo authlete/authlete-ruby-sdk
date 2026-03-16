@@ -17,133 +17,90 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::UserinfoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::UserinfoResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::UserinfoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::UserinfoResponseAction, true) } }
         # The list of claims that the client application requests to be embedded in the ID token.
-        # 
+        #
         field :claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') } }
         # The ID of the client application which is associated with the access token.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The client ID alias when the authorization request for the access token was made.
-        # 
+        #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # The flag which indicates whether the client ID alias was used when the authorization
         # request for the access token was made.
-        # 
+        #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The content that the authorization server implementation can use as the value of `WWW-Authenticate`
         # header on errors.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The scopes covered by the access token.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The subject (= resource owner's ID).
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The access token that came along with the userinfo request.
-        # 
+        #
         field :token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('token') } }
         # The extra properties associated with the access token.
-        # 
+        #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
         # The value of the `userinfo` property in the `claims` request parameter or in the `claims` property in an authorization request object.
-        # 
-        # A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint.
-        # There are several ways. Including the `claims` request parameter and including the `claims` property in a request object are such examples.
-        # In both cases, the value of the `claims` parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the "claims"
-        # Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).
-        # 
-        # The following is an excerpt from the specification. You can find `userinfo` and `id_token` are top-level properties.
-        # 
-        # ```json
-        # {
-        #   "userinfo":
-        #   {
-        #     "given_name": { "essential": true },
-        #     "nickname": null,
-        #     "email": { "essential": true },
-        #     "email_verified": { "essential": true },
-        #     "picture": null,
-        #     "http://example.info/claims/groups": null
-        #   },
-        #   "id_token":
-        #   {
-        #     "auth_time": { "essential": true },
-        #     "acr": { "values": [ "urn:mace:incommon:iap:silver" ] }
-        #   }
-        # }
-        # ````
-        # 
-        # The value of this property is the value of the `userinfo` property in JSON format.
-        # For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.
-        # 
-        # ```json
-        # {
-        #   "given_name": { "essential": true },
-        #   "nickname": null,
-        #   "email": { "essential": true },
-        #   "email_verified": { "essential": true },
-        #   "picture": null,
-        #   "http://example.info/claims/groups": null
-        # }
-        # ```
-        # 
-        # Note that if a request object is given and it contains the `claims` property and if the `claims` request parameter is also given,
-        # the value of this property holds the former value.
-        # 
+        #
         field :user_info_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('userInfoClaims') } }
         # The attributes of this service that the client application belongs to.
-        # 
+        #
         field :service_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('serviceAttributes') } }
         # The attributes of the client.
-        # 
+        #
         field :client_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAttributes') } }
         # the claims that the user has consented for the client application
         # to know.
-        # 
+        #
         field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
         # Get names of claims that are requested indirectly by *"transformed
         # claims"*.
         # A client application can request *"transformed claims"* by adding
         # names of transformed claims in the `claims` request parameter.
         # The following is an example of the `claims` request parameter
-        # that requests a predefined transformed claim named `18\_or\_over`
-        # and a transformed claim named `nationality\_usa` to be embedded
+        # that requests a predefined transformed claim named `18_or_over`
+        # and a transformed claim named `nationality_usa` to be embedded
         # in the response from the userinfo endpoint.
         # ```json
-        # {
-        # "transformed\_claims": {
-        # "nationality\_usa": {
+        # &#123;
+        # "transformed_claims": &#123;
+        # "nationality_usa": &#123;
         # "claim": "nationalities",
         # "fn": [
         # [ "eq", "USA" ],
         # "any"
         # ]
-        # }
-        # },
-        # "userinfo": {
-        # "::18\_or\_over": null,
-        # ":nationality\_usa": null
-        # }
-        # }
+        # &#125;
+        # &#125;,
+        # "userinfo": &#123;
+        # "::18_or_over": null,
+        # ":nationality_usa": null
+        # &#125;
+        # &#125;
         # ```
-        # The example above assumes that a transformed claim named `18\_or\_over`
+        # The example above assumes that a transformed claim named `18_or_over`
         # is predefined by the authorization server like below.
         # ```json
-        # {
-        # "18\_or\_over": {
+        # &#123;
+        # "18_or_over": &#123;
         # "claim": "birthdate",
         # "fn": [
-        # "years\_ago",
+        # "years_ago",
         # [ "gte", 18 ]
         # ]
-        # }
-        # }
+        # &#125;
+        # &#125;
         # ```
         # In the example, the `nationalities` claim is requested indirectly
-        # by the `nationality\_usa` transformed claim. Likewise, the
-        # `birthdate` claim is requested indirectly by the `18\_or\_over`
+        # by the `nationality_usa` transformed claim. Likewise, the
+        # `birthdate` claim is requested indirectly by the `18_or_over`
         # transformed claim.
         # When the `claims` request parameter of an authorization request is
         # like the example above, this `requestedClaimsForTx` property will
@@ -156,40 +113,40 @@ module Authlete
         # request parameter when it calls the `/api/auth/userinfo/issue` API. The following
         # is an example of the value of the `claimsForTx` request parameter.
         # ```json
-        # {
+        # &#123;
         # "birthdate": "1970-01-23",
         # "nationalities": [ "DEU", "USA" ]
-        # }
+        # &#125;
         # ```
-        # 
+        #
         field :requested_claims_for_tx, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedClaimsForTx') } }
         # Names of verified claims that will be referenced when transformed claims are computed.
-        # 
+        #
         field :requested_verified_claims_for_tx, Crystalline::Nilable.new(Crystalline::Array.new(Crystalline::Array.new(::String))), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedVerifiedClaimsForTx') } }
         # the value of the `transformed_claims` property in the `claims` request
         # parameter of an authorization request or in the `claims` property in a
         # request object.
-        # 
+        #
         field :transformed_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('transformedClaims') } }
         # The entity ID of the client.
-        # 
+        #
         field :client_entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityId') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The expected nonce value for DPoP proof JWT, which should be used
         # as the value of the `DPoP-Nonce` HTTP header.
-        # 
+        #
         field :dpop_nonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonce') } }
         # The location of the client's metadata document that was used to resolve client metadata.
-        # 
+        #
         # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
+        #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::UserinfoResponseAction), claims: T.nilable(T::Array[::String]), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), response_content: T.nilable(::String), scopes: T.nilable(T::Array[::String]), subject: T.nilable(::String), token: T.nilable(::String), properties: T.nilable(T::Array[Models::Components::Property]), user_info_claims: T.nilable(::String), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), consented_claims: T.nilable(T::Array[::String]), requested_claims_for_tx: T.nilable(T::Array[::String]), requested_verified_claims_for_tx: T.nilable(T::Array[T::Array[::String]]), transformed_claims: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), dpop_nonce: T.nilable(::String), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }

@@ -3,6 +3,14 @@
 Source of this client record.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = ClientClientSource::DYNAMIC_REGISTRATION
+```
+
 
 ## Values
 

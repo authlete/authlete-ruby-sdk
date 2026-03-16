@@ -4,6 +4,14 @@ The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client T
 for details.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = ClientType::PUBLIC
+```
+
 
 ## Values
 

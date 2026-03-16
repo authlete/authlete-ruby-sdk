@@ -17,87 +17,87 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::DeviceVerificationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::DeviceVerificationResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::DeviceVerificationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::DeviceVerificationResponseAction, true) } }
         # The client ID of the client application to which the user code has been issued.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The client ID alias of the client application to which the user code has been issued.
-        # 
+        #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # `true` if the value of the `client_id` request parameter included in the device authorization
         # request is the client ID alias. `false` if the value is the original numeric client ID.
-        # 
+        #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The name of the client application to which the user code has been issued.
-        # 
+        #
         field :client_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientName') } }
         # The scopes requested by the device authorization request.
-        # 
+        #
         # Note that `description` property and `descriptions` property of each scope object in
         # the array contained in this property is always null even if descriptions of the scopes
         # are registered.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Scope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The names of the claims which were requested indirectly via some special scopes.
         # See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims)
         # in OpenID Connect Core 1.0 for details.
-        # 
+        #
         # This property is always `null` if the `scope` request parameter of the device authorization
         # request does not include the `openid` scope even if special scopes (such as `profile`)
         # are included in the request (unless the openid scope is included in the default set
         # of scopes which is used when the `scope` request parameter is omitted).
-        # 
+        #
         field :claim_names, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claimNames') } }
         # The list of ACR values requested by the device authorization request.
-        # 
+        #
         field :acrs, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acrs') } }
         # The resources specified by the `resource` request parameters or by the `resource` property
         # in the request object. If both are given, the values in the request object should be
         # set. See "Resource Indicators for OAuth 2.0" for details.
-        # 
+        #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The attributes of this service that the client application belongs to.
-        # 
+        #
         field :service_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('serviceAttributes') } }
         # The attributes of the client.
-        # 
+        #
         field :client_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAttributes') } }
         # The dynamic scopes which the client application requested by the scope request parameter.
-        # 
+        #
         field :dynamic_scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::DynamicScope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dynamicScopes') } }
         # Get the date in milliseconds since the Unix epoch (1970-01-01) at which the user code will expire.
-        # 
+        #
         field :expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('expiresAt') } }
         # The grant management action of the device authorization request.
-        # 
+        #
         # The `grant_management_action` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
-        # 
-        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
+        #
+        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
         # the value of the `grant_id` request parameter of the device authorization request.
-        # 
+        #
         # The `grant_id` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
         # , which is supported by Authlete 2.3 and newer versions.
-        # 
+        #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
 
         field :grant, Crystalline::Nilable.new(Models::Components::Grant), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grant') } }
         # The subject identifying the user who has given the grant identified
-        # by the `grant\_id` request parameter of the device authorization
+        # by the `grant_id` request parameter of the device authorization
         # request.
         # Authlete 2.3 and newer versions support [Grant Management
-        # for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). An authorization request may contain a `grant\_id`
+        # for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). An authorization request may contain a `grant_id`
         # request parameter which is defined in the specification. If the value of
-        # the request parameter is valid, {@link #getGrantSubject()} will return
+        # the request parameter is valid, &#123;@link #getGrantSubject()&#125; will return
         # the subject of the user who has given the grant to the client application.
         # Authorization server implementations may use the value returned from
-        # {@link #getGrantSubject()} in order to determine the user to authenticate.
+        # &#123;@link #getGrantSubject()&#125; in order to determine the user to authenticate.
         # The user your system will authenticate during the authorization process
         # (or has already authenticated) may be different from the user of the
         # grant. The first implementer's draft of "Grant Management for OAuth 2.0"
@@ -105,23 +105,23 @@ module Authlete
         # left to implementations. Authlete will not perform the grant management
         # action when the `subject` passed to Authlete does not match the
         # user of the grant.
-        # 
+        #
         field :grant_subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantSubject') } }
         # The entity ID of the client.
-        # 
+        #
         field :client_entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityId') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The location of the client's metadata document that was used to resolve client metadata.
-        # 
+        #
         # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
+        #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::DeviceVerificationResponseAction), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), scopes: T.nilable(T::Array[Models::Components::Scope]), claim_names: T.nilable(T::Array[::String]), acrs: T.nilable(T::Array[::String]), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), dynamic_scopes: T.nilable(T::Array[Models::Components::DynamicScope]), expires_at: T.nilable(::Integer), gm_action: T.nilable(Models::Components::GrantManagementAction), grant_id: T.nilable(::String), grant: T.nilable(Models::Components::Grant), grant_subject: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }

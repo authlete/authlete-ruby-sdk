@@ -11,7 +11,7 @@ module Authlete
       # metadata endpoint (`/.well-known/openid-credential-issuer`)
       # should take after getting a response from Authlete's
       # `/vci/metadata` API.
-      # 
+      #
       class VciMetadataResponseAction < T::Enum
         enums do
           OK = new('OK')

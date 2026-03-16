@@ -17,20 +17,20 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::BackchannelAuthenticationIssueResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::BackchannelAuthenticationIssueResponseAction, true) } }
         # The content that the authorization server implementation is to return to the client
         # application. Its format varies depending on the value of `action` parameter.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The newly issued authentication request ID.
-        # 
+        #
         field :auth_req_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authReqId') } }
         # The duration of the issued authentication request ID in seconds.
-        # 
+        #
         field :expires_in, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('expiresIn') } }
         # The minimum amount of time in seconds that the client must wait for between polling
         # requests to the token endpoint.
-        # 
+        #
         field :interval, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('interval') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationIssueResponseAction), response_content: T.nilable(::String), auth_req_id: T.nilable(::String), expires_in: T.nilable(::Integer), interval: T.nilable(::Integer)).void }

@@ -17,10 +17,10 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The new client secret.
-        # 
+        #
         field :new_client_secret, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('newClientSecret') } }
         # The old client secret.
-        # 
+        #
         field :old_client_secret, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('oldClientSecret') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), new_client_secret: T.nilable(::String), old_client_secret: T.nilable(::String)).void }

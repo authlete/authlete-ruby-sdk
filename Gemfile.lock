@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    authlete_ruby_sdk (0.0.3.pre.beta)
+    authlete_ruby_sdk (0.0.4.pre.beta)
       base64 (>= 0.2.0, < 1.0)
       faraday (>= 2.14.1)
       faraday-multipart (~> 1.2.0)
@@ -11,9 +11,11 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    ansi (1.5.0)
     ast (2.4.2)
     base64 (0.3.0)
     benchmark (0.5.0)
+    builder (3.3.0)
     date (3.5.1)
     erb (6.0.1)
     erubi (1.13.1)
@@ -40,6 +42,11 @@ GEM
       prism (~> 1.5)
     minitest-focus (1.4.1)
       minitest (> 5.0)
+    minitest-reporters (1.7.1)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     multipart-post (2.4.1)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -143,6 +150,7 @@ DEPENDENCIES
   irb
   minitest (>= 5.27.0)
   minitest-focus (~> 1.4.1)
+  minitest-reporters (~> 1.7.1)
   rake
   rubocop (~> 1.73.2)
   rubocop-minitest (~> 0.37.1)
