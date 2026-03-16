@@ -7,6 +7,14 @@ Depending upon the context, this refers to encryption done by the client or by t
   - as `idTokenEncryptionEnc` value, it refers to the algorithm used by the server to encrypt id_tokens
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = JweEnc::A128_CBC_HS256
+```
+
 
 ## Values
 

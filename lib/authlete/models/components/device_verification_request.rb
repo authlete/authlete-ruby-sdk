@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # A user code.
-        # 
+        #
         field :user_code, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('userCode'), required: true }, 'form': { 'field_name': 'userCode' } }
 
         sig { params(user_code: ::String).void }

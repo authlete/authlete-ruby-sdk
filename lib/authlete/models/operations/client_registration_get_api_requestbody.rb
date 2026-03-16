@@ -13,14 +13,14 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The client registration access token. Used only for GET, UPDATE, and DELETE requests.
-        # 
+        #
         field :token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('token'), required: true } }
         # The client's identifier. Used for GET, UPDATE, and DELETE requests
-        # 
+        #
         field :client_id, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId'), required: true } }
         # Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)
         # (OAuth 2.0 Dynamic Client Registration Protocol).
-        # 
+        #
         field :json, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('json') } }
 
         sig { params(token: ::String, client_id: ::String, json: T.nilable(::String)).void }

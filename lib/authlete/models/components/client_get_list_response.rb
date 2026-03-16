@@ -13,17 +13,17 @@ module Authlete
         include Crystalline::MetadataFields
 
         # Start index (inclusive) of the result set of the query.
-        # 
+        #
         field :start, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('start') } }
         # End index (exclusive) of the result set of the query.
-        # 
+        #
         field :end_, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('end') } }
         # Total number of clients that belong to the service. This doesn't mean the number of clients
         # contained in the response.
-        # 
+        #
         field :total_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('totalCount') } }
         # An array of clients.
-        # 
+        #
         field :clients, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Client)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clients') } }
 
         sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), total_count: T.nilable(::Integer), clients: T.nilable(T::Array[Models::Components::Client])).void }

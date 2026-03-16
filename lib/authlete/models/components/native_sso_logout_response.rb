@@ -17,10 +17,10 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the API caller should take.
-        # 
-        field :action, Crystalline::Nilable.new(Models::Components::NativeSsoLogoutResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::NativeSsoLogoutResponseAction, true) } }
+        #
+        field :action, Crystalline::Nilable.new(Models::Components::NativeSsoLogoutResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::NativeSsoLogoutResponseAction, true) } }
         # The number of deleted access/refresh token records.
-        # 
+        #
         field :count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('count') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::NativeSsoLogoutResponseAction), count: T.nilable(::Integer)).void }

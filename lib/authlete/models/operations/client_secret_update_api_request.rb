@@ -15,7 +15,7 @@ module Authlete
         # A service ID.
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # The client ID or the client ID alias of a client.
-        # 
+        #
         field :client_identifier, ::String, { 'path_param': { 'field_name': 'clientIdentifier', 'style': 'simple', 'explode': false } }
 
         field :client_secret_update_request, Models::Components::ClientSecretUpdateRequest, { 'request': { 'media_type': 'application/json' } }

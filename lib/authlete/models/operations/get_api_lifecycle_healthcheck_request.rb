@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # If `true`, perform extended health checks (e.g. database connectivity).
-        # 
+        #
         field :extended, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'query_param': { 'field_name': 'extended', 'style': 'form', 'explode': true } }
 
         sig { params(extended: T.nilable(T::Boolean)).void }

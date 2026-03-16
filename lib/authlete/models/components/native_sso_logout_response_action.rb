@@ -8,7 +8,7 @@ module Authlete
   module Models
     module Components
       # NativeSsoLogoutResponseAction - The next action that the API caller should take.
-      # 
+      #
       class NativeSsoLogoutResponseAction < T::Enum
         enums do
           OK = new('OK')

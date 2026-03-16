@@ -17,7 +17,7 @@ module Authlete
         # The developer of client applications. The default value is null. If this parameter is not set
         # to `null`, client application of the specified developer are returned. Otherwise, all client
         # applications that belong to the service are returned.
-        # 
+        #
         field :developer, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'developer', 'style': 'form', 'explode': true } }
         # Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
         field :start, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'start', 'style': 'form', 'explode': true } }

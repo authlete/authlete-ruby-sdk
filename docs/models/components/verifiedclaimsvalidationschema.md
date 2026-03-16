@@ -3,6 +3,14 @@
 The verified claims validation schema set.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VerifiedClaimsValidationSchema::STANDARD
+```
+
 
 ## Values
 

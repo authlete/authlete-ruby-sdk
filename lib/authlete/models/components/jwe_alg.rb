@@ -12,9 +12,9 @@ module Authlete
       # - as `authorizationEncryptionAlg` value, it refers to the encoding algorithm used by server for transporting they keys on JARM objects
       # - as `requestEncryptionAlg` value, it refers to the expected key transport encoding algorithm that server expect from client when encrypting a Request Object
       # - as `idTokenEncryptionAlg` value, it refers to the algorithm used by the server to key transport of id_tokens
-      # 
+      #
       # **Please note that some of the algorithms are more secure than others, some are not supported very well cross platforms and some (like RSA1_5) is known to be weak**.
-      # 
+      #
       class JweAlg < T::Enum
         enums do
           RSA1_5 = new('RSA1_5')

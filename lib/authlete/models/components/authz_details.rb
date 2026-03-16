@@ -10,13 +10,13 @@ module Authlete
       # The authorization details. This represents the value of the `authorization_details`
       # request parameter in the preceding device authorization request which is defined in
       # "OAuth 2.0 Rich Authorization Requests".
-      # 
+      #
       class AuthzDetails
         extend T::Sig
         include Crystalline::MetadataFields
 
         # Elements of this authorization details.
-        # 
+        #
         field :elements, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AuthorizationDetailsElement)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('elements') } }
 
         sig { params(elements: T.nilable(T::Array[Models::Components::AuthorizationDetailsElement])).void }

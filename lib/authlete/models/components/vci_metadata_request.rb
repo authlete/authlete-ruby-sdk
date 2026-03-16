@@ -14,7 +14,7 @@ module Authlete
 
         # The flag indicating whether the metadata is written in the pretty
         # format or not.
-        # 
+        #
         field :pretty, Crystalline::Boolean.new, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('pretty'), required: true }, 'form': { 'field_name': 'pretty' } }
 
         sig { params(pretty: T::Boolean).void }

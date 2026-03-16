@@ -5,6 +5,14 @@ endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID C
 Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = ClientAuthMethod::NONE
+```
+
 
 ## Values
 

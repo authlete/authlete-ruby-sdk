@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The session ID of a user's authentication session.
-        # 
+        #
         field :session_id, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sessionId'), required: true } }
 
         sig { params(session_id: ::String).void }

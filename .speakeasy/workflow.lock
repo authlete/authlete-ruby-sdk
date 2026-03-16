@@ -1,21 +1,20 @@
-speakeasyVersion: 1.718.0
+speakeasyVersion: 1.755.0
 sources:
     authlete-OAS:
         sourceNamespace: authlete-oas
-        sourceRevisionDigest: sha256:28c53c7f30bdb607c3175ccf11b4464b1336342bb8040ebb45d3abe9e6a5ed35
-        sourceBlobDigest: sha256:18f1cc58c2d171e5e5c364cf503eaad4a97843241004a68c540dc24e10ca0921
+        sourceRevisionDigest: sha256:11c77e89dd21cef4429c38e60d1929f04b9027e1c4f629042b0fb1b1fb9a7ab0
+        sourceBlobDigest: sha256:9f569f1e362bfd384fc3fc4abcad395ee4ac5607d986e42bb52de3562e714c5e
         tags:
             - latest
-            - speakeasy-sdk-regen-1771249705
             - 3.0.16
 targets:
     authlete:
         source: authlete-OAS
         sourceNamespace: authlete-oas
-        sourceRevisionDigest: sha256:28c53c7f30bdb607c3175ccf11b4464b1336342bb8040ebb45d3abe9e6a5ed35
-        sourceBlobDigest: sha256:18f1cc58c2d171e5e5c364cf503eaad4a97843241004a68c540dc24e10ca0921
+        sourceRevisionDigest: sha256:11c77e89dd21cef4429c38e60d1929f04b9027e1c4f629042b0fb1b1fb9a7ab0
+        sourceBlobDigest: sha256:9f569f1e362bfd384fc3fc4abcad395ee4ac5607d986e42bb52de3562e714c5e
         codeSamplesNamespace: authlete-oas-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:08939a40752f2c9a42dd96dc13f58a5e6b2a2bc893e88bfbcdc6e7d495f69db1
+        codeSamplesRevisionDigest: sha256:fca150f6246d43a8b0c4d79d3ce49c8d1c07b54de60d0faa25ab7b4508217a0d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

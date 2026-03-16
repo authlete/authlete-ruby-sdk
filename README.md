@@ -240,9 +240,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?
@@ -269,9 +268,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?
@@ -404,11 +402,6 @@ end
 * [destroy](docs/sdks/services/README.md#destroy) - Delete Service ⚡
 * [configuration](docs/sdks/services/README.md#configuration) - Get Service Configuration
 
-### [TokenOperations](docs/sdks/tokenoperations/README.md)
-
-* [auth_token_create_batch_api](docs/sdks/tokenoperations/README.md#auth_token_create_batch_api) - Create Access Tokens in Batch
-* [auth_token_create_batch_status_api](docs/sdks/tokenoperations/README.md#auth_token_create_batch_status_api) - Get Batch Token Creation Status
-
 ### [TokenManagement](docs/sdks/tokenmanagement/README.md)
 
 * [reissue_id_token](docs/sdks/tokenmanagement/README.md#reissue_id_token) - Reissue ID Token
@@ -475,8 +468,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 
 begin
     res = s.services.retrieve(service_id: '<id>')
@@ -576,10 +569,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      server_idx: 0,
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  server_idx: 0,
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?
@@ -596,10 +588,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      server_url: 'https://br.authlete.com',
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  server_url: 'https://br.authlete.com',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?

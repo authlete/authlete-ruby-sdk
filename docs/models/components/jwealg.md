@@ -9,6 +9,14 @@ Depending upon the context, this refers to key transport scheme to be used by th
 **Please note that some of the algorithms are more secure than others, some are not supported very well cross platforms and some (like RSA1_5) is known to be weak**.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = JweAlg::RSA1_5
+```
+
 
 ## Values
 

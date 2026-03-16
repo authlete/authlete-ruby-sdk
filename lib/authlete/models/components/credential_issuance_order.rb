@@ -22,7 +22,7 @@ module Authlete
         field :credential_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialDuration') } }
         # The key ID of a private key that should be used for signing a credential
         # to be issued.
-        # 
+        #
         field :signing_key_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('signingKeyId') } }
 
         sig { params(request_identifier: T.nilable(::String), credential_payload: T.nilable(::String), issuance_deferred: T.nilable(T::Boolean), credential_duration: T.nilable(::Integer), signing_key_id: T.nilable(::String)).void }

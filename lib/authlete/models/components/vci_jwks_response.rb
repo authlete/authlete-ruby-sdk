@@ -19,11 +19,11 @@ module Authlete
         # The next action that the implementation of the JWK Set document
         # endpoint of the credential issuer should take after getting a
         # response from Authlete's `/vci/jwks` API.
-        # 
-        field :action, Crystalline::Nilable.new(Models::Components::VciJwksResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::VciJwksResponseAction, true) } }
+        #
+        field :action, Crystalline::Nilable.new(Models::Components::VciJwksResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciJwksResponseAction, true) } }
         # Get the content that the implementation of the credential issuer
         # metadata endpoint should use when it constructs a response.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::VciJwksResponseAction), response_content: T.nilable(::String)).void }

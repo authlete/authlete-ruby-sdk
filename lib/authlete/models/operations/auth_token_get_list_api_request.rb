@@ -15,15 +15,15 @@ module Authlete
         # A service ID.
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # Client Identifier (client ID or client ID alias).
-        # 
+        #
         field :client_identifier, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'clientIdentifier', 'style': 'form', 'explode': true } }
         # Unique user ID.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'subject', 'style': 'form', 'explode': true } }
         # Start index of search results (inclusive). The default value is 0.
         field :start, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'start', 'style': 'form', 'explode': true } }
         # End index of search results (exclusive). The default value is 5.
-        # 
+        #
         field :end_, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'end', 'style': 'form', 'explode': true } }
 
         sig { params(service_id: ::String, client_identifier: T.nilable(::String), subject: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }

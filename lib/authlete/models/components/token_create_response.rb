@@ -17,66 +17,66 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::TokenCreateResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::TokenCreateResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::TokenCreateResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenCreateResponseAction, true) } }
         # The newly issued access token.
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
         # The ID of the client application associated with the access token.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The time at which the access token expires.
-        # 
+        #
         field :expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('expiresAt') } }
         # The duration of the newly issued access token in seconds.
-        # 
+        #
         field :expires_in, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('expiresIn') } }
         # The grant type for the newly issued access token.
-        # 
+        #
         field :grant_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantType') } }
         # The extra properties associated with the access token.
-        # 
+        #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
         # The newly issued refresh token.
-        # 
+        #
         field :refresh_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshToken') } }
         # Scopes which are associated with the access token.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The subject (= unique identifier) of the user associated with the newly issued access
         # token.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The token type of the access token.
-        # 
+        #
         field :token_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenType') } }
         # If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg`
         # is set to a `non-null` value), a JWT-based access token is issued along with the original
         # random-string one.
-        # 
+        #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # the flag which indicates whether the access token is for an external
         # attachment.
-        # 
+        #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') } }
         # Set the unique token identifier.
-        # 
+        #
         field :token_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenId') } }
         # The scopes associated with the refresh token. May be null.
-        # 
+        #
         field :refresh_token_scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenScopes') } }
         # The client Identifier that will be associated with a newly created access token.
-        # 
+        #
         field :client_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdentifier') } }
         # The session ID associated with a newly created access token.
-        # 
+        #
         # NOTE: A refresh token must be associated with a session ID, which is the ID of the user's authentication
         # session, in order to be used to obtain a [Native SSO](https://openid.net/specs/openid-connect-native-sso-1_0.html)-compliant
         # ID token in the refresh token flow.
-        # 
+        #
         field :session_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sessionId') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::TokenCreateResponseAction), access_token: T.nilable(::String), client_id: T.nilable(::Integer), expires_at: T.nilable(::Integer), expires_in: T.nilable(::Integer), grant_type: T.nilable(::String), properties: T.nilable(T::Array[Models::Components::Property]), refresh_token: T.nilable(::String), scopes: T.nilable(T::Array[::String]), subject: T.nilable(::String), token_type: T.nilable(::String), jwt_access_token: T.nilable(::String), authorization_details: T.nilable(Models::Components::AuthzDetails), for_external_attachment: T.nilable(T::Boolean), token_id: T.nilable(::String), refresh_token_scopes: T.nilable(T::Array[::String]), client_identifier: T.nilable(::String), session_id: T.nilable(::String)).void }

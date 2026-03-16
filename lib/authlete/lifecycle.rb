@@ -39,11 +39,13 @@ module Authlete
     end
 
 
-    sig { params(extended: T.nilable(T::Boolean), timeout_ms: T.nilable(Integer)).returns(Models::Operations::GetApiLifecycleHealthcheckResponse) }
-    def get_api_lifecycle_healthcheck(extended: nil, timeout_ms: nil)
+
+
+    sig { params(extended: T.nilable(T::Boolean), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetApiLifecycleHealthcheckResponse) }
+    def get_api_lifecycle_healthcheck(extended: nil, timeout_ms: nil, http_headers: nil)
       # get_api_lifecycle_healthcheck - Health Check
       # Perform a health check of the server.
-      # 
+      #
       request = Models::Operations::GetApiLifecycleHealthcheckRequest.new(
         extended: extended
       )
@@ -79,6 +81,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -122,7 +127,7 @@ module Authlete
             ),
             response: http_response
           )
-          obj = http_response.env.body
+          obj = http_response.env.body.force_encoding('UTF-8')
 
           return Models::Operations::GetApiLifecycleHealthcheckResponse.new(
             status_code: http_response.status,
@@ -142,5 +147,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

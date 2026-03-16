@@ -9,7 +9,7 @@ module Authlete
     module Components
       # VciSingleIssueResponseAction - The next action that the implementation of the credential endpoint
       # should take.
-      # 
+      #
       class VciSingleIssueResponseAction < T::Enum
         enums do
           OK = new('OK')

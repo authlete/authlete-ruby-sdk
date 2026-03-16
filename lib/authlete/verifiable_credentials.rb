@@ -39,8 +39,10 @@ module Authlete
     end
 
 
-    sig { params(vci_metadata_request: Models::Components::VciMetadataRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciMetadataApiResponse) }
-    def metadata(vci_metadata_request:, service_id:, timeout_ms: nil)
+
+
+    sig { params(vci_metadata_request: Models::Components::VciMetadataRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciMetadataApiResponse) }
+    def metadata(vci_metadata_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # metadata - Get Verifiable Credential Issuer Metadata
       # Get verifiable credential issuer metadata
       request = Models::Operations::VciMetadataApiRequest.new(
@@ -61,7 +63,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -97,6 +99,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -194,8 +199,8 @@ module Authlete
     end
 
 
-    sig { params(vci_jwtissuer_request: Models::Components::VciJwtissuerRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciJwtissuerApiResponse) }
-    def jwt_issuer(vci_jwtissuer_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_jwtissuer_request: Models::Components::VciJwtissuerRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciJwtissuerApiResponse) }
+    def jwt_issuer(vci_jwtissuer_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # jwt_issuer - Get JWT Issuer Information
       # Get JWT issuer information for VCI
       request = Models::Operations::VciJwtissuerApiRequest.new(
@@ -216,7 +221,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -252,6 +257,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -349,8 +357,8 @@ module Authlete
     end
 
 
-    sig { params(vci_jwks_request: Models::Components::VciJwksRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciJwksApiResponse) }
-    def jwks(vci_jwks_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_jwks_request: Models::Components::VciJwksRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciJwksApiResponse) }
+    def jwks(vci_jwks_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # jwks - Get JSON Web Key Set
       # Get JSON Web Key Set for VCI
       request = Models::Operations::VciJwksApiRequest.new(
@@ -371,7 +379,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -407,6 +415,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -504,8 +515,8 @@ module Authlete
     end
 
 
-    sig { params(vci_offer_create_request: Models::Components::VciOfferCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciOfferCreateApiResponse) }
-    def create_offer(vci_offer_create_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_offer_create_request: Models::Components::VciOfferCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciOfferCreateApiResponse) }
+    def create_offer(vci_offer_create_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # create_offer - Create Credential Offer
       # Create a verifiable credential offer
       request = Models::Operations::VciOfferCreateApiRequest.new(
@@ -526,7 +537,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -562,6 +573,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -659,8 +673,8 @@ module Authlete
     end
 
 
-    sig { params(vci_offer_info_request: Models::Components::VciOfferInfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciOfferInfoApiResponse) }
-    def offer_info(vci_offer_info_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_offer_info_request: Models::Components::VciOfferInfoRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciOfferInfoApiResponse) }
+    def offer_info(vci_offer_info_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # offer_info - Get Credential Offer Information
       # Get information about a verifiable credential offer
       request = Models::Operations::VciOfferInfoApiRequest.new(
@@ -681,7 +695,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -717,6 +731,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -814,8 +831,8 @@ module Authlete
     end
 
 
-    sig { params(vci_single_parse_request: Models::Components::VciSingleParseRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciSingleParseApiResponse) }
-    def parse(vci_single_parse_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_single_parse_request: Models::Components::VciSingleParseRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciSingleParseApiResponse) }
+    def parse(vci_single_parse_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # parse - Parse Single Credential
       # Parse a single verifiable credential
       request = Models::Operations::VciSingleParseApiRequest.new(
@@ -836,7 +853,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -872,6 +889,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -969,8 +989,8 @@ module Authlete
     end
 
 
-    sig { params(vci_single_issue_request: Models::Components::VciSingleIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciSingleIssueApiResponse) }
-    def issue_response(vci_single_issue_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_single_issue_request: Models::Components::VciSingleIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciSingleIssueApiResponse) }
+    def issue_response(vci_single_issue_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # issue_response - Issue Single Credential
       # Issue a single verifiable credential
       request = Models::Operations::VciSingleIssueApiRequest.new(
@@ -991,7 +1011,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1027,6 +1047,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1124,8 +1147,8 @@ module Authlete
     end
 
 
-    sig { params(vci_batch_parse_request: Models::Components::VciBatchParseRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciBatchParseApiResponse) }
-    def batch_parse(vci_batch_parse_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_batch_parse_request: Models::Components::VciBatchParseRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciBatchParseApiResponse) }
+    def batch_parse(vci_batch_parse_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # batch_parse - Parse Batch Credentials
       # Parse multiple verifiable credentials in batch
       request = Models::Operations::VciBatchParseApiRequest.new(
@@ -1146,7 +1169,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1182,6 +1205,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1279,8 +1305,8 @@ module Authlete
     end
 
 
-    sig { params(vci_batch_issue_request: Models::Components::VciBatchIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciBatchIssueApiResponse) }
-    def batch_issue(vci_batch_issue_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_batch_issue_request: Models::Components::VciBatchIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciBatchIssueApiResponse) }
+    def batch_issue(vci_batch_issue_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # batch_issue - Issue Batch Credentials
       # Issue multiple verifiable credentials in batch
       request = Models::Operations::VciBatchIssueApiRequest.new(
@@ -1301,7 +1327,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1337,6 +1363,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1434,8 +1463,8 @@ module Authlete
     end
 
 
-    sig { params(vci_deferred_parse_request: Models::Components::VciDeferredParseRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciDeferredParseApiResponse) }
-    def deferred_parse(vci_deferred_parse_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_deferred_parse_request: Models::Components::VciDeferredParseRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciDeferredParseApiResponse) }
+    def deferred_parse(vci_deferred_parse_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # deferred_parse - Parse Deferred Credential
       # Parse a deferred verifiable credential
       request = Models::Operations::VciDeferredParseApiRequest.new(
@@ -1456,7 +1485,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1492,6 +1521,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1589,8 +1621,8 @@ module Authlete
     end
 
 
-    sig { params(vci_deferred_issue_request: Models::Components::VciDeferredIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::VciDeferredIssueApiResponse) }
-    def deferred_issue(vci_deferred_issue_request:, service_id:, timeout_ms: nil)
+    sig { params(vci_deferred_issue_request: Models::Components::VciDeferredIssueRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::VciDeferredIssueApiResponse) }
+    def deferred_issue(vci_deferred_issue_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # deferred_issue - Issue Deferred Credential
       # Issue a deferred verifiable credential
       request = Models::Operations::VciDeferredIssueApiRequest.new(
@@ -1611,7 +1643,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -1647,6 +1679,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -1742,5 +1777,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

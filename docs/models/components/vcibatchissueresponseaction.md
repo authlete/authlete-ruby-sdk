@@ -4,6 +4,14 @@ The next action that the implementation of the batch credential
 endpoint should take.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciBatchIssueResponseAction::OK
+```
+
 
 ## Values
 

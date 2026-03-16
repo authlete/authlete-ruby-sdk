@@ -39,14 +39,16 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceGetApiResponse) }
-    def retrieve(service_id:, timeout_ms: nil)
+
+
+    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceGetApiResponse) }
+    def retrieve(service_id:, timeout_ms: nil, http_headers: nil)
       # retrieve - Get Service
       # Get a service.
-      # 
+      #
       # If the access token can only view or modify clients underneath this service, but does not
       # have access to view this service directly, a limited view of the service will be returned.
-      # 
+      #
       request = Models::Operations::ServiceGetApiRequest.new(
         service_id: service_id
       )
@@ -88,6 +90,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -185,18 +190,18 @@ module Authlete
     end
 
 
-    sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceGetListApiResponse) }
-    def list(start: nil, end_: nil, timeout_ms: nil)
+    sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceGetListApiResponse) }
+    def list(start: nil, end_: nil, timeout_ms: nil, http_headers: nil)
       # list - List Services
       # Get a list of services.
-      # 
+      #
       # If the access token can only view or modify clients underneath a service, but does not
       # have access to view that service directly, a limited view of the service will be returned.
       # Otherwise, all properties of the service are returned.
-      # 
+      #
       # If the access token is an administrative token, this returns a list of all services on the Authlete instance.
       # Otherwise, all services that the access token can view, even in a limited fashion, are returned.
-      # 
+      #
       request = Models::Operations::ServiceGetListApiRequest.new(
         start: start,
         end_: end_
@@ -236,6 +241,9 @@ module Authlete
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -333,11 +341,11 @@ module Authlete
     end
 
 
-    sig { params(request: T.nilable(Models::Components::ServiceInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceCreateApiResponse) }
-    def create(request: nil, timeout_ms: nil)
+    sig { params(request: T.nilable(Models::Components::ServiceInput), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceCreateApiResponse) }
+    def create(request: nil, timeout_ms: nil, http_headers: nil)
       # create - Create Service
       # Create a new service.
-      # 
+      #
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/api/service/create"
@@ -346,7 +354,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, true, :request, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -382,6 +390,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -479,11 +490,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, service: T.nilable(Models::Components::ServiceInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceUpdateApiResponse) }
-    def update(service_id:, service: nil, timeout_ms: nil)
+    sig { params(service_id: ::String, service: T.nilable(Models::Components::ServiceInput), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceUpdateApiResponse) }
+    def update(service_id:, service: nil, timeout_ms: nil, http_headers: nil)
       # update - Update Service
       # Update a service.
-      # 
+      #
       request = Models::Operations::ServiceUpdateApiRequest.new(
         service_id: service_id,
         service: service
@@ -501,7 +512,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :service, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -537,6 +548,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -634,11 +648,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceDeleteApiResponse) }
-    def destroy(service_id:, timeout_ms: nil)
+    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceDeleteApiResponse) }
+    def destroy(service_id:, timeout_ms: nil, http_headers: nil)
       # destroy - Delete Service ⚡
       # Delete a service.
-      # 
+      #
       request = Models::Operations::ServiceDeleteApiRequest.new(
         service_id: service_id
       )
@@ -680,6 +694,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -768,17 +785,17 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, pretty: T.nilable(T::Boolean), patch: T.nilable(::String), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceConfigurationApiResponse) }
-    def configuration(service_id:, pretty: nil, patch: nil, timeout_ms: nil)
+    sig { params(service_id: ::String, pretty: T.nilable(T::Boolean), patch: T.nilable(::String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceConfigurationApiResponse) }
+    def configuration(service_id:, pretty: nil, patch: nil, timeout_ms: nil, http_headers: nil)
       # configuration - Get Service Configuration
       # This API gathers configuration information about a service.
-      # ### Description
+      #
       # This API is supposed to be called from within the implementation of the configuration endpoint of
-      # the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1\_0.html)
+      # the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html)
       # must expose its configuration information in a JSON format. Details about the format are described
-      # in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1\_0.html#ProviderMetadata)"
+      # in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)"
       # in OpenID Connect Discovery 1.0.
-      # 
+      #
       request = Models::Operations::ServiceConfigurationApiRequest.new(
         service_id: service_id,
         pretty: pretty,
@@ -824,6 +841,9 @@ module Authlete
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -919,5 +939,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

@@ -5,6 +5,14 @@ Supported attachment types. This property corresponds to the `attachments_suppor
  for Identity Assurance 1.0.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = AttachmentType::EMBEDDED
+```
+
 
 ## Values
 

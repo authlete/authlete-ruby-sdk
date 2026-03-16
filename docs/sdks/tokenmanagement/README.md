@@ -28,9 +28,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.token_management.reissue_id_token(service_id: '<id>')
 
 unless res.idtoken_reissue_response.nil?
@@ -71,13 +70,12 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-req = Models::Operations::AuthTokenGetListApiRequest.new(
-  service_id: '<id>',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
 
+req = Models::Operations::AuthTokenGetListApiRequest.new(
+  service_id: '<id>'
+)
 res = s.token_management.list(request: req)
 
 unless res.token_get_list_response.nil?
@@ -117,9 +115,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.token_management.create(service_id: '<id>', token_create_request: Models::Components::TokenCreateRequest.new(
   grant_type: Models::Components::GrantType::AUTHORIZATION_CODE,
   client_id: 26_888_344_961_664,
@@ -127,7 +124,7 @@ res = s.token_management.create(service_id: '<id>', token_create_request: Models
   scopes: [
     'history.read',
     'timeline.read',
-  ],
+  ]
 ))
 
 unless res.token_create_response.nil?
@@ -168,14 +165,13 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.token_management.update(service_id: '<id>', token_update_request: Models::Components::TokenUpdateRequest.new(
   access_token: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
   scopes: [
     'history.read',
-  ],
+  ]
 ))
 
 unless res.token_update_response.nil?
@@ -216,9 +212,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.token_management.destroy(service_id: '<id>', access_token_identifier: '<value>')
 
 if res.status_code == 200
@@ -259,11 +254,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.token_management.revoke(service_id: '<id>', token_revoke_request: Models::Components::TokenRevokeRequest.new(
-  access_token_identifier: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
+  access_token_identifier: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q'
 ))
 
 unless res.token_revoke_response.nil?

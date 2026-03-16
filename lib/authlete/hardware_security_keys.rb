@@ -39,8 +39,10 @@ module Authlete
     end
 
 
-    sig { params(hsk_create_request: Models::Components::HskCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::HskCreateApiResponse) }
-    def create(hsk_create_request:, service_id:, timeout_ms: nil)
+
+
+    sig { params(hsk_create_request: Models::Components::HskCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskCreateApiResponse) }
+    def create(hsk_create_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # create - Create Security Key
       request = Models::Operations::HskCreateApiRequest.new(
         service_id: service_id,
@@ -60,7 +62,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -96,6 +98,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -193,8 +198,8 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, handle: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::HskDeleteApiResponse) }
-    def destroy(service_id:, handle:, timeout_ms: nil)
+    sig { params(service_id: ::String, handle: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskDeleteApiResponse) }
+    def destroy(service_id:, handle:, timeout_ms: nil, http_headers: nil)
       # destroy - Delete Security Key
       request = Models::Operations::HskDeleteApiRequest.new(
         service_id: service_id,
@@ -238,6 +243,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -335,8 +343,8 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, handle: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::HskGetApiResponse) }
-    def retrieve(service_id:, handle:, timeout_ms: nil)
+    sig { params(service_id: ::String, handle: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskGetApiResponse) }
+    def retrieve(service_id:, handle:, timeout_ms: nil, http_headers: nil)
       # retrieve - Get Security Key
       request = Models::Operations::HskGetApiRequest.new(
         service_id: service_id,
@@ -380,6 +388,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -477,8 +488,8 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::HskGetListApiResponse) }
-    def list(service_id:, timeout_ms: nil)
+    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskGetListApiResponse) }
+    def list(service_id:, timeout_ms: nil, http_headers: nil)
       # list - List Security Keys
       request = Models::Operations::HskGetListApiRequest.new(
         service_id: service_id
@@ -521,6 +532,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -616,5 +630,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

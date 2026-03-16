@@ -4,6 +4,14 @@ The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693).
 The API returns short codes (enum constant names) in response fields.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = TokenType::JWT
+```
+
 
 ## Values
 

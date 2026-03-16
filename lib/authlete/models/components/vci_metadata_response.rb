@@ -20,11 +20,11 @@ module Authlete
         # metadata endpoint (`/.well-known/openid-credential-issuer`)
         # should take after getting a response from Authlete's
         # `/vci/metadata` API.
-        # 
-        field :action, Crystalline::Nilable.new(Models::Components::VciMetadataResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::VciMetadataResponseAction, true) } }
+        #
+        field :action, Crystalline::Nilable.new(Models::Components::VciMetadataResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciMetadataResponseAction, true) } }
         # Get the content that the implementation of the credential issuer
         # metadata endpoint should use when it constructs a response.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::VciMetadataResponseAction), response_content: T.nilable(::String)).void }

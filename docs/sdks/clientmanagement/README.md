@@ -39,11 +39,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.update_lock_flag(service_id: '<id>', client_identifier: '<value>', client_flag_update_request: Models::Components::ClientFlagUpdateRequest.new(
-  client_locked: true,
+  client_locked: true
 ))
 
 unless res.client_flag_update_response.nil?
@@ -88,9 +87,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.refresh_secret(service_id: '<id>', client_identifier: '<value>')
 
 unless res.client_secret_refresh_response.nil?
@@ -134,11 +132,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.update_secret(service_id: '<id>', client_identifier: '<value>', client_secret_update_request: Models::Components::ClientSecretUpdateRequest.new(
-  client_secret: 'my_updated_client_secret',
+  client_secret: 'my_updated_client_secret'
 ))
 
 unless res.client_secret_update_response.nil?
@@ -181,14 +178,13 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 
 req = Models::Operations::ClientAuthorizationGetListBySubjectApiRequest.new(
   service_id: '<id>',
-  subject: '<value>',
+  subject: '<value>'
 )
-
 res = s.client_management.authorizations(request: req)
 
 unless res.client_authorization_get_list_response.nil?
@@ -228,14 +224,13 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.update_authorizations(service_id: '<id>', client_id: '<id>', client_authorization_update_request: Models::Components::ClientAuthorizationUpdateRequest.new(
   subject: 'john',
   scopes: [
     'history.read',
-  ],
+  ]
 ))
 
 unless res.client_authorization_update_response.nil?
@@ -278,9 +273,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.destroy_authorizations(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_authorization_delete_response.nil?
@@ -323,9 +317,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.granted_scopes(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_authorization_delete_response.nil?
@@ -368,9 +361,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.destroy_granted_scopes(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_granted_scopes_delete_response.nil?
@@ -412,9 +404,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.requestable_scopes(service_id: '<id>', client_id: '<id>')
 
 unless res.client_extension_requestable_scopes_get_response.nil?
@@ -455,10 +446,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.client_management.update_requestable_scopes(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.client_management.update_requestable_scopes(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new)
 
 unless res.client_extension_requestable_scopes_update_response.nil?
   # handle response
@@ -499,9 +489,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.destroy_requestable_scopes(service_id: '<id>', client_id: '<id>')
 
 if res.status_code == 200
@@ -544,14 +533,13 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 
 req = Models::Operations::ClientAuthorizationGetListApiRequest.new(
   service_id: '<id>',
-  subject: '<value>',
+  subject: '<value>'
 )
-
 res = s.client_management.client_authorization_get_list_api(request: req)
 
 unless res.client_authorization_get_list_response.nil?
@@ -593,11 +581,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.client_authorization_get_list_api_post(service_id: '<id>', client_authorization_get_list_request: Models::Components::ClientAuthorizationGetListRequest.new(
-  subject: '<value>',
+  subject: '<value>'
 ))
 
 unless res.client_authorization_get_list_response.nil?
@@ -640,9 +627,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.client_authorization_delete_api(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_authorization_delete_response.nil?
@@ -686,11 +672,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.client_authorization_delete_api_post(service_id: '<id>', client_id: '<id>', request_body: Models::Operations::ClientAuthorizationDeleteApiPostRequestBody.new(
-  subject: '<value>',
+  subject: '<value>'
 ))
 
 unless res.client_authorization_delete_response.nil?
@@ -720,19 +705,6 @@ end
 ## client_granted_scopes_get_api
 
 Get the set of scopes that a user has granted to a client application.
-### Description
-Possible values for `requestableScopes` parameter in the response from this API are as follows.
-**null**
-The user has not granted authorization to the client application in the past, or records about the
-combination of the user and the client application have been deleted from Authlete's DB.
-**An empty set**
-The user has granted authorization to the client application in the past, but no scopes are associated
-with the authorization.
-**A set with at least one element**
-The user has granted authorization to the client application in the past and some scopes are associated
-with the authorization. These scopes are returned.
-Example: `[ "profile", "email" ]`
-The subject parameter is required and must be provided as a query parameter.
 
 
 ### Example Usage
@@ -743,9 +715,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.client_granted_scopes_get_api(service_id: '715948317', client_id: '1140735077', subject: '<value>')
 
 unless res.client_authorization_delete_response.nil?
@@ -789,11 +760,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.client_granted_scopes_get_api_post(service_id: '<id>', client_id: '<id>', request_body: Models::Operations::ClientGrantedScopesGetApiPostRequestBody.new(
-  subject: '<value>',
+  subject: '<value>'
 ))
 
 unless res.client_authorization_delete_response.nil?
@@ -823,7 +793,7 @@ end
 ## client_granted_scopes_delete_api
 
 Delete the set of scopes that an end-user has granted to a client application.
-### Description
+
 Even if records about granted scopes are deleted by calling this API, existing access tokens are
 not deleted and scopes of existing access tokens are not changed.
 The subject parameter is required and must be provided as a query parameter.
@@ -837,9 +807,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.client_management.client_granted_scopes_delete_api(service_id: '<id>', client_id: '<id>', subject: '<value>')
 
 unless res.client_granted_scopes_delete_response.nil?
@@ -881,10 +850,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.client_management.client_extension_requestables_scopes_update_api_post(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.client_management.client_extension_requestables_scopes_update_api_post(service_id: '<id>', client_id: '<id>', client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest.new)
 
 unless res.client_extension_requestable_scopes_update_response.nil?
   # handle response

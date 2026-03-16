@@ -39,18 +39,20 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, include_private_keys: T.nilable(T::Boolean), pretty: T.nilable(T::Boolean), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ServiceJwksGetApiResponse) }
-    def service_jwks_get_api(service_id:, include_private_keys: nil, pretty: nil, timeout_ms: nil)
+
+
+    sig { params(service_id: ::String, include_private_keys: T.nilable(T::Boolean), pretty: T.nilable(T::Boolean), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ServiceJwksGetApiResponse) }
+    def service_jwks_get_api(service_id:, include_private_keys: nil, pretty: nil, timeout_ms: nil, http_headers: nil)
       # service_jwks_get_api - Get JWK Set
       # This API gathers JWK Set information for a service so that its client applications can verify
       # signatures by the service and encrypt their requests to the service.
-      # ### Description
+      #
       # This API is supposed to be called from within the implementation of the jwk set endpoint of the
       # service where the service that supports OpenID Connect must expose its JWK Set information so that
       # client applications can verify signatures by the service and encrypt their requests to the service.
-      # The URI of the endpoint can be found as the value of `jwks\_uri` in [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1\_0.html#ProviderMetadata)
-      # if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1\_0.html).
-      # 
+      # The URI of the endpoint can be found as the value of `jwks_uri` in [OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)
+      # if the service supports [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html).
+      #
       request = Models::Operations::ServiceJwksGetApiRequest.new(
         service_id: service_id,
         include_private_keys: include_private_keys,
@@ -96,6 +98,9 @@ module Authlete
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -203,5 +208,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

@@ -18,28 +18,28 @@ module Authlete
         # the value of the "`accessToken`" parameter in the
         # response from the `/auth/token` API when the value of
         # the "`jwtAccessToken`" parameter is not available.
-        # 
+        #
         field :access_token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken'), required: true } }
         # The value of this parameter should be the value of the
         # "`refreshToken`" parameter in a response from the
         # `/auth/token` API.
-        # 
+        #
         field :refresh_token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshToken'), required: true } }
         # The value that should be used as the value of the "`sub`"
         # claim of the ID token.
         # This parameter is optional. When omitted, the value of the subject
         # associated with the access token is used.
-        # 
+        #
         field :sub, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sub') } }
         # Additional claims that should be embedded in the payload part of
         # the ID token. The format is a JSON object.
         # This parameter is optional.
-        # 
+        #
         field :claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') } }
         # Additional parameters that should be embedded in the JWS header of
         # the ID token. The format is a JSON object.
         # This parameter is optional.
-        # 
+        #
         field :idt_header_params, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idtHeaderParams') } }
         # The type of the "`aud`" claim of the ID token being issued.
         # Valid values of this parameter are as follows.
@@ -50,8 +50,8 @@ module Authlete
         # This parameter is optional, and the default value on omission is
         # "`array`".
         # This parameter takes precedence over the `idTokenAudType` property
-        # of {@link Service} (cf. {@link Service#getIdTokenAudType()}).
-        # 
+        # of &#123;@link Service&#125; (cf. &#123;@link Service#getIdTokenAudType()&#125;).
+        #
         field :id_token_aud_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idTokenAudType') } }
 
         sig { params(access_token: ::String, refresh_token: ::String, sub: T.nilable(::String), claims: T.nilable(::String), idt_header_params: T.nilable(::String), id_token_aud_type: T.nilable(::String)).void }

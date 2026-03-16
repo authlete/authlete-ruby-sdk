@@ -39,11 +39,13 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientGetApiResponse) }
-    def retrieve(service_id:, client_id:, timeout_ms: nil)
+
+
+    sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGetApiResponse) }
+    def retrieve(service_id:, client_id:, timeout_ms: nil, http_headers: nil)
       # retrieve - Get Client
       # Get a client.
-      # 
+      #
       request = Models::Operations::ClientGetApiRequest.new(
         service_id: service_id,
         client_id: client_id
@@ -86,6 +88,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -183,16 +188,16 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientGetListApiResponse) }
-    def list(service_id:, developer: nil, start: nil, end_: nil, timeout_ms: nil)
+    sig { params(service_id: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGetListApiResponse) }
+    def list(service_id:, developer: nil, start: nil, end_: nil, timeout_ms: nil, http_headers: nil)
       # list - List Clients
       # Get a list of clients on a service.
-      # 
+      #
       # If the access token can view a full service (including an admin), all clients within the
       # service are returned. Otherwise, only clients that the access token can view within the
       # service are returned.
       # - ViewClient: []
-      # 
+      #
       request = Models::Operations::ClientGetListApiRequest.new(
         service_id: service_id,
         developer: developer,
@@ -239,6 +244,9 @@ module Authlete
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -336,11 +344,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, client: T.nilable(Models::Components::ClientInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientCreateApiResponse) }
-    def create(service_id:, client: nil, timeout_ms: nil)
+    sig { params(service_id: ::String, client: T.nilable(Models::Components::ClientInput), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientCreateApiResponse) }
+    def create(service_id:, client: nil, timeout_ms: nil, http_headers: nil)
       # create - Create Client
       # Create a new client.
-      # 
+      #
       request = Models::Operations::ClientCreateApiRequest.new(
         service_id: service_id,
         client: client
@@ -358,7 +366,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -394,6 +402,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -491,11 +502,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, client_id: ::String, client: T.nilable(Models::Components::ClientInput), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientUpdateApiResponse) }
-    def update(service_id:, client_id:, client: nil, timeout_ms: nil)
+    sig { params(service_id: ::String, client_id: ::String, client: T.nilable(Models::Components::ClientInput), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientUpdateApiResponse) }
+    def update(service_id:, client_id:, client: nil, timeout_ms: nil, http_headers: nil)
       # update - Update Client
       # Update a client.
-      # 
+      #
       request = Models::Operations::ClientUpdateApiRequest.new(
         service_id: service_id,
         client_id: client_id,
@@ -514,7 +525,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -550,6 +561,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -647,11 +661,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, client_id: ::String, request_body: T.nilable(T::Hash[Symbol, ::Object]), timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientUpdateApiFormResponse) }
-    def update_form(service_id:, client_id:, request_body: nil, timeout_ms: nil)
+    sig { params(service_id: ::String, client_id: ::String, request_body: T.nilable(T::Hash[Symbol, ::Object]), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientUpdateApiFormResponse) }
+    def update_form(service_id:, client_id:, request_body: nil, timeout_ms: nil, http_headers: nil)
       # update_form - Update Client
       # Update a client.
-      # 
+      #
       request = Models::Operations::ClientUpdateApiFormRequest.new(
         service_id: service_id,
         client_id: client_id,
@@ -670,7 +684,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :form)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -706,6 +720,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -803,11 +820,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::ClientDeleteApiResponse) }
-    def destroy(service_id:, client_id:, timeout_ms: nil)
+    sig { params(service_id: ::String, client_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientDeleteApiResponse) }
+    def destroy(service_id:, client_id:, timeout_ms: nil, http_headers: nil)
       # destroy - Delete Client ⚡
       # Delete a client.
-      # 
+      #
       request = Models::Operations::ClientDeleteApiRequest.new(
         service_id: service_id,
         client_id: client_id
@@ -850,6 +867,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -936,5 +956,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

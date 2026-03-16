@@ -13,10 +13,10 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The entity configuration of a relying party.
-        # 
+        #
         field :entity_configuration, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('entityConfiguration') }, 'form': { 'field_name': 'entityConfiguration' } }
         # The trust chain of a relying party.
-        # 
+        #
         field :trust_chain, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('trustChain') }, 'form': { 'field_name': 'trustChain' } }
 
         sig { params(entity_configuration: T.nilable(::String), trust_chain: T.nilable(::String)).void }

@@ -13,21 +13,21 @@ module Authlete
         include Crystalline::MetadataFields
 
         # A JOSE object.
-        # 
+        #
         field :jose, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jose'), required: true }, 'form': { 'field_name': 'jose' } }
         # Mandatory claims that are required to be included in the JOSE object.
-        # 
+        #
         field :mandatory_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('mandatoryClaims') }, 'form': { 'field_name': 'mandatoryClaims' } }
         # Allowable clock skew in seconds.
-        # 
+        #
         field :clock_skew, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clockSkew') }, 'form': { 'field_name': 'clockSkew' } }
         # The identifier of the client application whose keys are required for verification of the JOSE
         # object.
-        # 
+        #
         field :client_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdentifier') }, 'form': { 'field_name': 'clientIdentifier' } }
         # The flag which indicates whether the signature of the JOSE object has been signed by a client
         # application with the client's private key or a shared symmetric key.
-        # 
+        #
         field :signed_by_client, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('signedByClient') }, 'form': { 'field_name': 'signedByClient' } }
 
         sig { params(jose: ::String, mandatory_claims: T.nilable(T::Array[::String]), clock_skew: T.nilable(::Integer), client_identifier: T.nilable(::String), signed_by_client: T.nilable(T::Boolean)).void }

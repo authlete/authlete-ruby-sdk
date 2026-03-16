@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The arbitrary text attached to the ticket.
-        # 
+        #
         field :context, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('context') } }
 
         sig { params(context: T.nilable(::String)).void }
