@@ -17,13 +17,16 @@ task :default => :test
 
 # Run all tests:
 #
-# $ API_BASE_URL="https://api.authlete.local" \
+# $ API_BASE_URL="<authlete-api-server-url>" \
 #   SERVICE_ID="<service-id>" \
 #   SERVICE_TOKEN="<service-access-token>" \
-#   rake test
-#
-# Local dev only — prepend SSL_CERT_FILE="$(mkcert -CAROOT)/rootCA.pem"
+#   ORG_TOKEN="<org-access-token>" \
+#   bundle exec rake test
 #
 # Run a single file:
 #
-# $ bundle exec ruby -Itest test/auth_grant_test.rb
+# $ API_BASE_URL="<authlete-api-server-url>" \
+#   SERVICE_ID="<service-id>" \
+#   SERVICE_TOKEN="<service-access-token>" \
+#   ORG_TOKEN="<org-access-token>" \
+#   bundle exec ruby -Itest test/auth_grant_test.rb
