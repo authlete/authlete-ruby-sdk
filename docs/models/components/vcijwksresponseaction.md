@@ -5,6 +5,14 @@ endpoint of the credential issuer should take after getting a
 response from Authlete's `/vci/jwks` API.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciJwksResponseAction::OK
+```
+
 
 ## Values
 

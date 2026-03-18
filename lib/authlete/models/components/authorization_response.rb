@@ -17,27 +17,27 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::AuthorizationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::AuthorizationResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::AuthorizationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::AuthorizationResponseAction, true) } }
 
         field :client, Crystalline::Nilable.new(Models::Components::ClientLimitedAuthorization), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('client') } }
         # The display mode which the client application requests by `display` request parameter.
         # When the authorization request does not have `display` request parameter, `PAGE` is set as the default value.
-        # 
+        #
         # It is ensured that the value of `display` is one of the supported display modes which are specified
         # by `supportedDisplays` configuration parameter of the service. If the display mode specified by the
         # authorization request is not supported, an error is raised.
-        # 
+        #
         # Values for this property correspond to the values listed in
         # "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display".
-        # 
-        field :display, Crystalline::Nilable.new(Models::Components::Display), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('display'), 'decoder': Utils.enum_from_string(Models::Components::Display, true) } }
+        #
+        field :display, Crystalline::Nilable.new(Models::Components::Display), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('display'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::Display, true) } }
         # The maximum authentication age. This value comes from `max_age` request parameter, or `defaultMaxAge` configuration parameter
         # of the client application when the authorization request does not contain `max_age` request parameter.
-        # 
+        #
         # See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), max_age"
         # for `max_age` request parameter, and see "[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata), default_max_age"
         # for `defaultMaxAge` configuration parameter.
-        # 
+        #
         field :max_age, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('maxAge') } }
 
         field :service, Crystalline::Nilable.new(Models::Components::Service), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('service') } }
@@ -51,225 +51,142 @@ module Authlete
         # OpenID Connect defines some scope names which need to be treated specially. The table below lists the special scope names.
         # | Name | Description |
         # | --- | --- |
-        # | `openid` | This scope must be contained in `scope` request parameter to promote an OAuth 2.0 authorization request to an OpenID Connect request. It is described in "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1\_0.html#AuthRequest), scope". |
-        # | `profile` | This scope is used to request some claims to be embedded in the ID token. The claims are `name`, `family\_name`, `given\_name`, `middle\_name`, `nickname`, `preferred\_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale`, and `updated\_at`. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1\_0.html#ScopeClaims). |
-        # | `email` | This scope is used to request some claims to be embedded in the ID token. The claims are `email` and `email\_verified`. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1\_0.html#ScopeClaims). |
-        # | `address` | This scope is used to request `address` claim to be embedded in the ID token. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1\_0.html#ScopeClaims).
-        #  The format of `address` claim is not a simple string. It is described in [OpenID Connect Core 1.0, 5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1\_0.html#AddressClaim). |
-        # | `phone` | This scope is used to request some claims to be embedded in the ID token. The claims are `phone\_number` and `phone\_number\_verified`. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1\_0.html#ScopeClaims). |
-        # | `offline\_access` | The following is an excerpt about this scope from [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1\_0.html#OfflineAccess).
+        # | `openid` | This scope must be contained in `scope` request parameter to promote an OAuth 2.0 authorization request to an OpenID Connect request. It is described in "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), scope". |
+        # | `profile` | This scope is used to request some claims to be embedded in the ID token. The claims are `name`, `family_name`, `given_name`, `middle_name`, `nickname`, `preferred_username`, `profile`, `picture`, `website`, `gender`, `birthdate`, `zoneinfo`, `locale`, and `updated_at`. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims). |
+        # | `email` | This scope is used to request some claims to be embedded in the ID token. The claims are `email` and `email_verified`. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims). |
+        # | `address` | This scope is used to request `address` claim to be embedded in the ID token. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims).
+        #  The format of `address` claim is not a simple string. It is described in [OpenID Connect Core 1.0, 5.1.1. Address Claim](https://openid.net/specs/openid-connect-core-1_0.html#AddressClaim). |
+        # | `phone` | This scope is used to request some claims to be embedded in the ID token. The claims are `phone_number` and `phone_number_verified`. It is described in [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims). |
+        # | `offline_access` | The following is an excerpt about this scope from [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess).
         # > This scope value requests that an OAuth 2.0 Refresh Token be issued that can be used to obtain an Access Token that grants access to the end-user's userinfo endpoint even when the end-user is not present (not logged in).
         # |
-        # Note that, if `response\_type` request parameter does not contain code, `offline\_acccess` scope is removed from this list even
-        # when scope request parameter contains `offline\_access`. This behavior is a requirement written in
-        # [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1\_0.html#OfflineAccess).
-        # 
+        # Note that, if `response_type` request parameter does not contain code, `offline_acccess` scope is removed from this list even
+        # when scope request parameter contains `offline_access`. This behavior is a requirement written in
+        # [OpenID Connect Core 1.0, 11. Offline Access](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess).
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Scope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The locales that the client application presented as candidates to be used for UI.
         # This value comes from `ui_locales` request parameter. The format of `ui_locales` is a space-separated list of language tag values
         # defined in [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646).
         # See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), ui_locales" for details.
-        # 
+        #
         # It is ensured that locales listed by this parameters are contained in the list of supported UI locales which are specified
         # by `supportedUiLocales` configuration parameter of the service. Unsupported UI locales in the authorization request do not
         # cause an error and are just ignored.
-        # 
+        #
         field :ui_locales, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('uiLocales') } }
         # End-user's preferred languages and scripts for claims. This value comes from `claims_locales` request parameter.
         # The format of `claims_locales` is a space-separated list of language tag values defined in [RFC5646](https://datatracker.ietf.org/doc/html/rfc5646).
         # See "[OpenID Connect Core 1.0, 5.2. Claims Languages and Scripts](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsLanguagesAndScripts)" for details.
-        # 
+        #
         # It is ensured that locales listed by this parameters are contained in the list of supported claim locales
         # which are specified by `supportedClaimsLocales` configuration parameter of the service.
         # Unsupported claim locales in the authorization request do not cause an error and are just ignored.
-        # 
+        #
         field :claims_locales, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claimsLocales') } }
         # The list of claims that the client application requests to be embedded in the ID token.
         # The value comes from (1) `id_token` in `claims` request parameter [1] and/or (2) special scopes (`profile`, `email`, `address` and `phone`)
         # which are expanded to claims.
-        # 
+        #
         # See [OpenID Connect Core 1.0, 5.5. Requesting Claims using the "claims" Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter)
         # for `claims` request parameter, and see [OpenID Connect Core 1.0, 5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims)
         # for the special scopes.
-        # 
+        #
         field :claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') } }
         # This boolean value indicates whether the authentication of the end-user must be one of the ACRs (Authentication Context Class References) listed in `acrs` parameter.
         # This parameter becomes `true` only when (1) the authorization request contains `claims` request parameter and (2) `acr` claim is in it, and (3) `essential` property of
         # the `acr` claim is `true`. See [OpenID Connect Core 1.0, 5.5.1.1. Requesting the "acr" Claim](https://openid.net/specs/openid-connect-core-1_0.html#acrSemantics) for details.
-        # 
+        #
         field :acr_essential, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acrEssential') } }
         # `true` if the value of the `client_id` request parameter included in the authorization request is the client ID alias.
         # `false` if the value is the original numeric client ID.
-        # 
+        #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The list of ACRs (Authentication Context Class References) one of which the client application requests to be satisfied for the authentication of the end-user.
         # This value comes from `acr_values` request parameter or `defaultAcrs` configuration parameter of the client application.
-        # 
+        #
         # See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), acr_values" for `acr_values`
         # request parameter, and see "[OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata),
         # default_acr_values" for `defaultAcrs` configuration parameter.
-        # 
+        #
         field :acrs, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acrs') } }
         # The subject (= unique user ID managed by the authorization server implementation) that the client application expects to grant authorization.
         # The value comes from `sub` claim in `claims` request parameter.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # A hint about the login identifier of the end-user. The value comes from `login_hint` request parameter.
         field :login_hint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('loginHint') } }
         # The list of values of prompt request parameter. See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for prompt request parameter.
         field :prompts, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Prompt)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('prompts') } }
         # The prompt that the UI displayed to the end-user must satisfy as the minimum level. This value comes from `prompt` request parameter.
-        # 
+        #
         # When the authorization request does not contain `prompt` request parameter, `CONSENT` is used as the default value.
-        # 
+        #
         # See "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), prompt" for `prompt` request parameter.
-        # 
-        field :lowest_prompt, Crystalline::Nilable.new(Models::Components::Prompt), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('lowestPrompt'), 'decoder': Utils.enum_from_string(Models::Components::Prompt, true) } }
+        #
+        field :lowest_prompt, Crystalline::Nilable.new(Models::Components::Prompt), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('lowestPrompt'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::Prompt, true) } }
         # The payload part of the request object. The value of this proprty is `null` if the authorization request does not include a request object.
-        # 
+        #
         field :request_object_payload, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestObjectPayload') } }
         # The value of the `id_token` property in the claims request parameter or in the claims property in a request object.
-        # 
-        # A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint.
-        # There are several ways. Including the `claims` request parameter and including the `claims` property in a request object are such examples.
-        # In both the cases, the value of the `claims` parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the "claims"
-        # Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).
-        # 
-        # The following is an excerpt from the specification.
-        # You can find `userinfo` and `id_token` are top-level properties.
-        # 
-        # ```json
-        # {
-        #   "userinfo":
-        #   {
-        #     "given_name": { "essential": true },
-        #     "nickname": null,
-        #     "email": { "essential": true },
-        #     "email_verified": { "essential": true },
-        #     "picture": null,
-        #     "http://example.info/claims/groups": null
-        #   },
-        #   "id_token":
-        #   {
-        #     "auth_time": { "essential": true },
-        #     "acr": { "values": [ "urn:mace:incommon:iap:silver" ] }
-        #   }
-        # }
-        # ```
-        # 
-        # This value of this property is the value of the `id_token` property in JSON format.
-        # For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.
-        # 
-        # ```json
-        # {
-        #   "auth_time": { "essential": true },
-        #   "acr": { "values": [ "urn:mace:incommon:iap:silver" ] }
-        # }
-        # ```
-        # 
-        # Note that if a request object is given and it contains the `claims` property and if the `claims` request parameter is also given,
-        # this property holds the former value.
-        # 
+        #
         field :id_token_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idTokenClaims') } }
         # The value of the `userinfo` property in the `claims` request parameter or in the `claims` property in a request object.
-        # 
-        # A client application may request certain claims be embedded in an ID token or in a response from the userInfo endpoint.
-        # There are several ways. Including the `claims` request parameter and including the `claims` property in a request object are such examples.
-        # In both the cases, the value of the `claims` parameter/property is JSON. Its format is described in [5.5. Requesting Claims using the "claims"
-        # Request Parameter](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter).
-        # 
-        # The following is an excerpt from the specification. You can find `userinfo` and `id_token` are top-level properties.
-        # 
-        # ```json
-        # {
-        #   "userinfo":
-        #   {
-        #     "given_name": { "essential": true },
-        #     "nickname": null,
-        #     "email": { "essential": true },
-        #     "email_verified": { "essential": true },
-        #     "picture": null,
-        #     "http://example.info/claims/groups": null
-        #   },
-        #   "id_token":
-        #   {
-        #     "auth_time": { "essential": true },
-        #     "acr": { "values": [ "urn:mace:incommon:iap:silver" ] }
-        #   }
-        # }
-        # ````
-        # 
-        # The value of this property is the value of the `userinfo` property in JSON format.
-        # For example, if the JSON above is included in an authorization request, this property holds JSON equivalent to the following.
-        # 
-        # ```json
-        # {
-        #   "given_name": { "essential": true },
-        #   "nickname": null,
-        #   "email": { "essential": true },
-        #   "email_verified": { "essential": true },
-        #   "picture": null,
-        #   "http://example.info/claims/groups": null
-        # }
-        # ```
-        # 
-        # Note that if a request object is given and it contains the `claims` property and if the `claims` request parameter is also given,
-        # the value of this property holds the former value.
-        # 
+        #
         field :user_info_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('userInfoClaims') } }
         # The resources specified by the `resource` request parameters or by the `resource` property in the request object.
         # If both are given, the values in the request object should be set. See "Resource Indicators for OAuth 2.0" for details.
-        # 
+        #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The `purpose` request parameter is defined in [9. Transaction-specific Purpose](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html#name-transaction-specific-purpos)
         # of [OpenID Connect for Identity Assurance 1.0](https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html) as follows:
-        # 
+        #
         # > purpose: OPTIONAL. String describing the purpose for obtaining certain user data from the OP. The purpose MUST NOT be shorter than 3 characters and MUST NOT be longer than 300 characters.
         # If these rules are violated, the authentication request MUST fail and the OP returns an error invalid_request to the RP.
-        # 
+        #
         field :purpose, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('purpose') } }
         # The content that the authorization server implementation is to return to the client application.
         # Its format varies depending on the value of `action` parameter.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # A ticket issued by Authlete to the service implementation. This is needed when the service
         # implementation calls either `/auth/authorization/fail` API or `/auth/authorization/issue`
         # API.
-        # 
+        #
         field :ticket, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket') } }
         # The dynamic scopes which the client application requested by the scope request parameter.
-        # 
+        #
         field :dynamic_scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::DynamicScope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dynamicScopes') } }
         # The grant management action of the device authorization request.
-        # 
+        #
         # The `grant_management_action` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
-        # 
-        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
+        #
+        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
         # the value of the `grant_id` request parameter of the device authorization request.
-        # 
+        #
         # The `grant_id` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
         # , which is supported by Authlete 2.3 and newer versions.
-        # 
+        #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
 
         field :grant, Crystalline::Nilable.new(Models::Components::Grant), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grant') } }
         # The subject identifying the user who has given the grant identified
-        # by the `grant\_id` request parameter of the device authorization
+        # by the `grant_id` request parameter of the device authorization
         # request.
         # Authlete 2.3 and newer versions support [Grant Management
-        # for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). An authorization request may contain a `grant\_id`
+        # for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). An authorization request may contain a `grant_id`
         # request parameter which is defined in the specification. If the value of
-        # the request parameter is valid, {@link #getGrantSubject()} will return
+        # the request parameter is valid, &#123;@link #getGrantSubject()&#125; will return
         # the subject of the user who has given the grant to the client application.
         # Authorization server implementations may use the value returned from
-        # {@link #getGrantSubject()} in order to determine the user to authenticate.
+        # &#123;@link #getGrantSubject()&#125; in order to determine the user to authenticate.
         # The user your system will authenticate during the authorization process
         # (or has already authenticated) may be different from the user of the
         # grant. The first implementer's draft of "Grant Management for OAuth 2.0"
@@ -277,49 +194,49 @@ module Authlete
         # left to implementations. Authlete will not perform the grant management
         # action when the `subject` passed to Authlete does not match the
         # user of the grant.
-        # 
+        #
         field :grant_subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantSubject') } }
         # Names of claims that are requested indirectly by *"transformed
         # claims"*.
         # A client application can request *"transformed claims"* by adding
         # names of transformed claims in the `claims` request parameter.
         # The following is an example of the `claims` request parameter
-        # that requests a predefined transformed claim named `18\_or\_over`
-        # and a transformed claim named `nationality\_usa` to be embedded
+        # that requests a predefined transformed claim named `18_or_over`
+        # and a transformed claim named `nationality_usa` to be embedded
         # in the response from the userinfo endpoint.
         # ```json
-        # {
-        # "transformed\_claims": {
-        # "nationality\_usa": {
+        # &#123;
+        # "transformed_claims": &#123;
+        # "nationality_usa": &#123;
         # "claim": "nationalities",
         # "fn": [
         # [ "eq", "USA" ],
         # "any"
         # ]
-        # }
-        # },
-        # "userinfo": {
-        # "::18\_or\_over": null,
-        # ":nationality\_usa": null
-        # }
-        # }
+        # &#125;
+        # &#125;,
+        # "userinfo": &#123;
+        # "::18_or_over": null,
+        # ":nationality_usa": null
+        # &#125;
+        # &#125;
         # ```
-        # The example above assumes that a transformed claim named `18\_or\_over`
+        # The example above assumes that a transformed claim named `18_or_over`
         # is predefined by the authorization server like below.
         # ```json
-        # {
-        # "18\_or\_over": {
+        # &#123;
+        # "18_or_over": &#123;
         # "claim": "birthdate",
         # "fn": [
-        # "years\_ago",
+        # "years_ago",
         # [ "gte", 18 ]
         # ]
-        # }
-        # }
+        # &#125;
+        # &#125;
         # ```
         # In the example, the `nationalities` claim is requested indirectly
-        # by the `nationality\_usa` transformed claim. Likewise, the
-        # `birthdate` claim is requested indirectly by the `18\_or\_over`
+        # by the `nationality_usa` transformed claim. Likewise, the
+        # `birthdate` claim is requested indirectly by the `18_or_over`
         # transformed claim.
         # When the `claims` request parameter of an authorization request is
         # like the example above, this `requestedClaimsForTx` property will
@@ -332,54 +249,45 @@ module Authlete
         # request parameter when it calls the `/api/auth/userinfo/issue` API. The following
         # is an example of the value of the `claimsForTx` request parameter.
         # ```json
-        # {
+        # &#123;
         # "birthdate": "1970-01-23",
         # "nationalities": [ "DEU", "USA" ]
-        # }
+        # &#125;
         # ```
-        # 
+        #
         field :requested_claims_for_tx, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedClaimsForTx') } }
         # Names of verified claims that will be referenced when transformed claims are computed.
-        # 
+        #
         field :requested_verified_claims_for_tx, Crystalline::Nilable.new(Crystalline::Array.new(Crystalline::Array.new(::String))), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedVerifiedClaimsForTx') } }
         # the value of the `transformed_claims` property in the `claims` request
         # parameter of an authorization request or in the `claims` property in a
         # request object.
-        # 
+        #
         field :transformed_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('transformedClaims') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The list of claims that the client application requests to be
         # embedded in userinfo responses. The value comes from the `"scope"`
         # and `"claims"` request parameters of the original authorization
         # request.
-        # 
+        #
         field :claims_at_user_info, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claimsAtUserInfo') } }
 
         field :credential_offer_info, Crystalline::Nilable.new(Models::Components::CredentialOfferInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialOfferInfo') } }
         # The information about the **issuable credentials** that can
         # be obtained by presenting the access token that will be issued as a
         # result of the authorization request.
-        # 
+        #
         field :issuable_credentials, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('issuableCredentials') } }
         # Flag which indicates whether [Native SSO](https://openid.net/specs/openid-connect-native-sso-1_0.html)
         # is requested. This property should be set to `true` when all the following conditions are satisfied:
-        # 
-        # - The service supports Native SSO (see `nativeSsoSupported` property of Service).
-        # - The service supports the `openid` and `device_sso` scopes.
-        # - The client is allowed to request the `openid` and `device_sso` scopes.
-        # - The authorization request includes the `openid` and `device_sso` scopes.
-        # - The authorization request's `response_type` includes `code`.
-        # 
-        # NOTE: If this property is set to `true`, the `sessionId` request parameter must be provided
-        # to the `/auth/authorization/issue` API.
-        # 
+        #
         field :native_sso_requested, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('nativeSsoRequested') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationResponseAction), client: T.nilable(Models::Components::ClientLimitedAuthorization), display: T.nilable(Models::Components::Display), max_age: T.nilable(::Integer), service: T.nilable(Models::Components::Service), scopes: T.nilable(T::Array[Models::Components::Scope]), ui_locales: T.nilable(T::Array[::String]), claims_locales: T.nilable(T::Array[::String]), claims: T.nilable(T::Array[::String]), acr_essential: T.nilable(T::Boolean), client_id_alias_used: T.nilable(T::Boolean), acrs: T.nilable(T::Array[::String]), subject: T.nilable(::String), login_hint: T.nilable(::String), prompts: T.nilable(T::Array[Models::Components::Prompt]), lowest_prompt: T.nilable(Models::Components::Prompt), request_object_payload: T.nilable(::String), id_token_claims: T.nilable(::String), user_info_claims: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), purpose: T.nilable(::String), response_content: T.nilable(::String), ticket: T.nilable(::String), dynamic_scopes: T.nilable(T::Array[Models::Components::DynamicScope]), gm_action: T.nilable(Models::Components::GrantManagementAction), grant_id: T.nilable(::String), grant: T.nilable(Models::Components::Grant), grant_subject: T.nilable(::String), requested_claims_for_tx: T.nilable(T::Array[::String]), requested_verified_claims_for_tx: T.nilable(T::Array[T::Array[::String]]), transformed_claims: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), claims_at_user_info: T.nilable(T::Array[::String]), credential_offer_info: T.nilable(Models::Components::CredentialOfferInfo), issuable_credentials: T.nilable(::String), native_sso_requested: T.nilable(T::Boolean), metadata_document_used: T.nilable(T::Boolean)).void }

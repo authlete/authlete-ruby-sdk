@@ -9,7 +9,7 @@ module Authlete
     module Components
       # TokenType - The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693).
       # The API returns short codes (enum constant names) in response fields.
-      # 
+      #
       class TokenType < T::Enum
         enums do
           JWT = new('JWT')

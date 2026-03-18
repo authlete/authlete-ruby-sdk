@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The ticket issued from Authlete's `/backchannel/authentication` API.
-        # 
+        #
         field :ticket, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket'), required: true }, 'form': { 'field_name': 'ticket' } }
 
         sig { params(ticket: ::String).void }

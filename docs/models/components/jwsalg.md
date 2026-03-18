@@ -9,6 +9,14 @@ it's semantics depends upon where is this defined, for instance:
   - or as client requestSignAlg value, it specifies which is the expected signature used by [client on a Request Object](https://kb.authlete.com/en/s/oauth-and-openid-connect/a/request-objects).
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = JwsAlg::NONE
+```
+
 
 ## Values
 

@@ -39,11 +39,13 @@ module Authlete
     end
 
 
-    sig { params(pushed_authorization_request: Models::Components::PushedAuthorizationRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::PushedAuthReqApiResponse) }
-    def create(pushed_authorization_request:, service_id:, timeout_ms: nil)
+
+
+    sig { params(pushed_authorization_request: Models::Components::PushedAuthorizationRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::PushedAuthReqApiResponse) }
+    def create(pushed_authorization_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # create - Process Pushed Authorization Request
       # This API creates a pushed request authorization. It authenticates the client and creates a authorization_uri to be returned by the authorization server.
-      # 
+      #
       request = Models::Operations::PushedAuthReqApiRequest.new(
         service_id: service_id,
         pushed_authorization_request: pushed_authorization_request
@@ -62,7 +64,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -98,6 +100,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -193,5 +198,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

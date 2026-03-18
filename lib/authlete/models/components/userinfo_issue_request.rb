@@ -14,87 +14,27 @@ module Authlete
 
         # The access token that has been passed to the userinfo endpoint by the client application. In other words,
         # the access token which was contained in the userinfo request.
-        # 
+        #
         field :token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('token'), required: true }, 'form': { 'field_name': 'token' } }
         # Claims in JSON format. As for the format, see [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
-        # 
+        #
         field :claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') }, 'form': { 'field_name': 'claims' } }
         # The value of the `sub` claim. If the value of this request parameter is not empty, it is used as the value of
         # the `sub` claim. Otherwise, the value of the subject associated with the access token is used.
-        # 
+        #
         field :sub, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sub') }, 'form': { 'field_name': 'sub' } }
         # Claim key-value pairs that are used to compute transformed claims.
-        # 
+        #
         field :claims_for_tx, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claimsForTx') }, 'form': { 'field_name': 'claimsForTx' } }
         # The Signature header value from the request.
-        # 
+        #
         field :request_signature, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestSignature') }, 'form': { 'field_name': 'requestSignature' } }
         # HTTP headers to be included in processing the signature. If this is a signed request, this must include the
         # Signature and Signature-Input headers, as well as any additional headers covered by the signature.
-        # 
+        #
         field :headers, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('headers') }, 'form': { 'field_name': 'headers', 'json': true } }
         # Values of verified claims requested indirectly by "transformed claims".
-        # 
-        # A client application may request "transformed claims". Each of transformed claims uses an existing
-        # claim as input. As a result, to compute the value of a transformed claim, the value of the referenced
-        # existing claim is needed. This `verifiedClaimsForTx` request parameter has to be used to provide
-        # values of existing claims for computation of transformed claims.
-        # 
-        # A response from the `/auth/userinfo` API may include the `requestedVerifiedClaimsForTx` response
-        # parameter which is a list of verified claims that are referenced indirectly by transformed claims
-        # (cf. `requestedVerifiedClaimsForTx` in `/auth/userinfo` API response). The authorization server
-        # implementation should prepare values of the verified claims listed in `requestedVerifiedClaimsForTx`
-        # and pass them as the value of this `verifiedClaimsForTx` request parameter.
-        # 
-        # The following is an example of the value of this request parameter.
-        # 
-        # ```
-        # [
-        #   "{\"birthdate\":\"1970-01-23\",\"nationalities\":[\"DEU\",\"USA\"]}"
-        # ]
-        # ```
-        # 
-        # The reason that this `verifiedClaimsForTx` property is an array is that the `"verified_claims"`
-        # property in the claims request parameter of an authorization request can be an array like below.
-        # 
-        # ```
-        # {
-        #   "transformed_claims": {
-        #     "nationality_usa": {
-        #       "claim": "nationalities",
-        #       "fn": [
-        #         [ "eq", "USA" ],
-        #         "any"
-        #       ]
-        #     }
-        #   },
-        #   "userinfo": {
-        #     "verified_claims": [
-        #       {
-        #         "verification": { "trust_framework": { "value": "gold" } },
-        #         "claims": { "::18_or_above": null }
-        #       },
-        #       {
-        #         "verification": { "trust_framework": { "value": "silver" } },
-        #         "claims": { ":nationality_usa": null }
-        #       }
-        #     ]
-        #   }
-        # }
-        # ```
-        # 
-        # For the example above, the value of this `verifiedClaimsForTx` property should be an array of
-        # size 2 and look like below. The first element is JSON including claims which have been verified
-        # under the trust framework `"gold"`, and the second element is JSON including claims which have
-        # been verified under the trust framework `"silver"`.
-        # 
-        # ```
-        # [
-        #   "{\"birthdate\":\"1970-01-23\"}",
-        #   "{\"nationalities\":[\"DEU\",\"USA\"]}"
-        # ]
-        # ```
-        # 
+        #
         field :verified_claims_for_tx, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('verifiedClaimsForTx') }, 'form': { 'field_name': 'verifiedClaimsForTx' } }
 
         sig { params(token: ::String, claims: T.nilable(::String), sub: T.nilable(::String), claims_for_tx: T.nilable(::String), request_signature: T.nilable(::String), headers: T.nilable(T::Array[Models::Components::Pair]), verified_claims_for_tx: T.nilable(T::Array[::String])).void }

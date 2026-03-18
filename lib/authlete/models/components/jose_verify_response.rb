@@ -17,19 +17,19 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The result of the verification on the JOSE object.
-        # 
+        #
         field :valid, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('valid') } }
         # The result of the signature verification.
-        # 
+        #
         field :signature_valid, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('signatureValid') } }
         # The list of missing claims.
-        # 
+        #
         field :missing_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('missingClaims') } }
         # The list of invalid claims.
-        # 
+        #
         field :invalid_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('invalidClaims') } }
         # The list of error messages.
-        # 
+        #
         field :error_descriptions, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('errorDescriptions') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), valid: T.nilable(T::Boolean), signature_valid: T.nilable(T::Boolean), missing_claims: T.nilable(T::Array[::String]), invalid_claims: T.nilable(T::Array[::String]), error_descriptions: T.nilable(T::Array[::String])).void }

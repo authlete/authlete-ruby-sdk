@@ -39,12 +39,14 @@ module Authlete
     end
 
 
-    sig { params(g_m_request: Models::Components::GMRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::GrantMApiResponse) }
-    def process_request(g_m_request:, service_id:, timeout_ms: nil)
+
+
+    sig { params(g_m_request: Models::Components::GMRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GrantMApiResponse) }
+    def process_request(g_m_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # process_request - Process Grant Management Request
       # The API is for the implementation of the grant management endpoint which is
       # defined in "[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)".
-      # 
+      #
       request = Models::Operations::GrantMApiRequest.new(
         service_id: service_id,
         g_m_request: g_m_request
@@ -63,7 +65,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -99,6 +101,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -194,5 +199,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

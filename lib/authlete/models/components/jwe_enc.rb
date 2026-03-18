@@ -12,7 +12,7 @@ module Authlete
       #   - as `authorizationEncryptionEnc` value, it refers to the encryption algorithm used by server when creating a JARM response
       #   - as `requestEncryptionEnc` value, it refers to the expected encryption algorithm used by the client when encrypting a Request Object
       #   - as `idTokenEncryptionEnc` value, it refers to the algorithm used by the server to encrypt id_tokens
-      # 
+      #
       class JweEnc < T::Enum
         enums do
           A128_CBC_HS256 = new('A128CBC_HS256')

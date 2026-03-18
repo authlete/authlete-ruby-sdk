@@ -18,14 +18,14 @@ module Authlete
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the implementation of the credential endpoint
         # should take.
-        # 
-        field :action, Crystalline::Nilable.new(Models::Components::VciSingleIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::VciSingleIssueResponseAction, true) } }
+        #
+        field :action, Crystalline::Nilable.new(Models::Components::VciSingleIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciSingleIssueResponseAction, true) } }
         # The content of the response that the implementation of the credential
         # endpoint should return.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The issued transaction ID.
-        # 
+        #
         field :transaction_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('transactionId') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::VciSingleIssueResponseAction), response_content: T.nilable(::String), transaction_id: T.nilable(::String)).void }

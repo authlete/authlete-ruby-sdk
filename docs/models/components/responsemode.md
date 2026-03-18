@@ -1,5 +1,13 @@
 # ResponseMode
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = ResponseMode::QUERY
+```
+
 
 ## Values
 

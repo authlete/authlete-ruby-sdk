@@ -19,11 +19,11 @@ module Authlete
         # The next action that the implementation of the JWT issuer metadata
         # endpoint (`/.well-known/jwt-issuer`) should take after getting
         # a response from Authlete's `/vci/jwtissuer` API.
-        # 
-        field :action, Crystalline::Nilable.new(Models::Components::VciJwtissuerResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::VciJwtissuerResponseAction, true) } }
+        #
+        field :action, Crystalline::Nilable.new(Models::Components::VciJwtissuerResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciJwtissuerResponseAction, true) } }
         # Get the content that the implementation of the credential issuer
         # metadata endpoint should use when it constructs a response.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::VciJwtissuerResponseAction), response_content: T.nilable(::String)).void }

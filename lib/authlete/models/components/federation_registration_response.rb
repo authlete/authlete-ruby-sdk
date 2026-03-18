@@ -17,10 +17,10 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::FederationRegistrationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::FederationRegistrationResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::FederationRegistrationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::FederationRegistrationResponseAction, true) } }
         # The content that the authorization server implementation can use as the value of `WWW-Authenticate`
         # header on errors.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 
         field :client, Crystalline::Nilable.new(Models::Components::Client), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('client') } }

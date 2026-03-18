@@ -3,6 +3,14 @@
 The next action that the authorization server implementation should take.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = ClientRegistrationResponseAction::BAD_REQUEST
+```
+
 
 ## Values
 

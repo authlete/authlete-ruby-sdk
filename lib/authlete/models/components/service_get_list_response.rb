@@ -14,18 +14,18 @@ module Authlete
 
         # Start index (inclusive) of the result set. The default value is 0. Must not be a negative
         # number.
-        # 
+        #
         field :start, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('start') } }
         # Start index (inclusive) of the result set. The default value is 0. Must not be a negative
         # number.
-        # 
+        #
         field :end_, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('end') } }
         # Total number of services owned by the service owner. This doesn't mean the number of services
         # contained in the response.
-        # 
+        #
         field :total_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('totalCount') } }
         # An array of services.
-        # 
+        #
         field :services, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Service)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('services') } }
 
         sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), total_count: T.nilable(::Integer), services: T.nilable(T::Array[Models::Components::Service])).void }

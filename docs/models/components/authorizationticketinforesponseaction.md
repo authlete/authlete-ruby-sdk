@@ -2,6 +2,14 @@
 
 The result of the `/auth/authorization/ticket/info` API call.
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = AuthorizationTicketInfoResponseAction::OK
+```
+
 
 ## Values
 

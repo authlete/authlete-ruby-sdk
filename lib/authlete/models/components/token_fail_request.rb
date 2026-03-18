@@ -13,11 +13,11 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The ticket issued from Authlete `/auth/token` API.
-        # 
+        #
         field :ticket, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket'), required: true }, 'form': { 'field_name': 'ticket' } }
         # The reason of the failure of the token request.
-        # 
-        field :reason, Models::Components::TokenFailRequestReason, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('reason'), required: true, 'decoder': Utils.enum_from_string(Models::Components::TokenFailRequestReason, false) }, 'form': { 'field_name': 'reason' } }
+        #
+        field :reason, Models::Components::TokenFailRequestReason, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('reason'), required: true, 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenFailRequestReason, false) }, 'form': { 'field_name': 'reason' } }
 
         sig { params(ticket: ::String, reason: Models::Components::TokenFailRequestReason).void }
         def initialize(ticket:, reason:)

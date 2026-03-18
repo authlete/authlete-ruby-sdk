@@ -13,23 +13,23 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The identifier of an access token to revoke
-        # 
+        #
         # The hash of an access token is recognized as an identifier as well as the access token itself.
-        # 
+        #
         field :access_token_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenIdentifier') }, 'form': { 'field_name': 'accessTokenIdentifier' } }
         # The identifier of a refresh token to revoke.
-        # 
+        #
         # The hash of a refresh token is recognized as an identifier as well as the refresh token itself.
-        # 
+        #
         field :refresh_token_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenIdentifier') }, 'form': { 'field_name': 'refreshTokenIdentifier' } }
         # The client ID of the access token to be revoked.
-        # 
+        #
         # Both the numeric client ID and the alias are recognized as an identifier
         # of a client.
-        # 
+        #
         field :client_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdentifier') }, 'form': { 'field_name': 'clientIdentifier' } }
         # The subject of a resource owner.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') }, 'form': { 'field_name': 'subject' } }
 
         sig { params(access_token_identifier: T.nilable(::String), refresh_token_identifier: T.nilable(::String), client_identifier: T.nilable(::String), subject: T.nilable(::String)).void }

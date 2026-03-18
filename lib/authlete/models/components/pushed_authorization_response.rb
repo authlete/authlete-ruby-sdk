@@ -17,22 +17,22 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take. Any other value other than "CREATED" should be handled as unsuccessful result.
-        field :action, Crystalline::Nilable.new(Models::Components::PushedAuthorizationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::PushedAuthorizationResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::PushedAuthorizationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::PushedAuthorizationResponseAction, true) } }
         # The request_uri created to the client to be used as request_uri on the authorize call.
-        # 
+        #
         field :request_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestUri') } }
         # The content that the authorization server implementation is to return to the client
         # application.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The client authentication method that the client application declares that it uses at the token
         # endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic
         # Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
-        # 
-        field :client_auth_method, Crystalline::Nilable.new(Models::Components::PushedAuthorizationResponseClientAuthMethod), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAuthMethod'), 'decoder': Utils.enum_from_string(Models::Components::PushedAuthorizationResponseClientAuthMethod, true) } }
+        #
+        field :client_auth_method, Crystalline::Nilable.new(Models::Components::PushedAuthorizationResponseClientAuthMethod), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAuthMethod'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::PushedAuthorizationResponseClientAuthMethod, true) } }
         # Get the expected nonce value for DPoP proof JWT, which should be used
         # as the value of the `DPoP-Nonce` HTTP header.
-        # 
+        #
         field :dpop_nonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonce') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::PushedAuthorizationResponseAction), request_uri: T.nilable(::String), response_content: T.nilable(::String), client_auth_method: T.nilable(Models::Components::PushedAuthorizationResponseClientAuthMethod), dpop_nonce: T.nilable(::String)).void }

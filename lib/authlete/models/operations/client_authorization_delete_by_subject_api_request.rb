@@ -15,10 +15,10 @@ module Authlete
         # A service ID.
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # A client ID.
-        # 
+        #
         field :client_id, ::String, { 'path_param': { 'field_name': 'clientId', 'style': 'simple', 'explode': false } }
         # Unique user ID of an end-user.
-        # 
+        #
         field :subject, ::String, { 'path_param': { 'field_name': 'subject', 'style': 'simple', 'explode': false } }
 
         sig { params(service_id: ::String, client_id: ::String, subject: ::String).void }

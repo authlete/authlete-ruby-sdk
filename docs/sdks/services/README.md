@@ -27,9 +27,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?
@@ -45,9 +44,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.retrieve(service_id: '<id>')
 
 unless res.service.nil?
@@ -94,10 +92,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.services.list()
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.list
 
 unless res.service_get_list_response.nil?
   # handle response
@@ -112,10 +109,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.services.list()
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.list
 
 unless res.service_get_list_response.nil?
   # handle response
@@ -155,8 +151,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 
 req = Models::Components::ServiceInput.new(
   service_name: 'My service',
@@ -190,26 +186,25 @@ req = Models::Components::ServiceInput.new(
     Models::Components::Scope.new(
       name: 'timeline.read',
       default_entry: false,
-      description: 'A permission to read your timeline.',
+      description: 'A permission to read your timeline.'
     ),
     Models::Components::Scope.new(
       name: 'history.read',
       default_entry: false,
-      description: 'A permission to read your history.',
+      description: 'A permission to read your history.'
     ),
   ],
   attributes: [
     Models::Components::Pair.new(
       key: 'attribute1-key',
-      value: 'attribute1-value',
+      value: 'attribute1-value'
     ),
     Models::Components::Pair.new(
       key: 'attribute2-key',
-      value: 'attribute2-value',
+      value: 'attribute2-value'
     ),
-  ],
+  ]
 )
-
 res = s.services.create(request: req)
 
 unless res.service.nil?
@@ -249,9 +244,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.update(service_id: '<id>', service: Models::Components::ServiceInput.new(
   service_name: 'My updated service',
   issuer: 'https://my-service.example.com',
@@ -307,12 +301,12 @@ res = s.services.update(service_id: '<id>', service: Models::Components::Service
     Models::Components::Scope.new(
       name: 'history.read',
       default_entry: false,
-      description: 'A permission to read your history.',
+      description: 'A permission to read your history.'
     ),
     Models::Components::Scope.new(
       name: 'timeline.read',
       default_entry: false,
-      description: 'A permission to read your timeline.',
+      description: 'A permission to read your timeline.'
     ),
   ],
   scope_required: false,
@@ -335,11 +329,11 @@ res = s.services.update(service_id: '<id>', service: Models::Components::Service
   attributes: [
     Models::Components::Pair.new(
       key: 'attribute1-key',
-      value: 'attribute1-value',
+      value: 'attribute1-value'
     ),
     Models::Components::Pair.new(
       key: 'attribute2-key',
-      value: 'attribute2-value',
+      value: 'attribute2-value'
     ),
   ],
   nbf_optional: false,
@@ -351,7 +345,7 @@ res = s.services.update(service_id: '<id>', service: Models::Components::Service
   hsm_enabled: false,
   grant_management_action_required: false,
   unauthorized_on_client_config_supported: false,
-  dcr_scope_used_as_requestable: false,
+  dcr_scope_used_as_requestable: false
 ))
 
 unless res.service.nil?
@@ -392,9 +386,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.destroy(service_id: '<id>')
 
 if res.status_code == 200
@@ -424,11 +417,11 @@ end
 ## configuration
 
 This API gathers configuration information about a service.
-### Description
+
 This API is supposed to be called from within the implementation of the configuration endpoint of
-the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1\_0.html)
+the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html)
 must expose its configuration information in a JSON format. Details about the format are described
-in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1\_0.html#ProviderMetadata)"
+in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)"
 in OpenID Connect Discovery 1.0.
 
 
@@ -440,9 +433,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.services.configuration(service_id: '<id>')
 
 unless res.object.nil?

@@ -17,101 +17,101 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        # 
-        field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationCompleteResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::BackchannelAuthenticationCompleteResponseAction, true) } }
+        #
+        field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationCompleteResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::BackchannelAuthenticationCompleteResponseAction, true) } }
         # The content that the authorization server implementation is to return to the client
         # application. Its format varies depending on the value of `action` parameter.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The client ID of the client application that has made the backchannel authentication
         # request.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The client ID alias of the client application that has made the backchannel authentication
         # request.
-        # 
+        #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # `true` if the value of the client_id request parameter included in the backchannel
         # authentication request is the client ID alias. `false` if the value is the original
         # numeric client ID.
-        # 
+        #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The name of the client application which has made the backchannel authentication request.
-        # 
+        #
         field :client_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientName') } }
 
-        field :delivery_mode, Crystalline::Nilable.new(Models::Components::DeliveryMode), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deliveryMode'), 'decoder': Utils.enum_from_string(Models::Components::DeliveryMode, true) } }
+        field :delivery_mode, Crystalline::Nilable.new(Models::Components::DeliveryMode), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deliveryMode'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::DeliveryMode, true) } }
         # The client notification endpoint to which a notification needs to be sent. This corresponds
         # to the `client_notification_endpoint` metadata of the client application.
-        # 
+        #
         field :client_notification_endpoint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNotificationEndpoint') } }
         # The client notification token which needs to be embedded as a Bearer token in the Authorization
         # header in the notification. This is the value of the `client_notification_token` request
         # parameter included in the backchannel authentication request.
-        # 
+        #
         field :client_notification_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNotificationToken') } }
         # The newly issued authentication request ID.
-        # 
+        #
         field :auth_req_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authReqId') } }
         # The issued access token.
-        # 
+        #
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
         # The issued refresh token.
-        # 
+        #
         field :refresh_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshToken') } }
         # The issued ID token.
-        # 
+        #
         field :id_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idToken') } }
         # The duration of the access token in seconds.
-        # 
+        #
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') } }
         # The duration of the refresh token in seconds.
-        # 
+        #
         field :refresh_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenDuration') } }
         # The duration of the ID token in seconds.
-        # 
+        #
         field :id_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idTokenDuration') } }
         # The issued access token in JWT format.
-        # 
+        #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
         # The resources specified by the `resource` request parameters or by the `resource` property
         # in the request object. If both are given, the values in the request object should be
         # set. See "Resource Indicators for OAuth 2.0" for details.
-        # 
+        #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The attributes of this service that the client application belongs to.
-        # 
+        #
         field :service_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('serviceAttributes') } }
         # The attributes of the client.
-        # 
+        #
         field :client_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAttributes') } }
         # the value of the `grant_id` request parameter of the device authorization request.
-        # 
+        #
         # The `grant_id` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
         # , which is supported by Authlete 2.3 and newer versions.
-        # 
+        #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
         # The entity ID of the client.
-        # 
+        #
         field :client_entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityId') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The location of the client's metadata document that was used to resolve client metadata.
-        # 
+        #
         # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
+        #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationCompleteResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), delivery_mode: T.nilable(Models::Components::DeliveryMode), client_notification_endpoint: T.nilable(::String), client_notification_token: T.nilable(::String), auth_req_id: T.nilable(::String), access_token: T.nilable(::String), refresh_token: T.nilable(::String), id_token: T.nilable(::String), access_token_duration: T.nilable(::Integer), refresh_token_duration: T.nilable(::Integer), id_token_duration: T.nilable(::Integer), jwt_access_token: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), grant_id: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }

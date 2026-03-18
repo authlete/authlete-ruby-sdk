@@ -8,7 +8,7 @@ module Authlete
   module Models
     module Components
       # ClientRegistrationResponseAction - The next action that the authorization server implementation should take.
-      # 
+      #
       class ClientRegistrationResponseAction < T::Enum
         enums do
           BAD_REQUEST = new('BAD_REQUEST')

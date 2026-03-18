@@ -1,5 +1,13 @@
 # FapiMode
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = FapiMode::FAPI1_ADVANCED
+```
+
 
 ## Values
 

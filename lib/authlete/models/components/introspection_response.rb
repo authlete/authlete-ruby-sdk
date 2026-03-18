@@ -17,116 +17,107 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::IntrospectionResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::IntrospectionResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::IntrospectionResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::IntrospectionResponseAction, true) } }
         # The content that the authorization server implementation can use as the value of `WWW-Authenticate` header on errors.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The client ID.
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`.
         # Also, if the token request was invalid and it failed to identify a client, this parameter is `null`.
-        # 
+        #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # The flag which indicates whether the client ID alias was used when the token request was made.
         # `true` if the client ID alias was used when the token request was made.
-        # 
+        #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The time at which the access token expires.
         # The value is represented in milliseconds since the Unix epoch (1970-01-01).
-        # 
+        #
         field :expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('expiresAt') } }
         # The subject who is associated with the access token.
         # The value of this property is `null` if the access token was issued using the flow of [Client Credentials Grant](tools.ietf.org/html/rfc6749#section-4.4).
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The scopes covered by the access token.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # `true` if the access token exists.
-        # 
+        #
         field :existent, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('existent') } }
         # true` if the access token is usable (= exists and has not expired).
-        # 
+        #
         field :usable, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('usable') } }
         # `true` if the access token exists.
-        # 
+        #
         field :sufficient, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sufficient') } }
         # `true` if the access token can be refreshed using the associated refresh token which had been issued
         # along with the access token. `false` if the refresh token for the access token has expired or the access
         # token has no associated refresh token.
-        # 
+        #
         field :refreshable, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshable') } }
         # The extra properties associated with the access token.
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
         # The client certificate thumbprint used to validate the access token.
-        # 
+        #
         field :certificate_thumbprint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('certificateThumbprint') } }
         # The target resources. This represents the resources specified by the `resource` request parameters
         # or by the `resource` property in the request object.
-        # 
+        #
         # See "Resource Indicators for OAuth 2.0" for details.
-        # 
+        #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
         # The target resources this proeprty holds may be the same as or different from the ones `resource` property holds.
-        # 
-        # In some flows, the initial request and the subsequent token request are sent to different endpoints.
-        # Example flows are the Authorization Code Flow, the Refresh Token Flow, the CIBA Ping Mode, the CIBA Poll Mode and the Device Flow.
-        # In these flows, not only the initial request but also the subsequent token request can include the `resource` request parameters.
-        # The purpose of the `resource` request parameters in the token request is to narrow the range of the target resources from the original
-        # set of target resources requested by the preceding initial request. If narrowing down is performed, the target resources holded by the
-        # `resource` proeprty and the ones holded by this property are different. This property holds the narrowed set of target resources.
-        # 
-        # See "Resource Indicators for OAuth 2.0" for details.
-        # 
+        #
         field :access_token_resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenResources') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The attributes of this service that the client application belongs to.
-        # 
+        #
         field :service_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('serviceAttributes') } }
         # The attributes of the client.
-        # 
+        #
         field :client_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAttributes') } }
         # The scopes property of this class is a list of scope names. The property does not hold information
         # about scope attributes. This scopeDetails property was newly created to convey information about
         # scope attributes.
-        # 
+        #
         field :scope_details, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Scope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopeDetails') } }
         # The value of the `grant_id` request parameter of the device authorization request.
-        # 
+        #
         # The `grant_id` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
         # , which is supported by Authlete 2.3 and newer versions.
-        # 
+        #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
 
         field :grant, Crystalline::Nilable.new(Models::Components::Grant), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grant') } }
         # the flag which indicates whether the access token is for an external
         # attachment.
-        # 
+        #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') } }
         # the claims that the user has consented for the client application
         # to know.
-        # 
+        #
         field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
         # The grant type of the access token when the access token was created.
-        # 
-        field :grant_type, Crystalline::Nilable.new(Models::Components::GrantType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantType'), 'decoder': Utils.enum_from_string(Models::Components::GrantType, true) } }
+        #
+        field :grant_type, Crystalline::Nilable.new(Models::Components::GrantType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GrantType, true) } }
         # The Authentication Context Class Reference of the user authentication that the authorization server performed
         # during the course of issuing the access token.
-        # 
+        #
         field :acr, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acr') } }
         # The time when the user authentication was performed during the course of issuing the access token.
-        # 
+        #
         field :auth_time, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authTime') } }
         # The entity ID of the client.
-        # 
+        #
         field :client_entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityId') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The flag indicating whether the token is for credential issuance.
         field :for_credential_issuance, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forCredentialIssuance') } }
@@ -138,25 +129,25 @@ module Authlete
         field :issuable_credentials, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('issuableCredentials') } }
         # The expected nonce value for DPoP proof JWT, which should be used
         # as the value of the `DPoP-Nonce` HTTP header.
-        # 
+        #
         field :dpop_nonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonce') } }
         # The flag indicating whether the HTTP response from the protected resource endpoint must include
         # an HTTP message signature ([RFC 9421 HTTP Message Signatures](https://www.rfc-editor.org/rfc/rfc9421.html))
         # in compliance with [FAPI 2.0 Message Signing](https://openid.bitbucket.io/fapi/fapi-2_0-message-signing.html).
-        # 
+        #
         # When this response parameter is `true`, the HTTP response from the protected resource endpoint
         # must include the `Signature` and `Signature-Input` HTTP fields.
-        # 
+        #
         field :response_signing_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseSigningRequired') } }
         # The location of the client's metadata document that was used to resolve client metadata.
-        # 
+        #
         # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
+        #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::IntrospectionResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), expires_at: T.nilable(::Integer), subject: T.nilable(::String), scopes: T.nilable(T::Array[::String]), existent: T.nilable(T::Boolean), usable: T.nilable(T::Boolean), sufficient: T.nilable(T::Boolean), refreshable: T.nilable(T::Boolean), properties: T.nilable(T::Array[Models::Components::Property]), certificate_thumbprint: T.nilable(::String), resources: T.nilable(T::Array[::String]), access_token_resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), scope_details: T.nilable(T::Array[Models::Components::Scope]), grant_id: T.nilable(::String), grant: T.nilable(Models::Components::Grant), for_external_attachment: T.nilable(T::Boolean), consented_claims: T.nilable(T::Array[::String]), grant_type: T.nilable(Models::Components::GrantType), acr: T.nilable(::String), auth_time: T.nilable(::Integer), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), for_credential_issuance: T.nilable(T::Boolean), cnonce: T.nilable(::String), cnonce_expires_at: T.nilable(::Integer), issuable_credentials: T.nilable(::String), dpop_nonce: T.nilable(::String), response_signing_required: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }

@@ -1,5 +1,13 @@
 # SupportedSnse
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = SupportedSnse::FACEBOOK
+```
+
 
 ## Values
 

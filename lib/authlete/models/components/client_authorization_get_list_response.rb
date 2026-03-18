@@ -13,22 +13,22 @@ module Authlete
         include Crystalline::MetadataFields
 
         # Start index of search results (inclusive).
-        # 
+        #
         field :start, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('start') } }
         # End index of search results (exclusive).
-        # 
+        #
         field :end_, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('end') } }
         # Unique ID of a client developer.
-        # 
+        #
         field :developer, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('developer') } }
         # Unique user ID of an end-user.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # Unique ID of a client developer.
-        # 
+        #
         field :total_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('totalCount') } }
         # An array of clients.
-        # 
+        #
         field :clients, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ClientLimited)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clients') } }
 
         sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), developer: T.nilable(::String), subject: T.nilable(::String), total_count: T.nilable(::Integer), clients: T.nilable(T::Array[Models::Components::ClientLimited])).void }

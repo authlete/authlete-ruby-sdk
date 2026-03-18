@@ -2,6 +2,14 @@
 
 The result of the `/vci/offer/create` API call.
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciOfferCreateResponseAction::CREATED
+```
+
 
 ## Values
 

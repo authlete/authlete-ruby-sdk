@@ -3,6 +3,14 @@
 The grant type of the access token when the access token was created.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = GrantType::AUTHORIZATION_CODE
+```
+
 
 ## Values
 

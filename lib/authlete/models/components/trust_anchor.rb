@@ -13,10 +13,10 @@ module Authlete
         include Crystalline::MetadataFields
 
         # the entity ID of the trust anchor
-        # 
+        #
         field :entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('entityId') } }
         # the JWK Set document containing public keys of the trust anchor
-        # 
+        #
         field :jwks, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwks') } }
 
         sig { params(entity_id: T.nilable(::String), jwks: T.nilable(::String)).void }
