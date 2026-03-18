@@ -21,10 +21,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.hardware_security_keys.create(service_id: '<id>', hsk_create_request: Models::Components::HskCreateRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.hardware_security_keys.create(service_id: '<id>', hsk_create_request: Models::Components::HskCreateRequest.new)
 
 unless res.hsk_create_response.nil?
   # handle response
@@ -63,9 +62,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.hardware_security_keys.destroy(service_id: '<id>', handle: '<value>')
 
 unless res.hsk_delete_response.nil?
@@ -105,9 +103,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.hardware_security_keys.retrieve(service_id: '<id>', handle: '<value>')
 
 unless res.hsk_get_response.nil?
@@ -147,9 +144,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.hardware_security_keys.list(service_id: '<id>')
 
 unless res.hsk_get_list_response.nil?

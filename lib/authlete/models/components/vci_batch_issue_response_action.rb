@@ -9,7 +9,7 @@ module Authlete
     module Components
       # VciBatchIssueResponseAction - The next action that the implementation of the batch credential
       # endpoint should take.
-      # 
+      #
       class VciBatchIssueResponseAction < T::Enum
         enums do
           OK = new('OK')

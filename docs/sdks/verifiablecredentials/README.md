@@ -28,11 +28,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.verifiable_credentials.metadata(service_id: '<id>', vci_metadata_request: Models::Components::VciMetadataRequest.new(
-  pretty: true,
+  pretty: true
 ))
 
 unless res.vci_metadata_response.nil?
@@ -72,11 +71,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.verifiable_credentials.jwt_issuer(service_id: '<id>', vci_jwtissuer_request: Models::Components::VciJwtissuerRequest.new(
-  pretty: true,
+  pretty: true
 ))
 
 unless res.vci_jwtissuer_response.nil?
@@ -116,11 +114,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.verifiable_credentials.jwks(service_id: '<id>', vci_jwks_request: Models::Components::VciJwksRequest.new(
-  pretty: false,
+  pretty: false
 ))
 
 unless res.vci_jwks_response.nil?
@@ -160,10 +157,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.create_offer(service_id: '<id>', vci_offer_create_request: Models::Components::VciOfferCreateRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.create_offer(service_id: '<id>', vci_offer_create_request: Models::Components::VciOfferCreateRequest.new)
 
 unless res.vci_offer_create_response.nil?
   # handle response
@@ -202,10 +198,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.offer_info(service_id: '<id>', vci_offer_info_request: Models::Components::VciOfferInfoRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.offer_info(service_id: '<id>', vci_offer_info_request: Models::Components::VciOfferInfoRequest.new)
 
 unless res.vci_offer_info_response.nil?
   # handle response
@@ -244,10 +239,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.parse(service_id: '<id>', vci_single_parse_request: Models::Components::VciSingleParseRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.parse(service_id: '<id>', vci_single_parse_request: Models::Components::VciSingleParseRequest.new)
 
 unless res.vci_single_parse_response.nil?
   # handle response
@@ -286,10 +280,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.issue_response(service_id: '<id>', vci_single_issue_request: Models::Components::VciSingleIssueRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.issue_response(service_id: '<id>', vci_single_issue_request: Models::Components::VciSingleIssueRequest.new)
 
 unless res.vci_single_issue_response.nil?
   # handle response
@@ -328,10 +321,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.batch_parse(service_id: '<id>', vci_batch_parse_request: Models::Components::VciBatchParseRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.batch_parse(service_id: '<id>', vci_batch_parse_request: Models::Components::VciBatchParseRequest.new)
 
 unless res.vci_batch_parse_response.nil?
   # handle response
@@ -370,10 +362,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.batch_issue(service_id: '<id>', vci_batch_issue_request: Models::Components::VciBatchIssueRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.batch_issue(service_id: '<id>', vci_batch_issue_request: Models::Components::VciBatchIssueRequest.new)
 
 unless res.vci_batch_issue_response.nil?
   # handle response
@@ -412,10 +403,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.deferred_parse(service_id: '<id>', vci_deferred_parse_request: Models::Components::VciDeferredParseRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.deferred_parse(service_id: '<id>', vci_deferred_parse_request: Models::Components::VciDeferredParseRequest.new)
 
 unless res.vci_deferred_parse_response.nil?
   # handle response
@@ -454,10 +444,9 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
-res = s.verifiable_credentials.deferred_issue(service_id: '<id>', vci_deferred_issue_request: Models::Components::VciDeferredIssueRequest.new())
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.verifiable_credentials.deferred_issue(service_id: '<id>', vci_deferred_issue_request: Models::Components::VciDeferredIssueRequest.new)
 
 unless res.vci_deferred_issue_response.nil?
   # handle response

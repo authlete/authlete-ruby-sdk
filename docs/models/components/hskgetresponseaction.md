@@ -2,6 +2,14 @@
 
 Result of the API call
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = HskGetResponseAction::SUCCESS
+```
+
 
 ## Values
 

@@ -22,21 +22,21 @@ module Authlete
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # Get the subject (= unique identifier) of the user
         # who has granted authorization to the client.
-        # 
+        #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # Get the scopes granted to the client application by the last
         # authorization process by the user (who is identified by the
         # subject).
-        # 
+        #
         field :latest_granted_scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('latestGrantedScopes') } }
         # Get the scopes granted to the client application by all the
         # past authorization processes. Note that revoked scopes are
         # not included.
-        # 
+        #
         field :merged_granted_scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('mergedGrantedScopes') } }
         # Get the timestamp in milliseconds since Unix epoch
         # at which this record was modified.
-        # 
+        #
         field :modified_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('modifiedAt') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), service_api_key: T.nilable(::Integer), client_id: T.nilable(::Integer), subject: T.nilable(::String), latest_granted_scopes: T.nilable(T::Array[::String]), merged_granted_scopes: T.nilable(T::Array[::String]), modified_at: T.nilable(::Integer)).void }

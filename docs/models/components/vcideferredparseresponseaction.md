@@ -2,6 +2,14 @@
 
 The next action that the deferred credential endpoint should take.
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciDeferredParseResponseAction::OK
+```
+
 
 ## Values
 

@@ -17,13 +17,13 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the implementation of the token endpoint should take.
-        field :action, Crystalline::Nilable.new(Models::Components::IdtokenReissueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::IdtokenReissueResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::IdtokenReissueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::IdtokenReissueResponseAction, true) } }
         # The response content that can be used as the message body of the token response that should
         # be returned from the token endpoint.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The reissued ID token
-        # 
+        #
         field :id_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idToken') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::IdtokenReissueResponseAction), response_content: T.nilable(::String), id_token: T.nilable(::String)).void }

@@ -20,26 +20,26 @@ module Authlete
         field :credential_issuer, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialIssuer') } }
         # The flag indicating whether the `authorization_code` object is
         # included in the `grants` object.
-        # 
+        #
         field :authorization_code_grant_included, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationCodeGrantIncluded') } }
         # The flag indicating whether the `issuer_state` property is
         # included in the `authorization_code` object in the `grants`
         # object.
-        # 
+        #
         field :issuer_state_included, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('issuerStateIncluded') } }
         # The value of the `issuer_state` property in the
         # `authorization_code` object in the `grants` object.
-        # 
+        #
         field :issuer_state, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('issuerState') } }
         # The flag indicating whether the
         # `urn:ietf:params:oauth:grant-type:pre-authorized_code` object is
         # included in the `grants` object.
-        # 
+        #
         field :pre_authorized_code_grant_included, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('preAuthorizedCodeGrantIncluded') } }
         # The value of the `pre-authorized_code` property in the
         # `urn:ietf:params:oauth:grant-type:pre-authorized_code` object in
         # the `grants` object.
-        # 
+        #
         field :pre_authorized_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('preAuthorizedCode') } }
         # The subject associated with the credential offer.
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
@@ -51,35 +51,27 @@ module Authlete
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
         # Additional claims that are added to the payload part of the JWT
         # access token.
-        # 
+        #
         field :jwt_at_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAtClaims') } }
         # The time at which the user authentication was performed during
         # the course of issuing the credential offer.
-        # 
+        #
         field :auth_time, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authTime') } }
         # The Authentication Context Class Reference of the user authentication
         # performed during the course of issuing the credential offer.
-        # 
+        #
         field :acr, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acr') } }
         # The value of the `credential_configuration_ids` property of the credential offer.
-        # 
-        # ```
-        # {
-        #   "credential_issuer": "...",
-        #   "credential_configuration_ids": [ ... ],
-        #   "grants": { ... }
-        # }
-        # ```
-        # 
+        #
         field :credential_configuration_ids, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialConfigurationIds') } }
         # The transaction code.
-        # 
+        #
         field :tx_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('txCode') } }
         # The input mode of the transaction code.
-        # 
+        #
         field :tx_code_input_mode, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('txCodeInputMode') } }
         # The description of the transaction code.
-        # 
+        #
         field :tx_code_description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('txCodeDescription') } }
 
         sig { params(identifier: T.nilable(::String), credential_offer: T.nilable(::String), credential_issuer: T.nilable(::String), authorization_code_grant_included: T.nilable(T::Boolean), issuer_state_included: T.nilable(T::Boolean), issuer_state: T.nilable(::String), pre_authorized_code_grant_included: T.nilable(T::Boolean), pre_authorized_code: T.nilable(::String), subject: T.nilable(::String), expires_at: T.nilable(::Integer), context: T.nilable(::String), properties: T.nilable(T::Array[Models::Components::Property]), jwt_at_claims: T.nilable(::String), auth_time: T.nilable(::Integer), acr: T.nilable(::String), credential_configuration_ids: T.nilable(T::Array[::String]), tx_code: T.nilable(::String), tx_code_input_mode: T.nilable(::String), tx_code_description: T.nilable(::String)).void }

@@ -3,6 +3,14 @@
 The reason of the failure of the token request.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = TokenFailRequestReason::UNKNOWN
+```
+
 
 ## Values
 

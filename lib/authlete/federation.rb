@@ -39,72 +39,17 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, request_body: T.nilable(Models::Operations::FederationConfigurationApiRequestBody), timeout_ms: T.nilable(Integer)).returns(Models::Operations::FederationConfigurationApiResponse) }
-    def configuration(service_id:, request_body: nil, timeout_ms: nil)
+
+
+    sig { params(service_id: ::String, request_body: T.nilable(Models::Operations::FederationConfigurationApiRequestBody), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::FederationConfigurationApiResponse) }
+    def configuration(service_id:, request_body: nil, timeout_ms: nil, http_headers: nil)
       # configuration - Process Entity Configuration Request
       # This API gathers the federation configuration about a service.
       # The authorization server implementation should
       # retrieve the value of the `action`
       # response parameter from the API response and take the following steps
       # according to the value.
-      # ### `OK`
-      # When the value of the  `action` response
-      # parameter is `OK`, it means that Authlete
-      # could prepare an entity configuration successfully.
-      # In this case, the implementation of the entity configuration endpoint of the
-      # authorization server should return an HTTP response to the client application
-      # with the HTTP status code "`200 OK`" and the content type
-      # "`application/entity-statement+jwt`". The message body (= an entity
-      # configuration in the JWT format) of the response has been prepared by
-      # Authlete's `/federation/configuration` API and it is available as the
-      # `responseContent` response parameter.
-      # The implementation of the entity configuration endpoint can construct an
-      # HTTP response by doing like below.
-      # ```
-      # 200 OK
-      # Content-Type: application/entity-statement+jwt
-      # (Other HTTP headers)
-      # (the value of the responseContent response parameter)
-      # ```
-      # ### `NOT_FOUND`
-      # When the value of the  `action` response
-      # parameter is `NOT_FOUND`, it means that
-      # the service configuration has not enabled the feature of [OpenID Connect
-      # Federation 1.0](https://openid.net/specs/openid-connect-federation-1_0.html) and so the client application should have not access the
-      # entity configuration endpoint.
-      # In this case, the implementation of the entity configuration endpoint of the
-      # authorization server should return an HTTP response to the client application
-      # with the HTTP status code "`404 Not Found`" and the content type
-      # "`application/json`". The message body (= error information in the JSON
-      # format) of the response has been prepared by Authlete's
-      # `/federation/configuration` API and it is available as the
-      # `responseContent` response parameter.
-      # The implementation of the entity configuration endpoint can construct an
-      # HTTP response by doing like below.
-      # ```
-      # 404 Not Found
-      # Content-Type: application/json
-      # (Other HTTP headers)
-      # (the value of the responseContent response parameter)
-      # ```
-      # ### `INTERNAL_SERVER_ERROR`
-      # could prepare an entity configuration successfully.
-      # In this case, the implementation of the entity configuration endpoint of the
-      # authorization server should return an HTTP response to the client application
-      # with the HTTP status code "`200 OK`" and the content type
-      # "`application/entity-statement+jwt`". The message body (= an entity
-      # configuration in the JWT format) of the response has been prepared by
-      # Authlete's `/federation/configuration` API and it is available as the
-      # `responseContent` response parameter.
-      # The implementation of the entity configuration endpoint can construct an
-      # HTTP response by doing like below.
-      # ```
-      # 200 OK
-      # Content-Type: application/entity-statement+jwt
-      # (Other HTTP headers)
-      # (the value of the responseContent response parameter)
-      # ```
-      # 
+      #
       request = Models::Operations::FederationConfigurationApiRequest.new(
         service_id: service_id,
         request_body: request_body
@@ -122,7 +67,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -158,6 +103,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -255,8 +203,8 @@ module Authlete
     end
 
 
-    sig { params(federation_registration_request: Models::Components::FederationRegistrationRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::FederationRegistrationApiResponse) }
-    def registration(federation_registration_request:, service_id:, timeout_ms: nil)
+    sig { params(federation_registration_request: Models::Components::FederationRegistrationRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::FederationRegistrationApiResponse) }
+    def registration(federation_registration_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # registration - Process Federation Registration Request
       # The Authlete API is for implementations of the **federation registration
       # endpoint** that accepts "explicit client registration". Its details are
@@ -279,7 +227,7 @@ module Authlete
       # federation registration endpoint should call Authlete's
       # `/federation/registration` API with the trust chain set to the
       # `trustChain` request parameter.
-      # 
+      #
       request = Models::Operations::FederationRegistrationApiRequest.new(
         service_id: service_id,
         federation_registration_request: federation_registration_request
@@ -298,7 +246,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -334,6 +282,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -429,5 +380,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

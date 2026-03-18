@@ -17,33 +17,33 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::AuthorizationIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::AuthorizationIssueResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::AuthorizationIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::AuthorizationIssueResponseAction, true) } }
         # The content that the authorization server implementation is to return to the client application.
         # Its format varies depending on the value of `action` parameter.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The newly issued access token. Note that an access token is issued from an authorization endpoint only
         # when `response_type` contains token.
-        # 
+        #
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
         # The datetime at which the newly issued access token will expire. The value is represented in milliseconds
         # since the Unix epoch (1970-01-01).
-        # 
+        #
         field :access_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAt') } }
         # The duration of the newly issued access token in seconds.
-        # 
+        #
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') } }
         # The newly issued ID token. Note that an ID token is issued from an authorization endpoint only
         # when `response_type` contains `id_token`.
-        # 
+        #
         field :id_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idToken') } }
         # The newly issued authorization code. Note that an authorization code is issued only
         # when `response_type` contains code.
-        # 
+        #
         field :authorization_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationCode') } }
         # The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens,
         # this property is always set to `null`.
-        # 
+        #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
 
         field :ticket_info, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticketInfo') } }

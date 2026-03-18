@@ -24,9 +24,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.retrieve(service_id: '<id>', client_id: '<id>')
 
 unless res.client.nil?
@@ -72,9 +71,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.list(service_id: '<id>')
 
 unless res.client_get_list_response.nil?
@@ -90,9 +88,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.list(service_id: '<id>')
 
 unless res.client_get_list_response.nil?
@@ -135,9 +132,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.create(service_id: '<id>', client: Models::Components::ClientInput.new(
   client_name: 'My Client',
   client_id_alias: 'my-client',
@@ -161,13 +157,13 @@ res = s.clients.create(service_id: '<id>', client: Models::Components::ClientInp
   attributes: [
     Models::Components::Pair.new(
       key: 'attribute1-key',
-      value: 'attribute1-value',
+      value: 'attribute1-value'
     ),
     Models::Components::Pair.new(
       key: 'attribute2-key',
-      value: 'attribute2-value',
+      value: 'attribute2-value'
     ),
-  ],
+  ]
 ))
 
 unless res.client.nil?
@@ -208,9 +204,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.update(service_id: '<id>', client_id: '<id>', client: Models::Components::ClientInput.new(
   client_name: 'My updated client',
   client_id_alias: 'my-client',
@@ -242,20 +237,20 @@ res = s.clients.update(service_id: '<id>', client_id: '<id>', client: Models::Co
   attributes: [
     Models::Components::Pair.new(
       key: 'attribute1-key',
-      value: 'attribute1-value',
+      value: 'attribute1-value'
     ),
     Models::Components::Pair.new(
       key: 'attribute2-key',
-      value: 'attribute2-value',
+      value: 'attribute2-value'
     ),
   ],
   front_channel_request_object_encryption_required: false,
   request_object_encryption_alg_match_required: false,
   request_object_encryption_enc_match_required: false,
   additional_properties: {
-    "derivedSectorIdentifier": 'my-client.example.com',
-    "dynamicallyRegistered": false,
-  },
+    'derivedSectorIdentifier' => 'my-client.example.com',
+    'dynamicallyRegistered' => false,
+  }
 ))
 
 unless res.client.nil?
@@ -297,25 +292,24 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.update_form(service_id: '<id>', client_id: '<id>', request_body: {
-  "clientName": 'My Test Client',
-  "clientType": 'PUBLIC',
-  "grantTypes": [
+  'clientId' => '1140735077',
+  'clientName' => 'My Test Client',
+  'clientSecret' => 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ',
+  'clientType' => 'PUBLIC',
+  'grantTypes' => [
     'AUTHORIZATION_CODE',
   ],
-  "responseTypes": [
-    'CODE',
-  ],
-  "redirectUris": [
+  'number' => 1_140_735_077,
+  'redirectUris' => [
     'https://example.com/callback',
   ],
-  "number": 1_140_735_077,
-  "serviceNumber": 715_948_317,
-  "clientId": '1140735077',
-  "clientSecret": 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ',
+  'responseTypes' => [
+    'CODE',
+  ],
+  'serviceNumber' => 715_948_317,
 })
 
 unless res.client.nil?
@@ -357,9 +351,8 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-      bearer: '<YOUR_BEARER_TOKEN_HERE>',
-    )
-
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
 res = s.clients.destroy(service_id: '<id>', client_id: '<id>')
 
 if res.status_code == 200

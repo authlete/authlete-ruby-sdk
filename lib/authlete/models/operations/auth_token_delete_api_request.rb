@@ -16,7 +16,7 @@ module Authlete
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # The identifier of an existing access token. The identifier is the value of the access token
         # or the value of the hash of the access token.
-        # 
+        #
         field :access_token_identifier, ::String, { 'path_param': { 'field_name': 'accessTokenIdentifier', 'style': 'simple', 'explode': false } }
 
         sig { params(service_id: ::String, access_token_identifier: ::String).void }

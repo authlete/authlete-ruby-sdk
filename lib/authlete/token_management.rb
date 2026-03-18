@@ -39,15 +39,17 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, idtoken_reissue_request: T.nilable(Models::Components::IdtokenReissueRequest), timeout_ms: T.nilable(Integer)).returns(Models::Operations::IdtokenReissueApiResponse) }
-    def reissue_id_token(service_id:, idtoken_reissue_request: nil, timeout_ms: nil)
+
+
+    sig { params(service_id: ::String, idtoken_reissue_request: T.nilable(Models::Components::IdtokenReissueRequest), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::IdtokenReissueApiResponse) }
+    def reissue_id_token(service_id:, idtoken_reissue_request: nil, timeout_ms: nil, http_headers: nil)
       # reissue_id_token - Reissue ID Token
       # The API is expected to be called only when the value of the `action`
       # parameter in a response from the `/auth/token` API is [ID_TOKEN_REISSUABLE](https://authlete.github.io/authlete-java-common/com/authlete/common/dto/TokenResponse.Action.html#ID_TOKEN_REISSUABLE). The purpose
       # of the `/idtoken/reissue` API is to generate a token response that
       # includes a new ID token together with a new access token and a refresh
       # token.
-      # 
+      #
       request = Models::Operations::IdtokenReissueApiRequest.new(
         service_id: service_id,
         idtoken_reissue_request: idtoken_reissue_request
@@ -65,7 +67,7 @@ module Authlete
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :idtoken_reissue_request, :json)
       headers['content-type'] = req_content_type
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -101,6 +103,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -198,11 +203,11 @@ module Authlete
     end
 
 
-    sig { params(request: Models::Operations::AuthTokenGetListApiRequest, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenGetListApiResponse) }
-    def list(request:, timeout_ms: nil)
+    sig { params(request: Models::Operations::AuthTokenGetListApiRequest, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuthTokenGetListApiResponse) }
+    def list(request:, timeout_ms: nil, http_headers: nil)
       # list - List Issued Tokens
       # Get the list of access tokens that are associated with the service.
-      # 
+      #
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
@@ -243,6 +248,9 @@ module Authlete
           req.options.timeout = timeout unless timeout.nil?
           req.params = query_params
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -340,11 +348,11 @@ module Authlete
     end
 
 
-    sig { params(token_create_request: Models::Components::TokenCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenCreateApiResponse) }
-    def create(token_create_request:, service_id:, timeout_ms: nil)
+    sig { params(token_create_request: Models::Components::TokenCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuthTokenCreateApiResponse) }
+    def create(token_create_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # create - Create Access Token
       # Create an access token.
-      # 
+      #
       request = Models::Operations::AuthTokenCreateApiRequest.new(
         service_id: service_id,
         token_create_request: token_create_request
@@ -363,7 +371,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -399,6 +407,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -496,11 +507,11 @@ module Authlete
     end
 
 
-    sig { params(token_update_request: Models::Components::TokenUpdateRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenUpdateApiResponse) }
-    def update(token_update_request:, service_id:, timeout_ms: nil)
+    sig { params(token_update_request: Models::Components::TokenUpdateRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuthTokenUpdateApiResponse) }
+    def update(token_update_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # update - Update Access Token
       # Update an access token.
-      # 
+      #
       request = Models::Operations::AuthTokenUpdateApiRequest.new(
         service_id: service_id,
         token_update_request: token_update_request
@@ -519,7 +530,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -555,6 +566,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -652,11 +666,11 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, access_token_identifier: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenDeleteApiResponse) }
-    def destroy(service_id:, access_token_identifier:, timeout_ms: nil)
+    sig { params(service_id: ::String, access_token_identifier: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuthTokenDeleteApiResponse) }
+    def destroy(service_id:, access_token_identifier:, timeout_ms: nil, http_headers: nil)
       # destroy - Delete Access Token
       # Delete an access token.
-      # 
+      #
       request = Models::Operations::AuthTokenDeleteApiRequest.new(
         service_id: service_id,
         access_token_identifier: access_token_identifier
@@ -699,6 +713,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -787,11 +804,11 @@ module Authlete
     end
 
 
-    sig { params(token_revoke_request: Models::Components::TokenRevokeRequest, service_id: ::String, timeout_ms: T.nilable(Integer)).returns(Models::Operations::AuthTokenRevokeApiResponse) }
-    def revoke(token_revoke_request:, service_id:, timeout_ms: nil)
+    sig { params(token_revoke_request: Models::Components::TokenRevokeRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuthTokenRevokeApiResponse) }
+    def revoke(token_revoke_request:, service_id:, timeout_ms: nil, http_headers: nil)
       # revoke - Revoke Access Token
       # Revoke an access token.
-      # 
+      #
       request = Models::Operations::AuthTokenRevokeApiRequest.new(
         service_id: service_id,
         token_revoke_request: token_revoke_request
@@ -810,7 +827,7 @@ module Authlete
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
 
-      if form
+      if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
         body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
@@ -846,6 +863,9 @@ module Authlete
           req.headers.merge!(headers)
           req.options.timeout = timeout unless timeout.nil?
           Utils.configure_request_security(req, security)
+          http_headers&.each do |key, value|
+            req.headers[key.to_s] = value
+          end
 
           @sdk_configuration.hooks.before_request(
             hook_ctx: SDKHooks::BeforeRequestHookContext.new(
@@ -941,5 +961,5 @@ module Authlete
 
       end
     end
-  end
+end
 end

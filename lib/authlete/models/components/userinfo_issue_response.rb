@@ -17,19 +17,19 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::UserinfoIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::UserinfoIssueResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::UserinfoIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::UserinfoIssueResponseAction, true) } }
         # The content that the authorization server implementation can use as the value of `WWW-Authenticate`
         # header on errors.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The signature header of the response message.
-        # 
+        #
         field :signature, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('signature') } }
         # The signature-input header of the response message
-        # 
+        #
         field :signature_input, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('signatureInput') } }
         # The content-digest header of the response message
-        # 
+        #
         field :content_digest, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('contentDigest') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::UserinfoIssueResponseAction), response_content: T.nilable(::String), signature: T.nilable(::String), signature_input: T.nilable(::String), content_digest: T.nilable(::String)).void }

@@ -13,81 +13,81 @@ module Authlete
         include Crystalline::MetadataFields
 
         # The ticket issued by Authlete's `/backchannel/authentication` API.
-        # 
+        #
         field :ticket, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket'), required: true }, 'form': { 'field_name': 'ticket' } }
         # The result of the end-user authentication and authorization. One of the following. Details are
         # described in the description.
-        # 
-        field :result, Models::Components::BackchannelAuthenticationCompleteRequestResult, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('result'), required: true, 'decoder': Utils.enum_from_string(Models::Components::BackchannelAuthenticationCompleteRequestResult, false) }, 'form': { 'field_name': 'result' } }
+        #
+        field :result, Models::Components::BackchannelAuthenticationCompleteRequestResult, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('result'), required: true, 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::BackchannelAuthenticationCompleteRequestResult, false) }, 'form': { 'field_name': 'result' } }
         # The subject (= unique identifier) of the end-user.
-        # 
+        #
         field :subject, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject'), required: true }, 'form': { 'field_name': 'subject' } }
         # The value of the sub claim that should be used in the ID token.
-        # 
+        #
         field :sub, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sub') }, 'form': { 'field_name': 'sub' } }
         # The time at which the end-user was authenticated. Its value is the number of seconds from `1970-01-01`.
-        # 
+        #
         field :auth_time, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authTime') }, 'form': { 'field_name': 'authTime' } }
         # The reference of the authentication context class which the end-user authentication satisfied.
-        # 
+        #
         field :acr, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acr') }, 'form': { 'field_name': 'acr' } }
         # Additional claims which will be embedded in the ID token.
-        # 
+        #
         field :claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') }, 'form': { 'field_name': 'claims' } }
         # The extra properties associated with the access token.
-        # 
+        #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') }, 'form': { 'field_name': 'properties', 'json': true } }
         # Scopes to replace the scopes specified in the original backchannel authentication request with.
         # When nothing is specified for this parameter, replacement is not performed.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') }, 'form': { 'field_name': 'scopes' } }
         # JSON that represents additional JWS header parameters for ID tokens.
-        # 
+        #
         field :idt_header_params, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idtHeaderParams') }, 'form': { 'field_name': 'idtHeaderParams' } }
         # The description of the error. If this optional request parameter is given, its value is used as
         # the value of the `error_description` property, but it is used only when the result is not `AUTHORIZED`.
         # To comply with the specification strictly, the description must not include characters outside
         # the set `%x20-21 / %x23-5B / %x5D-7E`.
-        # 
+        #
         field :error_description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('errorDescription') }, 'form': { 'field_name': 'errorDescription' } }
         # The URI of a document which describes the error in detail. This corresponds to the `error_uri`
         # property in the response to the client.
-        # 
+        #
         field :error_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('errorUri') }, 'form': { 'field_name': 'errorUri' } }
         # the claims that the user has consented for the client application
         # to know.
-        # 
+        #
         field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') }, 'form': { 'field_name': 'consentedClaims' } }
         # Additional claims that are added to the payload part of the JWT access token.
-        # 
+        #
         field :jwt_at_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAtClaims') }, 'form': { 'field_name': 'jwtAtClaims' } }
         # The representation of an access token that may be issued as a result of the Authlete API call.
-        # 
+        #
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') }, 'form': { 'field_name': 'accessToken' } }
         # The duration (in seconds) of the access token that may be issued as a result of the Authlete
         # API call.
-        # 
+        #
         # When this request parameter holds a positive integer, it is used as the duration of the access
         # token in. In other cases, this request parameter is ignored.
-        # 
+        #
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') }, 'form': { 'field_name': 'accessTokenDuration' } }
         # The duration (in seconds) of the refresh token that may be issued as a result of the Authlete
         # API call.
-        # 
+        #
         # When this request parameter holds a positive integer, it is used as the duration of the refresh
         # token in. In other cases, this request parameter is ignored.
-        # 
+        #
         field :refresh_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenDuration') }, 'form': { 'field_name': 'refreshTokenDuration' } }
         # The type of the `aud` claim of the ID token being issued. Valid values are as follows.
-        # 
+        #
         # | Value | Description |
         # | ----- | ----------- |
         # | "array" | The type of the aud claim is always an array of strings. |
         # | "string" | The type of the aud claim is always a single string. |
         # | null | The type of the aud claim remains the same as before. |
-        # 
+        #
         # This request parameter takes precedence over the `idTokenAudType` property of the service.
-        # 
+        #
         field :id_token_aud_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idTokenAudType') }, 'form': { 'field_name': 'idTokenAudType' } }
 
         sig { params(ticket: ::String, result: Models::Components::BackchannelAuthenticationCompleteRequestResult, subject: ::String, sub: T.nilable(::String), auth_time: T.nilable(::Integer), acr: T.nilable(::String), claims: T.nilable(::String), properties: T.nilable(T::Array[Models::Components::Property]), scopes: T.nilable(T::Array[::String]), idt_header_params: T.nilable(::String), error_description: T.nilable(::String), error_uri: T.nilable(::String), consented_claims: T.nilable(T::Array[::String]), jwt_at_claims: T.nilable(::String), access_token: T.nilable(::String), access_token_duration: T.nilable(::Integer), refresh_token_duration: T.nilable(::Integer), id_token_aud_type: T.nilable(::String)).void }

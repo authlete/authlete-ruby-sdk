@@ -6,6 +6,14 @@ should take after getting a response from Authlete's
 `/vci/metadata` API.
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciMetadataResponseAction::OK
+```
+
 
 ## Values
 

@@ -15,7 +15,7 @@ module Authlete
 
         field :info, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info') } }
         # The result of the `/auth/authorization/ticket/info` API call.
-        field :action, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::AuthorizationTicketInfoResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::AuthorizationTicketInfoResponseAction, true) } }
         # The code which represents the result of the API call.
         field :result_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultCode') } }
         # A short message which explains the result of the API call.

@@ -31,20 +31,20 @@ module Authlete
 
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthorizationDetailsElement), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The entity ID of the client.
-        # 
+        #
         field :client_entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityId') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The location of the client's metadata document that was used to resolve client metadata.
-        # 
+        #
         # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
+        #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), subject: T.nilable(::String), scopes: T.nilable(T::Array[Models::Components::Scope]), expires_at: T.nilable(::Integer), properties: T.nilable(T::Array[Models::Components::Property]), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthorizationDetailsElement), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }

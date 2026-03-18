@@ -17,145 +17,136 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
-        field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::BackchannelAuthenticationResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::BackchannelAuthenticationResponseAction, true) } }
         # The content that the authorization server implementation is to return to the client
         # application. Its format varies depending on the value of `action` parameter.
-        # 
+        #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The client ID of the client application that has made the backchannel authentication
         # request.
-        # 
+        #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
         # The client ID alias of the client application that has made the backchannel authentication
         # request.
-        # 
+        #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # `true` if the value of the client_id request parameter included in the backchannel
         # authentication request is the client ID alias. `false` if the value is the original
         # numeric client ID.
-        # 
+        #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The name of the client application which has made the backchannel authentication request.
-        # 
+        #
         field :client_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientName') } }
         # The scopes requested by the backchannel authentication request.
-        # 
-        # Basically, this property holds the value of the `scope` request parameter in the backchannel
-        # authentication request. However, because unregistered scopes are dropped on Authlete side,
-        # if the `scope` request parameter contains unknown scopes, the list returned by this
-        # property becomes different from the value of the `scope` request parameter.
-        # 
-        # Note that `description` property and `descriptions` property of each `scope` object
-        # in the array contained in this property is always null even if descriptions of the scopes
-        # are registered.
-        # 
+        #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Scope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
         # The names of the claims which were requested indirectly via some special scopes.
         # See [5.4. Requesting Claims using Scope Values](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims)
         # in OpenID Connect Core 1.0 for details.
-        # 
+        #
         field :claim_names, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claimNames') } }
         # The client notification token included in the backchannel authentication request.
-        # 
+        #
         field :client_notification_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNotificationToken') } }
         # The list of ACR values requested by the backchannel authentication request.
-        # 
+        #
         # Basically, this property holds the value of the `acr_values` request parameter in the
         # backchannel authentication request. However, because unsupported ACR values are dropped
         # on Authlete side, if the `acr_values` request parameter contains unrecognized ACR values,
         # the list returned by this property becomes different from the value of the `acr_values`
         # request parameter.
-        # 
+        #
         field :acrs, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acrs') } }
         # The type of the hint for end-user identification which was included in the backchannel authentication request.
-        # 
+        #
         field :hint_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('hintType') } }
         # The value of the hint for end-user identification.
-        # 
+        #
         field :hint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('hint') } }
         # The value of the `sub` claim contained in the ID token hint included in the backchannel authentication request.
-        # 
+        #
         field :sub, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sub') } }
         # The binding message included in the backchannel authentication request.
-        # 
+        #
         field :binding_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('bindingMessage') } }
         # The binding message included in the backchannel authentication request.
-        # 
+        #
         field :user_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('userCode') } }
         # The flag which indicates whether a user code is required.
-        # 
+        #
         # `true` when both the `backchannel_user_code_parameter` metadata of the client (= Client's
         # `bcUserCodeRequired` property) and the `backchannel_user_code_parameter_supported`
         # metadata of the service (= Service's `backchannelUserCodeParameterSupported` property)
         # are `true`.
-        # 
+        #
         field :user_code_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('userCodeRequired') } }
         # The requested expiry for the authentication request ID (`auth_req_id`).
-        # 
+        #
         field :requested_expiry, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedExpiry') } }
         # The request context of the backchannel authentication request.
-        # 
+        #
         # It is the value of the request_context claim in the signed authentication request and
         # its format is JSON. request_context is a new claim added by the FAPI-CIBA profile.
-        # 
+        #
         field :request_context, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestContext') } }
         # The warnings raised during processing the backchannel authentication request.
-        # 
+        #
         field :warnings, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('warnings') } }
         # The ticket which is necessary to call Authlete's `/auth/token/fail` API or `/auth/token/issue` API.
-        # 
+        #
         # This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
-        # 
+        #
         field :ticket, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket') } }
         # The resources specified by the `resource` request parameters or by the `resource` property
         # in the request object. If both are given, the values in the request object should be
         # set. See "Resource Indicators for OAuth 2.0" for details.
-        # 
+        #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
         # The authorization details. This represents the value of the `authorization_details`
         # request parameter in the preceding device authorization request which is defined in
         # "OAuth 2.0 Rich Authorization Requests".
-        # 
+        #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The attributes of this service that the client application belongs to.
-        # 
+        #
         field :service_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('serviceAttributes') } }
         # The attributes of the client.
-        # 
+        #
         field :client_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAttributes') } }
         # The dynamic scopes which the client application requested by the scope request parameter.
-        # 
+        #
         field :dynamic_scopes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::DynamicScope)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dynamicScopes') } }
 
-        field :delivery_mode, Crystalline::Nilable.new(Models::Components::DeliveryMode), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deliveryMode'), 'decoder': Utils.enum_from_string(Models::Components::DeliveryMode, true) } }
+        field :delivery_mode, Crystalline::Nilable.new(Models::Components::DeliveryMode), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deliveryMode'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::DeliveryMode, true) } }
         # The client authentication method that was performed.
-        # 
+        #
         field :client_auth_method, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAuthMethod') } }
         # The grant management action of the device authorization request.
-        # 
+        #
         # The `grant_management_action` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html).
-        # 
-        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
+        #
+        field :gm_action, Crystalline::Nilable.new(Models::Components::GrantManagementAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('gmAction'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::GrantManagementAction, true) } }
         # the value of the `grant_id` request parameter of the device authorization request.
-        # 
+        #
         # The `grant_id` request parameter is defined in
         # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
         # , which is supported by Authlete 2.3 and newer versions.
-        # 
+        #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
 
         field :grant, Crystalline::Nilable.new(Models::Components::Grant), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grant') } }
         # The subject identifying the user who has given the grant identified
-        # by the `grant\_id` request parameter of the device authorization
+        # by the `grant_id` request parameter of the device authorization
         # request.
         # Authlete 2.3 and newer versions support [Grant Management
-        # for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). An authorization request may contain a `grant\_id`
+        # for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html). An authorization request may contain a `grant_id`
         # request parameter which is defined in the specification. If the value of
-        # the request parameter is valid, {@link #getGrantSubject()} will return
+        # the request parameter is valid, &#123;@link #getGrantSubject()&#125; will return
         # the subject of the user who has given the grant to the client application.
         # Authorization server implementations may use the value returned from
-        # {@link #getGrantSubject()} in order to determine the user to authenticate.
+        # &#123;@link #getGrantSubject()&#125; in order to determine the user to authenticate.
         # The user your system will authenticate during the authorization process
         # (or has already authenticated) may be different from the user of the
         # grant. The first implementer's draft of "Grant Management for OAuth 2.0"
@@ -163,23 +154,23 @@ module Authlete
         # left to implementations. Authlete will not perform the grant management
         # action when the `subject` passed to Authlete does not match the
         # user of the grant.
-        # 
+        #
         field :grant_subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantSubject') } }
         # The entity ID of the client.
-        # 
+        #
         field :client_entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityId') } }
         # Flag which indicates whether the entity ID of the client was used when the request for the access token was made.
-        # 
+        #
         field :client_entity_id_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientEntityIdUsed') } }
         # The location of the client's metadata document that was used to resolve client metadata.
-        # 
+        #
         # This property is set when client metadata was retrieved via the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) (CIMD) mechanism.
-        # 
+        #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.
-        # 
+        #
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
-        # 
+        #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), scopes: T.nilable(T::Array[Models::Components::Scope]), claim_names: T.nilable(T::Array[::String]), client_notification_token: T.nilable(::String), acrs: T.nilable(T::Array[::String]), hint_type: T.nilable(::String), hint: T.nilable(::String), sub: T.nilable(::String), binding_message: T.nilable(::String), user_code: T.nilable(::String), user_code_required: T.nilable(T::Boolean), requested_expiry: T.nilable(::Integer), request_context: T.nilable(::String), warnings: T.nilable(T::Array[::String]), ticket: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), dynamic_scopes: T.nilable(T::Array[Models::Components::DynamicScope]), delivery_mode: T.nilable(Models::Components::DeliveryMode), client_auth_method: T.nilable(::String), gm_action: T.nilable(Models::Components::GrantManagementAction), grant_id: T.nilable(::String), grant: T.nilable(Models::Components::Grant), grant_subject: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }

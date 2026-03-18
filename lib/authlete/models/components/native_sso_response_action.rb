@@ -8,7 +8,7 @@ module Authlete
   module Models
     module Components
       # NativeSsoResponseAction - The next action that the implementation of the token endpoint should take.
-      # 
+      #
       class NativeSsoResponseAction < T::Enum
         enums do
           OK = new('OK')

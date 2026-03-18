@@ -2,6 +2,14 @@
 
 The result of the `/vci/offer/info` API call.
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = VciOfferInfoResponseAction::OK
+```
+
 
 ## Values
 

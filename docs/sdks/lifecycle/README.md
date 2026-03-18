@@ -19,8 +19,7 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new
-
-res = s.lifecycle.get_api_lifecycle_healthcheck()
+res = s.lifecycle.get_api_lifecycle_healthcheck
 
 unless res.res.nil?
   # handle response

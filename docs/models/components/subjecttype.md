@@ -7,6 +7,14 @@ This property corresponds to `subject_type` in
 [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = SubjectType::PUBLIC
+```
+
 
 ## Values
 

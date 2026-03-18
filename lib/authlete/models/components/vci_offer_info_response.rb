@@ -17,7 +17,7 @@ module Authlete
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The result of the `/vci/offer/info` API call.
-        field :action, Crystalline::Nilable.new(Models::Components::VciOfferInfoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': Utils.enum_from_string(Models::Components::VciOfferInfoResponseAction, true) } }
+        field :action, Crystalline::Nilable.new(Models::Components::VciOfferInfoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciOfferInfoResponseAction, true) } }
 
         field :info, Crystalline::Nilable.new(Models::Components::CredentialOfferInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info') } }
 

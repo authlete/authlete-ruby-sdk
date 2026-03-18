@@ -15,7 +15,7 @@ module Authlete
         # The identifiers of the authorization servers that the credential issuer relies on for authorization.
         # This property corresponds to the authorization_servers metadata. When the credential issuer works
         # as an authorization server for itself, this property should be omitted.
-        # 
+        #
         field :authorization_servers, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationServers') } }
         # The identifier of a credential request.
         field :credential_issuer, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialIssuer') } }
@@ -28,21 +28,21 @@ module Authlete
         # A JSON object describing supported credential configurations.
         # This property corresponds to the credential_configurations_supported metadata.
         # Note: Due to a breaking change in December 2023, this was changed from a JSON array to a JSON object.
-        # 
+        #
         field :credentials_supported, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialsSupported') } }
         # The supported JWE `alg` algorithms for credential response encryption. This property corresponds
         # to the `credential_response_encryption.alg_values_supported` metadata.
-        # 
+        #
         field :credential_response_encryption_alg_values_supported, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialResponseEncryptionAlgValuesSupported') } }
         # The supported JWE `enc` algorithms for credential response encryption. This property corresponds
         # to the `credential_response_encryption.enc_values_supported` metadata.
-        # 
+        #
         field :credential_response_encryption_enc_values_supported, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialResponseEncryptionEncValuesSupported') } }
         # The boolean flag indicating whether credential response encryption is required. This property
         # corresponds to the `credential_response_encryption.encryption_required metadata`. If this flag
         # is `true`, every credential request to the credential issuer must include the `credential_response_encryption`
         # property.
-        # 
+        #
         field :require_credential_response_encryption, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requireCredentialResponseEncryption') } }
 
         sig { params(authorization_servers: T.nilable(T::Array[::String]), credential_issuer: T.nilable(::String), credential_endpoint: T.nilable(::String), batch_credential_endpoint: T.nilable(::String), deferred_credential_endpoint: T.nilable(::String), credentials_supported: T.nilable(::String), credential_response_encryption_alg_values_supported: T.nilable(T::Array[::String]), credential_response_encryption_enc_values_supported: T.nilable(T::Array[::String]), require_credential_response_encryption: T.nilable(T::Boolean)).void }

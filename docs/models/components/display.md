@@ -11,6 +11,14 @@ Values for this property correspond to the values listed in
 "[OpenID Connect Core 1.0, 3.1.2.1. Authentication Request](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest), display".
 
 
+## Example Usage
+
+```ruby
+require "authlete_ruby_sdk"
+
+value = Display::PAGE
+```
+
 
 ## Values
 

@@ -10,7 +10,7 @@ module Authlete
       # VciJwksResponseAction - The next action that the implementation of the JWK Set document
       # endpoint of the credential issuer should take after getting a
       # response from Authlete's `/vci/jwks` API.
-      # 
+      #
       class VciJwksResponseAction < T::Enum
         enums do
           OK = new('OK')
