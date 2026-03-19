@@ -12,6 +12,7 @@ end
 Minitest::TestTask.create do |t|
   # workaround to avoid throwing warnings from Janeway library circular require...
   t.warning = false
+  t.test_globs = ['test/**/*_test.rb']
 end
 
 namespace :sorbet do
@@ -30,13 +31,18 @@ end
 
 task :default => :test
 
-
-# Developers can run all tests with:
+# Run all tests:
 #
-# $ rake test
+# $ API_BASE_URL="<authlete-api-server-url>" \
+#   SERVICE_ID="<service-id>" \
+#   SERVICE_TOKEN="<service-access-token>" \
+#   ORG_TOKEN="<org-access-token>" \
+#   bundle exec rake test
 #
-# Developers can run individual test files with:
+# Run a single file:
 #
-# $ rake test test/parameter_test
-#
-# and run individual tests by adding `focus` to the line before the test definition.
+# $ API_BASE_URL="<authlete-api-server-url>" \
+#   SERVICE_ID="<service-id>" \
+#   SERVICE_TOKEN="<service-access-token>" \
+#   ORG_TOKEN="<org-access-token>" \
+#   bundle exec ruby -Itest test/auth_grant_test.rb
