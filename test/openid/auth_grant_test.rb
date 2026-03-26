@@ -14,16 +14,16 @@ class OidcAuthGrantFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    setup_oidc_service(@mgmt_sdk, @service_id)
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    setup_oidc_service(@mgmt_authlete_client, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   def test_oidc_basic_flow
@@ -31,7 +31,7 @@ class OidcAuthGrantFlowTest < Minitest::Test
     encoded_redirect = URI.encode_www_form_component(REDIRECT_URI)
 
     # Step 1: Authorization request with scope=openid and nonce
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id:            @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: "response_type=code&client_id=#{@client_id}" \
@@ -45,7 +45,7 @@ class OidcAuthGrantFlowTest < Minitest::Test
     refute_nil auth_resp.ticket, 'ticket must be present'
 
     # Step 2: Authorization issue (simulate user consent)
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id:                  @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket:  auth_resp.ticket,
@@ -58,7 +58,7 @@ class OidcAuthGrantFlowTest < Minitest::Test
     refute_nil issue_resp.authorization_code, 'authorization_code must be present'
 
     # Step 3: Token request
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id:    @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    "grant_type=authorization_code" \
@@ -85,6 +85,6 @@ class OidcAuthGrantFlowTest < Minitest::Test
     )
 
     # Step 5: Introspect the access token
-    assert_token_valid(@sdk, @service_id, token_resp.access_token)
+    assert_token_valid(@authlete_client, @service_id, token_resp.access_token)
   end
 end

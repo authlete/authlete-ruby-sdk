@@ -20,21 +20,21 @@ class ExtraPropertiesTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Sets visible + hidden properties at authorization issue and verifies the SDK
@@ -48,7 +48,7 @@ class ExtraPropertiesTest < Minitest::Test
       subject:    SUBJECT,
       properties: [VISIBLE_PROP, HIDDEN_PROP]
     )
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id, authorization_issue_request: issue_request
     ).authorization_issue_response
     assert_equal 'LOCATION', issue_resp.action.serialize
@@ -60,7 +60,7 @@ class ExtraPropertiesTest < Minitest::Test
       client_id:     @client_id,
       client_secret: @client_secret
     )
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id, token_request: token_request
     ).token_response
     assert_equal 'OK', token_resp.action.serialize,
@@ -85,7 +85,7 @@ class ExtraPropertiesTest < Minitest::Test
     intro_request = Authlete::Models::Components::IntrospectionRequest.new(
       token: token_resp.access_token
     )
-    intro_props = Array(@sdk.introspection.process_request(
+    intro_props = Array(@authlete_client.introspection.process_request(
       service_id: @service_id, introspection_request: intro_request
     ).introspection_response.properties)
     assert intro_props.any? { |p| p.key == VISIBLE_PROP.key }
@@ -101,7 +101,7 @@ class ExtraPropertiesTest < Minitest::Test
     issue_request = Authlete::Models::Components::AuthorizationIssueRequest.new(
       ticket: obtain_ticket, subject: SUBJECT
     )
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id, authorization_issue_request: issue_request
     ).authorization_issue_response
     assert_equal 'LOCATION', issue_resp.action.serialize
@@ -114,7 +114,7 @@ class ExtraPropertiesTest < Minitest::Test
       client_secret: @client_secret,
       properties:    [VISIBLE_PROP]
     )
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id, token_request: token_request
     ).token_response
     assert_equal 'OK', token_resp.action.serialize,
@@ -132,7 +132,7 @@ class ExtraPropertiesTest < Minitest::Test
       parameters: "response_type=code&client_id=#{@client_id}" \
                   "&redirect_uri=#{encoded_redirect}&state=#{STATE}"
     )
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id, authorization_request: auth_request
     ).authorization_response
     assert_equal 'INTERACTION', auth_resp.action.serialize

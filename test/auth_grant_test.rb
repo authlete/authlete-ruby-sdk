@@ -7,21 +7,21 @@ class AuthGrantFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   def test_authorization_code_flow
@@ -34,7 +34,7 @@ class AuthGrantFlowTest < Minitest::Test
     auth_request = Authlete::Models::Components::AuthorizationRequest.new(
       parameters: parameters
     )
-    response = @sdk.authorization.process_request(
+    response = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: auth_request
     )
@@ -51,7 +51,7 @@ class AuthGrantFlowTest < Minitest::Test
       ticket: ticket,
       subject: SUBJECT
     )
-    response = @sdk.authorization.issue_response(
+    response = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: issue_request
     )
@@ -76,7 +76,7 @@ class AuthGrantFlowTest < Minitest::Test
       client_id:     @client_id,
       client_secret: @client_secret
     )
-    response = @sdk.tokens.process_request(
+    response = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: token_request
     )
@@ -92,7 +92,7 @@ class AuthGrantFlowTest < Minitest::Test
     introspection_request = Authlete::Models::Components::IntrospectionRequest.new(
       token: access_token
     )
-    response = @sdk.introspection.process_request(
+    response = @authlete_client.introspection.process_request(
       service_id: @service_id,
       introspection_request: introspection_request
     )
@@ -107,7 +107,7 @@ class AuthGrantFlowTest < Minitest::Test
       client_id:     @client_id,
       client_secret: @client_secret
     )
-    response = @sdk.revocation.process_request(
+    response = @authlete_client.revocation.process_request(
       service_id: @service_id,
       revocation_request: revocation_request
     )

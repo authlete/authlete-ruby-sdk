@@ -14,22 +14,22 @@ class DpopFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         token_endpoint:        TOKEN_ENDPOINT,
         access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Core DPoP success path: token endpoint accepts DPoP proof and issues a
@@ -42,7 +42,7 @@ class DpopFlowTest < Minitest::Test
     parameters = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}&state=#{STATE}"
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(parameters: parameters)
     ).authorization_response
@@ -52,7 +52,7 @@ class DpopFlowTest < Minitest::Test
     refute_nil auth_resp.ticket
 
     # Step 2: Issue authorization code
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -68,7 +68,7 @@ class DpopFlowTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,
@@ -92,7 +92,7 @@ class DpopFlowTest < Minitest::Test
     encoded_redirect = URI.encode_www_form_component(REDIRECT_URI)
 
     # Obtain DPoP-bound access token
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: "response_type=code&client_id=#{@client_id}" \
@@ -102,7 +102,7 @@ class DpopFlowTest < Minitest::Test
 
     assert_equal 'INTERACTION', auth_resp.action.serialize
 
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -115,7 +115,7 @@ class DpopFlowTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,
@@ -133,7 +133,7 @@ class DpopFlowTest < Minitest::Test
     refute_nil access_token
 
     # Introspect with a valid DPoP proof (htm=GET, ath=SHA256 of access token)
-    intro_resp = @sdk.introspection.process_request(
+    intro_resp = @authlete_client.introspection.process_request(
       service_id: @service_id,
       introspection_request: Authlete::Models::Components::IntrospectionRequest.new(
         token: access_token,
@@ -153,7 +153,7 @@ class DpopFlowTest < Minitest::Test
     key = generate_ec_key
     encoded_redirect = URI.encode_www_form_component(REDIRECT_URI)
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: "response_type=code&client_id=#{@client_id}" \
@@ -163,7 +163,7 @@ class DpopFlowTest < Minitest::Test
 
     assert_equal 'INTERACTION', auth_resp.action.serialize
 
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -176,7 +176,7 @@ class DpopFlowTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,
@@ -194,7 +194,7 @@ class DpopFlowTest < Minitest::Test
     refute_nil access_token
 
     # Introspect without any DPoP proof — must not return OK
-    intro_resp = @sdk.introspection.process_request(
+    intro_resp = @authlete_client.introspection.process_request(
       service_id: @service_id,
       introspection_request: Authlete::Models::Components::IntrospectionRequest.new(
         token: access_token
@@ -218,9 +218,9 @@ class DpopRequiredTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         token_endpoint:        TOKEN_ENDPOINT,
@@ -230,7 +230,7 @@ class DpopRequiredTest < Minitest::Test
 
     # Create a client with dpop_required: true
     begin
-      resp = @mgmt_sdk.clients.create(
+      resp = @mgmt_authlete_client.clients.create(
         service_id: @service_id,
         client: Authlete::Models::Components::ClientInput.new(
           client_name:    "ruby-sdk-test-dpop-required-#{Time.now.to_i}",
@@ -251,14 +251,14 @@ class DpopRequiredTest < Minitest::Test
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Token request without a DPoP proof must be rejected when dpopRequired=true.
   def test_token_without_dpop_rejected
     encoded_redirect = URI.encode_www_form_component(REDIRECT_URI)
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: "response_type=code&client_id=#{@client_id}" \
@@ -269,7 +269,7 @@ class DpopRequiredTest < Minitest::Test
     assert_equal 'INTERACTION', auth_resp.action.serialize,
       "Expected INTERACTION, got #{auth_resp.action}"
 
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -283,7 +283,7 @@ class DpopRequiredTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,
@@ -301,7 +301,7 @@ class DpopRequiredTest < Minitest::Test
     key = generate_ec_key
     encoded_redirect = URI.encode_www_form_component(REDIRECT_URI)
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: "response_type=code&client_id=#{@client_id}" \
@@ -312,7 +312,7 @@ class DpopRequiredTest < Minitest::Test
     assert_equal 'INTERACTION', auth_resp.action.serialize,
       "Expected INTERACTION, got #{auth_resp.action}"
 
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -326,7 +326,7 @@ class DpopRequiredTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,

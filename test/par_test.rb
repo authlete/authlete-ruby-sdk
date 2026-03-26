@@ -12,21 +12,21 @@ class ParFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # Core SDK integration test: PAR success path
@@ -42,7 +42,7 @@ class ParFlowTest < Minitest::Test
     par_params = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}&state=#{STATE}"
 
-    par_resp = @sdk.pushed_authorization.create(
+    par_resp = @authlete_client.pushed_authorization.create(
       service_id: @service_id,
       pushed_authorization_request: Authlete::Models::Components::PushedAuthorizationRequest.new(
         parameters:    par_params,
@@ -60,7 +60,7 @@ class ParFlowTest < Minitest::Test
     # Step 2: Authorization request using request_uri
     auth_params = "client_id=#{@client_id}&request_uri=#{URI.encode_www_form_component(request_uri)}"
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: auth_params
@@ -72,7 +72,7 @@ class ParFlowTest < Minitest::Test
     refute_nil auth_resp.ticket
 
     # Step 3: Issue authorization code
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -88,7 +88,7 @@ class ParFlowTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,
@@ -100,7 +100,7 @@ class ParFlowTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
-    assert_token_valid(@sdk, @service_id, token_resp.access_token)
+    assert_token_valid(@authlete_client, @service_id, token_resp.access_token)
   end
 
   # SDK error-handling test: omitting client_secret for a confidential client
@@ -111,7 +111,7 @@ class ParFlowTest < Minitest::Test
     par_params = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}&state=#{STATE}"
 
-    par_resp = @sdk.pushed_authorization.create(
+    par_resp = @authlete_client.pushed_authorization.create(
       service_id: @service_id,
       pushed_authorization_request: Authlete::Models::Components::PushedAuthorizationRequest.new(
         parameters: par_params,
@@ -134,22 +134,22 @@ class ParRequiredTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         par_required: true, access_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         par_required: false, access_token_duration: TOKEN_DURATION_SECONDS
@@ -163,7 +163,7 @@ class ParRequiredTest < Minitest::Test
     parameters = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}&state=#{STATE}"
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: parameters
@@ -181,7 +181,7 @@ class ParRequiredTest < Minitest::Test
     par_params = "response_type=code&client_id=#{@client_id}" \
                  "&redirect_uri=#{encoded_redirect}&state=#{STATE}"
 
-    par_resp = @sdk.pushed_authorization.create(
+    par_resp = @authlete_client.pushed_authorization.create(
       service_id: @service_id,
       pushed_authorization_request: Authlete::Models::Components::PushedAuthorizationRequest.new(
         parameters:    par_params,
@@ -196,7 +196,7 @@ class ParRequiredTest < Minitest::Test
 
     request_uri = par_resp.request_uri
 
-    auth_resp = @sdk.authorization.process_request(
+    auth_resp = @authlete_client.authorization.process_request(
       service_id: @service_id,
       authorization_request: Authlete::Models::Components::AuthorizationRequest.new(
         parameters: "client_id=#{@client_id}&request_uri=#{URI.encode_www_form_component(request_uri)}"
@@ -206,7 +206,7 @@ class ParRequiredTest < Minitest::Test
     assert_equal 'INTERACTION', auth_resp.action.serialize,
       "Expected INTERACTION, got #{auth_resp.action}"
 
-    issue_resp = @sdk.authorization.issue_response(
+    issue_resp = @authlete_client.authorization.issue_response(
       service_id: @service_id,
       authorization_issue_request: Authlete::Models::Components::AuthorizationIssueRequest.new(
         ticket: auth_resp.ticket, subject: SUBJECT
@@ -220,7 +220,7 @@ class ParRequiredTest < Minitest::Test
                    "&code=#{issue_resp.authorization_code}" \
                    "&redirect_uri=#{encoded_redirect}"
 
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    token_params,
@@ -232,6 +232,6 @@ class ParRequiredTest < Minitest::Test
     assert_equal 'OK', token_resp.action.serialize,
       "Expected OK, got #{token_resp.action}: #{token_resp.result_message}"
     refute_nil token_resp.access_token
-    assert_token_valid(@sdk, @service_id, token_resp.access_token)
+    assert_token_valid(@authlete_client, @service_id, token_resp.access_token)
   end
 end

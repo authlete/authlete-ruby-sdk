@@ -57,9 +57,9 @@ class RefreshTokenFlowTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         supported_grant_types: [
@@ -70,29 +70,29 @@ class RefreshTokenFlowTest < Minitest::Test
         refresh_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
   end
 
   # A refresh token must be issued alongside the access token
   def test_refresh_token_issued
-    token_resp = do_auth_code_flow(@sdk, @service_id, @client_id, @client_secret)
+    token_resp = do_auth_code_flow(@authlete_client, @service_id, @client_id, @client_secret)
     refute_nil token_resp.refresh_token,
       'Refresh token must be issued when the refresh_token grant type is supported'
   end
 
   # Exchanging a refresh token must yield a new access token
   def test_refresh_token_flow
-    token_resp    = do_auth_code_flow(@sdk, @service_id, @client_id, @client_secret)
+    token_resp    = do_auth_code_flow(@authlete_client, @service_id, @client_id, @client_secret)
     refresh_token = token_resp.refresh_token
     refute_nil refresh_token, 'Refresh token must be issued'
 
-    refresh_resp = @sdk.tokens.process_request(
+    refresh_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    "grant_type=refresh_token&refresh_token=#{refresh_token}",
@@ -106,7 +106,7 @@ class RefreshTokenFlowTest < Minitest::Test
     refute_nil refresh_resp.access_token, 'New access token must be issued on refresh'
 
     # Introspect the new access token.
-    intro_resp = @sdk.introspection.process_request(
+    intro_resp = @authlete_client.introspection.process_request(
       service_id: @service_id,
       introspection_request: Authlete::Models::Components::IntrospectionRequest.new(
         token: refresh_resp.access_token
@@ -119,11 +119,11 @@ class RefreshTokenFlowTest < Minitest::Test
 
   # Revoking a refresh token must succeed
   def test_refresh_token_revocation
-    token_resp    = do_auth_code_flow(@sdk, @service_id, @client_id, @client_secret)
+    token_resp    = do_auth_code_flow(@authlete_client, @service_id, @client_id, @client_secret)
     refresh_token = token_resp.refresh_token
     refute_nil refresh_token, 'Refresh token must be issued'
 
-    revocation_resp = @sdk.revocation.process_request(
+    revocation_resp = @authlete_client.revocation.process_request(
       service_id: @service_id,
       revocation_request: Authlete::Models::Components::RevocationRequest.new(
         parameters:    "token=#{refresh_token}",
@@ -148,9 +148,9 @@ class RefreshTokenNotSupportedTest < Minitest::Test
 
   def setup
     @service_id    = SERVICE_ID
-    @mgmt_sdk      = create_sdk_client(MGMT_TOKEN)
-    @sdk           = create_sdk_client(SERVICE_TOKEN)
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client      = create_sdk_client(MGMT_TOKEN)
+    @authlete_client           = create_sdk_client(SERVICE_TOKEN)
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         supported_grant_types: [
@@ -160,14 +160,14 @@ class RefreshTokenNotSupportedTest < Minitest::Test
         refresh_token_duration: TOKEN_DURATION_SECONDS
       )
     )
-    @client        = create_test_client(@mgmt_sdk, @service_id)
+    @client        = create_test_client(@mgmt_authlete_client, @service_id)
     @client_id     = @client.client_id.to_s
     @client_secret = @client.client_secret
   end
 
   def teardown
-    @mgmt_sdk.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
-    @mgmt_sdk.services.update(
+    @mgmt_authlete_client.clients.destroy(service_id: @service_id, client_id: @client_id) if @client_id
+    @mgmt_authlete_client.services.update(
       service_id: @service_id,
       service: Authlete::Models::Components::ServiceInput.new(
         supported_grant_types: [
@@ -182,14 +182,14 @@ class RefreshTokenNotSupportedTest < Minitest::Test
 
   # No refresh token must be issued when the grant type is not supported
   def test_refresh_token_not_issued
-    token_resp = do_auth_code_flow(@sdk, @service_id, @client_id, @client_secret)
+    token_resp = do_auth_code_flow(@authlete_client, @service_id, @client_id, @client_secret)
     assert_nil token_resp.refresh_token,
       'Refresh token must not be issued when the refresh_token grant type is not supported'
   end
 
   # The refresh_token grant must be rejected when not supported by the service
   def test_refresh_token_rejected
-    token_resp = @sdk.tokens.process_request(
+    token_resp = @authlete_client.tokens.process_request(
       service_id: @service_id,
       token_request: Authlete::Models::Components::TokenRequest.new(
         parameters:    'grant_type=refresh_token&refresh_token=dummy_token',
