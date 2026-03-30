@@ -10,23 +10,17 @@ RuboCop::RakeTask.new
 Minitest::TestTask.create do |t|
   # workaround to avoid throwing warnings from Janeway library circular require...
   t.warning = false
-  t.test_globs = ['test/**/*_test.rb']
 end
 
 task :default => :test
 
-# Run all tests:
+
+# Developers can run all tests with:
 #
-# $ API_BASE_URL="<authlete-api-server-url>" \
-#   SERVICE_ID="<service-id>" \
-#   SERVICE_TOKEN="<service-access-token>" \
-#   ORG_TOKEN="<org-access-token>" \
-#   bundle exec rake test
+# $ rake test
 #
-# Run a single file:
+# Developers can run individual test files with:
 #
-# $ API_BASE_URL="<authlete-api-server-url>" \
-#   SERVICE_ID="<service-id>" \
-#   SERVICE_TOKEN="<service-access-token>" \
-#   ORG_TOKEN="<org-access-token>" \
-#   bundle exec ruby -Itest test/auth_grant_test.rb
+# $ rake test test/parameter_test
+#
+# and run individual tests by adding `focus` to the line before the test definition.
