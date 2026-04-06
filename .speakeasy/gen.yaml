@@ -23,7 +23,7 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
-  versioningStrategy: automatic
+  versioningStrategy: manual
   persistentEdits:
     README.md:
       after: <!-- End SDK Installation [installation] -->
@@ -33,7 +33,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 ruby:
-  version: 1.0.0
+  version: 1.0.1
   additionalDependencies:
     development: {}
     runtime: {}
