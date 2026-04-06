@@ -5,7 +5,7 @@ management:
   docVersion: 3.0.16
   speakeasyVersion: 1.757.0
   generationVersion: 2.866.0
-  releaseVersion: 0.0.5-beta
+  releaseVersion: 1.0.0
   configChecksum: 45193cd285e175d52e0e9048482927cc
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
