@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
-  docChecksum: 980dec23f77c9523e775a9aff4ac072a
+  docChecksum: c75366e57f08beda78b68196e6d6998b
   docVersion: 3.0.16
-  speakeasyVersion: 1.757.0
-  generationVersion: 2.866.0
-  releaseVersion: 1.0.0
-  configChecksum: 45193cd285e175d52e0e9048482927cc
+  speakeasyVersion: 1.761.1
+  generationVersion: 2.879.6
+  releaseVersion: 1.0.1
+  configChecksum: 9b126ff1a15a948882930969d7a7da99
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: bad8220c-b024-4c71-9d3e-1a812a0966db
-  pristine_commit_hash: a8936d34fdb34d13574390c546d6261883dcbe61
-  pristine_tree_hash: 6fc6823fb33406141f3c86eb6525c72c73508e2f
+  generation_id: 352ebde5-6bb0-4810-8cae-bdb99c20dea3
+  pristine_commit_hash: d4626f27c54111f0801925255d737e649ff60a4e
+  pristine_tree_hash: f51f7185dfb9d1ac934c384ee0bddc36bfd15ec0
 features:
   ruby:
     additionalProperties: 0.1.0
-    core: 3.11.24
+    core: 3.11.27
     flattening: 2.81.1
-    globalSecurity: 2.81.10
+    globalSecurity: 2.81.11
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.83.1
     groups: 2.81.3
@@ -46,8 +46,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:ee338fe8b6075eb7cfcdaa8b0b415d22a9db0d39
-    pristine_git_object: 3e6d4626aa8c9a219cb9512361e22ad830c9cd65
+    last_write_checksum: sha1:cf7a642aaaeaeb3e2daf3b652aa651aa089eb238
+    pristine_git_object: 432db9a9e0de0c62011eeb939e2eb64f2675b954
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -58,8 +58,8 @@ trackedFiles:
     pristine_git_object: 2a97b0347ef576d0c4608f319dc9c5d8ead5a893
   authlete_ruby_sdk.gemspec:
     id: 2466cacca632
-    last_write_checksum: sha1:911cd5aa366fb5199eb0c79d5d67c554235b5814
-    pristine_git_object: 8eb89557b1b7a0f741db9e8703f1bedf68e121db
+    last_write_checksum: sha1:64f565eb6237b9c2739caa01ebc378ecd1d04f12
+    pristine_git_object: f338f6e90f2edd3776627aa263171a65b240eb23
   docs/models/components/accesstoken.md:
     id: 94ff2e4425e9
     last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
@@ -4922,8 +4922,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:c102b03ec29836cae5bfcb9d0b59d5563eab76a9
-    pristine_git_object: 9d77b3d1e58868fa5bc70e35c272c1f46f889f34
+    last_write_checksum: sha1:aaf395ed4549220f3c5db0b4717bd3c23ff63e9e
+    pristine_git_object: 3cb8862e138a05274a0d82b39ae32c8e91e1fca1
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
@@ -4966,8 +4966,8 @@ trackedFiles:
     pristine_git_object: 3bc0f10709c71a5625d5cf9dab4edba0d734731d
   lib/authlete/utils/security.rb:
     id: fbbe0751359c
-    last_write_checksum: sha1:dbf7e4788c4f74e66983499c0b763b19b2648514
-    pristine_git_object: 29674a5a2859beaa21c31d70d8c2d045300a2838
+    last_write_checksum: sha1:875fb2ff11fa4fe149712faa1af6504582cc3bd2
+    pristine_git_object: e81f2072271abccc482fbcc60c0579d46cfdb409
   lib/authlete/utils/url.rb:
     id: 7fa57aecaf9f
     last_write_checksum: sha1:866f21b9fe55d07b753eb5f0db95f85e26821317
@@ -6273,7 +6273,6 @@ examples:
         "200":
           text/plain: "<value>"
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.tokens.process_request()`: \n  *  `request.token_request.properties` **Changed** (Breaking ⚠️)\n* `client.token_operations.auth_token_create_batch_api()`: **Removed** (Breaking ⚠️)\n* `client.token_operations.auth_token_create_batch_status_api()`: **Removed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

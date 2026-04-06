@@ -13,13 +13,12 @@ require_relative 'utils/retries'
 module Authlete
   extend T::Sig
 
-  SERVERS = [
+  SERVERS = T.let([
     'https://us.authlete.com', # 1 - 🇺🇸 US Cluster
     'https://jp.authlete.com', # 1 - 🇯🇵 Japan Cluster
     'https://eu.authlete.com', # 1 - 🇪🇺 Europe Cluster
     'https://br.authlete.com', # 1 - 🇧🇷 Brazil Cluster
-  ].freeze
-  SERVERS = T.let(SERVERS, T::Array[String])
+  ].freeze, T::Array[String])
   # Contains the list of servers available to the SDK
 
   class SDKConfiguration
@@ -92,9 +91,9 @@ module Authlete
       end
       @language = 'ruby'
       @openapi_doc_version = '3.0.16'
-      @sdk_version = '1.0.0'
-      @gen_version = '2.866.0'
-      @user_agent = 'speakeasy-sdk/ruby 1.0.0 2.866.0 3.0.16 authlete_ruby_sdk'
+      @sdk_version = '1.0.1'
+      @gen_version = '2.879.6'
+      @user_agent = 'speakeasy-sdk/ruby 1.0.1 2.879.6 3.0.16 authlete_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
