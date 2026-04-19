@@ -1,9 +1,9 @@
-speakeasyVersion: 1.761.1
+speakeasyVersion: 1.761.8
 sources:
     authlete-OAS:
         sourceNamespace: authlete-oas
-        sourceRevisionDigest: sha256:d525984e969ef95c3f2bc426a70e369a86a1d2e1c64741a1763f67bd808721be
-        sourceBlobDigest: sha256:d243007fa686330d01194a9000859cac5d05731da9b19cae61c63aea55a2ea08
+        sourceRevisionDigest: sha256:9b8f4de9a1e2261181c65190b8fc9c6f957ee1a46818cb27f2be8c79d51a3690
+        sourceBlobDigest: sha256:bcea6c42034fe5e7926779f965ff49592d9e7775ac12658afbb679d61bead33f
         tags:
             - latest
             - 3.0.16
@@ -11,10 +11,10 @@ targets:
     authlete:
         source: authlete-OAS
         sourceNamespace: authlete-oas
-        sourceRevisionDigest: sha256:d525984e969ef95c3f2bc426a70e369a86a1d2e1c64741a1763f67bd808721be
-        sourceBlobDigest: sha256:d243007fa686330d01194a9000859cac5d05731da9b19cae61c63aea55a2ea08
+        sourceRevisionDigest: sha256:9b8f4de9a1e2261181c65190b8fc9c6f957ee1a46818cb27f2be8c79d51a3690
+        sourceBlobDigest: sha256:bcea6c42034fe5e7926779f965ff49592d9e7775ac12658afbb679d61bead33f
         codeSamplesNamespace: authlete-oas-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:30679879c5097041027bcaa55741c29fde4ce3c531b4bd0642e312c0cf79f8f1
+        codeSamplesRevisionDigest: sha256:83c54d1a8281c51303b07cfc523d28eece5266adac9b2c3460e5584905a262ee
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

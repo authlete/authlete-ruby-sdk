@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
-  docChecksum: c75366e57f08beda78b68196e6d6998b
+  docChecksum: a882a4894cfcca065b1ff4385f1737df
   docVersion: 3.0.16
-  speakeasyVersion: 1.761.1
-  generationVersion: 2.879.6
+  speakeasyVersion: 1.761.8
+  generationVersion: 2.881.2
   releaseVersion: 1.0.0
   configChecksum: 6fdfc08f742c8653f5b89a58894b1354
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: 0e012236-7d11-45bd-a52f-53240249c537
-  pristine_commit_hash: f3af4af681d076eb95352f55be74f4e38bf88d18
-  pristine_tree_hash: ba155ce5ac2e1cc7a07917a200cf62a01b9b5160
+  generation_id: a279dc23-1157-4e61-a303-61b55aab38de
+  pristine_commit_hash: b312c92fcd77c7bc43fee9f0676ab9afb26867d8
+  pristine_tree_hash: a748d37c335cbc7eb80a9aa16558ff9106292536
 features:
   ruby:
     additionalProperties: 0.1.0
@@ -610,16 +610,16 @@ trackedFiles:
     pristine_git_object: c354116bb722d0a31ba8633530aaa4084040d77f
   docs/models/components/service.md:
     id: 4385ff500f60
-    last_write_checksum: sha1:17742e13641d77c75d923febc91aba2776d6f1b2
-    pristine_git_object: 0ac1fe3bb4a385df0a434e3e0bc98f46cdaffd0d
+    last_write_checksum: sha1:3177f8d3c7a5421c83db2a1472ab164fe166f3ee
+    pristine_git_object: a9495b35fe4563e745056ca4fa439dd9db3fca7e
   docs/models/components/servicegetlistresponse.md:
     id: bca50759f1e5
     last_write_checksum: sha1:d938ee1af873c8ee66690acf5b9261e3ac55a96a
     pristine_git_object: 9b7483df75f867fb8673989166d520ce4a346ae4
   docs/models/components/serviceinput.md:
     id: 75371ad54a11
-    last_write_checksum: sha1:24df95a6cc3c8cf808a7b8eca7004e647bd40b6a
-    pristine_git_object: f7d5a9b6810fc62d77fd0769cc96cecfecfb592b
+    last_write_checksum: sha1:35c50a2301c96b9ed007c3bcb0c454eafc19754d
+    pristine_git_object: ccf2fb1f9414f96d6d133e2451c22ec046845d7d
   docs/models/components/servicejwksgetresponse.md:
     id: 9496edebea4d
     last_write_checksum: sha1:f929ee455b78c84549edfbe2524c5fd68a82a406
@@ -1686,8 +1686,8 @@ trackedFiles:
     pristine_git_object: 9553366a7244dbb2dfca43c9891353ed904b4c55
   docs/sdks/services/README.md:
     id: bfab970adeb1
-    last_write_checksum: sha1:7a8fb214173a754a04a9dc5ed6bda89abe439c64
-    pristine_git_object: 266e44669b17881f489604023c0ebdf7036a3a26
+    last_write_checksum: sha1:465716b61628308cba0d6c6c8ebd6f44bacc3df4
+    pristine_git_object: 6b57d63aa09ea72dba5875cd4730422e4fd4cbd2
   docs/sdks/tokenmanagement/README.md:
     id: 134765d94546
     last_write_checksum: sha1:973e12c38e03f8c19514f3386e920b8f4fec1a32
@@ -2870,12 +2870,12 @@ trackedFiles:
     pristine_git_object: 9430bdbf02245aea9469a5f63bc69602229494a5
   lib/authlete/models/components/service.rb:
     id: cd3393b6bb2d
-    last_write_checksum: sha1:f82fbee56618454c5c425dbcb66fd94bca027d23
-    pristine_git_object: 21c5dca09c250369b12a22d2a365c2b950fd0ec7
+    last_write_checksum: sha1:bb073d6b66826ab890c1b3edba17d497f6726ff0
+    pristine_git_object: 55116c6d3c0fa8f531c7f62ff3f11dbae0df65cf
   lib/authlete/models/components/service.rbi:
     id: b86298cce669
-    last_write_checksum: sha1:e5bb107303c14e7673d30122c390983c4f3a6b6a
-    pristine_git_object: 46a0886be83424b5024f03dc8293f75e30c8dc4e
+    last_write_checksum: sha1:4ee602e594435862647b122bd8527541fea054dc
+    pristine_git_object: 1adb53ae01f2d10774f5a27a5735821d6f801ce7
   lib/authlete/models/components/service_get_list_response.rb:
     id: 163fd06ae469
     last_write_checksum: sha1:7265b9554e67513ae1eaca7645c8810d6c34348a
@@ -2886,12 +2886,12 @@ trackedFiles:
     pristine_git_object: c005f2ea226a0c8edaea8e7ffbd228dd55fcfe98
   lib/authlete/models/components/service_input.rb:
     id: f97c5485245b
-    last_write_checksum: sha1:5d5c27db4f2df93778cba567b94f325240be76cd
-    pristine_git_object: d3c96a235502bd88bdda31b3a05cbd4b2cf083cb
+    last_write_checksum: sha1:3f98fb79f869a1134d3155b7af9b44bad29c66fb
+    pristine_git_object: 6797f4c441e9fe0c438f43f1e7deb1d03ada177d
   lib/authlete/models/components/service_input.rbi:
     id: c84380a0f515
-    last_write_checksum: sha1:046fc667ed2e4da3b2f893293f87ebbf970fc316
-    pristine_git_object: db2ef5a3e607a2e9beceb6ccf714bd388dd16a32
+    last_write_checksum: sha1:ecc3e8942f5317854c173e4ad95e70492638634f
+    pristine_git_object: f3176139d50fc130a2275eaa28f0bd6319540486
   lib/authlete/models/components/service_jwks_get_response.rb:
     id: 7af6018158d5
     last_write_checksum: sha1:cd3cd9a8c5c0d2637e55bdd16b7deb2e5f717b2e
@@ -4922,8 +4922,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:a514437f5ce06da60eba64b3af827b7265fc86ad
-    pristine_git_object: 041bf366dcce34dbcc32f28809c387c1468feaaa
+    last_write_checksum: sha1:2e0125afaeec9343ec3104bf93338072baf6103d
+    pristine_git_object: 8cb765961255bc4aafb5b72384ada55272ba8d50
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
@@ -5036,7 +5036,7 @@ examples:
           serviceId: "<id>"
       responses:
         "200":
-          application/json: {"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "serviceOwnerNumber": 2, "clientsPerDeveloper": 0, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://my-service.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}
+          application/json: {"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "serviceOwnerNumber": 2, "clientsPerDeveloper": 0, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://my-service.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "authorizationCodeDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}
     limited:
       parameters:
         path:
@@ -5059,7 +5059,7 @@ examples:
     full:
       responses:
         "200":
-          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "apiSecret": "uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls", "serviceOwnerNumber": 2, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://as.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}]}
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "apiSecret": "uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls", "serviceOwnerNumber": 2, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://as.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "authorizationCodeDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}]}
     limited:
       responses:
         "200":
@@ -6273,6 +6273,7 @@ examples:
         "200":
           text/plain: "<value>"
 examplesVersion: 1.0.2
+releaseNotes: "## Ruby SDK Changes:\n* `client.services.retrieve()`:  `response` **Changed**\n* `client.services.list()`:  `response.services[]` **Changed**\n* `client.services.create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `client.services.update()`: \n  *  `request.service` **Changed**\n  *  `response` **Changed**\n* `client.authorization.process_request()`:  `response.service` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

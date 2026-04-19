@@ -92,8 +92,8 @@ module Authlete
       @language = 'ruby'
       @openapi_doc_version = '3.0.16'
       @sdk_version = '1.0.0'
-      @gen_version = '2.879.6'
-      @user_agent = 'speakeasy-sdk/ruby 1.0.0 2.879.6 3.0.16 authlete_ruby_sdk'
+      @gen_version = '2.881.2'
+      @user_agent = 'speakeasy-sdk/ruby 1.0.0 2.881.2 3.0.16 authlete_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }
