@@ -268,6 +268,7 @@ res = s.services.update(service_id: '<id>', service: Models::Components::Service
   pkce_required: true,
   pkce_s256_required: false,
   authorization_response_duration: 0,
+  authorization_code_duration: 0,
   token_endpoint: 'https://my-service.example.com/token',
   direct_token_endpoint_enabled: false,
   supported_token_auth_methods: [

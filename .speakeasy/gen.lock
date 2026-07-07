@@ -1,23 +1,21 @@
 lockVersion: 2.0.0
 id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
-  docChecksum: c75366e57f08beda78b68196e6d6998b
   docVersion: 3.0.16
-  speakeasyVersion: 1.761.1
-  generationVersion: 2.879.6
+  speakeasyVersion: 1.789.0
+  generationVersion: 2.916.2
   releaseVersion: 1.0.0
-  configChecksum: 6fdfc08f742c8653f5b89a58894b1354
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: 0e012236-7d11-45bd-a52f-53240249c537
-  pristine_commit_hash: f3af4af681d076eb95352f55be74f4e38bf88d18
-  pristine_tree_hash: ba155ce5ac2e1cc7a07917a200cf62a01b9b5160
+  generation_id: 3aabb567-0bfe-4e76-9857-468ec68d6b94
+  pristine_commit_hash: a7e34167c88cc6e1146d6de40dff635edebc392b
+  pristine_tree_hash: 3ef5f07c1fe657f3d3487bb272ebc2687d7e8afe
 features:
   ruby:
     additionalProperties: 0.1.0
-    core: 3.11.27
+    core: 3.11.33
     flattening: 2.81.1
     globalSecurity: 2.81.11
     globalSecurityFlattening: 0.1.0
@@ -46,8 +44,8 @@ trackedFiles:
     pristine_git_object: b0ea40558f3ca80dcf7d30b159d34a1e5ab33440
   Gemfile.lock:
     id: 21fb5836b499
-    last_write_checksum: sha1:185b91ba504d9af631b984d43ff25264e1088c9c
-    pristine_git_object: c12763fbfc9e5d3aa6ea111ae085677a4c9556dd
+    last_write_checksum: sha1:3ab43933af7f5c9dfd9013ea5e2b5998e6f460b4
+    pristine_git_object: 5549fb4093b1418b550b8993a44234490f941e7b
   Rakefile:
     id: 44b7fa1ba503
     last_write_checksum: sha1:c572639efdae8c7b24141ee5c02d8f009e101ed8
@@ -58,8 +56,8 @@ trackedFiles:
     pristine_git_object: 2a97b0347ef576d0c4608f319dc9c5d8ead5a893
   authlete_ruby_sdk.gemspec:
     id: 2466cacca632
-    last_write_checksum: sha1:7e804d1efaed9a01ab8f7e1990a01532355f4b0f
-    pristine_git_object: 925d07866d387f245474190fd08bf0092580a01f
+    last_write_checksum: sha1:b631846b9bc50c2a1e93d37e2ddfe5c9eddc98b9
+    pristine_git_object: 7b67a711a7d7a3cc91887e600edea6f2b023517d
   docs/models/components/accesstoken.md:
     id: 94ff2e4425e9
     last_write_checksum: sha1:a5016925cce7e46d50ebfd351c53fb906209283f
@@ -610,16 +608,16 @@ trackedFiles:
     pristine_git_object: c354116bb722d0a31ba8633530aaa4084040d77f
   docs/models/components/service.md:
     id: 4385ff500f60
-    last_write_checksum: sha1:17742e13641d77c75d923febc91aba2776d6f1b2
-    pristine_git_object: 0ac1fe3bb4a385df0a434e3e0bc98f46cdaffd0d
+    last_write_checksum: sha1:3177f8d3c7a5421c83db2a1472ab164fe166f3ee
+    pristine_git_object: a9495b35fe4563e745056ca4fa439dd9db3fca7e
   docs/models/components/servicegetlistresponse.md:
     id: bca50759f1e5
     last_write_checksum: sha1:d938ee1af873c8ee66690acf5b9261e3ac55a96a
     pristine_git_object: 9b7483df75f867fb8673989166d520ce4a346ae4
   docs/models/components/serviceinput.md:
     id: 75371ad54a11
-    last_write_checksum: sha1:24df95a6cc3c8cf808a7b8eca7004e647bd40b6a
-    pristine_git_object: f7d5a9b6810fc62d77fd0769cc96cecfecfb592b
+    last_write_checksum: sha1:35c50a2301c96b9ed007c3bcb0c454eafc19754d
+    pristine_git_object: ccf2fb1f9414f96d6d133e2451c22ec046845d7d
   docs/models/components/servicejwksgetresponse.md:
     id: 9496edebea4d
     last_write_checksum: sha1:f929ee455b78c84549edfbe2524c5fd68a82a406
@@ -1686,8 +1684,8 @@ trackedFiles:
     pristine_git_object: 9553366a7244dbb2dfca43c9891353ed904b4c55
   docs/sdks/services/README.md:
     id: bfab970adeb1
-    last_write_checksum: sha1:7a8fb214173a754a04a9dc5ed6bda89abe439c64
-    pristine_git_object: 266e44669b17881f489604023c0ebdf7036a3a26
+    last_write_checksum: sha1:465716b61628308cba0d6c6c8ebd6f44bacc3df4
+    pristine_git_object: 6b57d63aa09ea72dba5875cd4730422e4fd4cbd2
   docs/sdks/tokenmanagement/README.md:
     id: 134765d94546
     last_write_checksum: sha1:973e12c38e03f8c19514f3386e920b8f4fec1a32
@@ -1706,64 +1704,64 @@ trackedFiles:
     pristine_git_object: b37a694acc0a535be78a16d4700f9c2a713c7472
   lib/authlete/authorization.rb:
     id: e07235826cdb
-    last_write_checksum: sha1:8e5166ad79835d097224472b760418fb39b3d8b4
-    pristine_git_object: b6802e4c935640da3b41764fe2e23961ad42d653
+    last_write_checksum: sha1:8ee36c5192899e09930d1fadb7f30a2549eeeca9
+    pristine_git_object: 4fae3b282f13ac76dc9e05806d52cbc07e50ae64
   lib/authlete/authorization_management.rb:
     id: 7c583c687218
-    last_write_checksum: sha1:664b8f7bae7f02e9d6d63c6b3e95c1dd27521956
-    pristine_git_object: 619239e765eb51f67bb89bc39c5c36cf808c39e1
+    last_write_checksum: sha1:e0a7a706e1f54d11bff29e2042c357c0ddda924d
+    pristine_git_object: 0d3ae7defe0136fedbabd5e84230625fae3b84cf
   lib/authlete/ciba.rb:
     id: 6d353d221874
-    last_write_checksum: sha1:da4a9f9bdf98c480f8854bab947797f5c3e836e9
-    pristine_git_object: 8a8563a3d6c9e4f38f67f200560034ce2fa7e75b
+    last_write_checksum: sha1:860a961d634a553f84030dfa02189981016ae2df
+    pristine_git_object: 52a2460086331b53ad2a950015bf58966288c224
   lib/authlete/client.rb:
     id: e4c99f52c448
     last_write_checksum: sha1:e61363a9d9dfc68f7ba4c9813e8439ef4386257c
     pristine_git_object: 004ff32617dec6f2ab4df07287f7b6f820e9aed6
   lib/authlete/client_management.rb:
     id: 602ce96744f2
-    last_write_checksum: sha1:5eba6cbb822e0f5dee0b00f41a2f2135604bd8c3
-    pristine_git_object: 7e268f4c8e435d1791d96a4464b7e6484218ec6c
+    last_write_checksum: sha1:d6cc5d4ae63b071ea978138c55252ad9c778b9ee
+    pristine_git_object: 19bea7490a040be6348c09a2fbfcda6246fcaae6
   lib/authlete/clients.rb:
     id: 64b7cfd1a20d
-    last_write_checksum: sha1:7b64e1ad2362b7a87f88478ed6e33780a6243205
-    pristine_git_object: 2622cb29654acce4e31345cd6b51ada01dfdbeaf
+    last_write_checksum: sha1:bd53933096bd0d5b5e3f5a96cb7c5e2bd9469159
+    pristine_git_object: 9500d37c22d762628107204f6668d4b3826692dc
   lib/authlete/device_flow.rb:
     id: 374d08d0519a
-    last_write_checksum: sha1:df7330ff87d02b159c7af3e214ef83e3c2db9166
-    pristine_git_object: e9943164f6a0795fd0fb93ec382f2b665318ad26
+    last_write_checksum: sha1:f55dc6c423b9c5b50d0db187672c249c8776f9f6
+    pristine_git_object: e438efc05494927918747a41cbb56a2ab433f681
   lib/authlete/dynamic_client_registration.rb:
     id: 8902a4efc8a0
-    last_write_checksum: sha1:3b2ac0b154a6f442fad9eb5d837edf68e0c2e445
-    pristine_git_object: 5370831ddce9676ee0fae499983a9c9e40a05215
+    last_write_checksum: sha1:11c0938ebc2175f0e79cc130264c1f4b11cde1df
+    pristine_git_object: 595531573c158ba2b6c04bd82dcf6bf85c106af9
   lib/authlete/federation.rb:
     id: c83bc4114d0c
-    last_write_checksum: sha1:cfbd0943661efc03cd7e198a865e992dfcc204bb
-    pristine_git_object: dcf4992d57baf1ea69cbc70bed20fb4e6857c5fe
+    last_write_checksum: sha1:af20e7150078a0a9d54c233e054070c7382a7b48
+    pristine_git_object: f41b4c5d4fe6d90839eccae56814ab0e08749041
   lib/authlete/grant_management.rb:
     id: 0d294fbbc95b
-    last_write_checksum: sha1:d8eb1a396e8e5fcf424f287a933463c30e0b4837
-    pristine_git_object: 39d82a8b4cb31fc57517b9a8c99343d34c39471b
+    last_write_checksum: sha1:bb94d99ffd510e43ec56ec64025eabf378da94a4
+    pristine_git_object: eee52d8884d18e91bb0e342f52d91030e712c400
   lib/authlete/hardware_security_keys.rb:
     id: 7f770d182e08
-    last_write_checksum: sha1:7c5670f5733b0519da457b487340da3eb5ce5a06
-    pristine_git_object: c42a467403709c8c0d4e998c0b6f23cf14f72433
+    last_write_checksum: sha1:cccced220d7dddb3b8f72143d656477a7894f4d7
+    pristine_git_object: 076ad1a30c127685ba1a885686eea26c69808cfa
   lib/authlete/introspection.rb:
     id: f82a20aeda91
-    last_write_checksum: sha1:946e2d32bec4ad02afc3e6d9e9dbd4ab0a34a207
-    pristine_git_object: 39d26a95f3d8dfef5569a1cfdf82dc6dbefe5e6a
+    last_write_checksum: sha1:67f3da9182cb907670da23371435b8bd8516fc8b
+    pristine_git_object: 83a80b0f89c33bb769a1fd41a9c071e84322438a
   lib/authlete/jose_object.rb:
     id: 39f072503701
-    last_write_checksum: sha1:c8e13b328197e138da7ad19e99a5d7d6c89118f3
-    pristine_git_object: c9641c3a18687055099adb12d5900bf72d218278
+    last_write_checksum: sha1:30f14cef436749154cd83eee53c9cfc81a70cfa3
+    pristine_git_object: c4c0b4184f4d3deb496a9ecfc7c860ac0e48a243
   lib/authlete/jwk_set_endpoint.rb:
     id: 528cb78d6aff
-    last_write_checksum: sha1:ce224ab658873645b94512514f9a2dda00cb98fc
-    pristine_git_object: 425d2fc01193efcb4d11a6d96ae5b629239f2c2c
+    last_write_checksum: sha1:4f0868fb1ce78bd94197778039a218369f66972a
+    pristine_git_object: 0db589b764d1de9a97b4b296d59f12910b375b61
   lib/authlete/lifecycle.rb:
     id: eaa2a5a20e62
-    last_write_checksum: sha1:11e139b684e7435cd1ef33b3c347031f4e892579
-    pristine_git_object: 7eb85b40b2bd05dbf1d25af129895e86abd8cb97
+    last_write_checksum: sha1:2f791a6179e1d82b7b9b17d9fb9d99d4ebeef5bd
+    pristine_git_object: 93b0325750ae2327c8bfd26b3cdd73b8302cc794
   lib/authlete/models/callbacks.rb:
     id: b7b34e0302de
     last_write_checksum: sha1:19cdc1c08b73749b208eb7df28f4bbd9aa9a6ebb
@@ -2870,12 +2868,12 @@ trackedFiles:
     pristine_git_object: 9430bdbf02245aea9469a5f63bc69602229494a5
   lib/authlete/models/components/service.rb:
     id: cd3393b6bb2d
-    last_write_checksum: sha1:f82fbee56618454c5c425dbcb66fd94bca027d23
-    pristine_git_object: 21c5dca09c250369b12a22d2a365c2b950fd0ec7
+    last_write_checksum: sha1:bb073d6b66826ab890c1b3edba17d497f6726ff0
+    pristine_git_object: 55116c6d3c0fa8f531c7f62ff3f11dbae0df65cf
   lib/authlete/models/components/service.rbi:
     id: b86298cce669
-    last_write_checksum: sha1:e5bb107303c14e7673d30122c390983c4f3a6b6a
-    pristine_git_object: 46a0886be83424b5024f03dc8293f75e30c8dc4e
+    last_write_checksum: sha1:4ee602e594435862647b122bd8527541fea054dc
+    pristine_git_object: 1adb53ae01f2d10774f5a27a5735821d6f801ce7
   lib/authlete/models/components/service_get_list_response.rb:
     id: 163fd06ae469
     last_write_checksum: sha1:7265b9554e67513ae1eaca7645c8810d6c34348a
@@ -2886,12 +2884,12 @@ trackedFiles:
     pristine_git_object: c005f2ea226a0c8edaea8e7ffbd228dd55fcfe98
   lib/authlete/models/components/service_input.rb:
     id: f97c5485245b
-    last_write_checksum: sha1:5d5c27db4f2df93778cba567b94f325240be76cd
-    pristine_git_object: d3c96a235502bd88bdda31b3a05cbd4b2cf083cb
+    last_write_checksum: sha1:3f98fb79f869a1134d3155b7af9b44bad29c66fb
+    pristine_git_object: 6797f4c441e9fe0c438f43f1e7deb1d03ada177d
   lib/authlete/models/components/service_input.rbi:
     id: c84380a0f515
-    last_write_checksum: sha1:046fc667ed2e4da3b2f893293f87ebbf970fc316
-    pristine_git_object: db2ef5a3e607a2e9beceb6ccf714bd388dd16a32
+    last_write_checksum: sha1:ecc3e8942f5317854c173e4ad95e70492638634f
+    pristine_git_object: f3176139d50fc130a2275eaa28f0bd6319540486
   lib/authlete/models/components/service_jwks_get_response.rb:
     id: 7af6018158d5
     last_write_checksum: sha1:cd3cd9a8c5c0d2637e55bdd16b7deb2e5f717b2e
@@ -4902,16 +4900,16 @@ trackedFiles:
     pristine_git_object: 7271032ad4cf5306472b8e291186caca59df51a8
   lib/authlete/native_sso.rb:
     id: 53b17fd63cab
-    last_write_checksum: sha1:c223b9879c6db045af4d78e653c6c082c1c03f0f
-    pristine_git_object: fab91f0d9a8410b2fcd5e88f14def81d329994d8
+    last_write_checksum: sha1:fbab6bd1256aadf3332a70efb090820955261cb1
+    pristine_git_object: e231388d9d756fe1fe8648e653fb86fa1e1f64e6
   lib/authlete/pushed_authorization.rb:
     id: 0ce63518563a
-    last_write_checksum: sha1:12e81816184066d1398e7f9ada4cce47b1d871ef
-    pristine_git_object: e68d4cd0125e14de8a8f7a091983b1c119ef0805
+    last_write_checksum: sha1:fdc7c290bc6cc1e435ae7250bca039539778b06b
+    pristine_git_object: 28111a936eafa5e37cd918f52c5cc9a619896fbf
   lib/authlete/revocation.rb:
     id: cae5ee2359a0
-    last_write_checksum: sha1:9e947b0686ee017415aed7d002cef14446a94532
-    pristine_git_object: a916fb97961f7d324119e2dd4636b93dcbab0d07
+    last_write_checksum: sha1:204aa99f4daa012342fcf4b575cebe348aefcfaa
+    pristine_git_object: 3fcdf2281d9672297bd296654991a5ce77c5963b
   lib/authlete/sdk_hooks/hooks.rb:
     id: 703be5c2b4ff
     last_write_checksum: sha1:fdcb69377943a12cbc756dbe35df378b7e6ba134
@@ -4922,28 +4920,28 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:a514437f5ce06da60eba64b3af827b7265fc86ad
-    pristine_git_object: 041bf366dcce34dbcc32f28809c387c1468feaaa
+    last_write_checksum: sha1:58ae2ec1b50a230bebdd96640c526dab9587a009
+    pristine_git_object: 04628fe975f6ca352119de05892da34d4f65a52d
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:7c016cee27ecfe884f5b58cfc220c4fe29b31f34
     pristine_git_object: 792e70f9ab42942d96089922660ecabc513ffb31
   lib/authlete/services.rb:
     id: 1c9cb4bd5ad5
-    last_write_checksum: sha1:8211ad92a5427490975e75201f50a48fa1f5e4cd
-    pristine_git_object: 7b20ff350f45262d0869a0cf5cd373cb54f39884
+    last_write_checksum: sha1:9dde693afe324cf5f5a42319f98b654886440d70
+    pristine_git_object: b21140c81a10ef36bb254c1040c9267717365964
   lib/authlete/token_management.rb:
     id: e37df676ebd9
-    last_write_checksum: sha1:14ac10025f33234f27cf17dda91db8245ecad26a
-    pristine_git_object: 4e4b2b524be0b01fca2bccb1cbca74db3d082d25
+    last_write_checksum: sha1:b1d034c803bf54648dadc4e382cc458d39d56672
+    pristine_git_object: 6d172bbe230138398d3bd7db1eda42ded162c66f
   lib/authlete/tokens.rb:
     id: 0e1a4c514ed2
-    last_write_checksum: sha1:c9b197869c9deedb2ecf51cd81a07b1bf0a9e814
-    pristine_git_object: 427027989884fe03bd99bfac76c801506377c6cb
+    last_write_checksum: sha1:fe654a168e95fc1c33ef427cf42c30652dc9ca57
+    pristine_git_object: e0cafd1a1c5807815332a92b08a240980c2b841b
   lib/authlete/userinfo.rb:
     id: 7cf72f9ea8fc
-    last_write_checksum: sha1:29d7fe7370c88af6f59ee157b58bd59de8860ded
-    pristine_git_object: 4b155541c375e00de04b58e45b955ba06b1fa8e2
+    last_write_checksum: sha1:d0a3b08f678d408e5ba323ab61cfabfec1caffc0
+    pristine_git_object: 62f61e609417025335281fda919de2b7e2f80a45
   lib/authlete/utils/forms.rb:
     id: 82998b0a2cda
     last_write_checksum: sha1:5145ac4dce3ebba47ec7cbc3e6a99a9c716fff03
@@ -4962,8 +4960,8 @@ trackedFiles:
     pristine_git_object: 7e5e16e2d02b592bcb15736631b4b8293fb66f48
   lib/authlete/utils/retries.rb:
     id: 5f102dfeebc7
-    last_write_checksum: sha1:b89fc988112b52650ad9e90ee248f0d8b4747ea4
-    pristine_git_object: 3bc0f10709c71a5625d5cf9dab4edba0d734731d
+    last_write_checksum: sha1:b04be4bb65448a2c02aa73ad34716b3812ad33b5
+    pristine_git_object: 4ebf35ee1f7357684618ac8ad6c023e35d4806e0
   lib/authlete/utils/security.rb:
     id: fbbe0751359c
     last_write_checksum: sha1:875fb2ff11fa4fe149712faa1af6504582cc3bd2
@@ -4978,8 +4976,8 @@ trackedFiles:
     pristine_git_object: 7ff457f2485625dc07ead811abed07f3b655611e
   lib/authlete/verifiable_credentials.rb:
     id: 7bad5395829a
-    last_write_checksum: sha1:20d07b78a78eaba5a4768aeafe142067ad86ebcb
-    pristine_git_object: 8c5c4649f09a75347034289bb8156c430208be60
+    last_write_checksum: sha1:c6f8c53d7df84c07a8c31fd6cca7d4f18a65b86d
+    pristine_git_object: 8efcb6acfc25e28a05f68c7a64ed2a6c6a43420e
   lib/authlete_ruby_sdk.rb:
     id: 83be33dd6132
     last_write_checksum: sha1:dda9b7bcadb56aabb03cc1999a3cbc1248eac29d
@@ -5029,349 +5027,6 @@ trackedFiles:
     last_write_checksum: sha1:29b5fbd716704c2996f36f62fb32515705cfe56a
     pristine_git_object: fd79b01b9f6c3054247d35f984063b0d70a76bd6
 examples:
-  service_get_api:
-    full:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "serviceOwnerNumber": 2, "clientsPerDeveloper": 0, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://my-service.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}
-    limited:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {"number": 5041, "serviceName": "My service", "description": "This Service.", "apiKey": 21653835348762}
-    speakeasy-default-service-get-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  service_get_list_api:
-    full:
-      responses:
-        "200":
-          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "apiSecret": "uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls", "serviceOwnerNumber": 2, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://as.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}]}
-    limited:
-      responses:
-        "200":
-          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "apiKey": 21653835348762, "clientIdAliasEnabled": true}]}
-    speakeasy-default-service-get-list-api:
-      responses:
-        "200":
-          application/json: {"services": [{"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  service_create_api:
-    speakeasy-default-service-create-api:
-      requestBody:
-        application/json: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-        application/x-www-form-urlencoded: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-      responses:
-        "200":
-          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  service_update_api:
-    speakeasy-default-service-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-        application/x-www-form-urlencoded: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-      responses:
-        "200":
-          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  service_delete_api:
-    speakeasy-default-service-delete-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  service_configuration_api:
-    speakeasy-default-service-configuration-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_get_api:
-    speakeasy-default-client-get-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      responses:
-        "200":
-          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_get_list_api:
-    full:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "serviceNumber": 5041, "clientName": "My client", "clientId": 26478243745571, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL", "applicationType": "WEB", "tlsClientCertificateBoundAccessTokens": false, "dynamicallyRegistered": false, "createdAt": 1639468356000, "modifiedAt": 1639468356000, "grantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "responseTypes": ["CODE", "TOKEN"], "redirectUris": ["https://my-client.example.com/cb1", "https://my-client.example.com/cb2"], "tokenAuthMethod": "CLIENT_SECRET_BASIC", "parRequired": false, "requestObjectRequired": false, "defaultMaxAge": 0, "idTokenSignAlg": "RS256", "authTimeRequired": false, "subjectType": "PUBLIC", "derivedSectorIdentifier": "my-client.example.com", "bcUserCodeRequired": false, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false}]}
-    limited:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "clientName": "My client", "clientId": 26478243745571, "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL"}]}
-    speakeasy-default-client-get-list-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {"clients": [{"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_create_api:
-    speakeasy-default-client-create-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"], "number": 1140735077, "serviceNumber": 715948317, "clientId": "1140735077", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ"}
-      responses:
-        "200":
-          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_update_api:
-    speakeasy-default-client-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      requestBody:
-        application/json: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"], "number": 1140735077, "serviceNumber": 715948317, "clientId": "1140735077", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ"}
-        application/x-www-form-urlencoded: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
-      responses:
-        "200":
-          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-    speakeasy-default-client-update-api-form:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      requestBody:
-        application/x-www-form-urlencoded: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": "1140735077", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "redirectUris": ["https://example.com/callback"], "responseTypes": ["CODE"], "grantTypes": ["AUTHORIZATION_CODE"]}
-      responses:
-        "200":
-          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_delete_api:
-    speakeasy-default-client-delete-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      responses:
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_flag_update_api:
-    speakeasy-default-client-flag-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientIdentifier: "<value>"
-      responses:
-        "200":
-          application/json: {"resultCode": "<value>", "resultMessage": "<value>"}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_secret_refresh_api:
-    speakeasy-default-client-secret-refresh-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientIdentifier: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_secret_update_api:
-    speakeasy-default-client-secret-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientIdentifier: "<value>"
-      requestBody:
-        application/json: {"clientSecret": "<value>"}
-        application/x-www-form-urlencoded: {"clientSecret": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_get_list_api:
-    speakeasy-default-client-authorization-get-list-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          subject: "<value>"
-        query:
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_update_api:
-    speakeasy-default-client-authorization-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_delete_api:
-    speakeasy-default-client-authorization-delete-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-          subject: "<value>"
-        query:
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_granted_scopes_get_api:
-    speakeasy-default-client-granted-scopes-get-api:
-      parameters:
-        path:
-          serviceId: "715948317"
-          clientId: "1140735077"
-          subject: "<value>"
-        query:
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_granted_scopes_delete_api:
-    speakeasy-default-client-granted-scopes-delete-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-          subject: "<value>"
-        query:
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_extension_requestables_scopes_get_api:
-    speakeasy-default-client-extension-requestables-scopes-get-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_extension_requestables_scopes_update_api:
-    speakeasy-default-client-extension-requestables-scopes-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      requestBody:
-        application/json: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_extension_requestables_scopes_delete_api:
-    speakeasy-default-client-extension-requestables-scopes-delete-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      responses:
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
   auth_authorization_api:
     speakeasy-default-auth-authorization-api:
       parameters:
@@ -5410,176 +5065,6 @@ examples:
       requestBody:
         application/json: {"ticket": "<value>", "subject": "<value>"}
         application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  authorization_ticket_info_post_api:
-    speakeasy-default-authorization-ticket-info-post-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"ticket": "<value>"}
-        application/x-www-form-urlencoded: {"ticket": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  updateAuthorizationTicket:
-    speakeasy-default-update-authorization-ticket:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"ticket": "<value>", "info": "<value>"}
-        application/x-www-form-urlencoded: {"ticket": "<value>", "info": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  pushed_auth_req_api:
-    speakeasy-default-pushed-auth-req-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"parameters": "<value>"}
-        application/x-www-form-urlencoded: {"parameters": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_api:
-    speakeasy-default-auth-token-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"parameters": "<value>"}
-        application/x-www-form-urlencoded: {"parameters": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_fail_api:
-    speakeasy-default-auth-token-fail-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"ticket": "<value>", "reason": "UNKNOWN"}
-        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "UNKNOWN"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_issue_api:
-    speakeasy-default-auth-token-issue-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"ticket": "<value>", "subject": "<value>"}
-        application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  idtoken_reissue_api:
-    speakeasy-default-idtoken-reissue-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_get_list_api:
-    speakeasy-default-auth-token-get-list-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_create_api:
-    speakeasy-default-auth-token-create-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"grantType": "CIBA"}
-        application/x-www-form-urlencoded: {"grantType": "CIBA"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_update_api:
-    speakeasy-default-auth-token-update-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-        application/x-www-form-urlencoded: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_delete_api:
-    speakeasy-default-auth-token-delete-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          accessTokenIdentifier: "<value>"
-      responses:
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_revoke_api:
-    speakeasy-default-auth-token-revoke-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-        application/x-www-form-urlencoded: {}
       responses:
         "200":
           application/json: {}
@@ -5632,6 +5117,146 @@ examples:
           application/json: {}
         "500":
           application/json: {}
+  auth_token_api:
+    speakeasy-default-auth-token-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_create_api:
+    speakeasy-default-auth-token-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"grantType": "CIBA"}
+        application/x-www-form-urlencoded: {"grantType": "CIBA"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_create_batch_api:
+    speakeasy-default-auth-token-create-batch-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: []
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_create_batch_status_api:
+    speakeasy-default-auth-token-create-batch-status-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          tokenBatchRequestId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_delete_api:
+    speakeasy-default-auth-token-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          accessTokenIdentifier: "<value>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_fail_api:
+    speakeasy-default-auth-token-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "UNKNOWN"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "UNKNOWN"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_get_list_api:
+    speakeasy-default-auth-token-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_issue_api:
+    speakeasy-default-auth-token-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_revoke_api:
+    speakeasy-default-auth-token-revoke-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  auth_token_update_api:
+    speakeasy-default-auth-token-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
   auth_userinfo_api:
     speakeasy-default-auth-userinfo-api:
       parameters:
@@ -5662,11 +5287,234 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  grant_m_api:
-    speakeasy-default-grant-m-api:
+  authorization_ticket_info_post_api:
+    speakeasy-default-authorization-ticket-info-post-api:
       parameters:
         path:
           serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_api:
+    speakeasy-default-backchannel-authentication-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_complete_api:
+    speakeasy-default-backchannel-authentication-complete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_fail_api:
+    speakeasy-default-backchannel-authentication-fail-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  backchannel_authentication_issue_api:
+    speakeasy-default-backchannel-authentication-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_delete_api:
+    speakeasy-default-client-authorization-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_delete_api_post:
+    speakeasy-default-client-authorization-delete-api-post:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      requestBody:
+        application/json: {"subject": "<value>"}
+        application/x-www-form-urlencoded: {"subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+  client_authorization_delete_by_subject_api:
+    speakeasy-default-client-authorization-delete-by-subject-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_get_list_api:
+    speakeasy-default-client-authorization-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_get_list_api_post:
+    speakeasy-default-client-authorization-get-list-api-post:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"subject": "<value>"}
+        application/x-www-form-urlencoded: {"subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_get_list_by_subject_api:
+    speakeasy-default-client-authorization-get-list-by-subject-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_authorization_update_api:
+    speakeasy-default-client-authorization-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_create_api:
+    speakeasy-default-client-create-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"], "number": 1140735077, "serviceNumber": 715948317, "clientId": "1140735077", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ"}
+      responses:
+        "200":
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_delete_api:
+    speakeasy-default-client-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_delete_api:
+    speakeasy-default-client-extension-requestables-scopes-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_get_api:
+    speakeasy-default-client-extension-requestables-scopes-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_extension_requestables_scopes_update_api:
+    speakeasy-default-client-extension-requestables-scopes-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
       requestBody:
         application/json: {}
       responses:
@@ -5676,11 +5524,138 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  service_jwks_get_api:
-    speakeasy-default-service-jwks-get-api:
+  client_extension_requestables_scopes_update_api_post:
+    speakeasy-default-client-extension-requestables-scopes-update-api-post:
       parameters:
         path:
           serviceId: "<id>"
+          clientId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_flag_update_api:
+    speakeasy-default-client-flag-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientIdentifier: "<value>"
+      responses:
+        "200":
+          application/json: {"resultCode": "<value>", "resultMessage": "<value>"}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_get_api:
+    speakeasy-default-client-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_get_list_api:
+    full:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "serviceNumber": 5041, "clientName": "My client", "clientId": 26478243745571, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL", "applicationType": "WEB", "tlsClientCertificateBoundAccessTokens": false, "dynamicallyRegistered": false, "createdAt": 1639468356000, "modifiedAt": 1639468356000, "grantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "responseTypes": ["CODE", "TOKEN"], "redirectUris": ["https://my-client.example.com/cb1", "https://my-client.example.com/cb2"], "tokenAuthMethod": "CLIENT_SECRET_BASIC", "parRequired": false, "requestObjectRequired": false, "defaultMaxAge": 0, "idTokenSignAlg": "RS256", "authTimeRequired": false, "subjectType": "PUBLIC", "derivedSectorIdentifier": "my-client.example.com", "bcUserCodeRequired": false, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false}]}
+    limited:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 3, "totalCount": 1, "clients": [{"number": 6164, "clientName": "My client", "clientId": 26478243745571, "clientIdAlias": "my-client", "clientIdAliasEnabled": true, "clientType": "CONFIDENTIAL"}]}
+    speakeasy-default-client-get-list-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"clients": [{"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_delete_api:
+    speakeasy-default-client-granted-scopes-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_delete_by_subject_api:
+    speakeasy-default-client-granted-scopes-delete-by-subject-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_get_api:
+    speakeasy-default-client-granted-scopes-get-api:
+      parameters:
+        path:
+          serviceId: "715948317"
+          clientId: "1140735077"
+          subject: "<value>"
+        query:
+          subject: "<value>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_granted_scopes_get_api_post:
+    speakeasy-default-client-granted-scopes-get-api-post:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+      requestBody:
+        application/json: {"subject": "<value>"}
+        application/x-www-form-urlencoded: {"subject": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+  client_granted_scopes_get_by_subject_api:
+    speakeasy-default-client-granted-scopes-get-by-subject-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+          clientId: "<id>"
+          subject: "<value>"
       responses:
         "200":
           application/json: {}
@@ -5695,6 +5670,20 @@ examples:
           serviceId: "<id>"
       requestBody:
         application/json: {"json": "{key: 6995014930124193, key1: null, key2: \"<value>\"}"}
+      responses:
+        "200":
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  client_registration_delete_api:
+    speakeasy-default-client-registration-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"token": "<value>", "clientId": "<id>"}
       responses:
         "200":
           application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
@@ -5730,28 +5719,12 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  client_registration_delete_api:
-    speakeasy-default-client-registration-delete-api:
+  client_secret_refresh_api:
+    speakeasy-default-client-secret-refresh-api:
       parameters:
         path:
           serviceId: "<id>"
-      requestBody:
-        application/json: {"token": "<value>", "clientId": "<id>"}
-      responses:
-        "200":
-          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  backchannel_authentication_api:
-    speakeasy-default-backchannel-authentication-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"parameters": "<value>"}
-        application/x-www-form-urlencoded: {"parameters": "<value>"}
+          clientIdentifier: "<value>"
       responses:
         "200":
           application/json: {}
@@ -5759,14 +5732,15 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  backchannel_authentication_issue_api:
-    speakeasy-default-backchannel-authentication-issue-api:
+  client_secret_update_api:
+    speakeasy-default-client-secret-update-api:
       parameters:
         path:
           serviceId: "<id>"
+          clientIdentifier: "<value>"
       requestBody:
-        application/json: {"ticket": "<value>"}
-        application/x-www-form-urlencoded: {"ticket": "<value>"}
+        application/json: {"clientSecret": "<value>"}
+        application/x-www-form-urlencoded: {"clientSecret": "<value>"}
       responses:
         "200":
           application/json: {}
@@ -5774,32 +5748,32 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  backchannel_authentication_fail_api:
-    speakeasy-default-backchannel-authentication-fail-api:
+  client_update_api:
+    speakeasy-default-client-update-api:
       parameters:
         path:
           serviceId: "<id>"
+          clientId: "<id>"
       requestBody:
-        application/json: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
-        application/x-www-form-urlencoded: {"ticket": "<value>", "reason": "MISSING_USER_CODE"}
+        application/json: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"], "number": 1140735077, "serviceNumber": 715948317, "clientId": "1140735077", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ"}
+        application/x-www-form-urlencoded: {"clientName": "My Test Client", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
       responses:
         "200":
-          application/json: {}
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
         "400":
           application/json: {}
         "500":
           application/json: {}
-  backchannel_authentication_complete_api:
-    speakeasy-default-backchannel-authentication-complete-api:
+    speakeasy-default-client-update-api-form:
       parameters:
         path:
           serviceId: "<id>"
+          clientId: "<id>"
       requestBody:
-        application/json: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
-        application/x-www-form-urlencoded: {"ticket": "<value>", "result": "TRANSACTION_FAILED", "subject": "<value>"}
+        application/x-www-form-urlencoded: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": "1140735077", "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "redirectUris": ["https://example.com/callback"], "responseTypes": ["CODE"], "grantTypes": ["AUTHORIZATION_CODE"]}
       responses:
         "200":
-          application/json: {}
+          application/json: {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}
         "400":
           application/json: {}
         "500":
@@ -5812,21 +5786,6 @@ examples:
       requestBody:
         application/json: {"parameters": "<value>"}
         application/x-www-form-urlencoded: {"parameters": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  device_verification_api:
-    speakeasy-default-device-verification-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"userCode": "<value>"}
-        application/x-www-form-urlencoded: {"userCode": "<value>"}
       responses:
         "200":
           application/json: {}
@@ -5849,11 +5808,14 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  jose_verify_api:
-    speakeasy-default-jose-verify-api:
+  device_verification_api:
+    speakeasy-default-device-verification-api:
       parameters:
         path:
           serviceId: "<id>"
+      requestBody:
+        application/json: {"userCode": "<value>"}
+        application/x-www-form-urlencoded: {"userCode": "<value>"}
       responses:
         "200":
           application/json: {}
@@ -5884,6 +5846,25 @@ examples:
       responses:
         "200":
           application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  get_/api/lifecycle/healthcheck:
+    speakeasy-default-get-/api/lifecycle/healthcheck:
+      responses:
+        "200":
+          text/plain: "<value>"
+  grant_m_api:
+    speakeasy-default-grant-m-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
         "400":
           application/json: {}
         "500":
@@ -5941,14 +5922,258 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  vci_metadata_api:
-    speakeasy-default-vci-metadata-api:
+  idtoken_reissue_api:
+    speakeasy-default-idtoken-reissue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  jose_verify_api:
+    speakeasy-default-jose-verify-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  native_sso_api:
+    speakeasy-default-native-sso-api:
+      parameters:
+        path:
+          serviceId: "715948317"
+      requestBody:
+        application/json: {"accessToken": "<value>", "deviceSecret": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  native_sso_logout_api:
+    speakeasy-default-native-sso-logout-api:
       parameters:
         path:
           serviceId: "<id>"
       requestBody:
-        application/json: {"pretty": true}
-        application/x-www-form-urlencoded: {"pretty": true}
+        application/json: {"sessionId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  pushed_auth_req_api:
+    speakeasy-default-pushed-auth-req-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"parameters": "<value>"}
+        application/x-www-form-urlencoded: {"parameters": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_configuration_api:
+    speakeasy-default-service-configuration-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_create_api:
+    speakeasy-default-service-create-api:
+      requestBody:
+        application/json: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        application/x-www-form-urlencoded: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+      responses:
+        "200":
+          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_delete_api:
+    speakeasy-default-service-delete-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_get_api:
+    full:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "serviceOwnerNumber": 2, "clientsPerDeveloper": 0, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://my-service.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "authorizationCodeDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}
+    limited:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 5041, "serviceName": "My service", "description": "This Service.", "apiKey": 21653835348762}
+    speakeasy-default-service-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_get_list_api:
+    full:
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "issuer": "https://my-service.example.com", "apiKey": 21653835348762, "apiSecret": "uE4NgqeIpuSV_XejQ7Ds3jsgA1yXhjR1MXJ1LbPuyls", "serviceOwnerNumber": 2, "clientIdAliasEnabled": true, "metadata": [{"key": "clientCount", "value": "1"}], "createdAt": 1639373421000, "modifiedAt": 1639373421000, "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "errorDescriptionOmitted": false, "errorUriOmitted": false, "authorizationEndpoint": "https://as.example.com/authz", "directAuthorizationEndpointEnabled": false, "supportedDisplays": ["PAGE"], "pkceRequired": true, "pkceS256Required": false, "authorizationResponseDuration": 0, "authorizationCodeDuration": 0, "tokenEndpoint": "https://my-service.example.com/token", "directTokenEndpointEnabled": false, "supportedTokenAuthMethods": ["CLIENT_SECRET_BASIC"], "missingClientIdAllowed": false, "revocationEndpoint": "https://my-service.example.com/revocation", "directRevocationEndpointEnabled": false, "supportedRevocationAuthMethods": ["CLIENT_SECRET_BASIC"], "introspectionEndpoint": "https://my-service.example.com/introspection", "directIntrospectionEndpointEnabled": false, "supportedIntrospectionAuthMethods": ["CLIENT_SECRET_BASIC"], "pushedAuthReqDuration": 0, "parRequired": false, "requestObjectRequired": false, "traditionalRequestObjectProcessingApplied": false, "mutualTlsValidatePkiCertChain": false, "accessTokenType": "Bearer", "tlsClientCertificateBoundAccessTokens": false, "accessTokenDuration": 3600, "singleAccessTokenPerSubject": false, "refreshTokenDuration": 3600, "refreshTokenDurationKept": false, "refreshTokenDurationReset": false, "refreshTokenKept": false, "supportedScopes": [{"name": "history.read", "defaultEntry": false, "description": "A permission to read your history."}, {"name": "timeline.read", "defaultEntry": false, "description": "A permission to read your timeline."}], "scopeRequired": false, "idTokenDuration": 0, "allowableClockSkew": 0, "supportedClaimTypes": ["NORMAL"], "claimShortcutRestrictive": false, "directJwksEndpointEnabled": false, "directUserInfoEndpointEnabled": false, "dynamicRegistrationSupported": false, "backchannelAuthReqIdDuration": 0, "backchannelPollingInterval": 0, "backchannelUserCodeParameterSupported": false, "backchannelBindingMessageRequiredInFapi": false, "deviceFlowCodeDuration": 0, "deviceFlowPollingInterval": 0, "userCodeLength": 0, "attributes": [{"key": "attribute1-key", "value": "attribute1-value"}, {"key": "attribute2-key", "value": "attribute2-value"}], "nbfOptional": false, "issSuppressed": false, "tokenExpirationLinked": false, "frontChannelRequestObjectEncryptionRequired": false, "requestObjectEncryptionAlgMatchRequired": false, "requestObjectEncryptionEncMatchRequired": false, "hsmEnabled": false, "grantManagementActionRequired": false, "unauthorizedOnClientConfigSupported": false, "dcrScopeUsedAsRequestable": false}]}
+    limited:
+      responses:
+        "200":
+          application/json: {"start": 0, "end": 5, "totalCount": 1, "services": [{"number": 5041, "serviceName": "My service", "apiKey": 21653835348762, "clientIdAliasEnabled": true}]}
+    speakeasy-default-service-get-list-api:
+      responses:
+        "200":
+          application/json: {"services": [{"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_jwks_get_api:
+    speakeasy-default-service-jwks-get-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  service_update_api:
+    speakeasy-default-service-update-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        application/x-www-form-urlencoded: {"serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+      responses:
+        "200":
+          application/json: {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  updateAuthorizationTicket:
+    speakeasy-default-update-authorization-ticket:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"ticket": "<value>", "info": "<value>"}
+        application/x-www-form-urlencoded: {"ticket": "<value>", "info": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_batch_issue_api:
+    speakeasy-default-vci-batch-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_batch_parse_api:
+    speakeasy-default-vci-batch-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_deferred_issue_api:
+    speakeasy-default-vci-deferred-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_deferred_parse_api:
+    speakeasy-default-vci-deferred-parse-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+        application/x-www-form-urlencoded: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
+  vci_jwks_api:
+    speakeasy-default-vci-jwks-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {"pretty": false}
+        application/x-www-form-urlencoded: {"pretty": false}
       responses:
         "200":
           application/json: {}
@@ -5971,14 +6196,14 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  vci_jwks_api:
-    speakeasy-default-vci-jwks-api:
+  vci_metadata_api:
+    speakeasy-default-vci-metadata-api:
       parameters:
         path:
           serviceId: "<id>"
       requestBody:
-        application/json: {"pretty": false}
-        application/x-www-form-urlencoded: {"pretty": false}
+        application/json: {"pretty": true}
+        application/x-www-form-urlencoded: {"pretty": true}
       responses:
         "200":
           application/json: {}
@@ -6016,6 +6241,20 @@ examples:
           application/json: {}
         "500":
           application/json: {}
+  vci_single_issue_api:
+    speakeasy-default-vci-single-issue-api:
+      parameters:
+        path:
+          serviceId: "<id>"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
   vci_single_parse_api:
     speakeasy-default-vci-single-parse-api:
       parameters:
@@ -6031,248 +6270,8 @@ examples:
           application/json: {}
         "500":
           application/json: {}
-  vci_single_issue_api:
-    speakeasy-default-vci-single-issue-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  vci_batch_parse_api:
-    speakeasy-default-vci-batch-parse-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-        application/x-www-form-urlencoded: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  vci_batch_issue_api:
-    speakeasy-default-vci-batch-issue-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  vci_deferred_parse_api:
-    speakeasy-default-vci-deferred-parse-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-        application/x-www-form-urlencoded: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  vci_deferred_issue_api:
-    speakeasy-default-vci-deferred-issue-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  native_sso_api:
-    speakeasy-default-native-sso-api:
-      parameters:
-        path:
-          serviceId: "715948317"
-      requestBody:
-        application/json: {"accessToken": "<value>", "deviceSecret": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  native_sso_logout_api:
-    speakeasy-default-native-sso-logout-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"sessionId": "<id>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_get_list_by_subject_api:
-    speakeasy-default-client-authorization-get-list-by-subject-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_delete_by_subject_api:
-    speakeasy-default-client-authorization-delete-by-subject-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_granted_scopes_get_by_subject_api:
-    speakeasy-default-client-granted-scopes-get-by-subject-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_granted_scopes_delete_by_subject_api:
-    speakeasy-default-client-granted-scopes-delete-by-subject-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-          subject: "<value>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_get_list_api_post:
-    speakeasy-default-client-authorization-get-list-api-post:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: {"subject": "<value>"}
-        application/x-www-form-urlencoded: {"subject": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  client_authorization_delete_api_post:
-    speakeasy-default-client-authorization-delete-api-post:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      requestBody:
-        application/json: {"subject": "<value>"}
-        application/x-www-form-urlencoded: {"subject": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-  client_granted_scopes_get_api_post:
-    speakeasy-default-client-granted-scopes-get-api-post:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      requestBody:
-        application/json: {"subject": "<value>"}
-        application/x-www-form-urlencoded: {"subject": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-  client_extension_requestables_scopes_update_api_post:
-    speakeasy-default-client-extension-requestables-scopes-update-api-post:
-      parameters:
-        path:
-          serviceId: "<id>"
-          clientId: "<id>"
-      requestBody:
-        application/json: {}
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_create_batch_api:
-    speakeasy-default-auth-token-create-batch-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-      requestBody:
-        application/json: []
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  auth_token_create_batch_status_api:
-    speakeasy-default-auth-token-create-batch-status-api:
-      parameters:
-        path:
-          serviceId: "<id>"
-          tokenBatchRequestId: "<id>"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "500":
-          application/json: {}
-  get_/api/lifecycle/healthcheck:
-    speakeasy-default-get-/api/lifecycle/healthcheck:
-      responses:
-        "200":
-          text/plain: "<value>"
 examplesVersion: 1.0.2
+releaseNotes: "## Ruby SDK Changes:\n* `client.services.retrieve()`:  `response` **Changed**\n* `client.services.list()`:  `response.services[]` **Changed**\n* `client.services.create()`: \n  *  `request` **Changed**\n  *  `response` **Changed**\n* `client.services.update()`: \n  *  `request.service` **Changed**\n  *  `response` **Changed**\n* `client.authorization.process_request()`:  `response.service` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml

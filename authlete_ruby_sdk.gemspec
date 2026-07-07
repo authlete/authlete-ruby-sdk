@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.2'
 
   s.add_dependency('base64', '>= 0.2.0', '< 1.0')
-  s.add_dependency('faraday', '>= 2.14.1')
+  s.add_dependency('faraday', '>= 2.14.3')
   s.add_dependency('faraday-multipart', '~> 1.2.0')
   s.add_dependency('faraday-retry', '~> 2.4.0')
   s.add_dependency('sorbet-runtime', '~> 0.6.12872')
