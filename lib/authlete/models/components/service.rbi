@@ -80,6 +80,8 @@ class Authlete::Models::Components::Service
   def pkce_s256_required=(str_); end
   def authorization_response_duration(); end
   def authorization_response_duration=(str_); end
+  def authorization_code_duration(); end
+  def authorization_code_duration=(str_); end
   def token_endpoint(); end
   def token_endpoint=(str_); end
   def direct_token_endpoint_enabled(); end
@@ -372,6 +374,8 @@ class Authlete::Models::Components::Service
   def cimd_metadata_policy=(str_); end
   def http_alias_prohibited(); end
   def http_alias_prohibited=(str_); end
+  def attestation_challenge_time_window(); end
+  def attestation_challenge_time_window=(str_); end
   def access_token_sign_alg(); end
   def access_token_sign_alg=(str_); end
 end
