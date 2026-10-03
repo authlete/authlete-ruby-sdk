@@ -14,6 +14,8 @@ class Authlete::Models::Operations::JoseVerifyApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def jose_verify_response(); end
   def jose_verify_response=(str_); end
 end

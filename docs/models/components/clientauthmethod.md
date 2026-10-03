@@ -26,3 +26,4 @@ value = ClientAuthMethod::NONE
 | `TLS_CLIENT_AUTH`             | TLS_CLIENT_AUTH               |
 | `SELF_SIGNED_TLS_CLIENT_AUTH` | SELF_SIGNED_TLS_CLIENT_AUTH   |
 | `ATTEST_JWT_CLIENT_AUTH`      | ATTEST_JWT_CLIENT_AUTH        |
+| `SPIFFE_JWT`                  | SPIFFE_JWT                    |

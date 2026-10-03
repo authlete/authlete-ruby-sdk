@@ -58,6 +58,7 @@ ruby:
       webhooks: models/webhooks
   inferUnionDiscriminators: false
   inputModelSuffix: input
+  license: Apache-2.0
   maxMethodParams: 4
   module: Authlete
   multipartArrayFormat: legacy
