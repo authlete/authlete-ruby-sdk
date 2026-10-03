@@ -26,7 +26,7 @@ Models = ::Authlete::Models
 s = ::Authlete::Client.new(
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.federation.configuration(service_id: '<id>')
+res = s.federation.configuration(service_id: '<id>', request_body: Models::Operations::FederationConfigurationApiRequestBody.new)
 
 unless res.federation_configuration_response.nil?
   # handle response
@@ -36,10 +36,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                             | *::String*                                                                                                                               | :heavy_check_mark:                                                                                                                       | A service ID.                                                                                                                            |
-| `request_body`                                                                                                                           | [T.nilable(Models::Operations::FederationConfigurationApiRequestBody)](../../models/operations/federationconfigurationapirequestbody.md) | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                                  | *::String*                                                                                                                    | :heavy_check_mark:                                                                                                            | A service ID.                                                                                                                 |
+| `request_body`                                                                                                                | [Models::Operations::FederationConfigurationApiRequestBody](../../models/operations/federationconfigurationapirequestbody.md) | :heavy_check_mark:                                                                                                            | N/A                                                                                                                           |
 
 ### Response
 
@@ -50,6 +50,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -112,5 +113,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

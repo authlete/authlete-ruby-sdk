@@ -21,6 +21,7 @@ module Authlete
           TLS_CLIENT_AUTH = new('TLS_CLIENT_AUTH')
           SELF_SIGNED_TLS_CLIENT_AUTH = new('SELF_SIGNED_TLS_CLIENT_AUTH')
           ATTEST_JWT_CLIENT_AUTH = new('ATTEST_JWT_CLIENT_AUTH')
+          SPIFFE_JWT = new('SPIFFE_JWT')
         end
       end
     end

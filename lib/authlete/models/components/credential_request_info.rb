@@ -16,6 +16,8 @@ module Authlete
         field :identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('identifier') } }
         # The value of the format parameter in the credential request.
         field :format, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('format') } }
+        # The identifier of the credential configuration referenced by the credential request.
+        field :credential_configuration_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialConfigurationId') } }
         # The binding key specified by the proof in the credential request.
         field :binding_key, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('bindingKey') } }
         # The binding keys specified by the proofs in the credential request.
@@ -23,10 +25,11 @@ module Authlete
         # The details about the credential request.
         field :details, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('details') } }
 
-        sig { params(identifier: T.nilable(::String), format: T.nilable(::String), binding_key: T.nilable(::String), binding_keys: T.nilable(T::Array[::String]), details: T.nilable(::String)).void }
-        def initialize(identifier: nil, format: nil, binding_key: nil, binding_keys: nil, details: nil)
+        sig { params(identifier: T.nilable(::String), format: T.nilable(::String), credential_configuration_id: T.nilable(::String), binding_key: T.nilable(::String), binding_keys: T.nilable(T::Array[::String]), details: T.nilable(::String)).void }
+        def initialize(identifier: nil, format: nil, credential_configuration_id: nil, binding_key: nil, binding_keys: nil, details: nil)
           @identifier = identifier
           @format = format
+          @credential_configuration_id = credential_configuration_id
           @binding_key = binding_key
           @binding_keys = binding_keys
           @details = details
@@ -37,6 +40,7 @@ module Authlete
           return false unless other.is_a? self.class
           return false unless @identifier == other.identifier
           return false unless @format == other.format
+          return false unless @credential_configuration_id == other.credential_configuration_id
           return false unless @binding_key == other.binding_key
           return false unless @binding_keys == other.binding_keys
           return false unless @details == other.details

@@ -47,6 +47,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -66,7 +67,7 @@ s = ::Authlete::Client.new(
 )
 res = s.authorization_management.update_ticket(service_id: '<id>', authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest.new(
   ticket: '<value>',
-  info: '<value>'
+  info: Models::Components::AuthorizationTicketInfo.new
 ))
 
 unless res.authorization_ticket_update_response.nil?
@@ -91,5 +92,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

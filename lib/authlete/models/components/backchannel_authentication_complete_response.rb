@@ -113,9 +113,13 @@ module Authlete
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
         #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
+        # the claims that the user has consented for the client application
+        # to know.
+        #
+        field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
 
-        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationCompleteResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), delivery_mode: T.nilable(Models::Components::DeliveryMode), client_notification_endpoint: T.nilable(::String), client_notification_token: T.nilable(::String), auth_req_id: T.nilable(::String), access_token: T.nilable(::String), refresh_token: T.nilable(::String), id_token: T.nilable(::String), access_token_duration: T.nilable(::Integer), refresh_token_duration: T.nilable(::Integer), id_token_duration: T.nilable(::Integer), jwt_access_token: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), grant_id: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }
-        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, client_id: nil, client_id_alias: nil, client_id_alias_used: nil, client_name: nil, delivery_mode: nil, client_notification_endpoint: nil, client_notification_token: nil, auth_req_id: nil, access_token: nil, refresh_token: nil, id_token: nil, access_token_duration: nil, refresh_token_duration: nil, id_token_duration: nil, jwt_access_token: nil, resources: nil, authorization_details: nil, service_attributes: nil, client_attributes: nil, grant_id: nil, client_entity_id: nil, client_entity_id_used: nil, metadata_document_location: nil, metadata_document_used: nil)
+        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationCompleteResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), delivery_mode: T.nilable(Models::Components::DeliveryMode), client_notification_endpoint: T.nilable(::String), client_notification_token: T.nilable(::String), auth_req_id: T.nilable(::String), access_token: T.nilable(::String), refresh_token: T.nilable(::String), id_token: T.nilable(::String), access_token_duration: T.nilable(::Integer), refresh_token_duration: T.nilable(::Integer), id_token_duration: T.nilable(::Integer), jwt_access_token: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), grant_id: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean), consented_claims: T.nilable(T::Array[::String])).void }
+        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, client_id: nil, client_id_alias: nil, client_id_alias_used: nil, client_name: nil, delivery_mode: nil, client_notification_endpoint: nil, client_notification_token: nil, auth_req_id: nil, access_token: nil, refresh_token: nil, id_token: nil, access_token_duration: nil, refresh_token_duration: nil, id_token_duration: nil, jwt_access_token: nil, resources: nil, authorization_details: nil, service_attributes: nil, client_attributes: nil, grant_id: nil, client_entity_id: nil, client_entity_id_used: nil, metadata_document_location: nil, metadata_document_used: nil, consented_claims: nil)
           @result_code = result_code
           @result_message = result_message
           @action = action
@@ -144,6 +148,7 @@ module Authlete
           @client_entity_id_used = client_entity_id_used
           @metadata_document_location = metadata_document_location
           @metadata_document_used = metadata_document_used
+          @consented_claims = consented_claims
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -177,6 +182,7 @@ module Authlete
           return false unless @client_entity_id_used == other.client_entity_id_used
           return false unless @metadata_document_location == other.metadata_document_location
           return false unless @metadata_document_used == other.metadata_document_used
+          return false unless @consented_claims == other.consented_claims
           true
         end
       end

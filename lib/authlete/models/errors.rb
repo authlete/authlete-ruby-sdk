@@ -7,6 +7,7 @@ module Authlete
   module Models
     module Errors
       autoload :APIError, 'authlete/models/errors/apierror.rb'
+      autoload :IdpError, 'authlete/models/errors/idp_error.rb'
       autoload :ResultError, 'authlete/models/errors/result_error.rb'
     end
   end

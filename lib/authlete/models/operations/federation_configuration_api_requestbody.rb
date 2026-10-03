@@ -12,13 +12,23 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
+        # The entity types for which the entity configuration is requested.
+        # When omitted or empty, it defaults to `OPENID_PROVIDER` only
+        # (backward compatibility). Unsupported entity types are ignored.
+        # `OPENID_CREDENTIAL_ISSUER` requires the Verifiable Credentials
+        # feature (Authlete 3.0+).
+        #
+        field :entity_types, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::EntityType)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('entityTypes') } }
 
-        
-        def initialize; end
+        sig { params(entity_types: T.nilable(T::Array[Models::Components::EntityType])).void }
+        def initialize(entity_types: nil)
+          @entity_types = entity_types
+        end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
+          return false unless @entity_types == other.entity_types
           true
         end
       end
