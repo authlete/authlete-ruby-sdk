@@ -14,6 +14,8 @@ class Authlete::Models::Operations::AuthIntrospectionStandardApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def standard_introspection_response(); end
   def standard_introspection_response=(str_); end
 end

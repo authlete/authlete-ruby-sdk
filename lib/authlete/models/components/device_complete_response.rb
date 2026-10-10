@@ -19,12 +19,17 @@ module Authlete
         # The next action that the authorization server implementation should take.
         #
         field :action, Crystalline::Nilable.new(Models::Components::DeviceCompleteResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::DeviceCompleteResponseAction, true) } }
+        # the claims that the user has consented for the client application
+        # to know.
+        #
+        field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
 
-        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::DeviceCompleteResponseAction)).void }
-        def initialize(result_code: nil, result_message: nil, action: nil)
+        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::DeviceCompleteResponseAction), consented_claims: T.nilable(T::Array[::String])).void }
+        def initialize(result_code: nil, result_message: nil, action: nil, consented_claims: nil)
           @result_code = result_code
           @result_message = result_message
           @action = action
+          @consented_claims = consented_claims
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -33,6 +38,7 @@ module Authlete
           return false unless @result_code == other.result_code
           return false unless @result_message == other.result_message
           return false unless @action == other.action
+          return false unless @consented_claims == other.consented_claims
           true
         end
       end

@@ -68,6 +68,8 @@ module Authlete
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') }, 'form': { 'field_name': 'accessToken' } }
         # Additional claims that are added to the payload part of the JWT access token.
         #
+        # Effective only in the client_credentials grant flow (and the Native SSO branch of Token Exchange). For other grant flows, set additional JWT claims via the corresponding API: /auth/authorization/issue (authorization_code), /auth/backchannel/authentication/complete (CIBA), /auth/device/complete (device_code). The parameter is silently ignored when sent with other grants.
+        #
         field :jwt_at_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAtClaims') }, 'form': { 'field_name': 'jwtAtClaims' } }
         # The value of the `OAuth-Client-Attestation` HTTP header, which is defined in the specification
         # of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).

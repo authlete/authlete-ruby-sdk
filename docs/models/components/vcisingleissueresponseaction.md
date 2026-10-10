@@ -18,7 +18,10 @@ value = VciSingleIssueResponseAction::OK
 | Name                    | Value                   |
 | ----------------------- | ----------------------- |
 | `OK`                    | OK                      |
+| `OK_JWT`                | OK_JWT                  |
 | `ACCEPTED`              | ACCEPTED                |
+| `ACCEPTED_JWT`          | ACCEPTED_JWT            |
+| `BAD_REQUEST`           | BAD_REQUEST             |
 | `UNAUTHORIZED`          | UNAUTHORIZED            |
 | `FORBIDDEN`             | FORBIDDEN               |
 | `INTERNAL_SERVER_ERROR` | INTERNAL_SERVER_ERROR   |

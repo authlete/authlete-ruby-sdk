@@ -14,6 +14,8 @@ class Authlete::Models::Operations::BackchannelAuthenticationApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def backchannel_authentication_response(); end
   def backchannel_authentication_response=(str_); end
 end

@@ -47,9 +47,13 @@ module Authlete
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
 
         field :ticket_info, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticketInfo') } }
+        # the claims that the user has consented for the client application
+        # to know.
+        #
+        field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
 
-        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationIssueResponseAction), response_content: T.nilable(::String), access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), access_token_duration: T.nilable(::Integer), id_token: T.nilable(::String), authorization_code: T.nilable(::String), jwt_access_token: T.nilable(::String), ticket_info: T.nilable(Models::Components::AuthorizationTicketInfo)).void }
-        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, access_token: nil, access_token_expires_at: nil, access_token_duration: nil, id_token: nil, authorization_code: nil, jwt_access_token: nil, ticket_info: nil)
+        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationIssueResponseAction), response_content: T.nilable(::String), access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), access_token_duration: T.nilable(::Integer), id_token: T.nilable(::String), authorization_code: T.nilable(::String), jwt_access_token: T.nilable(::String), ticket_info: T.nilable(Models::Components::AuthorizationTicketInfo), consented_claims: T.nilable(T::Array[::String])).void }
+        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, access_token: nil, access_token_expires_at: nil, access_token_duration: nil, id_token: nil, authorization_code: nil, jwt_access_token: nil, ticket_info: nil, consented_claims: nil)
           @result_code = result_code
           @result_message = result_message
           @action = action
@@ -61,6 +65,7 @@ module Authlete
           @authorization_code = authorization_code
           @jwt_access_token = jwt_access_token
           @ticket_info = ticket_info
+          @consented_claims = consented_claims
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -77,6 +82,7 @@ module Authlete
           return false unless @authorization_code == other.authorization_code
           return false unless @jwt_access_token == other.jwt_access_token
           return false unless @ticket_info == other.ticket_info
+          return false unless @consented_claims == other.consented_claims
           true
         end
       end
