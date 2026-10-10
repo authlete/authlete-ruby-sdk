@@ -14,6 +14,8 @@ class Authlete::Models::Operations::AuthUserinfoApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def userinfo_response(); end
   def userinfo_response=(str_); end
 end

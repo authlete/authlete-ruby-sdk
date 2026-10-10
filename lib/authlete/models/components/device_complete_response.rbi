@@ -14,4 +14,6 @@ class Authlete::Models::Components::DeviceCompleteResponse
   def result_message=(str_); end
   def action(); end
   def action=(str_); end
+  def consented_claims(); end
+  def consented_claims=(str_); end
 end

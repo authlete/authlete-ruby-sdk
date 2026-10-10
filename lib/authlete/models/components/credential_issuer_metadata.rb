@@ -44,9 +44,24 @@ module Authlete
         # property.
         #
         field :require_credential_response_encryption, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requireCredentialResponseEncryption') } }
+        # The boolean flag indicating whether credential request encryption is required. This property
+        # corresponds to the `credential_request_encryption.encryption_required` metadata. If this flag
+        # is `true`, every credential request to the credential issuer must be encrypted.
+        #
+        field :require_credential_request_encryption, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requireCredentialRequestEncryption') } }
+        # The supported JWE `zip` (compression) algorithms for credential response encryption. This
+        # property corresponds to the `credential_response_encryption.zip_values_supported` metadata.
+        #
+        field :credential_response_encryption_zip_values_supported, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialResponseEncryptionZipValuesSupported') } }
+        # The maximum array size for the `proofs` parameter in a credential request. This property
+        # corresponds to the `batch_credential_issuance.batch_size` metadata. If the value of this
+        # property is 2 or greater, the `batch_credential_issuance` parameter will appear in the
+        # response from the credential issuer metadata endpoint.
+        #
+        field :batch_size, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('batchSize') } }
 
-        sig { params(authorization_servers: T.nilable(T::Array[::String]), credential_issuer: T.nilable(::String), credential_endpoint: T.nilable(::String), batch_credential_endpoint: T.nilable(::String), deferred_credential_endpoint: T.nilable(::String), credentials_supported: T.nilable(::String), credential_response_encryption_alg_values_supported: T.nilable(T::Array[::String]), credential_response_encryption_enc_values_supported: T.nilable(T::Array[::String]), require_credential_response_encryption: T.nilable(T::Boolean)).void }
-        def initialize(authorization_servers: nil, credential_issuer: nil, credential_endpoint: nil, batch_credential_endpoint: nil, deferred_credential_endpoint: nil, credentials_supported: nil, credential_response_encryption_alg_values_supported: nil, credential_response_encryption_enc_values_supported: nil, require_credential_response_encryption: nil)
+        sig { params(authorization_servers: T.nilable(T::Array[::String]), credential_issuer: T.nilable(::String), credential_endpoint: T.nilable(::String), batch_credential_endpoint: T.nilable(::String), deferred_credential_endpoint: T.nilable(::String), credentials_supported: T.nilable(::String), credential_response_encryption_alg_values_supported: T.nilable(T::Array[::String]), credential_response_encryption_enc_values_supported: T.nilable(T::Array[::String]), require_credential_response_encryption: T.nilable(T::Boolean), require_credential_request_encryption: T.nilable(T::Boolean), credential_response_encryption_zip_values_supported: T.nilable(T::Array[::String]), batch_size: T.nilable(::Integer)).void }
+        def initialize(authorization_servers: nil, credential_issuer: nil, credential_endpoint: nil, batch_credential_endpoint: nil, deferred_credential_endpoint: nil, credentials_supported: nil, credential_response_encryption_alg_values_supported: nil, credential_response_encryption_enc_values_supported: nil, require_credential_response_encryption: nil, require_credential_request_encryption: nil, credential_response_encryption_zip_values_supported: nil, batch_size: nil)
           @authorization_servers = authorization_servers
           @credential_issuer = credential_issuer
           @credential_endpoint = credential_endpoint
@@ -56,6 +71,9 @@ module Authlete
           @credential_response_encryption_alg_values_supported = credential_response_encryption_alg_values_supported
           @credential_response_encryption_enc_values_supported = credential_response_encryption_enc_values_supported
           @require_credential_response_encryption = require_credential_response_encryption
+          @require_credential_request_encryption = require_credential_request_encryption
+          @credential_response_encryption_zip_values_supported = credential_response_encryption_zip_values_supported
+          @batch_size = batch_size
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -70,6 +88,9 @@ module Authlete
           return false unless @credential_response_encryption_alg_values_supported == other.credential_response_encryption_alg_values_supported
           return false unless @credential_response_encryption_enc_values_supported == other.credential_response_encryption_enc_values_supported
           return false unless @require_credential_response_encryption == other.require_credential_response_encryption
+          return false unless @require_credential_request_encryption == other.require_credential_request_encryption
+          return false unless @credential_response_encryption_zip_values_supported == other.credential_response_encryption_zip_values_supported
+          return false unless @batch_size == other.batch_size
           true
         end
       end

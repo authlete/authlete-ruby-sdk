@@ -14,10 +14,10 @@ module Authlete
 
         # The ticket.
         field :ticket, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket'), required: true }, 'form': { 'field_name': 'ticket' } }
-        # The information about the ticket.
-        field :info, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info'), required: true }, 'form': { 'field_name': 'info' } }
 
-        sig { params(ticket: ::String, info: ::String).void }
+        field :info, Models::Components::AuthorizationTicketInfo, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info'), required: true }, 'form': { 'field_name': 'info', 'json': true } }
+
+        sig { params(ticket: ::String, info: Models::Components::AuthorizationTicketInfo).void }
         def initialize(ticket:, info:)
           @ticket = ticket
           @info = info

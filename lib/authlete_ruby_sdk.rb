@@ -6,6 +6,8 @@
 module Authlete
   autoload :Client, 'authlete/client'
   autoload :Services, 'authlete/services'
+  autoload :Service, 'authlete/service'
+  autoload :Audit, 'authlete/audit'
   autoload :Clients, 'authlete/clients'
   autoload :ClientManagement, 'authlete/client_management'
   autoload :Authorization, 'authlete/authorization'
@@ -19,6 +21,7 @@ module Authlete
   autoload :JWKSetEndpoint, 'authlete/jwk_set_endpoint'
   autoload :DynamicClientRegistration, 'authlete/dynamic_client_registration'
   autoload :Ciba, 'authlete/ciba'
+  autoload :BackChannelLogout, 'authlete/back_channel_logout'
   autoload :DeviceFlow, 'authlete/device_flow'
   autoload :JoseObject, 'authlete/jose_object'
   autoload :Federation, 'authlete/federation'

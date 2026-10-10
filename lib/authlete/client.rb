@@ -16,7 +16,7 @@ module Authlete
   class Client
     extend T::Sig
 
-    attr_accessor :services, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :device_flow, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :lifecycle, :authorization_management, :native_sso
+    attr_accessor :services, :service, :audit, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :back_channel_logout, :device_flow, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :lifecycle, :authorization_management, :native_sso
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -79,6 +79,8 @@ module Authlete
     sig { void }
     def init_sdks
       @services = Services.new(@sdk_configuration)
+      @service = Service.new(@sdk_configuration)
+      @audit = Audit.new(@sdk_configuration)
       @clients = Clients.new(@sdk_configuration)
       @client_management = ClientManagement.new(@sdk_configuration)
       @authorization = Authorization.new(@sdk_configuration)
@@ -92,6 +94,7 @@ module Authlete
       @jwk_set_endpoint = JWKSetEndpoint.new(@sdk_configuration)
       @dynamic_client_registration = DynamicClientRegistration.new(@sdk_configuration)
       @ciba = Ciba.new(@sdk_configuration)
+      @back_channel_logout = BackChannelLogout.new(@sdk_configuration)
       @device_flow = DeviceFlow.new(@sdk_configuration)
       @jose_object = JoseObject.new(@sdk_configuration)
       @federation = Federation.new(@sdk_configuration)

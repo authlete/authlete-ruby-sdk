@@ -116,6 +116,10 @@ class Authlete::Models::Components::Client
   def bc_notification_endpoint=(str_); end
   def bc_user_code_required(); end
   def bc_user_code_required=(str_); end
+  def backchannel_logout_uri(); end
+  def backchannel_logout_uri=(str_); end
+  def backchannel_logout_session_required(); end
+  def backchannel_logout_session_required=(str_); end
   def attributes(); end
   def attributes=(str_); end
   def extension(); end
@@ -188,6 +192,10 @@ class Authlete::Models::Components::Client
   def discovered_by_metadata_document=(str_); end
   def client_source(); end
   def client_source=(str_); end
+  def spiffe_id(); end
+  def spiffe_id=(str_); end
+  def spiffe_bundle_endpoint(); end
+  def spiffe_bundle_endpoint=(str_); end
   def additional_properties(); end
   def additional_properties=(str_); end
   def authorization_sign_alg(); end
