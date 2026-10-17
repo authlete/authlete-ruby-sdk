@@ -68,6 +68,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -113,6 +114,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -161,6 +163,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -208,6 +211,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -256,6 +260,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -300,6 +305,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -344,6 +350,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -388,6 +395,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -430,6 +438,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -473,6 +482,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -515,6 +525,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -563,6 +574,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -609,6 +621,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -654,6 +667,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -698,9 +712,10 @@ end
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| Errors::APIError | 4XX, 5XX         | \*/\*            |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 429                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
 ## client_granted_scopes_get_api
 
@@ -742,6 +757,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -786,9 +802,10 @@ end
 
 ### Errors
 
-| Error Type       | Status Code      | Content Type     |
-| ---------------- | ---------------- | ---------------- |
-| Errors::APIError | 4XX, 5XX         | \*/\*            |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 429                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
 ## client_granted_scopes_delete_api
 
@@ -834,6 +851,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -877,5 +895,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

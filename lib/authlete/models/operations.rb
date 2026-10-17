@@ -6,6 +6,9 @@
 module Authlete
   module Models
     module Operations
+      autoload :AuditEntriesGetIdpApiRequest, 'authlete/models/operations/audit_entries_get_idp_api_request.rb'
+      autoload :AuditEntriesGetIdpApiResponse, 'authlete/models/operations/audit_entries_get_idp_api_response.rb'
+      autoload :AuditTypesGetIdpApiResponse, 'authlete/models/operations/audit_types_get_idp_api_response.rb'
       autoload :AuthAuthorizationApiRequest, 'authlete/models/operations/auth_authorization_api_request.rb'
       autoload :AuthAuthorizationApiResponse, 'authlete/models/operations/auth_authorization_api_response.rb'
       autoload :AuthAuthorizationFailApiRequest, 'authlete/models/operations/auth_authorization_fail_api_request.rb'
@@ -48,6 +51,8 @@ module Authlete
       autoload :BackchannelAuthenticationFailApiResponse, 'authlete/models/operations/backchannel_authentication_fail_api_response.rb'
       autoload :BackchannelAuthenticationIssueApiRequest, 'authlete/models/operations/backchannel_authentication_issue_api_request.rb'
       autoload :BackchannelAuthenticationIssueApiResponse, 'authlete/models/operations/backchannel_authentication_issue_api_response.rb'
+      autoload :BackchannelLogoutTokenApiRequest, 'authlete/models/operations/backchannel_logout_token_api_request.rb'
+      autoload :BackchannelLogoutTokenApiResponse, 'authlete/models/operations/backchannel_logout_token_api_response.rb'
       autoload :ClientAuthorizationDeleteApiPostRequestBody, 'authlete/models/operations/client_authorization_delete_api_post_requestbody.rb'
       autoload :ClientAuthorizationDeleteApiPostRequest, 'authlete/models/operations/client_authorization_delete_api_post_request.rb'
       autoload :ClientAuthorizationDeleteApiPostResponse, 'authlete/models/operations/client_authorization_delete_api_post_response.rb'
@@ -148,6 +153,7 @@ module Authlete
       autoload :ServiceConfigurationApiRequest, 'authlete/models/operations/service_configuration_api_request.rb'
       autoload :ServiceConfigurationApiResponse, 'authlete/models/operations/service_configuration_api_response.rb'
       autoload :ServiceCreateApiResponse, 'authlete/models/operations/service_create_api_response.rb'
+      autoload :ServiceCreateIdpApiResponse, 'authlete/models/operations/service_create_idp_api_response.rb'
       autoload :ServiceDeleteApiRequest, 'authlete/models/operations/service_delete_api_request.rb'
       autoload :ServiceDeleteApiResponse, 'authlete/models/operations/service_delete_api_response.rb'
       autoload :ServiceGetApiRequest, 'authlete/models/operations/service_get_api_request.rb'
@@ -156,6 +162,7 @@ module Authlete
       autoload :ServiceGetListApiResponse, 'authlete/models/operations/service_get_list_api_response.rb'
       autoload :ServiceJwksGetApiRequest, 'authlete/models/operations/service_jwks_get_api_request.rb'
       autoload :ServiceJwksGetApiResponse, 'authlete/models/operations/service_jwks_get_api_response.rb'
+      autoload :ServiceRemoveIdpApiResponse, 'authlete/models/operations/service_remove_idp_api_response.rb'
       autoload :ServiceUpdateApiRequest, 'authlete/models/operations/service_update_api_request.rb'
       autoload :ServiceUpdateApiResponse, 'authlete/models/operations/service_update_api_response.rb'
       autoload :UpdateAuthorizationTicketRequest, 'authlete/models/operations/updateauthorizationticket_request.rb'

@@ -18,14 +18,17 @@ module Authlete
         field :status_code, ::Integer
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
+
+        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
         # Service created successfully (legacy compatibility)
         field :service, Crystalline::Nilable.new(Models::Components::Service)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, service: T.nilable(Models::Components::Service)).void }
-        def initialize(content_type:, status_code:, raw_response:, service: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], service: T.nilable(Models::Components::Service)).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, service: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
+          @headers = headers
           @service = service
         end
 
@@ -35,6 +38,7 @@ module Authlete
           return false unless @content_type == other.content_type
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
+          return false unless @headers == other.headers
           return false unless @service == other.service
           true
         end

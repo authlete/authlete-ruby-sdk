@@ -14,6 +14,8 @@ class Authlete::Models::Operations::DeviceAuthorizationApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def device_authorization_response(); end
   def device_authorization_response=(str_); end
 end

@@ -15,10 +15,10 @@ module Authlete
         # A service ID.
         field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        field :request_body, Crystalline::Nilable.new(Models::Operations::FederationConfigurationApiRequestBody), { 'request': { 'media_type': 'application/json' } }
+        field :request_body, Models::Operations::FederationConfigurationApiRequestBody, { 'request': { 'media_type': 'application/json' } }
 
-        sig { params(service_id: ::String, request_body: T.nilable(Models::Operations::FederationConfigurationApiRequestBody)).void }
-        def initialize(service_id:, request_body: nil)
+        sig { params(service_id: ::String, request_body: Models::Operations::FederationConfigurationApiRequestBody).void }
+        def initialize(service_id:, request_body:)
           @service_id = service_id
           @request_body = request_body
         end

@@ -80,6 +80,8 @@ class Authlete::Models::Components::Service
   def pkce_s256_required=(str_); end
   def authorization_response_duration(); end
   def authorization_response_duration=(str_); end
+  def authorization_code_duration(); end
+  def authorization_code_duration=(str_); end
   def token_endpoint(); end
   def token_endpoint=(str_); end
   def direct_token_endpoint_enabled(); end
@@ -372,6 +374,24 @@ class Authlete::Models::Components::Service
   def cimd_metadata_policy=(str_); end
   def http_alias_prohibited(); end
   def http_alias_prohibited=(str_); end
+  def attestation_challenge_time_window(); end
+  def attestation_challenge_time_window=(str_); end
+  def client_attester_roots_enabled(); end
+  def client_attester_roots_enabled=(str_); end
+  def client_attester_roots_only(); end
+  def client_attester_roots_only=(str_); end
+  def key_attester_roots_enabled(); end
+  def key_attester_roots_enabled=(str_); end
+  def key_attester_roots_only(); end
+  def key_attester_roots_only=(str_); end
+  def client_attester_roots(); end
+  def client_attester_roots=(str_); end
+  def key_attester_roots(); end
+  def key_attester_roots=(str_); end
+  def backchannel_logout_supported(); end
+  def backchannel_logout_supported=(str_); end
+  def backchannel_logout_session_supported(); end
+  def backchannel_logout_session_supported=(str_); end
   def access_token_sign_alg(); end
   def access_token_sign_alg=(str_); end
 end

@@ -26,4 +26,10 @@ class Authlete::Models::Components::CredentialIssuerMetadata
   def credential_response_encryption_enc_values_supported=(str_); end
   def require_credential_response_encryption(); end
   def require_credential_response_encryption=(str_); end
+  def require_credential_request_encryption(); end
+  def require_credential_request_encryption=(str_); end
+  def credential_response_encryption_zip_values_supported(); end
+  def credential_response_encryption_zip_values_supported=(str_); end
+  def batch_size(); end
+  def batch_size=(str_); end
 end

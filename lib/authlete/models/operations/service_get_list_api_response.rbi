@@ -14,6 +14,8 @@ class Authlete::Models::Operations::ServiceGetListApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def service_get_list_response(); end
   def service_get_list_response=(str_); end
 end

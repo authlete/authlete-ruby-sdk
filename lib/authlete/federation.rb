@@ -41,8 +41,8 @@ module Authlete
 
 
 
-    sig { params(service_id: ::String, request_body: T.nilable(Models::Operations::FederationConfigurationApiRequestBody), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::FederationConfigurationApiResponse) }
-    def configuration(service_id:, request_body: nil, timeout_ms: nil, http_headers: nil)
+    sig { params(request_body: Models::Operations::FederationConfigurationApiRequestBody, service_id: ::String, retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::FederationConfigurationApiResponse) }
+    def configuration(request_body:, service_id:, retries: nil, timeout_ms: nil, http_headers: nil)
       # configuration - Process Entity Configuration Request
       # This API gathers the federation configuration about a service.
       # The authorization server implementation should
@@ -66,6 +66,7 @@ module Authlete
       headers = T.cast(headers, T::Hash[String, String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
@@ -76,14 +77,28 @@ module Authlete
       end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 2.0,
+          initial_interval: 500,
+          max_elapsed_time: 60_000,
+          max_interval: 16_000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
+      )
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
+      timeout ||= (5000.to_f / 1000)
 
-      connection = @sdk_configuration.client
+
+      connection = @sdk_configuration.client.dup
+      connection.use Utils::RetryMiddleware, retry_options
 
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
@@ -96,7 +111,7 @@ module Authlete
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).post(url) do |req|
           req.body = body
@@ -133,13 +148,13 @@ module Authlete
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -155,6 +170,7 @@ module Authlete
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
+            headers: {},
             federation_configuration_response: T.unsafe(obj)
           )
 
@@ -163,6 +179,21 @@ module Authlete
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
       elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['429'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
             hook_ctx: SDKHooks::AfterSuccessHookContext.new(
@@ -203,8 +234,8 @@ module Authlete
     end
 
 
-    sig { params(federation_registration_request: Models::Components::FederationRegistrationRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::FederationRegistrationApiResponse) }
-    def registration(federation_registration_request:, service_id:, timeout_ms: nil, http_headers: nil)
+    sig { params(federation_registration_request: Models::Components::FederationRegistrationRequest, service_id: ::String, retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::FederationRegistrationApiResponse) }
+    def registration(federation_registration_request:, service_id:, retries: nil, timeout_ms: nil, http_headers: nil)
       # registration - Process Federation Registration Request
       # The Authlete API is for implementations of the **federation registration
       # endpoint** that accepts "explicit client registration". Its details are
@@ -255,14 +286,28 @@ module Authlete
       end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 2.0,
+          initial_interval: 500,
+          max_elapsed_time: 60_000,
+          max_interval: 16_000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
+      )
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
+      timeout ||= (5000.to_f / 1000)
 
-      connection = @sdk_configuration.client
+
+      connection = @sdk_configuration.client.dup
+      connection.use Utils::RetryMiddleware, retry_options
 
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
@@ -275,7 +320,7 @@ module Authlete
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).post(url) do |req|
           req.body = body
@@ -312,13 +357,13 @@ module Authlete
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -334,6 +379,7 @@ module Authlete
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
+            headers: {},
             federation_registration_response: T.unsafe(obj)
           )
 
@@ -342,6 +388,21 @@ module Authlete
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
       elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['429'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
             hook_ctx: SDKHooks::AfterSuccessHookContext.new(
