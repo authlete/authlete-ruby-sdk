@@ -12,6 +12,8 @@ class Authlete::Models::Components::CredentialRequestInfo
   def identifier=(str_); end
   def format(); end
   def format=(str_); end
+  def credential_configuration_id(); end
+  def credential_configuration_id=(str_); end
   def binding_key(); end
   def binding_key=(str_); end
   def binding_keys(); end

@@ -3,9 +3,10 @@ PATH
   specs:
     authlete_ruby_sdk (1.0.0)
       base64 (>= 0.2.0, < 1.0)
-      faraday (>= 2.14.1)
+      faraday (>= 2.14.3)
       faraday-multipart (~> 1.2.0)
       faraday-retry (~> 2.4.0)
+      janeway-jsonpath (~> 0.6.0)
       sorbet-runtime (~> 0.6.12872)
 
 GEM
@@ -19,7 +20,7 @@ GEM
     date (3.5.1)
     erb (6.0.1)
     erubi (1.13.1)
-    faraday (2.14.1)
+    faraday (2.14.3)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -34,6 +35,7 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    janeway-jsonpath (0.6.0)
     json (2.8.2)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
@@ -133,7 +135,7 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
     uri (1.1.1)
-    yard (0.9.38)
+    yard (0.9.42)
     yard-sorbet (0.9.0)
       sorbet-runtime
       yard

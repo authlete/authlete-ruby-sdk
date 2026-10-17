@@ -14,6 +14,8 @@ class Authlete::Models::Operations::HskCreateApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def hsk_create_response(); end
   def hsk_create_response=(str_); end
 end

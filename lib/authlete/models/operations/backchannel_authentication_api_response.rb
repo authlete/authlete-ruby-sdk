@@ -19,13 +19,16 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
+        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+
         field :backchannel_authentication_response, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, backchannel_authentication_response: T.nilable(Models::Components::BackchannelAuthenticationResponse)).void }
-        def initialize(content_type:, status_code:, raw_response:, backchannel_authentication_response: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], backchannel_authentication_response: T.nilable(Models::Components::BackchannelAuthenticationResponse)).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, backchannel_authentication_response: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
+          @headers = headers
           @backchannel_authentication_response = backchannel_authentication_response
         end
 
@@ -35,6 +38,7 @@ module Authlete
           return false unless @content_type == other.content_type
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
+          return false unless @headers == other.headers
           return false unless @backchannel_authentication_response == other.backchannel_authentication_response
           true
         end

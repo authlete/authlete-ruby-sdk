@@ -14,6 +14,8 @@ class Authlete::Models::Operations::VciOfferCreateApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def vci_offer_create_response(); end
   def vci_offer_create_response=(str_); end
 end

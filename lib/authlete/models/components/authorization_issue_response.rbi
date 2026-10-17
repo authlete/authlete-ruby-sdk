@@ -30,4 +30,6 @@ class Authlete::Models::Components::AuthorizationIssueResponse
   def jwt_access_token=(str_); end
   def ticket_info(); end
   def ticket_info=(str_); end
+  def consented_claims(); end
+  def consented_claims=(str_); end
 end

@@ -42,9 +42,10 @@ If you have any questions or need assistance, our team is here to help:
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Troubleshooting](#troubleshooting)
-* [The service_id parameter uses the api_key value](#the-serviceid-parameter-uses-the-apikey-value)
+  * [Server Selection](#server-selection)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -202,6 +203,11 @@ end
 <details open>
 <summary>Available methods</summary>
 
+### [Audit](docs/sdks/audit/README.md)
+
+* [get](docs/sdks/audit/README.md#get) - Get Audit Logs
+* [get_types](docs/sdks/audit/README.md#get_types) - Get Audit Log Event Types
+
 ### [Authorization](docs/sdks/authorization/README.md)
 
 * [process_request](docs/sdks/authorization/README.md#process_request) - Process Authorization Request
@@ -212,6 +218,10 @@ end
 
 * [ticket_info](docs/sdks/authorizationmanagement/README.md#ticket_info) - Get Ticket Information
 * [update_ticket](docs/sdks/authorizationmanagement/README.md#update_ticket) - Update Ticket Information
+
+### [BackChannelLogout](docs/sdks/backchannellogout/README.md)
+
+* [backchannel_logout_token_api](docs/sdks/backchannellogout/README.md#backchannel_logout_token_api) - Backchannel Logout Token Issuing
 
 ### [Ciba](docs/sdks/ciba/README.md)
 
@@ -310,6 +320,11 @@ end
 
 * [process_request](docs/sdks/revocation/README.md#process_request) - Process Revocation Request
 
+### [Service](docs/sdks/service/README.md)
+
+* [create](docs/sdks/service/README.md#create) - Create Service (IDP)
+* [remove](docs/sdks/service/README.md#remove) - Remove Service (IDP) ⚡
+
 ### [Services](docs/sdks/services/README.md)
 
 * [retrieve](docs/sdks/services/README.md#retrieve) - Get Service
@@ -356,6 +371,54 @@ end
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.retrieve(service_id: '<id>')
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  retry_config: Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 1.1,
+          initial_interval: 1,
+          max_elapsed_time: 100,
+          max_interval: 50
+        ),
+        retry_connection_errors: false,
+        strategy: 'backoff'
+      ),
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.retrieve(service_id: '<id>')
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+<!-- End Retries [retries] -->
+
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
@@ -375,6 +438,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 | Error Type                  | Status Code   | Content Type     |
 | --------------------------- | ------------- | ---------------- |
 | Models::Errors::ResultError | 400, 401, 403 | application/json |
+| Models::Errors::ResultError | 429           | application/json |
 | Models::Errors::ResultError | 500           | application/json |
 | Errors::APIError            | 4XX, 5XX      | \*/\*            |
 
@@ -394,6 +458,9 @@ begin
     unless res.service.nil?
       # handle response
     end
+rescue Models::Errors::ResultError => e
+  # handle e.container data
+  raise e
 rescue Models::Errors::ResultError => e
   # handle e.container data
   raise e
@@ -509,6 +576,33 @@ s = ::Authlete::Client.new(
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
 res = s.services.retrieve(service_id: '<id>')
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+
+req = Models::Components::ServiceCreateIdpRequest.new(
+  api_server_id: 76_281,
+  organization_id: 123_456_789_012_345,
+  service: Models::Components::ServiceInput.new(
+    service_name: 'My service',
+    issuer: 'https://my-service.example.com'
+  )
+)
+res = s.service.create(request: req, server_url: 'https://login.authlete.com')
 
 unless res.service.nil?
   # handle response

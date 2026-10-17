@@ -19,11 +19,14 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response).void }
-        def initialize(content_type:, status_code:, raw_response:)
+        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]]).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
+          @headers = headers
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -32,6 +35,7 @@ module Authlete
           return false unless @content_type == other.content_type
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
+          return false unless @headers == other.headers
           true
         end
       end

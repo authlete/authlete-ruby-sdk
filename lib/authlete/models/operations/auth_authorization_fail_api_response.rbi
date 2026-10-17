@@ -14,6 +14,8 @@ class Authlete::Models::Operations::AuthAuthorizationFailApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def authorization_fail_response(); end
   def authorization_fail_response=(str_); end
 end
