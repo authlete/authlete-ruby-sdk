@@ -18,8 +18,7 @@ module Authlete
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the implementation of the token endpoint should take.
         field :action, Crystalline::Nilable.new(Models::Components::IdtokenReissueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::IdtokenReissueResponseAction, true) } }
-        # The response content that can be used as the message body of the token response that should
-        # be returned from the token endpoint.
+        # The response content that can be used as the message body of the token response that should be returned from the token endpoint.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The reissued ID token

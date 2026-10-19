@@ -12,25 +12,25 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # A client ID.
         field :client_identifier, ::String, { 'path_param': { 'field_name': 'clientIdentifier', 'style': 'simple', 'explode': false } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
         field :client_flag_update_request, Crystalline::Nilable.new(Models::Components::ClientFlagUpdateRequest), { 'request': { 'media_type': 'application/json' } }
 
-        sig { params(service_id: ::String, client_identifier: ::String, client_flag_update_request: T.nilable(Models::Components::ClientFlagUpdateRequest)).void }
-        def initialize(service_id:, client_identifier:, client_flag_update_request: nil)
-          @service_id = service_id
+        sig { params(client_identifier: ::String, service_id: T.nilable(::String), client_flag_update_request: T.nilable(Models::Components::ClientFlagUpdateRequest)).void }
+        def initialize(client_identifier:, service_id: nil, client_flag_update_request: nil)
           @client_identifier = client_identifier
+          @service_id = service_id
           @client_flag_update_request = client_flag_update_request
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @client_identifier == other.client_identifier
+          return false unless @service_id == other.service_id
           return false unless @client_flag_update_request == other.client_flag_update_request
           true
         end

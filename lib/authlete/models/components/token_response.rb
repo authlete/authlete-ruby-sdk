@@ -18,20 +18,15 @@ module Authlete
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
         field :action, Crystalline::Nilable.new(Models::Components::TokenResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenResponseAction, true) } }
-        # The content that the authorization server implementation is to return to the client application.
-        # Its format varies depending on the value of `action` parameter.
+        # The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
-        # The value of `username` request parameter in the token request.
-        # The client application must specify username when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3).
-        # In other words, when the value of `grant_type` request parameter is `password`, `username` request parameter must come along.
+        # The value of `username` request parameter in the token request. The client application must specify username when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of `grant_type` request parameter is `password`, `username` request parameter must come along.
         #
         # This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
         #
         field :username, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('username') } }
-        # The value of `password` request parameter in the token request.
-        # The client application must specify password when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3).
-        # In other words, when the value of `grant_type` request parameter is `password`, `password` request parameter must come along.
+        # The value of `password` request parameter in the token request. The client application must specify password when it uses [Resource Owner Password Grant](https://datatracker.ietf.org/doc/html/rfc6749#section-4.3). In other words, when the value of `grant_type` request parameter is `password`, `password` request parameter must come along.
         #
         # This parameter has a value only if the value of `grant_type` request parameter is `password` and the token request is valid.
         #
@@ -43,64 +38,49 @@ module Authlete
         field :ticket, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticket') } }
         # The newly issued access token.
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
-        # The datetime at which the newly issued access token will expire.
-        # The value is represented in milliseconds since the Unix epoch (1970-01-01).
+        # The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
         #
         field :access_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAt') } }
         # The duration of the newly issued access token in seconds.
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') } }
         # The newly issued refresh token.
         field :refresh_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshToken') } }
-        # The datetime at which the newly issued refresh token will expire.
-        # The value is represented in milliseconds since the Unix epoch (1970-01-01).
+        # The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
         #
         field :refresh_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAt') } }
         # The duration of the newly issued refresh token in seconds.
         field :refresh_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenDuration') } }
-        # The newly issued ID token. Note that an ID token is issued from a token endpoint only when the `response_type` request parameter
-        # of the authorization request to an authorization endpoint has contained `code` and the `scope` request parameter has contained `openid`.
+        # The newly issued ID token. Note that an ID token is issued from a token endpoint only when the `response_type` request parameter of the authorization request to an authorization endpoint has contained `code` and the `scope` request parameter has contained `openid`.
         #
         field :id_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idToken') } }
         # The grant type of the token request.
         field :grant_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantType') } }
         # The client ID.
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
-        # The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`.
-        # Also, if the token request was invalid and it failed to identify a client, this parameter is `null`.
+        # The client ID alias when the token request was made. If the client did not have an alias, this parameter is `null`. Also, if the token request was invalid and it failed to identify a client, this parameter is `null`.
         #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
-        # The flag which indicates whether the client ID alias was used when the token request was made.
-        # `true` if the client ID alias was used when the token request was made.
+        # The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made.
         #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
-        # The subject (= resource owner's ID) of the access token.
-        # Even if an access token has been issued by the call of `/api/auth/token` API, this parameter is `null` if the flow of the token request was
-        # [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token
-        # is not associated with any specific end-user.
+        # The subject (= resource owner's ID) of the access token. Even if an access token has been issued by the call of `/api/auth/token` API, this parameter is `null` if the flow of the token request was [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token is not associated with any specific end-user.
         #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The scopes covered by the access token.
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
-        # The extra properties associated with the access token.
-        # This parameter is `null` when no extra property is associated with the issued access token.
+        # The extra properties associated with the access token. This parameter is `null` when no extra property is associated with the issued access token.
         #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
-        # The newly issued access token in JWT format. If the authorization server is configured
-        # to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a
-        # non-null value), a JWT-based access token is issued along with the original random-string
-        # one.
+        # The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one.
         #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
-        # The resources specified by the `resource` request parameters in the token request.
-        # See "Resource Indicators for OAuth 2.0" for details.
+        # The resources specified by the `resource` request parameters in the token request. See "Resource Indicators for OAuth 2.0" for details.
         #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
         # The target resources of the access token being issued. See "Resource Indicators for OAuth 2.0" for details.
         #
         field :access_token_resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenResources') } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # Additional claims to be embedded in an ID token.
@@ -117,30 +97,25 @@ module Authlete
         field :client_auth_method, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAuthMethod') } }
         # the value of the `grant_id` request parameter of the device authorization request.
         #
-        # The `grant_id` request parameter is defined in
-        # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
-        # , which is supported by Authlete 2.3 and newer versions.
+        # The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
         #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
         # The audiences on the token exchange request
         #
         field :audiences, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('audiences') } }
-        # The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693).
-        # The API returns short codes (enum constant names) in response fields.
+        # The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693). The API returns short codes (enum constant names) in response fields.
         #
         field :requested_token_type, Crystalline::Nilable.new(Models::Components::TokenType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedTokenType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenType, true) } }
 
         field :subject_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subjectToken') } }
-        # The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693).
-        # The API returns short codes (enum constant names) in response fields.
+        # The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693). The API returns short codes (enum constant names) in response fields.
         #
         field :subject_token_type, Crystalline::Nilable.new(Models::Components::TokenType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subjectTokenType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenType, true) } }
 
         field :subject_token_info, Crystalline::Nilable.new(Models::Components::TokenInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subjectTokenInfo') } }
 
         field :actor_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('actorToken') } }
-        # The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693).
-        # The API returns short codes (enum constant names) in response fields.
+        # The token type identifier used in OAuth 2.0 Token Exchange (RFC 8693). The API returns short codes (enum constant names) in response fields.
         #
         field :actor_token_type, Crystalline::Nilable.new(Models::Components::TokenType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('actorTokenType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenType, true) } }
 
@@ -160,37 +135,28 @@ module Authlete
         # Duration of the `c_nonce` in seconds.
         #
         field :cnonce_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('cnonceDuration') } }
-        # Get the expected nonce value for DPoP proof JWT, which should be used
-        # as the value of the `DPoP-Nonce` HTTP header.
+        # Get the expected nonce value for DPoP proof JWT, which should be used as the value of the `DPoP-Nonce` HTTP header.
         #
         field :dpop_nonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonce') } }
         # Get the `c_nonce`.
         #
         field :cnonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('cnonce') } }
-        # Get the time at which the `c_nonce` expires in milliseconds since
-        # the Unix epoch (1970-01-01).
+        # Get the time at which the `c_nonce` expires in milliseconds since the Unix epoch (1970-01-01).
         #
         field :cnonce_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('cnonceExpiresAt') } }
-        # Get the names of the claims that the authorization request (which resulted
-        # in generation of the access token) requested to be embedded in ID tokens.
+        # Get the names of the claims that the authorization request (which resulted in generation of the access token) requested to be embedded in ID tokens.
         #
         field :requested_id_token_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestedIdTokenClaims') } }
         # Scopes associated with the refresh token.
         #
         field :refresh_token_scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenScopes') } }
-        # The session ID, which is the ID of the user's authentication session, associated with a newly
-        # created access token.
+        # The session ID, which is the ID of the user's authentication session, associated with a newly created access token.
         #
         field :session_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sessionId') } }
-        # If the response from the `/auth/token` API contains the `deviceSecret` parameter, its value should
-        # be used as the value of this `deviceSecret` request parameter to the `/nativesso` API. The authorization
-        # server may choose to issue a new device secret; in that case, it is free to generate a new device
-        # secret and specify the new value.
+        # If the response from the `/auth/token` API contains the `deviceSecret` parameter, its value should be used as the value of this `deviceSecret` request parameter to the `/nativesso` API. The authorization server may choose to issue a new device secret; in that case, it is free to generate a new device secret and specify the new value.
         #
         field :device_secret, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deviceSecret') } }
-        # The authorization server should compute the hash value of the device secret based on its own logic
-        # and specify the computed hash as the value of this `deviceSecretHash` request parameter to the
-        # `/nativesso` API.
+        # The authorization server should compute the hash value of the device secret based on its own logic and specify the computed hash as the value of this `deviceSecretHash` request parameter to the `/nativesso` API.
         #
         field :device_secret_hash, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deviceSecretHash') } }
         # The location of the client's metadata document that was used to resolve client metadata.

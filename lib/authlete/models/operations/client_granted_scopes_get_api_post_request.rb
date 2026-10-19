@@ -12,27 +12,27 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # A client ID.
         #
         field :client_id, ::String, { 'path_param': { 'field_name': 'clientId', 'style': 'simple', 'explode': false } }
 
         field :request_body, Models::Operations::ClientGrantedScopesGetApiPostRequestBody, { 'request': { 'media_type': 'application/json' } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        sig { params(service_id: ::String, client_id: ::String, request_body: Models::Operations::ClientGrantedScopesGetApiPostRequestBody).void }
-        def initialize(service_id:, client_id:, request_body:)
-          @service_id = service_id
+        sig { params(client_id: ::String, request_body: Models::Operations::ClientGrantedScopesGetApiPostRequestBody, service_id: T.nilable(::String)).void }
+        def initialize(client_id:, request_body:, service_id: nil)
           @client_id = client_id
           @request_body = request_body
+          @service_id = service_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @client_id == other.client_id
           return false unless @request_body == other.request_body
+          return false unless @service_id == other.service_id
           true
         end
       end

@@ -20,9 +20,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.userinfo.process_request(service_id: '<id>', userinfo_request: Models::Components::UserinfoRequest.new(
+res = s.userinfo.process_request(userinfo_request: Models::Components::UserinfoRequest.new(
   token: 'Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI'
 ))
 
@@ -36,8 +37,8 @@ end
 
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `service_id`                                                                  | *::String*                                                                    | :heavy_check_mark:                                                            | A service ID.                                                                 |
 | `userinfo_request`                                                            | [Models::Components::UserinfoRequest](../../models/shared/userinforequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `service_id`                                                                  | *T.nilable(::String)*                                                         | :heavy_minus_sign:                                                            | A service ID.                                                                 |
 
 ### Response
 
@@ -48,6 +49,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -64,9 +66,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.userinfo.issue_response(service_id: '<id>', userinfo_issue_request: Models::Components::UserinfoIssueRequest.new(
+res = s.userinfo.issue_response(userinfo_issue_request: Models::Components::UserinfoIssueRequest.new(
   token: 'Ntm9MDb8WXQAevqrBkd84KTTHbYHVQrTjgUZCOWqEUI'
 ))
 
@@ -80,8 +83,8 @@ end
 
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `service_id`                                                                            | *::String*                                                                              | :heavy_check_mark:                                                                      | A service ID.                                                                           |
 | `userinfo_issue_request`                                                                | [Models::Components::UserinfoIssueRequest](../../models/shared/userinfoissuerequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `service_id`                                                                            | *T.nilable(::String)*                                                                   | :heavy_minus_sign:                                                                      | A service ID.                                                                           |
 
 ### Response
 
@@ -92,5 +95,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

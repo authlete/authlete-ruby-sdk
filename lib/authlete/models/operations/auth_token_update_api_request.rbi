@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::AuthTokenUpdateApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def token_update_request(); end
   def token_update_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

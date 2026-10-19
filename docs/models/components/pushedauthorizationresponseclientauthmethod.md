@@ -1,8 +1,6 @@
 # PushedAuthorizationResponseClientAuthMethod
 
-The client authentication method that the client application declares that it uses at the token
-endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic
-Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 
 
 ## Example Usage
@@ -26,3 +24,4 @@ value = PushedAuthorizationResponseClientAuthMethod::NONE
 | `TLS_CLIENT_AUTH`             | TLS_CLIENT_AUTH               |
 | `SELF_SIGNED_TLS_CLIENT_AUTH` | SELF_SIGNED_TLS_CLIENT_AUTH   |
 | `ATTEST_JWT_CLIENT_AUTH`      | ATTEST_JWT_CLIENT_AUTH        |
+| `SPIFFE_JWT`                  | SPIFFE_JWT                    |

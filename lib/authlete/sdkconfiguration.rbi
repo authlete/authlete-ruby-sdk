@@ -11,6 +11,10 @@ class Authlete::SDKConfiguration
 
   def gen_version=(gen_version); end
 
+  def globals(); end
+
+  def globals=(globals); end
+
   def hooks(); end
 
   def hooks=(hooks); end

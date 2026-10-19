@@ -20,8 +20,7 @@ module Authlete
         field :issuance_deferred, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('issuanceDeferred') } }
         # The duration of a credential to be issued.
         field :credential_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialDuration') } }
-        # The key ID of a private key that should be used for signing a credential
-        # to be issued.
+        # The key ID of a private key that should be used for signing a credential to be issued.
         #
         field :signing_key_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('signingKeyId') } }
 

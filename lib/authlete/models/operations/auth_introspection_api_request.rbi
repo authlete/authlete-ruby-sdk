@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::AuthIntrospectionApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def introspection_request(); end
   def introspection_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

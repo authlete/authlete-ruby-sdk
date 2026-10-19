@@ -12,22 +12,22 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
         field :vci_batch_parse_request, Models::Components::VciBatchParseRequest, { 'request': { 'media_type': 'application/json' } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        sig { params(service_id: ::String, vci_batch_parse_request: Models::Components::VciBatchParseRequest).void }
-        def initialize(service_id:, vci_batch_parse_request:)
-          @service_id = service_id
+        sig { params(vci_batch_parse_request: Models::Components::VciBatchParseRequest, service_id: T.nilable(::String)).void }
+        def initialize(vci_batch_parse_request:, service_id: nil)
           @vci_batch_parse_request = vci_batch_parse_request
+          @service_id = service_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @vci_batch_parse_request == other.vci_batch_parse_request
+          return false unless @service_id == other.service_id
           true
         end
       end

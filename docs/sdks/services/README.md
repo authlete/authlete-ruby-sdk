@@ -6,17 +6,16 @@
 
 * [retrieve](#retrieve) - Get Service
 * [list](#list) - List Services
-* [create](#create) - Create Service
 * [update](#update) - Update Service
-* [destroy](#destroy) - Delete Service ⚡
+* [create](#create) - Create Service (IDP)
+* [remove](#remove) - Remove Service (IDP) ⚡
 * [configuration](#configuration) - Get Service Configuration
 
 ## retrieve
 
 Get a service.
 
-If the access token can only view or modify clients underneath this service, but does not
-have access to view this service directly, a limited view of the service will be returned.
+If the access token can only view or modify clients underneath this service, but does not have access to view this service directly, a limited view of the service will be returned.
 
 
 ### Example Usage: full
@@ -27,9 +26,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.retrieve(service_id: '<id>')
+res = s.services.retrieve
 
 unless res.service.nil?
   # handle response
@@ -44,9 +44,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.retrieve(service_id: '<id>')
+res = s.services.retrieve
 
 unless res.service.nil?
   # handle response
@@ -56,9 +57,9 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `service_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | A service ID.         |
 
 ### Response
 
@@ -69,6 +70,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -76,12 +78,9 @@ end
 
 Get a list of services.
 
-If the access token can only view or modify clients underneath a service, but does not
-have access to view that service directly, a limited view of the service will be returned.
-Otherwise, all properties of the service are returned.
+If the access token can only view or modify clients underneath a service, but does not have access to view that service directly, a limited view of the service will be returned. Otherwise, all properties of the service are returned.
 
-If the access token is an administrative token, this returns a list of all services on the Authlete instance.
-Otherwise, all services that the access token can view, even in a limited fashion, are returned.
+If the access token is an administrative token, this returns a list of all services on the Authlete instance. Otherwise, all services that the access token can view, even in a limited fashion, are returned.
 
 
 ### Example Usage: full
@@ -135,99 +134,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
-| Models::Errors::ResultError | 500                         | application/json            |
-| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
-
-## create
-
-Create a new service.
-
-
-### Example Usage
-
-<!-- UsageSnippet language="ruby" operationID="service_create_api" method="post" path="/api/service/create" -->
-```ruby
-require 'authlete_ruby_sdk'
-
-Models = ::Authlete::Models
-s = ::Authlete::Client.new(
-  bearer: '<YOUR_BEARER_TOKEN_HERE>'
-)
-
-req = Models::Components::ServiceInput.new(
-  service_name: 'My service',
-  issuer: 'https://my-service.example.com',
-  client_id_alias_enabled: true,
-  supported_grant_types: [
-    Models::Components::GrantType::AUTHORIZATION_CODE,
-    Models::Components::GrantType::REFRESH_TOKEN,
-  ],
-  supported_response_types: [
-    Models::Components::ResponseType::CODE,
-  ],
-  authorization_endpoint: 'https://my-service.example.com/authz',
-  pkce_required: true,
-  token_endpoint: 'https://my-service.example.com/token',
-  supported_token_auth_methods: [
-    Models::Components::ClientAuthMethod::CLIENT_SECRET_BASIC,
-  ],
-  revocation_endpoint: 'https://my-service.example.com/revocation',
-  supported_revocation_auth_methods: [
-    Models::Components::ClientAuthMethod::CLIENT_SECRET_BASIC,
-  ],
-  introspection_endpoint: 'https://my-service.example.com/introspection',
-  supported_introspection_auth_methods: [
-    Models::Components::ClientAuthMethod::CLIENT_SECRET_BASIC,
-  ],
-  access_token_type: 'Bearer',
-  access_token_duration: 3600,
-  refresh_token_duration: 3600,
-  supported_scopes: [
-    Models::Components::Scope.new(
-      name: 'timeline.read',
-      default_entry: false,
-      description: 'A permission to read your timeline.'
-    ),
-    Models::Components::Scope.new(
-      name: 'history.read',
-      default_entry: false,
-      description: 'A permission to read your history.'
-    ),
-  ],
-  attributes: [
-    Models::Components::Pair.new(
-      key: 'attribute1-key',
-      value: 'attribute1-value'
-    ),
-    Models::Components::Pair.new(
-      key: 'attribute2-key',
-      value: 'attribute2-value'
-    ),
-  ]
-)
-res = s.services.create(request: req)
-
-unless res.service.nil?
-  # handle response
-end
-
-```
-
-### Parameters
-
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [Models::Components::ServiceInput](../../models/shared/serviceinput.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
-
-### Response
-
-**[T.nilable(Models::Operations::ServiceCreateApiResponse)](../../models/operations/servicecreateapiresponse.md)**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -244,13 +151,13 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.update(service_id: '<id>', service: Models::Components::ServiceInput.new(
+res = s.services.update(service: Models::Components::ServiceInput.new(
   service_name: 'My updated service',
   issuer: 'https://my-service.example.com',
   clients_per_developer: 0,
-  client_id_alias_enabled: true,
   supported_grant_types: [
     Models::Components::GrantType::AUTHORIZATION_CODE,
     Models::Components::GrantType::REFRESH_TOKEN,
@@ -261,26 +168,23 @@ res = s.services.update(service_id: '<id>', service: Models::Components::Service
   error_description_omitted: false,
   error_uri_omitted: false,
   authorization_endpoint: 'https://my-service.example.com/authz',
-  direct_authorization_endpoint_enabled: false,
   supported_displays: [
     Models::Components::Display::PAGE,
   ],
   pkce_required: true,
   pkce_s256_required: false,
   authorization_response_duration: 0,
+  authorization_code_duration: 0,
   token_endpoint: 'https://my-service.example.com/token',
-  direct_token_endpoint_enabled: false,
   supported_token_auth_methods: [
     Models::Components::ClientAuthMethod::CLIENT_SECRET_BASIC,
   ],
   missing_client_id_allowed: false,
   revocation_endpoint: 'https://my-service.example.com/revocation',
-  direct_revocation_endpoint_enabled: false,
   supported_revocation_auth_methods: [
     Models::Components::ClientAuthMethod::CLIENT_SECRET_BASIC,
   ],
   introspection_endpoint: 'https://my-service.example.com/introspection',
-  direct_introspection_endpoint_enabled: false,
   supported_introspection_auth_methods: [
     Models::Components::ClientAuthMethod::CLIENT_SECRET_BASIC,
   ],
@@ -316,8 +220,6 @@ res = s.services.update(service_id: '<id>', service: Models::Components::Service
     Models::Components::ClaimType::NORMAL,
   ],
   claim_shortcut_restrictive: false,
-  direct_jwks_endpoint_enabled: false,
-  direct_user_info_endpoint_enabled: false,
   dynamic_registration_supported: false,
   backchannel_auth_req_id_duration: 0,
   backchannel_polling_interval: 0,
@@ -358,7 +260,7 @@ end
 
 | Parameter                                                                                                                                                                                                                                               | Type                                                                                                                                                                                                                                                    | Required                                                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                             | Example                                                                                                                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                                                                                                                                            | *::String*                                                                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                                                      | A service ID.                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                         |
+| `service_id`                                                                                                                                                                                                                                            | *T.nilable(::String)*                                                                                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                                                                                      | A service ID.                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                         |
 | `service`                                                                                                                                                                                                                                               | [T.nilable(Models::Components::ServiceInput)](../../models/shared/serviceinput.md)                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                      | N/A                                                                                                                                                                                                                                                     | {<br/>"number": 715948317,<br/>"serviceName": "My Test Service",<br/>"issuer": "https://example.com",<br/>"supportedScopes": [<br/>"profile",<br/>"email",<br/>"openid"<br/>],<br/>"supportedResponseTypes": [<br/>"CODE"<br/>],<br/>"supportedGrantTypes": [<br/>"AUTHORIZATION_CODE",<br/>"REFRESH_TOKEN"<br/>]<br/>} |
 
 ### Response
@@ -370,17 +272,20 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
-## destroy
+## create
 
-Delete a service.
+Create a new service on the API server, belonging to the specified organization. A service can be created with an organization token or by a user with the CREATE_SERVICE role.
+
+This endpoint is hosted on the Authlete IdP server (`https://login.authlete.com`), not on the regional API clusters.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="ruby" operationID="service_delete_api" method="delete" path="/api/{serviceId}/service/delete" -->
+<!-- UsageSnippet language="ruby" operationID="service_create_idp_api" method="post" path="/api/service" -->
 ```ruby
 require 'authlete_ruby_sdk'
 
@@ -388,7 +293,66 @@ Models = ::Authlete::Models
 s = ::Authlete::Client.new(
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.destroy(service_id: '<id>')
+
+req = Models::Components::ServiceCreateIdpRequest.new(
+  api_server_id: 76_281,
+  organization_id: 123_456_789_012_345,
+  service: Models::Components::ServiceInput.new(
+    service_name: 'My service',
+    issuer: 'https://my-service.example.com'
+  )
+)
+res = s.services.create(request: req)
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [Models::Components::ServiceCreateIdpRequest](../../models/shared/servicecreateidprequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| `server_url`                                                                                  | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
+
+### Response
+
+**[T.nilable(Models::Operations::ServiceCreateIdpApiResponse)](../../models/operations/servicecreateidpapiresponse.md)**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| Models::Errors::IdpError | 400, 401, 403            | application/json         |
+| Models::Errors::IdpError | 500                      | application/json         |
+| Errors::APIError         | 4XX, 5XX                 | \*/\*                    |
+
+## remove
+
+Delete a service from the API server. A service can be deleted with an organization token or by a user with the MODIFY_SERVICE role.
+
+This endpoint is hosted on the Authlete IdP server (`https://login.authlete.com`), not on the regional API clusters.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="service_remove_idp_api" method="post" path="/api/service/remove" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+
+req = Models::Components::ServiceRemoveIdpRequest.new(
+  api_server_id: 76_281,
+  organization_id: 123_456_789_012_345,
+  service_id: 21_653_835_348_762
+)
+res = s.services.remove(request: req)
 
 if res.status_code == 200
   # handle response
@@ -398,31 +362,28 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [Models::Components::ServiceRemoveIdpRequest](../../models/shared/serviceremoveidprequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+| `server_url`                                                                                  | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
 
 ### Response
 
-**[T.nilable(Models::Operations::ServiceDeleteApiResponse)](../../models/operations/servicedeleteapiresponse.md)**
+**[T.nilable(Models::Operations::ServiceRemoveIdpApiResponse)](../../models/operations/serviceremoveidpapiresponse.md)**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| Models::Errors::ResultError | 400, 401, 403               | application/json            |
-| Models::Errors::ResultError | 500                         | application/json            |
-| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| Models::Errors::IdpError | 400, 401, 403            | application/json         |
+| Models::Errors::IdpError | 500                      | application/json         |
+| Errors::APIError         | 4XX, 5XX                 | \*/\*                    |
 
 ## configuration
 
 This API gathers configuration information about a service.
 
-This API is supposed to be called from within the implementation of the configuration endpoint of
-the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html)
-must expose its configuration information in a JSON format. Details about the format are described
-in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)"
-in OpenID Connect Discovery 1.0.
+This API is supposed to be called from within the implementation of the configuration endpoint of the service where the service that supports OpenID Connect and [OpenID Connect Discovery 1.0](https://openid.net/specs/openid-connect-discovery-1_0.html) must expose its configuration information in a JSON format. Details about the format are described in "[3. OpenID Provider Metadata](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata)" in OpenID Connect Discovery 1.0.
 
 
 ### Example Usage
@@ -433,9 +394,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.configuration(service_id: '<id>')
+res = s.services.configuration
 
 unless res.object.nil?
   # handle response
@@ -447,7 +409,7 @@ end
 
 | Parameter                                                                                                                                                                        | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                                                                     | *::String*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                               | A service ID.                                                                                                                                                                    |
+| `service_id`                                                                                                                                                                     | *T.nilable(::String)*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                               | A service ID.                                                                                                                                                                    |
 | `pretty`                                                                                                                                                                         | *T.nilable(T::Boolean)*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                               | This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`. |
 | `patch`                                                                                                                                                                          | *T.nilable(::String)*                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                               | Get the JSON Patch [RFC 6902 JavaScript Object Notation (JSON) Patch](https://www.rfc-editor.org/rfc/rfc6902) to be applied.                                                     |
 
@@ -460,5 +422,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

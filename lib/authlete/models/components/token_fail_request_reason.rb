@@ -14,6 +14,9 @@ module Authlete
           UNKNOWN = new('UNKNOWN')
           INVALID_RESOURCE_OWNER_CREDENTIALS = new('INVALID_RESOURCE_OWNER_CREDENTIALS')
           INVALID_TARGET = new('INVALID_TARGET')
+          INVALID_CLIENT = new('INVALID_CLIENT')
+          UNAUTHORIZED_CLIENT = new('UNAUTHORIZED_CLIENT')
+          INVALID_SCOPE = new('INVALID_SCOPE')
         end
       end
     end

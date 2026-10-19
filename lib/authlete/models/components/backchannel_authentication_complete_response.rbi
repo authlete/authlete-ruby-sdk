@@ -64,4 +64,6 @@ class Authlete::Models::Components::BackchannelAuthenticationCompleteResponse
   def metadata_document_location=(str_); end
   def metadata_document_used(); end
   def metadata_document_used=(str_); end
+  def consented_claims(); end
+  def consented_claims=(str_); end
 end

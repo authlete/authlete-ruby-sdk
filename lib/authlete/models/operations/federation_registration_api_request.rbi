@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::FederationRegistrationApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def federation_registration_request(); end
   def federation_registration_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

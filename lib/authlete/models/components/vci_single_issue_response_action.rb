@@ -7,13 +7,15 @@
 module Authlete
   module Models
     module Components
-      # VciSingleIssueResponseAction - The next action that the implementation of the credential endpoint
-      # should take.
+      # VciSingleIssueResponseAction - The next action that the implementation of the credential endpoint should take.
       #
       class VciSingleIssueResponseAction < T::Enum
         enums do
           OK = new('OK')
+          OK_JWT = new('OK_JWT')
           ACCEPTED = new('ACCEPTED')
+          ACCEPTED_JWT = new('ACCEPTED_JWT')
+          BAD_REQUEST = new('BAD_REQUEST')
           UNAUTHORIZED = new('UNAUTHORIZED')
           FORBIDDEN = new('FORBIDDEN')
           INTERNAL_SERVER_ERROR = new('INTERNAL_SERVER_ERROR')

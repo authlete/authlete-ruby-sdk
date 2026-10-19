@@ -7,8 +7,7 @@
 module Authlete
   module Models
     module Components
-      # BackchannelAuthenticationCompleteRequestResult - The result of the end-user authentication and authorization. One of the following. Details are
-      # described in the description.
+      # BackchannelAuthenticationCompleteRequestResult - The result of the end-user authentication and authorization. One of the following. Details are described in the description.
       #
       class BackchannelAuthenticationCompleteRequestResult < T::Enum
         enums do

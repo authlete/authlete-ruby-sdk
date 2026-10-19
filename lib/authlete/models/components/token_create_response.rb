@@ -41,25 +41,19 @@ module Authlete
         # Scopes which are associated with the access token.
         #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
-        # The subject (= unique identifier) of the user associated with the newly issued access
-        # token.
+        # The subject (= unique identifier) of the user associated with the newly issued access token.
         #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The token type of the access token.
         #
         field :token_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenType') } }
-        # If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg`
-        # is set to a `non-null` value), a JWT-based access token is issued along with the original
-        # random-string one.
+        # If the authorization server is configured to issue JWT-based access tokens (= if `Service.accessTokenSignAlg` is set to a `non-null` value), a JWT-based access token is issued along with the original random-string one.
         #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
-        # the flag which indicates whether the access token is for an external
-        # attachment.
+        # the flag which indicates whether the access token is for an external attachment.
         #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') } }
         # Set the unique token identifier.
@@ -73,9 +67,7 @@ module Authlete
         field :client_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdentifier') } }
         # The session ID associated with a newly created access token.
         #
-        # NOTE: A refresh token must be associated with a session ID, which is the ID of the user's authentication
-        # session, in order to be used to obtain a [Native SSO](https://openid.net/specs/openid-connect-native-sso-1_0.html)-compliant
-        # ID token in the refresh token flow.
+        # NOTE: A refresh token must be associated with a session ID, which is the ID of the user's authentication session, in order to be used to obtain a [Native SSO](https://openid.net/specs/openid-connect-native-sso-1_0.html)-compliant ID token in the refresh token flow.
         #
         field :session_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sessionId') } }
 

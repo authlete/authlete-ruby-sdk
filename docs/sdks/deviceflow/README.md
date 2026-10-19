@@ -10,9 +10,7 @@
 
 ## authorization
 
-This API parses request parameters of a [device authorization request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1)
-and returns necessary data for the authorization server implementation to process the device authorization
-request further.
+This API parses request parameters of a [device authorization request](https://datatracker.ietf.org/doc/html/rfc8628#section-3.1) and returns necessary data for the authorization server implementation to process the device authorization request further.
 
 
 ### Example Usage
@@ -23,9 +21,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.device_flow.authorization(service_id: '<id>', device_authorization_request: Models::Components::DeviceAuthorizationRequest.new(
+res = s.device_flow.authorization(device_authorization_request: Models::Components::DeviceAuthorizationRequest.new(
   parameters: 'client_id=26888344961664&scope=history.read',
   client_id: '26888344961664',
   client_secret: 'SfnYOLkJdofrb_66mTd6q03_SDoDEUnpXtvqFaE4k6L6UcpZzbdVJi2GpBj48AvGeDDllwsTruC62WYqQ_LGog'
@@ -41,8 +40,8 @@ end
 
 | Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                        | *::String*                                                                                          | :heavy_check_mark:                                                                                  | A service ID.                                                                                       |
 | `device_authorization_request`                                                                      | [Models::Components::DeviceAuthorizationRequest](../../models/shared/deviceauthorizationrequest.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `service_id`                                                                                        | *T.nilable(::String)*                                                                               | :heavy_minus_sign:                                                                                  | A service ID.                                                                                       |
 
 ### Response
 
@@ -53,6 +52,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -69,9 +69,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.device_flow.verification(service_id: '<id>', device_verification_request: Models::Components::DeviceVerificationRequest.new(
+res = s.device_flow.verification(device_verification_request: Models::Components::DeviceVerificationRequest.new(
   user_code: 'XWWKPBWVXQ'
 ))
 
@@ -85,8 +86,8 @@ end
 
 | Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                      | *::String*                                                                                        | :heavy_check_mark:                                                                                | A service ID.                                                                                     |
 | `device_verification_request`                                                                     | [Models::Components::DeviceVerificationRequest](../../models/shared/deviceverificationrequest.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `service_id`                                                                                      | *T.nilable(::String)*                                                                             | :heavy_minus_sign:                                                                                | A service ID.                                                                                     |
 
 ### Response
 
@@ -97,14 +98,13 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
 ## complete_request
 
-This API returns information about what action the authorization server should take after it receives
-the result of end-user's decision about whether the end-user has approved or rejected a client
-application's request.
+This API returns information about what action the authorization server should take after it receives the result of end-user's decision about whether the end-user has approved or rejected a client application's request.
 
 
 ### Example Usage
@@ -115,9 +115,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.device_flow.complete_request(service_id: '<id>', device_complete_request: Models::Components::DeviceCompleteRequest.new(
+res = s.device_flow.complete_request(device_complete_request: Models::Components::DeviceCompleteRequest.new(
   user_code: 'XWWKPBWVXQ',
   result: Models::Components::DeviceCompleteRequestResult::AUTHORIZED,
   subject: 'john'
@@ -133,8 +134,8 @@ end
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `service_id`                                                                              | *::String*                                                                                | :heavy_check_mark:                                                                        | A service ID.                                                                             |
 | `device_complete_request`                                                                 | [Models::Components::DeviceCompleteRequest](../../models/shared/devicecompleterequest.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `service_id`                                                                              | *T.nilable(::String)*                                                                     | :heavy_minus_sign:                                                                        | A service ID.                                                                             |
 
 ### Response
 
@@ -145,5 +146,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

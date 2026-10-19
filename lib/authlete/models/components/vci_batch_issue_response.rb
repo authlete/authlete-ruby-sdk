@@ -16,12 +16,10 @@ module Authlete
         field :result_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultCode') } }
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
-        # The next action that the implementation of the batch credential
-        # endpoint should take.
+        # The next action that the implementation of the batch credential endpoint should take.
         #
         field :action, Crystalline::Nilable.new(Models::Components::VciBatchIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciBatchIssueResponseAction, true) } }
-        # The content of the response that the implementation of the batch
-        # credential endpoint should return.
+        # The content of the response that the implementation of the batch credential endpoint should return.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 

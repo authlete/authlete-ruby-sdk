@@ -19,21 +19,16 @@ module Authlete
         # The next action that the authorization server implementation should take.
         #
         field :action, Crystalline::Nilable.new(Models::Components::BackchannelAuthenticationCompleteResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::BackchannelAuthenticationCompleteResponseAction, true) } }
-        # The content that the authorization server implementation is to return to the client
-        # application. Its format varies depending on the value of `action` parameter.
+        # The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
-        # The client ID of the client application that has made the backchannel authentication
-        # request.
+        # The client ID of the client application that has made the backchannel authentication request.
         #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
-        # The client ID alias of the client application that has made the backchannel authentication
-        # request.
+        # The client ID alias of the client application that has made the backchannel authentication request.
         #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
-        # `true` if the value of the client_id request parameter included in the backchannel
-        # authentication request is the client ID alias. `false` if the value is the original
-        # numeric client ID.
+        # `true` if the value of the client_id request parameter included in the backchannel authentication request is the client ID alias. `false` if the value is the original numeric client ID.
         #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
         # The name of the client application which has made the backchannel authentication request.
@@ -41,13 +36,10 @@ module Authlete
         field :client_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientName') } }
 
         field :delivery_mode, Crystalline::Nilable.new(Models::Components::DeliveryMode), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deliveryMode'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::DeliveryMode, true) } }
-        # The client notification endpoint to which a notification needs to be sent. This corresponds
-        # to the `client_notification_endpoint` metadata of the client application.
+        # The client notification endpoint to which a notification needs to be sent. This corresponds to the `client_notification_endpoint` metadata of the client application.
         #
         field :client_notification_endpoint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNotificationEndpoint') } }
-        # The client notification token which needs to be embedded as a Bearer token in the Authorization
-        # header in the notification. This is the value of the `client_notification_token` request
-        # parameter included in the backchannel authentication request.
+        # The client notification token which needs to be embedded as a Bearer token in the Authorization header in the notification. This is the value of the `client_notification_token` request parameter included in the backchannel authentication request.
         #
         field :client_notification_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNotificationToken') } }
         # The newly issued authentication request ID.
@@ -74,14 +66,10 @@ module Authlete
         # The issued access token in JWT format.
         #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
-        # The resources specified by the `resource` request parameters or by the `resource` property
-        # in the request object. If both are given, the values in the request object should be
-        # set. See "Resource Indicators for OAuth 2.0" for details.
+        # The resources specified by the `resource` request parameters or by the `resource` property in the request object. If both are given, the values in the request object should be set. See "Resource Indicators for OAuth 2.0" for details.
         #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The attributes of this service that the client application belongs to.
@@ -92,9 +80,7 @@ module Authlete
         field :client_attributes, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAttributes') } }
         # the value of the `grant_id` request parameter of the device authorization request.
         #
-        # The `grant_id` request parameter is defined in
-        # [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)
-        # , which is supported by Authlete 2.3 and newer versions.
+        # The `grant_id` request parameter is defined in [Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html) , which is supported by Authlete 2.3 and newer versions.
         #
         field :grant_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('grantId') } }
         # The entity ID of the client.
@@ -113,9 +99,12 @@ module Authlete
         # When `true`, the client metadata was retrieved via the CIMD mechanism rather than from the Authlete database.
         #
         field :metadata_document_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentUsed') } }
+        # the claims that the user has consented for the client application to know.
+        #
+        field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
 
-        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationCompleteResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), delivery_mode: T.nilable(Models::Components::DeliveryMode), client_notification_endpoint: T.nilable(::String), client_notification_token: T.nilable(::String), auth_req_id: T.nilable(::String), access_token: T.nilable(::String), refresh_token: T.nilable(::String), id_token: T.nilable(::String), access_token_duration: T.nilable(::Integer), refresh_token_duration: T.nilable(::Integer), id_token_duration: T.nilable(::Integer), jwt_access_token: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), grant_id: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean)).void }
-        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, client_id: nil, client_id_alias: nil, client_id_alias_used: nil, client_name: nil, delivery_mode: nil, client_notification_endpoint: nil, client_notification_token: nil, auth_req_id: nil, access_token: nil, refresh_token: nil, id_token: nil, access_token_duration: nil, refresh_token_duration: nil, id_token_duration: nil, jwt_access_token: nil, resources: nil, authorization_details: nil, service_attributes: nil, client_attributes: nil, grant_id: nil, client_entity_id: nil, client_entity_id_used: nil, metadata_document_location: nil, metadata_document_used: nil)
+        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::BackchannelAuthenticationCompleteResponseAction), response_content: T.nilable(::String), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_used: T.nilable(T::Boolean), client_name: T.nilable(::String), delivery_mode: T.nilable(Models::Components::DeliveryMode), client_notification_endpoint: T.nilable(::String), client_notification_token: T.nilable(::String), auth_req_id: T.nilable(::String), access_token: T.nilable(::String), refresh_token: T.nilable(::String), id_token: T.nilable(::String), access_token_duration: T.nilable(::Integer), refresh_token_duration: T.nilable(::Integer), id_token_duration: T.nilable(::Integer), jwt_access_token: T.nilable(::String), resources: T.nilable(T::Array[::String]), authorization_details: T.nilable(Models::Components::AuthzDetails), service_attributes: T.nilable(T::Array[Models::Components::Pair]), client_attributes: T.nilable(T::Array[Models::Components::Pair]), grant_id: T.nilable(::String), client_entity_id: T.nilable(::String), client_entity_id_used: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_used: T.nilable(T::Boolean), consented_claims: T.nilable(T::Array[::String])).void }
+        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, client_id: nil, client_id_alias: nil, client_id_alias_used: nil, client_name: nil, delivery_mode: nil, client_notification_endpoint: nil, client_notification_token: nil, auth_req_id: nil, access_token: nil, refresh_token: nil, id_token: nil, access_token_duration: nil, refresh_token_duration: nil, id_token_duration: nil, jwt_access_token: nil, resources: nil, authorization_details: nil, service_attributes: nil, client_attributes: nil, grant_id: nil, client_entity_id: nil, client_entity_id_used: nil, metadata_document_location: nil, metadata_document_used: nil, consented_claims: nil)
           @result_code = result_code
           @result_message = result_message
           @action = action
@@ -144,6 +133,7 @@ module Authlete
           @client_entity_id_used = client_entity_id_used
           @metadata_document_location = metadata_document_location
           @metadata_document_used = metadata_document_used
+          @consented_claims = consented_claims
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -177,6 +167,7 @@ module Authlete
           return false unless @client_entity_id_used == other.client_entity_id_used
           return false unless @metadata_document_location == other.metadata_document_location
           return false unless @metadata_document_used == other.metadata_document_used
+          return false unless @consented_claims == other.consented_claims
           true
         end
       end

@@ -14,8 +14,7 @@ module Authlete
 
         # The pushed authorization request body received from the client application.
         #
-        # The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from
-        # the client application.
+        # The value of parameters is the entire entity body (which is formatted in `application/x-www-form-urlencoded`) of the request from the client application.
         #
         field :parameters, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('parameters'), required: true }, 'form': { 'field_name': 'parameters' } }
         # The client ID extracted from `Authorization` header of the pushed request from the client application.
@@ -38,18 +37,13 @@ module Authlete
         # HTTP URL base (for DPoP validation).
         #
         field :htu, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htu') }, 'form': { 'field_name': 'htu' } }
-        # The value of the `OAuth-Client-Attestation` HTTP header, which is defined in the specification
-        # of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).
+        # The value of the `OAuth-Client-Attestation` HTTP header, which is defined in the specification of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).
         #
         field :oauth_client_attestation, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('oauthClientAttestation') }, 'form': { 'field_name': 'oauthClientAttestation' } }
-        # The value of the `OAuth-Client-Attestation-PoP` HTTP header, which is defined in the specification
-        # of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).
+        # The value of the `OAuth-Client-Attestation-PoP` HTTP header, which is defined in the specification of [OAuth 2.0 Attestation-Based Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/).
         #
         field :oauth_client_attestation_pop, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('oauthClientAttestationPop') }, 'form': { 'field_name': 'oauthClientAttestationPop' } }
-        # The flag indicating whether to require the DPoP proof JWT to include the `nonce` claim. Even if
-        # the service's `dpopNonceRequired` property is `false`, calling the `/pushed_auth_req` API with
-        # this `dpopNonceRequired` parameter `true` will force the Authlete API to check whether the DPoP
-        # proof JWT includes the expected `nonce` value.
+        # The flag indicating whether to require the DPoP proof JWT to include the `nonce` claim. Even if the service's `dpopNonceRequired` property is `false`, calling the `/pushed_auth_req` API with this `dpopNonceRequired` parameter `true` will force the Authlete API to check whether the DPoP proof JWT includes the expected `nonce` value.
         #
         field :dpop_nonce_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonceRequired') }, 'form': { 'field_name': 'dpopNonceRequired' } }
 

@@ -16,8 +16,7 @@ module Authlete
         field :key, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('key') } }
         # The value part.
         field :value, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('value') } }
-        # The flag to indicate whether this property hidden from or visible to client applications.
-        # If `true`, this property is hidden from client applications. Otherwise, this property is visible to client applications.
+        # The flag to indicate whether this property hidden from or visible to client applications. If `true`, this property is hidden from client applications. Otherwise, this property is visible to client applications.
         #
         field :hidden, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('hidden') } }
 

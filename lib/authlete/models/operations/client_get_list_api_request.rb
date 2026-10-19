@@ -13,10 +13,8 @@ module Authlete
         include Crystalline::MetadataFields
 
         # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
-        # The developer of client applications. The default value is null. If this parameter is not set
-        # to `null`, client application of the specified developer are returned. Otherwise, all client
-        # applications that belong to the service are returned.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
+        # The developer of client applications. The default value is null. If this parameter is not set to `null`, client application of the specified developer are returned. Otherwise, all client applications that belong to the service are returned.
         #
         field :developer, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'developer', 'style': 'form', 'explode': true } }
         # Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
@@ -24,8 +22,8 @@ module Authlete
         # End index (exclusive) of the result set. The default value is 5. Must not be a negative number.
         field :end_, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'end', 'style': 'form', 'explode': true } }
 
-        sig { params(service_id: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
-        def initialize(service_id:, developer: nil, start: nil, end_: nil)
+        sig { params(service_id: T.nilable(::String), developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
+        def initialize(service_id: nil, developer: nil, start: nil, end_: nil)
           @service_id = service_id
           @developer = developer
           @start = start

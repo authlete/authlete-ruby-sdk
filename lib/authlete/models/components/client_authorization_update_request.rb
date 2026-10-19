@@ -12,14 +12,10 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The subject (= unique identifier) of the end-user who has granted authorization to the client
-        # application.
+        # The subject (= unique identifier) of the end-user who has granted authorization to the client application.
         #
         field :subject, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject'), required: true }, 'form': { 'field_name': 'subject' } }
-        # An array of new scopes. Optional. If a non-null value is given, the new scopes are set to all
-        # existing access tokens. If an API call is made using `"Content-Type: application/x-www-form-urlencoded"`,
-        # scope names listed in this request parameter should be delimited by spaces (after form encoding,
-        # spaces are converted to `+`).
+        # An array of new scopes. Optional. If a non-null value is given, the new scopes are set to all existing access tokens. If an API call is made using `"Content-Type: application/x-www-form-urlencoded"`, scope names listed in this request parameter should be delimited by spaces (after form encoding, spaces are converted to `+`).
         #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') }, 'form': { 'field_name': 'scopes' } }
 

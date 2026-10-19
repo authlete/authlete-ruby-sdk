@@ -10,8 +10,7 @@
 
 ## process_request
 
-This API parses request parameters of an authorization request and returns necessary data for the
-authorization server implementation to process the authorization request further.
+This API parses request parameters of an authorization request and returns necessary data for the authorization server implementation to process the authorization request further.
 
 
 ### Example Usage
@@ -22,9 +21,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.tokens.process_request(service_id: '<id>', token_request: Models::Components::TokenRequest.new(
+res = s.tokens.process_request(token_request: Models::Components::TokenRequest.new(
   parameters: 'grant_type=authorization_code&code=Xv_su944auuBgc5mfUnxXayiiQU9Z4-T_Yae_UfExmo&redirect_uri=https%3A%2F%2Fmy-client.example.com%2Fcb1&code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk',
   client_id: '26478243745571',
   client_secret: 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ'
@@ -40,8 +40,8 @@ end
 
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `service_id`                                                            | *::String*                                                              | :heavy_check_mark:                                                      | A service ID.                                                           |
 | `token_request`                                                         | [Models::Components::TokenRequest](../../models/shared/tokenrequest.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+| `service_id`                                                            | *T.nilable(::String)*                                                   | :heavy_minus_sign:                                                      | A service ID.                                                           |
 
 ### Response
 
@@ -52,13 +52,13 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
 ## fail_request
 
-This API generates a content of an error token response that the authorization server implementation
-returns to the client application.
+This API generates a content of an error token response that the authorization server implementation returns to the client application.
 
 
 ### Example Usage
@@ -69,9 +69,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.tokens.fail_request(service_id: '<id>', token_fail_request: Models::Components::TokenFailRequest.new(
+res = s.tokens.fail_request(token_fail_request: Models::Components::TokenFailRequest.new(
   ticket: '83BNqKIhGMyrkvop_7jQjv2Z1612LNdGSQKkvkrf47c',
   reason: Models::Components::TokenFailRequestReason::INVALID_RESOURCE_OWNER_CREDENTIALS
 ))
@@ -86,8 +87,8 @@ end
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `service_id`                                                                    | *::String*                                                                      | :heavy_check_mark:                                                              | A service ID.                                                                   |
 | `token_fail_request`                                                            | [Models::Components::TokenFailRequest](../../models/shared/tokenfailrequest.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| `service_id`                                                                    | *T.nilable(::String)*                                                           | :heavy_minus_sign:                                                              | A service ID.                                                                   |
 
 ### Response
 
@@ -98,13 +99,13 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
 ## issue_response
 
-This API generates a content of a successful token response that the authorization server implementation
-returns to the client application.
+This API generates a content of a successful token response that the authorization server implementation returns to the client application.
 
 
 ### Example Usage
@@ -115,9 +116,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.tokens.issue_response(service_id: '<id>', token_issue_request: Models::Components::TokenIssueRequest.new(
+res = s.tokens.issue_response(token_issue_request: Models::Components::TokenIssueRequest.new(
   ticket: 'p7SXQ9JFjng7KFOZdCMBKcoR3ift7B54l1LGIgQXqEM',
   subject: 'john'
 ))
@@ -132,8 +134,8 @@ end
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `service_id`                                                                      | *::String*                                                                        | :heavy_check_mark:                                                                | A service ID.                                                                     |
 | `token_issue_request`                                                             | [Models::Components::TokenIssueRequest](../../models/shared/tokenissuerequest.md) | :heavy_check_mark:                                                                | N/A                                                                               |
+| `service_id`                                                                      | *T.nilable(::String)*                                                             | :heavy_minus_sign:                                                                | A service ID.                                                                     |
 
 ### Response
 
@@ -144,5 +146,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

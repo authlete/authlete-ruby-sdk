@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::GrantMApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def g_m_request(); end
   def g_m_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

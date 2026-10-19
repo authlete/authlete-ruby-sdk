@@ -12,22 +12,22 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
         field :native_sso_request, Models::Components::NativeSsoRequest, { 'request': { 'media_type': 'application/json' } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        sig { params(service_id: ::String, native_sso_request: Models::Components::NativeSsoRequest).void }
-        def initialize(service_id:, native_sso_request:)
-          @service_id = service_id
+        sig { params(native_sso_request: Models::Components::NativeSsoRequest, service_id: T.nilable(::String)).void }
+        def initialize(native_sso_request:, service_id: nil)
           @native_sso_request = native_sso_request
+          @service_id = service_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @native_sso_request == other.native_sso_request
+          return false unless @service_id == other.service_id
           true
         end
       end

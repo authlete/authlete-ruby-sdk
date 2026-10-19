@@ -19,3 +19,6 @@ value = TokenFailRequestReason::UNKNOWN
 | `UNKNOWN`                            | UNKNOWN                              |
 | `INVALID_RESOURCE_OWNER_CREDENTIALS` | INVALID_RESOURCE_OWNER_CREDENTIALS   |
 | `INVALID_TARGET`                     | INVALID_TARGET                       |
+| `INVALID_CLIENT`                     | INVALID_CLIENT                       |
+| `UNAUTHORIZED_CLIENT`                | UNAUTHORIZED_CLIENT                  |
+| `INVALID_SCOPE`                      | INVALID_SCOPE                        |

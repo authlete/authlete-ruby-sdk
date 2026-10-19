@@ -13,12 +13,12 @@ module Authlete
         include Crystalline::MetadataFields
 
         # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
         field :client, Crystalline::Nilable.new(Models::Components::ClientInput), { 'request': { 'media_type': 'application/json' } }
 
-        sig { params(service_id: ::String, client: T.nilable(Models::Components::ClientInput)).void }
-        def initialize(service_id:, client: nil)
+        sig { params(service_id: T.nilable(::String), client: T.nilable(Models::Components::ClientInput)).void }
+        def initialize(service_id: nil, client: nil)
           @service_id = service_id
           @client = client
         end

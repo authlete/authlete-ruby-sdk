@@ -14,6 +14,8 @@ class Authlete::Models::Operations::NativeSsoLogoutApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def native_sso_logout_response(); end
   def native_sso_logout_response=(str_); end
 end

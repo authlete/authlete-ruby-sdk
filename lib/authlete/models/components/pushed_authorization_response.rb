@@ -21,17 +21,13 @@ module Authlete
         # The request_uri created to the client to be used as request_uri on the authorize call.
         #
         field :request_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestUri') } }
-        # The content that the authorization server implementation is to return to the client
-        # application.
+        # The content that the authorization server implementation is to return to the client application.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
-        # The client authentication method that the client application declares that it uses at the token
-        # endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic
-        # Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :client_auth_method, Crystalline::Nilable.new(Models::Components::PushedAuthorizationResponseClientAuthMethod), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientAuthMethod'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::PushedAuthorizationResponseClientAuthMethod, true) } }
-        # Get the expected nonce value for DPoP proof JWT, which should be used
-        # as the value of the `DPoP-Nonce` HTTP header.
+        # Get the expected nonce value for DPoP proof JWT, which should be used as the value of the `DPoP-Nonce` HTTP header.
         #
         field :dpop_nonce, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonce') } }
 

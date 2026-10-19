@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::VciBatchParseApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def vci_batch_parse_request(); end
   def vci_batch_parse_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

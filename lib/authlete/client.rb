@@ -16,7 +16,7 @@ module Authlete
   class Client
     extend T::Sig
 
-    attr_accessor :services, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :jwk_set_endpoint, :dynamic_client_registration, :ciba, :device_flow, :jose_object, :federation, :hardware_security_keys, :verifiable_credentials, :lifecycle, :authorization_management, :native_sso
+    attr_accessor :services, :audit, :clients, :client_management, :authorization, :pushed_authorization, :tokens, :introspection, :revocation, :userinfo, :token_management, :grant_management, :dynamic_client_registration, :ciba, :back_channel_logout, :device_flow, :federation, :hardware_security_keys, :verifiable_credentials, :lifecycle, :authorization_management, :native_sso
 
     # Instantiates the SDK, configuring it with the provided parameters.
     #
@@ -25,6 +25,7 @@ module Authlete
     # @param timeout_ms [Integer, nil] Request timeout in milliseconds for all operations
     # @param security [Models::Components::Security, nil] The security details required for authentication
     # @param security_source [Proc{|| Models::Components::Security, nil}] A function that returns security details required for authentication
+    # @param service_id [String, nil] Configures the service_id parameter for all supported operations
     # @param server_idx [Integer, nil] The index of the server to use for all operations
     # @param server_url [String, nil] The server URL to use for all operations
     # @param url_params [Hash{Symbol => String}, nil] Parameters to optionally template the server URL with
@@ -35,12 +36,13 @@ module Authlete
         timeout_ms: T.nilable(Integer),
         bearer: T.nilable(::String),
         security_source: T.nilable(T.proc.returns(Models::Components::Security)),
+        service_id: T.nilable(::String),
         server_idx: T.nilable(Integer),
         server_url: T.nilable(String),
         url_params: T.nilable(T::Hash[Symbol, String])
       ).void
     end
-    def initialize(client: nil, retry_config: nil, timeout_ms: nil, bearer: nil, security_source: nil, server_idx: nil, server_url: nil, url_params: nil)
+    def initialize(client: nil, retry_config: nil, timeout_ms: nil, bearer: nil, security_source: nil, service_id: nil, server_idx: nil, server_url: nil, url_params: nil)
 
       connection_options = {
         request: {
@@ -61,6 +63,18 @@ module Authlete
       end
 
       server_idx = 0 if server_idx.nil?
+
+      globals = {
+        'parameters': {
+          'queryParam': {
+          },
+          'pathParam': {
+            'service_id': service_id,
+          },
+          'header': {
+          }
+        }
+      }
       hooks = SDKHooks::Hooks.new
       @sdk_configuration = SDKConfiguration.new(
         client,
@@ -70,7 +84,8 @@ module Authlete
         bearer,
         security_source,
         server_url,
-        server_idx
+        server_idx,
+        globals
       )
       @sdk_configuration = hooks.sdk_init(config: @sdk_configuration)
       init_sdks
@@ -79,6 +94,7 @@ module Authlete
     sig { void }
     def init_sdks
       @services = Services.new(@sdk_configuration)
+      @audit = Audit.new(@sdk_configuration)
       @clients = Clients.new(@sdk_configuration)
       @client_management = ClientManagement.new(@sdk_configuration)
       @authorization = Authorization.new(@sdk_configuration)
@@ -89,11 +105,10 @@ module Authlete
       @userinfo = Userinfo.new(@sdk_configuration)
       @token_management = TokenManagement.new(@sdk_configuration)
       @grant_management = GrantManagement.new(@sdk_configuration)
-      @jwk_set_endpoint = JWKSetEndpoint.new(@sdk_configuration)
       @dynamic_client_registration = DynamicClientRegistration.new(@sdk_configuration)
       @ciba = Ciba.new(@sdk_configuration)
+      @back_channel_logout = BackChannelLogout.new(@sdk_configuration)
       @device_flow = DeviceFlow.new(@sdk_configuration)
-      @jose_object = JoseObject.new(@sdk_configuration)
       @federation = Federation.new(@sdk_configuration)
       @hardware_security_keys = HardwareSecurityKeys.new(@sdk_configuration)
       @verifiable_credentials = VerifiableCredentials.new(@sdk_configuration)

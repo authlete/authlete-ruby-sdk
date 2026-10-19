@@ -15,78 +15,64 @@ module Authlete
         # The sequential number of the client. The value of this property is assigned by Authlete.
         #
         field :number, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('number') } }
-        # The name of the client application. This property corresponds to `client_name` in
-        # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # The name of the client application. This property corresponds to `client_name` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :client_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientName') } }
-        # Client names with language tags. If the client application has different names for different
-        # languages, this property can be used to register the names.
+        # Client names with language tags. If the client application has different names for different languages, this property can be used to register the names.
         #
         field :client_names, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNames') } }
         # The description about the client application.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('description') } }
-        # Descriptions about the client application with language tags. If the client application has different
-        # descriptions for different languages, this property can be used to register the descriptions.
+        # Descriptions about the client application with language tags. If the client application has different descriptions for different languages, this property can be used to register the descriptions.
         #
         field :descriptions, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('descriptions') } }
         # The client identifier used in Authlete API calls. The value of this property is assigned by Authlete.
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
-        # The value of the client's `client_id` property used in OAuth and OpenID Connect calls. By
-        # default, this is a string version of the `clientId` property.
+        # The value of the client's `client_id` property used in OAuth and OpenID Connect calls. By default, this is a string version of the `clientId` property.
         #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # Deprecated. Always set to `true`.
         field :client_id_alias_enabled, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasEnabled') } }
-        # The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
-        # for details.
+        # The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1) for details.
         #
         field :client_type, Crystalline::Nilable.new(Models::Components::ClientType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::ClientType, true) } }
         # The URL pointing to the logo image of the client application.
         #
-        # This property corresponds to `logo_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2.
-        # Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # This property corresponds to `logo_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :logo_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('logoUri') } }
-        # Logo image URLs with language tags. If the client application has different logo images for
-        # different languages, this property can be used to register URLs of the images.
+        # Logo image URLs with language tags. If the client application has different logo images for different languages, this property can be used to register URLs of the images.
         #
         field :logo_uris, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('logoUris') } }
         # The URL pointing to the "Terms Of Service" page.
         #
-        # This property corresponds to `tos_uri` in
-        # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # This property corresponds to `tos_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :tos_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tosUri') } }
         # URLs of "Terms Of Service" pages with language tags.
         #
-        # If the client application has different "Terms Of Service" pages for different languages,
-        # this property can be used to register the URLs.
+        # If the client application has different "Terms Of Service" pages for different languages, this property can be used to register the URLs.
         #
         field :tos_uris, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tosUris') } }
         # The URL pointing to the page which describes the policy as to how end-user's profile data is used.
         #
-        # This property corresponds to `policy_uri` in
-        # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # This property corresponds to `policy_uri` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :policy_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('policyUri') } }
-        # URLs of policy pages with language tags.
-        # If the client application has different policy pages for different languages, this property can be used to register the URLs.
+        # URLs of policy pages with language tags. If the client application has different policy pages for different languages, this property can be used to register the URLs.
         #
         field :policy_uris, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('policyUris') } }
-        # The sequential number of the service of the client application. The value of this property is
-        # assigned by Authlete.
+        # The sequential number of the service of the client application. The value of this property is assigned by Authlete.
         #
         field :service_number, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('serviceNumber') } }
         # The default maximum authentication age in seconds. This value is used when an authorization request from the client application does not have `max_age` request parameter.
         #
-        # This property corresponds to `default_max_age` in
-        # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # This property corresponds to `default_max_age` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :default_max_age, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('defaultMaxAge') } }
         # The flag to indicate whether this client requires `auth_time` claim to be embedded in the ID token.
         #
-        # This property corresponds to `require_auth_time` in
-        # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # This property corresponds to `require_auth_time` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :auth_time_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authTimeRequired') } }
         # The time at which this client was created. The value is represented as milliseconds since the UNIX epoch (1970-01-01).
@@ -96,39 +82,32 @@ module Authlete
         # The flag to indicate whether this client use TLS client certificate bound access tokens.
         #
         field :tls_client_certificate_bound_access_tokens, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tlsClientCertificateBoundAccessTokens') } }
-        # The boolean flag to indicate whether a user code is required when this client makes a backchannel
-        # authentication request.
+        # The boolean flag to indicate whether a user code is required when this client makes a backchannel authentication request.
         #
         # This property corresponds to the `backchannel_user_code_parameter` metadata.
         #
         field :bc_user_code_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('bcUserCodeRequired') } }
-        # The flag to indicate whether this client has been registered dynamically.
-        # For more details, see [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591).
+        # The flag indicating whether the client requires that a `sid` (session ID) claim be included in the logout token sent to `backchannelLogoutUri`.
+        #
+        field :backchannel_logout_session_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('backchannelLogoutSessionRequired') } }
+        # The flag to indicate whether this client has been registered dynamically. For more details, see [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591).
         #
         field :dynamically_registered, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dynamicallyRegistered') } }
-        # The flag to indicate whether this client is required to use the pushed authorization request endpoint.
-        # This property corresponds to the `require_pushed_authorization_requests` client metadata defined
-        # in "OAuth 2.0 Pushed Authorization Requests".
+        # The flag to indicate whether this client is required to use the pushed authorization request endpoint. This property corresponds to the `require_pushed_authorization_requests` client metadata defined in "OAuth 2.0 Pushed Authorization Requests".
         #
         field :par_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('parRequired') } }
-        # The flag to indicate whether authorization requests from this client are always required to
-        # utilize a request object by using either `request` or `request_uri` request parameter.
+        # The flag to indicate whether authorization requests from this client are always required to utilize a request object by using either `request` or `request_uri` request parameter.
         #
-        # If this flag is set to `true` and the service's `traditionalRequestObjectProcessingApplied` is
-        # set to `false`, authorization requests from this client are processed as if `require_signed_request_object`
-        # client metadata of this client is `true`. The metadata is defined in "JAR (JWT Secured Authorization Request)".
+        # If this flag is set to `true` and the service's `traditionalRequestObjectProcessingApplied` is set to `false`, authorization requests from this client are processed as if `require_signed_request_object` client metadata of this client is `true`. The metadata is defined in "JAR (JWT Secured Authorization Request)".
         #
         field :request_object_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestObjectRequired') } }
-        # The flag indicating whether encryption of request object is required when the request object
-        # is passed through the front channel.
+        # The flag indicating whether encryption of request object is required when the request object is passed through the front channel.
         #
         field :front_channel_request_object_encryption_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('frontChannelRequestObjectEncryptionRequired') } }
-        # The flag indicating whether the JWE alg of encrypted request object must match the `request_object_encryption_alg`
-        # client metadata.
+        # The flag indicating whether the JWE alg of encrypted request object must match the `request_object_encryption_alg` client metadata.
         #
         field :request_object_encryption_alg_match_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestObjectEncryptionAlgMatchRequired') } }
-        # The flag indicating whether the JWE enc of encrypted request object must match the `request_object_encryption_enc`
-        # client metadata.
+        # The flag indicating whether the JWE enc of encrypted request object must match the `request_object_encryption_enc` client metadata.
         #
         field :request_object_encryption_enc_match_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestObjectEncryptionEncMatchRequired') } }
         # If `Enabled` is selected, an attempt to issue a new access token invalidates existing access tokens that are associated with the same combination of subject and client.
@@ -147,9 +126,7 @@ module Authlete
         field :pkce_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('pkceRequired') } }
         # The flag to indicate whether `S256` is always required as the code challenge method whenever [PKCE (RFC 7636)](https://tools.ietf.org/html/rfc7636) is used.
         #
-        # If this flag is set to `true`, `code_challenge_method=S256` must be included in the authorization request
-        # whenever it includes the `code_challenge` request parameter.
-        # Neither omission of the `code_challenge_method` request parameter nor use of plain (`code_challenge_method=plain`) is allowed.
+        # If this flag is set to `true`, `code_challenge_method=S256` must be included in the authorization request whenever it includes the `code_challenge` request parameter. Neither omission of the `code_challenge_method` request parameter nor use of plain (`code_challenge_method=plain`) is allowed.
         #
         field :pkce_s256_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('pkceS256Required') } }
         # The flag indicating whether this service signs responses from the resource server.
@@ -163,33 +140,27 @@ module Authlete
         field :locked, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('locked') } }
         # The flag indicating whether the client intends to prefer mutual TLS endpoints over non-MTLS endpoints.
         #
-        # This property corresponds to the `use_mtls_endpoint_aliases` client metadata that is defined in
-        # [FAPI 2.0 Security Profile, 8.1.1. use_mtls_endpoint_aliases](https://openid.bitbucket.io/fapi/fapi-2_0-security-profile.html#section-8.1.1).
+        # This property corresponds to the `use_mtls_endpoint_aliases` client metadata that is defined in [FAPI 2.0 Security Profile, 8.1.1. use_mtls_endpoint_aliases](https://openid.bitbucket.io/fapi/fapi-2_0-security-profile.html#section-8.1.1).
         #
         field :mtls_endpoint_aliases_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('mtlsEndpointAliasesUsed') } }
-        # The flag indicating whether this client is in scope for token migration 
-        # operations.
+        # The flag indicating whether this client is in scope for token migration operations.
         #
         field :in_scope_for_token_migration, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('inScopeForTokenMigration') } }
-        # the expiration time of the trust chain that was used when this client was registered or updated by the mechanism
-        # defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).
+        # the expiration time of the trust chain that was used when this client was registered or updated by the mechanism defined in OpenID Connect Federation 1.0. The value is represented as milliseconds elapsed since the Unix epoch (1970-01-01).
         #
         field :trust_chain_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('trustChainExpiresAt') } }
         # the time at which the trust chain was updated by the mechanism defined in OpenID Connect Federation 1.0
         #
         field :trust_chain_updated_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('trustChainUpdatedAt') } }
-        # The flag indicating whether this client was registered by the
-        # "automatic" client registration of OIDC Federation.
+        # The flag indicating whether this client was registered by the "automatic" client registration of OIDC Federation.
         #
         field :automatically_registered, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('automaticallyRegistered') } }
-        # The flag indicating whether this client was registered by the
-        # "explicit" client registration of OIDC Federation.
+        # The flag indicating whether this client was registered by the "explicit" client registration of OIDC Federation.
         #
         field :explicitly_registered, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('explicitlyRegistered') } }
         # True if credential responses to this client must be always encrypted.
         field :credential_response_encryption_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialResponseEncryptionRequired') } }
-        # Location of the Client ID Metadata Document that was used for this client.
-        # This property is set when client metadata was retrieved via the OAuth Client ID Metadata Document (CIMD) mechanism.
+        # Location of the Client ID Metadata Document that was used for this client. This property is set when client metadata was retrieved via the OAuth Client ID Metadata Document (CIMD) mechanism.
         #
         field :metadata_document_location, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('metadataDocumentLocation') } }
         # Expiration time of the metadata document (UNIX time in milliseconds).
@@ -208,8 +179,8 @@ module Authlete
         #
         field :entity_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('entityId') } }
 
-        sig { params(number: T.nilable(::Integer), client_name: T.nilable(::String), client_names: T.nilable(T::Array[Models::Components::TaggedValue]), description: T.nilable(::String), descriptions: T.nilable(T::Array[Models::Components::TaggedValue]), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_enabled: T.nilable(T::Boolean), client_type: T.nilable(Models::Components::ClientType), logo_uri: T.nilable(::String), logo_uris: T.nilable(T::Array[Models::Components::TaggedValue]), tos_uri: T.nilable(::String), tos_uris: T.nilable(T::Array[Models::Components::TaggedValue]), policy_uri: T.nilable(::String), policy_uris: T.nilable(T::Array[Models::Components::TaggedValue]), service_number: T.nilable(::Integer), default_max_age: T.nilable(::Integer), auth_time_required: T.nilable(T::Boolean), created_at: T.nilable(::Integer), modified_at: T.nilable(::Integer), tls_client_certificate_bound_access_tokens: T.nilable(T::Boolean), bc_user_code_required: T.nilable(T::Boolean), dynamically_registered: T.nilable(T::Boolean), par_required: T.nilable(T::Boolean), request_object_required: T.nilable(T::Boolean), front_channel_request_object_encryption_required: T.nilable(T::Boolean), request_object_encryption_alg_match_required: T.nilable(T::Boolean), request_object_encryption_enc_match_required: T.nilable(T::Boolean), single_access_token_per_subject: T.nilable(T::Boolean), pkce_required: T.nilable(T::Boolean), pkce_s256_required: T.nilable(T::Boolean), rs_request_signed: T.nilable(T::Boolean), dpop_required: T.nilable(T::Boolean), locked: T.nilable(T::Boolean), mtls_endpoint_aliases_used: T.nilable(T::Boolean), in_scope_for_token_migration: T.nilable(T::Boolean), trust_chain_expires_at: T.nilable(::Integer), trust_chain_updated_at: T.nilable(::Integer), automatically_registered: T.nilable(T::Boolean), explicitly_registered: T.nilable(T::Boolean), credential_response_encryption_required: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_expires_at: T.nilable(::Integer), metadata_document_updated_at: T.nilable(::Integer), discovered_by_metadata_document: T.nilable(T::Boolean), client_source: T.nilable(Models::Components::ClientLimitedAuthorizationClientSource), entity_id: T.nilable(::String)).void }
-        def initialize(number: nil, client_name: nil, client_names: nil, description: nil, descriptions: nil, client_id: nil, client_id_alias: nil, client_id_alias_enabled: nil, client_type: nil, logo_uri: nil, logo_uris: nil, tos_uri: nil, tos_uris: nil, policy_uri: nil, policy_uris: nil, service_number: nil, default_max_age: nil, auth_time_required: nil, created_at: nil, modified_at: nil, tls_client_certificate_bound_access_tokens: nil, bc_user_code_required: nil, dynamically_registered: nil, par_required: nil, request_object_required: nil, front_channel_request_object_encryption_required: nil, request_object_encryption_alg_match_required: nil, request_object_encryption_enc_match_required: nil, single_access_token_per_subject: nil, pkce_required: nil, pkce_s256_required: nil, rs_request_signed: nil, dpop_required: nil, locked: nil, mtls_endpoint_aliases_used: nil, in_scope_for_token_migration: nil, trust_chain_expires_at: nil, trust_chain_updated_at: nil, automatically_registered: nil, explicitly_registered: nil, credential_response_encryption_required: nil, metadata_document_location: nil, metadata_document_expires_at: nil, metadata_document_updated_at: nil, discovered_by_metadata_document: nil, client_source: nil, entity_id: nil)
+        sig { params(number: T.nilable(::Integer), client_name: T.nilable(::String), client_names: T.nilable(T::Array[Models::Components::TaggedValue]), description: T.nilable(::String), descriptions: T.nilable(T::Array[Models::Components::TaggedValue]), client_id: T.nilable(::Integer), client_id_alias: T.nilable(::String), client_id_alias_enabled: T.nilable(T::Boolean), client_type: T.nilable(Models::Components::ClientType), logo_uri: T.nilable(::String), logo_uris: T.nilable(T::Array[Models::Components::TaggedValue]), tos_uri: T.nilable(::String), tos_uris: T.nilable(T::Array[Models::Components::TaggedValue]), policy_uri: T.nilable(::String), policy_uris: T.nilable(T::Array[Models::Components::TaggedValue]), service_number: T.nilable(::Integer), default_max_age: T.nilable(::Integer), auth_time_required: T.nilable(T::Boolean), created_at: T.nilable(::Integer), modified_at: T.nilable(::Integer), tls_client_certificate_bound_access_tokens: T.nilable(T::Boolean), bc_user_code_required: T.nilable(T::Boolean), backchannel_logout_session_required: T.nilable(T::Boolean), dynamically_registered: T.nilable(T::Boolean), par_required: T.nilable(T::Boolean), request_object_required: T.nilable(T::Boolean), front_channel_request_object_encryption_required: T.nilable(T::Boolean), request_object_encryption_alg_match_required: T.nilable(T::Boolean), request_object_encryption_enc_match_required: T.nilable(T::Boolean), single_access_token_per_subject: T.nilable(T::Boolean), pkce_required: T.nilable(T::Boolean), pkce_s256_required: T.nilable(T::Boolean), rs_request_signed: T.nilable(T::Boolean), dpop_required: T.nilable(T::Boolean), locked: T.nilable(T::Boolean), mtls_endpoint_aliases_used: T.nilable(T::Boolean), in_scope_for_token_migration: T.nilable(T::Boolean), trust_chain_expires_at: T.nilable(::Integer), trust_chain_updated_at: T.nilable(::Integer), automatically_registered: T.nilable(T::Boolean), explicitly_registered: T.nilable(T::Boolean), credential_response_encryption_required: T.nilable(T::Boolean), metadata_document_location: T.nilable(::String), metadata_document_expires_at: T.nilable(::Integer), metadata_document_updated_at: T.nilable(::Integer), discovered_by_metadata_document: T.nilable(T::Boolean), client_source: T.nilable(Models::Components::ClientLimitedAuthorizationClientSource), entity_id: T.nilable(::String)).void }
+        def initialize(number: nil, client_name: nil, client_names: nil, description: nil, descriptions: nil, client_id: nil, client_id_alias: nil, client_id_alias_enabled: nil, client_type: nil, logo_uri: nil, logo_uris: nil, tos_uri: nil, tos_uris: nil, policy_uri: nil, policy_uris: nil, service_number: nil, default_max_age: nil, auth_time_required: nil, created_at: nil, modified_at: nil, tls_client_certificate_bound_access_tokens: nil, bc_user_code_required: nil, backchannel_logout_session_required: nil, dynamically_registered: nil, par_required: nil, request_object_required: nil, front_channel_request_object_encryption_required: nil, request_object_encryption_alg_match_required: nil, request_object_encryption_enc_match_required: nil, single_access_token_per_subject: nil, pkce_required: nil, pkce_s256_required: nil, rs_request_signed: nil, dpop_required: nil, locked: nil, mtls_endpoint_aliases_used: nil, in_scope_for_token_migration: nil, trust_chain_expires_at: nil, trust_chain_updated_at: nil, automatically_registered: nil, explicitly_registered: nil, credential_response_encryption_required: nil, metadata_document_location: nil, metadata_document_expires_at: nil, metadata_document_updated_at: nil, discovered_by_metadata_document: nil, client_source: nil, entity_id: nil)
           @number = number
           @client_name = client_name
           @client_names = client_names
@@ -232,6 +203,7 @@ module Authlete
           @modified_at = modified_at
           @tls_client_certificate_bound_access_tokens = tls_client_certificate_bound_access_tokens
           @bc_user_code_required = bc_user_code_required
+          @backchannel_logout_session_required = backchannel_logout_session_required
           @dynamically_registered = dynamically_registered
           @par_required = par_required
           @request_object_required = request_object_required
@@ -284,6 +256,7 @@ module Authlete
           return false unless @modified_at == other.modified_at
           return false unless @tls_client_certificate_bound_access_tokens == other.tls_client_certificate_bound_access_tokens
           return false unless @bc_user_code_required == other.bc_user_code_required
+          return false unless @backchannel_logout_session_required == other.backchannel_logout_session_required
           return false unless @dynamically_registered == other.dynamically_registered
           return false unless @par_required == other.par_required
           return false unless @request_object_required == other.request_object_required

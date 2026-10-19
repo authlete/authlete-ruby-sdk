@@ -16,14 +16,10 @@ module Authlete
         field :result_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultCode') } }
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
-        # The next action that the implementation of the credential issuer
-        # metadata endpoint (`/.well-known/openid-credential-issuer`)
-        # should take after getting a response from Authlete's
-        # `/vci/metadata` API.
+        # The next action that the implementation of the credential issuer metadata endpoint (`/.well-known/openid-credential-issuer`) should take after getting a response from Authlete's `/vci/metadata` API.
         #
         field :action, Crystalline::Nilable.new(Models::Components::VciMetadataResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciMetadataResponseAction, true) } }
-        # Get the content that the implementation of the credential issuer
-        # metadata endpoint should use when it constructs a response.
+        # Get the content that the implementation of the credential issuer metadata endpoint should use when it constructs a response.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 

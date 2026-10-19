@@ -28,9 +28,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.metadata(service_id: '<id>', vci_metadata_request: Models::Components::VciMetadataRequest.new(
+res = s.verifiable_credentials.metadata(vci_metadata_request: Models::Components::VciMetadataRequest.new(
   pretty: true
 ))
 
@@ -44,8 +45,8 @@ end
 
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `service_id`                                                                        | *::String*                                                                          | :heavy_check_mark:                                                                  | A service ID.                                                                       |
 | `vci_metadata_request`                                                              | [Models::Components::VciMetadataRequest](../../models/shared/vcimetadatarequest.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `service_id`                                                                        | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | A service ID.                                                                       |
 
 ### Response
 
@@ -56,6 +57,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -71,9 +73,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.jwt_issuer(service_id: '<id>', vci_jwtissuer_request: Models::Components::VciJwtissuerRequest.new(
+res = s.verifiable_credentials.jwt_issuer(vci_jwtissuer_request: Models::Components::VciJwtissuerRequest.new(
   pretty: true
 ))
 
@@ -87,8 +90,8 @@ end
 
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `service_id`                                                                          | *::String*                                                                            | :heavy_check_mark:                                                                    | A service ID.                                                                         |
 | `vci_jwtissuer_request`                                                               | [Models::Components::VciJwtissuerRequest](../../models/shared/vcijwtissuerrequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `service_id`                                                                          | *T.nilable(::String)*                                                                 | :heavy_minus_sign:                                                                    | A service ID.                                                                         |
 
 ### Response
 
@@ -99,6 +102,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -114,9 +118,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.jwks(service_id: '<id>', vci_jwks_request: Models::Components::VciJwksRequest.new(
+res = s.verifiable_credentials.jwks(vci_jwks_request: Models::Components::VciJwksRequest.new(
   pretty: false
 ))
 
@@ -130,8 +135,8 @@ end
 
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `service_id`                                                                | *::String*                                                                  | :heavy_check_mark:                                                          | A service ID.                                                               |
 | `vci_jwks_request`                                                          | [Models::Components::VciJwksRequest](../../models/shared/vcijwksrequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `service_id`                                                                | *T.nilable(::String)*                                                       | :heavy_minus_sign:                                                          | A service ID.                                                               |
 
 ### Response
 
@@ -142,6 +147,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -157,9 +163,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.create_offer(service_id: '<id>', vci_offer_create_request: Models::Components::VciOfferCreateRequest.new)
+res = s.verifiable_credentials.create_offer(vci_offer_create_request: Models::Components::VciOfferCreateRequest.new)
 
 unless res.vci_offer_create_response.nil?
   # handle response
@@ -171,8 +178,8 @@ end
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `service_id`                                                                              | *::String*                                                                                | :heavy_check_mark:                                                                        | A service ID.                                                                             |
 | `vci_offer_create_request`                                                                | [Models::Components::VciOfferCreateRequest](../../models/shared/vcioffercreaterequest.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `service_id`                                                                              | *T.nilable(::String)*                                                                     | :heavy_minus_sign:                                                                        | A service ID.                                                                             |
 
 ### Response
 
@@ -183,6 +190,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -198,9 +206,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.offer_info(service_id: '<id>', vci_offer_info_request: Models::Components::VciOfferInfoRequest.new)
+res = s.verifiable_credentials.offer_info(vci_offer_info_request: Models::Components::VciOfferInfoRequest.new)
 
 unless res.vci_offer_info_response.nil?
   # handle response
@@ -212,8 +221,8 @@ end
 
 | Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `service_id`                                                                          | *::String*                                                                            | :heavy_check_mark:                                                                    | A service ID.                                                                         |
 | `vci_offer_info_request`                                                              | [Models::Components::VciOfferInfoRequest](../../models/shared/vciofferinforequest.md) | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `service_id`                                                                          | *T.nilable(::String)*                                                                 | :heavy_minus_sign:                                                                    | A service ID.                                                                         |
 
 ### Response
 
@@ -224,6 +233,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -239,9 +249,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.parse(service_id: '<id>', vci_single_parse_request: Models::Components::VciSingleParseRequest.new)
+res = s.verifiable_credentials.parse(vci_single_parse_request: Models::Components::VciSingleParseRequest.new)
 
 unless res.vci_single_parse_response.nil?
   # handle response
@@ -253,8 +264,8 @@ end
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `service_id`                                                                              | *::String*                                                                                | :heavy_check_mark:                                                                        | A service ID.                                                                             |
 | `vci_single_parse_request`                                                                | [Models::Components::VciSingleParseRequest](../../models/shared/vcisingleparserequest.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `service_id`                                                                              | *T.nilable(::String)*                                                                     | :heavy_minus_sign:                                                                        | A service ID.                                                                             |
 
 ### Response
 
@@ -265,6 +276,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -280,9 +292,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.issue_response(service_id: '<id>', vci_single_issue_request: Models::Components::VciSingleIssueRequest.new)
+res = s.verifiable_credentials.issue_response(vci_single_issue_request: Models::Components::VciSingleIssueRequest.new)
 
 unless res.vci_single_issue_response.nil?
   # handle response
@@ -294,8 +307,8 @@ end
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `service_id`                                                                              | *::String*                                                                                | :heavy_check_mark:                                                                        | A service ID.                                                                             |
 | `vci_single_issue_request`                                                                | [Models::Components::VciSingleIssueRequest](../../models/shared/vcisingleissuerequest.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `service_id`                                                                              | *T.nilable(::String)*                                                                     | :heavy_minus_sign:                                                                        | A service ID.                                                                             |
 
 ### Response
 
@@ -306,6 +319,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -321,9 +335,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.batch_parse(service_id: '<id>', vci_batch_parse_request: Models::Components::VciBatchParseRequest.new)
+res = s.verifiable_credentials.batch_parse(vci_batch_parse_request: Models::Components::VciBatchParseRequest.new)
 
 unless res.vci_batch_parse_response.nil?
   # handle response
@@ -335,8 +350,8 @@ end
 
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `service_id`                                                                            | *::String*                                                                              | :heavy_check_mark:                                                                      | A service ID.                                                                           |
 | `vci_batch_parse_request`                                                               | [Models::Components::VciBatchParseRequest](../../models/shared/vcibatchparserequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `service_id`                                                                            | *T.nilable(::String)*                                                                   | :heavy_minus_sign:                                                                      | A service ID.                                                                           |
 
 ### Response
 
@@ -347,6 +362,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -362,9 +378,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.batch_issue(service_id: '<id>', vci_batch_issue_request: Models::Components::VciBatchIssueRequest.new)
+res = s.verifiable_credentials.batch_issue(vci_batch_issue_request: Models::Components::VciBatchIssueRequest.new)
 
 unless res.vci_batch_issue_response.nil?
   # handle response
@@ -376,8 +393,8 @@ end
 
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `service_id`                                                                            | *::String*                                                                              | :heavy_check_mark:                                                                      | A service ID.                                                                           |
 | `vci_batch_issue_request`                                                               | [Models::Components::VciBatchIssueRequest](../../models/shared/vcibatchissuerequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `service_id`                                                                            | *T.nilable(::String)*                                                                   | :heavy_minus_sign:                                                                      | A service ID.                                                                           |
 
 ### Response
 
@@ -388,6 +405,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -403,9 +421,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.deferred_parse(service_id: '<id>', vci_deferred_parse_request: Models::Components::VciDeferredParseRequest.new)
+res = s.verifiable_credentials.deferred_parse(vci_deferred_parse_request: Models::Components::VciDeferredParseRequest.new)
 
 unless res.vci_deferred_parse_response.nil?
   # handle response
@@ -417,8 +436,8 @@ end
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                  | *::String*                                                                                    | :heavy_check_mark:                                                                            | A service ID.                                                                                 |
 | `vci_deferred_parse_request`                                                                  | [Models::Components::VciDeferredParseRequest](../../models/shared/vcideferredparserequest.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `service_id`                                                                                  | *T.nilable(::String)*                                                                         | :heavy_minus_sign:                                                                            | A service ID.                                                                                 |
 
 ### Response
 
@@ -429,6 +448,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -444,9 +464,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.verifiable_credentials.deferred_issue(service_id: '<id>', vci_deferred_issue_request: Models::Components::VciDeferredIssueRequest.new)
+res = s.verifiable_credentials.deferred_issue(vci_deferred_issue_request: Models::Components::VciDeferredIssueRequest.new)
 
 unless res.vci_deferred_issue_response.nil?
   # handle response
@@ -458,8 +479,8 @@ end
 
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                  | *::String*                                                                                    | :heavy_check_mark:                                                                            | A service ID.                                                                                 |
 | `vci_deferred_issue_request`                                                                  | [Models::Components::VciDeferredIssueRequest](../../models/shared/vcideferredissuerequest.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `service_id`                                                                                  | *T.nilable(::String)*                                                                         | :heavy_minus_sign:                                                                            | A service ID.                                                                                 |
 
 ### Response
 
@@ -470,5 +491,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

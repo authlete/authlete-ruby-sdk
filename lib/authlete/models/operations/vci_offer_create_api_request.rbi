@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::VciOfferCreateApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def vci_offer_create_request(); end
   def vci_offer_create_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

@@ -13,7 +13,7 @@ module Authlete
         include Crystalline::MetadataFields
 
         # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # Client Identifier (client ID or client ID alias).
         #
         field :client_identifier, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'clientIdentifier', 'style': 'form', 'explode': true } }
@@ -26,8 +26,8 @@ module Authlete
         #
         field :end_, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'end', 'style': 'form', 'explode': true } }
 
-        sig { params(service_id: ::String, client_identifier: T.nilable(::String), subject: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
-        def initialize(service_id:, client_identifier: nil, subject: nil, start: nil, end_: nil)
+        sig { params(service_id: T.nilable(::String), client_identifier: T.nilable(::String), subject: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
+        def initialize(service_id: nil, client_identifier: nil, subject: nil, start: nil, end_: nil)
           @service_id = service_id
           @client_identifier = client_identifier
           @subject = subject

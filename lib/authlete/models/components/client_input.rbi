@@ -18,8 +18,6 @@ class Authlete::Models::Components::ClientInput
   def descriptions=(str_); end
   def client_id_alias(); end
   def client_id_alias=(str_); end
-  def client_id_alias_enabled(); end
-  def client_id_alias_enabled=(str_); end
   def client_type(); end
   def client_type=(str_); end
   def application_type(); end
@@ -34,12 +32,8 @@ class Authlete::Models::Components::ClientInput
   def tls_client_certificate_bound_access_tokens=(str_); end
   def software_id(); end
   def software_id=(str_); end
-  def developer(); end
-  def developer=(str_); end
   def software_version(); end
   def software_version=(str_); end
-  def registration_access_token_hash(); end
-  def registration_access_token_hash=(str_); end
   def grant_types(); end
   def grant_types=(str_); end
   def response_types(); end
@@ -100,6 +94,10 @@ class Authlete::Models::Components::ClientInput
   def bc_notification_endpoint=(str_); end
   def bc_user_code_required(); end
   def bc_user_code_required=(str_); end
+  def backchannel_logout_uri(); end
+  def backchannel_logout_uri=(str_); end
+  def backchannel_logout_session_required(); end
+  def backchannel_logout_session_required=(str_); end
   def attributes(); end
   def attributes=(str_); end
   def extension(); end
@@ -124,32 +122,10 @@ class Authlete::Models::Components::ClientInput
   def pkce_s256_required=(str_); end
   def dpop_required(); end
   def dpop_required=(str_); end
-  def automatically_registered(); end
-  def automatically_registered=(str_); end
-  def explicitly_registered(); end
-  def explicitly_registered=(str_); end
   def rs_request_signed(); end
   def rs_request_signed=(str_); end
   def rs_signed_request_key_id(); end
   def rs_signed_request_key_id=(str_); end
-  def client_registration_types(); end
-  def client_registration_types=(str_); end
-  def organization_name(); end
-  def organization_name=(str_); end
-  def signed_jwks_uri(); end
-  def signed_jwks_uri=(str_); end
-  def entity_id(); end
-  def entity_id=(str_); end
-  def trust_anchor_id(); end
-  def trust_anchor_id=(str_); end
-  def trust_chain(); end
-  def trust_chain=(str_); end
-  def trust_chain_expires_at(); end
-  def trust_chain_expires_at=(str_); end
-  def trust_chain_updated_at(); end
-  def trust_chain_updated_at=(str_); end
-  def locked(); end
-  def locked=(str_); end
   def credential_offer_endpoint(); end
   def credential_offer_endpoint=(str_); end
   def fapi_modes(); end
@@ -162,16 +138,10 @@ class Authlete::Models::Components::ClientInput
   def mtls_endpoint_aliases_used=(str_); end
   def in_scope_for_token_migration(); end
   def in_scope_for_token_migration=(str_); end
-  def metadata_document_location(); end
-  def metadata_document_location=(str_); end
-  def metadata_document_expires_at(); end
-  def metadata_document_expires_at=(str_); end
-  def metadata_document_updated_at(); end
-  def metadata_document_updated_at=(str_); end
-  def discovered_by_metadata_document(); end
-  def discovered_by_metadata_document=(str_); end
-  def client_source(); end
-  def client_source=(str_); end
+  def spiffe_id(); end
+  def spiffe_id=(str_); end
+  def spiffe_bundle_endpoint(); end
+  def spiffe_bundle_endpoint=(str_); end
   def additional_properties(); end
   def additional_properties=(str_); end
   def authorization_sign_alg(); end

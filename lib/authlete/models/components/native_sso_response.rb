@@ -19,8 +19,7 @@ module Authlete
         # The next action that the implementation of the token endpoint should take.
         #
         field :action, Crystalline::Nilable.new(Models::Components::NativeSsoResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::NativeSsoResponseAction, true) } }
-        # The response content that can be used as the message body of the token response that should be
-        # returned from the token endpoint.
+        # The response content that can be used as the message body of the token response that should be returned from the token endpoint.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The issued ID token.

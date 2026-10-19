@@ -23,34 +23,27 @@ module Authlete
         field :auth_time, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authTime') }, 'form': { 'field_name': 'authTime' } }
         # The Authentication Context Class Reference performed for the end-user authentication.
         field :acr, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acr') }, 'form': { 'field_name': 'acr' } }
-        # The claims of the end-user (= pieces of information about the end-user) in JSON format.
-        # See [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) for details about the format.
+        # The claims of the end-user (= pieces of information about the end-user) in JSON format. See [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) for details about the format.
         #
         field :claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') }, 'form': { 'field_name': 'claims' } }
         # Extra properties to associate with an access token and/or an authorization code.
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') }, 'form': { 'field_name': 'properties', 'json': true } }
-        # Scopes to associate with an access token and/or an authorization code.
-        # If a non-empty string array is given, it replaces the scopes specified by the original authorization request.
+        # Scopes to associate with an access token and/or an authorization code. If a non-empty string array is given, it replaces the scopes specified by the original authorization request.
         #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') }, 'form': { 'field_name': 'scopes' } }
-        # The value of the `sub` claim to embed in an ID token. If this request parameter is `null` or empty,
-        # the value of the `subject` request parameter is used as the value of the `sub` claim.
+        # The value of the `sub` claim to embed in an ID token. If this request parameter is `null` or empty, the value of the `subject` request parameter is used as the value of the `sub` claim.
         #
         field :sub, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sub') }, 'form': { 'field_name': 'sub' } }
-        # JSON that represents additional JWS header parameters for ID tokens that may be issued based on
-        # the authorization request.
+        # JSON that represents additional JWS header parameters for ID tokens that may be issued based on the authorization request.
         #
         field :idt_header_params, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idtHeaderParams') }, 'form': { 'field_name': 'idtHeaderParams' } }
         # Claim key-value pairs that are used to compute transformed claims.
         #
         field :claims_for_tx, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claimsForTx') }, 'form': { 'field_name': 'claimsForTx' } }
-        # the claims that the user has consented for the client application
-        # to know.
+        # the claims that the user has consented for the client application to know.
         #
         field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') }, 'form': { 'field_name': 'consentedClaims' } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') }, 'form': { 'field_name': 'authorizationDetails', 'json': true } }
         # Additional claims that are added to the payload part of the JWT access token.
@@ -59,18 +52,12 @@ module Authlete
         # The representation of an access token that may be issued as a result of the Authlete API call.
         #
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') }, 'form': { 'field_name': 'accessToken' } }
-        # The duration (in seconds) of the access token that may be issued as a result of the Authlete
-        # API call.
+        # The duration (in seconds) of the access token that may be issued as a result of the Authlete API call.
         #
-        # When this request parameter holds a positive integer, it is used as the duration of the access
-        # token in. In other cases, this request parameter is ignored.
+        # When this request parameter holds a positive integer, it is used as the duration of the access token in. In other cases, this request parameter is ignored.
         #
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') }, 'form': { 'field_name': 'accessTokenDuration' } }
-        # The session ID of the user's authentication session. The specified value will be embedded in the
-        # ID token as the value of the `sid` claim. This parameter needs to be provided only if you want
-        # to support the [OpenID Connect Native SSO for Mobile Apps 1.0](https://openid.net/specs/openid-connect-native-sso-1_0.html)
-        # specification (a.k.a. "Native SSO"). To enable support for the Native SSO specification, the
-        # `nativeSsoSupported` property of your service must be set to `true`.
+        # The session ID of the user's authentication session. The specified value will be embedded in the ID token as the value of the `sid` claim. This parameter needs to be provided only if you want to support the [OpenID Connect Native SSO for Mobile Apps 1.0](https://openid.net/specs/openid-connect-native-sso-1_0.html) specification (a.k.a. "Native SSO"). To enable support for the Native SSO specification, the `nativeSsoSupported` property of your service must be set to `true`.
         #
         field :session_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sessionId') }, 'form': { 'field_name': 'sessionId' } }
         # The type of the `aud` claim of the ID token being issued. Valid values are as follows.

@@ -19,9 +19,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.pushed_authorization.create(service_id: '<id>', pushed_authorization_request: Models::Components::PushedAuthorizationRequest.new(
+res = s.pushed_authorization.create(pushed_authorization_request: Models::Components::PushedAuthorizationRequest.new(
   parameters: 'response_type=code%20id_token&client_id=5921531358155430&redirect_uri=https%3A%2F%2Fserver.example.com%2Fcb&state=SOME_VALUE_ABLE_TO_PREVENT_CSRF&scope=openid&nonce=SOME_VALUE_ABLE_TO_PREVENT_REPLAY_ATTACK&code_challenge=5ZWDQJiryK3eaLtSeFV8y1XySMCWtyITxICLaTwvK8g&code_challenge_method=S256',
   client_id: '5921531358155430',
   client_secret: 'P_FouxWlI7zcOep_9vBwR9qMAVJQiCiUiK1HrAP4GziOyezHQpqY0f5dHXK4JT4tnvI51OkbWVoEM9GnOyJViA'
@@ -37,8 +38,8 @@ end
 
 | Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                        | *::String*                                                                                          | :heavy_check_mark:                                                                                  | A service ID.                                                                                       |
 | `pushed_authorization_request`                                                                      | [Models::Components::PushedAuthorizationRequest](../../models/shared/pushedauthorizationrequest.md) | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `service_id`                                                                                        | *T.nilable(::String)*                                                                               | :heavy_minus_sign:                                                                                  | A service ID.                                                                                       |
 
 ### Response
 
@@ -49,5 +50,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

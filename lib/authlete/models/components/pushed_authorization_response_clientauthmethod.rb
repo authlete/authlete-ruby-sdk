@@ -7,9 +7,7 @@
 module Authlete
   module Models
     module Components
-      # PushedAuthorizationResponseClientAuthMethod - The client authentication method that the client application declares that it uses at the token
-      # endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic
-      # Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+      # PushedAuthorizationResponseClientAuthMethod - The client authentication method that the client application declares that it uses at the token endpoint. This property corresponds to `token_endpoint_auth_method` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
       #
       class PushedAuthorizationResponseClientAuthMethod < T::Enum
         enums do
@@ -21,6 +19,7 @@ module Authlete
           TLS_CLIENT_AUTH = new('TLS_CLIENT_AUTH')
           SELF_SIGNED_TLS_CLIENT_AUTH = new('SELF_SIGNED_TLS_CLIENT_AUTH')
           ATTEST_JWT_CLIENT_AUTH = new('ATTEST_JWT_CLIENT_AUTH')
+          SPIFFE_JWT = new('SPIFFE_JWT')
         end
       end
     end

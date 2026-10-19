@@ -19,13 +19,16 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
+        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+
         field :service_get_list_response, Crystalline::Nilable.new(Models::Components::ServiceGetListResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, service_get_list_response: T.nilable(Models::Components::ServiceGetListResponse)).void }
-        def initialize(content_type:, status_code:, raw_response:, service_get_list_response: nil)
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], service_get_list_response: T.nilable(Models::Components::ServiceGetListResponse)).void }
+        def initialize(content_type:, status_code:, raw_response:, headers:, service_get_list_response: nil)
           @content_type = content_type
           @status_code = status_code
           @raw_response = raw_response
+          @headers = headers
           @service_get_list_response = service_get_list_response
         end
 
@@ -35,6 +38,7 @@ module Authlete
           return false unless @content_type == other.content_type
           return false unless @status_code == other.status_code
           return false unless @raw_response == other.raw_response
+          return false unless @headers == other.headers
           return false unless @service_get_list_response == other.service_get_list_response
           true
         end

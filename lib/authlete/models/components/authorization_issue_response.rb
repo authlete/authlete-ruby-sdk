@@ -18,38 +18,35 @@ module Authlete
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
         field :action, Crystalline::Nilable.new(Models::Components::AuthorizationIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::AuthorizationIssueResponseAction, true) } }
-        # The content that the authorization server implementation is to return to the client application.
-        # Its format varies depending on the value of `action` parameter.
+        # The content that the authorization server implementation is to return to the client application. Its format varies depending on the value of `action` parameter.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
-        # The newly issued access token. Note that an access token is issued from an authorization endpoint only
-        # when `response_type` contains token.
+        # The newly issued access token. Note that an access token is issued from an authorization endpoint only when `response_type` contains token.
         #
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
-        # The datetime at which the newly issued access token will expire. The value is represented in milliseconds
-        # since the Unix epoch (1970-01-01).
+        # The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
         #
         field :access_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAt') } }
         # The duration of the newly issued access token in seconds.
         #
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') } }
-        # The newly issued ID token. Note that an ID token is issued from an authorization endpoint only
-        # when `response_type` contains `id_token`.
+        # The newly issued ID token. Note that an ID token is issued from an authorization endpoint only when `response_type` contains `id_token`.
         #
         field :id_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('idToken') } }
-        # The newly issued authorization code. Note that an authorization code is issued only
-        # when `response_type` contains code.
+        # The newly issued authorization code. Note that an authorization code is issued only when `response_type` contains code.
         #
         field :authorization_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationCode') } }
-        # The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens,
-        # this property is always set to `null`.
+        # The newly issued access token in JWT format. If the service is not configured to issue JWT-based access tokens, this property is always set to `null`.
         #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
 
         field :ticket_info, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfo), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('ticketInfo') } }
+        # the claims that the user has consented for the client application to know.
+        #
+        field :consented_claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('consentedClaims') } }
 
-        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationIssueResponseAction), response_content: T.nilable(::String), access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), access_token_duration: T.nilable(::Integer), id_token: T.nilable(::String), authorization_code: T.nilable(::String), jwt_access_token: T.nilable(::String), ticket_info: T.nilable(Models::Components::AuthorizationTicketInfo)).void }
-        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, access_token: nil, access_token_expires_at: nil, access_token_duration: nil, id_token: nil, authorization_code: nil, jwt_access_token: nil, ticket_info: nil)
+        sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), action: T.nilable(Models::Components::AuthorizationIssueResponseAction), response_content: T.nilable(::String), access_token: T.nilable(::String), access_token_expires_at: T.nilable(::Integer), access_token_duration: T.nilable(::Integer), id_token: T.nilable(::String), authorization_code: T.nilable(::String), jwt_access_token: T.nilable(::String), ticket_info: T.nilable(Models::Components::AuthorizationTicketInfo), consented_claims: T.nilable(T::Array[::String])).void }
+        def initialize(result_code: nil, result_message: nil, action: nil, response_content: nil, access_token: nil, access_token_expires_at: nil, access_token_duration: nil, id_token: nil, authorization_code: nil, jwt_access_token: nil, ticket_info: nil, consented_claims: nil)
           @result_code = result_code
           @result_message = result_message
           @action = action
@@ -61,6 +58,7 @@ module Authlete
           @authorization_code = authorization_code
           @jwt_access_token = jwt_access_token
           @ticket_info = ticket_info
+          @consented_claims = consented_claims
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -77,6 +75,7 @@ module Authlete
           return false unless @authorization_code == other.authorization_code
           return false unless @jwt_access_token == other.jwt_access_token
           return false unless @ticket_info == other.ticket_info
+          return false unless @consented_claims == other.consented_claims
           true
         end
       end

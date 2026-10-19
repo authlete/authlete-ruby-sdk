@@ -12,8 +12,7 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The new value of the client secret. Valid characters for a client secret are `A-Z`, `a-z`, `0-9`,
-        # `-`, and `_`. The maximum length of a client secret is 86.
+        # The new value of the client secret. Valid characters for a client secret are `A-Z`, `a-z`, `0-9`, `-`, and `_`. The maximum length of a client secret is 86.
         #
         field :client_secret, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientSecret'), required: true }, 'form': { 'field_name': 'clientSecret' } }
 

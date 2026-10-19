@@ -8,10 +8,10 @@ end
 
 
 class Authlete::Models::Operations::ClientAuthorizationGetListBySubjectApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def subject(); end
   def subject=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
   def developer(); end
   def developer=(str_); end
   def start(); end

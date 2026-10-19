@@ -7,10 +7,7 @@
 module Authlete
   module Models
     module Components
-      # VciMetadataResponseAction - The next action that the implementation of the credential issuer
-      # metadata endpoint (`/.well-known/openid-credential-issuer`)
-      # should take after getting a response from Authlete's
-      # `/vci/metadata` API.
+      # VciMetadataResponseAction - The next action that the implementation of the credential issuer metadata endpoint (`/.well-known/openid-credential-issuer`) should take after getting a response from Authlete's `/vci/metadata` API.
       #
       class VciMetadataResponseAction < T::Enum
         enums do

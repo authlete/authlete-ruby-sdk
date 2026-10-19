@@ -15,30 +15,25 @@ module Authlete
         # The sequential number of the client. The value of this property is assigned by Authlete.
         #
         field :number, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('number') } }
-        # The name of the client application. This property corresponds to `client_name` in
-        # [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+        # The name of the client application. This property corresponds to `client_name` in [OpenID Connect Dynamic Client Registration 1.0, 2. Client Metadata](https://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
         #
         field :client_name, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientName') } }
-        # Client names with language tags. If the client application has different names for different
-        # languages, this property can be used to register the names.
+        # Client names with language tags. If the client application has different names for different languages, this property can be used to register the names.
         #
         field :client_names, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientNames') } }
         # The description about the client application.
         field :description, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('description') } }
-        # Descriptions about the client application with language tags. If the client application has different
-        # descriptions for different languages, this property can be used to register the descriptions.
+        # Descriptions about the client application with language tags. If the client application has different descriptions for different languages, this property can be used to register the descriptions.
         #
         field :descriptions, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::TaggedValue)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('descriptions') } }
         # The client identifier used in Authlete API calls. The value of this property is assigned by Authlete.
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') } }
-        # The value of the client's `client_id` property used in OAuth and OpenID Connect calls. By
-        # default, this is a string version of the `clientId` property.
+        # The value of the client's `client_id` property used in OAuth and OpenID Connect calls. By default, this is a string version of the `clientId` property.
         #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
         # Deprecated. Always set to `true`.
         field :client_id_alias_enabled, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasEnabled') } }
-        # The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)
-        # for details.
+        # The client type, either `CONFIDENTIAL` or `PUBLIC`. See [RFC 6749, 2.1. Client Types](https://datatracker.ietf.org/doc/html/rfc6749#section-2.1) for details.
         #
         field :client_type, Crystalline::Nilable.new(Models::Components::ClientType), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientType'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::ClientType, true) } }
 

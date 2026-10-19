@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::VciMetadataApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def vci_metadata_request(); end
   def vci_metadata_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end
