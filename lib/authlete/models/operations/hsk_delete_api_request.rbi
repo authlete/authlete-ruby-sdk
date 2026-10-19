@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::HskDeleteApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def handle(); end
   def handle=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

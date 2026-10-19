@@ -12,16 +12,13 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Start index (inclusive) of the result set. The default value is 0. Must not be a negative
-        # number.
+        # Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
         #
         field :start, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('start') } }
-        # Start index (inclusive) of the result set. The default value is 0. Must not be a negative
-        # number.
+        # Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.
         #
         field :end_, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('end') } }
-        # Total number of services owned by the service owner. This doesn't mean the number of services
-        # contained in the response.
+        # Total number of services owned by the service owner. This doesn't mean the number of services contained in the response.
         #
         field :total_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('totalCount') } }
         # An array of services.

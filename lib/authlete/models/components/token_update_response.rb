@@ -29,23 +29,19 @@ module Authlete
         # The scopes associated with the access token.
         #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The token type associated with the access token.
         #
         field :token_type, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenType') } }
-        # the flag which indicates whether the access token is for an external
-        # attachment.
+        # the flag which indicates whether the access token is for an external attachment.
         #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') } }
         # Set the unique token identifier.
         #
         field :token_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('tokenId') } }
-        # The datetime at which the newly issued refresh token will expire.
-        # The value is represented in milliseconds since the Unix epoch (1970-01-01).
+        # The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
         #
         field :refresh_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAt') } }
 

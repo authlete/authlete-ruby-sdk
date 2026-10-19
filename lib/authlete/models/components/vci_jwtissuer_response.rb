@@ -16,13 +16,10 @@ module Authlete
         field :result_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultCode') } }
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
-        # The next action that the implementation of the JWT issuer metadata
-        # endpoint (`/.well-known/jwt-issuer`) should take after getting
-        # a response from Authlete's `/vci/jwtissuer` API.
+        # The next action that the implementation of the JWT issuer metadata endpoint (`/.well-known/jwt-issuer`) should take after getting a response from Authlete's `/vci/jwtissuer` API.
         #
         field :action, Crystalline::Nilable.new(Models::Components::VciJwtissuerResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciJwtissuerResponseAction, true) } }
-        # Get the content that the implementation of the credential issuer
-        # metadata endpoint should use when it constructs a response.
+        # Get the content that the implementation of the credential issuer metadata endpoint should use when it constructs a response.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
 

@@ -52,6 +52,8 @@ class Authlete::Models::Components::ClientLimitedAuthorization
   def tls_client_certificate_bound_access_tokens=(str_); end
   def bc_user_code_required(); end
   def bc_user_code_required=(str_); end
+  def backchannel_logout_session_required(); end
+  def backchannel_logout_session_required=(str_); end
   def dynamically_registered(); end
   def dynamically_registered=(str_); end
   def par_required(); end

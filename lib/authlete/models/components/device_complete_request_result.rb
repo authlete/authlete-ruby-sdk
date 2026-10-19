@@ -7,8 +7,7 @@
 module Authlete
   module Models
     module Components
-      # DeviceCompleteRequestResult - The result of the end-user authentication and authorization. One of the following. Details are
-      # described in the description.
+      # DeviceCompleteRequestResult - The result of the end-user authentication and authorization. One of the following. Details are described in the description.
       #
       class DeviceCompleteRequestResult < T::Enum
         enums do

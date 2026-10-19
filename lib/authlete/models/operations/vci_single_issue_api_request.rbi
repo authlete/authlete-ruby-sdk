@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::VciSingleIssueApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def vci_single_issue_request(); end
   def vci_single_issue_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

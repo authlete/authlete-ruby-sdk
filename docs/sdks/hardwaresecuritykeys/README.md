@@ -21,9 +21,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.hardware_security_keys.create(service_id: '<id>', hsk_create_request: Models::Components::HskCreateRequest.new)
+res = s.hardware_security_keys.create(hsk_create_request: Models::Components::HskCreateRequest.new)
 
 unless res.hsk_create_response.nil?
   # handle response
@@ -35,8 +36,8 @@ end
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `service_id`                                                                    | *::String*                                                                      | :heavy_check_mark:                                                              | A service ID.                                                                   |
 | `hsk_create_request`                                                            | [Models::Components::HskCreateRequest](../../models/shared/hskcreaterequest.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| `service_id`                                                                    | *T.nilable(::String)*                                                           | :heavy_minus_sign:                                                              | A service ID.                                                                   |
 
 ### Response
 
@@ -47,6 +48,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -62,9 +64,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.hardware_security_keys.destroy(service_id: '<id>', handle: '<value>')
+res = s.hardware_security_keys.destroy(handle: '<value>')
 
 unless res.hsk_delete_response.nil?
   # handle response
@@ -74,10 +77,10 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
-| `handle`           | *::String*         | :heavy_check_mark: | N/A                |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `handle`              | *::String*            | :heavy_check_mark:    | N/A                   |
+| `service_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | A service ID.         |
 
 ### Response
 
@@ -88,6 +91,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -103,9 +107,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.hardware_security_keys.retrieve(service_id: '<id>', handle: '<value>')
+res = s.hardware_security_keys.retrieve(handle: '<value>')
 
 unless res.hsk_get_response.nil?
   # handle response
@@ -115,10 +120,10 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
-| `handle`           | *::String*         | :heavy_check_mark: | N/A                |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `handle`              | *::String*            | :heavy_check_mark:    | N/A                   |
+| `service_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | A service ID.         |
 
 ### Response
 
@@ -129,6 +134,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -144,9 +150,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.hardware_security_keys.list(service_id: '<id>')
+res = s.hardware_security_keys.list
 
 unless res.hsk_get_list_response.nil?
   # handle response
@@ -156,9 +163,9 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `service_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | A service ID.         |
 
 ### Response
 
@@ -169,5 +176,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

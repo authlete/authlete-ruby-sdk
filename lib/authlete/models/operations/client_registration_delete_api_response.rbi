@@ -14,6 +14,8 @@ class Authlete::Models::Operations::ClientRegistrationDeleteApiResponse
   def status_code=(str_); end
   def raw_response(); end
   def raw_response=(str_); end
+  def headers(); end
+  def headers=(str_); end
   def client_registration_response(); end
   def client_registration_response=(str_); end
 end

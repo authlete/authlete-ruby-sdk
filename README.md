@@ -42,9 +42,11 @@ If you have any questions or need assistance, our team is here to help:
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [Global Parameters](#global-parameters)
+  * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Troubleshooting](#troubleshooting)
-* [The service_id parameter uses the api_key value](#the-serviceid-parameter-uses-the-apikey-value)
+  * [Server Selection](#server-selection)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -157,9 +159,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.retrieve(service_id: '<id>')
+res = s.services.retrieve
 
 unless res.service.nil?
   # handle response
@@ -185,9 +188,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
-  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+  bearer: '<YOUR_BEARER_TOKEN_HERE>',
+  service_id: '<id>'
 )
-res = s.services.retrieve(service_id: '<id>')
+res = s.services.retrieve
 
 unless res.service.nil?
   # handle response
@@ -202,6 +206,11 @@ end
 <details open>
 <summary>Available methods</summary>
 
+### [Audit](docs/sdks/audit/README.md)
+
+* [get](docs/sdks/audit/README.md#get) - Get Audit Logs
+* [get_types](docs/sdks/audit/README.md#get_types) - Get Audit Log Event Types
+
 ### [Authorization](docs/sdks/authorization/README.md)
 
 * [process_request](docs/sdks/authorization/README.md#process_request) - Process Authorization Request
@@ -212,6 +221,10 @@ end
 
 * [ticket_info](docs/sdks/authorizationmanagement/README.md#ticket_info) - Get Ticket Information
 * [update_ticket](docs/sdks/authorizationmanagement/README.md#update_ticket) - Update Ticket Information
+
+### [BackChannelLogout](docs/sdks/backchannellogout/README.md)
+
+* [backchannel_logout_token_api](docs/sdks/backchannellogout/README.md#backchannel_logout_token_api) - Backchannel Logout Token Issuing
 
 ### [Ciba](docs/sdks/ciba/README.md)
 
@@ -225,22 +238,22 @@ end
 * [update_lock_flag](docs/sdks/clientmanagement/README.md#update_lock_flag) - Update Client Lock
 * [refresh_secret](docs/sdks/clientmanagement/README.md#refresh_secret) - Rotate Client Secret
 * [update_secret](docs/sdks/clientmanagement/README.md#update_secret) - Update Client Secret
+* [authorized_applications](docs/sdks/clientmanagement/README.md#authorized_applications) - Get Authorized Applications
+* [authorized_applications_by_post](docs/sdks/clientmanagement/README.md#authorized_applications_by_post) - Get Authorized Applications
 * [authorizations](docs/sdks/clientmanagement/README.md#authorizations) - Get Authorized Applications (by Subject)
 * [update_authorizations](docs/sdks/clientmanagement/README.md#update_authorizations) - Update Client Tokens
+* [destroy_client_tokens](docs/sdks/clientmanagement/README.md#destroy_client_tokens) - Delete Client Tokens
+* [destroy_client_tokens_by_post](docs/sdks/clientmanagement/README.md#destroy_client_tokens_by_post) - Delete Client Tokens
 * [destroy_authorizations](docs/sdks/clientmanagement/README.md#destroy_authorizations) - Delete Client Tokens (by Subject)
+* [client_granted_scopes](docs/sdks/clientmanagement/README.md#client_granted_scopes) - Get Granted Scopes
+* [client_granted_scopes_by_post](docs/sdks/clientmanagement/README.md#client_granted_scopes_by_post) - Get Granted Scopes
 * [granted_scopes](docs/sdks/clientmanagement/README.md#granted_scopes) - Get Granted Scopes (by Subject)
+* [destroy_client_granted_scopes](docs/sdks/clientmanagement/README.md#destroy_client_granted_scopes) - Delete Granted Scopes
 * [destroy_granted_scopes](docs/sdks/clientmanagement/README.md#destroy_granted_scopes) - Delete Granted Scopes (by Subject)
 * [requestable_scopes](docs/sdks/clientmanagement/README.md#requestable_scopes) - Get Requestable Scopes
+* [update_requestable_scopes_by_post](docs/sdks/clientmanagement/README.md#update_requestable_scopes_by_post) - Update Requestable Scopes
 * [update_requestable_scopes](docs/sdks/clientmanagement/README.md#update_requestable_scopes) - Update Requestable Scopes
 * [destroy_requestable_scopes](docs/sdks/clientmanagement/README.md#destroy_requestable_scopes) - Delete Requestable Scopes
-* [client_authorization_get_list_api](docs/sdks/clientmanagement/README.md#client_authorization_get_list_api) - Get Authorized Applications
-* [client_authorization_get_list_api_post](docs/sdks/clientmanagement/README.md#client_authorization_get_list_api_post) - Get Authorized Applications
-* [client_authorization_delete_api](docs/sdks/clientmanagement/README.md#client_authorization_delete_api) - Delete Client Tokens
-* [client_authorization_delete_api_post](docs/sdks/clientmanagement/README.md#client_authorization_delete_api_post) - Delete Client Tokens
-* [client_granted_scopes_get_api](docs/sdks/clientmanagement/README.md#client_granted_scopes_get_api) - Get Granted Scopes
-* [client_granted_scopes_get_api_post](docs/sdks/clientmanagement/README.md#client_granted_scopes_get_api_post) - Get Granted Scopes
-* [client_granted_scopes_delete_api](docs/sdks/clientmanagement/README.md#client_granted_scopes_delete_api) - Delete Granted Scopes
-* [client_extension_requestables_scopes_update_api_post](docs/sdks/clientmanagement/README.md#client_extension_requestables_scopes_update_api_post) - Update Requestable Scopes
 
 ### [Clients](docs/sdks/clients/README.md)
 
@@ -250,6 +263,8 @@ end
 * [update](docs/sdks/clients/README.md#update) - Update Client
 * [update_form](docs/sdks/clients/README.md#update_form) - Update Client
 * [destroy](docs/sdks/clients/README.md#destroy) - Delete Client ⚡
+* [list_by_cursor](docs/sdks/clients/README.md#list_by_cursor) - List Clients (Cursor Pagination)
+* [search](docs/sdks/clients/README.md#search) - Search Clients
 
 ### [DeviceFlow](docs/sdks/deviceflow/README.md)
 
@@ -285,14 +300,6 @@ end
 * [process_request](docs/sdks/introspection/README.md#process_request) - Process Introspection Request
 * [standard_process](docs/sdks/introspection/README.md#standard_process) - Process OAuth 2.0 Introspection Request
 
-### [JoseObject](docs/sdks/joseobject/README.md)
-
-* [jose_verify_api](docs/sdks/joseobject/README.md#jose_verify_api) - Verify JOSE
-
-### [JWKSetEndpoint](docs/sdks/jwksetendpoint/README.md)
-
-* [service_jwks_get_api](docs/sdks/jwksetendpoint/README.md#service_jwks_get_api) - Get JWK Set
-
 ### [Lifecycle](docs/sdks/lifecycle/README.md)
 
 * [get_api_lifecycle_healthcheck](docs/sdks/lifecycle/README.md#get_api_lifecycle_healthcheck) - Health Check
@@ -314,9 +321,9 @@ end
 
 * [retrieve](docs/sdks/services/README.md#retrieve) - Get Service
 * [list](docs/sdks/services/README.md#list) - List Services
-* [create](docs/sdks/services/README.md#create) - Create Service
 * [update](docs/sdks/services/README.md#update) - Update Service
-* [destroy](docs/sdks/services/README.md#destroy) - Delete Service ⚡
+* [create](docs/sdks/services/README.md#create) - Create Service (IDP)
+* [remove](docs/sdks/services/README.md#remove) - Remove Service (IDP) ⚡
 * [configuration](docs/sdks/services/README.md#configuration) - Get Service Configuration
 
 ### [TokenManagement](docs/sdks/tokenmanagement/README.md)
@@ -356,6 +363,91 @@ end
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `serviceId` to `'<id>'` at SDK initialization and then you do not have to pass the same value on calls to operations like `retrieve`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name       | Type     | Description               |
+| ---------- | -------- | ------------------------- |
+| service_id | ::String | The service_id parameter. |
+
+### Example
+
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  service_id: '<id>',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.retrieve
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  service_id: '<id>',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.retrieve
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  retry_config: Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 1.1,
+          initial_interval: 1,
+          max_elapsed_time: 100,
+          max_interval: 50
+        ),
+        retry_connection_errors: false,
+        strategy: 'backoff'
+      ),
+  service_id: '<id>',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.services.retrieve
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+<!-- End Retries [retries] -->
+
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
@@ -375,6 +467,7 @@ When custom error responses are specified for an operation, the SDK may also thr
 | Error Type                  | Status Code   | Content Type     |
 | --------------------------- | ------------- | ---------------- |
 | Models::Errors::ResultError | 400, 401, 403 | application/json |
+| Models::Errors::ResultError | 429           | application/json |
 | Models::Errors::ResultError | 500           | application/json |
 | Errors::APIError            | 4XX, 5XX      | \*/\*            |
 
@@ -385,15 +478,19 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
 
 begin
-    res = s.services.retrieve(service_id: '<id>')
+    res = s.services.retrieve
 
     unless res.service.nil?
       # handle response
     end
+rescue Models::Errors::ResultError => e
+  # handle e.container data
+  raise e
 rescue Models::Errors::ResultError => e
   # handle e.container data
   raise e
@@ -487,9 +584,10 @@ require 'authlete_ruby_sdk'
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
   server_idx: 0,
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.retrieve(service_id: '<id>')
+res = s.services.retrieve
 
 unless res.service.nil?
   # handle response
@@ -506,9 +604,37 @@ require 'authlete_ruby_sdk'
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
   server_url: 'https://br.authlete.com',
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.services.retrieve(service_id: '<id>')
+res = s.services.retrieve
+
+unless res.service.nil?
+  # handle response
+end
+
+```
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+
+req = Models::Components::ServiceCreateIdpRequest.new(
+  api_server_id: 76_281,
+  organization_id: 123_456_789_012_345,
+  service: Models::Components::ServiceInput.new(
+    service_name: 'My service',
+    issuer: 'https://my-service.example.com'
+  )
+)
+res = s.services.create(request: req, server_url: 'https://login.authlete.com')
 
 unless res.service.nil?
   # handle response

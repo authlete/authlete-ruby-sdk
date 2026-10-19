@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::ClientRegistrationUpdateApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def request_body(); end
   def request_body=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

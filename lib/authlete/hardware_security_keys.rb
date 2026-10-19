@@ -41,12 +41,12 @@ module Authlete
 
 
 
-    sig { params(hsk_create_request: Models::Components::HskCreateRequest, service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskCreateApiResponse) }
-    def create(hsk_create_request:, service_id:, timeout_ms: nil, http_headers: nil)
+    sig { params(hsk_create_request: Models::Components::HskCreateRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskCreateApiResponse) }
+    def create(hsk_create_request:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # create - Create Security Key
       request = Models::Operations::HskCreateApiRequest.new(
-        service_id: service_id,
-        hsk_create_request: hsk_create_request
+        hsk_create_request: hsk_create_request,
+        service_id: service_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -54,7 +54,8 @@ module Authlete
         Models::Operations::HskCreateApiRequest,
         base_url,
         '/api/{serviceId}/hsk/create',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
@@ -71,14 +72,28 @@ module Authlete
       end
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 2.0,
+          initial_interval: 500,
+          max_elapsed_time: 60_000,
+          max_interval: 16_000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
+      )
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
+      timeout ||= (5000.to_f / 1000)
 
-      connection = @sdk_configuration.client
+
+      connection = @sdk_configuration.client.dup
+      connection.use Utils::RetryMiddleware, retry_options
 
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
@@ -91,7 +106,7 @@ module Authlete
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).post(url) do |req|
           req.body = body
@@ -128,13 +143,13 @@ module Authlete
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -150,6 +165,7 @@ module Authlete
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
+            headers: {},
             hsk_create_response: T.unsafe(obj)
           )
 
@@ -158,6 +174,21 @@ module Authlete
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
       elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['429'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
             hook_ctx: SDKHooks::AfterSuccessHookContext.new(
@@ -198,12 +229,12 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, handle: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskDeleteApiResponse) }
-    def destroy(service_id:, handle:, timeout_ms: nil, http_headers: nil)
+    sig { params(handle: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskDeleteApiResponse) }
+    def destroy(handle:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy - Delete Security Key
       request = Models::Operations::HskDeleteApiRequest.new(
-        service_id: service_id,
-        handle: handle
+        handle: handle,
+        service_id: service_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -211,20 +242,35 @@ module Authlete
         Models::Operations::HskDeleteApiRequest,
         base_url,
         '/api/{serviceId}/hsk/delete/{handle}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 2.0,
+          initial_interval: 500,
+          max_elapsed_time: 60_000,
+          max_interval: 16_000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
+      )
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
+      timeout ||= (5000.to_f / 1000)
 
-      connection = @sdk_configuration.client
+
+      connection = @sdk_configuration.client.dup
+      connection.use Utils::RetryMiddleware, retry_options
 
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
@@ -237,7 +283,7 @@ module Authlete
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).delete(url) do |req|
           req.headers.merge!(headers)
@@ -273,13 +319,13 @@ module Authlete
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['204'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -295,6 +341,7 @@ module Authlete
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
+            headers: {},
             hsk_delete_response: T.unsafe(obj)
           )
 
@@ -317,6 +364,21 @@ module Authlete
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
+      elsif Utils.match_status_code(http_response.status, ['429'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
       elsif Utils.match_status_code(http_response.status, ['500'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
@@ -343,12 +405,12 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, handle: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskGetApiResponse) }
-    def retrieve(service_id:, handle:, timeout_ms: nil, http_headers: nil)
+    sig { params(handle: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskGetApiResponse) }
+    def retrieve(handle:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # retrieve - Get Security Key
       request = Models::Operations::HskGetApiRequest.new(
-        service_id: service_id,
-        handle: handle
+        handle: handle,
+        service_id: service_id
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
@@ -356,20 +418,35 @@ module Authlete
         Models::Operations::HskGetApiRequest,
         base_url,
         '/api/{serviceId}/hsk/get/{handle}',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 2.0,
+          initial_interval: 500,
+          max_elapsed_time: 60_000,
+          max_interval: 16_000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
+      )
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
+      timeout ||= (5000.to_f / 1000)
 
-      connection = @sdk_configuration.client
+
+      connection = @sdk_configuration.client.dup
+      connection.use Utils::RetryMiddleware, retry_options
 
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
@@ -382,7 +459,7 @@ module Authlete
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
@@ -418,13 +495,13 @@ module Authlete
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -440,6 +517,7 @@ module Authlete
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
+            headers: {},
             hsk_get_response: T.unsafe(obj)
           )
 
@@ -462,6 +540,21 @@ module Authlete
         else
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
+      elsif Utils.match_status_code(http_response.status, ['429'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
       elsif Utils.match_status_code(http_response.status, ['500'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
@@ -488,8 +581,8 @@ module Authlete
     end
 
 
-    sig { params(service_id: ::String, timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskGetListApiResponse) }
-    def list(service_id:, timeout_ms: nil, http_headers: nil)
+    sig { params(service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::HskGetListApiResponse) }
+    def list(service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # list - List Security Keys
       request = Models::Operations::HskGetListApiRequest.new(
         service_id: service_id
@@ -500,20 +593,35 @@ module Authlete
         Models::Operations::HskGetListApiRequest,
         base_url,
         '/api/{serviceId}/hsk/get/list',
-        request
+        request,
+        @sdk_configuration.globals
       )
       headers = {}
       headers = T.cast(headers, T::Hash[String, String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
+      retries ||= @sdk_configuration.retry_config
+      retries ||= Utils::RetryConfig.new(
+        backoff: Utils::BackoffStrategy.new(
+          exponent: 2.0,
+          initial_interval: 500,
+          max_elapsed_time: 60_000,
+          max_interval: 16_000
+        ),
+        retry_connection_errors: true,
+        strategy: 'backoff'
+      )
+      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
-      timeout ||= @sdk_configuration.timeout
-      
+      timeout ||= (5000.to_f / 1000)
 
-      connection = @sdk_configuration.client
+
+      connection = @sdk_configuration.client.dup
+      connection.use Utils::RetryMiddleware, retry_options
 
       hook_ctx = SDKHooks::HookContext.new(
         config: @sdk_configuration,
@@ -526,7 +634,7 @@ module Authlete
       error = T.let(nil, T.nilable(StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
-      
+
       begin
         http_response = T.must(connection).get(url) do |req|
           req.headers.merge!(headers)
@@ -562,13 +670,13 @@ module Authlete
             response: http_response
           )
         end
-        
+
         if http_response.nil?
           raise error if !error.nil?
           raise 'no response'
         end
       end
-      
+
       content_type = http_response.headers.fetch('Content-Type', 'application/octet-stream')
       if Utils.match_status_code(http_response.status, ['200'])
         if Utils.match_content_type(content_type, 'application/json')
@@ -584,6 +692,7 @@ module Authlete
             status_code: http_response.status,
             content_type: content_type,
             raw_response: http_response,
+            headers: {},
             hsk_get_list_response: T.unsafe(obj)
           )
 
@@ -592,6 +701,21 @@ module Authlete
           raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
         end
       elsif Utils.match_status_code(http_response.status, ['400', '401', '403'])
+        if Utils.match_content_type(content_type, 'application/json')
+          http_response = @sdk_configuration.hooks.after_success(
+            hook_ctx: SDKHooks::AfterSuccessHookContext.new(
+              hook_ctx: hook_ctx
+            ),
+            response: http_response
+          )
+          response_data = http_response.env.response_body
+          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj.raw_response = http_response
+          raise obj
+        else
+          raise ::Authlete::Models::Errors::APIError.new(status_code: http_response.status, body: http_response.env.response_body, raw_response: http_response), 'Unknown content type received'
+        end
+      elsif Utils.match_status_code(http_response.status, ['429'])
         if Utils.match_content_type(content_type, 'application/json')
           http_response = @sdk_configuration.hooks.after_success(
             hook_ctx: SDKHooks::AfterSuccessHookContext.new(

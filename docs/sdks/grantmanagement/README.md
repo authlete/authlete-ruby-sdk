@@ -8,8 +8,7 @@
 
 ## process_request
 
-The API is for the implementation of the grant management endpoint which is
-defined in "[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)".
+The API is for the implementation of the grant management endpoint which is defined in "[Grant Management for OAuth 2.0](https://openid.net/specs/fapi-grant-management.html)".
 
 
 ### Example Usage
@@ -20,9 +19,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.grant_management.process_request(service_id: '<id>', g_m_request: Models::Components::GMRequest.new(
+res = s.grant_management.process_request(g_m_request: Models::Components::GMRequest.new(
   access_token: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE1NTk4MTE3NTAsImlzcyI6IjU3Mjk3NDA4ODY3In0K.csmdholMVcmjqHe59YWgLGNvm7I5Whp4phQCoGxyrlRGMnTgsfxtwyxBgMXQqEPD5q5k9FaEWNk37K8uAtSwrA',
   gm_action: Models::Components::GrantManagementAction::REVOKE,
   grant_id: '57297408867'
@@ -38,8 +38,8 @@ end
 
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `service_id`                                                      | *::String*                                                        | :heavy_check_mark:                                                | A service ID.                                                     |
 | `g_m_request`                                                     | [Models::Components::GMRequest](../../models/shared/gmrequest.md) | :heavy_check_mark:                                                | N/A                                                               |
+| `service_id`                                                      | *T.nilable(::String)*                                             | :heavy_minus_sign:                                                | A service ID.                                                     |
 
 ### Response
 
@@ -50,5 +50,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

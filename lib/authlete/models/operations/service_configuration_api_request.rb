@@ -13,14 +13,14 @@ module Authlete
         include Crystalline::MetadataFields
 
         # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # This boolean value indicates whether the JSON in the response should be formatted or not. If `true`, the JSON in the response is pretty-formatted. The default value is `false`.
         field :pretty, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'query_param': { 'field_name': 'pretty', 'style': 'form', 'explode': true } }
         # Get the JSON Patch [RFC 6902 JavaScript Object Notation (JSON) Patch](https://www.rfc-editor.org/rfc/rfc6902) to be applied.
         field :patch, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'patch', 'style': 'form', 'explode': true } }
 
-        sig { params(service_id: ::String, pretty: T.nilable(T::Boolean), patch: T.nilable(::String)).void }
-        def initialize(service_id:, pretty: nil, patch: nil)
+        sig { params(service_id: T.nilable(::String), pretty: T.nilable(T::Boolean), patch: T.nilable(::String)).void }
+        def initialize(service_id: nil, pretty: nil, patch: nil)
           @service_id = service_id
           @pretty = pretty
           @patch = patch

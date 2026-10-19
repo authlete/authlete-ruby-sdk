@@ -17,9 +17,7 @@ module Authlete
         # The claims associated with the Grant.
         #
         field :claims, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
 

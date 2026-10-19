@@ -8,4 +8,6 @@ end
 
 
 class Authlete::Models::Operations::FederationConfigurationApiRequestBody
+  def entity_types(); end
+  def entity_types=(str_); end
 end

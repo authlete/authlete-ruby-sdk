@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::ClientSecretRefreshApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def client_identifier(); end
   def client_identifier=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

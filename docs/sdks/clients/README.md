@@ -10,6 +10,8 @@
 * [update](#update) - Update Client
 * [update_form](#update_form) - Update Client
 * [destroy](#destroy) - Delete Client ⚡
+* [list_by_cursor](#list_by_cursor) - List Clients (Cursor Pagination)
+* [search](#search) - Search Clients
 
 ## retrieve
 
@@ -24,9 +26,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.retrieve(service_id: '<id>', client_id: '<id>')
+res = s.clients.retrieve(client_id: '<id>')
 
 unless res.client.nil?
   # handle response
@@ -36,10 +39,10 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
-| `client_id`        | *::String*         | :heavy_check_mark: | A client ID.       |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `client_id`           | *::String*            | :heavy_check_mark:    | A client ID.          |
+| `service_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | A service ID.         |
 
 ### Response
 
@@ -49,7 +52,8 @@ end
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 400, 401, 403, 404          | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -57,9 +61,7 @@ end
 
 Get a list of clients on a service.
 
-If the access token can view a full service (including an admin), all clients within the
-service are returned. Otherwise, only clients that the access token can view within the
-service are returned.
+If the access token can view a full service (including an admin), all clients within the service are returned. Otherwise, only clients that the access token can view within the service are returned.
 - ViewClient: []
 
 
@@ -71,9 +73,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.list(service_id: '<id>')
+res = s.clients.list
 
 unless res.client_get_list_response.nil?
   # handle response
@@ -88,9 +91,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.list(service_id: '<id>')
+res = s.clients.list
 
 unless res.client_get_list_response.nil?
   # handle response
@@ -102,8 +106,8 @@ end
 
 | Parameter                                                                                                                                                                                                                                         | Type                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                                                                                                                                      | *::String*                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                                                     |
-| `developer`                                                                                                                                                                                                                                       | *T.nilable(::String)*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                | The developer of client applications. The default value is null. If this parameter is not set<br/>to `null`, client application of the specified developer are returned. Otherwise, all client<br/>applications that belong to the service are returned.<br/> |
+| `service_id`                                                                                                                                                                                                                                      | *T.nilable(::String)*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                | A service ID.                                                                                                                                                                                                                                     |
+| `developer`                                                                                                                                                                                                                                       | *T.nilable(::String)*                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                | The developer of client applications. The default value is null. If this parameter is not set to `null`, client application of the specified developer are returned. Otherwise, all client applications that belong to the service are returned.<br/> |
 | `start`                                                                                                                                                                                                                                           | *T.nilable(::Integer)*                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                | Start index (inclusive) of the result set. The default value is 0. Must not be a negative number.                                                                                                                                                 |
 | `end_`                                                                                                                                                                                                                                            | *T.nilable(::Integer)*                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                | End index (exclusive) of the result set. The default value is 5. Must not be a negative number.                                                                                                                                                   |
 
@@ -116,6 +120,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -132,15 +137,14 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.create(service_id: '<id>', client: Models::Components::ClientInput.new(
+res = s.clients.create(client: Models::Components::ClientInput.new(
   client_name: 'My Client',
   client_id_alias: 'my-client',
-  client_id_alias_enabled: true,
   client_type: Models::Components::ClientType::CONFIDENTIAL,
   application_type: Models::Components::ApplicationType::WEB,
-  developer: 'john',
   grant_types: [
     Models::Components::GrantType::AUTHORIZATION_CODE,
     Models::Components::GrantType::REFRESH_TOKEN,
@@ -176,7 +180,7 @@ end
 
 | Parameter                                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
+| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *T.nilable(::String)*                                                                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
 | `client`                                                                                                                                                                                                                                                                                                                                                                  | [T.nilable(Models::Components::ClientInput)](../../models/shared/clientinput.md)                                                                                                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                                                                                                                                       | {<br/>"number": 1140735077,<br/>"serviceNumber": 715948317,<br/>"clientName": "My Test Client",<br/>"clientId": "1140735077",<br/>"clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ",<br/>"clientType": "PUBLIC",<br/>"redirectUris": [<br/>"https://example.com/callback"<br/>],<br/>"responseTypes": [<br/>"CODE"<br/>],<br/>"grantTypes": [<br/>"AUTHORIZATION_CODE"<br/>]<br/>} |
 
 ### Response
@@ -188,6 +192,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -204,16 +209,15 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.update(service_id: '<id>', client_id: '<id>', client: Models::Components::ClientInput.new(
+res = s.clients.update(client_id: '<id>', client: Models::Components::ClientInput.new(
   client_name: 'My updated client',
   client_id_alias: 'my-client',
-  client_id_alias_enabled: true,
   client_type: Models::Components::ClientType::CONFIDENTIAL,
   application_type: Models::Components::ApplicationType::WEB,
   tls_client_certificate_bound_access_tokens: false,
-  developer: 'john',
   grant_types: [
     Models::Components::GrantType::AUTHORIZATION_CODE,
     Models::Components::GrantType::REFRESH_TOKEN,
@@ -263,8 +267,8 @@ end
 
 | Parameter                                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
 | `client_id`                                                                                                                                                                                                                                                                                                                                                               | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A client ID.                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                           |
+| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *T.nilable(::String)*                                                                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
 | `client`                                                                                                                                                                                                                                                                                                                                                                  | [T.nilable(Models::Components::ClientInput)](../../models/shared/clientinput.md)                                                                                                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                                                                                                                                       | {<br/>"number": 1140735077,<br/>"serviceNumber": 715948317,<br/>"clientName": "My Test Client",<br/>"clientId": "1140735077",<br/>"clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ",<br/>"clientType": "PUBLIC",<br/>"redirectUris": [<br/>"https://example.com/callback"<br/>],<br/>"responseTypes": [<br/>"CODE"<br/>],<br/>"grantTypes": [<br/>"AUTHORIZATION_CODE"<br/>]<br/>} |
 
 ### Response
@@ -276,6 +280,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -292,9 +297,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.update_form(service_id: '<id>', client_id: '<id>', request_body: {
+res = s.clients.update_form(client_id: '<id>', request_body: {
   'clientId' => '1140735077',
   'clientName' => 'My Test Client',
   'clientSecret' => 'gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ',
@@ -322,8 +328,8 @@ end
 
 | Parameter                                                                                                                                                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                                                                                                                                                      | Required                                                                                                                                                                                                                                                                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                               | Example                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
 | `client_id`                                                                                                                                                                                                                                                                                                                                                               | *::String*                                                                                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                        | A client ID.                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                           |
+| `service_id`                                                                                                                                                                                                                                                                                                                                                              | *T.nilable(::String)*                                                                                                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | A service ID.                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                           |
 | `request_body`                                                                                                                                                                                                                                                                                                                                                            | T::Hash[Symbol, *::Object*]                                                                                                                                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                        | N/A                                                                                                                                                                                                                                                                                                                                                                       | {<br/>"number": 1140735077,<br/>"serviceNumber": 715948317,<br/>"clientName": "My Test Client",<br/>"clientId": "1140735077",<br/>"clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ",<br/>"clientType": "PUBLIC",<br/>"redirectUris": [<br/>"https://example.com/callback"<br/>],<br/>"responseTypes": [<br/>"CODE"<br/>],<br/>"grantTypes": [<br/>"AUTHORIZATION_CODE"<br/>]<br/>} |
 
 ### Response
@@ -335,6 +341,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -351,9 +358,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.clients.destroy(service_id: '<id>', client_id: '<id>')
+res = s.clients.destroy(client_id: '<id>')
 
 if res.status_code == 200
   # handle response
@@ -363,10 +371,10 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `service_id`       | *::String*         | :heavy_check_mark: | A service ID.      |
-| `client_id`        | *::String*         | :heavy_check_mark: | The client ID.     |
+| Parameter             | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `client_id`           | *::String*            | :heavy_check_mark:    | The client ID.        |
+| `service_id`          | *T.nilable(::String)* | :heavy_minus_sign:    | A service ID.         |
 
 ### Response
 
@@ -377,5 +385,96 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## list_by_cursor
+
+Retrieve the clients in the requested service via cursor based iteration.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_cursor_list_api" method="get" path="/api/{serviceId}/client" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  service_id: '<id>',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+res = s.clients.list_by_cursor
+
+unless res.one_of.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `service_id`                                                                                                                                                                                                                                                | *T.nilable(::String)*                                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                          | The ID of the service to retrieve a list of clients from.                                                                                                                                                                                                   |
+| `cursor`                                                                                                                                                                                                                                                    | *T.nilable(::String)*                                                                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                                                                                          | This should be set to the value of `nextCursor` from a previous call to this endpoint. Which will retrieve the next set of clients available and receive the next available set. If this is not provided the list operation will start from the beginning.<br/> |
+| `limit`                                                                                                                                                                                                                                                     | *T.nilable(::Integer)*                                                                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                                                          | The maximum amount of results to return from this request. This value will be clamped between 1 and the allowed maximum. The default will be used if no value is provided.<br/>                                                                             |
+| `include_total_count`                                                                                                                                                                                                                                       | *T.nilable(T::Boolean)*                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                          | Indicates whether the `totalCount` property should be calculated and included in the response, otherwise it will be unset. For some large datasets this can be expensive and is not always required to calculate.<br/>                                      |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientCursorListApiResponse)](../../models/operations/clientcursorlistapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 500                         | application/json            |
+| Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
+
+## search
+
+Search the clients in the requested service that match the condition provided in the `q` query parameter. Results are returned via cursor based iteration. To iterate through all clients without a search condition, use the `/api/&#123;serviceId&#125;/client` API instead.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="ruby" operationID="client_search_api" method="get" path="/api/{serviceId}/client/search" -->
+```ruby
+require 'authlete_ruby_sdk'
+
+Models = ::Authlete::Models
+s = ::Authlete::Client.new(
+  service_id: '<id>',
+  bearer: '<YOUR_BEARER_TOKEN_HERE>'
+)
+
+req = Models::Operations::ClientSearchApiRequest.new
+res = s.clients.search(request: req)
+
+unless res.one_of.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [Models::Operations::ClientSearchApiRequest](../../models/operations/clientsearchapirequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+
+### Response
+
+**[T.nilable(Models::Operations::ClientSearchApiResponse)](../../models/operations/clientsearchapiresponse.md)**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

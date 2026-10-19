@@ -12,11 +12,11 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # Unique user ID of an end-user.
         #
         field :subject, ::String, { 'path_param': { 'field_name': 'subject', 'style': 'simple', 'explode': false } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
         # Unique ID of a client developer.
         #
         field :developer, Crystalline::Nilable.new(::String), { 'query_param': { 'field_name': 'developer', 'style': 'form', 'explode': true } }
@@ -26,10 +26,10 @@ module Authlete
         #
         field :end_, Crystalline::Nilable.new(::Integer), { 'query_param': { 'field_name': 'end', 'style': 'form', 'explode': true } }
 
-        sig { params(service_id: ::String, subject: ::String, developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
-        def initialize(service_id:, subject:, developer: nil, start: nil, end_: nil)
-          @service_id = service_id
+        sig { params(subject: ::String, service_id: T.nilable(::String), developer: T.nilable(::String), start: T.nilable(::Integer), end_: T.nilable(::Integer)).void }
+        def initialize(subject:, service_id: nil, developer: nil, start: nil, end_: nil)
           @subject = subject
+          @service_id = service_id
           @developer = developer
           @start = start
           @end_ = end_
@@ -38,8 +38,8 @@ module Authlete
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @subject == other.subject
+          return false unless @service_id == other.service_id
           return false unless @developer == other.developer
           return false unless @start == other.start
           return false unless @end_ == other.end_

@@ -16,7 +16,10 @@ module Authlete
         field :result_code, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultCode') } }
         # A short message which explains the result of the API call.
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
-        # The number of tokens revoked
+        # The number of tokens revoked.
+        #
+        # If the target has more than 20 tokens, the response `count` will be 20 and the remainder is left untouched. To fully wipe them, call the endpoint repeatedly until `count` returns 0.
+        #
         field :count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('count') } }
 
         sig { params(result_code: T.nilable(::String), result_message: T.nilable(::String), count: T.nilable(::Integer)).void }

@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::DeviceCompleteApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def device_complete_request(); end
   def device_complete_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

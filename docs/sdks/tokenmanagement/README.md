@@ -13,11 +13,7 @@
 
 ## reissue_id_token
 
-The API is expected to be called only when the value of the `action`
-parameter in a response from the `/auth/token` API is [ID_TOKEN_REISSUABLE](https://authlete.github.io/authlete-java-common/com/authlete/common/dto/TokenResponse.Action.html#ID_TOKEN_REISSUABLE). The purpose
-of the `/idtoken/reissue` API is to generate a token response that
-includes a new ID token together with a new access token and a refresh
-token.
+The API is expected to be called only when the value of the `action` parameter in a response from the `/auth/token` API is [ID_TOKEN_REISSUABLE](https://authlete.github.io/authlete-java-common/com/authlete/common/dto/TokenResponse.Action.html#ID_TOKEN_REISSUABLE). The purpose of the `/idtoken/reissue` API is to generate a token response that includes a new ID token together with a new access token and a refresh token.
 
 
 ### Example Usage
@@ -28,9 +24,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.token_management.reissue_id_token(service_id: '<id>')
+res = s.token_management.reissue_id_token
 
 unless res.idtoken_reissue_response.nil?
   # handle response
@@ -42,7 +39,7 @@ end
 
 | Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                         | *::String*                                                                                           | :heavy_check_mark:                                                                                   | A service ID.                                                                                        |
+| `service_id`                                                                                         | *T.nilable(::String)*                                                                                | :heavy_minus_sign:                                                                                   | A service ID.                                                                                        |
 | `idtoken_reissue_request`                                                                            | [T.nilable(Models::Components::IdtokenReissueRequest)](../../models/shared/idtokenreissuerequest.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 
 ### Response
@@ -54,6 +51,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -70,12 +68,11 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
 
-req = Models::Operations::AuthTokenGetListApiRequest.new(
-  service_id: '<id>'
-)
+req = Models::Operations::AuthTokenGetListApiRequest.new
 res = s.token_management.list(request: req)
 
 unless res.token_get_list_response.nil?
@@ -99,6 +96,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -115,9 +113,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.token_management.create(service_id: '<id>', token_create_request: Models::Components::TokenCreateRequest.new(
+res = s.token_management.create(token_create_request: Models::Components::TokenCreateRequest.new(
   grant_type: Models::Components::GrantType::AUTHORIZATION_CODE,
   client_id: 26_888_344_961_664,
   subject: 'john',
@@ -137,8 +136,8 @@ end
 
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `service_id`                                                                        | *::String*                                                                          | :heavy_check_mark:                                                                  | A service ID.                                                                       |
 | `token_create_request`                                                              | [Models::Components::TokenCreateRequest](../../models/shared/tokencreaterequest.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `service_id`                                                                        | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | A service ID.                                                                       |
 
 ### Response
 
@@ -149,6 +148,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -165,9 +165,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.token_management.update(service_id: '<id>', token_update_request: Models::Components::TokenUpdateRequest.new(
+res = s.token_management.update(token_update_request: Models::Components::TokenUpdateRequest.new(
   access_token: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q',
   scopes: [
     'history.read',
@@ -184,8 +185,8 @@ end
 
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `service_id`                                                                        | *::String*                                                                          | :heavy_check_mark:                                                                  | A service ID.                                                                       |
 | `token_update_request`                                                              | [Models::Components::TokenUpdateRequest](../../models/shared/tokenupdaterequest.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `service_id`                                                                        | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | A service ID.                                                                       |
 
 ### Response
 
@@ -196,6 +197,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -212,9 +214,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.token_management.destroy(service_id: '<id>', access_token_identifier: '<value>')
+res = s.token_management.destroy(access_token_identifier: '<value>')
 
 if res.status_code == 200
   # handle response
@@ -226,8 +229,8 @@ end
 
 | Parameter                                                                                                                                  | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `service_id`                                                                                                                               | *::String*                                                                                                                                 | :heavy_check_mark:                                                                                                                         | A service ID.                                                                                                                              |
-| `access_token_identifier`                                                                                                                  | *::String*                                                                                                                                 | :heavy_check_mark:                                                                                                                         | The identifier of an existing access token. The identifier is the value of the access token<br/>or the value of the hash of the access token.<br/> |
+| `access_token_identifier`                                                                                                                  | *::String*                                                                                                                                 | :heavy_check_mark:                                                                                                                         | The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.<br/> |
+| `service_id`                                                                                                                               | *T.nilable(::String)*                                                                                                                      | :heavy_minus_sign:                                                                                                                         | A service ID.                                                                                                                              |
 
 ### Response
 
@@ -238,6 +241,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -254,9 +258,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.token_management.revoke(service_id: '<id>', token_revoke_request: Models::Components::TokenRevokeRequest.new(
+res = s.token_management.revoke(token_revoke_request: Models::Components::TokenRevokeRequest.new(
   access_token_identifier: 'Z5a40U6dWvw2gMoCOAFbZcM85q4HC0Z--0YKD9-Nf6Q'
 ))
 
@@ -270,8 +275,8 @@ end
 
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `service_id`                                                                        | *::String*                                                                          | :heavy_check_mark:                                                                  | A service ID.                                                                       |
 | `token_revoke_request`                                                              | [Models::Components::TokenRevokeRequest](../../models/shared/tokenrevokerequest.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `service_id`                                                                        | *T.nilable(::String)*                                                               | :heavy_minus_sign:                                                                  | A service ID.                                                                       |
 
 ### Response
 
@@ -282,5 +287,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403, 404          | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

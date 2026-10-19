@@ -16,11 +16,18 @@ module Authlete
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
 
         field :order, Crystalline::Nilable.new(Models::Components::CredentialIssuanceOrder), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('order') } }
+        # Set to `true` to signal that the credential issuer is declining to issue the requested credential. When set, the response will contain `"error":"credential_request_denied"` and the action in the response will be `BAD_REQUEST`.
+        #
+        field :denied, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('denied') } }
+        # The minimum polling interval in seconds for deferred credential issuance.
+        field :interval, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('interval') } }
 
-        sig { params(access_token: T.nilable(::String), order: T.nilable(Models::Components::CredentialIssuanceOrder)).void }
-        def initialize(access_token: nil, order: nil)
+        sig { params(access_token: T.nilable(::String), order: T.nilable(Models::Components::CredentialIssuanceOrder), denied: T.nilable(T::Boolean), interval: T.nilable(::Integer)).void }
+        def initialize(access_token: nil, order: nil, denied: nil, interval: nil)
           @access_token = access_token
           @order = order
+          @denied = denied
+          @interval = interval
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -28,6 +35,8 @@ module Authlete
           return false unless other.is_a? self.class
           return false unless @access_token == other.access_token
           return false unless @order == other.order
+          return false unless @denied == other.denied
+          return false unless @interval == other.interval
           true
         end
       end

@@ -7,8 +7,7 @@
 module Authlete
   module Models
     module Components
-      # AuthorizationFailRequestReason - The reason of the failure of the authorization request.
-      # For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
+      # AuthorizationFailRequestReason - The reason of the failure of the authorization request. For more details, see [NO_INTERACTION] in the description of `/auth/authorization` API.
       #
       class AuthorizationFailRequestReason < T::Enum
         enums do
@@ -25,6 +24,9 @@ module Authlete
           CONSENT_REQUIRED = new('CONSENT_REQUIRED')
           INTERACTION_REQUIRED = new('INTERACTION_REQUIRED')
           INVALID_TARGET = new('INVALID_TARGET')
+          TEMPORARILY_UNAVAILABLE = new('TEMPORARILY_UNAVAILABLE')
+          INVALID_SCOPE = new('INVALID_SCOPE')
+          UNAUTHORIZED_CLIENT = new('UNAUTHORIZED_CLIENT')
         end
       end
     end

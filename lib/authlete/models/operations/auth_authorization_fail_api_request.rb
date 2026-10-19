@@ -12,22 +12,22 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
         field :authorization_fail_request, Models::Components::AuthorizationFailRequest, { 'request': { 'media_type': 'application/json' } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        sig { params(service_id: ::String, authorization_fail_request: Models::Components::AuthorizationFailRequest).void }
-        def initialize(service_id:, authorization_fail_request:)
-          @service_id = service_id
+        sig { params(authorization_fail_request: Models::Components::AuthorizationFailRequest, service_id: T.nilable(::String)).void }
+        def initialize(authorization_fail_request:, service_id: nil)
           @authorization_fail_request = authorization_fail_request
+          @service_id = service_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @authorization_fail_request == other.authorization_fail_request
+          return false unless @service_id == other.service_id
           true
         end
       end

@@ -19,9 +19,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.authorization_management.ticket_info(service_id: '<id>', authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest.new(
+res = s.authorization_management.ticket_info(authorization_ticket_info_request: Models::Components::AuthorizationTicketInfoRequest.new(
   ticket: '<value>'
 ))
 
@@ -35,8 +36,8 @@ end
 
 | Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                | *::String*                                                                                                  | :heavy_check_mark:                                                                                          | A service ID.                                                                                               |
 | `authorization_ticket_info_request`                                                                         | [Models::Components::AuthorizationTicketInfoRequest](../../models/shared/authorizationticketinforequest.md) | :heavy_check_mark:                                                                                          | N/A                                                                                                         |
+| `service_id`                                                                                                | *T.nilable(::String)*                                                                                       | :heavy_minus_sign:                                                                                          | A service ID.                                                                                               |
 
 ### Response
 
@@ -47,6 +48,7 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
@@ -62,11 +64,12 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.authorization_management.update_ticket(service_id: '<id>', authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest.new(
+res = s.authorization_management.update_ticket(authorization_ticket_update_request: Models::Components::AuthorizationTicketUpdateRequest.new(
   ticket: '<value>',
-  info: '<value>'
+  info: Models::Components::AuthorizationTicketInfo.new
 ))
 
 unless res.authorization_ticket_update_response.nil?
@@ -79,8 +82,8 @@ end
 
 | Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                                    | *::String*                                                                                                      | :heavy_check_mark:                                                                                              | A service ID.                                                                                                   |
 | `authorization_ticket_update_request`                                                                           | [Models::Components::AuthorizationTicketUpdateRequest](../../models/shared/authorizationticketupdaterequest.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `service_id`                                                                                                    | *T.nilable(::String)*                                                                                           | :heavy_minus_sign:                                                                                              | A service ID.                                                                                                   |
 
 ### Response
 
@@ -91,5 +94,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |

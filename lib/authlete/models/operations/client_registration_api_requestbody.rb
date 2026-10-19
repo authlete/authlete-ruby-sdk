@@ -12,8 +12,7 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591)
-        # (OAuth 2.0 Dynamic Client Registration Protocol).
+        # Client metadata in JSON format that complies with [RFC 7591](https://datatracker.ietf.org/doc/html/rfc7591) (OAuth 2.0 Dynamic Client Registration Protocol).
         #
         field :json, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('json'), required: true } }
         # The client registration access token. Used only for GET, UPDATE, and DELETE requests.

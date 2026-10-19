@@ -12,15 +12,13 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The access token that has been passed to the userinfo endpoint by the client application. In other words,
-        # the access token which was contained in the userinfo request.
+        # The access token that has been passed to the userinfo endpoint by the client application. In other words, the access token which was contained in the userinfo request.
         #
         field :token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('token'), required: true }, 'form': { 'field_name': 'token' } }
         # Claims in JSON format. As for the format, see [OpenID Connect Core 1.0, 5.1. Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
         #
         field :claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('claims') }, 'form': { 'field_name': 'claims' } }
-        # The value of the `sub` claim. If the value of this request parameter is not empty, it is used as the value of
-        # the `sub` claim. Otherwise, the value of the subject associated with the access token is used.
+        # The value of the `sub` claim. If the value of this request parameter is not empty, it is used as the value of the `sub` claim. Otherwise, the value of the subject associated with the access token is used.
         #
         field :sub, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sub') }, 'form': { 'field_name': 'sub' } }
         # Claim key-value pairs that are used to compute transformed claims.
@@ -29,8 +27,7 @@ module Authlete
         # The Signature header value from the request.
         #
         field :request_signature, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requestSignature') }, 'form': { 'field_name': 'requestSignature' } }
-        # HTTP headers to be included in processing the signature. If this is a signed request, this must include the
-        # Signature and Signature-Input headers, as well as any additional headers covered by the signature.
+        # HTTP headers to be included in processing the signature. If this is a signed request, this must include the Signature and Signature-Input headers, as well as any additional headers covered by the signature.
         #
         field :headers, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('headers') }, 'form': { 'field_name': 'headers', 'json': true } }
         # Values of verified claims requested indirectly by "transformed claims".

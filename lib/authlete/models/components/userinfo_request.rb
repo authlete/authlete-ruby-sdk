@@ -17,27 +17,20 @@ module Authlete
         field :token, ::String, { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('token'), required: true }, 'form': { 'field_name': 'token' } }
         # Client certificate used in the TLS connection established between the client application and the userinfo endpoint.
         #
-        # The value of this request parameter is referred to when the access token given to the userinfo endpoint was bound to
-        # a client certificate when it was issued. See [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens]
-        # (https://datatracker.ietf.org/doc/rfc8705/) for details about the specification of certificate-bound access tokens.
+        # The value of this request parameter is referred to when the access token given to the userinfo endpoint was bound to a client certificate when it was issued. See [OAuth 2.0 Mutual TLS Client Authentication and Certificate-Bound Access Tokens] (https://datatracker.ietf.org/doc/rfc8705/) for details about the specification of certificate-bound access tokens.
         #
         field :client_certificate, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientCertificate') }, 'form': { 'field_name': 'clientCertificate' } }
         # `DPoP` header presented by the client during the request to the user info endpoint.
         #
-        # The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT.
-        # See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop)
-        # for details.
+        # The header contains a signed JWT which includes the public key that is paired with the private key used to sign the JWT. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
         #
         field :dpop, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpop') }, 'form': { 'field_name': 'dpop' } }
-        # HTTP method of the user info request. This field is used to validate the DPoP header.
-        # In normal cases, the value is either `GET` or `POST`.
+        # HTTP method of the user info request. This field is used to validate the DPoP header. In normal cases, the value is either `GET` or `POST`.
         #
         field :htm, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htm') }, 'form': { 'field_name': 'htm' } }
         # URL of the user info endpoint. This field is used to validate the DPoP header.
         #
-        # If this parameter is omitted, the `userInfoEndpoint` property of the service is used as the default value.
-        # See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop)
-        # for details.
+        # If this parameter is omitted, the `userInfoEndpoint` property of the service is used as the default value. See [OAuth 2.0 Demonstration of Proof-of-Possession at the Application Layer (DPoP)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop) for details.
         #
         field :htu, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('htu') }, 'form': { 'field_name': 'htu' } }
         # The full URL of the userinfo endpoint.
@@ -46,8 +39,7 @@ module Authlete
         # The HTTP message body of the request, if present.
         #
         field :message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('message') }, 'form': { 'field_name': 'message' } }
-        # HTTP headers to be included in processing the signature. If this is a signed request, this must include the
-        # Signature and Signature-Input headers, as well as any additional headers covered by the signature.
+        # HTTP headers to be included in processing the signature. If this is a signed request, this must include the Signature and Signature-Input headers, as well as any additional headers covered by the signature.
         #
         field :headers, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Pair)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('headers') }, 'form': { 'field_name': 'headers', 'json': true } }
         # The target URI of the userinfo request, including the query part, if any.
@@ -55,10 +47,7 @@ module Authlete
         field :target_uri, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('targetUri') }, 'form': { 'field_name': 'targetUri' } }
         # The flag indicating whether to check if the DPoP proof JWT includes the expected `nonce` value.
         #
-        # If this request parameter is set to `true` or if the service's `dpopNonceRequired` property is
-        # set to `true`, the `/auth/userinfo` API checks if the DPoP proof JWT includes the expected `nonce`
-        # value. In this case, the response from the `/auth/userinfo` API will include the `dpopNonce` response
-        # parameter, which should be used as the value of the DPoP-Nonce HTTP header.
+        # If this request parameter is set to `true` or if the service's `dpopNonceRequired` property is set to `true`, the `/auth/userinfo` API checks if the DPoP proof JWT includes the expected `nonce` value. In this case, the response from the `/auth/userinfo` API will include the `dpopNonce` response parameter, which should be used as the value of the DPoP-Nonce HTTP header.
         #
         field :dpop_nonce_required, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopNonceRequired') }, 'form': { 'field_name': 'dpopNonceRequired' } }
         # The flag indicating whether the userinfo request contains a request body.

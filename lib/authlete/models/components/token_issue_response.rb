@@ -18,25 +18,20 @@ module Authlete
         field :result_message, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resultMessage') } }
         # The next action that the authorization server implementation should take.
         field :action, Crystalline::Nilable.new(Models::Components::TokenIssueResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::TokenIssueResponseAction, true) } }
-        # The content that the authorization server implementation is to return to the client application.
-        # Its format is JSON.
+        # The content that the authorization server implementation is to return to the client application. Its format is JSON.
         #
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
         # The newly issued access token. This parameter is a non-null value only when the value of `action` parameter is `OK`.
         field :access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessToken') } }
-        # The datetime at which the newly issued access token will expire.
-        # The value is represented in milliseconds since the Unix epoch (1970-01-01).
+        # The datetime at which the newly issued access token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
         #
         field :access_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenExpiresAt') } }
         # The duration of the newly issued access token in seconds.
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') } }
-        # The refresh token. This parameter is a non-null value only when `action` is `OK` and the service supports the refresh token flow.
-        # If `refreshTokenKept` is set to `false`, a new refresh token is issued and the old refresh token used in the refresh token flow
-        # is invalidated. On the contrary, if `refreshTokenKept` is set to `true`, the refresh token itself is not refreshed.
+        # The refresh token. This parameter is a non-null value only when `action` is `OK` and the service supports the refresh token flow. If `refreshTokenKept` is set to `false`, a new refresh token is issued and the old refresh token used in the refresh token flow is invalidated. On the contrary, if `refreshTokenKept` is set to `true`, the refresh token itself is not refreshed.
         #
         field :refresh_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshToken') } }
-        # The datetime at which the newly issued refresh token will expire.
-        # The value is represented in milliseconds since the Unix epoch (1970-01-01).
+        # The datetime at which the newly issued refresh token will expire. The value is represented in milliseconds since the Unix epoch (1970-01-01).
         #
         field :refresh_token_expires_at, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenExpiresAt') } }
         # The duration of the newly issued refresh token in seconds.
@@ -46,33 +41,24 @@ module Authlete
         # The client ID alias. If the client did not have an alias, this parameter is `null`.
         #
         field :client_id_alias, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAlias') } }
-        # The flag which indicates whether the client ID alias was used when the token request was made.
-        # `true` if the client ID alias was used when the token request was made.
+        # The flag which indicates whether the client ID alias was used when the token request was made. `true` if the client ID alias was used when the token request was made.
         #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') } }
-        # The subject (= resource owner's ID) of the access token.
-        # Even if an access token has been issued by calling `/api/auth/token` API, this parameter is `null` if the flow of the token request was
-        # [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means
-        # the access token is not associated with any specific end-user.
+        # The subject (= resource owner's ID) of the access token. Even if an access token has been issued by calling `/api/auth/token` API, this parameter is `null` if the flow of the token request was [Client Credentials Flow](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4) (`grant_type=client_credentials`) because it means the access token is not associated with any specific end-user.
         #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
         # The scopes covered by the access token.
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') } }
-        # The extra properties associated with the access token.
-        # This parameter is `null` when no extra property is associated with the issued access token.
+        # The extra properties associated with the access token. This parameter is `null` when no extra property is associated with the issued access token.
         #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') } }
-        # The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens
-        # (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the
-        # original random-string one.
+        # The newly issued access token in JWT format. If the authorization server is configured to issue JWT-based access tokens (= if the service's `accessTokenSignAlg` value is a non-null value), a JWT-based access token is issued along with the original random-string one.
         #
         field :jwt_access_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAccessToken') } }
         # The target resources of the access token being issued. See "Resource Indicators for OAuth 2.0" for details.
         #
         field :access_token_resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenResources') } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') } }
         # The attributes of this service that the client application belongs to.

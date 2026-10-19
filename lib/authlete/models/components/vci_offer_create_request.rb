@@ -12,18 +12,13 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # The flag indicating whether the `authorization_code` object is
-        # included in the `grants` object.
+        # The flag indicating whether the `authorization_code` object is included in the `grants` object.
         #
         field :authorization_code_grant_included, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationCodeGrantIncluded') }, 'form': { 'field_name': 'authorizationCodeGrantIncluded' } }
-        # The flag indicating whether the `issuer_state` property is
-        # included in the `authorization_code` object in the `grants`
-        # object.
+        # The flag indicating whether the `issuer_state` property is included in the `authorization_code` object in the `grants` object.
         #
         field :issuer_state_included, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('issuerStateIncluded') }, 'form': { 'field_name': 'issuerStateIncluded' } }
-        # The flag to include the
-        # `urn:ietf:params:oauth:grant-type:pre-authorized_code` object
-        # in the `grants` object.
+        # The flag to include the `urn:ietf:params:oauth:grant-type:pre-authorized_code` object in the `grants` object.
         #
         field :pre_authorized_code_grant_included, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('preAuthorizedCodeGrantIncluded') }, 'form': { 'field_name': 'preAuthorizedCodeGrantIncluded' } }
         # The subject associated with the credential offer.
@@ -34,16 +29,13 @@ module Authlete
         field :context, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('context') }, 'form': { 'field_name': 'context' } }
         # Extra properties to associate with the credential offer.
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') }, 'form': { 'field_name': 'properties', 'json': true } }
-        # Additional claims that are added to the payload part of the JWT
-        # access token.
+        # Additional claims that are added to the payload part of the JWT access token.
         #
         field :jwt_at_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAtClaims') }, 'form': { 'field_name': 'jwtAtClaims' } }
-        # The time at which the user authentication was performed during
-        # the course of issuing the credential offer.
+        # The time at which the user authentication was performed during the course of issuing the credential offer.
         #
         field :auth_time, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authTime') }, 'form': { 'field_name': 'authTime' } }
-        # The Authentication Context Class Reference of the user authentication
-        # performed during the course of issuing the credential offer.
+        # The Authentication Context Class Reference of the user authentication performed during the course of issuing the credential offer.
         #
         field :acr, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acr') }, 'form': { 'field_name': 'acr' } }
         # The value of the `credential_configuration_ids` array.

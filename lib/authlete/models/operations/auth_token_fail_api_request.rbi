@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::AuthTokenFailApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def token_fail_request(); end
   def token_fail_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

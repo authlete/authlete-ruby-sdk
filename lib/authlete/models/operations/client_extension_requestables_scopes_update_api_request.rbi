@@ -8,10 +8,10 @@ end
 
 
 class Authlete::Models::Operations::ClientExtensionRequestablesScopesUpdateApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def client_id(); end
   def client_id=(str_); end
   def client_extension_requestable_scopes_update_request(); end
   def client_extension_requestable_scopes_update_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

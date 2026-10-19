@@ -12,24 +12,23 @@ module Authlete
         extend T::Sig
         include Crystalline::MetadataFields
 
-        # A service ID.
-        field :service_id, ::String, { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
-        # The identifier of an existing access token. The identifier is the value of the access token
-        # or the value of the hash of the access token.
+        # The identifier of an existing access token. The identifier is the value of the access token or the value of the hash of the access token.
         #
         field :access_token_identifier, ::String, { 'path_param': { 'field_name': 'accessTokenIdentifier', 'style': 'simple', 'explode': false } }
+        # A service ID.
+        field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        sig { params(service_id: ::String, access_token_identifier: ::String).void }
-        def initialize(service_id:, access_token_identifier:)
-          @service_id = service_id
+        sig { params(access_token_identifier: ::String, service_id: T.nilable(::String)).void }
+        def initialize(access_token_identifier:, service_id: nil)
           @access_token_identifier = access_token_identifier
+          @service_id = service_id
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
         def ==(other)
           return false unless other.is_a? self.class
-          return false unless @service_id == other.service_id
           return false unless @access_token_identifier == other.access_token_identifier
+          return false unless @service_id == other.service_id
           true
         end
       end

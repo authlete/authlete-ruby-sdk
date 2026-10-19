@@ -18,34 +18,24 @@ module Authlete
         # The ID of the client application which will be associated with a newly created access token.
         #
         field :client_id, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientId') }, 'form': { 'field_name': 'clientId' } }
-        # The subject (= unique identifier) of the user who will be associated with a newly created access
-        # token. This parameter is required unless the grant type is `CLIENT_CREDENTIALS`. The value must
-        # consist of only ASCII characters and its length must not exceed 100.
+        # The subject (= unique identifier) of the user who will be associated with a newly created access token. This parameter is required unless the grant type is `CLIENT_CREDENTIALS`. The value must consist of only ASCII characters and its length must not exceed 100.
         #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') }, 'form': { 'field_name': 'subject' } }
-        # The scopes which will be associated with a newly created access token. Scopes that are not supported
-        # by the service cannot be specified and requesting them will cause an error.
+        # The scopes which will be associated with a newly created access token. Scopes that are not supported by the service cannot be specified and requesting them will cause an error.
         #
         field :scopes, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('scopes') }, 'form': { 'field_name': 'scopes' } }
-        # The duration of a newly created access token in seconds. If the value is 0, the duration is determined
-        # according to the settings of the service.
+        # The duration of a newly created access token in seconds. If the value is 0, the duration is determined according to the settings of the service.
         #
         field :access_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenDuration') }, 'form': { 'field_name': 'accessTokenDuration' } }
-        # The duration of a newly created refresh token in seconds. If the value is 0, the duration is
-        # determined according to the settings of the service.
+        # The duration of a newly created refresh token in seconds. If the value is 0, the duration is determined according to the settings of the service.
         #
-        # A refresh token is not created (1) if the service does not support `REFRESH_TOKEN`, or (2) if the
-        # specified grant type is either `IMPLICIT`or `CLIENT_CREDENTIALS`.
+        # A refresh token is not created (1) if the service does not support `REFRESH_TOKEN`, or (2) if the specified grant type is either `IMPLICIT`or `CLIENT_CREDENTIALS`.
         #
         field :refresh_token_duration, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshTokenDuration') }, 'form': { 'field_name': 'refreshTokenDuration' } }
-        # Extra properties to associate with a newly created access token. Note that properties parameter
-        # is accepted only when the HTTP method of the request is POST and Content-Type of the request is
-        # `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want
-        # to specify properties.
+        # Extra properties to associate with a newly created access token. Note that properties parameter is accepted only when the HTTP method of the request is POST and Content-Type of the request is `application/json`, so don't use `GET` method or `application/x-www-form-urlencoded` if you want to specify properties.
         #
         field :properties, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Property)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('properties') }, 'form': { 'field_name': 'properties', 'json': true } }
-        # A boolean request parameter which indicates whether to emulate that the client ID alias is used
-        # instead of the original numeric client ID when a new access token is created.
+        # A boolean request parameter which indicates whether to emulate that the client ID alias is used instead of the original numeric client ID when a new access token is created.
         #
         field :client_id_alias_used, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdAliasUsed') }, 'form': { 'field_name': 'clientIdAliasUsed' } }
         # The value of the new access token.
@@ -54,43 +44,30 @@ module Authlete
         # The value of the new refresh token.
         #
         field :refresh_token, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('refreshToken') }, 'form': { 'field_name': 'refreshToken' } }
-        # Get whether the access token expires or not. By default, all access tokens expire after a period
-        # of time determined by their service.
+        # Get whether the access token expires or not. By default, all access tokens expire after a period of time determined by their service.
         #
-        # If this request parameter is `true`, then the access token will not automatically expire and must
-        # be revoked or deleted manually at the service. If this request parameter is true, the `accessTokenDuration`
-        # request parameter is ignored.
+        # If this request parameter is `true`, then the access token will not automatically expire and must be revoked or deleted manually at the service. If this request parameter is true, the `accessTokenDuration` request parameter is ignored.
         #
         field :access_token_persistent, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokenPersistent') }, 'form': { 'field_name': 'accessTokenPersistent' } }
-        # The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate
-        # with the corresponding value MUST be presented with the access token when it is used by a client.
-        # The value of this property must be a SHA256 certificate thumbprint, base64url encoded.
+        # The thumbprint of the MTLS certificate bound to this token. If this property is set, a certificate with the corresponding value MUST be presented with the access token when it is used by a client. The value of this property must be a SHA256 certificate thumbprint, base64url encoded.
         #
         field :certificate_thumbprint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('certificateThumbprint') }, 'form': { 'field_name': 'certificateThumbprint' } }
-        # The thumbprint of the public key used for DPoP presentation of this token. If this property is
-        # set, a DPoP proof signed with the corresponding private key MUST be presented with the access
-        # token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
+        # The thumbprint of the public key used for DPoP presentation of this token. If this property is set, a DPoP proof signed with the corresponding private key MUST be presented with the access token when it is used by a client. Additionally, the token's `token_type` will be set to 'DPoP'.
         #
         field :dpop_key_thumbprint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('dpopKeyThumbprint') }, 'form': { 'field_name': 'dpopKeyThumbprint' } }
-        # The authorization details. This represents the value of the `authorization_details`
-        # request parameter in the preceding device authorization request which is defined in
-        # "OAuth 2.0 Rich Authorization Requests".
+        # The authorization details. This represents the value of the `authorization_details` request parameter in the preceding device authorization request which is defined in "OAuth 2.0 Rich Authorization Requests".
         #
         field :authorization_details, Crystalline::Nilable.new(Models::Components::AuthzDetails), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('authorizationDetails') }, 'form': { 'field_name': 'authorizationDetails', 'json': true } }
-        # The value of the resources to associate with the token. This property represents the value of
-        # one or more `resource` request parameters which is defined in "RFC8707 Resource Indicators for
-        # OAuth 2.0".
+        # The value of the resources to associate with the token. This property represents the value of one or more `resource` request parameters which is defined in "RFC8707 Resource Indicators for OAuth 2.0".
         #
         field :resources, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('resources') }, 'form': { 'field_name': 'resources' } }
-        # the flag which indicates whether the access token is for an external
-        # attachment.
+        # the flag which indicates whether the access token is for an external attachment.
         #
         field :for_external_attachment, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('forExternalAttachment') }, 'form': { 'field_name': 'forExternalAttachment' } }
         # Additional claims that are added to the payload part of the JWT access token.
         #
         field :jwt_at_claims, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('jwtAtClaims') }, 'form': { 'field_name': 'jwtAtClaims' } }
-        # The Authentication Context Class Reference of the user authentication that the authorization server performed
-        # during the course of issuing the access token.
+        # The Authentication Context Class Reference of the user authentication that the authorization server performed during the course of issuing the access token.
         #
         field :acr, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('acr') }, 'form': { 'field_name': 'acr' } }
         # The time when the user authentication was performed during the course of issuing the access token.
@@ -102,8 +79,7 @@ module Authlete
         # The client Identifier associated with the newly issued access token.
         #
         field :client_identifier, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clientIdentifier') }, 'form': { 'field_name': 'clientIdentifier' } }
-        # The session ID, which is the ID of the user's authentication session, associated with a newly
-        # created access token.
+        # The session ID, which is the ID of the user's authentication session, associated with a newly created access token.
         #
         field :session_id, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('sessionId') }, 'form': { 'field_name': 'sessionId' } }
         # Flag indicating whether a metadata document was used to resolve client metadata for this request.

@@ -49,6 +49,10 @@ module Authlete
     attr_accessor :server_idx
 
     
+    sig { returns(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]) }
+    attr_accessor :globals
+
+    
     sig { returns(String) }
     attr_accessor :language
 
@@ -73,10 +77,11 @@ module Authlete
         bearer: T.nilable(::String),
         security_source: T.nilable(T.proc.returns(Models::Components::Security)),
         server_url: T.nilable(String),
-        server_idx: T.nilable(Integer)
+        server_idx: T.nilable(Integer),
+        globals: T.nilable(T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]])
       ).void
     end
-    def initialize(client, hooks, retry_config, timeout_ms, bearer, security_source, server_url, server_idx)
+    def initialize(client, hooks, retry_config, timeout_ms, bearer, security_source, server_url, server_idx, globals)
       @client = client
       @hooks = hooks
       @retry_config = retry_config
@@ -89,11 +94,12 @@ module Authlete
       elsif !bearer.nil?
         @security_source = -> { Models::Components::Security.new(bearer: bearer) }
       end
+      @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '3.0.16'
       @sdk_version = '1.0.0'
-      @gen_version = '2.879.6'
-      @user_agent = 'speakeasy-sdk/ruby 1.0.0 2.879.6 3.0.16 authlete_ruby_sdk'
+      @gen_version = '2.948.4'
+      @user_agent = 'speakeasy-sdk/ruby 1.0.0 2.948.4 3.0.16 authlete_ruby_sdk'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

@@ -8,8 +8,8 @@ end
 
 
 class Authlete::Models::Operations::BackchannelAuthenticationCompleteApiRequest
-  def service_id(); end
-  def service_id=(str_); end
   def backchannel_authentication_complete_request(); end
   def backchannel_authentication_complete_request=(str_); end
+  def service_id(); end
+  def service_id=(str_); end
 end

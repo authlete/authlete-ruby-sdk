@@ -20,8 +20,7 @@ module Authlete
         field :action, Crystalline::Nilable.new(Models::Components::VciBatchParseResponseAction), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('action'), 'decoder': ::Authlete::Utils.enum_from_string(Models::Components::VciBatchParseResponseAction, true) } }
         # The content of the response to the request sender.
         field :response_content, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('responseContent') } }
-        # Information about the credential requests in the batch credential
-        # request.
+        # Information about the credential requests in the batch credential request.
         #
         field :info, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::CredentialRequestInfo)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('info') } }
 

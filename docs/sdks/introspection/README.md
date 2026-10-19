@@ -20,9 +20,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.introspection.process_request(service_id: '<id>', introspection_request: Models::Components::IntrospectionRequest.new(
+res = s.introspection.process_request(introspection_request: Models::Components::IntrospectionRequest.new(
   token: 'VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI',
   scopes: [
     'history.read',
@@ -41,8 +42,8 @@ end
 
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `service_id`                                                                            | *::String*                                                                              | :heavy_check_mark:                                                                      | A service ID.                                                                           |
 | `introspection_request`                                                                 | [Models::Components::IntrospectionRequest](../../models/shared/introspectionrequest.md) | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `service_id`                                                                            | *T.nilable(::String)*                                                                   | :heavy_minus_sign:                                                                      | A service ID.                                                                           |
 
 ### Response
 
@@ -53,13 +54,13 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
 
 ## standard_process
 
-This API exists to help your authorization server provide its own introspection API which complies
-with [RFC 7662](https://tools.ietf.org/html/rfc7662) (OAuth 2.0 Token Introspection).
+This API exists to help your authorization server provide its own introspection API which complies with [RFC 7662](https://tools.ietf.org/html/rfc7662) (OAuth 2.0 Token Introspection).
 
 
 ### Example Usage
@@ -70,9 +71,10 @@ require 'authlete_ruby_sdk'
 
 Models = ::Authlete::Models
 s = ::Authlete::Client.new(
+  service_id: '<id>',
   bearer: '<YOUR_BEARER_TOKEN_HERE>'
 )
-res = s.introspection.standard_process(service_id: '<id>', standard_introspection_request: Models::Components::StandardIntrospectionRequest.new(
+res = s.introspection.standard_process(standard_introspection_request: Models::Components::StandardIntrospectionRequest.new(
   parameters: 'token=VFGsNK-5sXiqterdaR7b5QbRX9VTwVCQB87jbr2_xAI&token_type_hint=access_token'
 ))
 
@@ -86,8 +88,8 @@ end
 
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `service_id`                                                                                            | *::String*                                                                                              | :heavy_check_mark:                                                                                      | A service ID.                                                                                           |
 | `standard_introspection_request`                                                                        | [Models::Components::StandardIntrospectionRequest](../../models/shared/standardintrospectionrequest.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `service_id`                                                                                            | *T.nilable(::String)*                                                                                   | :heavy_minus_sign:                                                                                      | A service ID.                                                                                           |
 
 ### Response
 
@@ -98,5 +100,6 @@ end
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | Models::Errors::ResultError | 400, 401, 403               | application/json            |
+| Models::Errors::ResultError | 429                         | application/json            |
 | Models::Errors::ResultError | 500                         | application/json            |
 | Errors::APIError            | 4XX, 5XX                    | \*/\*                       |
