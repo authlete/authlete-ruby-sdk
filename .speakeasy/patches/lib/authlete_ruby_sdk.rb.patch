@@ -1,0 +1,11 @@
+diff --git a/lib/authlete_ruby_sdk.rb b/lib/authlete_ruby_sdk.rb
+index 5b5e1d7..b04a694 100644
+--- a/lib/authlete_ruby_sdk.rb
++++ b/lib/authlete_ruby_sdk.rb
+@@ -44,3 +44,6 @@ require_relative 'authlete/utils/url'
+ require_relative 'authlete/utils/security'
+ require_relative 'crystalline'
+ require_relative 'authlete/sdkconfiguration'
++
++# Hand-written IDP routing (lib/authlete/idp.rb); added by .speakeasy/patches.
++require_relative 'authlete/idp'

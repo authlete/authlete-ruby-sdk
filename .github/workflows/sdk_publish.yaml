@@ -13,7 +13,21 @@ permissions:
       - .speakeasy/gen.lock
   workflow_dispatch: {}
 jobs:
+  # Check before publishing: a released gem version can be yanked but never
+  # reused. These offline tests fail if the IdP require line patched into the
+  # gem entry point (.speakeasy/patches) is missing.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      - run: grep -q "require_relative 'authlete/idp'" lib/authlete_ruby_sdk.rb
+      - run: bundle exec ruby -Ilib test/idp_routing_test.rb
   publish:
+    needs: test
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     with:
       target: authlete

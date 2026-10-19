@@ -1,0 +1,25 @@
+name: Tests
+permissions:
+  contents: read
+"on":
+  pull_request: {}
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+      # The gem entry point loads lib/authlete/idp.rb through a line that
+      # .speakeasy/patches/lib/authlete_ruby_sdk.rb.patch adds after every
+      # generation. Fail if a regeneration dropped it.
+      - name: IdP patch applied
+        run: grep -q "require_relative 'authlete/idp'" lib/authlete_ruby_sdk.rb
+      # Offline tests for the IdP routing (no network, no secrets).
+      - run: bundle exec ruby -Ilib test/idp_routing_test.rb
+      - run: bundle exec rubocop lib/authlete/idp.rb test/idp_routing_test.rb

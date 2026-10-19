@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:15212d937e26b1a1f9a79504bdeafa3aba976394d3a5f66ff76cd0b58b939400
         sourceBlobDigest: sha256:8672b1dcba00334ea99c619ed42fa798183cd668e6a95194c6f6e43f566358a1
         codeSamplesNamespace: authlete-oas-ruby-code-samples
-        codeSamplesRevisionDigest: sha256:587a88f76e1fb6f2d48333b3924149b59d7e7ae8c7c09a933e6bd9b8b15e8c0f
+        codeSamplesRevisionDigest: sha256:a4c074f0fea933f98ba7ac1f54aaf83790ab792c443df0c4a31b08cde17fb52b
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

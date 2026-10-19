@@ -44,3 +44,6 @@ require_relative 'authlete/utils/url'
 require_relative 'authlete/utils/security'
 require_relative 'crystalline'
 require_relative 'authlete/sdkconfiguration'
+
+# Hand-written IDP routing (lib/authlete/idp.rb); added by .speakeasy/patches.
+require_relative 'authlete/idp'
