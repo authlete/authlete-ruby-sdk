@@ -457,15 +457,7 @@ actions:
         reviewed_at: 1761727785993
         type: method-name
     - target: $["paths"]["/api/service/create"]["post"]
-      update:
-        x-speakeasy-group: services
-        x-speakeasy-name-override: create
-      x-speakeasy-metadata:
-        after: sdk.service.create()
-        before: ""
-        created_at: 1761727785993
-        reviewed_at: 1761727785993
-        type: method-name
+      remove: true
     - target: $["paths"]["/api/service/get/list"]["get"]
       update:
         x-speakeasy-group: services
@@ -507,15 +499,7 @@ actions:
         reviewed_at: 1761727785993
         type: method-name
     - target: $["paths"]["/api/{serviceId}/service/delete"]["delete"]
-      update:
-        x-speakeasy-group: services
-        x-speakeasy-name-override: destroy
-      x-speakeasy-metadata:
-        after: sdk.service.delete()
-        before: ""
-        created_at: 1761727785993
-        reviewed_at: 1761727785993
-        type: method-name
+      remove: true
     - target: $["paths"]["/api/{serviceId}/auth/token"]["post"]
       update:
         x-speakeasy-group: tokens
@@ -819,20 +803,70 @@ actions:
         reviewed_at: 1761810600000
         type: method-name
     - target: $["paths"]["/api/{serviceId}/jose/verify"]["post"]
-      update:
-        x-speakeasy-internal: true
-      x-speakeasy-metadata:
-        after: marked internal
-        before: public
-        created_at: 1761811000000
-        reviewed_at: 1761811000000
-        type: internalize
+      remove: true
     - target: $["paths"]["/api/{serviceId}/service/jwks/get"]["get"]
+      remove: true
+    - target: $["paths"]["/api/service"]["post"]
       update:
-        x-speakeasy-internal: true
-      x-speakeasy-metadata:
-        after: marked internal
-        before: public
-        created_at: 1761811000000
-        reviewed_at: 1761811000000
-        type: internalize
+        x-speakeasy-group: services
+        x-speakeasy-name-override: create
+    - target: $["paths"]["/api/service/remove"]["post"]
+      update:
+        x-speakeasy-group: services
+        x-speakeasy-name-override: remove
+    - target: $["paths"]["/api/{serviceId}/client/authorization/get/list"]["get"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: authorized_applications
+    - target: $["paths"]["/api/{serviceId}/client/authorization/get/list"]["post"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: authorized_applications_by_post
+    - target: $["paths"]["/api/{serviceId}/client/authorization/delete/{clientId}"]["delete"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: destroy_client_tokens
+    - target: $["paths"]["/api/{serviceId}/client/authorization/delete/{clientId}"]["post"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: destroy_client_tokens_by_post
+    - target: $["paths"]["/api/{serviceId}/client/granted_scopes/get/{clientId}"]["get"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: client_granted_scopes
+    - target: $["paths"]["/api/{serviceId}/client/granted_scopes/get/{clientId}"]["post"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: client_granted_scopes_by_post
+    - target: $["paths"]["/api/{serviceId}/client/granted_scopes/delete/{clientId}"]["delete"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: destroy_client_granted_scopes
+    - target: $["paths"]["/api/{serviceId}/client/extension/requestable_scopes/update/{clientId}"]["post"]
+      update:
+        x-speakeasy-group: client_management
+        x-speakeasy-name-override: update_requestable_scopes_by_post
+    - target: $["paths"]["/api/{serviceId}/client"]["get"]
+      update:
+        x-speakeasy-group: clients
+        x-speakeasy-name-override: list_by_cursor
+    - target: $["paths"]["/api/{serviceId}/client/search"]["get"]
+      update:
+        x-speakeasy-group: clients
+        x-speakeasy-name-override: search
+    # These two declare serviceId as an integer, unlike every other operation,
+    # which stops the serviceId global below from applying to them.
+    - target: $["paths"]["/api/{serviceId}/client"]["get"]["parameters"][?@.name=="serviceId"]["schema"]
+      update:
+        type: string
+    - target: $["paths"]["/api/{serviceId}/client/search"]["get"]["parameters"][?@.name=="serviceId"]["schema"]
+      update:
+        type: string
+    - target: $
+      update:
+        x-speakeasy-globals:
+          parameters:
+            - name: serviceId
+              in: path
+              schema:
+                type: string
