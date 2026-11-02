@@ -2,21 +2,21 @@ lockVersion: 2.0.0
 id: 0a8a4187-e84f-4270-962c-75ec55a6d5eb
 management:
   docVersion: 3.0.16
-  speakeasyVersion: 1.802.0
-  generationVersion: 2.948.4
+  speakeasyVersion: 1.805.0
+  generationVersion: 2.954.8
   releaseVersion: 1.0.0
   repoURL: https://github.com/authlete/authlete-ruby-sdk.git
   installationURL: https://github.com/authlete/authlete-ruby-sdk
   published: true
 persistentEdits:
-  generation_id: 02a0c6d5-c426-4c32-b56e-e418559fddcf
-  pristine_commit_hash: a2ffa18b1339e6cb96f6540a65b744ca7a380521
-  pristine_tree_hash: 49892d5a3a6a1ca17a96341309ca41701028dec0
+  generation_id: f8dda43c-5d8c-43a8-a8e2-0cba02cb6375
+  pristine_commit_hash: a1c62b402004cac744e38fcb263a0876872e4f80
+  pristine_tree_hash: 87fe8c0785d6ab3e27ff67e9f367be26643ecda5
 features:
   ruby:
     additionalProperties: 0.1.1
     constsAndDefaults: 0.1.4
-    core: 3.11.36
+    core: 3.11.37
     deprecations: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.81.11
@@ -125,8 +125,8 @@ trackedFiles:
     pristine_git_object: f6e08f58120fed8c3c111b5a0af932b39108aad4
   docs/models/components/authorizationresponse.md:
     id: c857cac562eb
-    last_write_checksum: sha1:ff5939f8baadefe208651c59c762d03453afd905
-    pristine_git_object: 886c766f0dc1e8c02f73320e0616fe59e3b5b637
+    last_write_checksum: sha1:cbfea2f91379aa3fba8f3aa705547deaaffbaf20
+    pristine_git_object: 0f2ce780ed1525789ad08c6a583f93bb7dc48a04
   docs/models/components/authorizationresponseaction.md:
     id: d7505577ad87
     last_write_checksum: sha1:0291aae6b9fec70c373e1c51b9daef5d74016dc2
@@ -241,8 +241,8 @@ trackedFiles:
     pristine_git_object: 681e0a4b97ebb63b968b27a9da5b9ea9c9bc7d06
   docs/models/components/client.md:
     id: b8f8d0df008a
-    last_write_checksum: sha1:57ff7058ebac963a147b5d852e85086ffde47e3e
-    pristine_git_object: 7989eca79bde0f15b1e2ccf177b925a64120c3d1
+    last_write_checksum: sha1:eb7dd0c422ce357b1e350fec5d2c9245f2a5868f
+    pristine_git_object: 367cac6960fe969d020590fb3d55d9d56e1adcf6
   docs/models/components/clientauthmethod.md:
     id: 4aa8c70baa0b
     last_write_checksum: sha1:9f18254a3e5ebd23cdda47b37d8f52f07f36884d
@@ -257,8 +257,8 @@ trackedFiles:
     pristine_git_object: 6705c6b099698ce881529e3c55b267e1f89b0883
   docs/models/components/clientauthorizationgetlistresponse.md:
     id: 168a3a474ffa
-    last_write_checksum: sha1:c2a02a94da91129a690752fafded8e08ad216316
-    pristine_git_object: 7b735bcb2fb9ec2cf9f85589a3e6c15f8412f59f
+    last_write_checksum: sha1:7f6b144018141fe4be272a68645790a1b4fccb16
+    pristine_git_object: dc0a668101a2127c9314f859ca7bfbdf0a573842
   docs/models/components/clientauthorizationupdaterequest.md:
     id: b6fc84da162d
     last_write_checksum: sha1:b9f2cb20ff7886345e2e09135ad8a6c1458621f2
@@ -267,10 +267,6 @@ trackedFiles:
     id: e0d4816aa746
     last_write_checksum: sha1:ce81273a5b2c462b8f476b39583076e806f93270
     pristine_git_object: 975ecf211b7d30bb9ae9119d0b179ec8794ca759
-  docs/models/components/clientclientsource.md:
-    id: 45507b699855
-    last_write_checksum: sha1:8589870150a752ce31c4f90721b55e3541115fa6
-    pristine_git_object: 4c06aed9e7f8d882e8f92c7f7aad9f5a400028a1
   docs/models/components/clientcursorlistresponse.md:
     id: f3b63955843f
     last_write_checksum: sha1:10433776bc127ab653cdeeab4514341aaf01193d
@@ -309,20 +305,8 @@ trackedFiles:
     pristine_git_object: 374483fcc768966a7325588ff95f008f7adef179
   docs/models/components/clientinput.md:
     id: 94833b4d693c
-    last_write_checksum: sha1:b5c2dffd806ee82aa32c7e3bc5fa19b99d711626
-    pristine_git_object: 3d27d76468639b8259eaf0aa4a04998dab911e31
-  docs/models/components/clientlimited.md:
-    id: f9bf1d21ebec
-    last_write_checksum: sha1:d308e11a7d985818859926984d35f1c8d5ead9d7
-    pristine_git_object: 6ca6862abe8c277542ab16ad904ae0e0d546cc69
-  docs/models/components/clientlimitedauthorization.md:
-    id: 1521706e7d84
-    last_write_checksum: sha1:d161ead92316c2949c6ffffbbb75c9b232b618f1
-    pristine_git_object: 6f88ffd9a63db43ffb254bfbfe49468b5d6be95f
-  docs/models/components/clientlimitedauthorizationclientsource.md:
-    id: 588258e143e3
-    last_write_checksum: sha1:df035d32ccb09a6f1169e73ae0df5c120e40152a
-    pristine_git_object: d5e0ccd9d05ae5cdfc19cfa4ec63ea333c164824
+    last_write_checksum: sha1:d0010b23f203b2370b7dd34229237dfc8af4ef81
+    pristine_git_object: 8f531781510835072f3be65cb954f0bd2a84e194
   docs/models/components/clientregistrationresponse.md:
     id: f16411191c0d
     last_write_checksum: sha1:bc3ffa6d20c347541a80805fadb83051535e37fa
@@ -351,6 +335,10 @@ trackedFiles:
     id: bcdbf52e453e
     last_write_checksum: sha1:52b715fabc23f576adfbe5c1b71d3dbcf26cca1f
     pristine_git_object: 6abab7ac346a2ce027f03064d1d108de14800741
+  docs/models/components/clientsource.md:
+    id: 4d212d7eea5b
+    last_write_checksum: sha1:cf7c78ebbd196b0878408292f0573ec7a65f7957
+    pristine_git_object: 123f279f126c4481e93904b26625098d2009fa77
   docs/models/components/clienttype.md:
     id: ca22e51fc03b
     last_write_checksum: sha1:a2102a81b86171d2c337280066f0b567dec20b2b
@@ -361,8 +349,8 @@ trackedFiles:
     pristine_git_object: f8020751665868144143d585b4a147c877e0ca73
   docs/models/components/credentialissuermetadata.md:
     id: 3c16f9782ba0
-    last_write_checksum: sha1:a049119f9d3339133d80c888fa9aab59800f5557
-    pristine_git_object: f4c7497fc241d493370d089e2fa4e70c53b1f954
+    last_write_checksum: sha1:17b578d68daaf87f7041cd3f0743610548995d88
+    pristine_git_object: 85658b06db5d3342a7b998df3bf9c08ee0d16987
   docs/models/components/credentialofferinfo.md:
     id: e725df7c4d92
     last_write_checksum: sha1:7b5f8aa120dcfbc882e7e1d0d8858cec2775491f
@@ -641,8 +629,8 @@ trackedFiles:
     pristine_git_object: c354116bb722d0a31ba8633530aaa4084040d77f
   docs/models/components/service.md:
     id: 4385ff500f60
-    last_write_checksum: sha1:a5cb2df66eded416a7eb92c554c3cbb7037ed4ca
-    pristine_git_object: 7cd2c18ed4ff2569c5173b5ab7a8a2fb08fdcdb0
+    last_write_checksum: sha1:795c5a34441c09ec96d11212999480ad201b847a
+    pristine_git_object: 0c486d06f48282e2977e94d96bfb84b0948d55f6
   docs/models/components/servicecreateidprequest.md:
     id: 97831a34e3a6
     last_write_checksum: sha1:47ef924e4b87dfcd7c713a7cf7b1e6d4726ddf56
@@ -653,8 +641,8 @@ trackedFiles:
     pristine_git_object: 75a98d72477f2a75a46c65843e1e0da248f11633
   docs/models/components/serviceinput.md:
     id: 75371ad54a11
-    last_write_checksum: sha1:3649dfcce6d7b0a63bdd7cea8f20b69f79ff003d
-    pristine_git_object: 92e306a76b5edb7299cbf896b6de13b834af629f
+    last_write_checksum: sha1:4db440d62356ce05de79427896b4ad6f55d8530d
+    pristine_git_object: 80d599dd7cd06799e9208ea03cf76c6d892fdcf8
   docs/models/components/serviceprofile.md:
     id: f0c53ca6398e
     last_write_checksum: sha1:ddd7e3ae5b52e5a63ccbab9471bbbac72457009b
@@ -729,8 +717,8 @@ trackedFiles:
     pristine_git_object: 3e6c778418b9141a9fbbb9dc01dbaafe01165a29
   docs/models/components/tokengetlistresponse.md:
     id: cf2600d07d73
-    last_write_checksum: sha1:082819dc32a603e07a3d242eb1c279782990b21c
-    pristine_git_object: 094cbd6096b660b66a5925eef5353543632617bc
+    last_write_checksum: sha1:e349d3f9f3366f94baeed0b0837e955df32e5737
+    pristine_git_object: 6af8ec5530be6c455b12d772fed77b09581a8160
   docs/models/components/tokeninfo.md:
     id: f249ee0a85bd
     last_write_checksum: sha1:0636befa6a9f347b5ccf01c0c4dfbbdd8664cf8c
@@ -1841,8 +1829,8 @@ trackedFiles:
     pristine_git_object: f7c85227e80eb3f54afb1408dbe03713e5ea0b44
   lib/authlete/models/components.rb:
     id: aa00db35a1f7
-    last_write_checksum: sha1:7fb67710b550f999e40fb5115287ddcea9dda48c
-    pristine_git_object: bf0d9e950e8f7c5c915df040de740df174d91da4
+    last_write_checksum: sha1:f2afc7891790d2da4b3b36effa594f80308c3782
+    pristine_git_object: 5e795a73d90c23f0c8d7db0733cce3621eb2653b
   lib/authlete/models/components/access_token.rb:
     id: 9408ee41ca7a
     last_write_checksum: sha1:7f1f870dd1e2ac6fe43390fe4c058fd8aae6f5e6
@@ -1957,8 +1945,8 @@ trackedFiles:
     pristine_git_object: edbb991c0dc4596106e1281b9d8ee1d671b29570
   lib/authlete/models/components/authorization_response.rb:
     id: 6d4fce387c12
-    last_write_checksum: sha1:ed988d0320cd4b0c91998afce22b1c1560250622
-    pristine_git_object: 617ea05574be24fc99c21e336578b6bb03f1782d
+    last_write_checksum: sha1:6b253e95039fd3a068b478a1be311a080b5f67eb
+    pristine_git_object: a1c39490782a35d2e0a03d92563180d3c7b96eea
   lib/authlete/models/components/authorization_response.rbi:
     id: f1fca7f64ae1
     last_write_checksum: sha1:47dc18ac58f9a702ef666d3108fb66dca79caa14
@@ -2189,12 +2177,12 @@ trackedFiles:
     pristine_git_object: d166adef43f97686f509aeb34cf1c129b3887a21
   lib/authlete/models/components/client.rb:
     id: c55d379b0767
-    last_write_checksum: sha1:b0b6034a79c33a93cc7a3f0d5b1449e379bcf778
-    pristine_git_object: b34455a3cc272ba85bb68cf09856127508b604c2
+    last_write_checksum: sha1:a00ee7510b02cd9c836656f546358e85a741583f
+    pristine_git_object: 7a382f74cf73daca3a68f6f8fd9c3323c8561a03
   lib/authlete/models/components/client.rbi:
     id: 9f9a889b549f
-    last_write_checksum: sha1:9d667b1ba59d29f3b1e1e13f3fb0cf965ec1dba1
-    pristine_git_object: ed6c18c0777baebc9b798b622cfede16455fb523
+    last_write_checksum: sha1:18b83a1874e5ce6ac0cb7767134ab919cb78f279
+    pristine_git_object: 31b1ab51f3b09518d48086a0ff67562911794cf8
   lib/authlete/models/components/client_auth_method.rb:
     id: 5a594103fa72
     last_write_checksum: sha1:34f4c2c1bc20016b2afb5fe88c0088772ea513be
@@ -2221,8 +2209,8 @@ trackedFiles:
     pristine_git_object: 23d9284188578cc65a94ecdbc1af59f50d209018
   lib/authlete/models/components/client_authorization_get_list_response.rb:
     id: c0ae43bfa581
-    last_write_checksum: sha1:8fe6c0b6c6c00872ec579d7e611dcc87e57dc478
-    pristine_git_object: eb0751e2771d796c4700c8255f9ff44fcf1f02d6
+    last_write_checksum: sha1:609ce16cdc16e6f404e171343dd28f7c749a6605
+    pristine_git_object: 8b1b44d734f7d46f2255f63dc110c96c0c82a251
   lib/authlete/models/components/client_authorization_get_list_response.rbi:
     id: a9c131820844
     last_write_checksum: sha1:55ab61d33d2727021728d1aa8ad428e1eb5f6d73
@@ -2243,14 +2231,6 @@ trackedFiles:
     id: 657bcaa5ecca
     last_write_checksum: sha1:7e66b7b8a74a62181f2025cfc731d5fd2d94ec94
     pristine_git_object: 9795b36e757e54622db0b8d667e2ac24237f2c79
-  lib/authlete/models/components/client_clientsource.rb:
-    id: d09e7e24f11f
-    last_write_checksum: sha1:b7c05a9e92c4db70d79e4176ea5a7771ddf87f97
-    pristine_git_object: 86c1529a38637668583cd4c15c7b13501d544579
-  lib/authlete/models/components/client_clientsource.rbi:
-    id: 2024d52f90bc
-    last_write_checksum: sha1:1bf4a404896ebacc4ee862b0dd04ff8144014778
-    pristine_git_object: 38843f6027a91530b7266055a243ccc3bb95a45d
   lib/authlete/models/components/client_cursor_list_response.rb:
     id: 966a7d8589f5
     last_write_checksum: sha1:08b144ac362fc2e563148a4691c5689ad6698042
@@ -2325,36 +2305,12 @@ trackedFiles:
     pristine_git_object: 23c6e3ad5764a4f0c2ab12ee1eec34aa15eef30e
   lib/authlete/models/components/client_input.rb:
     id: 7d6f8244f605
-    last_write_checksum: sha1:6e0f499c1b50ba4dcb650e2c2a4aba289d609a4e
-    pristine_git_object: 5eb181e5a0dfa69f90f7d49b6a2af7a7186d4253
+    last_write_checksum: sha1:a305ca91c006df1756dcf5bb51983c713d18963d
+    pristine_git_object: ea2008bbe98a89a82b98b8c20b68f83570527d3b
   lib/authlete/models/components/client_input.rbi:
     id: b249562ba722
-    last_write_checksum: sha1:27d20d26b68be8698cc47d99768542941794306a
-    pristine_git_object: de3eeaf47c3e98e9f8ee2b3704353ed45f0b9283
-  lib/authlete/models/components/client_limited.rb:
-    id: 11c0df676734
-    last_write_checksum: sha1:304f7a921396980c7d56ba0dcd44282c1eb7b36e
-    pristine_git_object: e3f37658e7f6c36702e9a37012e6a11d36065037
-  lib/authlete/models/components/client_limited.rbi:
-    id: cbe6f4395783
-    last_write_checksum: sha1:f0c9da6fd57642ae9c7f0124990524d8480f4df0
-    pristine_git_object: a138ea8a523c70a1933b72d3d36b34ad5cd497be
-  lib/authlete/models/components/client_limited_authorization.rb:
-    id: a0ccb337bd08
-    last_write_checksum: sha1:e420542a8a805e0b2e10a71867b08a68bbfd5aa7
-    pristine_git_object: 9bcdcfd9e428e6e08dfb4d8b45d594ab8d29cd7b
-  lib/authlete/models/components/client_limited_authorization.rbi:
-    id: 4243670bb852
-    last_write_checksum: sha1:87eecf54a4cc56bdd8b0386f3c759014f2420e9e
-    pristine_git_object: 73363e2dc8a278a9e0a935cb4f05a7c6ddcc2dd4
-  lib/authlete/models/components/client_limited_authorization_clientsource.rb:
-    id: 6974523199c0
-    last_write_checksum: sha1:af6df8d16c24303321399f87a2f6ec32544eee35
-    pristine_git_object: 7e4895487e32891cf1dc23bc77f9992076f43116
-  lib/authlete/models/components/client_limited_authorization_clientsource.rbi:
-    id: 7dd03f8cf1d2
-    last_write_checksum: sha1:a358585f3dccd855a79296ae69ab0a15e8eb278b
-    pristine_git_object: 4e37c47db5f55ac329c1e77b155ed21ed754fc26
+    last_write_checksum: sha1:8e0fd89615d17ab410d72b1f7041a668d0848c2d
+    pristine_git_object: a917102e7b48b94b69c98233cfd075d75efb34f9
   lib/authlete/models/components/client_registration_response.rb:
     id: f1be3aeaacd9
     last_write_checksum: sha1:ad13bae8390bbae09c99b490fa8f5ff59076827b
@@ -2419,6 +2375,14 @@ trackedFiles:
     id: 85906114eff8
     last_write_checksum: sha1:703372c32ce0d15f731342a8653f3157ca9fe813
     pristine_git_object: c5902b5c4c24a41e7f722d6f795a637e6c92502b
+  lib/authlete/models/components/clientsource.rb:
+    id: 19015760bb8c
+    last_write_checksum: sha1:3e5e370f451d63888b41b6d7efc9b55b4cc4f19f
+    pristine_git_object: fc3cdf9678b95cd8e799e281006dcadad1c1c56c
+  lib/authlete/models/components/clientsource.rbi:
+    id: 9d4a73a6932a
+    last_write_checksum: sha1:2530548cc6d3bbc23548a87af33923c5ea5b77a2
+    pristine_git_object: 1393b9e18266f5d88e067a1819507ff1e633f017
   lib/authlete/models/components/credential_issuance_order.rb:
     id: f45122703072
     last_write_checksum: sha1:630f216e06868a5e02de5b2dfff3f2ab2e42c647
@@ -2445,12 +2409,12 @@ trackedFiles:
     pristine_git_object: d5bd19f233b98642d14cdd6ec36e4d4d52716b86
   lib/authlete/models/components/credentialissuermetadata.rb:
     id: 3662881ef6f8
-    last_write_checksum: sha1:46014f6dcdba59fa97e5b696d037d21b348c5a9e
-    pristine_git_object: 0e7d5e515a92892841e3bb124f4cbcf116f7badb
+    last_write_checksum: sha1:4f7c5a646b5508a1a3b2b2342d35c74acaf881ca
+    pristine_git_object: 676f0858df3d000e589f795d185c2436dda928d8
   lib/authlete/models/components/credentialissuermetadata.rbi:
     id: 396afefddd8c
-    last_write_checksum: sha1:e1670905b3c9765c81a089c0c98aee524f24b198
-    pristine_git_object: 8c129499fcbc51ab49c119a8dd782347004ac420
+    last_write_checksum: sha1:19a5c79877ef50624bff702a82e208cbdea0671e
+    pristine_git_object: 246a538a7b7c9e20dcbfaa91b270db9541b6cb22
   lib/authlete/models/components/delivery_mode.rb:
     id: 59ffb0dd7902
     last_write_checksum: sha1:084a10022804406e3b1e3463b5215f4713a1873d
@@ -2989,12 +2953,12 @@ trackedFiles:
     pristine_git_object: 9430bdbf02245aea9469a5f63bc69602229494a5
   lib/authlete/models/components/service.rb:
     id: cd3393b6bb2d
-    last_write_checksum: sha1:18665ef9a1d75fde6a95de23bfb4975d2384d916
-    pristine_git_object: dc9a43bed67c6266e9662f9efc50839cd128b917
+    last_write_checksum: sha1:ad63b586a8b1a54a844cdea1c1d23ab556df1b60
+    pristine_git_object: 9d83cc21b8be7ae1e33655a2fc9734431cb1874b
   lib/authlete/models/components/service.rbi:
     id: b86298cce669
-    last_write_checksum: sha1:c284a85263c37560c254c613d5e98ec8038d3619
-    pristine_git_object: 482d97e8893fdedff4fbfcf605d1ad26334cfdde
+    last_write_checksum: sha1:9de5f724196c43ae18e54819c14a359d58333ffb
+    pristine_git_object: 3f41eebbfefaa4d4db72d73ba222b59a5add8e09
   lib/authlete/models/components/service_create_idp_request.rb:
     id: 61861afb465e
     last_write_checksum: sha1:dfeff81cbdb5573a9792c26915356e34eb7c809e
@@ -3013,12 +2977,12 @@ trackedFiles:
     pristine_git_object: c005f2ea226a0c8edaea8e7ffbd228dd55fcfe98
   lib/authlete/models/components/service_input.rb:
     id: f97c5485245b
-    last_write_checksum: sha1:7cced78869cf0db1247ea4b3c141b757b26e71f5
-    pristine_git_object: e368dee6b96a7828a5ec6d9f6ac201762fdb5790
+    last_write_checksum: sha1:97f439855f2ea6942beb20687acf1ed06101840b
+    pristine_git_object: dc780199d25ad0113c84d6470158cf26dd8cf50b
   lib/authlete/models/components/service_input.rbi:
     id: c84380a0f515
-    last_write_checksum: sha1:775fa74b5769454534cf991466abb46c702eac9e
-    pristine_git_object: 0c1a4e70ac7c247c5f5f3be0320d8a318f55df7b
+    last_write_checksum: sha1:95806122a1d27bc5d6c7f7abb1e1493614f4f63b
+    pristine_git_object: a7963b981b7ed32fe27b2598405dda38a4c7ad41
   lib/authlete/models/components/service_profile.rb:
     id: f7a5c409a8c5
     last_write_checksum: sha1:5c3888f771791cbe0fdd2f0cfff452ad48a3d7e1
@@ -3165,8 +3129,8 @@ trackedFiles:
     pristine_git_object: 768ead1ec2020f8e16cfcfd1097b13e5ff435e41
   lib/authlete/models/components/token_get_list_response.rb:
     id: 6415b6d4eb1e
-    last_write_checksum: sha1:f0158968002b07c108796334bc2b8058b2d0bf33
-    pristine_git_object: 5d495a56fab530e34a223c23cffc4b0020df948d
+    last_write_checksum: sha1:5f1348f436d7b8e3511a3aec622e6152e5a0b8b8
+    pristine_git_object: 7c00225c98013ce44b94f4e04b375e11ea810c1c
   lib/authlete/models/components/token_get_list_response.rbi:
     id: a1edb848e8b0
     last_write_checksum: sha1:4aac898c5d9b11f9fbab4c6a683aaaa9ae3a07de
@@ -5121,8 +5085,8 @@ trackedFiles:
     pristine_git_object: 0e06c94e406f3b3b22e278c475d9b8f03b6a15ab
   lib/authlete/sdkconfiguration.rb:
     id: 6b998183b660
-    last_write_checksum: sha1:d99f13bda1f07631a93ab7e2c867867c92eadd2a
-    pristine_git_object: 42ea7831030bcd5f4eb3e8456facc71085bba3cd
+    last_write_checksum: sha1:8a3ed21ad3c4fae2728bf656aab49c47d865a834
+    pristine_git_object: ceff38576bab5e6525bf1adaf044582c7e0c4f71
   lib/authlete/sdkconfiguration.rbi:
     id: edf621a1c9a3
     last_write_checksum: sha1:8f0203b94626d5f1007c36050bbdc0640eca7fec
@@ -5260,7 +5224,7 @@ examples:
         application/x-www-form-urlencoded: {"parameters": "<value>"}
       responses:
         "200":
-          application/json: {"service": {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}}
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}, "service": {"number": 715948317, "serviceName": "My Test Service", "issuer": "https://example.com", "supportedGrantTypes": ["AUTHORIZATION_CODE", "REFRESH_TOKEN"], "supportedResponseTypes": ["CODE"], "supportedScopes": [{}, {}, {}]}}
         "400":
           application/json: {}
         "500":
@@ -5450,7 +5414,7 @@ examples:
           serviceId: "<id>"
       responses:
         "200":
-          application/json: {}
+          application/json: {"client": {"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}}
         "400":
           application/json: {}
         "500":
@@ -5701,7 +5665,7 @@ examples:
           subject: "<value>"
       responses:
         "200":
-          application/json: {}
+          application/json: {"clients": [{"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}]}
         "400":
           application/json: {}
         "500":
@@ -5718,7 +5682,7 @@ examples:
         application/x-www-form-urlencoded: {"subject": "<value>"}
       responses:
         "200":
-          application/json: {}
+          application/json: {"clients": [{"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}]}
         "400":
           application/json: {}
         "500":
@@ -5733,7 +5697,7 @@ examples:
           subject: "<value>"
       responses:
         "200":
-          application/json: {}
+          application/json: {"clients": [{"number": 1140735077, "serviceNumber": 715948317, "clientName": "My Test Client", "clientId": 1140735077, "clientSecret": "gXz97ISgLs4HuXwOZWch8GEmgL4YMvUJwu3er_kDVVGcA0UOhA9avLPbEmoeZdagi9yC_-tEiT2BdRyH9dbrQQ", "clientType": "PUBLIC", "grantTypes": ["AUTHORIZATION_CODE"], "responseTypes": ["CODE"], "redirectUris": ["https://example.com/callback"]}]}
         "400":
           application/json: {}
         "500":
@@ -6718,7 +6682,7 @@ examples:
         "429":
           application/json: {}
 examplesVersion: 1.0.2
-releaseNotes: "## Ruby SDK Changes:\n* `client.services.retrieve()`: \n  *  `request.service_id` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.authorization_management.update_ticket()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.issue_response()`: \n  *  `request` **Changed**\n  *  `response.action` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.federation.registration()`: \n  *  `request.service_id` **Changed**\n  *  `response.client` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.federation.configuration()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.device_flow.verification()`: \n  *  `request.service_id` **Changed**\n  *  `response.scopes[].attributes` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.device_flow.authorization()`: \n  *  `request.service_id` **Changed**\n  *  `response.scopes[].attributes` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.ciba.process_authentication()`: \n  *  `request.service_id` **Changed**\n  *  `response.scopes[].attributes` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.dynamic_client_registration.destroy()`: \n  *  `request.service_id` **Changed**\n  *  `response.client` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.dynamic_client_registration.update()`: \n  *  `request.service_id` **Changed**\n  *  `response.client` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.dynamic_client_registration.retrieve()`: \n  *  `request.service_id` **Changed**\n  *  `response.client` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.dynamic_client_registration.register()`: \n  *  `request.service_id` **Changed**\n  *  `response.client` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.introspection.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `response.scope_details[].attributes` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.tokens.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `response.subject_token_info.scopes[].attributes` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.pushed_authorization.create()`: \n  *  `request.service_id` **Changed**\n  *  `response.client_auth_method.enum(spiffe_jwt)` **Added** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.authorization.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.clients.update_form()`: \n  *  `request.service_id` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.clients.update()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.clients.create()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.clients.list()`: \n  *  `request.service_id` **Changed**\n  *  `response.clients[]` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.clients.retrieve()`: \n  *  `request.service_id` **Changed**\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error` **Changed**\n* `client.services.update()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.services.create()`: \n  *  `request` **Changed** (Breaking ⚠️)\n  *  `response` **Changed** (Breaking ⚠️)\n  *  `error` **Changed** (Breaking ⚠️)\n* `client.services.list()`: \n  *  `response.services[]` **Changed** (Breaking ⚠️)\n  *  `error.status[429]` **Added**\n* `client.authorization.fail_request()`: \n  *  `request` **Changed**\n  *  `error.status[429]` **Added**\n* `client.token_management.create()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.jwk_set_endpoint.service_jwks_get_api()`: **Removed** (Breaking ⚠️)\n* `client.client_management.client_extension_requestables_scopes_update_api_post()`: **Removed** (Breaking ⚠️)\n* `client.client_management.client_granted_scopes_delete_api()`: **Removed** (Breaking ⚠️)\n* `client.services.configuration()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.client_granted_scopes_get_api_post()`: **Removed** (Breaking ⚠️)\n* `client.client_management.client_granted_scopes_get_api()`: **Removed** (Breaking ⚠️)\n* `client.client_management.client_authorization_delete_api_post()`: **Removed** (Breaking ⚠️)\n* `client.client_management.client_authorization_delete_api()`: **Removed** (Breaking ⚠️)\n* `client.client_management.client_authorization_get_list_api_post()`: **Removed** (Breaking ⚠️)\n* `client.clients.destroy()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.update_lock_flag()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.refresh_secret()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.update_secret()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.authorizations()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.update_authorizations()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.destroy_authorizations()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.granted_scopes()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.destroy_granted_scopes()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.requestable_scopes()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.update_requestable_scopes()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.destroy_requestable_scopes()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.client_authorization_get_list_api()`: **Removed** (Breaking ⚠️)\n* `client.services.remove()`: **Added**\n* `client.authorization.issue_response()`: \n  *  `request.service_id` **Changed**\n  *  `response.consented_claims` **Added**\n  *  `error.status[429]` **Added**\n* `client.services.destroy()`: **Removed** (Breaking ⚠️)\n* `client.back_channel_logout.backchannel_logout_token_api()`: **Added**\n* `client.tokens.fail_request()`: \n  *  `request` **Changed**\n  *  `error.status[429]` **Added**\n* `client.tokens.issue_response()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.update_requestable_scopes_by_post()`: **Added**\n* `client.introspection.standard_process()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.revocation.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.userinfo.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.userinfo.issue_response()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.token_management.reissue_id_token()`: \n  *  `request` **Changed**\n  *  `error.status[429]` **Added**\n* `client.token_management.list()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.jose_object.jose_verify_api()`: **Removed** (Breaking ⚠️)\n* `client.token_management.update()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.token_management.destroy()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.token_management.revoke()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.grant_management.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.client_management.destroy_client_granted_scopes()`: **Added**\n* `client.client_management.client_granted_scopes_by_post()`: **Added**\n* `client.client_management.client_granted_scopes()`: **Added**\n* `client.client_management.destroy_client_tokens_by_post()`: **Added**\n* `client.client_management.destroy_client_tokens()`: **Added**\n* `client.ciba.issue_response()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.ciba.fail_request()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.ciba.complete_request()`: \n  *  `request.service_id` **Changed**\n  *  `response.consented_claims` **Added**\n  *  `error.status[429]` **Added**\n* `client.client_management.authorized_applications_by_post()`: **Added**\n* `client.client_management.authorized_applications()`: **Added**\n* `client.device_flow.complete_request()`: \n  *  `request.service_id` **Changed**\n  *  `response.consented_claims` **Added**\n  *  `error.status[429]` **Added**\n* `client.clients.search()`: **Added**\n* `client.clients.list_by_cursor()`: **Added**\n* `client.hardware_security_keys.create()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.hardware_security_keys.destroy()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.hardware_security_keys.retrieve()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.hardware_security_keys.list()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.metadata()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.jwt_issuer()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.jwks()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.create_offer()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.offer_info()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.parse()`: \n  *  `request.service_id` **Changed**\n  *  `response.info.credential_configuration_id` **Added**\n  *  `error.status[429]` **Added**\n* `client.audit.get_types()`: **Added**\n* `client.verifiable_credentials.batch_parse()`: \n  *  `request.service_id` **Changed**\n  *  `response.info[].credential_configuration_id` **Added**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.batch_issue()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.deferred_parse()`: \n  *  `request.service_id` **Changed**\n  *  `response.info.credential_configuration_id` **Added**\n  *  `error.status[429]` **Added**\n* `client.verifiable_credentials.deferred_issue()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.authorization_management.ticket_info()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.audit.get()`: **Added**\n* `client.native_sso.process_request()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n* `client.native_sso.logout()`: \n  *  `request.service_id` **Changed**\n  *  `error.status[429]` **Added**\n"
+releaseNotes: "## Ruby SDK Changes:\n* `client.services.retrieve()`:  `response` **Changed**\n* `client.services.list()`:  `response.services[]` **Changed**\n* `client.services.update()`: \n  *  `request.service` **Changed**\n  *  `response` **Changed**\n* `client.services.create()`: \n  *  `request.service` **Changed**\n  *  `response` **Changed**\n* `client.clients.retrieve()`:  `response.haip_version` **Added**\n* `client.clients.list()`:  `response.clients[].haip_version` **Added**\n* `client.clients.create()`: \n  *  `request.client.haip_version` **Added**\n  *  `response.haip_version` **Added**\n* `client.clients.update()`: \n  *  `request.client.haip_version` **Added**\n  *  `response.haip_version` **Added**\n* `client.clients.update_form()`:  `response.haip_version` **Added**\n* `client.clients.list_by_cursor()`:  `response.union(client_cursor_list_response).entities[].haip_version` **Added**\n* `client.clients.search()`:  `response.union(client_search_response).entities[].haip_version` **Added**\n* `client.client_management.authorized_applications()`:  `response.clients[]` **Changed**\n* `client.client_management.authorized_applications_by_post()`:  `response.clients[]` **Changed**\n* `client.client_management.authorizations()`:  `response.clients[]` **Changed**\n* `client.authorization.process_request()`:  `response` **Changed**\n* `client.token_management.list()`:  `response.client` **Changed**\n* `client.dynamic_client_registration.register()`:  `response.client.haip_version` **Added**\n* `client.dynamic_client_registration.retrieve()`:  `response.client.haip_version` **Added**\n* `client.dynamic_client_registration.update()`:  `response.client.haip_version` **Added**\n* `client.dynamic_client_registration.destroy()`:  `response.client.haip_version` **Added**\n* `client.federation.registration()`:  `response.client.haip_version` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .rubocop.yml
