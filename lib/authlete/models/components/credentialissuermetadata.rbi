@@ -18,6 +18,10 @@ class Authlete::Models::Components::CredentialIssuerMetadata
   def batch_credential_endpoint=(str_); end
   def deferred_credential_endpoint(); end
   def deferred_credential_endpoint=(str_); end
+  def notification_endpoint(); end
+  def notification_endpoint=(str_); end
+  def nonce_endpoint(); end
+  def nonce_endpoint=(str_); end
   def credentials_supported(); end
   def credentials_supported=(str_); end
   def credential_response_encryption_alg_values_supported(); end
@@ -28,8 +32,16 @@ class Authlete::Models::Components::CredentialIssuerMetadata
   def require_credential_response_encryption=(str_); end
   def require_credential_request_encryption(); end
   def require_credential_request_encryption=(str_); end
+  def credential_request_encryption_jwks(); end
+  def credential_request_encryption_jwks=(str_); end
+  def credential_request_encryption_enc_values_supported(); end
+  def credential_request_encryption_enc_values_supported=(str_); end
+  def credential_request_encryption_zip_values_supported(); end
+  def credential_request_encryption_zip_values_supported=(str_); end
   def credential_response_encryption_zip_values_supported(); end
   def credential_response_encryption_zip_values_supported=(str_); end
   def batch_size(); end
   def batch_size=(str_); end
+  def display(); end
+  def display=(str_); end
 end

@@ -22,7 +22,7 @@ module Authlete
         #
         field :total_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('totalCount') } }
 
-        field :client, Crystalline::Nilable.new(Models::Components::ClientLimited), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('client') } }
+        field :client, Crystalline::Nilable.new(Models::Components::Client), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('client') } }
         # Unique user ID of an end-user.
         #
         field :subject, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('subject') } }
@@ -30,7 +30,7 @@ module Authlete
         #
         field :access_tokens, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::AccessToken)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('accessTokens') } }
 
-        sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), total_count: T.nilable(::Integer), client: T.nilable(Models::Components::ClientLimited), subject: T.nilable(::String), access_tokens: T.nilable(T::Array[Models::Components::AccessToken])).void }
+        sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), total_count: T.nilable(::Integer), client: T.nilable(Models::Components::Client), subject: T.nilable(::String), access_tokens: T.nilable(T::Array[Models::Components::AccessToken])).void }
         def initialize(start: nil, end_: nil, total_count: nil, client: nil, subject: nil, access_tokens: nil)
           @start = start
           @end_ = end_
