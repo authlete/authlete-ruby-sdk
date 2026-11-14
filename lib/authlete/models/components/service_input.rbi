@@ -130,6 +130,8 @@ class Authlete::Models::Components::ServiceInput
   def openid_dropped_on_refresh_without_offline_access=(str_); end
   def id_token_dropped_on_issue_without_openid(); end
   def id_token_dropped_on_issue_without_openid=(str_); end
+  def return_full_payload(); end
+  def return_full_payload=(str_); end
   def rs_response_signed(); end
   def rs_response_signed=(str_); end
   def cnonce_duration(); end
@@ -202,6 +204,8 @@ class Authlete::Models::Components::ServiceInput
   def authentication_callback_api_key=(str_); end
   def authentication_callback_api_secret(); end
   def authentication_callback_api_secret=(str_); end
+  def supported_acrs(); end
+  def supported_acrs=(str_); end
   def supported_grant_types(); end
   def supported_grant_types=(str_); end
   def supported_response_types(); end

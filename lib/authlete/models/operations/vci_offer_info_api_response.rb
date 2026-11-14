@@ -19,11 +19,11 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # Credential offer info retrieved successfully
         field :vci_offer_info_response, Crystalline::Nilable.new(Models::Components::VciOfferInfoResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], vci_offer_info_response: T.nilable(Models::Components::VciOfferInfoResponse)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], vci_offer_info_response: T.nilable(Models::Components::VciOfferInfoResponse)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, vci_offer_info_response: nil)
           @content_type = content_type
           @status_code = status_code

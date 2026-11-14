@@ -19,11 +19,11 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # HSK created successfully
         field :hsk_create_response, Crystalline::Nilable.new(Models::Components::HskCreateResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], hsk_create_response: T.nilable(Models::Components::HskCreateResponse)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], hsk_create_response: T.nilable(Models::Components::HskCreateResponse)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, hsk_create_response: nil)
           @content_type = content_type
           @status_code = status_code

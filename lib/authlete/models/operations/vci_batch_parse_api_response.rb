@@ -19,11 +19,11 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
         # Batch credential parsing completed successfully
         field :vci_batch_parse_response, Crystalline::Nilable.new(Models::Components::VciBatchParseResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], vci_batch_parse_response: T.nilable(Models::Components::VciBatchParseResponse)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], vci_batch_parse_response: T.nilable(Models::Components::VciBatchParseResponse)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, vci_batch_parse_response: nil)
           @content_type = content_type
           @status_code = status_code
