@@ -23,7 +23,7 @@ module Authlete
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Authlete
 
 
 
-    sig { params(backchannel_authentication_request: Models::Components::BackchannelAuthenticationRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::BackchannelAuthenticationApiResponse) }
+    sig { params(backchannel_authentication_request: Models::Components::BackchannelAuthenticationRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::BackchannelAuthenticationApiResponse) }
     def process_authentication(backchannel_authentication_request:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # process_authentication - Process Backchannel Authentication Request
       # This API parses request parameters of a [backchannel authentication request](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_request) and returns necessary data for the authorization server implementation to process the backchannel authentication request further.
@@ -60,15 +60,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :backchannel_authentication_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -85,7 +85,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -105,7 +105,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -126,7 +126,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -162,7 +162,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BackchannelAuthenticationResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BackchannelAuthenticationResponse)
           response = Models::Operations::BackchannelAuthenticationApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -184,7 +184,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -199,7 +199,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -214,7 +214,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -231,7 +231,7 @@ module Authlete
     end
 
 
-    sig { params(backchannel_authentication_issue_request: Models::Components::BackchannelAuthenticationIssueRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::BackchannelAuthenticationIssueApiResponse) }
+    sig { params(backchannel_authentication_issue_request: Models::Components::BackchannelAuthenticationIssueRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::BackchannelAuthenticationIssueApiResponse) }
     def issue_response(backchannel_authentication_issue_request:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # issue_response - Issue Backchannel Authentication Response
       # This API prepares JSON that contains an `auth_req_id`. The JSON should be used as the response body of the response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_backchannel_endpoint)
@@ -250,15 +250,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :backchannel_authentication_issue_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -275,7 +275,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -295,7 +295,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -316,7 +316,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -352,7 +352,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BackchannelAuthenticationIssueResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BackchannelAuthenticationIssueResponse)
           response = Models::Operations::BackchannelAuthenticationIssueApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -374,7 +374,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -389,7 +389,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -404,7 +404,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -421,7 +421,7 @@ module Authlete
     end
 
 
-    sig { params(backchannel_authentication_fail_request: Models::Components::BackchannelAuthenticationFailRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::BackchannelAuthenticationFailApiResponse) }
+    sig { params(backchannel_authentication_fail_request: Models::Components::BackchannelAuthenticationFailRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::BackchannelAuthenticationFailApiResponse) }
     def fail_request(backchannel_authentication_fail_request:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # fail_request - Fail Backchannel Authentication Request
       # The API prepares JSON that contains an error. The JSON should be used as the response body of the response which is returned to the client from the [backchannel authentication endpoint](https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html#auth_backchannel_endpoint).
@@ -440,15 +440,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :backchannel_authentication_fail_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -465,7 +465,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -485,7 +485,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -506,7 +506,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -542,7 +542,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BackchannelAuthenticationFailResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BackchannelAuthenticationFailResponse)
           response = Models::Operations::BackchannelAuthenticationFailApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -564,7 +564,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -579,7 +579,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -594,7 +594,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -611,7 +611,7 @@ module Authlete
     end
 
 
-    sig { params(backchannel_authentication_complete_request: Models::Components::BackchannelAuthenticationCompleteRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::BackchannelAuthenticationCompleteApiResponse) }
+    sig { params(backchannel_authentication_complete_request: Models::Components::BackchannelAuthenticationCompleteRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::BackchannelAuthenticationCompleteApiResponse) }
     def complete_request(backchannel_authentication_complete_request:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # complete_request - Complete Backchannel Authentication
       # This API returns information about what action the authorization server should take after it receives the result of end-user's decision about whether the end-user has approved or rejected a client application's request on the authentication device.
@@ -630,15 +630,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :backchannel_authentication_complete_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -655,7 +655,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -675,7 +675,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -696,7 +696,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -732,7 +732,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::BackchannelAuthenticationCompleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::BackchannelAuthenticationCompleteResponse)
           response = Models::Operations::BackchannelAuthenticationCompleteApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -754,7 +754,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -769,7 +769,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -784,7 +784,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else

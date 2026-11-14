@@ -7,9 +7,9 @@
 module Authlete
   module Models
     module Components
-      # ClientLimitedAuthorizationClientSource - Source of this client record.
+      # ClientSource - Source of this client record.
       #
-      class ClientLimitedAuthorizationClientSource < T::Enum
+      class ClientSource < T::Enum
         enums do
           DYNAMIC_REGISTRATION = new('DYNAMIC_REGISTRATION')
           AUTOMATIC_REGISTRATION = new('AUTOMATIC_REGISTRATION')

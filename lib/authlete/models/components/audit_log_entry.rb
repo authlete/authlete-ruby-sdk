@@ -27,12 +27,12 @@ module Authlete
         # The user or token that performed the action.
         field :user, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('user') } }
         # Additional event-specific metadata.
-        field :details, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::Object)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('details') } }
+        field :details, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::Object)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('details') } }
         # When the event occurred (ISO 8601). May be null for entries without a recorded timestamp; such entries are only returned on the first page of results.
         #
         field :timestamp, Crystalline::Nilable.new(::DateTime), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('timestamp'), 'decoder': ::Authlete::Utils.datetime_from_iso_format(true) } }
 
-        sig { params(event: T.nilable(::String), status: T.nilable(Models::Components::Status), cluster: T.nilable(::String), path: T.nilable(::String), remote_addr: T.nilable(::String), user_agent: T.nilable(::String), user: T.nilable(::String), details: T.nilable(T::Hash[Symbol, ::Object]), timestamp: T.nilable(::DateTime)).void }
+        sig { params(event: T.nilable(::String), status: T.nilable(Models::Components::Status), cluster: T.nilable(::String), path: T.nilable(::String), remote_addr: T.nilable(::String), user_agent: T.nilable(::String), user: T.nilable(::String), details: T.nilable(T::Hash[::Symbol, ::Object]), timestamp: T.nilable(::DateTime)).void }
         def initialize(event: nil, status: nil, cluster: nil, path: nil, remote_addr: nil, user_agent: nil, user: nil, details: nil, timestamp: nil)
           @event = event
           @status = status

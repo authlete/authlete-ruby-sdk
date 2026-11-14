@@ -23,7 +23,7 @@ module Authlete
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Authlete
 
 
 
-    sig { params(client_identifier: ::String, client_flag_update_request: T.nilable(Models::Components::ClientFlagUpdateRequest), service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientFlagUpdateApiResponse) }
+    sig { params(client_identifier: ::String, client_flag_update_request: T.nilable(Models::Components::ClientFlagUpdateRequest), service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientFlagUpdateApiResponse) }
     def update_lock_flag(client_identifier:, client_flag_update_request: nil, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # update_lock_flag - Update Client Lock
       # Lock and unlock a client
@@ -61,14 +61,14 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client_flag_update_request, :json)
       headers['content-type'] = req_content_type
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -85,7 +85,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -105,7 +105,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -126,7 +126,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -162,7 +162,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientFlagUpdateResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientFlagUpdateResponse)
           response = Models::Operations::ClientFlagUpdateApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -184,7 +184,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -199,7 +199,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -214,7 +214,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -231,7 +231,7 @@ module Authlete
     end
 
 
-    sig { params(client_identifier: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientSecretRefreshApiResponse) }
+    sig { params(client_identifier: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientSecretRefreshApiResponse) }
     def refresh_secret(client_identifier:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # refresh_secret - Rotate Client Secret
       # Refresh the client secret of a client. A new value of the client secret will be generated by the Authlete server.
@@ -252,7 +252,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -266,7 +266,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -286,7 +286,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -306,7 +306,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -342,7 +342,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientSecretRefreshResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientSecretRefreshResponse)
           response = Models::Operations::ClientSecretRefreshApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -364,7 +364,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -379,7 +379,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -394,7 +394,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -411,7 +411,7 @@ module Authlete
     end
 
 
-    sig { params(client_secret_update_request: Models::Components::ClientSecretUpdateRequest, client_identifier: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientSecretUpdateApiResponse) }
+    sig { params(client_secret_update_request: Models::Components::ClientSecretUpdateRequest, client_identifier: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientSecretUpdateApiResponse) }
     def update_secret(client_secret_update_request:, client_identifier:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # update_secret - Update Client Secret
       # Update the client secret of a client.
@@ -433,15 +433,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client_secret_update_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -458,7 +458,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -478,7 +478,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -499,7 +499,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -535,7 +535,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientSecretUpdateResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientSecretUpdateResponse)
           response = Models::Operations::ClientSecretUpdateApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -557,7 +557,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -572,7 +572,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -587,7 +587,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -604,7 +604,7 @@ module Authlete
     end
 
 
-    sig { params(request: Models::Operations::ClientAuthorizationGetListApiRequest, retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationGetListApiResponse) }
+    sig { params(request: Models::Operations::ClientAuthorizationGetListApiRequest, retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationGetListApiResponse) }
     def authorized_applications(request:, retries: nil, timeout_ms: nil, http_headers: nil)
       # authorized_applications - Get Authorized Applications
       # Get a list of client applications that an end-user has authorized.
@@ -621,7 +621,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ClientAuthorizationGetListApiRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -636,7 +636,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -656,7 +656,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -677,7 +677,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -713,7 +713,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationGetListResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationGetListResponse)
           response = Models::Operations::ClientAuthorizationGetListApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -735,7 +735,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -750,7 +750,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -765,7 +765,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -782,7 +782,7 @@ module Authlete
     end
 
 
-    sig { params(client_authorization_get_list_request: Models::Components::ClientAuthorizationGetListRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationGetListApiPostResponse) }
+    sig { params(client_authorization_get_list_request: Models::Components::ClientAuthorizationGetListRequest, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationGetListApiPostResponse) }
     def authorized_applications_by_post(client_authorization_get_list_request:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # authorized_applications_by_post - Get Authorized Applications
       # Get a list of client applications that an end-user has authorized.
@@ -803,15 +803,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client_authorization_get_list_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -828,7 +828,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -848,7 +848,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -869,7 +869,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -905,7 +905,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationGetListResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationGetListResponse)
           response = Models::Operations::ClientAuthorizationGetListApiPostResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -927,7 +927,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -942,7 +942,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -957,7 +957,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -974,7 +974,7 @@ module Authlete
     end
 
 
-    sig { params(request: Models::Operations::ClientAuthorizationGetListBySubjectApiRequest, retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationGetListBySubjectApiResponse) }
+    sig { params(request: Models::Operations::ClientAuthorizationGetListBySubjectApiRequest, retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationGetListBySubjectApiResponse) }
     def authorizations(request:, retries: nil, timeout_ms: nil, http_headers: nil)
       # authorizations - Get Authorized Applications (by Subject)
       # Get a list of client applications that an end-user has authorized. In this variant, the subject is provided in the path.
@@ -989,7 +989,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ClientAuthorizationGetListBySubjectApiRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1004,7 +1004,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -1024,7 +1024,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1045,7 +1045,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1081,7 +1081,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationGetListResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationGetListResponse)
           response = Models::Operations::ClientAuthorizationGetListBySubjectApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1103,7 +1103,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1118,7 +1118,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1133,7 +1133,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1150,7 +1150,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, client_authorization_update_request: T.nilable(Models::Components::ClientAuthorizationUpdateRequest), service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationUpdateApiResponse) }
+    sig { params(client_id: ::String, client_authorization_update_request: T.nilable(Models::Components::ClientAuthorizationUpdateRequest), service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationUpdateApiResponse) }
     def update_authorizations(client_id:, client_authorization_update_request: nil, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # update_authorizations - Update Client Tokens
       # Update attributes of all existing access tokens given to a client application.
@@ -1170,14 +1170,14 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client_authorization_update_request, :json)
       headers['content-type'] = req_content_type
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -1194,7 +1194,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -1214,7 +1214,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1235,7 +1235,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1271,7 +1271,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationUpdateResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationUpdateResponse)
           response = Models::Operations::ClientAuthorizationUpdateApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1293,7 +1293,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1308,7 +1308,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1323,7 +1323,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1340,7 +1340,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationDeleteApiResponse) }
+    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationDeleteApiResponse) }
     def destroy_client_tokens(client_id:, subject:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy_client_tokens - Delete Client Tokens
       # Delete all existing access tokens issued to a client application by an end-user.
@@ -1362,7 +1362,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ClientAuthorizationDeleteApiRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1377,7 +1377,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -1397,7 +1397,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1418,7 +1418,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1454,7 +1454,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
           response = Models::Operations::ClientAuthorizationDeleteApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1476,7 +1476,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1491,7 +1491,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1506,7 +1506,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1523,7 +1523,7 @@ module Authlete
     end
 
 
-    sig { params(request_body: Models::Operations::ClientAuthorizationDeleteApiPostRequestBody, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationDeleteApiPostResponse) }
+    sig { params(request_body: Models::Operations::ClientAuthorizationDeleteApiPostRequestBody, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationDeleteApiPostResponse) }
     def destroy_client_tokens_by_post(request_body:, client_id:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy_client_tokens_by_post - Delete Client Tokens
       # Delete all existing access tokens issued to a client application by an end-user.
@@ -1545,15 +1545,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -1570,7 +1570,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -1590,7 +1590,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1611,7 +1611,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1647,7 +1647,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
           response = Models::Operations::ClientAuthorizationDeleteApiPostResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1669,7 +1669,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1686,7 +1686,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientAuthorizationDeleteBySubjectApiResponse) }
+    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientAuthorizationDeleteBySubjectApiResponse) }
     def destroy_authorizations(client_id:, subject:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy_authorizations - Delete Client Tokens (by Subject)
       # Delete all existing access tokens issued to a client application by an end-user. In this variant, the subject is provided in the path.
@@ -1706,7 +1706,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -1720,7 +1720,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -1740,7 +1740,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1760,7 +1760,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1796,7 +1796,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
           response = Models::Operations::ClientAuthorizationDeleteBySubjectApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1818,7 +1818,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1833,7 +1833,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1848,7 +1848,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -1865,7 +1865,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGrantedScopesGetApiResponse) }
+    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientGrantedScopesGetApiResponse) }
     def client_granted_scopes(client_id:, subject:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # client_granted_scopes - Get Granted Scopes
       # Get the set of scopes that a user has granted to a client application.
@@ -1885,7 +1885,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ClientGrantedScopesGetApiRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -1900,7 +1900,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -1920,7 +1920,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -1941,7 +1941,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -1977,7 +1977,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
           response = Models::Operations::ClientGrantedScopesGetApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -1999,7 +1999,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2014,7 +2014,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2029,7 +2029,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2046,7 +2046,7 @@ module Authlete
     end
 
 
-    sig { params(request_body: Models::Operations::ClientGrantedScopesGetApiPostRequestBody, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGrantedScopesGetApiPostResponse) }
+    sig { params(request_body: Models::Operations::ClientGrantedScopesGetApiPostRequestBody, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientGrantedScopesGetApiPostResponse) }
     def client_granted_scopes_by_post(request_body:, client_id:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # client_granted_scopes_by_post - Get Granted Scopes
       # Get the set of scopes that a user has granted to a client application.
@@ -2068,15 +2068,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :request_body, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -2093,7 +2093,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -2113,7 +2113,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -2134,7 +2134,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -2170,7 +2170,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
           response = Models::Operations::ClientGrantedScopesGetApiPostResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -2192,7 +2192,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2209,7 +2209,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGrantedScopesGetBySubjectApiResponse) }
+    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientGrantedScopesGetBySubjectApiResponse) }
     def granted_scopes(client_id:, subject:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # granted_scopes - Get Granted Scopes (by Subject)
       # Get the set of scopes that a user has granted to a client application. In this variant, the subject is provided in the path.
@@ -2229,7 +2229,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -2243,7 +2243,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -2263,7 +2263,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -2283,7 +2283,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -2319,7 +2319,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientAuthorizationDeleteResponse)
           response = Models::Operations::ClientGrantedScopesGetBySubjectApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -2341,7 +2341,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2356,7 +2356,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2371,7 +2371,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2388,7 +2388,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGrantedScopesDeleteApiResponse) }
+    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientGrantedScopesDeleteApiResponse) }
     def destroy_client_granted_scopes(client_id:, subject:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy_client_granted_scopes - Delete Granted Scopes
       # Delete the set of scopes that an end-user has granted to a client application.
@@ -2410,7 +2410,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::ClientGrantedScopesDeleteApiRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -2425,7 +2425,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -2445,7 +2445,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -2466,7 +2466,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -2502,7 +2502,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientGrantedScopesDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientGrantedScopesDeleteResponse)
           response = Models::Operations::ClientGrantedScopesDeleteApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -2524,7 +2524,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2539,7 +2539,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2554,7 +2554,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2571,7 +2571,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientGrantedScopesDeleteBySubjectApiResponse) }
+    sig { params(client_id: ::String, subject: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientGrantedScopesDeleteBySubjectApiResponse) }
     def destroy_granted_scopes(client_id:, subject:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy_granted_scopes - Delete Granted Scopes (by Subject)
       # Delete the set of scopes that an end-user has granted to a client application. In this variant, the subject is provided in the path.
@@ -2591,7 +2591,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -2605,7 +2605,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -2625,7 +2625,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -2645,7 +2645,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -2681,7 +2681,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientGrantedScopesDeleteResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientGrantedScopesDeleteResponse)
           response = Models::Operations::ClientGrantedScopesDeleteBySubjectApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -2703,7 +2703,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2718,7 +2718,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2733,7 +2733,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2750,7 +2750,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientExtensionRequestablesScopesGetApiResponse) }
+    sig { params(client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientExtensionRequestablesScopesGetApiResponse) }
     def requestable_scopes(client_id:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # requestable_scopes - Get Requestable Scopes
       # Get the requestable scopes per client
@@ -2769,7 +2769,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -2783,7 +2783,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -2803,7 +2803,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -2823,7 +2823,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -2859,7 +2859,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientExtensionRequestableScopesGetResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientExtensionRequestableScopesGetResponse)
           response = Models::Operations::ClientExtensionRequestablesScopesGetApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -2881,7 +2881,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2896,7 +2896,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2911,7 +2911,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -2928,7 +2928,7 @@ module Authlete
     end
 
 
-    sig { params(client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientExtensionRequestablesScopesUpdateApiPostResponse) }
+    sig { params(client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientExtensionRequestablesScopesUpdateApiPostResponse) }
     def update_requestable_scopes_by_post(client_extension_requestable_scopes_update_request:, client_id:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # update_requestable_scopes_by_post - Update Requestable Scopes
       # Update requestable scopes of a client
@@ -2948,15 +2948,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client_extension_requestable_scopes_update_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -2973,7 +2973,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -2993,7 +2993,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -3014,7 +3014,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -3050,7 +3050,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientExtensionRequestableScopesUpdateResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientExtensionRequestableScopesUpdateResponse)
           response = Models::Operations::ClientExtensionRequestablesScopesUpdateApiPostResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -3072,7 +3072,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3087,7 +3087,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3102,7 +3102,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3119,7 +3119,7 @@ module Authlete
     end
 
 
-    sig { params(client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientExtensionRequestablesScopesUpdateApiResponse) }
+    sig { params(client_extension_requestable_scopes_update_request: Models::Components::ClientExtensionRequestableScopesUpdateRequest, client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientExtensionRequestablesScopesUpdateApiResponse) }
     def update_requestable_scopes(client_extension_requestable_scopes_update_request:, client_id:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # update_requestable_scopes - Update Requestable Scopes
       # Update requestable scopes of a client
@@ -3139,15 +3139,15 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       req_content_type, data, form = Utils.serialize_request_body(request, false, false, :client_extension_requestable_scopes_update_request, :json)
       headers['content-type'] = req_content_type
-      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      raise ::StandardError, 'request body is required' if data.nil? && form.nil?
 
       if form && !form.empty?
         body = Utils.encode_form(form)
       elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
-        body = URI.encode_www_form(T.cast(data, T::Hash[Symbol, Object]))
+        body = ::URI.encode_www_form(T.cast(data, T::Hash[::Symbol, ::Object]))
       else
         body = data
       end
@@ -3164,7 +3164,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -3184,7 +3184,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -3205,7 +3205,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -3241,7 +3241,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::ClientExtensionRequestableScopesUpdateResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::ClientExtensionRequestableScopesUpdateResponse)
           response = Models::Operations::ClientExtensionRequestablesScopesUpdateApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -3263,7 +3263,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3278,7 +3278,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3293,7 +3293,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3310,7 +3310,7 @@ module Authlete
     end
 
 
-    sig { params(client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::ClientExtensionRequestablesScopesDeleteApiResponse) }
+    sig { params(client_id: ::String, service_id: T.nilable(::String), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::ClientExtensionRequestablesScopesDeleteApiResponse) }
     def destroy_requestable_scopes(client_id:, service_id: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # destroy_requestable_scopes - Delete Requestable Scopes
       # Delete requestable scopes of a client
@@ -3329,7 +3329,7 @@ module Authlete
         @sdk_configuration.globals
       )
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -3343,7 +3343,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -3363,7 +3363,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -3383,7 +3383,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -3432,7 +3432,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3447,7 +3447,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else
@@ -3462,7 +3462,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::ResultError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::ResultError)
           obj.raw_response = http_response
           raise obj
         else

@@ -29,9 +29,9 @@ module Authlete
         field :total_count, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('totalCount') } }
         # An array of clients.
         #
-        field :clients, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::ClientLimited)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clients') } }
+        field :clients, Crystalline::Nilable.new(Crystalline::Array.new(Models::Components::Client)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('clients') } }
 
-        sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), developer: T.nilable(::String), subject: T.nilable(::String), total_count: T.nilable(::Integer), clients: T.nilable(T::Array[Models::Components::ClientLimited])).void }
+        sig { params(start: T.nilable(::Integer), end_: T.nilable(::Integer), developer: T.nilable(::String), subject: T.nilable(::String), total_count: T.nilable(::Integer), clients: T.nilable(T::Array[Models::Components::Client])).void }
         def initialize(start: nil, end_: nil, developer: nil, subject: nil, total_count: nil, clients: nil)
           @start = start
           @end_ = end_

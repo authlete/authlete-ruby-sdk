@@ -172,4 +172,6 @@ class Authlete::Models::Components::ClientInput
   def user_info_encryption_enc=(str_); end
   def bc_request_sign_alg(); end
   def bc_request_sign_alg=(str_); end
+  def haip_version(); end
+  def haip_version=(str_); end
 end

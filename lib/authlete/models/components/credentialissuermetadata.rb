@@ -23,6 +23,12 @@ module Authlete
         field :batch_credential_endpoint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('batchCredentialEndpoint') } }
         # The URL of the deferred credential endpoint of the credential issuer.
         field :deferred_credential_endpoint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('deferredCredentialEndpoint') } }
+        # The URL of the notification endpoint of the credential issuer. This property corresponds to the `notification_endpoint` metadata.
+        #
+        field :notification_endpoint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('notificationEndpoint') } }
+        # The URL of the nonce endpoint of the credential issuer. This property corresponds to the `nonce_endpoint` metadata.
+        #
+        field :nonce_endpoint, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('nonceEndpoint') } }
         # A JSON object describing supported credential configurations. This property corresponds to the credential_configurations_supported metadata. Note: Due to a breaking change in December 2023, this was changed from a JSON array to a JSON object.
         #
         field :credentials_supported, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialsSupported') } }
@@ -38,27 +44,45 @@ module Authlete
         # The boolean flag indicating whether credential request encryption is required. This property corresponds to the `credential_request_encryption.encryption_required` metadata. If this flag is `true`, every credential request to the credential issuer must be encrypted.
         #
         field :require_credential_request_encryption, Crystalline::Nilable.new(Crystalline::Boolean.new), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('requireCredentialRequestEncryption') } }
+        # The JWK Set document containing private keys for credential request encryption. The public part of this JWK Set is used as the value of the `credential_request_encryption.jwks` metadata when `credentialRequestEncryptionEncValuesSupported` is also set.
+        #
+        field :credential_request_encryption_jwks, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialRequestEncryptionJwks') } }
+        # The supported JWE `enc` algorithms for credential request encryption. This property corresponds to the `credential_request_encryption.enc_values_supported` metadata.
+        #
+        field :credential_request_encryption_enc_values_supported, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialRequestEncryptionEncValuesSupported') } }
+        # The supported JWE `zip` (compression) algorithms for credential request encryption. This property corresponds to the `credential_request_encryption.zip_values_supported` metadata.
+        #
+        field :credential_request_encryption_zip_values_supported, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialRequestEncryptionZipValuesSupported') } }
         # The supported JWE `zip` (compression) algorithms for credential response encryption. This property corresponds to the `credential_response_encryption.zip_values_supported` metadata.
         #
         field :credential_response_encryption_zip_values_supported, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('credentialResponseEncryptionZipValuesSupported') } }
         # The maximum array size for the `proofs` parameter in a credential request. This property corresponds to the `batch_credential_issuance.batch_size` metadata. If the value of this property is 2 or greater, the `batch_credential_issuance` parameter will appear in the response from the credential issuer metadata endpoint.
         #
         field :batch_size, Crystalline::Nilable.new(::Integer), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('batchSize') } }
+        # The display properties of the credential issuer in JSON array format. This property corresponds to the `display` metadata.
+        #
+        field :display, Crystalline::Nilable.new(::String), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('display') } }
 
-        sig { params(authorization_servers: T.nilable(T::Array[::String]), credential_issuer: T.nilable(::String), credential_endpoint: T.nilable(::String), batch_credential_endpoint: T.nilable(::String), deferred_credential_endpoint: T.nilable(::String), credentials_supported: T.nilable(::String), credential_response_encryption_alg_values_supported: T.nilable(T::Array[::String]), credential_response_encryption_enc_values_supported: T.nilable(T::Array[::String]), require_credential_response_encryption: T.nilable(T::Boolean), require_credential_request_encryption: T.nilable(T::Boolean), credential_response_encryption_zip_values_supported: T.nilable(T::Array[::String]), batch_size: T.nilable(::Integer)).void }
-        def initialize(authorization_servers: nil, credential_issuer: nil, credential_endpoint: nil, batch_credential_endpoint: nil, deferred_credential_endpoint: nil, credentials_supported: nil, credential_response_encryption_alg_values_supported: nil, credential_response_encryption_enc_values_supported: nil, require_credential_response_encryption: nil, require_credential_request_encryption: nil, credential_response_encryption_zip_values_supported: nil, batch_size: nil)
+        sig { params(authorization_servers: T.nilable(T::Array[::String]), credential_issuer: T.nilable(::String), credential_endpoint: T.nilable(::String), batch_credential_endpoint: T.nilable(::String), deferred_credential_endpoint: T.nilable(::String), notification_endpoint: T.nilable(::String), nonce_endpoint: T.nilable(::String), credentials_supported: T.nilable(::String), credential_response_encryption_alg_values_supported: T.nilable(T::Array[::String]), credential_response_encryption_enc_values_supported: T.nilable(T::Array[::String]), require_credential_response_encryption: T.nilable(T::Boolean), require_credential_request_encryption: T.nilable(T::Boolean), credential_request_encryption_jwks: T.nilable(::String), credential_request_encryption_enc_values_supported: T.nilable(T::Array[::String]), credential_request_encryption_zip_values_supported: T.nilable(T::Array[::String]), credential_response_encryption_zip_values_supported: T.nilable(T::Array[::String]), batch_size: T.nilable(::Integer), display: T.nilable(::String)).void }
+        def initialize(authorization_servers: nil, credential_issuer: nil, credential_endpoint: nil, batch_credential_endpoint: nil, deferred_credential_endpoint: nil, notification_endpoint: nil, nonce_endpoint: nil, credentials_supported: nil, credential_response_encryption_alg_values_supported: nil, credential_response_encryption_enc_values_supported: nil, require_credential_response_encryption: nil, require_credential_request_encryption: nil, credential_request_encryption_jwks: nil, credential_request_encryption_enc_values_supported: nil, credential_request_encryption_zip_values_supported: nil, credential_response_encryption_zip_values_supported: nil, batch_size: nil, display: nil)
           @authorization_servers = authorization_servers
           @credential_issuer = credential_issuer
           @credential_endpoint = credential_endpoint
           @batch_credential_endpoint = batch_credential_endpoint
           @deferred_credential_endpoint = deferred_credential_endpoint
+          @notification_endpoint = notification_endpoint
+          @nonce_endpoint = nonce_endpoint
           @credentials_supported = credentials_supported
           @credential_response_encryption_alg_values_supported = credential_response_encryption_alg_values_supported
           @credential_response_encryption_enc_values_supported = credential_response_encryption_enc_values_supported
           @require_credential_response_encryption = require_credential_response_encryption
           @require_credential_request_encryption = require_credential_request_encryption
+          @credential_request_encryption_jwks = credential_request_encryption_jwks
+          @credential_request_encryption_enc_values_supported = credential_request_encryption_enc_values_supported
+          @credential_request_encryption_zip_values_supported = credential_request_encryption_zip_values_supported
           @credential_response_encryption_zip_values_supported = credential_response_encryption_zip_values_supported
           @batch_size = batch_size
+          @display = display
         end
 
         sig { params(other: T.untyped).returns(T::Boolean) }
@@ -69,13 +93,19 @@ module Authlete
           return false unless @credential_endpoint == other.credential_endpoint
           return false unless @batch_credential_endpoint == other.batch_credential_endpoint
           return false unless @deferred_credential_endpoint == other.deferred_credential_endpoint
+          return false unless @notification_endpoint == other.notification_endpoint
+          return false unless @nonce_endpoint == other.nonce_endpoint
           return false unless @credentials_supported == other.credentials_supported
           return false unless @credential_response_encryption_alg_values_supported == other.credential_response_encryption_alg_values_supported
           return false unless @credential_response_encryption_enc_values_supported == other.credential_response_encryption_enc_values_supported
           return false unless @require_credential_response_encryption == other.require_credential_response_encryption
           return false unless @require_credential_request_encryption == other.require_credential_request_encryption
+          return false unless @credential_request_encryption_jwks == other.credential_request_encryption_jwks
+          return false unless @credential_request_encryption_enc_values_supported == other.credential_request_encryption_enc_values_supported
+          return false unless @credential_request_encryption_zip_values_supported == other.credential_request_encryption_zip_values_supported
           return false unless @credential_response_encryption_zip_values_supported == other.credential_response_encryption_zip_values_supported
           return false unless @batch_size == other.batch_size
+          return false unless @display == other.display
           true
         end
       end

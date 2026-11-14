@@ -38,7 +38,7 @@ module Authlete
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -56,7 +56,7 @@ module Authlete
 
 
 
-    sig { params(request: Models::Operations::AuditEntriesGetIdpApiRequest, retries: T.nilable(Utils::RetryConfig), server_url: T.nilable(String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuditEntriesGetIdpApiResponse) }
+    sig { params(request: Models::Operations::AuditEntriesGetIdpApiRequest, retries: T.nilable(Utils::RetryConfig), server_url: T.nilable(::String), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::AuditEntriesGetIdpApiResponse) }
     def get(request:, retries: nil, server_url: nil, timeout_ms: nil, http_headers: nil)
       # get - Get Audit Logs
       # Retrieve audit logs as a cursor-paginated list. Results can be filtered by time range, event type, and organization.
@@ -66,7 +66,7 @@ module Authlete
       base_url = server_url if !server_url.nil?
       url = "#{base_url}/api/audit/entries"
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::AuditEntriesGetIdpApiRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -81,7 +81,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -101,7 +101,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -122,7 +122,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -158,7 +158,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Components::AuditEntriesGetResponse)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Components::AuditEntriesGetResponse)
           response = Models::Operations::AuditEntriesGetIdpApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -168,7 +168,7 @@ module Authlete
           sdk = self
 
           response.next_page = proc do 
-            next_cursor = Janeway.enum_for('$.nextCursor', JSON.parse(response_data)).search
+            next_cursor = Janeway.enum_for('$.nextCursor', ::JSON.parse(response_data)).search
             if next_cursor.nil?
               next nil
             else
@@ -206,7 +206,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::IdpError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::IdpError)
           obj.raw_response = http_response
           raise obj
         else
@@ -221,7 +221,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::IdpError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::IdpError)
           obj.raw_response = http_response
           raise obj
         else
@@ -238,7 +238,7 @@ module Authlete
     end
 
 
-    sig { params(retries: T.nilable(Utils::RetryConfig), server_url: T.nilable(String), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::AuditTypesGetIdpApiResponse) }
+    sig { params(retries: T.nilable(Utils::RetryConfig), server_url: T.nilable(::String), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::AuditTypesGetIdpApiResponse) }
     def get_types(retries: nil, server_url: nil, timeout_ms: nil, http_headers: nil)
       # get_types - Get Audit Log Event Types
       # Returns the list of available audit log event types for this environment.
@@ -252,7 +252,7 @@ module Authlete
       base_url = server_url if !server_url.nil?
       url = "#{base_url}/api/audit/types"
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       headers['Accept'] = 'application/json'
       headers['user-agent'] = @sdk_configuration.user_agent
       retries ||= @sdk_configuration.retry_config
@@ -266,7 +266,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       security = @sdk_configuration.security_source&.call
@@ -286,7 +286,7 @@ module Authlete
         security_source: @sdk_configuration.security_source
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -306,7 +306,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)
@@ -342,7 +342,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Crystalline::Array.new(::String))
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Crystalline::Array.new(::String))
           response = Models::Operations::AuditTypesGetIdpApiResponse.new(
             status_code: http_response.status,
             content_type: content_type,
@@ -363,7 +363,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::IdpError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::IdpError)
           obj.raw_response = http_response
           raise obj
         else
@@ -378,7 +378,7 @@ module Authlete
             response: http_response
           )
           response_data = http_response.env.response_body
-          obj = Crystalline.unmarshal_json(JSON.parse(response_data), Models::Errors::IdpError)
+          obj = Crystalline.unmarshal_json(::JSON.parse(response_data), Models::Errors::IdpError)
           obj.raw_response = http_response
           raise obj
         else

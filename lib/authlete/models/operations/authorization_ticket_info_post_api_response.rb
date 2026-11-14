@@ -19,11 +19,11 @@ module Authlete
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, ::Faraday::Response
 
-        field :headers, Crystalline::Hash.new(Symbol, Crystalline::Array.new(::String))
+        field :headers, Crystalline::Hash.new(::Symbol, Crystalline::Array.new(::String))
 
         field :authorization_ticket_info_response, Crystalline::Nilable.new(Models::Components::AuthorizationTicketInfoResponse)
 
-        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[Symbol, T::Array[::String]], authorization_ticket_info_response: T.nilable(Models::Components::AuthorizationTicketInfoResponse)).void }
+        sig { params(content_type: ::String, status_code: ::Integer, raw_response: ::Faraday::Response, headers: T::Hash[::Symbol, T::Array[::String]], authorization_ticket_info_response: T.nilable(Models::Components::AuthorizationTicketInfoResponse)).void }
         def initialize(content_type:, status_code:, raw_response:, headers:, authorization_ticket_info_response: nil)
           @content_type = content_type
           @status_code = status_code
