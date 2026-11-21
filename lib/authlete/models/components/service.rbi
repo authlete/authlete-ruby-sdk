@@ -154,6 +154,8 @@ class Authlete::Models::Components::Service
   def openid_dropped_on_refresh_without_offline_access=(str_); end
   def id_token_dropped_on_issue_without_openid(); end
   def id_token_dropped_on_issue_without_openid=(str_); end
+  def return_full_payload(); end
+  def return_full_payload=(str_); end
   def rs_response_signed(); end
   def rs_response_signed=(str_); end
   def cnonce_duration(); end

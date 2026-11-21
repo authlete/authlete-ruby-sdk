@@ -23,7 +23,7 @@ module Authlete
       
     end
 
-    sig { params(base_url: String, url_variables: T.nilable(T::Hash[Symbol, T.any(String, T::Enum)])).returns(String) }
+    sig { params(base_url: ::String, url_variables: T.nilable(T::Hash[::Symbol, T.any(::String, T::Enum)])).returns(::String) }
     def get_url(base_url:, url_variables: nil)
       sd_base_url, sd_options = @sdk_configuration.get_server_details
 
@@ -41,7 +41,7 @@ module Authlete
 
 
 
-    sig { params(extended: T.nilable(T::Boolean), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(Integer), http_headers: T.nilable(T::Hash[T.any(String, Symbol), String])).returns(Models::Operations::GetApiLifecycleHealthcheckResponse) }
+    sig { params(extended: T.nilable(T::Boolean), retries: T.nilable(Utils::RetryConfig), timeout_ms: T.nilable(::Integer), http_headers: T.nilable(T::Hash[T.any(::String, ::Symbol), ::String])).returns(Models::Operations::GetApiLifecycleHealthcheckResponse) }
     def get_api_lifecycle_healthcheck(extended: nil, retries: nil, timeout_ms: nil, http_headers: nil)
       # get_api_lifecycle_healthcheck - Health Check
       # Perform a health check of the server.
@@ -53,7 +53,7 @@ module Authlete
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/api/lifecycle/healthcheck"
       headers = {}
-      headers = T.cast(headers, T::Hash[String, String])
+      headers = T.cast(headers, T::Hash[::String, ::String])
       query_params = Utils.get_query_params(Models::Operations::GetApiLifecycleHealthcheckRequest, request, nil, @sdk_configuration.globals)
       headers['Accept'] = 'text/plain'
       headers['user-agent'] = @sdk_configuration.user_agent
@@ -68,7 +68,7 @@ module Authlete
         retry_connection_errors: true,
         strategy: 'backoff'
       )
-      retry_options = retries.to_faraday_retry_options(initial_time: Time.now)
+      retry_options = retries.to_faraday_retry_options(initial_time: ::Time.now)
       retry_options[:retry_statuses] = [500, 501, 502, 503, 504, 505, 429]
 
       timeout = (timeout_ms.to_f / 1000) unless timeout_ms.nil?
@@ -86,7 +86,7 @@ module Authlete
         security_source: nil
       )
 
-      error = T.let(nil, T.nilable(StandardError))
+      error = T.let(nil, T.nilable(::StandardError))
       http_response = T.let(nil, T.nilable(Faraday::Response))
       
 
@@ -106,7 +106,7 @@ module Authlete
             request: req
           )
         end
-      rescue StandardError => e
+      rescue ::StandardError => e
         error = e
       ensure
         if http_response.nil? || Utils.error_status?(http_response.status)

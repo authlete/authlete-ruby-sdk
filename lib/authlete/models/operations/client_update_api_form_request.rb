@@ -17,9 +17,9 @@ module Authlete
         # A service ID.
         field :service_id, Crystalline::Nilable.new(::String), { 'path_param': { 'field_name': 'serviceId', 'style': 'simple', 'explode': false } }
 
-        field :request_body, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::Object)), { 'request': { 'media_type': 'application/x-www-form-urlencoded' } }
+        field :request_body, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::Object)), { 'request': { 'media_type': 'application/x-www-form-urlencoded' } }
 
-        sig { params(client_id: ::String, service_id: T.nilable(::String), request_body: T.nilable(T::Hash[Symbol, ::Object])).void }
+        sig { params(client_id: ::String, service_id: T.nilable(::String), request_body: T.nilable(T::Hash[::Symbol, ::Object])).void }
         def initialize(client_id:, service_id: nil, request_body: nil)
           @client_id = client_id
           @service_id = service_id
