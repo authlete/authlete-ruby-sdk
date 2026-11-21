@@ -1,4 +1,4 @@
-# ClientClientSource
+# ClientSource
 
 Source of this client record.
 
@@ -8,7 +8,7 @@ Source of this client record.
 ```ruby
 require "authlete_ruby_sdk"
 
-value = ClientClientSource::DYNAMIC_REGISTRATION
+value = ClientSource::DYNAMIC_REGISTRATION
 ```
 
 
