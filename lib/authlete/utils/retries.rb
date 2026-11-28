@@ -85,7 +85,7 @@ module Authlete
 
           unless @backoff.max_elapsed_time.nil?
             stop_time = initial_time + (@backoff.max_elapsed_time.to_f / 1000)
-            retry_options[:retry_if] = ->(_env, _exc) { Time.now < stop_time }
+            retry_options[:retry_if] = ->(_env, _exc) { ::Time.now < stop_time }
           end
 
         end
@@ -123,11 +123,11 @@ module Authlete
         return value.to_f if value.match?(/\A\s*\d+\s*\z/)
 
         begin
-          Time.httpdate(value) - Time.now
-        rescue ArgumentError
+          ::Time.httpdate(value) - ::Time.now
+        rescue ::ArgumentError
           begin
-            Time.iso8601(value) - Time.now
-          rescue ArgumentError
+            ::Time.iso8601(value) - ::Time.now
+          rescue ::ArgumentError
             nil
           end
         end

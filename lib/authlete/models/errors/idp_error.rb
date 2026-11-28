@@ -9,7 +9,7 @@ module Authlete
     module Errors
       # Error response returned by the Authlete IdP server. Unlike the main API's `resultCode`/`resultMessage` format, IdP errors carry a human-readable `error` message, optionally accompanied by contextual fields (such as `organizationId` or `apiServerId`). Request validation failures instead return an `errors` array of per-field messages.
       #
-      class IdpError < StandardError
+      class IdpError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
@@ -18,11 +18,11 @@ module Authlete
         # Per-field validation error messages, present for request validation failures.
         field :errors, Crystalline::Nilable.new(Crystalline::Array.new(::String)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('errors') } }
 
-        field :additional_properties, Crystalline::Nilable.new(Crystalline::Hash.new(Symbol, ::Object)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('additional_properties'), 'additional_properties': true } }
+        field :additional_properties, Crystalline::Nilable.new(Crystalline::Hash.new(::Symbol, ::Object)), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('additional_properties'), 'additional_properties': true } }
         # Raw HTTP response; suitable for custom response parsing
         field :raw_response, Crystalline::Nilable.new(::Faraday::Response), { 'format_json': { 'letter_case': ::Authlete::Utils.field_name('-') } }
 
-        sig { params(error: T.nilable(::String), errors: T.nilable(T::Array[::String]), additional_properties: T.nilable(T::Hash[Symbol, ::Object]), raw_response: T.nilable(::Faraday::Response)).void }
+        sig { params(error: T.nilable(::String), errors: T.nilable(T::Array[::String]), additional_properties: T.nilable(T::Hash[::Symbol, ::Object]), raw_response: T.nilable(::Faraday::Response)).void }
         def initialize(error: nil, errors: nil, additional_properties: nil, raw_response: nil)
           @error = error
           @errors = errors
