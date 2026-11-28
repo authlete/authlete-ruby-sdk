@@ -8,7 +8,7 @@ module Authlete
   module Models
     module Errors
 
-      class ResultError < StandardError
+      class ResultError < ::StandardError
         extend T::Sig
         include Crystalline::MetadataFields
 
